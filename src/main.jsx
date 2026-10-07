@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import QRCode from "qrcode";
 import { api, categories, catById } from "./api";
+import { stripHeader } from "./import-utils";
 import "./style.css";
 const modes = {
   quiz: { name: "Bilgi yarışması", icon: Trophy, color: "purple" },
@@ -1111,7 +1112,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         </span>
         <h1>{room.title}</h1>
         <span>
-          <Users size={16} /> {room.playerCount} katılımcı{" "}
+          <Users size={16} />{" "}
+          {room.mode === "raffle" ? room.entryCount : room.playerCount}{" "}
+          katılımcı{" "}
           {room.me && (
             <>
               {" "}
@@ -1692,13 +1695,6 @@ async function readNames(file) {
     );
   }
   throw new Error(".xlsx veya .csv dosyası seçin.");
-}
-function stripHeader(names) {
-  if (/^(ad[ı]?\s*(soyad[ı]?)?|isim|name|katılımcı)$/iu.test(names[0] || ""))
-    names.shift();
-  if (names.length > 2000) throw new Error("En fazla 2.000 isim yükleyin.");
-  if (!names.length) throw new Error("İlk sütunda isim bulunamadı.");
-  return names;
 }
 function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
   const [names, setNames] = useState(""),
