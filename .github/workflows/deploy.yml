@@ -1,0 +1,35 @@
+name: Test and publish to Hostinger
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hostinger-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: pdo_sqlite, pdo_mysql, mbstring, intl
+          coverage: none
+      - run: npm ci
+      - run: npm run check:bank
+      - run: php -l api/core.php && php -l api/index.php && php -l api/setup.php
+      - run: npm run build
+      - run: npm test
+      - name: Publish verified production files
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: bash scripts/publish.sh
