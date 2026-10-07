@@ -36,6 +36,7 @@ import {
 import QRCode from "qrcode";
 import { api, categories, catById } from "./api";
 import { stripHeader } from "./import-utils";
+import { bubbleMetrics } from "./cloud-utils";
 import "./style.css";
 const modes = {
   quiz: { name: "Bilgi yarışması", icon: Trophy, color: "purple" },
@@ -1460,7 +1461,6 @@ function downloadCSV(rows, head, file) {
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 function WordCloud({ words }) {
-  const max = Math.max(1, ...words.map((w) => w.count));
   return (
     <div className="word-cloud">
       {words.slice(0, 120).map((w, i) => (
@@ -1468,8 +1468,8 @@ function WordCloud({ words }) {
           className={"word-bubble bubble-" + (i % 6)}
           key={w.text}
           style={{
-            "--size": 74 + Math.sqrt(w.count / max) * 100 + "px",
-            fontSize: 12 + Math.sqrt(w.count / max) * 17 + "px",
+            "--size": bubbleMetrics(w.count).size + "px",
+            fontSize: bubbleMetrics(w.count).fontSize + "px",
             animationDelay: (i % 7) * -0.7 + "s",
           }}
         >
