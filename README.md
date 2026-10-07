@@ -35,11 +35,11 @@ Tarayıcı: http://127.0.0.1:8091 — yalnızca yerel test yönetici şifresi `l
 1. hPanel'de `YOUR_DATABASE_NAME` MySQL veritabanını ve kullanıcıyı oluşturun.
 2. GitHub `main` dalındaki her push testleri çalıştırır, derlemeyi yapar ve yalnızca yayın dosyalarını `codex/deploy` dalına gönderir.
 3. hPanel → Gelişmiş → GIT: `dreamartxx/kahoot`, dal `codex/deploy`, hedef `public_html`, otomatik dağıtım açık.
-4. Bir defaya mahsus, rastgele en az 32 baytlık kurulum anahtarı içeren `public_html/api/setup.key` dosyasını Dosya Yöneticisi ile yükleyin. Dosya adı ve uzantısı tam olarak `setup.key` olmalı. Anahtarı Git'e eklemeyin.
-5. HTTPS site adresinde `/#setup` formuna anahtarı, MySQL bilgilerini ve en az 12 karakterli yönetici şifresini girin. Tablo kurulumu tamamlanır; `api/config.local.php` oluşturulur; `setup.key` kaldırılır ve kurulum kilitlenir.
+4. Siteyi bir kez açın. Uygulama `public_html` dışında, aynı üst dizindeki `bilgi-arena-private/setup.key` dosyasını otomatik oluşturur. Bu 256 bitlik tek kullanımlık kurulum anahtarını hPanel Dosya Yöneticisi üzerinden okuyun. Anahtarı Git'e eklemeyin.
+5. HTTPS site adresinde `/#setup` formuna anahtarı, MySQL bilgilerini ve en az 12 karakterli yönetici şifresini girin. Tablo kurulumu tamamlanır; `public_html` dışındaki `bilgi-arena-private/config.php` oluşturulur; `setup.key` kaldırılır ve kurulum kilitlenir.
 6. Ana sayfadaki yönetici girişiyle etkinlik oluşturun.
 
-`config.local.php` ve veritabanı Git tarafından yönetilmez; sonraki yayınlarda korunmalıdır. hPanel Git dağıtımında bu dosyanın korunması ilk güncellemeden sonra doğrulanmalıdır. Anahtar ve konfigürasyon doğrudan HTTP erişimine kapalıdır. `data/` altındaki cevap anahtarına da HTTP erişimi kapalıdır.
+`bilgi-arena-private/config.php` yayın kök dizininin dışında tutulur. Konfigürasyon ve MySQL verileri Git tarafından yönetilmez; yayın güncellemelerinden etkilenmez. Anahtar ve konfigürasyon doğrudan HTTP erişimine kapalıdır. `data/` altındaki cevap anahtarına da HTTP erişimi kapalıdır.
 
 Kaynak değişikliği → GitHub Actions doğrulaması → `codex/deploy` → Hostinger otomatik yayın. Başarısız testler yayın dalını güncellemez. Actions'ın bot push'larının Hostinger uygulama webhook'unu tetiklediği canlı sürüm dosyasıyla doğrulanmalıdır. Mevcut sürümün kaynak commit'i `/version.txt` adresinde bulunur.
 

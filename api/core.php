@@ -1,10 +1,18 @@
 <?php
 declare(strict_types=1);
 function fail(string $message, int $status = 400): never { http_response_code($status); echo json_encode(['error'=>$message], JSON_UNESCAPED_UNICODE); exit; }
+function privateDir(): string { return dirname(__DIR__,2).'/bilgi-arena-private'; }
+function configured(): bool { return is_file(privateDir().'/config.php') || (PHP_SAPI==='cli-server' && (bool)getenv('ARENA_TEST_DSN')); }
+function prepareInstaller(): void {
+    if(configured())return;
+    $dir=privateDir();if(!is_dir($dir) && !mkdir($dir,0700,true) && !is_dir($dir))fail('Özel ayar klasörü oluşturulamadı.',503);
+    $path=$dir.'/setup.key';
+    if(!is_file($path)){ $h=@fopen($path,'x');if($h){fwrite($h,bin2hex(random_bytes(32)));fclose($h);chmod($path,0600);} }
+}
 function config(): array {
     static $cfg;
     if ($cfg !== null) return $cfg;
-    $file = __DIR__.'/config.local.php';
+    $file = privateDir().'/config.php';
     if (is_file($file)) return $cfg = require $file;
     if (getenv('ARENA_TEST_DSN') && PHP_SAPI === 'cli-server') return $cfg = ['dsn'=>getenv('ARENA_TEST_DSN'),'user'=>'','password'=>'','admin_hash'=>getenv('ARENA_TEST_ADMIN_HASH'),'origin'=>'http://127.0.0.1:8091'];
     fail('Sunucu kurulumu henüz tamamlanmadı. Yönetici kurulumu gerekli.',503);

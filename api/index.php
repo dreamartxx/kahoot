@@ -5,7 +5,7 @@ require __DIR__.'/core.php';
 session_set_cookie_params(['httponly'=>true,'secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!=='off'),'samesite'=>'Strict','path'=>'/']);session_start();
 $action=$_GET['action']??'status';$method=$_SERVER['REQUEST_METHOD'];
 try {
-    if($action==='status') { echo json_encode(['configured'=>is_file(__DIR__.'/config.local.php') || (bool)getenv('ARENA_TEST_DSN'),'admin'=>admin()]);exit; }
+    if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured(),'admin'=>admin()]);exit;}
     if($method==='POST') {
         if(!str_contains($_SERVER['CONTENT_TYPE']??'','application/json')) fail('JSON gerekli.',415);
         $origin=$_SERVER['HTTP_ORIGIN']??'';$expected=config()['origin'];if($origin && $origin!==$expected) fail('Geçersiz kaynak.',403);
