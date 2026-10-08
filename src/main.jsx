@@ -1603,20 +1603,59 @@ function downloadCSV(rows, head, file) {
 }
 function WordCloud({ words }) {
   return (
-    <div className="word-cloud">
-      {words.slice(0, 120).map((w, i) => (
-        <div
-          className={"word-bubble bubble-" + (i % 6)}
-          key={w.text}
+    <div className={`word-cloud ${words.length > 60 ? "cloud-dense" : ""}`}>
+      {words.slice(0, 120).map((w) => {
+        const seed = Array.from(w.text).reduce(
+          (n, c) => (n * 31 + c.codePointAt(0)) >>> 0,
+          0,
+        );
+        const metrics = bubbleMetrics(w.count);
+        return (
+          <div
+            className={`word-orbit bubble-${seed % 6}`}
+            key={w.text}
+            style={{
+              "--size": metrics.size + "px",
+              "--font":
+                metrics.fontSize * (w.text.length > 14 ? 0.8 : 1) + "px",
+              "--float-time": 5 + (seed % 5) + "s",
+              "--float-delay": -(seed % 70) / 10 + "s",
+              "--depth": 12 + (seed % 36) + "px",
+              "--sway": (seed % 2 ? 1 : -1) * 7 + "px",
+            }}
+          >
+            <div className="word-bubble">
+              <span className="bubble-word">{w.text}</span>
+              <b className="bubble-count" key={w.count}>
+                {w.count}
+              </b>
+              <i
+                className="bubble-ripple"
+                key={`pulse-${w.count}`}
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+function CloudAtmosphere() {
+  return (
+    <div className="cloud-atmosphere" aria-hidden="true">
+      <i className="cloud-aurora aurora-one" />
+      <i className="cloud-aurora aurora-two" />
+      {Array.from({ length: 22 }, (_, i) => (
+        <span
+          key={i}
           style={{
-            "--size": bubbleMetrics(w.count).size + "px",
-            fontSize: bubbleMetrics(w.count).fontSize + "px",
-            animationDelay: (i % 7) * -0.7 + "s",
+            left: `${(i * 47 + 11) % 100}%`,
+            top: `${(i * 31 + 9) % 100}%`,
+            "--particle-delay": `${-(i % 9)}s`,
+            "--particle-size": `${2 + (i % 3)}px`,
           }}
-        >
-          <span>{w.text}</span>
-          <b>{w.count}</b>
-        </div>
+        />
       ))}
     </div>
   );
@@ -1629,7 +1668,7 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
     setPrompt(room.prompt);
   }, [room.promptVersion]);
   return (
-    <div className="cloud-room">
+    <div className={`cloud-room ${screen ? "cloud-screen" : ""}`}>
       <h2>{room.prompt}</h2>
       <p className="muted">
         {room.responseCount} kişi cevapladı · Aynı fikirler birlikte büyür.
@@ -1671,7 +1710,33 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
           </Button>
         </form>
       )}
-      <div className="cloud-canvas">
+      <div
+        className="cloud-canvas"
+        onPointerMove={(e) => {
+          if (
+            e.pointerType !== "mouse" ||
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          )
+            return;
+          const rect = e.currentTarget.getBoundingClientRect();
+          e.currentTarget.style.setProperty(
+            "--look-x",
+            `${((e.clientX - rect.left) / rect.width - 0.5) * 6}deg`,
+          );
+          e.currentTarget.style.setProperty(
+            "--look-y",
+            `${-((e.clientY - rect.top) / rect.height - 0.5) * 4}deg`,
+          );
+        }}
+        onPointerLeave={(e) => {
+          e.currentTarget.style.setProperty("--look-x", "0deg");
+          e.currentTarget.style.setProperty("--look-y", "0deg");
+        }}
+      >
+        <CloudAtmosphere />
+        <div className="cloud-live-badge">
+          <i /> FİKİRLER CANLANIYOR
+        </div>
         {room.words.length ? (
           <WordCloud words={room.words} />
         ) : (
@@ -1681,6 +1746,13 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
             <p>Katılımcıların cevapları burada canlı büyüyecek.</p>
           </div>
         )}
+        <div className="cloud-stage-footer">
+          <Sparkles size={15} />
+          <span>
+            {room.words.length} farklı kelime · Her yeni cevapla biraz daha
+            büyük
+          </span>
+        </div>
       </div>
       {room.words.length > 120 && (
         <p className="muted">
