@@ -1,0 +1,402 @@
+[
+  {
+    "code": "tr",
+    "name": "Türkiye"
+  },
+  {
+    "code": "de",
+    "name": "Almanya"
+  },
+  {
+    "code": "fr",
+    "name": "Fransa"
+  },
+  {
+    "code": "it",
+    "name": "İtalya"
+  },
+  {
+    "code": "es",
+    "name": "İspanya"
+  },
+  {
+    "code": "pt",
+    "name": "Portekiz"
+  },
+  {
+    "code": "gb",
+    "name": "Birleşik Krallık"
+  },
+  {
+    "code": "ie",
+    "name": "İrlanda"
+  },
+  {
+    "code": "be",
+    "name": "Belçika"
+  },
+  {
+    "code": "nl",
+    "name": "Hollanda"
+  },
+  {
+    "code": "lu",
+    "name": "Lüksemburg"
+  },
+  {
+    "code": "ch",
+    "name": "İsviçre"
+  },
+  {
+    "code": "at",
+    "name": "Avusturya"
+  },
+  {
+    "code": "pl",
+    "name": "Polonya"
+  },
+  {
+    "code": "cz",
+    "name": "Çekya"
+  },
+  {
+    "code": "sk",
+    "name": "Slovakya"
+  },
+  {
+    "code": "hu",
+    "name": "Macaristan"
+  },
+  {
+    "code": "ro",
+    "name": "Romanya"
+  },
+  {
+    "code": "bg",
+    "name": "Bulgaristan"
+  },
+  {
+    "code": "gr",
+    "name": "Yunanistan"
+  },
+  {
+    "code": "al",
+    "name": "Arnavutluk"
+  },
+  {
+    "code": "mk",
+    "name": "Kuzey Makedonya"
+  },
+  {
+    "code": "rs",
+    "name": "Sırbistan"
+  },
+  {
+    "code": "me",
+    "name": "Karadağ"
+  },
+  {
+    "code": "ba",
+    "name": "Bosna-Hersek"
+  },
+  {
+    "code": "hr",
+    "name": "Hırvatistan"
+  },
+  {
+    "code": "si",
+    "name": "Slovenya"
+  },
+  {
+    "code": "dk",
+    "name": "Danimarka"
+  },
+  {
+    "code": "no",
+    "name": "Norveç"
+  },
+  {
+    "code": "se",
+    "name": "İsveç"
+  },
+  {
+    "code": "fi",
+    "name": "Finlandiya"
+  },
+  {
+    "code": "is",
+    "name": "İzlanda"
+  },
+  {
+    "code": "ee",
+    "name": "Estonya"
+  },
+  {
+    "code": "lv",
+    "name": "Letonya"
+  },
+  {
+    "code": "lt",
+    "name": "Litvanya"
+  },
+  {
+    "code": "ua",
+    "name": "Ukrayna"
+  },
+  {
+    "code": "md",
+    "name": "Moldova"
+  },
+  {
+    "code": "by",
+    "name": "Belarus"
+  },
+  {
+    "code": "ru",
+    "name": "Rusya"
+  },
+  {
+    "code": "ge",
+    "name": "Gürcistan"
+  },
+  {
+    "code": "am",
+    "name": "Ermenistan"
+  },
+  {
+    "code": "az",
+    "name": "Azerbaycan"
+  },
+  {
+    "code": "kz",
+    "name": "Kazakistan"
+  },
+  {
+    "code": "uz",
+    "name": "Özbekistan"
+  },
+  {
+    "code": "tm",
+    "name": "Türkmenistan"
+  },
+  {
+    "code": "kg",
+    "name": "Kırgızistan"
+  },
+  {
+    "code": "tj",
+    "name": "Tacikistan"
+  },
+  {
+    "code": "mn",
+    "name": "Moğolistan"
+  },
+  {
+    "code": "cn",
+    "name": "Çin"
+  },
+  {
+    "code": "jp",
+    "name": "Japonya"
+  },
+  {
+    "code": "kr",
+    "name": "Güney Kore"
+  },
+  {
+    "code": "kp",
+    "name": "Kuzey Kore"
+  },
+  {
+    "code": "in",
+    "name": "Hindistan"
+  },
+  {
+    "code": "pk",
+    "name": "Pakistan"
+  },
+  {
+    "code": "bd",
+    "name": "Bangladeş"
+  },
+  {
+    "code": "np",
+    "name": "Nepal"
+  },
+  {
+    "code": "bt",
+    "name": "Bhutan"
+  },
+  {
+    "code": "mv",
+    "name": "Maldivler"
+  },
+  {
+    "code": "th",
+    "name": "Tayland"
+  },
+  {
+    "code": "vn",
+    "name": "Vietnam"
+  },
+  {
+    "code": "kh",
+    "name": "Kamboçya"
+  },
+  {
+    "code": "la",
+    "name": "Laos"
+  },
+  {
+    "code": "my",
+    "name": "Malezya"
+  },
+  {
+    "code": "ph",
+    "name": "Filipinler"
+  },
+  {
+    "code": "sg",
+    "name": "Singapur"
+  },
+  {
+    "code": "ir",
+    "name": "İran"
+  },
+  {
+    "code": "iq",
+    "name": "Irak"
+  },
+  {
+    "code": "jo",
+    "name": "Ürdün"
+  },
+  {
+    "code": "lb",
+    "name": "Lübnan"
+  },
+  {
+    "code": "sa",
+    "name": "Suudi Arabistan"
+  },
+  {
+    "code": "ae",
+    "name": "Birleşik Arap Emirlikleri"
+  },
+  {
+    "code": "qa",
+    "name": "Katar"
+  },
+  {
+    "code": "bh",
+    "name": "Bahreyn"
+  },
+  {
+    "code": "kw",
+    "name": "Kuveyt"
+  },
+  {
+    "code": "om",
+    "name": "Umman"
+  },
+  {
+    "code": "eg",
+    "name": "Mısır"
+  },
+  {
+    "code": "ma",
+    "name": "Fas"
+  },
+  {
+    "code": "dz",
+    "name": "Cezayir"
+  },
+  {
+    "code": "tn",
+    "name": "Tunus"
+  },
+  {
+    "code": "ly",
+    "name": "Libya"
+  },
+  {
+    "code": "ke",
+    "name": "Kenya"
+  },
+  {
+    "code": "tz",
+    "name": "Tanzanya"
+  },
+  {
+    "code": "ug",
+    "name": "Uganda"
+  },
+  {
+    "code": "et",
+    "name": "Etiyopya"
+  },
+  {
+    "code": "ng",
+    "name": "Nijerya"
+  },
+  {
+    "code": "gh",
+    "name": "Gana"
+  },
+  {
+    "code": "sn",
+    "name": "Senegal"
+  },
+  {
+    "code": "rw",
+    "name": "Ruanda"
+  },
+  {
+    "code": "ao",
+    "name": "Angola"
+  },
+  {
+    "code": "zm",
+    "name": "Zambiya"
+  },
+  {
+    "code": "zw",
+    "name": "Zimbabve"
+  },
+  {
+    "code": "mg",
+    "name": "Madagaskar"
+  },
+  {
+    "code": "ca",
+    "name": "Kanada"
+  },
+  {
+    "code": "us",
+    "name": "Amerika Birleşik Devletleri"
+  },
+  {
+    "code": "mx",
+    "name": "Meksika"
+  },
+  {
+    "code": "br",
+    "name": "Brezilya"
+  },
+  {
+    "code": "ar",
+    "name": "Arjantin"
+  },
+  {
+    "code": "cl",
+    "name": "Şili"
+  },
+  {
+    "code": "pe",
+    "name": "Peru"
+  },
+  {
+    "code": "au",
+    "name": "Avustralya"
+  }
+]

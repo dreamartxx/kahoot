@@ -38,12 +38,32 @@ import { api, categories, catById } from "./api";
 import { stripHeader } from "./import-utils";
 import { bubbleMetrics } from "./cloud-utils";
 import { winnerRotation, wheelEase } from "./wheel-utils";
+import { flagAssets } from "./flag-assets";
+import flagCountries from "../data/flag-countries.json";
 import "./style.css";
 const modes = {
   quiz: { name: "Bilgi yarışması", icon: Trophy, color: "purple" },
   raffle: { name: "Çekiliş", icon: Ticket, color: "peach" },
   cloud: { name: "Kelime bulutu", icon: Cloud, color: "mint" },
 };
+const flagNames = Object.fromEntries(
+  flagCountries.map(({ code, name }) => [code, name]),
+);
+function OptionContent({ value, showName = false }) {
+  const code = value.startsWith("flag:") ? value.slice(5) : null;
+  if (!code || !flagAssets[code]) return value;
+  return (
+    <span className="flag-option">
+      <img
+        src={flagAssets[code]}
+        alt={`${flagNames[code]} bayrağı`}
+        width="160"
+        height="120"
+      />
+      {showName && <span>{flagNames[code]}</span>}
+    </span>
+  );
+}
 function Button({ children, secondary = false, className = "", ...p }) {
   return (
     <button
@@ -419,7 +439,7 @@ function App() {
                             </p>
                             <span className="module-tag">
                               {id === "quiz"
-                                ? "10 konu · 10 soruluk turlar"
+                                ? `${categories.length} konu · 10 soruluk turlar`
                                 : id === "raffle"
                                   ? "Manuel liste veya Excel"
                                   : "Canlı katılım · Ortak fikirler"}
@@ -436,7 +456,8 @@ function App() {
                       <div>
                         <h2>Merak ettiğin konuyu seç.</h2>
                         <p>
-                          Her konuda 100 soru. Her turda yeni bir meydan okuma.
+                          Genişleyen soru havuzları. Her turda yeni bir meydan
+                          okuma.
                         </p>
                       </div>
                       <div className="search">
@@ -468,7 +489,7 @@ function App() {
                             >
                               <span>{c.emoji}</span>
                               <span className="category-count">
-                                {counts[c.id] || 100} soru
+                                {counts[c.id] ?? c.count} soru
                               </span>
                               <span className="deco-ring" />
                             </div>
@@ -630,7 +651,8 @@ function App() {
                 birlikte başlar.
               </span>
               <span>
-                {total || 1000} soru <i>·</i> 10 konu <i>·</i> Sonsuz merak
+                {total || categories.reduce((sum, c) => sum + c.count, 0)} soru{" "}
+                <i>·</i> {categories.length} konu <i>·</i> Sonsuz merak
               </span>
             </footer>
           </div>
@@ -1342,7 +1364,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                 />
               </div>
               <h2>{room.question?.text}</h2>
-              <div className="answer-grid">
+              <div
+                className={`answer-grid ${room.question?.options.every((option) => option.startsWith("flag:")) ? "flag-answers" : ""}`}
+              >
                 {room.question?.options.map((o, i) => (
                   <button
                     key={i}
@@ -1374,7 +1398,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                     <span className="answer-shape">
                       {["▲", "◆", "●", "■"][i]}
                     </span>
-                    <b>{o}</b>
+                    <b>
+                      <OptionContent value={o} />
+                    </b>
                     {room.phase === "reveal" && room.question.correct === i && (
                       <CheckCircle2 size={24} />
                     )}
@@ -1395,7 +1421,17 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                         : "Bu sefer olmadı. Sıradaki soru senin!"}
                     </strong>
                   )}
-                  <p>{room.question?.explanation}</p>
+                  {room.category === "enler" ? (
+                    <details
+                      className="question-details"
+                      key={room.question.id}
+                    >
+                      <summary>Detayı gör</summary>
+                      <p>{room.question.explanation}</p>
+                    </details>
+                  ) : (
+                    <p>{room.question?.explanation}</p>
+                  )}
                   <div className="mini-ranking">
                     {room.players.slice(0, 3).map((p, i) => (
                       <span key={p.name}>
@@ -1503,7 +1539,12 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
             key={room.question.id}
             correct={room.myAnswer.choice === room.question.correct}
             points={room.myAnswer.points}
-            correctAnswer={room.question.options[room.question.correct]}
+            correctAnswer={
+              <OptionContent
+                value={room.question.options[room.question.correct]}
+                showName
+              />
+            }
           />
         )}
     </div>
@@ -2379,7 +2420,8 @@ function Library({ admin, notify, refresh }) {
                     key={j}
                     className={j === q.correct ? "right-option" : ""}
                   >
-                    {String.fromCharCode(65 + j)}. {o}{" "}
+                    {String.fromCharCode(65 + j)}.{" "}
+                    <OptionContent value={o} showName />{" "}
                     {j === q.correct && <Check size={16} />}
                   </div>
                 ))}

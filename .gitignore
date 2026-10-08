@@ -8,3 +8,6 @@ api/setup.key
 .DS_Store
 assets-build/
 app.html
+
+__pycache__/
+*.pyc

@@ -766,14 +766,20 @@ Elementlerin periyodik tablosuyla özdeşleşen bilim insanı kimdir?|Dmitri Men
 Ay'a ilk ayak basan insan kimdir?|Neil Armstrong|Yuri Gagarin|John Glenn|Alan Shepard
 Uzaya çıkan ilk insan kimdir?|Yuri Gagarin|Neil Armstrong|Buzz Aldrin|Michael Collins
 ''')
+from expanded_bank import expand
+expand(questions,add,direct,provinces)
+flags=json.loads((ROOT/'data/flag-countries.json').read_text())
+for flag in flags:
+    add('bayraklar',f"{flag['name']} ülkesinin bayrağı hangisidir?",'flag:'+flag['code'],['flag:'+f['code'] for f in flags],f"Doğru bayrak: {flag['name']}.")
 from collections import Counter
 counts=Counter(q['category'] for q in questions)
-expected=['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur']
-for cat in expected:
-    assert counts[cat]==100,f'{cat}: {counts[cat]} != 100'
-assert len(questions)==1000
-assert len({q['id'] for q in questions})==1000
-assert len({q['text'] for q in questions})==1000
+expected={cat:100 for cat in ['cografya','dinozor','hayvanlar','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','bayraklar','enler']}
+expected.update(turkiye=200,plakalar=81)
+assert dict(counts)==expected,(dict(counts),expected)
+assert len(questions)==1481
+assert len({q['id'] for q in questions})==len(questions)
+assert len({q['text'] for q in questions})==len(questions)
+assert sum(q['category']=='turkiye' and 'plaka kodu' in q['text'] for q in questions)==20
 for q in questions:
     assert len(q['options'])==len(set(q['options']))==4
     assert 0<=q['correct']<=3
@@ -781,4 +787,4 @@ serialized=json.dumps(questions,ensure_ascii=False,indent=2)+'\n'
 if '--check' in sys.argv:
     assert (ROOT/'data/questions.json').read_text()==serialized,'Question bank differs from generator'
 else:(ROOT/'data/questions.json').write_text(serialized)
-print(json.dumps(dict(counts),ensure_ascii=False));print('1000 unique questions, four unique options each: OK')
+print(json.dumps(dict(counts),ensure_ascii=False));print(f'{len(questions)} unique questions, four unique options each: OK')

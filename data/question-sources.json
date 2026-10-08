@@ -1,0 +1,31 @@
+{
+  "reviewedAt": "2026-10-08",
+  "turkiyeAndSpecialties": [
+    "https://kulturportali.gov.tr/portal/mutfak",
+    "https://www.tbmm.gov.tr/Sayfa/KurtulusSavasiMuzesi",
+    "https://www.tbmm.gov.tr/history/",
+    "https://kulturportali.gov.tr/turkiye/hakkari/nealinir/hakkari-kilimi",
+    "https://www.kulturportali.gov.tr/turkiye/bayburt/nealinir/ehram-ve-ehram-urunleri",
+    "https://www.kulturportali.gov.tr/turkiye/igdir/nealinir/igdir-kayisisi-salagi",
+    "https://kulturportali.gov.tr/turkiye/batman/nealinir/sason-cevizi",
+    "https://kulturportali.gov.tr/turkiye/kirikkale/neyenir/keskin-tava",
+    "https://www.kulturportali.gov.tr/turkiye/bilecik/nealinir/boza",
+    "https://www.kulturportali.gov.tr/turkiye/sirnak/nealinir/sal-sapk"
+  ],
+  "superlatives": [
+    "https://oceanservice.noaa.gov/facts/biggestocean.html",
+    "https://oceanservice.noaa.gov/facts/oceandepth.html",
+    "https://www.guinnessworldrecords.com/world-records/deepest-lake",
+    "https://www.guinnessworldrecords.com/world-records/largest-mammal",
+    "https://science.nasa.gov/solar-system/planet-sizes-and-locations-in-our-solar-system/",
+    "https://ssd.jpl.nasa.gov/planets/phys_par.html",
+    "https://apod.nasa.gov/apod/ap250914.html",
+    "https://periodic-table.rsc.org/element/74/tungsten",
+    "https://www.nps.gov/seki/learn/nature/sherman.htm",
+    "https://www.kew.org/plants/rafflesia-arnoldi",
+    "https://www.kew.org/read-and-watch/double-coconut-largest-seed-in-the-world",
+    "https://whc.unesco.org/en/list/798/",
+    "https://science.nasa.gov/earth/earth-observatory/salar-de-uyuni-bolivia-6096/"
+  ],
+  "flags": {"package": "flag-icons", "version": "7.5.0", "license": "MIT", "source": "https://flagicons.lipis.dev/"}
+}

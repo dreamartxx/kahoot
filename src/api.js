@@ -32,12 +32,35 @@ export const categories = [
   ["dinozor", "Dinozorlar", "Zamanda geriye yolculuk", "🦕", "#eee3fc"],
   ["hayvanlar", "Hayvanlar", "Vahşi doğayı keşfet", "🦁", "#fff0d5"],
   ["turkiye", "Türkiye", "Her köşesi bir hikâye", "🎈", "#ffe2e8"],
+  [
+    "meshur",
+    "Hangi ilin neyi meşhur?",
+    "81 il, yüzlerce güzellik",
+    "🧿",
+    "#dbf4f0",
+  ],
+  ["plakalar", "Plakalar", "01’den 81’e Türkiye turu", "🚘", "#e6eaff"],
   ["ulkeler", "Ülkeler", "Sınırları aş, dünyayı tanı", "🗺️", "#def1ff"],
+  [
+    "bayraklar",
+    "Ülke bayrakları",
+    "Dört bayrak, bir doğru cevap",
+    "🏳️",
+    "#ffe5ec",
+  ],
+  ["enler", "Enler", "En büyük, en uzun, en hızlı", "🏔️", "#e4f1db"],
   ["gezegenler", "Gezegenler", "Yıldızlara doğru", "🪐", "#e7e4ff"],
   ["futbol", "Futbol", "Sahne senin, gol senin", "⚽", "#dff4dc"],
   ["kaleciler", "Kaleciler", "Kalenin efsaneleri", "🧤", "#e1edff"],
   ["arabalar", "Arabalar", "Bilgini vites yükselt", "🏎️", "#ffe6d7"],
   ["genel-kultur", "Genel kültür", "Her şeyden biraz", "💡", "#fff1be"],
-].map(([id, name, desc, emoji, color]) => ({ id, name, desc, emoji, color }));
+].map(([id, name, desc, emoji, color]) => ({
+  id,
+  name,
+  desc,
+  emoji,
+  color,
+  count: id === "turkiye" ? 200 : id === "plakalar" ? 81 : 100,
+}));
 export const catById = (id) =>
   categories.find((c) => c.id === id) || categories[0];

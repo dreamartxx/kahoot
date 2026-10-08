@@ -4,7 +4,7 @@ QR ile katılımlı Türkçe etkinlik stüdyosu. React + PHP 8.2+ + MySQL/MariaD
 
 ## Modüller
 
-- **Bilgi yarışması:** Coğrafya, Dinozorlar, Hayvanlar, Türkiye, Ülkeler, Gezegenler, Futbol, Kaleciler, Arabalar ve Genel kültür başlıklarında 100'er soru. Her tur 10 soru, her soruda dört şık ve tek doğru cevap. Kullanılmamış sorulara öncelik; havuz bitince en eski sorular tekrar kullanılır. Yönetici soruları elle seçebilir veya yeni sorular ekleyebilir. Sunucu süreyi, yanıt tekilliğini ve 500–1.000 arası hız puanını doğrular. Yanlış cevap 0 puan. Doğru cevap ve mevcut sorunun puanı soru kapanmadan katılımcıya gönderilmez.
+- **Bilgi yarışması:** 14 kategoride toplam 1.481 soru: Türkiye 200 (20 büyükşehir plakası, 81 ilin yerel değerleri ve genel kültür), Plakalar 81; Hangi ilin neyi meşhur?, Ülke bayrakları, Enler ve diğer dokuz kategoride 100’er soru. Bayrak şıkları sunucudan gelen seçenek kodlarıyla yerel SVG görsellerini kullanır. Her tur 10 soru, her soruda dört şık ve tek doğru cevap. Kullanılmamış sorulara öncelik; havuz bitince en eski sorular tekrar kullanılır. Yönetici soruları elle seçebilir veya yeni sorular ekleyebilir. Sunucu süreyi, yanıt tekilliğini ve 500–1.000 arası hız puanını doğrular. Yanlış cevap 0 puan. Doğru cevap ve mevcut sorunun puanı soru kapanmadan katılımcıya gönderilmez.
 - **Çekiliş:** Elle isim ekleme, ilk sütundan `.xlsx` / `.csv` içe aktarma, önizleme, QR katılımı, aynı ismin bir kez eklenmesi. Büyük, ışıklı çarkıfelek; eşit açılı isim dilimleri, yavaşlayarak kazananın dilimine durma ve konfeti. Kazanan sunucuda `random_int` ile seçilir; ilk 11 saniye yanıtta bulunmaz. Sonrasında çark yaklaşık dört saniyede kazanana iner; yeni çekiliş ve liste yükleme 17. saniyeye kadar kilitlidir. Her turun katılımcı dilimleri sabitlenir; dönüş sırasında QR ile eklenenler sonraki tura katılır. Çok büyük listelerde her katılımcı eşit dilime sahiptir; okunabilirlik için çark üzerinde en fazla 48 isim etiketi gösterilir. Kazananlar aynı etkinlikte tekrar seçilmez. Yalnızca görsel animasyon istemcidedir.
 - **Kelime bulutu:** Kişi başına 1–3 kelime. Türkçe büyük/küçük harf, Unicode, boşluk ve noktalama normalizasyonu. Aynı kişinin aynı kelimeyi tekrar yazması sayıyı artırmaz. Cevap güncelleme eski oyu kaldırır. Balonlar oy sayısıyla büyür ve üzerinde sayacı gösterir. Yeni soru önceki bulutu temizler; önce CSV dışa aktarılabilir.
 
@@ -53,7 +53,7 @@ Kaynak değişikliği → GitHub Actions doğrulaması → `codex/deploy` → Ho
 - Hazır sorular `scripts/build_bank.py` ile tekrar üretilebilir. Tarihsel futbol soruları 1930–2022 Dünya Kupaları ve 1960–2024 Avrupa Şampiyonalarını kapsar. Güncel kadro veya güncel rekor varsayımı yapılmaz.
 - Excel: `.xlsx` ve UTF-8 `.csv`, ilk sayfa/ilk sütun. İlk satır “İsim”, “Ad Soyad” veya “Name” ise atlanır. Eski `.xls` dosyalarını önce `.xlsx` olarak kaydedin. En fazla 5 MB.
 - Kelime bulutu en sık kullanılan 120 kelimeyi görselleştirir; tamamı CSV'de bulunur. Giriş yapılan takma ad herkese görünür. İnternete açık etkinliklerde yalnızca güvendiğiniz kişilerle oyun kodunu paylaşın.
-- Yapısal testler: 10×100 soru, benzersiz kimlik/metin, dört benzersiz şık, tek cevap indeksi. İçerik editoryal olarak gözden geçirilebilir; hazır havuz koddan, özel sorular yönetici ekranından yönetilir.
+- Yapısal testler: 14 kategori, toplam 1.481 soru (Türkiye 200, Plakalar 81, diğerleri 100), benzersiz kimlik/metin, dört benzersiz şık, tek cevap indeksi. İçerik editoryal olarak gözden geçirilebilir; hazır havuz koddan, özel sorular yönetici ekranından yönetilir.
 
 ## Referanslar
 

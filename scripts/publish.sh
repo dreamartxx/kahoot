@@ -8,6 +8,7 @@ cp .htaccess app.html "$ARENA_RELEASE_DIR/"
 cp api/.htaccess api/core.php api/index.php api/setup.php "$ARENA_RELEASE_DIR/api/"
 cp data/questions.json "$ARENA_RELEASE_DIR/data/"
 cp -R assets-build/assets "$ARENA_RELEASE_DIR/assets-build/"
+cp data/flag-icons-LICENSE.txt "$ARENA_RELEASE_DIR/assets-build/assets/flag-icons-LICENSE.txt"
 printf '%s\n' "${SOURCE_SHA:-$(git rev-parse HEAD)}" > "$ARENA_RELEASE_DIR/version.txt"
 # Reuse checkout credentials without placing tokens in a remote URL or log.
 ARENA_AUTH_HEADER="$(git config --local --get http.https://github.com/.extraheader || true)"

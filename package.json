@@ -10,6 +10,7 @@
     "check:bank": "python3 scripts/build_bank.py --check"
   },
   "dependencies": {
+    "flag-icons": "^7.5.0",
     "lucide-react": "^0.468.0",
     "qrcode": "^1.5.4",
     "react": "^19.1.0",

@@ -485,3 +485,38 @@ test("raffle: import deduplication, no early winner, draw lock and no winner rep
     409,
   );
 });
+test("new categories create ten-question rounds and reveal details only after answering ends", async () => {
+  for (const category of [
+    "turkiye",
+    "meshur",
+    "plakalar",
+    "bayraklar",
+    "enler",
+  ]) {
+    const room = await create("quiz", { category });
+    assert.equal(room.total, 10);
+    const started = await call(
+      "advance",
+      { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" },
+      { admin: true },
+    );
+    assert.equal(started.status, 200);
+    const q = started.data.question;
+    assert.equal(q.options.length, 4);
+    assert.equal(q.explanation, undefined);
+    assert.equal(q.correct, undefined);
+    if (category === "bayraklar")
+      assert(q.options.every((option) => /^flag:[a-z]{2}$/.test(option)));
+    const revealed = await call(
+      "advance",
+      { pin: room.pin, expectedIndex: 0, expectedPhase: "question" },
+      { admin: true },
+    );
+    assert.equal(revealed.status, 200);
+    assert.equal(revealed.data.phase, "reveal");
+    assert(revealed.data.question.explanation);
+    assert(Number.isInteger(revealed.data.question.correct));
+    if (category === "enler")
+      assert(revealed.data.question.explanation.length > 65);
+  }
+});
