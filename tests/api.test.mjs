@@ -800,3 +800,151 @@ test("family deadlines, invalid choices, stale questions and tied ranks", async 
     400,
   );
 });
+
+test("quiz and family auto-advance through reveal, synchronized 3–2–1 and final results without host requests", async () => {
+  for (const mode of ["quiz", "family"]) {
+    const r = await create(mode, { seconds: 30 });
+    const pin = r.pin;
+    const players = [];
+    for (const name of ["Otomatik Bir", "Otomatik İki"]) {
+      const joined = await call("join", { pin, name, role: "Kuzen" });
+      assert.equal(joined.status, 200);
+      players.push(joined.data);
+      if (mode === "family") {
+        const answers = Object.fromEntries(
+          r.prompts.map((p) => [p.id, "Cevabım"]),
+        );
+        assert.equal(
+          (
+            await call(
+              "family_profile",
+              { pin, answers },
+              { token: joined.data.token },
+            )
+          ).status,
+          200,
+        );
+      }
+    }
+    const action = mode === "family" ? "family_start" : "advance";
+    const start = await call(
+      action,
+      { pin, expectedIndex: -1, expectedPhase: "lobby" },
+      { admin: true },
+    );
+    assert.equal(start.status, 200);
+    const oldId = start.data.question.id;
+    mutateDB(pin, "$s['deadline']=microtime(true)-1");
+    const reveal = (await call("room", { pin }, { token: players[0].token }))
+      .data;
+    assert.equal(reveal.phase, "reveal");
+    assert(Number.isInteger(reveal.question.correct));
+    assert(reveal.revealUntil > reveal.serverTime);
+    for (const [elapsed, digit] of [
+      [5.1, 3],
+      [6.1, 2],
+      [7.1, 1],
+    ]) {
+      mutateDB(pin, `$s['deadline']=microtime(true)-${elapsed}`);
+      const a = (await call("room", { pin }, { token: players[0].token })).data;
+      const b = (await call("room", { pin }, { token: players[1].token })).data;
+      assert.equal(a.phase, "countdown");
+      assert.equal(b.phase, "countdown");
+      assert.equal(
+        a.question,
+        undefined,
+        "The next question cannot leak during the countdown",
+      );
+      assert.equal(a.countdownUntil, b.countdownUntil);
+      assert.equal(Math.ceil(a.countdownUntil - a.serverTime), digit);
+      const rejected = await call(
+        mode === "family" ? "family_answer" : "answer",
+        { pin, questionId: oldId, choice: 0 },
+        { token: players[0].token },
+      );
+      assert.equal(rejected.status, 409);
+    }
+    mutateDB(pin, "$s['deadline']=microtime(true)-8.1");
+    const next = (await call("room", { pin }, { token: players[0].token }))
+      .data;
+    assert.equal(next.phase, "question");
+    assert.equal(next.index, 1);
+    assert.notEqual(next.question.id, oldId);
+    assert.equal(next.question.correct, undefined);
+    assert(
+      next.deadline - next.serverTime > 29 &&
+        next.deadline - next.serverTime <= 30,
+    );
+    const responder =
+      mode === "quiz"
+        ? players[0]
+        : players.find((p) => p.room.me.id !== next.question.subject.id);
+    const stale = await call(
+      mode === "family" ? "family_answer" : "answer",
+      { pin, questionId: oldId, choice: 0 },
+      { token: responder.token },
+    );
+    assert.equal(stale.status, 409);
+    const answer = await call(
+      mode === "family" ? "family_answer" : "answer",
+      { pin, questionId: next.question.id, choice: 0 },
+      { token: responder.token },
+    );
+    assert.equal(answer.status, 200);
+    assert.equal(answer.data.myAnswer.points, undefined);
+    mutateDB(
+      pin,
+      "$s['phase']='question';$s['index']=count($s['questions'])-1;$s['deadline']=microtime(true)-5.1",
+    );
+    const finished = (await call("room", { pin })).data;
+    assert.equal(finished.phase, "finished");
+    if (mode === "family") assert.equal(finished.results.ranking.length, 2);
+    assert.equal(
+      (
+        await call(
+          mode === "family" ? "family_answer" : "answer",
+          { pin, questionId: next.question.id, choice: 0 },
+          { token: responder.token },
+        )
+      ).status,
+      409,
+    );
+  }
+});
+
+test("automatic clock preserves deadlines across exact boundaries and sleeping clients", () => {
+  const output = execFileSync(
+    "php",
+    [
+      "-r",
+      `
+    require 'api/core.php';
+    $base=['mode'=>'quiz','phase'=>'question','deadline'=>100.0,'index'=>0,'seconds'=>20,'questions'=>array_fill(0,10,[])];
+    $out=[];
+    foreach([99.9,100,104.9,105,106,107,108,128,192,357] as $time){$s=$base;syncQuizClock($s,$time);$out[]=['phase'=>$s['phase'],'index'=>$s['index'],'deadline'=>$s['deadline']];}
+    echo json_encode($out);
+  `,
+    ],
+    { cwd: root },
+  ).toString();
+  const snapshots = JSON.parse(output);
+  assert.deepEqual(
+    snapshots.map((s) => s.phase),
+    [
+      "question",
+      "reveal",
+      "reveal",
+      "countdown",
+      "countdown",
+      "countdown",
+      "question",
+      "reveal",
+      "question",
+      "finished",
+    ],
+  );
+  assert.equal(snapshots[6].deadline, 128);
+  assert.equal(snapshots[8].index, 4);
+  assert.equal(snapshots[8].deadline, 212);
+  assert.equal(snapshots[9].index, 9);
+});

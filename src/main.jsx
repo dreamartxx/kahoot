@@ -1110,8 +1110,16 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
   useEffect(() => {
     let dead = false;
     async function poll() {
+      let delay = 1400;
       try {
         const r = await api("room", { pin }, token);
+        if (
+          ["quiz", "family"].includes(r.mode) &&
+          (r.phase === "countdown" ||
+            r.phase === "reveal" ||
+            (r.phase === "question" && r.deadline - r.serverTime < 5))
+        )
+          delay = 300;
         if (!dead) {
           offset.current = r.serverTime - Date.now() / 1000;
           setRoom(r);
@@ -1120,7 +1128,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       } catch (e) {
         if (!dead) setError(e.message);
       }
-      if (!dead) timeout = setTimeout(poll, 1400);
+      if (!dead) timeout = setTimeout(poll, delay);
     }
     let timeout;
     poll();
@@ -1380,6 +1388,30 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           <h2>Güzel bir etkinlikti!</h2>
           <p>Katıldığın için teşekkürler.</p>
         </div>
+      ) : room.phase === "countdown" &&
+        ["quiz", "family"].includes(room.mode) ? (
+        <section
+          className="question-countdown"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <div className="countdown-orbit orbit-one" aria-hidden="true" />
+          <div className="countdown-orbit orbit-two" aria-hidden="true" />
+          <span className="countdown-spark spark-one" aria-hidden="true">
+            ✦
+          </span>
+          <span className="countdown-spark spark-two" aria-hidden="true">
+            ✧
+          </span>
+          <p>SIRADAKİ SORU GELİYOR</p>
+          <strong key={Math.max(0, Math.ceil(room.countdownUntil - now))}>
+            {Math.max(0, Math.ceil(room.countdownUntil - now)) || "Başla!"}
+          </strong>
+          <span>
+            Soru {room.index + 2} / {room.total}
+          </span>
+          <small>Hazır ol, yeni soruya otomatik geçiyoruz.</small>
+        </section>
       ) : room.mode === "family" ? (
         <FamilyRoom
           room={room}
@@ -1587,7 +1619,14 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                   </div>
                 </div>
               )}
-              {host && (
+              <p className="auto-question-note" role="status">
+                {room.phase === "reveal"
+                  ? room.index === room.total - 1
+                    ? "Sonuçlar birazdan otomatik açılacak."
+                    : "Doğru cevap gösteriliyor. Ardından 3–2–1 ile sıradaki soru!"
+                  : "Süre bitince cevaplar gösterilecek ve yeni soruya otomatik geçilecek."}
+              </p>
+              {host && room.phase === "question" && (
                 <Button
                   className="next-btn"
                   disabled={busy}

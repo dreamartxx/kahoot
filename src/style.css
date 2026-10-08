@@ -4371,3 +4371,139 @@ dialog.answer-result-popup.result-wrong {
     font-size: 26px;
   }
 }
+
+.question-countdown {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: 1100px;
+  min-height: 520px;
+  margin: 20px auto 35px;
+  border-radius: 32px;
+  background:
+    radial-gradient(ellipse at 25% 20%, #a684ef 0, transparent 50%),
+    linear-gradient(135deg, #7150cb, #412382);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 22px 60px #6845b32b;
+  padding: 40px 20px;
+}
+.question-countdown p {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: #eee1ff;
+  z-index: 1;
+}
+.question-countdown > strong {
+  font-size: clamp(120px, 19vw, 210px);
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+  text-shadow:
+    0 8px 0 #42207644,
+    0 12px 40px #23123944;
+  animation: countdown-pop 0.8s ease-out both;
+  z-index: 1;
+}
+.question-countdown > span:not(.countdown-spark) {
+  font-size: 21px;
+  font-weight: 700;
+  z-index: 1;
+}
+.question-countdown small {
+  font-size: 13px;
+  color: #e4d5fa;
+  margin-top: 13px;
+  z-index: 1;
+}
+.countdown-orbit {
+  position: absolute;
+  border: 1px solid #ffffff29;
+  border-radius: 50%;
+  width: 470px;
+  height: 470px;
+  z-index: -1;
+}
+.countdown-orbit.orbit-two {
+  width: 610px;
+  height: 610px;
+  border-style: dashed;
+  animation: countdown-orbit 20s linear infinite;
+}
+.countdown-spark {
+  position: absolute;
+  font-size: 75px;
+  color: #ffe9a2;
+}
+.countdown-spark.spark-one {
+  top: 16%;
+  left: 14%;
+  transform: rotate(-15deg);
+}
+.countdown-spark.spark-two {
+  bottom: 18%;
+  right: 14%;
+  font-size: 55px;
+}
+.auto-question-note {
+  text-align: center;
+  font-size: 13px;
+  color: #927aa4;
+  line-height: 1.7;
+  margin: 25px 0 14px;
+}
+@keyframes countdown-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.55) rotate(-8deg);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.08) rotate(2deg);
+  }
+  60%,
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes countdown-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 600px) {
+  .question-countdown {
+    min-height: 430px;
+    border-radius: 24px;
+    padding: 30px 16px;
+  }
+  .question-countdown p {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+  .countdown-spark.spark-one {
+    left: 5%;
+    font-size: 42px;
+  }
+  .countdown-spark.spark-two {
+    right: 5%;
+    font-size: 37px;
+  }
+  .question-countdown small {
+    font-size: 12px;
+  }
+  .auto-question-note {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .question-countdown > strong,
+  .countdown-orbit.orbit-two {
+    animation: none;
+  }
+}

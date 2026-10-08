@@ -66,21 +66,42 @@ function rateLimit(string $action,int $limit): void {
     if((int)$q->fetchColumn()>$limit) fail('Çok fazla deneme. Bir dakika sonra tekrar deneyin.',429);
     if(random_int(1,100)===1) $db->prepare('DELETE FROM arena_limits WHERE expires_at < ?')->execute([time()]);
 }
+// The server clock drives all screens, even when the host tab is closed or asleep.
+function syncQuizClock(array &$s, ?float $now=null): void {
+    if(!in_array($s['mode'],['quiz','family'],true))return;
+    $now??=microtime(true);
+    while(true){
+        if($s['phase']==='question'){
+            if($now<$s['deadline'])return;
+            $s['phase']='reveal';$s['revealUntil']=$s['deadline']+5;
+        } elseif($s['phase']==='reveal'){
+            $until=$s['revealUntil']??($s['deadline']+5);
+            $s['revealUntil']=$until;
+            if($now<$until)return;
+            if($s['index']===count($s['questions'])-1){$s['phase']='finished';return;}
+            $s['phase']='countdown';$s['countdownUntil']=$until+3;
+        } elseif($s['phase']==='countdown'){
+            if($now<$s['countdownUntil'])return;
+            $s['index']++;$s['phase']='question';$s['deadline']=$s['countdownUntil']+$s['seconds'];
+            unset($s['revealUntil'],$s['countdownUntil']);
+        } else return;
+    }
+}
 function lockRoom(string $pin): array {
     $db=db();$db->beginTransaction();
     $q=$db->prepare('SELECT state FROM arena_rooms WHERE pin=?'.($db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?' FOR UPDATE':''));$q->execute([$pin]);$raw=$q->fetchColumn();
     if(!$raw){$db->rollBack();fail('Bu kodla açık bir etkinlik bulunamadı.',404);}
     $s=json_decode($raw,true);
     if($s['expiresAt']<time()){ $db->rollBack();fail('Bu etkinliğin süresi doldu.',410); }
-    if(in_array($s['mode'],['quiz','family'],true) && $s['phase']==='question' && microtime(true)>=$s['deadline']) $s['phase']='reveal';
+    syncQuizClock($s);
     return $s;
 }
 function saveRoom(array $s): void { db()->prepare('UPDATE arena_rooms SET state=? WHERE pin=?')->execute([json_encode($s,JSON_UNESCAPED_UNICODE),$s['pin']]);db()->commit(); }
 function playerKey(array $s,string $token): string { $key=hash('sha256',$token);if(!isset($s['players'][$key])) fail('Katılımcı oturumu bulunamadı. Yeniden katılın.',401);return $key; }
 function snapshot(array $s,?string $token=null,bool $host=false): array {
+    syncQuizClock($s);
     if($s['mode']==='family')return familySnapshot($s,$token);
     $now=microtime(true);$phase=$s['phase'];
-    if($s['mode']==='quiz' && $phase==='question' && $now >= $s['deadline']) $phase='reveal';
     $visiblePlayers=$s['players'];
     if($s['mode']==='quiz' && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
     $out=['pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score']],$visiblePlayers))];
@@ -88,8 +109,8 @@ function snapshot(array $s,?string $token=null,bool $host=false): array {
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;
     if($me) $out['me']=['name'=>$me['name'],'score'=>$visiblePlayers[$key]['score']];
     if($s['mode']==='quiz') {
-        $i=$s['index'];$out+=['index'=>$i,'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'answeredCount'=>count($s['answers'][(string)$i]??[])];
-        if($i>=0 && isset($s['questions'][$i])) { $q=$s['questions'][$i];$out['question']=['id'=>$q['id'],'text'=>$q['text'],'options'=>$q['options']];if(in_array($phase,['reveal','finished'])){$out['question']['correct']=$q['correct'];$out['question']['explanation']=$q['explanation']??'';} }
+        $i=$s['index'];$out+=['index'=>$i,'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'revealUntil'=>$s['revealUntil']??null,'countdownUntil'=>$s['countdownUntil']??null,'answeredCount'=>count($s['answers'][(string)$i]??[])];
+        if($i>=0 && $phase!=='countdown' && isset($s['questions'][$i])) { $q=$s['questions'][$i];$out['question']=['id'=>$q['id'],'text'=>$q['text'],'options'=>$q['options']];if(in_array($phase,['reveal','finished'])){$out['question']['correct']=$q['correct'];$out['question']['explanation']=$q['explanation']??'';} }
         if($me){$answer=$s['answers'][(string)$i][$key]??null;$out['myAnswer']=$answer && $phase==='question'?['choice'=>$answer['choice']]:$answer;}
     }
     if($s['mode']==='cloud') {

@@ -59,9 +59,9 @@ function familyAction(array &$s,string $action,array $in,string $token): void {
     if($action==='family_advance') {
         if(!in_array($s['phase'],['question','reveal'],true))fail('Yarışma henüz başlamadı.',409);
         if(($in['expectedIndex']??null)!==$s['index']||($in['expectedPhase']??null)!==$s['phase'])fail('Ekran güncellendi; tekrar deneyin.',409);
-        if($s['phase']==='question')$s['phase']='reveal';
+        if($s['phase']==='question'){$s['phase']='reveal';$s['revealUntil']=microtime(true)+5;}
         elseif($s['index']===count($s['questions'])-1)$s['phase']='finished';
-        else{$s['index']++;$s['phase']='question';$s['deadline']=microtime(true)+$s['seconds'];}
+        else{$s['index']++;$s['phase']='question';$s['deadline']=microtime(true)+$s['seconds'];unset($s['revealUntil'],$s['countdownUntil']);}
     }
 }
 function familyResults(array $s): array {
@@ -84,13 +84,13 @@ function familyResults(array $s): array {
     return ['ranking'=>$ranking,'byPerson'=>$byPerson];
 }
 function familySnapshot(array $s,?string $token): array {
-    $now=microtime(true);$phase=$s['phase'];if($phase==='question' && $now>=$s['deadline'])$phase='reveal';
+    $now=microtime(true);$phase=$s['phase'];
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;$players=[];
     foreach($s['players'] as $k=>$p){
         $score=$p['score'];if($phase==='question')$score-=$s['answers'][(string)$s['index']][$k]['points']??0;
         $players[]=['id'=>$p['id'],'name'=>$p['name'],'role'=>$p['role'],'ready'=>isset($s['profiles'][$k]),'score'=>$score];
     }
-    $out=['pin'=>$s['pin'],'mode'=>'family','category'=>null,'title'=>$s['title'],'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($players),'players'=>$players,'readyCount'=>count($s['profiles']),'index'=>$s['index'],'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null];
+    $out=['pin'=>$s['pin'],'mode'=>'family','category'=>null,'title'=>$s['title'],'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($players),'players'=>$players,'readyCount'=>count($s['profiles']),'index'=>$s['index'],'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'revealUntil'=>$s['revealUntil']??null,'countdownUntil'=>$s['countdownUntil']??null];
     if($me)$out['me']=array_values(array_filter($players,fn($p)=>$p['id']===$me['id']))[0];
     if($phase==='lobby'){
         $out['prompts']=array_map(fn($p)=>['id'=>$p['id'],'text'=>$p['self']],familyPrompts());

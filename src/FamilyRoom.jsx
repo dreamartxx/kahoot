@@ -358,7 +358,14 @@ export default function FamilyRoom({
           )}
         </div>
       )}
-      {host && (
+      <p className="auto-question-note" role="status">
+        {reveal
+          ? room.index === room.total - 1
+            ? "Aile skorları birazdan otomatik açılacak."
+            : "Doğru cevap gösteriliyor. Ardından 3–2–1 ile sıradaki soru!"
+          : "Süre bitince cevaplar gösterilecek ve yeni soruya otomatik geçilecek."}
+      </p>
+      {host && !reveal && (
         <button
           className="btn next-btn"
           disabled={busy}
