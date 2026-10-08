@@ -1,0 +1,800 @@
+[
+  {
+    "id": "food",
+    "group": "food",
+    "self": "En çok sevdiğim yemek hangisi?",
+    "ask": "En çok sevdiği yemek hangisi?",
+    "examples": [
+      "Mantı",
+      "Pizza",
+      "Karnıyarık",
+      "Makarna",
+      "Köfte",
+      "Sarma",
+      "Kuru fasulye",
+      "Lahmacun"
+    ]
+  },
+  {
+    "id": "dessert",
+    "group": "food",
+    "self": "En sevdiğim tatlı hangisi?",
+    "ask": "En sevdiği tatlı hangisi?",
+    "examples": [
+      "Baklava",
+      "Sütlaç",
+      "Dondurma",
+      "Künefe",
+      "Kazandibi",
+      "Brownie",
+      "Profiterol",
+      "Revani"
+    ]
+  },
+  {
+    "id": "fruit",
+    "group": "food",
+    "self": "En sevdiğim meyve hangisi?",
+    "ask": "En sevdiği meyve hangisi?",
+    "examples": [
+      "Çilek",
+      "Elma",
+      "Muz",
+      "Karpuz",
+      "Kiraz",
+      "Portakal",
+      "Üzüm",
+      "Şeftali"
+    ]
+  },
+  {
+    "id": "drink",
+    "group": "food",
+    "self": "En sevdiğim içecek hangisi?",
+    "ask": "En sevdiği içecek hangisi?",
+    "examples": [
+      "Çay",
+      "Türk kahvesi",
+      "Ayran",
+      "Limonata",
+      "Sıcak çikolata",
+      "Portakal suyu",
+      "Su",
+      "Süt"
+    ]
+  },
+  {
+    "id": "breakfast",
+    "group": "food",
+    "self": "Kahvaltıda yemeyi en çok sevdiğim şey nedir?",
+    "ask": "Kahvaltıda yemeyi en çok sevdiği şey nedir?",
+    "examples": [
+      "Menemen",
+      "Omlet",
+      "Simit",
+      "Peynir",
+      "Bal ve kaymak",
+      "Tost",
+      "Pişi",
+      "Haşlanmış yumurta"
+    ]
+  },
+  {
+    "id": "soup",
+    "group": "food",
+    "self": "En sevdiğim çorba hangisi?",
+    "ask": "En sevdiği çorba hangisi?",
+    "examples": [
+      "Mercimek",
+      "Tarhana",
+      "Ezogelin",
+      "Yayla",
+      "Domates",
+      "Tavuk suyu",
+      "Mantar",
+      "Sebze"
+    ]
+  },
+  {
+    "id": "vegetable",
+    "group": "food",
+    "self": "Yemeklerde en çok sevdiğim sebze hangisi?",
+    "ask": "Yemeklerde en çok sevdiği sebze hangisi?",
+    "examples": [
+      "Patates",
+      "Patlıcan",
+      "Kabak",
+      "Ispanak",
+      "Brokoli",
+      "Bezelye",
+      "Havuç",
+      "Taze fasulye"
+    ]
+  },
+  {
+    "id": "salad",
+    "group": "food",
+    "self": "En sevdiğim salata hangisi?",
+    "ask": "En sevdiği salata hangisi?",
+    "examples": [
+      "Çoban salata",
+      "Mevsim salata",
+      "Patates salatası",
+      "Makarna salatası",
+      "Gavurdağı salatası",
+      "Sezar salata",
+      "Piyaz",
+      "Roka salatası"
+    ]
+  },
+  {
+    "id": "snack",
+    "group": "food",
+    "self": "Atıştırmalık olarak en çok ne yemeyi severim?",
+    "ask": "Atıştırmalık olarak en çok ne yemeyi sever?",
+    "examples": [
+      "Patlamış mısır",
+      "Çikolata",
+      "Kuruyemiş",
+      "Meyve",
+      "Kraker",
+      "Kurabiye",
+      "Cips",
+      "Yoğurt"
+    ]
+  },
+  {
+    "id": "icecream",
+    "group": "food",
+    "self": "En sevdiğim dondurma çeşidi hangisi?",
+    "ask": "En sevdiği dondurma çeşidi hangisi?",
+    "examples": [
+      "Çikolatalı",
+      "Vanilyalı",
+      "Çilekli",
+      "Limonlu",
+      "Antep fıstıklı",
+      "Karamelli",
+      "Vişneli",
+      "Sade"
+    ]
+  },
+  {
+    "id": "screen",
+    "group": "entertainment",
+    "self": "En sevdiğim film veya dizi hangisi?",
+    "ask": "En sevdiği film veya dizi hangisi?",
+    "examples": [
+      "Hababam Sınıfı",
+      "Harry Potter",
+      "Aslan Kral",
+      "Yüzüklerin Efendisi",
+      "Neşeli Günler",
+      "Şirinler",
+      "Rafadan Tayfa",
+      "Kral Şakir"
+    ]
+  },
+  {
+    "id": "music_type",
+    "group": "entertainment",
+    "self": "En çok hangi müzik türünü dinlemeyi severim?",
+    "ask": "En çok hangi müzik türünü dinlemeyi sever?",
+    "examples": [
+      "Pop",
+      "Rock",
+      "Rap",
+      "Türk halk müziği",
+      "Türk sanat müziği",
+      "Klasik müzik",
+      "Caz",
+      "Elektronik müzik"
+    ]
+  },
+  {
+    "id": "singer",
+    "group": "entertainment",
+    "self": "En sevdiğim şarkıcı veya müzik grubu kim?",
+    "ask": "En sevdiği şarkıcı veya müzik grubu kim?",
+    "examples": [
+      "Barış Manço",
+      "Sezen Aksu",
+      "Tarkan",
+      "Cem Karaca",
+      "Mor ve Ötesi",
+      "Duman",
+      "Sertab Erener",
+      "Nil Karaibrahimgil"
+    ]
+  },
+  {
+    "id": "song",
+    "group": "entertainment",
+    "self": "En sevdiğim şarkının adı ne?",
+    "ask": "En sevdiği şarkının adı ne?",
+    "examples": [
+      "Gülpembe",
+      "Arkadaşım Eşek",
+      "İzmir Marşı",
+      "Memleketim",
+      "Uzun İnce Bir Yoldayım",
+      "Dönence",
+      "Hayat Bayram Olsa",
+      "Gülümse"
+    ]
+  },
+  {
+    "id": "instrument",
+    "group": "entertainment",
+    "self": "Sesini en çok sevdiğim müzik aleti hangisi?",
+    "ask": "Sesini en çok sevdiği müzik aleti hangisi?",
+    "examples": [
+      "Piyano",
+      "Gitar",
+      "Keman",
+      "Bağlama",
+      "Flüt",
+      "Davul",
+      "Saksafon",
+      "Ney"
+    ]
+  },
+  {
+    "id": "movie_genre",
+    "group": "entertainment",
+    "self": "En çok hangi tür film izlemeyi severim?",
+    "ask": "En çok hangi tür film izlemeyi sever?",
+    "examples": [
+      "Komedi",
+      "Macera",
+      "Bilim kurgu",
+      "Animasyon",
+      "Polisiye",
+      "Dram",
+      "Fantastik",
+      "Belgesel"
+    ]
+  },
+  {
+    "id": "book_genre",
+    "group": "entertainment",
+    "self": "En çok hangi tür kitap okumayı severim?",
+    "ask": "En çok hangi tür kitap okumayı sever?",
+    "examples": [
+      "Macera",
+      "Polisiye",
+      "Bilim kurgu",
+      "Fantastik",
+      "Tarih",
+      "Biyografi",
+      "Mizah",
+      "Çizgi roman"
+    ]
+  },
+  {
+    "id": "cartoon",
+    "group": "entertainment",
+    "self": "En sevdiğim çizgi film hangisi?",
+    "ask": "En sevdiği çizgi film hangisi?",
+    "examples": [
+      "Tom ve Jerry",
+      "Şirinler",
+      "Rafadan Tayfa",
+      "Kral Şakir",
+      "SüngerBob",
+      "Scooby-Doo",
+      "Taş Devri",
+      "Heidi"
+    ]
+  },
+  {
+    "id": "video_type",
+    "group": "entertainment",
+    "self": "İnternette en çok ne tür videolar izlemeyi severim?",
+    "ask": "İnternette en çok ne tür videolar izlemeyi sever?",
+    "examples": [
+      "Yemek tarifleri",
+      "Gezi videoları",
+      "Komik videolar",
+      "Oyun videoları",
+      "Spor videoları",
+      "Hayvan videoları",
+      "Bilim videoları",
+      "Müzik klipleri"
+    ]
+  },
+  {
+    "id": "app",
+    "group": "entertainment",
+    "self": "Telefonumda en çok kullandığım uygulama hangisi?",
+    "ask": "Telefonunda en çok kullandığı uygulama hangisi?",
+    "examples": [
+      "WhatsApp",
+      "YouTube",
+      "Instagram",
+      "Spotify",
+      "TikTok",
+      "Google Haritalar",
+      "Kamera",
+      "Netflix"
+    ]
+  },
+  {
+    "id": "hobby",
+    "group": "activities",
+    "self": "Boş zamanımda en çok ne yapmayı severim?",
+    "ask": "Boş zamanında en çok ne yapmayı sever?",
+    "examples": [
+      "Kitap okumak",
+      "Yürüyüş yapmak",
+      "Oyun oynamak",
+      "Resim çizmek",
+      "Müzik dinlemek",
+      "Film izlemek",
+      "Yüzmek",
+      "Yemek yapmak"
+    ]
+  },
+  {
+    "id": "boardgame",
+    "group": "activities",
+    "self": "En sevdiğim masa veya kutu oyunu hangisi?",
+    "ask": "En sevdiği masa veya kutu oyunu hangisi?",
+    "examples": [
+      "Satranç",
+      "Dama",
+      "Tavla",
+      "Monopoly",
+      "Tabu",
+      "UNO",
+      "Jenga",
+      "Scrabble"
+    ]
+  },
+  {
+    "id": "sport_watch",
+    "group": "activities",
+    "self": "İzlemeyi en çok sevdiğim spor hangisi?",
+    "ask": "İzlemeyi en çok sevdiği spor hangisi?",
+    "examples": [
+      "Futbol",
+      "Basketbol",
+      "Voleybol",
+      "Tenis",
+      "Yüzme",
+      "Atletizm",
+      "Jimnastik",
+      "Motor sporları"
+    ]
+  },
+  {
+    "id": "sport_play",
+    "group": "activities",
+    "self": "Yapmayı en çok sevdiğim spor hangisi?",
+    "ask": "Yapmayı en çok sevdiği spor hangisi?",
+    "examples": [
+      "Futbol",
+      "Basketbol",
+      "Voleybol",
+      "Yüzme",
+      "Bisiklet",
+      "Koşu",
+      "Tenis",
+      "Masa tenisi"
+    ]
+  },
+  {
+    "id": "team",
+    "group": "activities",
+    "self": "En sevdiğim spor takımı hangisi?",
+    "ask": "En sevdiği spor takımı hangisi?",
+    "examples": [
+      "Galatasaray",
+      "Fenerbahçe",
+      "Beşiktaş",
+      "Trabzonspor",
+      "Bursaspor",
+      "Samsunspor",
+      "Göztepe",
+      "Takım tutmuyorum"
+    ]
+  },
+  {
+    "id": "family_activity",
+    "group": "activities",
+    "self": "Ailemle birlikte en çok ne yapmayı severim?",
+    "ask": "Ailesiyle birlikte en çok ne yapmayı sever?",
+    "examples": [
+      "Piknik yapmak",
+      "Film izlemek",
+      "Oyun oynamak",
+      "Yemek yapmak",
+      "Gezmeye çıkmak",
+      "Sohbet etmek",
+      "Yürüyüş yapmak",
+      "Birlikte kahvaltı etmek"
+    ]
+  },
+  {
+    "id": "weekend",
+    "group": "activities",
+    "self": "Boş bir hafta sonunu en çok nasıl geçirmeyi severim?",
+    "ask": "Boş bir hafta sonunu en çok nasıl geçirmeyi sever?",
+    "examples": [
+      "Evde dinlenerek",
+      "Doğada gezerek",
+      "Arkadaşlarımla buluşarak",
+      "Ailemi ziyaret ederek",
+      "Spor yaparak",
+      "Yeni yerler keşfederek",
+      "Hobilerimle uğraşarak",
+      "Sinemaya giderek"
+    ]
+  },
+  {
+    "id": "childhood_game",
+    "group": "activities",
+    "self": "Çocukken oynamayı en çok sevdiğim oyun hangisiydi?",
+    "ask": "Çocukken oynamayı en çok sevdiği oyun hangisiydi?",
+    "examples": [
+      "Saklambaç",
+      "Körebe",
+      "Seksek",
+      "İp atlama",
+      "Yakan top",
+      "Misket",
+      "Evcilik",
+      "İstop"
+    ]
+  },
+  {
+    "id": "relax",
+    "group": "activities",
+    "self": "Yorulunca dinlenmek için en çok ne yapmayı severim?",
+    "ask": "Yorulunca dinlenmek için en çok ne yapmayı sever?",
+    "examples": [
+      "Uyumak",
+      "Müzik dinlemek",
+      "Kitap okumak",
+      "Kısa yürüyüş yapmak",
+      "Film izlemek",
+      "Sessizce oturmak",
+      "Duş almak",
+      "Çay içmek"
+    ]
+  },
+  {
+    "id": "holiday_activity",
+    "group": "activities",
+    "self": "Tatilde en çok hangi etkinliği yapmayı severim?",
+    "ask": "Tatilde en çok hangi etkinliği yapmayı sever?",
+    "examples": [
+      "Denize girmek",
+      "Tarihi yerleri gezmek",
+      "Doğa yürüyüşü yapmak",
+      "Yerel yemekleri denemek",
+      "Fotoğraf çekmek",
+      "Kamp yapmak",
+      "Kayak yapmak",
+      "Dinlenmek"
+    ]
+  },
+  {
+    "id": "city",
+    "group": "travel",
+    "self": "Gezmek için en çok gitmek istediğim şehir hangisi?",
+    "ask": "Gezmek için en çok gitmek istediği şehir hangisi?",
+    "examples": [
+      "İstanbul",
+      "Paris",
+      "Roma",
+      "Tokyo",
+      "Londra",
+      "Antalya",
+      "Barselona",
+      "New York"
+    ]
+  },
+  {
+    "id": "season",
+    "group": "travel",
+    "self": "En sevdiğim mevsim hangisi?",
+    "ask": "En sevdiği mevsim hangisi?",
+    "examples": [
+      "İlkbahar",
+      "Yaz",
+      "Sonbahar",
+      "Kış",
+      "Hepsi",
+      "Hiçbiri"
+    ]
+  },
+  {
+    "id": "country",
+    "group": "travel",
+    "self": "Gezmek için en çok gitmek istediğim ülke hangisi?",
+    "ask": "Gezmek için en çok gitmek istediği ülke hangisi?",
+    "examples": [
+      "İtalya",
+      "Japonya",
+      "Fransa",
+      "İspanya",
+      "İsviçre",
+      "Norveç",
+      "Yunanistan",
+      "Mısır"
+    ]
+  },
+  {
+    "id": "holiday_place",
+    "group": "travel",
+    "self": "Tatil için en çok hangi ortamı tercih ederim?",
+    "ask": "Tatil için en çok hangi ortamı tercih eder?",
+    "examples": [
+      "Deniz kenarı",
+      "Dağ evi",
+      "Orman kampı",
+      "Büyük şehir",
+      "Köy",
+      "Göl kenarı",
+      "Yayla",
+      "Ada"
+    ]
+  },
+  {
+    "id": "outing",
+    "group": "travel",
+    "self": "Dışarıda ailece yemek yerken en çok nasıl bir yer seçerim?",
+    "ask": "Dışarıda ailece yemek yerken en çok nasıl bir yer seçer?",
+    "examples": [
+      "Kebapçı",
+      "Pizzacı",
+      "Balık restoranı",
+      "Ev yemekleri lokantası",
+      "Kahvaltıcı",
+      "Hamburgerci",
+      "Mantıcı",
+      "Pideci"
+    ]
+  },
+  {
+    "id": "travel_transport",
+    "group": "travel",
+    "self": "Uzun yolculukta en çok hangi ulaşım aracını tercih ederim?",
+    "ask": "Uzun yolculukta en çok hangi ulaşım aracını tercih eder?",
+    "examples": [
+      "Uçak",
+      "Tren",
+      "Otomobil",
+      "Otobüs",
+      "Gemi",
+      "Karavan",
+      "Minibüs",
+      "Motosiklet"
+    ]
+  },
+  {
+    "id": "weather",
+    "group": "travel",
+    "self": "En sevdiğim hava nasıl olur?",
+    "ask": "En sevdiği hava nasıl olur?",
+    "examples": [
+      "Sıcak ve güneşli",
+      "Serin ve güneşli",
+      "Hafif yağmurlu",
+      "Karlı",
+      "Rüzgârlı",
+      "Bulutlu",
+      "Sisli",
+      "Ilık ve esintili"
+    ]
+  },
+  {
+    "id": "daytime",
+    "group": "travel",
+    "self": "Günün en sevdiğim zamanı hangisi?",
+    "ask": "Günün en sevdiği zamanı hangisi?",
+    "examples": [
+      "Sabahın erken saatleri",
+      "Kuşluk vakti",
+      "Öğle",
+      "Öğleden sonra",
+      "Gün batımı",
+      "Akşam",
+      "Gece",
+      "Gece yarısı"
+    ]
+  },
+  {
+    "id": "sightseeing_place",
+    "group": "travel",
+    "self": "Bir şehirde gezmeyi en çok sevdiğim yer türü hangisi?",
+    "ask": "Bir şehirde gezmeyi en çok sevdiği yer türü hangisi?",
+    "examples": [
+      "Müzeler",
+      "Tarihi yapılar",
+      "Parklar",
+      "Pazarlar ve çarşılar",
+      "Sahil",
+      "Sanat galerileri",
+      "Seyir terasları",
+      "Lunaparklar"
+    ]
+  },
+  {
+    "id": "journey_activity",
+    "group": "travel",
+    "self": "Yolcu olarak seyahat ederken en çok ne yapmayı severim?",
+    "ask": "Yolcu olarak seyahat ederken en çok ne yapmayı sever?",
+    "examples": [
+      "Müzik dinlemek",
+      "Manzarayı izlemek",
+      "Uyumak",
+      "Kitap okumak",
+      "Sohbet etmek",
+      "Bulmaca çözmek",
+      "Film izlemek",
+      "Fotoğraf çekmek"
+    ]
+  },
+  {
+    "id": "color",
+    "group": "personal",
+    "self": "En sevdiğim renk hangisi?",
+    "ask": "En sevdiği renk hangisi?",
+    "examples": [
+      "Mavi",
+      "Yeşil",
+      "Kırmızı",
+      "Mor",
+      "Sarı",
+      "Turuncu",
+      "Siyah",
+      "Beyaz"
+    ]
+  },
+  {
+    "id": "animal",
+    "group": "personal",
+    "self": "En sevdiğim hayvan hangisi?",
+    "ask": "En sevdiği hayvan hangisi?",
+    "examples": [
+      "Kedi",
+      "Köpek",
+      "Yunus",
+      "At",
+      "Tavşan",
+      "Panda",
+      "Kuş",
+      "Kaplumbağa"
+    ]
+  },
+  {
+    "id": "flower",
+    "group": "personal",
+    "self": "En sevdiğim çiçek hangisi?",
+    "ask": "En sevdiği çiçek hangisi?",
+    "examples": [
+      "Papatya",
+      "Gül",
+      "Lale",
+      "Orkide",
+      "Menekşe",
+      "Ayçiçeği",
+      "Lavanta",
+      "Karanfil"
+    ]
+  },
+  {
+    "id": "scent",
+    "group": "personal",
+    "self": "En sevdiğim koku hangisi?",
+    "ask": "En sevdiği koku hangisi?",
+    "examples": [
+      "Yağmur sonrası toprak",
+      "Yeni pişmiş ekmek",
+      "Kahve",
+      "Lavanta",
+      "Deniz",
+      "Çam ormanı",
+      "Vanilya",
+      "Limon"
+    ]
+  },
+  {
+    "id": "clothing",
+    "group": "personal",
+    "self": "Günlük hayatta en çok hangi tarz kıyafet giymeyi severim?",
+    "ask": "Günlük hayatta en çok hangi tarz kıyafet giymeyi sever?",
+    "examples": [
+      "Spor ve rahat",
+      "Klasik ve şık",
+      "Renkli ve desenli",
+      "Sade ve düz",
+      "Kot ağırlıklı",
+      "Bol kesim",
+      "Vintage",
+      "Takım kıyafet"
+    ]
+  },
+  {
+    "id": "shoes",
+    "group": "personal",
+    "self": "En rahat bulduğum ayakkabı türü hangisi?",
+    "ask": "En rahat bulduğu ayakkabı türü hangisi?",
+    "examples": [
+      "Spor ayakkabı",
+      "Sandalet",
+      "Terlik",
+      "Bot",
+      "Babet",
+      "Bez ayakkabı",
+      "Loafer",
+      "Yürüyüş ayakkabısı"
+    ]
+  },
+  {
+    "id": "gift",
+    "group": "personal",
+    "self": "Alınca beni en çok mutlu eden hediye türü hangisi?",
+    "ask": "Alınca onu en çok mutlu eden hediye türü hangisi?",
+    "examples": [
+      "Kitap",
+      "Çiçek",
+      "Kıyafet",
+      "Teknolojik ürün",
+      "El yapımı hediye",
+      "Konser bileti",
+      "Oyun",
+      "Birlikte yapılacak bir gezi"
+    ]
+  },
+  {
+    "id": "celebration",
+    "group": "personal",
+    "self": "En sevdiğim özel gün veya bayram hangisi?",
+    "ask": "En sevdiği özel gün veya bayram hangisi?",
+    "examples": [
+      "Doğum günüm",
+      "Yılbaşı",
+      "Ramazan Bayramı",
+      "Kurban Bayramı",
+      "Cumhuriyet Bayramı",
+      "23 Nisan",
+      "Anneler Günü",
+      "Babalar Günü"
+    ]
+  },
+  {
+    "id": "school_subject",
+    "group": "personal",
+    "self": "Okulda en sevdiğim ders hangisi?",
+    "ask": "Okulda en sevdiği ders hangisi?",
+    "examples": [
+      "Matematik",
+      "Türkçe",
+      "Fen bilimleri",
+      "Sosyal bilgiler",
+      "Resim",
+      "Müzik",
+      "Beden eğitimi",
+      "Yabancı dil"
+    ]
+  },
+  {
+    "id": "home_place",
+    "group": "personal",
+    "self": "Evde en çok vakit geçirmeyi sevdiğim yer neresi?",
+    "ask": "Evde en çok vakit geçirmeyi sevdiği yer neresi?",
+    "examples": [
+      "Salon",
+      "Mutfak",
+      "Balkon",
+      "Bahçe",
+      "Odam",
+      "Çalışma odası",
+      "Teras",
+      "Kış bahçesi"
+    ]
+  }
+]

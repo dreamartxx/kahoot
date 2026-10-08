@@ -60,8 +60,8 @@ function FamilyProfile({ room, action, busy }) {
         <span className="eyebrow">ÖNCE SENİ TANIYALIM</span>
         <h2>{label(room.me)}</h2>
         <p>
-          Herkes aynı 10 soruyu kendisi için cevaplıyor. Kısa ve net yaz;
-          örneğin “Mantı” veya “Mavi”.
+          Herkes bu oyun için seçilen aynı 10 soruyu kendisi için cevaplıyor.
+          Kısa ve net yaz; örneğin “Mantı” veya “Mavi”.
         </p>
         <span className="family-counter">{completed} / 10 cevap hazır</span>
       </div>

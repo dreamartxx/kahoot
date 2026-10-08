@@ -454,7 +454,7 @@ function App() {
                                 : id === "raffle"
                                   ? "Manuel liste veya Excel"
                                   : id === "family"
-                                    ? "10 sabit soru · Aileye özel oyun"
+                                    ? "50 soruluk havuz · Her oyunda 10 soru"
                                     : "Canlı katılım · Ortak fikirler"}
                             </span>
                           </button>
@@ -539,15 +539,15 @@ function App() {
                         bildiğine emin misin?
                       </h2>
                       <p>
-                        Annen, baban, kardeşin, teyzen… Herkes kendini anlatsın.
-                        Bakalım aileyi en iyi kim tanıyor?
+                        Yemekten müziğe, tatilden hobilere 50 soru. Her oyunda
+                        farklı 10 soruyla bakalım aileyi en iyi kim tanıyor?
                       </p>
                       <Button onClick={() => create("family")}>
                         <Heart size={19} /> Aile yarışması oluştur
                       </Button>
                       <div className="family-steps">
                         <span>
-                          <b>01</b> Kendinle ilgili 10 cevap
+                          <b>01</b> 50 sorudan seçilen 10 cevap
                         </span>
                         <span>
                           <b>02</b> Ailenden karışık sorular
@@ -1011,9 +1011,10 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
             <div className="info-box">
               <Heart size={24} />
               <span>
-                Herkes adını ve ailedeki rolünü yazar, aynı 10 soruyu kendisi
-                için cevaplar. Herkes hazır olunca dört şıklı aile yarışması
-                başlar. En az 2 kişiyle oynanır.
+                50 soruluk havuzdan 10 soru seçilir. Herkes adını ve ailedeki
+                rolünü yazar, o oyun için seçilen aynı soruları kendisi için
+                cevaplar. Herkes hazır olunca dört şıklı aile yarışması başlar.
+                En az 2 kişiyle oynanır.
               </span>
             </div>
             <Field label="Soru başına süre">

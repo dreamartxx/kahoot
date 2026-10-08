@@ -1033,3 +1033,133 @@ test("family distractors never reuse another family member's answers, including 
         );
   }
 });
+
+test("family pool rotates fifty balanced prompts without repeats, including games created in the same second", async () => {
+  execFileSync("php", [
+    "-r",
+    "$db=new PDO('sqlite:'.$argv[1]);$db->exec(\"DELETE FROM arena_history WHERE id LIKE 'family-%'\");",
+    db,
+  ]);
+  const pool = JSON.parse(
+    execFileSync(
+      "php",
+      ["-r", "require 'api/core.php'; echo json_encode(familyPrompts());"],
+      { cwd: root },
+    ).toString(),
+  );
+  assert.equal(pool.length, 50);
+  assert.equal(new Set(pool.map((p) => p.id)).size, 50);
+  assert.equal(new Set(pool.map((p) => p.self)).size, 50);
+  const groups = Object.groupBy(pool, (p) => p.group);
+  assert.equal(Object.keys(groups).length, 5);
+  assert(Object.values(groups).every((group) => group.length === 10));
+  for (const p of pool) {
+    assert(p.self.endsWith("?"));
+    assert(p.ask.endsWith("?"));
+    assert(p.examples.length >= 6);
+    assert.equal(new Set(p.examples).size, p.examples.length);
+  }
+  const seen = new Set(),
+    games = [];
+  for (let n = 0; n < 5; n++) {
+    const game = await create("family");
+    games.push(game);
+    assert.equal(game.prompts.length, 10);
+    const selectedGroups = {};
+    for (const prompt of game.prompts) {
+      assert(!seen.has(prompt.id), `Repeated early: ${prompt.id}`);
+      seen.add(prompt.id);
+      const group = pool.find((p) => p.id === prompt.id).group;
+      selectedGroups[group] = (selectedGroups[group] || 0) + 1;
+    }
+    assert.deepEqual(Object.values(selectedGroups), [2, 2, 2, 2, 2]);
+  }
+  assert.equal(seen.size, 50);
+  const sixth = await create("family");
+  assert.deepEqual(
+    sixth.prompts.map((p) => p.id).sort(),
+    games[0].prompts.map((p) => p.id).sort(),
+  );
+  const first = games[0],
+    pin = first.pin;
+  assert.deepEqual(
+    (await call("room", { pin })).data.prompts,
+    first.prompts,
+    "A room keeps its own selected prompts",
+  );
+  const player = (
+    await call("join", { pin, name: "Havuz Katılımcı", role: "Anne" })
+  ).data;
+  assert.deepEqual(player.room.prompts, first.prompts);
+  const answers = Object.fromEntries(
+    first.prompts.map((p) => [
+      p.id,
+      pool.find((x) => x.id === p.id).examples[0],
+    ]),
+  );
+  const invalid = { ...answers };
+  delete invalid[first.prompts[0].id];
+  invalid[pool.find((p) => !(p.id in answers)).id] = "Başka oyunun cevabı";
+  assert.equal(
+    (
+      await call(
+        "family_profile",
+        { pin, answers: invalid },
+        { token: player.token },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (await call("family_profile", { pin, answers }, { token: player.token }))
+      .status,
+    200,
+  );
+  assert.deepEqual(
+    (await call("room", { pin }, { token: player.token })).data.myProfile,
+    answers,
+  );
+});
+
+test("family rooms from before the fifty-question pool keep their original ten prompts and saved answers", async () => {
+  const r = await create("family");
+  const pin = r.pin;
+  mutateDB(pin, "unset($s['familyPrompts'])");
+  const legacy = [
+    "food",
+    "color",
+    "dessert",
+    "fruit",
+    "drink",
+    "animal",
+    "hobby",
+    "season",
+    "city",
+    "screen",
+  ];
+  const room = (await call("room", { pin })).data;
+  assert.deepEqual(
+    room.prompts.map((p) => p.id),
+    legacy,
+  );
+  for (const name of ["Eski Oyun Bir", "Eski Oyun İki"]) {
+    const p = (await call("join", { pin, name, role: "Kuzen" })).data;
+    const answers = Object.fromEntries(
+      legacy.map((id) => [id, "Eski cevabım"]),
+    );
+    assert.equal(
+      (await call("family_profile", { pin, answers }, { token: p.token }))
+        .status,
+      200,
+    );
+  }
+  assert.equal(
+    (await call("family_start", { pin }, { admin: true })).status,
+    200,
+  );
+  const deck = JSON.parse(
+    mutateDB(pin, 'echo json_encode($s["questions"])').toString(),
+  );
+  assert.equal(deck.length, 20);
+  assert(deck.every((q) => legacy.includes(q.promptId)));
+});
