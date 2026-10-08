@@ -1463,7 +1463,86 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           </div>
         </Modal>
       )}
+      {kind === "join" &&
+        room.mode === "quiz" &&
+        room.phase === "reveal" &&
+        room.me &&
+        room.myAnswer &&
+        Number.isInteger(room.question?.correct) && (
+          <AnswerResultPopup
+            key={room.question.id}
+            correct={room.myAnswer.choice === room.question.correct}
+            points={room.myAnswer.points}
+            correctAnswer={room.question.options[room.question.correct]}
+          />
+        )}
     </div>
+  );
+}
+function AnswerResultPopup({ correct, points, correctAnswer }) {
+  const ref = useRef();
+  const [open, setOpen] = useState(true);
+  useEffect(() => {
+    const dialog = ref.current;
+    if (!open || !dialog) return;
+    dialog.showModal();
+    return () => dialog.close();
+  }, [open]);
+  if (!open) return null;
+  return (
+    <dialog
+      ref={ref}
+      className={`answer-result-popup ${correct ? "result-correct" : "result-wrong"}`}
+      aria-labelledby="answer-result-title"
+      aria-describedby="answer-result-description"
+      onCancel={(e) => {
+        e.preventDefault();
+        setOpen(false);
+      }}
+    >
+      <button
+        className="result-close"
+        aria-label="Sonucu kapat"
+        onClick={() => setOpen(false)}
+      >
+        <X size={22} />
+      </button>
+      <div className="result-symbol" aria-hidden="true">
+        {correct ? (
+          <Check size={60} strokeWidth={3} />
+        ) : (
+          <X size={60} strokeWidth={3} />
+        )}
+      </div>
+      <span className="result-eyebrow">
+        {correct ? "HARİKA CEVAP!" : "BU KEZ OLMADI"}
+      </span>
+      <h2 id="answer-result-title">
+        {correct ? "Tebrikler, doğru bildiniz!" : "Yanlış bildiniz"}
+      </h2>
+      <p id="answer-result-description">
+        {correct
+          ? "Bilgine sağlık! Böyle devam et."
+          : "Bir sonraki soruda tekrar dene!"}
+      </p>
+      {correct ? (
+        <div className="result-points">
+          +{points} <span>puan</span>
+        </div>
+      ) : (
+        <div className="result-answer">
+          <span>Doğru cevap</span>
+          <strong>{correctAnswer}</strong>
+        </div>
+      )}
+      <button
+        autoFocus
+        className="result-confirm"
+        onClick={() => setOpen(false)}
+      >
+        Tamam <ArrowRight size={19} />
+      </button>
+    </dialog>
   );
 }
 function Results({ room, host }) {
