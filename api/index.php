@@ -8,7 +8,10 @@ try {
     if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured(),'admin'=>admin()]);exit;}
     if($method==='POST') {
         if(!str_contains($_SERVER['CONTENT_TYPE']??'','application/json')) fail('JSON gerekli.',415);
-        $origin=$_SERVER['HTTP_ORIGIN']??'';$expected=config()['origin'];if($origin && $origin!==$expected) fail('Geçersiz kaynak.',403);
+        $origin=$_SERVER['HTTP_ORIGIN']??'';
+        // Exact deployment addresses keep domain migrations compatible with the private setup config.
+        $allowedOrigins=[config()['origin'],'https://khaki-panther-692104.hostingersite.com','https://ailecekeglen.com.tr'];
+        if($origin && !in_array($origin,$allowedOrigins,true)) fail('Geçersiz kaynak.',403);
         if((int)($_SERVER['CONTENT_LENGTH']??0)>1048576) fail('İstek çok büyük.',413);
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
         $in=json_decode($raw,true,64,JSON_THROW_ON_ERROR);if(!is_array($in)) fail('Geçersiz istek.');
