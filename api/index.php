@@ -100,10 +100,11 @@ try {
     }
     if($action==='advance'){
         if($s['mode']!=='quiz')fail('Yarışma gerekli.');
+        if($s['phase']==='countdown')fail('Yeni soru hazırlanıyor.',409);
         if(($in['expectedIndex']??null)!==$s['index']||($in['expectedPhase']??null)!==$s['phase'])fail('Ekran güncellendi; tekrar deneyin.',409);
-        if($s['phase']==='question')$s['phase']='reveal';
+        if($s['phase']==='question'){$s['phase']='reveal';$s['revealUntil']=microtime(true)+5;}
         elseif($s['index']===9)$s['phase']='finished';
-        else{$s['index']++;$s['phase']='question';$s['deadline']=microtime(true)+$s['seconds'];}
+        else{$s['index']++;$s['phase']='question';$s['deadline']=microtime(true)+$s['seconds'];unset($s['revealUntil'],$s['countdownUntil']);}
     }
     if($action==='words'){
         $key=playerKey($s,$token);if($s['mode']!=='cloud'||$s['phase']!=='open')fail('Kelime bulutu açık değil.',409);
