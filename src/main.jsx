@@ -267,18 +267,26 @@ function App() {
                 else notify("6 haneli etkinlik kodunu girin.");
               }}
             >
-              <span>Bir etkinliğe mi katılıyorsun?</span>
+              <label className="join-label" htmlFor="game-code">
+                <strong>
+                  Oyuna katıl <span aria-hidden="true">✦</span>
+                </strong>
+                <span>6 haneli oyun kodunu gir, eğlenceye katıl.</span>
+              </label>
               <input
-                aria-label="Etkinlik kodu"
-                placeholder="Oyun kodu"
+                id="game-code"
+                aria-label="Oyun kodu"
+                placeholder="6 haneli kod"
                 inputMode="numeric"
+                autoComplete="off"
+                enterKeyHint="go"
                 pattern="[0-9]{6}"
                 maxLength={6}
                 value={joining}
                 onChange={(e) => setJoining(e.target.value.replace(/\D/g, ""))}
               />
               <button type="submit">
-                Katıl <ArrowUpRight size={15} />
+                Oyuna katıl <ArrowUpRight size={21} />
               </button>
             </form>
           </header>
