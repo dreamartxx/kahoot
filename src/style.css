@@ -4539,3 +4539,119 @@ dialog.answer-result-popup.result-wrong {
     margin: 6px 0;
   }
 }
+
+.pwa-install-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  background: #eee7fb;
+  color: #7150ab;
+  cursor: pointer;
+}
+.pwa-install-button:focus-visible {
+  outline: 3px solid #ae95e7;
+  outline-offset: 3px;
+}
+.pwa-join-install {
+  margin-top: 15px;
+  font-size: 12px;
+  background: transparent;
+}
+.pwa-install-dialog {
+  width: 480px;
+  max-width: calc(100vw - 30px);
+}
+.pwa-install-intro {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 12px 0 26px;
+}
+.pwa-install-intro img {
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+.pwa-install-intro p {
+  color: #85718e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.pwa-install-steps {
+  padding-left: 25px;
+  color: #796185;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.pwa-install-steps li {
+  padding: 8px 0 8px 4px;
+}
+.pwa-install-steps svg {
+  vertical-align: middle;
+}
+.pwa-install-note {
+  margin: 24px 0 0;
+  font-size: 12px;
+  color: #9a88a5;
+  line-height: 1.7;
+  text-align: center;
+}
+.pwa-notice {
+  position: fixed;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: calc(100vw - 28px);
+  width: max-content;
+  background: #34234c;
+  color: #fff;
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 35px #392b4c33;
+  font-size: 13px;
+}
+.pwa-notice > svg {
+  flex-shrink: 0;
+}
+.pwa-notice span {
+  line-height: 1.5;
+}
+.pwa-notice button {
+  background: #fff1b1;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #40324f;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pwa-notice button:last-child:not(:nth-child(3)) {
+  background: transparent;
+  color: white;
+  padding: 5px;
+}
+@media (display-mode: standalone) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  .event-page,
+  .content {
+    padding-bottom: max(30px, env(safe-area-inset-bottom));
+  }
+  .sidebar {
+    padding-top: max(24px, env(safe-area-inset-top));
+  }
+}

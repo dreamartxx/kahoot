@@ -43,6 +43,8 @@ import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
 import FamilyRoom from "./FamilyRoom";
 import { quizTransition } from "./quiz-transition";
+import { PwaInstall, PwaNotices } from "./PwaInstall";
+import { setupPwa } from "./pwa";
 import "./style.css";
 const modes = {
   family: { name: "Beni Tanıyor musun?", icon: Heart, color: "rose" },
@@ -225,6 +227,7 @@ function App() {
                 {tab === id && <span className="nav-dot" />}
               </button>
             ))}
+            <PwaInstall />
             {status.admin && (
               <button onClick={() => setModal({ type: "password" })}>
                 <Settings size={20} /> Şifremi değiştir
@@ -718,6 +721,7 @@ function App() {
   return (
     <>
       {body}
+      <PwaNotices />
       {toast && (
         <div role="status" className="toast">
           <AlertCircle size={18} />
@@ -1320,8 +1324,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           {error && <p role="alert">{error}</p>}
         </div>
         <span className="join-footer">
-          Uygulama yok. Beklemek yok. Sadece eğlence.
+          Uygulama indirmeden de oyuna katılabilirsin.
         </span>
+        <PwaInstall className="pwa-join-install" />
       </div>
     );
   return (
@@ -2806,4 +2811,5 @@ function Setup({ notify, onDone }) {
     </div>
   );
 }
+setupPwa();
 createRoot(document.getElementById("root")).render(<App />);

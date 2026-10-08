@@ -11,3 +11,5 @@ app.html
 
 __pycache__/
 *.pyc
+
+/sw.js

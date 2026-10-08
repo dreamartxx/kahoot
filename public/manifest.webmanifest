@@ -1,0 +1,35 @@
+{
+  "id": "/",
+  "name": "Bilgi Arena",
+  "short_name": "Bilgi Arena",
+  "description": "Ailenle ve arkadaşlarınla bilgi yarışması, çekiliş ve kelime oyunları.",
+  "lang": "tr",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f9f7fc",
+  "theme_color": "#6355e7",
+  "categories": ["games", "entertainment", "education"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
