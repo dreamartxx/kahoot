@@ -2,18 +2,32 @@
 declare(strict_types=1);
 
 function familyPrompts(): array {
-    return [
-        ['id'=>'food','self'=>'En çok sevdiğim yemek hangisi?','ask'=>'En çok sevdiği yemek hangisi?','examples'=>['Mantı','Pizza','Karnıyarık','Makarna','Köfte','Sarma','Kuru fasulye','Lahmacun']],
-        ['id'=>'color','self'=>'En sevdiğim renk hangisi?','ask'=>'En sevdiği renk hangisi?','examples'=>['Mavi','Yeşil','Kırmızı','Mor','Sarı','Turuncu','Siyah','Beyaz']],
-        ['id'=>'dessert','self'=>'En sevdiğim tatlı hangisi?','ask'=>'En sevdiği tatlı hangisi?','examples'=>['Baklava','Sütlaç','Dondurma','Künefe','Kazandibi','Brownie','Profiterol','Revani']],
-        ['id'=>'fruit','self'=>'En sevdiğim meyve hangisi?','ask'=>'En sevdiği meyve hangisi?','examples'=>['Çilek','Elma','Muz','Karpuz','Kiraz','Portakal','Üzüm','Şeftali']],
-        ['id'=>'drink','self'=>'En sevdiğim içecek hangisi?','ask'=>'En sevdiği içecek hangisi?','examples'=>['Çay','Türk kahvesi','Ayran','Limonata','Sıcak çikolata','Portakal suyu','Su','Süt']],
-        ['id'=>'animal','self'=>'En sevdiğim hayvan hangisi?','ask'=>'En sevdiği hayvan hangisi?','examples'=>['Kedi','Köpek','Yunus','At','Tavşan','Panda','Kuş','Kaplumbağa']],
-        ['id'=>'hobby','self'=>'Boş zamanımda en çok ne yapmayı severim?','ask'=>'Boş zamanında en çok ne yapmayı sever?','examples'=>['Kitap okumak','Yürüyüş yapmak','Oyun oynamak','Resim çizmek','Müzik dinlemek','Film izlemek','Yüzmek','Yemek yapmak']],
-        ['id'=>'season','self'=>'En sevdiğim mevsim hangisi?','ask'=>'En sevdiği mevsim hangisi?','examples'=>['İlkbahar','Yaz','Sonbahar','Kış','Hepsi','Hiçbiri']],
-        ['id'=>'city','self'=>'Gezmek için en çok gitmek istediğim şehir hangisi?','ask'=>'Gezmek için en çok gitmek istediği şehir hangisi?','examples'=>['İstanbul','Paris','Roma','Tokyo','Londra','Antalya','Barselona','New York']],
-        ['id'=>'screen','self'=>'En sevdiğim film veya dizi hangisi?','ask'=>'En sevdiği film veya dizi hangisi?','examples'=>['Hababam Sınıfı','Harry Potter','Aslan Kral','Yüzüklerin Efendisi','Neşeli Günler','Şirinler','Rafadan Tayfa','Kral Şakir']],
-    ];
+    static $pool=null;
+    return $pool??=json_decode(file_get_contents(__DIR__.'/../data/family-prompts.json'),true,512,JSON_THROW_ON_ERROR);
+}
+function familyRoomPrompts(array $s): array {
+    if(isset($s['familyPrompts']))return $s['familyPrompts'];
+    // Keep already-created rooms compatible with their original ten answers.
+    $legacy=['food','color','dessert','fruit','drink','animal','hobby','season','city','screen'];
+    $pool=array_column(familyPrompts(),null,'id');
+    return array_map(fn($id)=>$pool[$id],$legacy);
+}
+function selectFamilyPrompts(PDO $db): array {
+    // Serialize selection and use a monotonic round number, including games
+    // created in the same second. The shared history survives room expiry.
+    $mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
+    $clockId='family-pool:clock';
+    $sql=$mysql?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=GREATEST(used_at+1,VALUES(used_at))':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=MAX(used_at+1,excluded.used_at)';
+    $db->prepare($sql)->execute([$clockId,time()]);
+    $clock=$db->prepare('SELECT used_at FROM arena_history WHERE id=?');$clock->execute([$clockId]);$round=(int)$clock->fetchColumn();
+    $history=[];foreach($db->query("SELECT id,used_at FROM arena_history WHERE id LIKE 'family-prompt:%'") as $row)$history[$row['id']]=(int)$row['used_at'];
+    $groups=[];foreach(familyPrompts() as $prompt)$groups[$prompt['group']][]=$prompt;
+    $selected=[];
+    foreach($groups as $pool){shuffle($pool);usort($pool,fn($a,$b)=>($history['family-prompt:'.$a['id']]??0)<=>($history['family-prompt:'.$b['id']]??0));array_push($selected,...array_slice($pool,0,2));}
+    shuffle($selected);
+    $sql=$mysql?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';
+    $record=$db->prepare($sql);foreach($selected as $p)$record->execute(['family-prompt:'.$p['id'],$round]);
+    return $selected;
 }
 function familyLabel(array $p): string { return $p['name'].' ('.$p['role'].')'; }
 function familyAction(array &$s,string $action,array $in,string $token): void {
@@ -23,7 +37,7 @@ function familyAction(array &$s,string $action,array $in,string $token): void {
         $answers=$in['answers']??null;
         if(!is_array($answers)||count($answers)!==10)fail('Kendinle ilgili 10 sorunun tamamını cevapla.');
         $clean=[];
-        foreach(familyPrompts() as $prompt){$value=inputText($answers[$prompt['id']]??'',1,80,'Cevap');if(normalize($value)==='')fail('Cevaplarda harf veya rakam kullan.');$clean[$prompt['id']]=$value;}
+        foreach(familyRoomPrompts($s) as $prompt){$value=inputText($answers[$prompt['id']]??'',1,80,'Cevap');if(normalize($value)==='')fail('Cevaplarda harf veya rakam kullan.');$clean[$prompt['id']]=$value;}
         $s['profiles'][$key]=$clean;
         return;
     }
@@ -32,7 +46,7 @@ function familyAction(array &$s,string $action,array $in,string $token): void {
         if(count($s['players'])<2)fail('En az iki aile üyesi katılmalı.',409);
         foreach($s['players'] as $key=>$p)if(!isset($s['profiles'][$key]))fail('Herkes 10 cevabını tamamladıktan sonra başlayabilirsiniz.',409);
         $deck=[];
-        foreach($s['players'] as $key=>$p)foreach(familyPrompts() as $prompt){
+        foreach($s['players'] as $key=>$p)foreach(familyRoomPrompts($s) as $prompt){
             $correct=$s['profiles'][$key][$prompt['id']];$seen=[normalize($correct)=>true];$candidates=[];
             // No participant's private answer may be reused as somebody else's distractor,
             // even if it happens to match one of the curated alternatives.
@@ -97,7 +111,7 @@ function familySnapshot(array $s,?string $token): array {
     $out=['pin'=>$s['pin'],'mode'=>'family','category'=>null,'title'=>$s['title'],'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($players),'players'=>$players,'readyCount'=>count($s['profiles']),'index'=>$s['index'],'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'revealUntil'=>$s['revealUntil']??null,'countdownUntil'=>$s['countdownUntil']??null];
     if($me)$out['me']=array_values(array_filter($players,fn($p)=>$p['id']===$me['id']))[0];
     if($phase==='lobby'){
-        $out['prompts']=array_map(fn($p)=>['id'=>$p['id'],'text'=>$p['self']],familyPrompts());
+        $out['prompts']=array_map(fn($p)=>['id'=>$p['id'],'text'=>$p['self']],familyRoomPrompts($s));
         if($me)$out['myProfile']=$s['profiles'][$key]??null;
     }
     if(in_array($phase,['question','reveal'],true)){
