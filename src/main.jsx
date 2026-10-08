@@ -42,6 +42,7 @@ import { winnerRotation, wheelEase } from "./wheel-utils";
 import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
 import FamilyRoom from "./FamilyRoom";
+import { quizTransition } from "./quiz-transition";
 import "./style.css";
 const modes = {
   family: { name: "Beni Tanıyor musun?", icon: Heart, color: "rose" },
@@ -1141,6 +1142,17 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
   }, [pin, token]);
   const now = tick / 1000 + offset.current;
   const left = Math.max(0, Math.ceil((room?.deadline || 0) - now));
+  const transition = quizTransition(room, now);
+  const isTransitioning = !!transition;
+  useEffect(() => {
+    if (!isTransitioning) return;
+    setQr(false);
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [isTransitioning]);
   useEffect(() => {
     if (
       sound &&
@@ -1388,10 +1400,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           <h2>Güzel bir etkinlikti!</h2>
           <p>Katıldığın için teşekkürler.</p>
         </div>
-      ) : room.phase === "countdown" &&
-        ["quiz", "family"].includes(room.mode) ? (
+      ) : transition ? (
         <section
-          className="question-countdown"
+          className="question-countdown fullscreen-countdown"
           aria-live="polite"
           aria-atomic="true"
         >
@@ -1404,13 +1415,24 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
             ✧
           </span>
           <p>SIRADAKİ SORU GELİYOR</p>
-          <strong key={Math.max(0, Math.ceil(room.countdownUntil - now))}>
-            {Math.max(0, Math.ceil(room.countdownUntil - now)) || "Başla!"}
-          </strong>
+          {transition.number > 0 ? (
+            <strong key={transition.number}>{transition.number}</strong>
+          ) : (
+            <strong
+              className="countdown-loading"
+              aria-label="Yeni soru yükleniyor"
+            >
+              ✦
+            </strong>
+          )}
           <span>
-            Soru {room.index + 2} / {room.total}
+            Soru {transition.next} / {room.total}
           </span>
-          <small>Hazır ol, yeni soruya otomatik geçiyoruz.</small>
+          <small>
+            {transition.number
+              ? "Hazır ol, yeni soruya otomatik geçiyoruz."
+              : "Yeni soru yükleniyor…"}
+          </small>
         </section>
       ) : room.mode === "family" ? (
         <FamilyRoom
@@ -1715,6 +1737,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         </Modal>
       )}
       {kind === "join" &&
+        !isTransitioning &&
         ["quiz", "family"].includes(room.mode) &&
         room.phase === "reveal" &&
         room.me &&

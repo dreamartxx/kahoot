@@ -948,3 +948,88 @@ test("automatic clock preserves deadlines across exact boundaries and sleeping c
   assert.equal(snapshots[8].deadline, 212);
   assert.equal(snapshots[9].index, 9);
 });
+
+test("family distractors never reuse another family member's answers, including curated matches", async () => {
+  const r = await create("family");
+  const pin = r.pin;
+  const allAnswers = [];
+  for (const [index, name] of [
+    "Gizli Bir",
+    "Gizli İki",
+    "Gizli Üç",
+  ].entries()) {
+    const joined = await call("join", { pin, name, role: "Kuzen" });
+    const values =
+      index === 0
+        ? [
+            "Mantı",
+            "MAVİ",
+            "Baklava",
+            "Çilek",
+            "Çay",
+            "Kedi",
+            "Kitap okumak",
+            "Yaz",
+            "Paris",
+            "Hababam Sınıfı",
+          ]
+        : index === 1
+          ? [
+              "Pizza",
+              "Yeşil",
+              "Sütlaç",
+              "Elma",
+              "Ayran",
+              "Köpek",
+              "Yüzmek",
+              "Kış",
+              "Roma",
+              "Harry Potter",
+            ]
+          : [
+              "Köfte",
+              "Mor",
+              "Dondurma",
+              "Muz",
+              "Su",
+              "Yunus",
+              "Resim çizmek",
+              "İlkbahar",
+              "Londra",
+              "Aslan Kral",
+            ];
+    allAnswers.push(...values.map((x) => x.toLocaleLowerCase("tr")));
+    const answers = Object.fromEntries(
+      r.prompts.map((p, i) => [p.id, values[i]]),
+    );
+    assert.equal(
+      (
+        await call(
+          "family_profile",
+          { pin, answers },
+          { token: joined.data.token },
+        )
+      ).status,
+      200,
+    );
+  }
+  assert.equal(
+    (await call("family_start", { pin }, { admin: true })).status,
+    200,
+  );
+  const deck = JSON.parse(
+    mutateDB(pin, 'echo json_encode($s["questions"])').toString(),
+  );
+  assert.equal(deck.length, 30);
+  for (const q of deck) {
+    assert.equal(q.options.length, 4);
+    assert.equal(new Set(q.options).size, 4);
+    assert(allAnswers.includes(q.options[q.correct].toLocaleLowerCase("tr")));
+    for (const [i, option] of q.options.entries())
+      if (i !== q.correct)
+        assert(
+          !allAnswers.includes(option.toLocaleLowerCase("tr")),
+          `Private answer leaked as distractor: ${option}`,
+        );
+  }
+});

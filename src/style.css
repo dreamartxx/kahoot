@@ -4507,3 +4507,35 @@ dialog.answer-result-popup.result-wrong {
     animation: none;
   }
 }
+
+/* A phone may still be scrolled to its answer popup when the next round starts. */
+.question-countdown.fullscreen-countdown {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  padding: max(24px, env(safe-area-inset-top))
+    max(20px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
+    max(20px, env(safe-area-inset-left));
+}
+.fullscreen-countdown > strong {
+  font-size: clamp(140px, 28vmin, 280px);
+}
+.fullscreen-countdown > strong.countdown-loading {
+  font-size: 110px;
+}
+@media (max-height: 440px) {
+  .fullscreen-countdown > strong {
+    font-size: 110px;
+    line-height: 1;
+  }
+  .fullscreen-countdown p {
+    margin: 6px 0;
+  }
+}
