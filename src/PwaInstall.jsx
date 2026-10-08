@@ -68,7 +68,7 @@ export function PwaInstall({ className = "" }) {
             </div>
             <div className="pwa-install-intro">
               <img
-                src="/icons/icon-192.png"
+                src="/icons/icon-192.png?v=question-stars"
                 alt="Bilgi Arena uygulama simgesi"
                 width="76"
                 height="76"

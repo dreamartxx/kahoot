@@ -92,7 +92,9 @@ test("PWA manifest and PNG dimensions support home-screen installation", () => {
   assert.equal(manifest.start_url, "/");
   assert.equal(manifest.scope, "/");
   for (const icon of manifest.icons) {
-    const png = readFileSync(new URL("../public" + icon.src, import.meta.url));
+    const png = readFileSync(
+      new URL("../public" + icon.src.split("?")[0], import.meta.url),
+    );
     assert.equal(png.subarray(1, 4).toString(), "PNG");
     assert.equal(`${png.readUInt32BE(16)}x${png.readUInt32BE(20)}`, icon.sizes);
   }
