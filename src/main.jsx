@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import {
   LayoutGrid,
   Trophy,
+  Heart,
   Ticket,
   Cloud,
   LibraryBig,
@@ -40,8 +41,10 @@ import { bubbleMetrics } from "./cloud-utils";
 import { winnerRotation, wheelEase } from "./wheel-utils";
 import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
+import FamilyRoom from "./FamilyRoom";
 import "./style.css";
 const modes = {
+  family: { name: "Beni Tanıyor musun?", icon: Heart, color: "rose" },
   quiz: { name: "Bilgi yarışması", icon: Trophy, color: "purple" },
   raffle: { name: "Çekiliş", icon: Ticket, color: "peach" },
   cloud: { name: "Kelime bulutu", icon: Cloud, color: "mint" },
@@ -206,6 +209,7 @@ function App() {
             {[
               ["home", "Genel bakış", LayoutGrid],
               ["quiz", "Bilgi yarışması", Trophy],
+              ["family", "Beni Tanıyor musun?", Heart],
               ["raffle", "Çekiliş", Ticket],
               ["cloud", "Kelime bulutu", Cloud],
               ["library", "Soru kütüphanesi", LibraryBig],
@@ -334,7 +338,9 @@ function App() {
                           ? "Bilgiyi heyecana dönüştür."
                           : tab === "raffle"
                             ? "Biraz şans, bolca heyecan."
-                            : "Herkesin fikri burada büyür."}
+                            : tab === "family"
+                              ? "Aynı ev, kaç küçük sır?"
+                              : "Herkesin fikri burada büyür."}
                     </h1>
                     <p>
                       {tab === "home"
@@ -343,7 +349,9 @@ function App() {
                           ? "Bir konu seç, QR kodunu paylaş. Geri sayım başlasın."
                           : tab === "raffle"
                             ? "İsimleri ekle, çarkı döndür. Sürpriz kimin için?"
-                            : "Sorunu sor. Aynı kelimeler buluştukça balonlar büyüsün."}
+                            : tab === "family"
+                              ? "Aileni ne kadar tanıyorsun? Birlikte keşfedin, birlikte gülün."
+                              : "Sorunu sor. Aynı kelimeler buluştukça balonlar büyüsün."}
                     </p>
                   </div>
                   {tab === "quiz" ? (
@@ -411,7 +419,7 @@ function App() {
                 {tab === "home" && (
                   <>
                     <div className="section-heading">
-                      <h2>Üç farklı yol, aynı heyecan.</h2>
+                      <h2>Dört farklı yol, aynı heyecan.</h2>
                       <span>Bir modül seç, anı paylaş</span>
                     </div>
                     <section className="module-grid">
@@ -435,14 +443,18 @@ function App() {
                                 ? "Bilgiler yarışsın, skorlar konuşsun."
                                 : id === "raffle"
                                   ? "Çark dönsün, şansını konuştur."
-                                  : "Fikirler buluşsun, kelimeler büyüsün."}
+                                  : id === "family"
+                                    ? "Aileni tanı, küçük sürprizleri keşfet."
+                                    : "Fikirler buluşsun, kelimeler büyüsün."}
                             </p>
                             <span className="module-tag">
                               {id === "quiz"
                                 ? `${categories.length} konu · 10 soruluk turlar`
                                 : id === "raffle"
                                   ? "Manuel liste veya Excel"
-                                  : "Canlı katılım · Ortak fikirler"}
+                                  : id === "family"
+                                    ? "10 sabit soru · Aileye özel oyun"
+                                    : "Canlı katılım · Ortak fikirler"}
                             </span>
                           </button>
                         );
@@ -515,6 +527,49 @@ function App() {
                       <div className="empty">Bu aramayla eşleşen konu yok.</div>
                     )}
                   </>
+                )}
+                {tab === "family" && (
+                  <section className="family-intro">
+                    <div>
+                      <span className="eyebrow">BENİ TANIYOR MUSUN?</span>
+                      <h2>
+                        En sevdiği yemeği
+                        <br />
+                        bildiğine emin misin?
+                      </h2>
+                      <p>
+                        Annen, baban, kardeşin, teyzen… Herkes kendini anlatsın.
+                        Bakalım aileyi en iyi kim tanıyor?
+                      </p>
+                      <Button onClick={() => create("family")}>
+                        <Heart size={19} /> Aile yarışması oluştur
+                      </Button>
+                      <div className="family-steps">
+                        <span>
+                          <b>01</b> Kendinle ilgili 10 cevap
+                        </span>
+                        <span>
+                          <b>02</b> Ailenden karışık sorular
+                        </span>
+                        <span>
+                          <b>03</b> Kim kimi tanıyor?
+                        </span>
+                      </div>
+                    </div>
+                    <div className="family-intro-art" aria-hidden="true">
+                      <span className="family-art-heart">♥</span>
+                      <div className="family-art-house">🏡</div>
+                      <div className="family-art-note note-one">
+                        Babamın favorisi? 🍝
+                      </div>
+                      <div className="family-art-note note-two">
+                        Annem hangi rengi sever? 💜
+                      </div>
+                      <div className="family-art-caption">
+                        Birbirimizi yeniden keşfediyoruz.
+                      </div>
+                    </div>
+                  </section>
                 )}
                 {tab === "raffle" && (
                   <section className="feature-stage peach">
@@ -827,9 +882,11 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
         ? catById(initialCat).name + " Yarışması"
         : mode === "raffle"
           ? "Şanslı Anlar"
-          : "Fikirler Buluşuyor",
+          : mode === "family"
+            ? "Bizim Aile"
+            : "Fikirler Buluşuyor",
     ),
-    [seconds, setSeconds] = useState(20),
+    [seconds, setSeconds] = useState(mode === "family" ? 45 : 20),
     [prompt, setPrompt] = useState("Bugünü tek kelimeyle anlat!"),
     [busy, setBusy] = useState(false),
     [manual, setManual] = useState(false),
@@ -948,6 +1005,34 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
             )}
           </>
         )}
+        {mode === "family" && (
+          <>
+            <div className="info-box">
+              <Heart size={24} />
+              <span>
+                Herkes adını ve ailedeki rolünü yazar, aynı 10 soruyu kendisi
+                için cevaplar. Herkes hazır olunca dört şıklı aile yarışması
+                başlar. En az 2 kişiyle oynanır.
+              </span>
+            </div>
+            <Field label="Soru başına süre">
+              <select
+                value={seconds}
+                onChange={(e) => setSeconds(e.target.value)}
+              >
+                {[15, 30, 45, 60, 90].map((n) => (
+                  <option key={n} value={n}>
+                    {n} saniye
+                  </option>
+                ))}
+              </select>
+            </Field>
+            <p className="muted">
+              Her aile üyesi için 10 soru sorulur. Doğru cevap 100 puan; kendi
+              sorunu cevaplayamazsın.
+            </p>
+          </>
+        )}
         {mode === "cloud" && (
           <Field label="Katılımcılara sorun">
             <textarea
@@ -1002,6 +1087,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       () => localStorage.getItem("arena:" + pin) || "",
     ),
     [name, setName] = useState(""),
+    [role, setRole] = useState(""),
     [busy, setBusy] = useState(false),
     [tick, setTick] = useState(Date.now()),
     [qr, setQr] = useState(false),
@@ -1090,7 +1176,11 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     e.preventDefault();
     setBusy(true);
     try {
-      const r = await api("join", { pin, name });
+      const r = await api("join", {
+        pin,
+        name,
+        ...(room.mode === "family" ? { role } : {}),
+      });
       localStorage.setItem("arena:" + pin, r.token);
       setToken(r.token);
       setRoom(r.room);
@@ -1119,6 +1209,23 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         <Button onClick={onLogin}>Yönetici girişi</Button>
         <Button secondary onClick={onBack}>
           Geri dön
+        </Button>
+      </div>
+    );
+  if (
+    kind === "join" &&
+    !room.me &&
+    !closed &&
+    room.mode === "family" &&
+    room.phase !== "lobby"
+  )
+    return (
+      <div className="center-page">
+        <Heart size={48} />
+        <h1>Bu aile yarışı başladı.</h1>
+        <p>Bir sonraki oyunda aramıza katılabilirsin.</p>
+        <Button secondary onClick={onBack}>
+          Stüdyoya dön
         </Button>
       </div>
     );
@@ -1152,6 +1259,35 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                 onChange={(e) => setName(e.target.value)}
               />
             </Field>
+            {room.mode === "family" && (
+              <Field label="Ailedeki rolün">
+                <input
+                  required
+                  maxLength={24}
+                  list="family-roles"
+                  placeholder="Anne, baba, çocuk, teyze…"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                />
+                <datalist id="family-roles">
+                  {[
+                    "Anne",
+                    "Baba",
+                    "Çocuk",
+                    "Hala",
+                    "Teyze",
+                    "Dede",
+                    "Nine",
+                    "Amca",
+                    "Dayı",
+                    "Kuzen",
+                    "Kardeş",
+                  ].map((r) => (
+                    <option key={r} value={r} />
+                  ))}
+                </datalist>
+              </Field>
+            )}
             <Button className="full" disabled={busy}>
               {busy ? "Katılıyorsun…" : "Ben de varım!"}{" "}
               <ArrowRight size={18} />
@@ -1244,6 +1380,16 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           <h2>Güzel bir etkinlikti!</h2>
           <p>Katıldığın için teşekkürler.</p>
         </div>
+      ) : room.mode === "family" ? (
+        <FamilyRoom
+          room={room}
+          host={host}
+          screen={screen}
+          action={action}
+          busy={busy}
+          left={left}
+          QR={QR}
+        />
       ) : room.mode === "quiz" ? (
         <>
           {room.phase === "lobby" ? (
@@ -1530,7 +1676,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         </Modal>
       )}
       {kind === "join" &&
-        room.mode === "quiz" &&
+        ["quiz", "family"].includes(room.mode) &&
         room.phase === "reveal" &&
         room.me &&
         room.myAnswer &&

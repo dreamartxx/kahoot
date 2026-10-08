@@ -16,7 +16,7 @@ try {
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
         $in=json_decode($raw,true,64,JSON_THROW_ON_ERROR);if(!is_array($in)) fail('Geçersiz istek.');
     } else $in=$_GET;
-    $writes=['login','logout','password_change','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete'];
+    $writes=['login','logout','password_change','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance'];
     if(in_array($action,$writes,true) && $method!=='POST') fail('POST gerekli.',405);
     if($action==='login'){rateLimit('login',10);if(!verifyAdminPassword((string)($in['password']??''),adminHash())) fail('Yönetici şifresi hatalı.',401);session_regenerate_id(true);$_SESSION['admin_until']=time()+43200;$_SESSION['admin_version']=hash('sha256',adminHash());echo json_encode(['admin'=>true]);exit;}
     if($action==='password_change'){
@@ -44,7 +44,7 @@ try {
     if($action==='question_delete'){needAdmin();db()->prepare('DELETE FROM arena_questions WHERE id=?')->execute([$in['id']??'']);echo '{}';exit;}
     if($action==='rooms'){needAdmin();$q=db()->query('SELECT state FROM arena_rooms ORDER BY created_at DESC LIMIT 50');$out=[];foreach($q as $row){$s=json_decode($row['state'],true);if($s['expiresAt']>time())$out[]=snapshot($s,null,true);}echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;}
     if($action==='create'){
-        needAdmin();$mode=$in['mode']??'';if(!in_array($mode,['quiz','cloud','raffle']))fail('Modül geçersiz.');
+        needAdmin();$mode=$in['mode']??'';if(!in_array($mode,['quiz','cloud','raffle','family']))fail('Modül geçersiz.');
         $s=['pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
         if($mode==='quiz'){
             $s['category']=$in['category']??'cografya';$pool=array_values(array_filter(bank(),fn($q)=>$q['category']===$s['category']));
@@ -56,6 +56,7 @@ try {
             foreach($s['questions'] as &$question){$correct=$question['options'][$question['correct']];shuffle($question['options']);$question['correct']=array_search($correct,$question['options'],true);}unset($question);
             $s['seconds']=max(10,min(90,(int)($in['seconds']??20)));$s['index']=-1;$s['answers']=[];
         }
+        if($mode==='family'){$s['profiles']=[];$s['questions']=[];$s['answers']=[];$s['index']=-1;$s['seconds']=max(15,min(90,(int)($in['seconds']??45)));}
         if($mode==='cloud'){$s['prompt']=inputText($in['prompt']??'Bugünü tek kelimeyle anlat!',3,200,'Soru');$s['promptVersion']=1;$s['submissions']=[];$s['phase']='open';}
         if($mode==='raffle'){$s['entries']=[];$s['winnerIds']=[];$s['winners']=[];$s['draw']=null;$s['phase']='open';}
         $db=db();$db->beginTransaction();
@@ -68,16 +69,21 @@ try {
         echo json_encode(snapshot($s,$_SERVER['HTTP_X_PLAYER_TOKEN']??null,admin()),JSON_UNESCAPED_UNICODE);exit;
     }
     if(!in_array($action,$writes,true))fail('İşlem bulunamadı.',404);
-    if(in_array($action,['advance','prompt','entries','draw','close']))needAdmin();
-    if(in_array($action,['join','words','answer']))rateLimit($action,$action==='join'?100:500);
+    if(in_array($action,['advance','prompt','entries','draw','close','family_start','family_advance']))needAdmin();
+    if(in_array($action,['join','words','answer','family_profile','family_answer']))rateLimit($action,$action==='join'?100:500);
     $s=lockRoom(inputText($in['pin']??'',6,6,'Etkinlik kodu'));
     if(in_array($s['phase'],['closed','finished']) && $action!=='close')fail('Etkinlik sona erdi.',409);
     $token=$_SERVER['HTTP_X_PLAYER_TOKEN']??'';
+    if(str_starts_with($action,'family_')){
+        if($s['mode']!=='family')fail('Aile oyunu gerekli.');
+        familyAction($s,$action,$in,$token);saveRoom($s);echo json_encode(snapshot($s,$token,admin()),JSON_UNESCAPED_UNICODE);exit;
+    }
     if($action==='join'){
         $name=inputText($in['name']??'',2,32,'İsim');if(count($s['players'])>=300)fail('Etkinlik 300 kişilik kapasiteye ulaştı.',409);
         foreach($s['players'] as $p)if(normalize($p['name'])===normalize($name))fail('Bu isim kullanılıyor. İsminize bir ek yapın.',409);
-        if($s['mode']==='quiz' && $s['phase']!=='lobby')fail('Yarışma başladı. Bir sonraki turda katılabilirsiniz.',409);
+        if(in_array($s['mode'],['quiz','family'],true) && $s['phase']!=='lobby')fail('Yarışma başladı. Bir sonraki turda katılabilirsiniz.',409);
         $token=bin2hex(random_bytes(24));$key=hash('sha256',$token);$s['players'][$key]=['name'=>$name,'score'=>0];
+        if($s['mode']==='family'){$s['players'][$key]['role']=inputText($in['role']??'',1,24,'Ailedeki rolün');$s['players'][$key]['id']=bin2hex(random_bytes(8));}
         if($s['mode']==='raffle'){
             $existing=array_filter($s['entries'],fn($e)=>normalize($e['name'])===normalize($name));
             if(!$existing){if(count($s['entries'])>=2000)fail('Katılımcı kapasitesi doldu.',409);$s['entries'][]=['id'=>bin2hex(random_bytes(8)),'name'=>$name];}

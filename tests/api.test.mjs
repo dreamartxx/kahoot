@@ -26,9 +26,16 @@ async function call(action, data = {}, options = {}) {
     },
     ...(read ? {} : { body: JSON.stringify(data) }),
   });
+  const body = await r.text();
+  let parsed;
+  try {
+    parsed = JSON.parse(body);
+  } catch {
+    throw new Error(`${action}: ${body}`);
+  }
   return {
     status: r.status,
-    data: await r.json(),
+    data: parsed,
     cookie: r.headers.get("set-cookie"),
   };
 }
@@ -519,4 +526,277 @@ test("new categories create ten-question rounds and reveal details only after an
     if (category === "enler")
       assert(revealed.data.question.explanation.length > 65);
   }
+});
+
+test("family game keeps profiles private, generates four choices and ranks knowledge fairly", async () => {
+  const room = await create("family", { seconds: 90 });
+  const pin = room.pin;
+  assert.equal(room.prompts.length, 10);
+  assert.equal(
+    (await call("family_start", { pin }, { admin: true })).status,
+    409,
+  );
+  assert.equal((await call("join", { pin, name: "Ada" })).status, 400);
+  const participants = [];
+  const values = [
+    "Mantı",
+    "Mavi",
+    "Baklava",
+    "Çilek",
+    "Çay",
+    "Kedi",
+    "Kitap okumak",
+    "Yaz",
+    "Paris",
+    "Hababam Sınıfı",
+  ];
+  for (const [name, role] of [
+    ["Ada", "Anne"],
+    ["Ege", "Baba"],
+    ["Deniz", "Çocuk"],
+  ]) {
+    const joined = await call("join", { pin, name, role });
+    assert.equal(joined.status, 200);
+    assert.deepEqual(joined.data.room.prompts, room.prompts);
+    participants.push({ ...joined.data, id: joined.data.room.me.id });
+  }
+  assert.equal(
+    (await call("family_start", { pin }, { admin: true })).status,
+    409,
+  );
+  const answers = Object.fromEntries(
+    room.prompts.map((p, i) => [p.id, values[i]]),
+  );
+  assert.equal((await call("family_profile", { pin, answers })).status, 401);
+  assert.equal(
+    (
+      await call(
+        "family_profile",
+        { pin, answers: {} },
+        { token: participants[0].token },
+      )
+    ).status,
+    400,
+  );
+  for (const p of participants) {
+    const r = await call(
+      "family_profile",
+      { pin, answers },
+      { token: p.token },
+    );
+    assert.equal(r.status, 200);
+    assert.deepEqual(r.data.myProfile, answers);
+    assert.equal(r.data.profiles, undefined);
+  }
+  const publicRoom = (await call("room", { pin }, { admin: true })).data;
+  assert.equal(publicRoom.myProfile, undefined);
+  assert(!JSON.stringify(publicRoom).includes("Mantı"));
+  assert.equal((await call("family_start", { pin })).status, 401);
+  let current = (await call("family_start", { pin }, { admin: true })).data;
+  assert.equal(current.total, 30);
+  assert.equal(
+    (await call("family_start", { pin }, { admin: true })).status,
+    409,
+  );
+  assert.equal(
+    (await call("join", { pin, name: "Geç kalan", role: "Teyze" })).status,
+    409,
+  );
+  assert.equal(
+    (
+      await call(
+        "family_profile",
+        { pin, answers },
+        { token: participants[0].token },
+      )
+    ).status,
+    409,
+  );
+  const subjects = {};
+  const correctCounts = {};
+  const perSubject = {};
+  for (let i = 0; i < 30; i++) {
+    const q = current.question;
+    assert.equal(current.phase, "question");
+    assert.equal(q.correct, undefined);
+    assert.equal(q.subjectKey, undefined);
+    assert.equal(current.questions, undefined);
+    assert.equal(q.options.length, 4);
+    assert.equal(
+      new Set(q.options.map((x) => x.toLocaleLowerCase("tr"))).size,
+      4,
+    );
+    subjects[q.subject.id] = (subjects[q.subject.id] || 0) + 1;
+    // Only inspect the local fixture's persisted answer key; the public API must never expose it early.
+    const secret = JSON.parse(
+      mutateDB(
+        pin,
+        'echo json_encode($s["questions"][$s["index"]])',
+      ).toString(),
+    );
+    for (const [j, p] of participants.entries()) {
+      if (p.id === q.subject.id) {
+        assert.equal(
+          (
+            await call(
+              "family_answer",
+              { pin, questionId: q.id, choice: 0 },
+              { token: p.token },
+            )
+          ).status,
+          409,
+        );
+        continue;
+      }
+      const correct = j === 0 || (j === 1 && subjects[q.subject.id] <= 5);
+      const choice = correct ? secret.correct : (secret.correct + 1) % 4;
+      const r = await call(
+        "family_answer",
+        { pin, questionId: q.id, choice },
+        { token: p.token },
+      );
+      assert.equal(r.status, 200, JSON.stringify(r.data));
+      assert.deepEqual(r.data.myAnswer, { choice });
+      assert.equal(r.data.me.score, (correctCounts[p.id] || 0) * 100);
+      assert.equal(r.data.question.correct, undefined);
+      if (correct) {
+        correctCounts[p.id] = (correctCounts[p.id] || 0) + 1;
+        perSubject[q.subject.id] ??= {};
+        perSubject[q.subject.id][p.id] =
+          (perSubject[q.subject.id][p.id] || 0) + 1;
+      }
+      assert.equal(
+        (
+          await call(
+            "family_answer",
+            { pin, questionId: q.id, choice },
+            { token: p.token },
+          )
+        ).status,
+        409,
+      );
+    }
+    let revealed = await call(
+      "family_advance",
+      { pin, expectedIndex: i, expectedPhase: "question" },
+      { admin: true },
+    );
+    assert.equal(revealed.status, 200);
+    assert.equal(revealed.data.question.correct, secret.correct);
+    assert.equal(
+      (
+        await call(
+          "family_advance",
+          { pin, expectedIndex: i, expectedPhase: "question" },
+          { admin: true },
+        )
+      ).status,
+      409,
+    );
+    const next = await call(
+      "family_advance",
+      { pin, expectedIndex: i, expectedPhase: "reveal" },
+      { admin: true },
+    );
+    assert.equal(next.status, 200);
+    current = next.data;
+  }
+  assert.equal(current.phase, "finished");
+  assert.deepEqual(Object.values(subjects), [10, 10, 10]);
+  assert.deepEqual(
+    current.results.ranking.map((p) => p.score),
+    [2000, 1000, 0],
+  );
+  assert.deepEqual(
+    current.results.ranking.map((p) => p.percent),
+    [100, 50, 0],
+  );
+  assert.deepEqual(
+    current.results.ranking.map((p) => p.rank),
+    [1, 2, 3],
+  );
+  for (const person of current.results.byPerson) {
+    assert.equal(person.knowers.length, 2);
+    assert(!person.knowers.some((p) => p.id === person.id));
+    for (const knower of person.knowers)
+      assert.equal(knower.correct, perSubject[person.id]?.[knower.id] || 0);
+  }
+  assert.equal(
+    (
+      await call(
+        "family_answer",
+        { pin, choice: 0 },
+        { token: participants[0].token },
+      )
+    ).status,
+    409,
+  );
+});
+
+test("family deadlines, invalid choices, stale questions and tied ranks", async () => {
+  const room = await create("family");
+  const pin = room.pin;
+  const players = [];
+  for (const name of ["Birinci", "İkinci"]) {
+    const j = await call("join", { pin, name, role: "Kuzen" });
+    players.push(j.data);
+    const answers = Object.fromEntries(
+      room.prompts.map((p) => [p.id, "Aynı cevap"]),
+    );
+    assert.equal(
+      (await call("family_profile", { pin, answers }, { token: j.data.token }))
+        .status,
+      200,
+    );
+  }
+  const start = await call("family_start", { pin }, { admin: true });
+  const subject = start.data.question.subject.id;
+  const p = players.find((p) => p.room.me.id !== subject);
+  const qid = start.data.question.id;
+  assert.equal(
+    (
+      await call(
+        "family_answer",
+        { pin, questionId: qid, choice: 4 },
+        { token: p.token },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "family_answer",
+        { pin, questionId: "stale", choice: 0 },
+        { token: p.token },
+      )
+    ).status,
+    409,
+  );
+  mutateDB(pin, '$s["deadline"]=microtime(true)-1');
+  assert.equal((await call("room", { pin })).data.phase, "reveal");
+  assert.equal(
+    (
+      await call(
+        "family_answer",
+        { pin, questionId: qid, choice: 0 },
+        { token: p.token },
+      )
+    ).status,
+    409,
+  );
+  mutateDB(pin, '$s["phase"]="finished"');
+  const finished = (await call("room", { pin })).data;
+  assert.deepEqual(
+    finished.results.ranking.map((p) => p.rank),
+    [1, 1],
+  );
+  assert(
+    finished.results.ranking.every((p) => p.total === 10 && p.score === 0),
+  );
+  const quiz = await create("quiz");
+  assert.equal(
+    (await call("family_start", { pin: quiz.pin }, { admin: true })).status,
+    400,
+  );
 });
