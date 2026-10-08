@@ -91,6 +91,7 @@ function App() {
   const [status, setStatus] = useState({ configured: true, admin: false });
   const [counts, setCounts] = useState({});
   const [rooms, setRooms] = useState([]);
+  const [showCompleted, setShowCompleted] = useState(false);
   const [modal, setModal] = useState(null);
   const [toast, setToast] = useState("");
   const [filter, setFilter] = useState("");
@@ -135,6 +136,11 @@ function App() {
     if (id === "library" && !status.admin) setModal({ type: "login" });
   };
   const total = Object.values(counts).reduce((a, b) => a + b, 0);
+  const visibleRooms = rooms.filter(
+    (room) =>
+      (tab === "home" || room.mode === tab) &&
+      (showCompleted || !["finished", "closed"].includes(room.phase)),
+  );
   let body;
   if (route === "setup")
     body = (
@@ -554,49 +560,56 @@ function App() {
                 )}
                 {status.admin && (
                   <section className="recent">
-                    <div className="section-heading">
+                    <div className="section-heading recent-heading">
                       <h2>Etkinliklerin</h2>
+                      <label className="completed-toggle">
+                        <input
+                          type="checkbox"
+                          checked={showCompleted}
+                          onChange={(event) =>
+                            setShowCompleted(event.target.checked)
+                          }
+                        />
+                        Tamamlananları göster
+                      </label>
                       <button className="text-btn" onClick={refresh}>
                         <RefreshCw size={14} /> Yenile
                       </button>
                     </div>
-                    {rooms.length ? (
-                      rooms
-                        .filter((r) => tab === "home" || r.mode === tab)
-                        .map((r) => (
-                          <button
-                            className="room-row"
-                            key={r.pin}
-                            onClick={() => go("host/" + r.pin)}
-                          >
-                            <span
-                              className={"room-icon " + modes[r.mode].color}
-                            >
-                              {React.createElement(modes[r.mode].icon, {
-                                size: 20,
-                              })}
-                            </span>
-                            <div>
-                              <b>{r.title}</b>
-                              <small>
-                                {modes[r.mode].name} · Kod: {r.pin}
-                              </small>
-                            </div>
-                            <span className="room-status">
-                              {["finished", "closed"].includes(r.phase)
-                                ? "Tamamlandı"
-                                : "Açık"}
-                            </span>
-                            <span>
-                              <Users size={15} /> {r.playerCount}
-                            </span>
-                            <ChevronRight size={18} />
-                          </button>
-                        ))
+                    {visibleRooms.length ? (
+                      visibleRooms.map((r) => (
+                        <button
+                          className="room-row"
+                          key={r.pin}
+                          onClick={() => go("host/" + r.pin)}
+                        >
+                          <span className={"room-icon " + modes[r.mode].color}>
+                            {React.createElement(modes[r.mode].icon, {
+                              size: 20,
+                            })}
+                          </span>
+                          <div>
+                            <b>{r.title}</b>
+                            <small>
+                              {modes[r.mode].name} · Kod: {r.pin}
+                            </small>
+                          </div>
+                          <span className="room-status">
+                            {["finished", "closed"].includes(r.phase)
+                              ? "Tamamlandı"
+                              : "Açık"}
+                          </span>
+                          <span>
+                            <Users size={15} /> {r.playerCount}
+                          </span>
+                          <ChevronRight size={18} />
+                        </button>
+                      ))
                     ) : (
                       <div className="empty">
-                        İlk etkinliğin seni bekliyor. Bir modül seçerek
-                        başlayabilirsin.
+                        {showCompleted
+                          ? "Henüz etkinlik yok. Yeni bir etkinlik oluşturarak başlayabilirsin."
+                          : "Açık etkinlik yok. Yeni bir etkinlik oluşturabilir veya tamamlananları gösterebilirsin."}
                       </div>
                     )}
                   </section>
