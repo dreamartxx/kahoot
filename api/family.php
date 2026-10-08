@@ -34,11 +34,15 @@ function familyAction(array &$s,string $action,array $in,string $token): void {
         $deck=[];
         foreach($s['players'] as $key=>$p)foreach(familyPrompts() as $prompt){
             $correct=$s['profiles'][$key][$prompt['id']];$seen=[normalize($correct)=>true];$candidates=[];
-            // Prefer other family members' answers, then fill short pools with suitable alternatives.
-            $others=array_column(array_values($s['profiles']),$prompt['id']);shuffle($others);
+            // No participant's private answer may be reused as somebody else's distractor,
+            // even if it happens to match one of the curated alternatives.
+            foreach($s['profiles'] as $profile)foreach($profile as $answer)$seen[normalize($answer)]=true;
             $fallback=$prompt['examples'];shuffle($fallback);
-            foreach(array_merge($others,$fallback) as $value){$norm=normalize($value);if(isset($seen[$norm]))continue;$seen[$norm]=true;$candidates[]=$value;}
-            $options=array_merge([$correct],array_slice($candidates,0,3));shuffle($options);
+            $neutral=['Özel bir tercihi yok','Hepsini eşit seviyor','Tercihi sık değişiyor','Seçim yapamıyor','Hiçbirini sevmiyor','Yeni şeyler denemeyi seviyor'];
+            foreach(array_merge($fallback,$neutral) as $value){$norm=normalize($value);if(isset($seen[$norm]))continue;$seen[$norm]=true;$candidates[]=$value;if(count($candidates)===3)break;}
+            // Preserve four distinct choices even if a very large family exhausts the pool.
+            for($i=1;count($candidates)<3;$i++){$value='Başka bir seçenek '.$i;$norm=normalize($value);if(isset($seen[$norm]))continue;$seen[$norm]=true;$candidates[]=$value;}
+            $options=array_merge([$correct],$candidates);shuffle($options);
             $deck[]=['id'=>'family-'.bin2hex(random_bytes(8)),'subjectKey'=>$key,'promptId'=>$prompt['id'],'text'=>familyLabel($p).': '.$prompt['ask'],'options'=>$options,'correct'=>array_search($correct,$options,true)];
         }
         shuffle($deck);$s['questions']=$deck;$s['index']=0;$s['phase']='question';$s['deadline']=microtime(true)+$s['seconds'];
