@@ -12,8 +12,8 @@ try {
     $user=inputText($in['user']??'',1,64,'Veritabanı kullanıcısı');$name=inputText($in['database']??'',1,64,'Veritabanı adı');
     if(!preg_match('/^[a-zA-Z0-9_]+$/',$name)||!preg_match('/^[a-zA-Z0-9_]+$/',$user))fail('Veritabanı bilgileri geçersiz.');
     $origin=$_SERVER['HTTP_ORIGIN']??'';if(!preg_match('~^https://[a-z0-9.-]+(?::[0-9]+)?$~i',$origin))fail('Kurulum HTTPS üzerinden açılmalı.',400);
-    $pass=(string)($in['password']??'');$adminPass=(string)($in['adminPassword']??'');if(strlen($adminPass)<12)fail('Yönetici şifresi en az 12 karakter olmalı.');
-    $cfg=['dsn'=>"mysql:host=localhost;dbname=$name;charset=utf8mb4",'user'=>$user,'password'=>$pass,'admin_hash'=>password_hash($adminPass,PASSWORD_DEFAULT),'origin'=>$origin];
+    $pass=(string)($in['password']??'');$adminPass=(string)($in['adminPassword']??'');if($adminPass==='')fail('Yönetici şifresi boş bırakılamaz.');
+    $cfg=['dsn'=>"mysql:host=localhost;dbname=$name;charset=utf8mb4",'user'=>$user,'password'=>$pass,'admin_hash'=>makeAdminHash($adminPass),'origin'=>$origin];
     $pdo=new PDO($cfg['dsn'],$user,$pass,[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);migrate($pdo);
     $path=privateDir().'/config.php';$handle=fopen($path,'x');if(!$handle)fail('Kurulum kilitli.',409);fwrite($handle,"<?php\nreturn ".var_export($cfg,true).";\n");fclose($handle);chmod($path,0600);unlink($keyFile);
     echo json_encode(['ok'=>true]);

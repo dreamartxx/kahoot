@@ -94,6 +94,79 @@ after(() => {
   server?.kill();
   rmSync(dir, { recursive: true, force: true });
 });
+test("password change requires current credentials, accepts short and long passwords and revokes other sessions", async () => {
+  const change = {
+    currentPassword: "local-test-password",
+    newPassword: "1234",
+  };
+  assert.equal((await call("password_change", change)).status, 401);
+  assert.equal((await fetch(base + "?action=password_change")).status, 405);
+  assert.equal(
+    (
+      await call(
+        "password_change",
+        { ...change, currentPassword: "wrong" },
+        { admin: true },
+      )
+    ).status,
+    401,
+  );
+  assert.equal(
+    (
+      await call(
+        "password_change",
+        { ...change, newPassword: "" },
+        { admin: true },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call("password_change", change, {
+        admin: true,
+        origin: "https://attacker.invalid",
+      })
+    ).status,
+    403,
+  );
+  const otherLogin = await call("login", { password: "local-test-password" });
+  const staleCookie = otherLogin.cookie.split(";")[0];
+  const changed = await call("password_change", change, { admin: true });
+  assert.equal(changed.status, 200);
+  cookie = changed.cookie.split(";")[0];
+  assert.equal((await call("status", {}, { admin: true })).data.admin, true);
+  const stale = await fetch(base + "?action=rooms", {
+    headers: { Cookie: staleCookie },
+  });
+  assert.equal(stale.status, 401);
+  assert.equal(
+    (await call("login", { password: "local-test-password" })).status,
+    401,
+  );
+  assert.equal((await call("login", { password: "1234" })).status, 200);
+  const longPassword = "ş".repeat(150);
+  const longChange = await call(
+    "password_change",
+    { currentPassword: "1234", newPassword: longPassword },
+    { admin: true },
+  );
+  assert.equal(longChange.status, 200);
+  cookie = longChange.cookie.split(";")[0];
+  assert.equal(
+    (await call("login", { password: longPassword.slice(0, 36) + "other" }))
+      .status,
+    401,
+  );
+  assert.equal((await call("login", { password: longPassword })).status, 200);
+  const restored = await call(
+    "password_change",
+    { currentPassword: longPassword, newPassword: "local-test-password" },
+    { admin: true },
+  );
+  assert.equal(restored.status, 200);
+  cookie = restored.cookie.split(";")[0];
+});
 test("admin authorization, cross-origin protection and private files", async () => {
   assert.equal(
     (await call("create", { mode: "quiz", title: "No access" })).status,

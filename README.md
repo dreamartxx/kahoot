@@ -36,8 +36,10 @@ Tarayıcı: http://127.0.0.1:8091 — yalnızca yerel test yönetici şifresi `l
 2. GitHub `main` dalındaki her push testleri çalıştırır, derlemeyi yapar ve yalnızca yayın dosyalarını `codex/deploy` dalına gönderir.
 3. hPanel → Gelişmiş → GIT: `dreamartxx/kahoot`, dal `codex/deploy`, hedef `public_html`, otomatik dağıtım açık.
 4. Siteyi bir kez açın. Uygulama `public_html` dışında, aynı üst dizindeki `bilgi-arena-private/setup.key` dosyasını otomatik oluşturur. Bu 256 bitlik tek kullanımlık kurulum anahtarını hPanel Dosya Yöneticisi üzerinden okuyun. Anahtarı Git'e eklemeyin.
-5. HTTPS site adresinde `/#setup` formuna anahtarı, MySQL bilgilerini ve en az 12 karakterli yönetici şifresini girin. Tablo kurulumu tamamlanır; `public_html` dışındaki `bilgi-arena-private/config.php` oluşturulur; `setup.key` kaldırılır ve kurulum kilitlenir.
+5. HTTPS site adresinde `/#setup` formuna anahtarı, MySQL bilgilerini ve yönetici şifresini girin. Tablo kurulumu tamamlanır; `public_html` dışındaki `bilgi-arena-private/config.php` oluşturulur; `setup.key` kaldırılır ve kurulum kilitlenir.
 6. Ana sayfadaki yönetici girişiyle etkinlik oluşturun.
+
+Yönetici girişi yaptıktan sonra sol menüdeki **Şifremi değiştir** ile mevcut şifrenizi girip yeni şifrenizi kaydedebilirsiniz. Şifre uzunluğu şartı yoktur; boş şifre kabul edilmez. Yeni şifreler önce SHA-256 ile işlenir ve ardından bcrypt ile hash edilir; uzun şifrelerin son kısmı kesilmez. Değişiklik diğer yönetici oturumlarını kapatır. Güncel şifrenin hash'i veritabanındaki `arena_auth` tablosunda saklanır; kod güncellemelerinde korunur.
 
 `bilgi-arena-private/config.php` yayın kök dizininin dışında tutulur. Konfigürasyon ve MySQL verileri Git tarafından yönetilmez; yayın güncellemelerinden etkilenmez. Anahtar ve konfigürasyon doğrudan HTTP erişimine kapalıdır. `data/` altındaki cevap anahtarına da HTTP erişimi kapalıdır.
 

@@ -13,9 +13,20 @@ try {
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
         $in=json_decode($raw,true,64,JSON_THROW_ON_ERROR);if(!is_array($in)) fail('Geçersiz istek.');
     } else $in=$_GET;
-    $writes=['login','logout','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete'];
+    $writes=['login','logout','password_change','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete'];
     if(in_array($action,$writes,true) && $method!=='POST') fail('POST gerekli.',405);
-    if($action==='login'){rateLimit('login',10);if(!password_verify((string)($in['password']??''),config()['admin_hash'])) fail('Yönetici şifresi hatalı.',401);session_regenerate_id(true);$_SESSION['admin_until']=time()+43200;echo json_encode(['admin'=>true]);exit;}
+    if($action==='login'){rateLimit('login',10);if(!verifyAdminPassword((string)($in['password']??''),adminHash())) fail('Yönetici şifresi hatalı.',401);session_regenerate_id(true);$_SESSION['admin_until']=time()+43200;$_SESSION['admin_version']=hash('sha256',adminHash());echo json_encode(['admin'=>true]);exit;}
+    if($action==='password_change'){
+        needAdmin();rateLimit('password_change',10);$oldHash=adminHash();
+        if(!verifyAdminPassword((string)($in['currentPassword']??''),$oldHash))fail('Mevcut şifreniz hatalı.',401);
+        $pass=$in['newPassword']??'';
+        if(!is_string($pass)||$pass==='')fail('Yeni şifre boş bırakılamaz.');
+        $newHash=makeAdminHash($pass);
+        $q=db()->prepare('UPDATE arena_auth SET password_hash=? WHERE id=1 AND password_hash=?');$q->execute([$newHash,$oldHash]);
+        if($q->rowCount()!==1)fail('Şifre başka bir oturumda değişti. Yeniden giriş yapın.',409);
+        session_regenerate_id(true);$_SESSION['admin_version']=hash('sha256',$newHash);$_SESSION['admin_until']=time()+43200;
+        echo json_encode(['ok'=>true]);exit;
+    }
     if($action==='logout'){$_SESSION=[];session_destroy();echo '{}';exit;}
     if($action==='categories') { $counts=[];foreach(bank() as $q)$counts[$q['category']]=($counts[$q['category']]??0)+1;echo json_encode($counts);exit; }
     if($action==='questions'){needAdmin();$qs=bank();$cat=$in['category']??'';echo json_encode(array_values(array_filter($qs,fn($q)=>!$cat || $q['category']===$cat)),JSON_UNESCAPED_UNICODE);exit;}

@@ -193,6 +193,11 @@ function App() {
                 {tab === id && <span className="nav-dot" />}
               </button>
             ))}
+            {status.admin && (
+              <button onClick={() => setModal({ type: "password" })}>
+                <Settings size={20} /> Şifremi değiştir
+              </button>
+            )}
           </nav>
           <div className="sidebar-tip">
             <div className="tip-icon">
@@ -621,6 +626,9 @@ function App() {
           notify={notify}
         />
       )}{" "}
+      {modal?.type === "password" && (
+        <ChangePassword onClose={() => setModal(null)} notify={notify} />
+      )}
       {modal?.type === "create" && (
         <Create
           mode={modal.mode}
@@ -701,6 +709,59 @@ function Login({ onClose, onDone, notify }) {
         </Field>
         <Button disabled={busy} className="full">
           {busy ? "Giriş yapılıyor…" : "Stüdyoya gir"} <ArrowRight size={18} />
+        </Button>
+      </form>
+    </Modal>
+  );
+}
+function ChangePassword({ onClose, notify }) {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  return (
+    <Modal title="Şifremi değiştir" onClose={onClose}>
+      <p className="muted">
+        Şifreni istediğin uzunlukta belirle. Yalnızca boş bırakma.
+      </p>
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          setBusy(true);
+          setError("");
+          try {
+            await api("password_change", { currentPassword, newPassword });
+            notify("Şifren değiştirildi. Diğer yönetici oturumları kapatıldı.");
+            onClose();
+          } catch (e) {
+            setError(e.message);
+          } finally {
+            setBusy(false);
+          }
+        }}
+      >
+        <Field label="Mevcut şifren">
+          <input
+            autoFocus
+            type="password"
+            autoComplete="current-password"
+            required
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+          />
+        </Field>
+        <Field label="Yeni şifren">
+          <input
+            type="password"
+            autoComplete="new-password"
+            required
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </Field>
+        {error && <p role="alert">{error}</p>}
+        <Button className="full" disabled={busy}>
+          {busy ? "Kaydediliyor…" : "Şifreyi güncelle"} <Check size={18} />
         </Button>
       </form>
     </Modal>
@@ -2130,17 +2191,12 @@ function Setup({ notify, onDone }) {
             ["database", "MySQL veritabanı adı", "text"],
             ["user", "MySQL kullanıcı adı", "text"],
             ["password", "MySQL şifresi", "password"],
-            [
-              "adminPassword",
-              "Yeni yönetici şifresi (en az 12 karakter)",
-              "password",
-            ],
+            ["adminPassword", "Yeni yönetici şifresi", "password"],
           ].map(([key, label, type]) => (
             <Field label={label} key={key}>
               <input
                 type={type}
                 required
-                minLength={key === "adminPassword" ? 12 : 1}
                 autoComplete={key === "adminPassword" ? "new-password" : "off"}
                 value={form[key]}
                 onChange={(e) => setForm({ ...form, [key]: e.target.value })}
