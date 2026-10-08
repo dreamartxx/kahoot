@@ -3656,3 +3656,26 @@ dialog.answer-result-popup.result-wrong {
     display: none;
   }
 }
+
+.page-heading:has(.quiz-create-button) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.quiz-create-button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .page-heading:has(.quiz-create-button) {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .page-heading .quiz-create-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

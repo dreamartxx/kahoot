@@ -312,9 +312,18 @@ function App() {
                             : "Sorunu sor. Aynı kelimeler buluştukça balonlar büyüsün."}
                     </p>
                   </div>
-                  <span className="live-badge">
-                    <i /> Etkileşimli etkinlik stüdyosu
-                  </span>
+                  {tab === "quiz" ? (
+                    <Button
+                      className="quiz-create-button"
+                      onClick={() => create("quiz")}
+                    >
+                      <Plus size={19} /> Bilgi yarışması oluştur
+                    </Button>
+                  ) : (
+                    <span className="live-badge">
+                      <i /> Etkileşimli etkinlik stüdyosu
+                    </span>
+                  )}
                 </section>
                 {tab === "home" && (
                   <section className="hero">
