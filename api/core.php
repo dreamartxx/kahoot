@@ -28,7 +28,18 @@ function migrate(PDO $db): void {
     $db->exec('CREATE TABLE IF NOT EXISTS arena_history (id VARCHAR(64) PRIMARY KEY, used_at BIGINT NOT NULL)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_limits (id VARCHAR(64) PRIMARY KEY, hits INT NOT NULL, expires_at BIGINT NOT NULL)');
 }
-function admin(): bool { return !empty($_SESSION['admin_until']) && $_SESSION['admin_until']>time(); }
+function makeAdminHash(string $password): string { return 'sha256:'.password_hash(hash('sha256',$password),PASSWORD_DEFAULT); }
+function verifyAdminPassword(string $password,string $hash): bool { return str_starts_with($hash,'sha256:')?password_verify(hash('sha256',$password),substr($hash,7)):password_verify($password,$hash); }
+function adminHash(): string {
+    static $hash;
+    if ($hash !== null) return $hash;
+    $db=db();
+    $db->exec('CREATE TABLE IF NOT EXISTS arena_auth (id INT PRIMARY KEY, password_hash VARCHAR(255) NOT NULL)');
+    $sql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'INSERT IGNORE INTO arena_auth (id,password_hash) VALUES (1,?)':'INSERT INTO arena_auth (id,password_hash) VALUES (1,?) ON CONFLICT(id) DO NOTHING';
+    $db->prepare($sql)->execute([config()['admin_hash']]);
+    return $hash=(string)$db->query('SELECT password_hash FROM arena_auth WHERE id=1')->fetchColumn();
+}
+function admin(): bool { return !empty($_SESSION['admin_until']) && $_SESSION['admin_until']>time() && hash_equals(hash('sha256',adminHash()),(string)($_SESSION['admin_version']??'')); }
 function needAdmin(): void { if (!admin()) fail('Yönetici girişi gerekli.',401); }
 function inputText(mixed $s,int $min,int $max,string $label): string {
     if (!is_string($s)) fail($label.' geçersiz.');
