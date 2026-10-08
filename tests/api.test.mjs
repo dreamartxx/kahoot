@@ -193,6 +193,31 @@ test("admin authorization, cross-origin protection and private files", async () 
     404,
   );
 });
+test("domain migration accepts exact site origins and rejects lookalikes", async () => {
+  const login = await call(
+    "login",
+    { password: "local-test-password" },
+    {
+      origin: "https://khaki-panther-692104.hostingersite.com",
+    },
+  );
+  assert.equal(login.status, 200);
+  assert.equal(login.data.admin, true);
+  for (const origin of [
+    "http://127.0.0.1:8091",
+    "https://ailecekeglen.com.tr",
+  ]) {
+    assert.equal((await call("create", {}, { origin })).status, 401);
+  }
+  for (const origin of [
+    "https://khaki-panther-692104.hostingersite.com.attacker.invalid",
+    "https://another-site.hostingersite.com",
+    "https://ailecekeglen.com.tr.attacker.invalid",
+    "http://khaki-panther-692104.hostingersite.com",
+  ]) {
+    assert.equal((await call("create", {}, { origin })).status, 403);
+  }
+});
 test("quiz: ten questions, no repeats until pool exhausted, no early answer/score leaks, idempotency and deadlines", async () => {
   const seen = new Set();
   for (let i = 0; i < 10; i++) {
