@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+require_once __DIR__.'/family.php';
 function fail(string $message, int $status = 400): never { http_response_code($status); echo json_encode(['error'=>$message], JSON_UNESCAPED_UNICODE); exit; }
 function privateDir(): string { return dirname(__DIR__,2).'/bilgi-arena-private'; }
 function configured(): bool { return is_file(privateDir().'/config.php') || (PHP_SAPI==='cli-server' && (bool)getenv('ARENA_TEST_DSN')); }
@@ -44,7 +45,7 @@ function needAdmin(): void { if (!admin()) fail('Yönetici girişi gerekli.',401
 function inputText(mixed $s,int $min,int $max,string $label): string {
     if (!is_string($s)) fail($label.' geçersiz.');
     $s=trim(preg_replace('/\s+/u',' ',$s) ?? '');
-    if (mb_strlen($s)<$min || mb_strlen($s)>$max) fail($label." $min–$max karakter olmalı.");
+    if (mb_strlen($s)<$min || mb_strlen($s)>$max) fail($label." {$min}–{$max} karakter olmalı.");
     return $s;
 }
 function normalize(string $word): string {
@@ -71,12 +72,13 @@ function lockRoom(string $pin): array {
     if(!$raw){$db->rollBack();fail('Bu kodla açık bir etkinlik bulunamadı.',404);}
     $s=json_decode($raw,true);
     if($s['expiresAt']<time()){ $db->rollBack();fail('Bu etkinliğin süresi doldu.',410); }
-    if($s['mode']==='quiz' && $s['phase']==='question' && microtime(true)>=$s['deadline']) $s['phase']='reveal';
+    if(in_array($s['mode'],['quiz','family'],true) && $s['phase']==='question' && microtime(true)>=$s['deadline']) $s['phase']='reveal';
     return $s;
 }
 function saveRoom(array $s): void { db()->prepare('UPDATE arena_rooms SET state=? WHERE pin=?')->execute([json_encode($s,JSON_UNESCAPED_UNICODE),$s['pin']]);db()->commit(); }
 function playerKey(array $s,string $token): string { $key=hash('sha256',$token);if(!isset($s['players'][$key])) fail('Katılımcı oturumu bulunamadı. Yeniden katılın.',401);return $key; }
 function snapshot(array $s,?string $token=null,bool $host=false): array {
+    if($s['mode']==='family')return familySnapshot($s,$token);
     $now=microtime(true);$phase=$s['phase'];
     if($s['mode']==='quiz' && $phase==='question' && $now >= $s['deadline']) $phase='reveal';
     $visiblePlayers=$s['players'];
