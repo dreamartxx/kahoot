@@ -97,8 +97,9 @@ function snapshot(array $s,?string $token=null,bool $host=false): array {
     }
     if($s['mode']==='raffle') {
         $draw=$s['draw']??null;$out['entryCount']=count($s['entries']);$out['remainingCount']=count(array_filter($s['entries'],fn($e)=>!in_array($e['id'],$s['winnerIds'],true)));
-        $out['draw']=$draw?['id'=>$draw['id'],'startedAt'=>$draw['startedAt'],'revealAt'=>$draw['revealAt'],'winner'=>$now >= $draw['revealAt']?$draw['winner']:null]:null;
-        $out['winners']=array_values(array_filter($s['winners'],fn($w)=>$now >= $w['revealAt']));
+        $out['draw']=$draw?['id'=>$draw['id'],'startedAt'=>$draw['startedAt'],'revealAt'=>$draw['revealAt'],'settleAt'=>$draw['settleAt']??$draw['revealAt'],'winner'=>$now >= $draw['revealAt']?$draw['winner']:null]:null;
+        $out['wheelEntries']=$draw['wheelEntries']??array_values(array_filter($s['entries'],fn($e)=>!in_array($e['id'],$s['winnerIds'],true)||$e['id']===($draw['winner']['id']??'')));
+        $out['winners']=array_values(array_filter($s['winners'],fn($w)=>$now >= ($w['settleAt']??$w['revealAt'])));
         if($host) $out['entries']=$s['entries'];
     }
     return $out;

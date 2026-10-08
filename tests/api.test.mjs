@@ -414,13 +414,40 @@ test("raffle: import deduplication, no early winner, draw lock and no winner rep
     assert.equal(draw.status, 200);
     assert.equal(draw.data.draw.winner, null);
     assert.equal(draw.data.winners.length, i);
+    assert.equal(draw.data.wheelEntries.length, 3 - i);
+    assert(draw.data.wheelEntries.every((entry) => !won.has(entry.id)));
     assert.equal(
       (await call("draw", { pin: r.pin }, { admin: true })).status,
       409,
     );
+    mutateDB(r.pin, "$s['draw']['revealAt']=microtime(true)-1");
+    const slowing = (await call("room", { pin: r.pin })).data;
+    assert(
+      slowing.draw.winner,
+      "Winner becomes available for the final landing",
+    );
+    assert.equal(
+      slowing.winners.length,
+      i,
+      "Result history waits until the wheel settles",
+    );
+    assert.equal(
+      (await call("draw", { pin: r.pin }, { admin: true })).status,
+      409,
+    );
+    assert.equal(
+      (
+        await call(
+          "entries",
+          { pin: r.pin, names: ["Late import"] },
+          { admin: true },
+        )
+      ).status,
+      409,
+    );
     mutateDB(
       r.pin,
-      "$s['draw']['revealAt']=microtime(true)-1;$last=count($s['winners'])-1;$s['winners'][$last]['revealAt']=microtime(true)-1",
+      "$s['draw']['revealAt']=microtime(true)-1;$s['draw']['settleAt']=microtime(true)-1;$last=count($s['winners'])-1;$s['winners'][$last]['revealAt']=microtime(true)-1;$s['winners'][$last]['settleAt']=microtime(true)-1",
     );
     const revealed = (await call("room", { pin: r.pin })).data;
     assert(revealed.draw.winner);

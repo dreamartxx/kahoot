@@ -107,15 +107,15 @@ try {
         if($s['mode']!=='cloud')fail('Kelime bulutu gerekli.');$s['prompt']=inputText($in['prompt']??'',3,200,'Soru');$s['promptVersion']++;$s['submissions']=[];
     }
     if($action==='entries'){
-        if($s['mode']!=='raffle')fail('Çekiliş gerekli.');if(($s['draw']['revealAt']??0)>microtime(true))fail('Çekiliş sürüyor.',409);
+        if($s['mode']!=='raffle')fail('Çekiliş gerekli.');if(($s['draw']['settleAt']??$s['draw']['revealAt']??0)>microtime(true))fail('Çekiliş sürüyor.',409);
         $names=$in['names']??[];if(!is_array($names)||count($names)>2000)fail('En fazla 2.000 isim yüklenebilir.');
         $seen=array_map(fn($e)=>normalize($e['name']),$s['entries']);foreach($names as $name){$name=inputText($name,1,80,'İsim');$norm=normalize($name);if(!in_array($norm,$seen,true)){$s['entries'][]=['id'=>bin2hex(random_bytes(8)),'name'=>$name];$seen[]=$norm;}}
         if(count($s['entries'])>2000)fail('En fazla 2.000 katılımcı olabilir.');
     }
     if($action==='draw'){
-        if($s['mode']!=='raffle')fail('Çekiliş gerekli.');$now=microtime(true);if(($s['draw']['revealAt']??0)>$now)fail('Çekiliş sürüyor.',409);
+        if($s['mode']!=='raffle')fail('Çekiliş gerekli.');$now=microtime(true);if(($s['draw']['settleAt']??$s['draw']['revealAt']??0)>$now)fail('Çekiliş sürüyor.',409);
         $pool=array_values(array_filter($s['entries'],fn($e)=>!in_array($e['id'],$s['winnerIds'],true)));if(!$pool)fail('Çekilecek katılımcı kalmadı.',409);
-        $winner=$pool[random_int(0,count($pool)-1)];$s['draw']=['id'=>bin2hex(random_bytes(8)),'startedAt'=>$now,'revealAt'=>$now+11,'winner'=>$winner];$s['winnerIds'][]=$winner['id'];$s['winners'][]=$s['draw'];
+        $winner=$pool[random_int(0,count($pool)-1)];$s['draw']=['id'=>bin2hex(random_bytes(8)),'startedAt'=>$now,'revealAt'=>$now+11,'settleAt'=>$now+17,'winner'=>$winner];$s['winnerIds'][]=$winner['id'];$s['winners'][]=$s['draw'];$s['draw']['wheelEntries']=$pool;
     }
     if($action==='close')$s['phase']='closed';
     saveRoom($s);echo json_encode(snapshot($s,$token,admin()),JSON_UNESCAPED_UNICODE);

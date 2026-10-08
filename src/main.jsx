@@ -37,6 +37,7 @@ import QRCode from "qrcode";
 import { api, categories, catById } from "./api";
 import { stripHeader } from "./import-utils";
 import { bubbleMetrics } from "./cloud-utils";
+import { winnerRotation, wheelEase } from "./wheel-utils";
 import "./style.css";
 const modes = {
   quiz: { name: "Bilgi yarışması", icon: Trophy, color: "purple" },
@@ -307,7 +308,7 @@ function App() {
                         : tab === "quiz"
                           ? "Bir konu seç, QR kodunu paylaş. Geri sayım başlasın."
                           : tab === "raffle"
-                            ? "İsimleri ekle, topları karıştır. Sürpriz kimin için?"
+                            ? "İsimleri ekle, çarkı döndür. Sürpriz kimin için?"
                             : "Sorunu sor. Aynı kelimeler buluştukça balonlar büyüsün."}
                     </p>
                   </div>
@@ -390,7 +391,7 @@ function App() {
                               {id === "quiz"
                                 ? "Bilgiler yarışsın, skorlar konuşsun."
                                 : id === "raffle"
-                                  ? "Toplar karışsın, şansını konuştur."
+                                  ? "Çark dönsün, şansını konuştur."
                                   : "Fikirler buluşsun, kelimeler büyüsün."}
                             </p>
                             <span className="module-tag">
@@ -478,14 +479,14 @@ function App() {
                       <h2>
                         Heyecanı biraz
                         <br />
-                        karıştıralım.
+                        döndürelim.
                       </h2>
                       <p>
                         İsimleri elle ekle veya Excel’den yükle.
                         <br />
-                        Toplar karışsın, bir top yavaşça insin.
+                        Kocaman çark dönsün, heyecan büyüsün.
                         <br />
-                        Açıldığında kazananı hep birlikte görelim.
+                        Durduğunda kazananı hep birlikte alkışlayalım.
                       </p>
                       <Button onClick={() => create("raffle")}>
                         Çekiliş oluştur <Plus size={18} />
@@ -494,7 +495,7 @@ function App() {
                         Tekrarsız kazananlar · QR ile katılım · .xlsx ve .csv
                       </small>
                     </div>
-                    <RaffleMachine
+                    <RaffleWheel
                       room={{
                         entryCount: 32,
                         draw: null,
@@ -1651,81 +1652,230 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
     </div>
   );
 }
-function RaffleMachine({ room, now, preview = false }) {
+function RaffleWheel({ room, now, preview = false, onSettled }) {
+  const canvas = useRef();
+  const rotor = useRef();
+  const latest = useRef();
+  const finish = useRef(onSettled);
+  finish.current = onSettled;
   const draw = room.draw;
-  const time = now ?? Date.now() / 1000;
-  const elapsed = draw ? time - draw.startedAt : 0;
-  const mixing = draw && elapsed < 6;
-  const dropping = draw && elapsed >= 6 && elapsed < 9;
-  const opening = draw && elapsed >= 9 && elapsed < 11;
-  const revealed = draw && time >= draw.revealAt && draw.winner;
-  const count = Math.min(30, room.entryCount || 0);
+  const entries = preview
+    ? ["Deniz", "Ece", "Mert", "Ada", "Can", "Elif", "Arda", "Selin"].map(
+        (name, i) => ({ id: String(i), name }),
+      )
+    : room.wheelEntries || [];
+  const signature = JSON.stringify(entries);
+  latest.current = {
+    draw,
+    entries,
+    time: now ?? room.serverTime ?? Date.now() / 1000,
+    clock: performance.now(),
+  };
+  const [landed, setLanded] = useState(null);
+  const spinning = draw && landed !== draw.id;
+  const winner = landed === draw?.id ? draw?.winner : null;
+
+  useEffect(() => {
+    const ctx = canvas.current.getContext("2d");
+    const size = 1200,
+      center = size / 2,
+      radius = 584;
+    const pool = entries.length
+      ? entries
+      : Array.from({ length: 8 }, () => ({ name: "" }));
+    const colors = [
+      "#8938ce",
+      "#ec437e",
+      "#ee892a",
+      "#159d9a",
+      "#496ad6",
+      "#c237ac",
+      "#d95b35",
+      "#207d9f",
+    ];
+    const step = (Math.PI * 2) / pool.length;
+    ctx.clearRect(0, 0, size, size);
+    pool.forEach((entry, i) => {
+      const angle = -Math.PI / 2 + i * step;
+      ctx.beginPath();
+      ctx.moveTo(center, center);
+      ctx.arc(center, center, radius, angle - step / 2, angle + step / 2);
+      ctx.closePath();
+      ctx.fillStyle = colors[i % colors.length];
+      ctx.fill();
+      if (pool.length < 120) {
+        ctx.strokeStyle = "#ffffff55";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+      if (entry.name && i % Math.max(1, Math.ceil(pool.length / 48)) === 0) {
+        ctx.save();
+        ctx.translate(center, center);
+        ctx.rotate(angle);
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+        ctx.font = `800 ${pool.length <= 12 ? 37 : pool.length <= 24 ? 27 : 19}px system-ui`;
+        ctx.fillStyle = "white";
+        ctx.shadowColor = "#16032988";
+        ctx.shadowBlur = 3;
+        const chars = Array.from(entry.name);
+        ctx.fillText(
+          chars.length > 19 ? chars.slice(0, 18).join("") + "…" : entry.name,
+          radius - 40,
+          0,
+          340,
+        );
+        ctx.restore();
+      }
+    });
+    const sheen = ctx.createRadialGradient(
+      center - 180,
+      center - 220,
+      50,
+      center,
+      center,
+      radius,
+    );
+    sheen.addColorStop(0, "#ffffff28");
+    sheen.addColorStop(0.65, "#ffffff00");
+    sheen.addColorStop(1, "#17052250");
+    ctx.beginPath();
+    ctx.arc(center, center, radius, 0, Math.PI * 2);
+    ctx.fillStyle = sheen;
+    ctx.fill();
+  }, [signature]);
+
+  useEffect(() => {
+    let frame,
+      angle = 0,
+      landing = null,
+      stopped = false;
+    const id = draw?.id;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const tick = (stamp) => {
+      const current = latest.current;
+      const time = current.time + (stamp - current.clock) / 1000;
+      if (!id) {
+        rotor.current.style.transform = "rotate(0deg)";
+        return;
+      }
+      const index = current.entries.findIndex(
+        (e) => e.id === current.draw?.winner?.id,
+      );
+      if (index >= 0 && !landing) {
+        const target = winnerRotation(index, current.entries.length, angle);
+        if (
+          reducedMotion ||
+          time >= (current.draw.settleAt ?? current.draw.revealAt)
+        ) {
+          angle = target;
+          stopped = true;
+        } else landing = { from: angle, target, start: stamp };
+      }
+      if (landing) {
+        const progress = Math.min(1, (stamp - landing.start) / 4000);
+        angle =
+          landing.from + (landing.target - landing.from) * wheelEase(progress);
+        stopped = progress === 1;
+      } else if (!stopped)
+        angle = reducedMotion
+          ? 0
+          : Math.max(0, time - current.draw.startedAt) * 720;
+      rotor.current.style.transform = `rotate(${angle}deg)`;
+      if (stopped) {
+        setLanded(id);
+        finish.current?.(id);
+      } else frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [draw?.id, signature]);
+
   return (
     <div
-      className={
-        "raffle-machine " +
-        (mixing ? "mixing" : "") +
-        (dropping ? " dropping" : "") +
-        (opening ? " opening" : "") +
-        (revealed ? " revealed" : "")
-      }
+      className={`fortune-wheel ${spinning ? "is-spinning" : ""} ${winner ? "has-winner" : ""}`}
     >
-      <div className="machine-top">
-        <span>LUCKY MOMENTS</span>
-        <i />
+      <div className="wheel-heading">
+        <span>✦ BÜYÜK HEYECAN ✦</span>
+        <h2>ŞANS ÇARKI</h2>
       </div>
-      <div className="glass-bowl">
-        <div className="bowl-shine" />
-        {Array.from({ length: count }, (_, i) => (
-          <span
-            key={i}
-            className={"ball ball-" + (i % 6)}
-            style={{
-              left: 9 + ((i * 37) % 72) + "%",
-              top: 24 + ((i * 23) % 56) + "%",
-              "--dx": (i % 2 ? 1 : -1) * (35 + ((i * 17) % 90)) + "px",
-              "--dy": -(20 + ((i * 29) % 120)) + "px",
-              "--duration": 0.45 + (i % 5) * 0.1 + "s",
-              animationDelay: -(i * 0.13) + "s",
-            }}
-          >
-            {i + 1}
-          </span>
-        ))}
-        {!count && (
-          <span className="bowl-empty">
-            İsimleri ekle,
-            <br />
-            heyecanı başlat.
-          </span>
+      <div className="wheel-frame">
+        <div className="wheel-aura" />
+        <div className="wheel-ring">
+          {Array.from({ length: 48 }, (_, i) => (
+            <i
+              key={i}
+              className="wheel-bulb"
+              style={{
+                left: `${50 + 48 * Math.sin((i * Math.PI) / 24)}%`,
+                top: `${50 - 48 * Math.cos((i * Math.PI) / 24)}%`,
+                animationDelay: `${(i % 3) * -0.35}s`,
+              }}
+            />
+          ))}
+          <div className="wheel-rotor" ref={rotor}>
+            <canvas
+              ref={canvas}
+              width="1200"
+              height="1200"
+              role="img"
+              aria-label={`${entries.length} eşit dilimli şans çarkı${winner ? `. Kazanan: ${winner.name}` : ""}`}
+            />
+          </div>
+          <div className="wheel-hub">
+            <span>✦</span>
+            <b>ŞANS</b>
+            <small>SENDE</small>
+          </div>
+        </div>
+        <div className="wheel-pointer">
+          <svg viewBox="0 0 60 80" aria-hidden="true">
+            <path
+              d="M4 5 Q30 -4 56 5 L46 39 L30 77 L14 39Z"
+              fill="#ffdb77"
+              stroke="#fff0b6"
+              strokeWidth="3"
+            />
+            <path
+              d="M30 9V59"
+              stroke="#b56b1c"
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+          </svg>
+        </div>
+        {winner && (
+          <div className="wheel-confetti" key={draw.id} aria-hidden="true">
+            {Array.from({ length: 36 }, (_, i) => (
+              <i
+                key={i}
+                style={{
+                  "--x": `${(i * 37) % 100}%`,
+                  "--turn": `${i * 43}deg`,
+                  "--delay": `${(i % 7) * 0.09}s`,
+                  background: ["#ffda76", "#fa77ba", "#75e7da", "#b69bff"][
+                    i % 4
+                  ],
+                }}
+              />
+            ))}
+          </div>
         )}
       </div>
-      <div className="machine-neck">
-        <div className="neck-track" />
-      </div>
-      <div className="machine-base">
-        <span className="machine-dial">✦</span>
-        <div className="ball-exit" />
-      </div>
-      {draw && (
-        <div key={draw.id} className="winning-capsule">
-          <span className="capsule-top" />
-          <span className="capsule-bottom" />
-          <span className="capsule-spark">✦</span>
-        </div>
-      )}
-      <div className="machine-caption">
+      <div className="wheel-caption" role="status">
         {preview
           ? "Sıradaki şanslı isim kim?"
-          : mixing
-            ? "Toplar iyice karışıyor…"
-            : dropping
-              ? "Şanslı top yavaşça iniyor…"
-              : opening
-                ? "Ve top açılıyor…"
-                : revealed
-                  ? "Şanslı isim belli oldu!"
-                  : "Biraz heyecan ekleyelim."}
+          : winner
+            ? "✦ Şanslı isim belli oldu! ✦"
+            : spinning
+              ? draw.winner
+                ? "Yavaşlıyor… İşte o an!"
+                : "Çark dönüyor, heyecan büyüyor…"
+              : entries.length
+                ? "Herkes hazırsa, şansını döndür!"
+                : "İsimleri ekle, heyecanı başlat."}
       </div>
     </div>
   );
@@ -1762,12 +1912,17 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
     [imported, setImported] = useState(null),
     [uploading, setUploading] = useState(false);
   const input = useRef();
-  const drawing = room.draw && now < room.draw.revealAt;
+  const stage = useRef();
+  const [settledDraw, setSettledDraw] = useState(null);
+  const drawing =
+    room.draw &&
+    (settledDraw !== room.draw.id ||
+      now < (room.draw.settleAt ?? room.draw.revealAt));
   const winner = room.draw?.winner;
   return (
-    <div className="raffle-layout">
-      <section className="raffle-stage">
-        <RaffleMachine room={room} now={now} />
+    <div className={`raffle-layout ${screen ? "raffle-screen" : ""}`}>
+      <section className="raffle-stage" ref={stage}>
+        <RaffleWheel room={room} now={now} onSettled={setSettledDraw} />
         {winner && !drawing && (
           <div className="winner-announcement" key={room.draw.id}>
             <span>🎉 TEBRİKLER!</span>
@@ -1780,7 +1935,7 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
             <b>{room.entryCount}</b> katılımcı
           </span>
           <span>
-            <b>{room.remainingCount}</b> top kaldı
+            <b>{room.remainingCount}</b> kişi kaldı
           </span>
           <span>
             <b>{room.winners.length}</b> kazanan
@@ -1789,10 +1944,16 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
         {host && (
           <Button
             disabled={busy || drawing || room.remainingCount === 0}
-            onClick={() => action("draw")}
+            onClick={async () => {
+              if (await action("draw"))
+                stage.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+            }}
           >
             <Sparkles size={20} />
-            {drawing ? "Heyecan devam ediyor…" : "Karıştır ve çek!"}
+            {drawing ? "Heyecan devam ediyor…" : "Çarkı çevir!"}
           </Button>
         )}
       </section>
@@ -1893,20 +2054,22 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
           <p>
             {screen
               ? "QR koduyla herkes katılabilir."
-              : `${room.me?.name || ""}, sunucu çekilişi başlattığında toplar karışacak.`}
+              : `${room.me?.name || ""}, sunucu çekilişi başlattığında çark dönmeye başlayacak.`}
           </p>
         </div>
       )}
       {room.winners.length > 0 && (
         <div className="winners-history">
           <h3>Şanslı isimler</h3>
-          {room.winners.map((w, i) => (
-            <div key={w.id}>
-              <span>{i + 1}.</span>
-              <b>{w.winner.name}</b>
-              <Ticket size={18} />
-            </div>
-          ))}
+          {room.winners
+            .filter((w) => w.id !== room.draw?.id || !drawing)
+            .map((w, i) => (
+              <div key={w.id}>
+                <span>{i + 1}.</span>
+                <b>{w.winner.name}</b>
+                <Ticket size={18} />
+              </div>
+            ))}
           {host && (
             <Button
               secondary
