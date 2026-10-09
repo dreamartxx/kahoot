@@ -104,14 +104,14 @@ function familyResults(array $s): array {
     foreach($s['players'] as $key=>$p){
         $correct=0;$answered=0;
         foreach($s['answers'] as $guesses)if(isset($guesses[$key])){$answered++;if($guesses[$key]['points']>0)$correct++;}
-        $ranking[]=['id'=>$p['id'],'name'=>$p['name'],'role'=>$p['role'],'correct'=>$correct,'answered'=>$answered,'total'=>$totalPerPerson,'score'=>$correct*100,'percent'=>(int)round(100*$correct/max(1,$totalPerPerson))];
+        $ranking[]=['id'=>$p['id'],'name'=>$p['name'],'avatar'=>$p['avatar']??'astronaut','role'=>$p['role'],'correct'=>$correct,'answered'=>$answered,'total'=>$totalPerPerson,'score'=>$correct*100,'percent'=>(int)round(100*$correct/max(1,$totalPerPerson))];
         $knowers=[];
         foreach($s['players'] as $otherKey=>$other){
             if($otherKey===$key)continue;$known=$knownCounts[$key][$otherKey]??0;
             $knowers[]=['id'=>$other['id'],'name'=>$other['name'],'role'=>$other['role'],'correct'=>$known,'total'=>10];
         }
         usort($knowers,fn($a,$b)=>$b['correct']<=>$a['correct']);
-        $byPerson[]=['id'=>$p['id'],'name'=>$p['name'],'role'=>$p['role'],'knowers'=>$knowers];
+        $byPerson[]=['id'=>$p['id'],'name'=>$p['name'],'avatar'=>$p['avatar']??'astronaut','role'=>$p['role'],'knowers'=>$knowers];
     }
     usort($ranking,fn($a,$b)=>$b['score']<=>$a['score']);$lastScore=null;$rank=0;
     foreach($ranking as $i=>&$row){if($lastScore!==$row['score'])$rank=$i+1;$row['rank']=$rank;$lastScore=$row['score'];}unset($row);
@@ -122,7 +122,7 @@ function familySnapshot(array $s,?string $token): array {
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;$players=[];
     foreach($s['players'] as $k=>$p){
         $score=$p['score'];if($phase==='question')$score-=$s['answers'][(string)$s['index']][$k]['points']??0;
-        $players[]=['id'=>$p['id'],'name'=>$p['name'],'role'=>$p['role'],'ready'=>isset($s['profiles'][$k]),'score'=>$score];
+        $players[]=['id'=>$p['id'],'name'=>$p['name'],'avatar'=>$p['avatar']??'astronaut','role'=>$p['role'],'ready'=>isset($s['profiles'][$k]),'score'=>$score];
     }
     $out=['pin'=>$s['pin'],'mode'=>'family','category'=>null,'title'=>$s['title'],'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($players),'players'=>$players,'readyCount'=>count($s['profiles']),'index'=>$s['index'],'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'revealUntil'=>$s['revealUntil']??null,'countdownUntil'=>$s['countdownUntil']??null];
     if($me)$out['me']=array_values(array_filter($players,fn($p)=>$p['id']===$me['id']))[0];
@@ -132,7 +132,7 @@ function familySnapshot(array $s,?string $token): array {
     }
     if(in_array($phase,['question','reveal'],true)){
         $q=$s['questions'][$s['index']];$subject=$s['players'][$q['subjectKey']];
-        $out['question']=['id'=>$q['id'],'text'=>$q['text'],'options'=>$q['options'],'subject'=>['id'=>$subject['id'],'name'=>$subject['name'],'role'=>$subject['role']]];
+        $out['question']=['id'=>$q['id'],'text'=>$q['text'],'options'=>$q['options'],'subject'=>['id'=>$subject['id'],'name'=>$subject['name'],'avatar'=>$subject['avatar']??'astronaut','role'=>$subject['role']]];
         $out['ownQuestion']=$me && $key===$q['subjectKey'];$out['answeredCount']=count($s['answers'][(string)$s['index']]??[]);$out['eligibleCount']=count($players)-1;
         $answer=$key?($s['answers'][(string)$s['index']][$key]??null):null;
         $out['myAnswer']=$answer && $phase==='question'?['choice'=>$answer['choice']]:$answer;
