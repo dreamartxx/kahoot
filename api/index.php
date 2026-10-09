@@ -19,16 +19,16 @@ try {
     if(in_array($action,$writes,true) && $method!=='POST') fail('POST gerekli.',405);
     authActions($action,$in);
     if($action==='categories') { $counts=[];foreach(bank() as $q)$counts[$q['category']]=($counts[$q['category']]??0)+1;echo json_encode($counts);exit; }
-    if($action==='questions'){needAdmin();$qs=bank();$cat=$in['category']??'';echo json_encode(array_values(array_filter($qs,fn($q)=>!$cat || $q['category']===$cat)),JSON_UNESCAPED_UNICODE);exit;}
+    if($action==='questions'){needOwner();$qs=bank();$cat=$in['category']??'';echo json_encode(array_values(array_filter($qs,fn($q)=>!$cat || $q['category']===$cat)),JSON_UNESCAPED_UNICODE);exit;}
     if($action==='question_save'){
-        needAdmin();$q=['ownerId'=>(int)currentUser()['id'],'id'=>'custom-'.bin2hex(random_bytes(12)),'category'=>inputText($in['category']??'',2,32,'Kategori'),'text'=>inputText($in['text']??'',5,500,'Soru'),'options'=>[],'correct'=>(int)($in['correct']??-1),'explanation'=>inputText($in['explanation']??'',0,600,'Açıklama')];
+        needOwner();$q=['ownerId'=>(int)currentUser()['id'],'id'=>'custom-'.bin2hex(random_bytes(12)),'category'=>inputText($in['category']??'',2,32,'Kategori'),'text'=>inputText($in['text']??'',5,500,'Soru'),'options'=>[],'correct'=>(int)($in['correct']??-1),'explanation'=>inputText($in['explanation']??'',0,600,'Açıklama')];
         if(!in_array($q['category'],['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','plakalar','bayraklar','enler','turkiye-tarihi','osmanli-tarihi','islam-tarihi','peygamberler-tarihi'],true)) fail('Kategori geçersiz.');
         if(!is_array($in['options']??null)||count($in['options'])!==4||$q['correct']<0||$q['correct']>3)fail('Dört seçenek ve bir doğru cevap gerekli.');
         foreach($in['options'] as $opt)$q['options'][]=inputText($opt,1,180,'Seçenek');
         if(count(array_unique(array_map('normalize',$q['options'])))!==4)fail('Seçenekler farklı olmalı.');
         db()->prepare('INSERT INTO arena_questions (id,category,content) VALUES (?,?,?)')->execute([$q['id'],$q['category'],json_encode($q,JSON_UNESCAPED_UNICODE)]);echo json_encode($q,JSON_UNESCAPED_UNICODE);exit;
     }
-    if($action==='question_delete'){needAdmin();$lookup=db()->prepare('SELECT content FROM arena_questions WHERE id=?');$lookup->execute([$in['id']??'']);$raw=$lookup->fetchColumn();if($raw&&!canManageRoom(json_decode($raw,true)))fail('Bu soruyu yönetme yetkiniz yok.',403);db()->prepare('DELETE FROM arena_questions WHERE id=?')->execute([$in['id']??'']);echo '{}';exit;}
+    if($action==='question_delete'){needOwner();$lookup=db()->prepare('SELECT content FROM arena_questions WHERE id=?');$lookup->execute([$in['id']??'']);$raw=$lookup->fetchColumn();if($raw&&!canManageRoom(json_decode($raw,true)))fail('Bu soruyu yönetme yetkiniz yok.',403);db()->prepare('DELETE FROM arena_questions WHERE id=?')->execute([$in['id']??'']);echo '{}';exit;}
     if($action==='rooms'){needAdmin();$q=db()->query('SELECT state FROM arena_rooms ORDER BY created_at DESC');$out=[];foreach($q as $row){$s=json_decode($row['state'],true);if($s['expiresAt']>time()&&canManageRoom($s))$out[]=snapshot($s,null,true);if(count($out)>=50)break;}echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;}
     if($action==='create'){
         needAdmin();$mode=$in['mode']??'';if(!in_array($mode,['quiz','cloud','raffle','family']))fail('Modül geçersiz.');
@@ -36,6 +36,7 @@ try {
         if($mode==='quiz'){
             $s['category']=$in['category']??'cografya';$pool=array_values(array_filter(bank(),fn($q)=>$q['category']===$s['category']));
             $selected=$in['questionIds']??[];
+            if($selected)needOwner();
             if($selected){if(!is_array($selected)||count(array_unique($selected))!==10)fail('Tam 10 farklı soru seçin.');$pool=array_values(array_filter($pool,fn($q)=>in_array($q['id'],$selected,true)));}
             if(count($pool)<10)fail('Bu konu için en az 10 geçerli soru gerekli.');
             $history=[];foreach(db()->query('SELECT id,used_at FROM arena_history') as $row)$history[$row['id']]=(int)$row['used_at'];
