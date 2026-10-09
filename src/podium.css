@@ -158,7 +158,7 @@
   animation: crown-glow 2.5s ease-in-out infinite;
 }
 .podium-step {
-  height: calc(36px + var(--step) * 24px);
+  height: calc(54px + var(--step) * 24px);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -272,7 +272,7 @@
     font-size: 8px;
   }
   .podium-step {
-    height: calc(27px + var(--step) * 16px);
+    height: calc(40px + var(--step) * 16px);
     padding-top: 12px;
     box-shadow:
       inset -4px 0 #0002,
@@ -331,4 +331,9 @@
   .podium-contestant > .character-avatar {
     transition: none;
   }
+}
+
+.podium-rank-5 .podium-step > span,
+.podium-rank-6 .podium-step > span {
+  display: none;
 }
