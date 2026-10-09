@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import {
   LayoutGrid,
@@ -48,6 +48,7 @@ import { PwaInstall, PwaNotices } from "./PwaInstall";
 import { setupPwa } from "./pwa";
 import "./style.css";
 import Welcome from "./Welcome";
+const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
 import UserManagement from "./UserManagement";
 const modes = {
   family: { name: "Beni Tanıyor musun?", icon: Heart, color: "rose" },
@@ -502,7 +503,19 @@ function App() {
                     </section>
                   </>
                 )}
-                {(tab === "home" || tab === "quiz") && (
+                {tab === "quiz" && (
+                  <Suspense
+                    fallback={
+                      <div className="empty">Konu kartları hazırlanıyor…</div>
+                    }
+                  >
+                    <QuizCategoryPicker
+                      counts={counts}
+                      onChoose={(id) => create("quiz", id)}
+                    />
+                  </Suspense>
+                )}
+                {tab === "home" && (
                   <>
                     <div className="section-heading topics-heading">
                       <div>
