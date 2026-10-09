@@ -13,6 +13,8 @@ QR ile katılımlı Türkçe etkinlik stüdyosu. React + PHP 8.2+ + MySQL/MariaD
 
 ## Modüller
 
+Genel bakış yalnızca dört büyük modül kartını gösterir: Bilgi Yarışması, Beni Tanıyor musun?, Çarkıfelek ve Kelime Bulutu. Kartlar masaüstünde iki sütun, telefonda tek sütun yerleşir. Konu seçimi ve etkinlik listeleri ilgili modülün içinde bulunur.
+
 Bilgi yarışması konu seçimi varsayılan olarak büyük, üst üste gelen 3B kartlarla açılır. Kartlar dokunarak kaydırma, fare sürükleme, ok düğmeleri veya klavyeyle gezilebilir. Kartlar/Liste tercihi aynı tarayıcıda hatırlanır; iki görünümde de Türkçe konu araması bulunur. Hareket azaltma tercihi animasyonları kapatır. Bu ekran yalnızca konu seçer; soru kütüphanesi yetkilerini değiştirmez.
 
 - **Bilgi yarışması:** Aile oyunu dışında 18 kategorinin her birinde 250 soru; toplam 4.500 hazır soru. Türkiye kategorisinde yalnız 20 büyükşehir plakası bulunur. Plakalar havuzu 81 ilin kodlarını, ters eşleştirmeleri, şehir çiftlerini ve rotaları içerir. Ülke bayrakları havuzu 196 ülke/bölge bayrağı ile 54 başkent ipucundan oluşur. Bayrak şıkları sunucudan gelen seçenek kodlarıyla yerel SVG görsellerini kullanır. Her tur 10 soru, her soruda dört şık ve tek doğru cevap. Kullanılmamış sorulara öncelik; havuz bitince en eski sorular tekrar kullanılır. Yönetici soruları elle seçebilir veya yeni sorular ekleyebilir. Sunucu süreyi, yanıt tekilliğini ve 500–1.000 arası hız puanını doğrular. Yanlış cevap 0 puan. Doğru cevap ve mevcut sorunun puanı soru kapanmadan katılımcıya gönderilmez.

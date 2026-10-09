@@ -48,6 +48,7 @@ import { PwaInstall, PwaNotices } from "./PwaInstall";
 import { setupPwa } from "./pwa";
 import "./style.css";
 import Welcome from "./Welcome";
+import Overview from "./Overview";
 const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
 import UserManagement from "./UserManagement";
 const modes = {
@@ -126,7 +127,6 @@ function App() {
   const [showCompleted, setShowCompleted] = useState(false);
   const [modal, setModal] = useState(null);
   const [toast, setToast] = useState("");
-  const [filter, setFilter] = useState("");
   const [joining, setJoining] = useState("");
   const notify = (m) => {
     setToast(m);
@@ -168,6 +168,7 @@ function App() {
   const nav = (id) => {
     setTab(id);
     go("");
+    window.scrollTo(0, 0);
     if (id === "library" && !status.admin) setModal({ type: "login" });
   };
   const total = Object.values(counts).reduce((a, b) => a + b, 0);
@@ -308,52 +309,58 @@ function App() {
             </button>
           </div>
         </aside>
-        <main className="main">
-          <header className="topbar">
-            <div className="breadcrumb">
-              Stüdyo <ChevronRight size={14} />
-              <b>
-                {tab === "home"
-                  ? "Genel bakış"
-                  : tab === "users"
-                    ? "Kullanıcı yönetimi"
-                    : tab === "library"
-                      ? "Soru kütüphanesi"
-                      : modes[tab]?.name}
-              </b>
-            </div>
-            <form
-              className="join-inline"
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (/^\d{6}$/.test(joining)) go("join/" + joining);
-                else notify("6 haneli etkinlik kodunu girin.");
-              }}
-            >
-              <label className="join-label" htmlFor="game-code">
-                <strong>
-                  Oyuna katıl <span aria-hidden="true">✦</span>
-                </strong>
-                <span>6 haneli oyun kodunu gir, eğlenceye katıl.</span>
-              </label>
-              <input
-                id="game-code"
-                aria-label="Oyun kodu"
-                placeholder="6 haneli kod"
-                inputMode="numeric"
-                autoComplete="off"
-                enterKeyHint="go"
-                pattern="[0-9]{6}"
-                maxLength={6}
-                value={joining}
-                onChange={(e) => setJoining(e.target.value.replace(/\D/g, ""))}
-              />
-              <button type="submit">
-                Oyuna katıl <ArrowUpRight size={21} />
-              </button>
-            </form>
-          </header>
-          <div className="content">
+        <main className={`main ${tab === "home" ? "overview-main" : ""}`}>
+          {tab !== "home" && (
+            <header className="topbar">
+              <div className="breadcrumb">
+                Stüdyo <ChevronRight size={14} />
+                <b>
+                  {tab === "home"
+                    ? "Genel bakış"
+                    : tab === "users"
+                      ? "Kullanıcı yönetimi"
+                      : tab === "library"
+                        ? "Soru kütüphanesi"
+                        : modes[tab]?.name}
+                </b>
+              </div>
+              <form
+                className="join-inline"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (/^\d{6}$/.test(joining)) go("join/" + joining);
+                  else notify("6 haneli etkinlik kodunu girin.");
+                }}
+              >
+                <label className="join-label" htmlFor="game-code">
+                  <strong>
+                    Oyuna katıl <span aria-hidden="true">✦</span>
+                  </strong>
+                  <span>6 haneli oyun kodunu gir, eğlenceye katıl.</span>
+                </label>
+                <input
+                  id="game-code"
+                  aria-label="Oyun kodu"
+                  placeholder="6 haneli kod"
+                  inputMode="numeric"
+                  autoComplete="off"
+                  enterKeyHint="go"
+                  pattern="[0-9]{6}"
+                  maxLength={6}
+                  value={joining}
+                  onChange={(e) =>
+                    setJoining(e.target.value.replace(/\D/g, ""))
+                  }
+                />
+                <button type="submit">
+                  Oyuna katıl <ArrowUpRight size={21} />
+                </button>
+              </form>
+            </header>
+          )}
+          <div
+            className={`content ${tab === "home" ? "overview-content" : ""}`}
+          >
             {!status.configured && (
               <div className="notice">
                 <Settings size={18} /> Sunucu bağlantısı kurulum bekliyor.{" "}
@@ -364,6 +371,8 @@ function App() {
               <UserManagement currentUser={status.user} onUpdate={refresh} />
             ) : tab === "library" && status.user?.role === "owner" ? (
               <Library admin={status.admin} notify={notify} refresh={refresh} />
+            ) : tab === "home" ? (
+              <Overview onChoose={nav} />
             ) : (
               <>
                 <section className="page-heading">
@@ -408,101 +417,6 @@ function App() {
                     </span>
                   )}
                 </section>
-                {tab === "home" && (
-                  <section className="hero">
-                    <div className="hero-copy">
-                      <span className="pill">
-                        <Sparkles size={14} /> BİLGİ, HEYECAN, BİRAZ DA REKABET
-                      </span>
-                      <h2>
-                        Telefonlar hazırsa,
-                        <br />
-                        <span>sahne sizin.</span>
-                      </h2>
-                      <p>
-                        Bir QR koduyla herkesi oyuna dahil et.
-                        <br />
-                        En güzel cevaplar, en büyük alkışlar burada.
-                      </p>
-                      <Button onClick={() => create("quiz")}>
-                        Yarışma oluştur <ArrowUpRight size={18} />
-                      </Button>
-                      <div className="hero-foot">
-                        <span className="mini-avatars">
-                          🙋🏻‍♀️<span>👨🏽‍🚀</span>
-                          <span>👩🏼‍🎤</span>
-                        </span>
-                        <span>Uygulama indirmeden, hep birlikte.</span>
-                      </div>
-                    </div>
-                    <div className="hero-art" aria-hidden="true">
-                      <span className="art-star star-a">✦</span>
-                      <span className="art-star star-b">✧</span>
-                      <span className="orbit" />
-                      <div className="art-card card-back">
-                        <span>OYUNA HAZIR MISIN?</span>
-                        <div className="fake-code">6 2 4 8 1 0</div>
-                        <div className="fake-people">● ● ● ● ●</div>
-                      </div>
-                      <div className="trophy-art">🏆</div>
-                      <div className="float-label label-top">
-                        <span className="green-check">✓</span> Doğru cevap!
-                      </div>
-                      <div className="float-label label-bottom">
-                        <span>⚡</span> +1.000 puan
-                      </div>
-                      <span className="art-dot dot-a" />
-                      <span className="art-dot dot-b" />
-                      <div className="tiny-shape">▲</div>
-                    </div>
-                  </section>
-                )}
-                {tab === "home" && (
-                  <>
-                    <div className="section-heading">
-                      <h2>Dört farklı yol, aynı heyecan.</h2>
-                      <span>Bir modül seç, anı paylaş</span>
-                    </div>
-                    <section className="module-grid">
-                      {Object.entries(modes).map(([id, m]) => {
-                        const Icon = m.icon;
-                        return (
-                          <button
-                            key={id}
-                            className={"module-card " + m.color}
-                            onClick={() => nav(id)}
-                          >
-                            <div className="module-top">
-                              <span className="module-icon">
-                                <Icon size={25} />
-                              </span>
-                              <ArrowUpRight size={21} />
-                            </div>
-                            <h3>{m.name}</h3>
-                            <p>
-                              {id === "quiz"
-                                ? "Bilgiler yarışsın, skorlar konuşsun."
-                                : id === "raffle"
-                                  ? "Çark dönsün, şansını konuştur."
-                                  : id === "family"
-                                    ? "Aileni tanı, küçük sürprizleri keşfet."
-                                    : "Fikirler buluşsun, kelimeler büyüsün."}
-                            </p>
-                            <span className="module-tag">
-                              {id === "quiz"
-                                ? `${categories.length} konu · 10 soruluk turlar`
-                                : id === "raffle"
-                                  ? "Manuel liste veya Excel"
-                                  : id === "family"
-                                    ? "50 soruluk havuz · Her oyunda 10 soru"
-                                    : "Canlı katılım · Ortak fikirler"}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </section>
-                  </>
-                )}
                 {tab === "quiz" && (
                   <Suspense
                     fallback={
@@ -514,72 +428,6 @@ function App() {
                       onChoose={(id) => create("quiz", id)}
                     />
                   </Suspense>
-                )}
-                {tab === "home" && (
-                  <>
-                    <div className="section-heading topics-heading">
-                      <div>
-                        <h2>Merak ettiğin konuyu seç.</h2>
-                        <p>
-                          Genişleyen soru havuzları. Her turda yeni bir meydan
-                          okuma.
-                        </p>
-                      </div>
-                      <div className="search">
-                        <Search size={17} />
-                        <input
-                          aria-label="Konu ara"
-                          placeholder="Konu ara..."
-                          value={filter}
-                          onChange={(e) => setFilter(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="category-grid">
-                      {categories
-                        .filter((c) =>
-                          c.name
-                            .toLocaleLowerCase("tr")
-                            .includes(filter.toLocaleLowerCase("tr")),
-                        )
-                        .map((c) => (
-                          <button
-                            key={c.id}
-                            className="category-card"
-                            onClick={() => create("quiz", c.id)}
-                          >
-                            <div
-                              className="category-illustration"
-                              style={{ background: c.color }}
-                            >
-                              <span>{c.emoji}</span>
-                              <span className="category-count">
-                                {counts[c.id] ?? c.count} soru
-                              </span>
-                              <span className="deco-ring" />
-                            </div>
-                            <div className="category-text">
-                              <h3>
-                                {c.name}
-                                <ArrowUpRight size={17} />
-                              </h3>
-                              <p>{c.desc}</p>
-                              <div>
-                                <Clock size={12} />
-                                10 soruluk yarışma
-                              </div>
-                            </div>
-                          </button>
-                        ))}
-                    </div>
-                    {!categories.some((c) =>
-                      c.name
-                        .toLocaleLowerCase("tr")
-                        .includes(filter.toLocaleLowerCase("tr")),
-                    ) && (
-                      <div className="empty">Bu aramayla eşleşen konu yok.</div>
-                    )}
-                  </>
                 )}
                 {tab === "family" && (
                   <section className="family-intro">
@@ -753,16 +601,18 @@ function App() {
                 )}
               </>
             )}
-            <footer>
-              <span>
-                bilgi arena <span className="footer-dot">✦</span> Güzel anlar
-                birlikte başlar.
-              </span>
-              <span>
-                {total || categories.reduce((sum, c) => sum + c.count, 0)} soru{" "}
-                <i>·</i> {categories.length} konu <i>·</i> Sonsuz merak
-              </span>
-            </footer>
+            {tab !== "home" && (
+              <footer>
+                <span>
+                  bilgi arena <span className="footer-dot">✦</span> Güzel anlar
+                  birlikte başlar.
+                </span>
+                <span>
+                  {total || categories.reduce((sum, c) => sum + c.count, 0)}{" "}
+                  soru <i>·</i> {categories.length} konu <i>·</i> Sonsuz merak
+                </span>
+              </footer>
+            )}
           </div>
         </main>
       </div>
