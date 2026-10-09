@@ -158,9 +158,9 @@ export default function UserManagement({ currentUser, onUpdate }) {
             {!busy && <Plus size={18} />}
           </button>
           <p className="account-hint">
-            <ShieldCheck size={18} /> Yeni kullanıcılar kendi oyunlarını ve
-            sorularını yönetir. Kullanıcı hesaplarını yalnızca sen
-            yönetebilirsin.
+            <ShieldCheck size={18} /> Yeni kullanıcılar kendi oyunlarını
+            yönetir. Soru kütüphanesine ve kullanıcı hesaplarına yalnızca sen
+            erişebilirsin.
           </p>
         </form>
         <div className="account-list">

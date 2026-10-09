@@ -1488,8 +1488,36 @@ test("durable accounts, owner-only management, room isolation and session revoca
     options: ["Bir", "İki", "Üç", "Dört"],
     correct: 0,
   };
-  const custom = await call("question_save", q, opt);
+  assert.equal((await call("question_save", q, opt)).status, 403);
+  assert.equal((await call("questions", {}, opt)).status, 403);
+  assert.equal(
+    (await call("questions", { category: "cografya" }, opt)).status,
+    403,
+  );
+  const ownerPool = (
+    await call("questions", { category: "cografya" }, { admin: true })
+  ).data;
+  assert.equal(
+    (
+      await call(
+        "create",
+        {
+          mode: "quiz",
+          title: "Yetkisiz seçim",
+          category: "cografya",
+          questionIds: ownerPool.slice(0, 10).map((q) => q.id),
+        },
+        opt,
+      )
+    ).status,
+    403,
+  );
+  const custom = await call("question_save", q, { admin: true });
   assert.equal(custom.status, 200);
+  assert.equal(
+    (await call("question_delete", { id: custom.data.id }, opt)).status,
+    403,
+  );
   assert.equal(
     (
       await call(
@@ -1506,10 +1534,9 @@ test("durable accounts, owner-only management, room isolation and session revoca
     (await call("question_delete", { id: custom.data.id }, otherOpt)).status,
     403,
   );
-  assert(
-    !(await call("questions", { category: "cografya" }, otherOpt)).data.some(
-      (q) => q.id === custom.data.id,
-    ),
+  assert.equal(
+    (await call("questions", { category: "cografya" }, otherOpt)).status,
+    403,
   );
   assert.equal(
     (await call("question_delete", { id: custom.data.id }, { admin: true }))

@@ -238,9 +238,11 @@ function App() {
               ["family", "Beni Tanıyor musun?", Heart],
               ["raffle", "Çekiliş", Ticket],
               ["cloud", "Kelime bulutu", Cloud],
-              ["library", "Soru kütüphanesi", LibraryBig],
               ...(status.user?.role === "owner"
-                ? [["users", "Kullanıcı yönetimi", Users]]
+                ? [
+                    ["library", "Soru kütüphanesi", LibraryBig],
+                    ["users", "Kullanıcı yönetimi", Users],
+                  ]
                 : []),
             ].map(([id, label, Icon]) => (
               <button
@@ -359,7 +361,7 @@ function App() {
             )}
             {tab === "users" && status.user?.role === "owner" ? (
               <UserManagement currentUser={status.user} onUpdate={refresh} />
-            ) : tab === "library" ? (
+            ) : tab === "library" && status.user?.role === "owner" ? (
               <Library admin={status.admin} notify={notify} refresh={refresh} />
             ) : (
               <>
@@ -780,6 +782,7 @@ function App() {
         <Create
           mode={modal.mode}
           initialCat={modal.cat}
+          canManageLibrary={status.user?.role === "owner"}
           onClose={() => setModal(null)}
           onDone={(r) => {
             setModal(null);
@@ -936,7 +939,14 @@ function ChangePassword({ onClose, notify }) {
     </Modal>
   );
 }
-function Create({ mode, initialCat, onClose, onDone, notify }) {
+function Create({
+  mode,
+  initialCat,
+  onClose,
+  onDone,
+  notify,
+  canManageLibrary = false,
+}) {
   const [cat, setCat] = useState(initialCat),
     [title, setTitle] = useState(
       mode === "quiz"
@@ -958,12 +968,12 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
       { text: "", examples: ["", "", ""] },
     ]);
   useEffect(() => {
-    if (manual)
+    if (manual && canManageLibrary)
       api("questions", { category: cat })
         .then(setQs)
         .catch((e) => notify(e.message));
     setSelected([]);
-  }, [manual, cat]);
+  }, [manual, cat, canManageLibrary]);
   return (
     <Modal
       title={modes[mode].name + " oluştur"}
@@ -982,7 +992,7 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
                 category: cat,
                 seconds: Number(seconds),
                 prompt,
-                questionIds: manual ? selected : [],
+                questionIds: manual && canManageLibrary ? selected : [],
                 ...(mode === "family"
                   ? { familyQuestions: customFamily ? familyQuestions : [] }
                   : {}),
@@ -1029,15 +1039,17 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
                 </select>
               </Field>
             </div>
-            <label className="check-row">
-              <input
-                type="checkbox"
-                checked={manual}
-                onChange={(e) => setManual(e.target.checked)}
-              />{" "}
-              Soruları kendim seçmek istiyorum
-            </label>
-            {manual ? (
+            {canManageLibrary && (
+              <label className="check-row">
+                <input
+                  type="checkbox"
+                  checked={manual}
+                  onChange={(e) => setManual(e.target.checked)}
+                />{" "}
+                Soruları kendim seçmek istiyorum
+              </label>
+            )}
+            {manual && canManageLibrary ? (
               <>
                 <p className="muted">{selected.length}/10 soru seçildi</p>
                 <div className="question-pick">
