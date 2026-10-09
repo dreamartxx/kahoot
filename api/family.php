@@ -136,7 +136,7 @@ function familySnapshot(array $s,?string $token): array {
         $out['ownQuestion']=$me && $key===$q['subjectKey'];$out['answeredCount']=count($s['answers'][(string)$s['index']]??[]);$out['eligibleCount']=count($players)-1;
         $answer=$key?($s['answers'][(string)$s['index']][$key]??null):null;
         $out['myAnswer']=$answer && $phase==='question'?['choice'=>$answer['choice']]:$answer;
-        if($phase==='reveal')$out['question']['correct']=$q['correct'];
+        if($phase==='reveal'){$out['question']['correct']=$q['correct'];$out['answerCards']=revealedAnswerCards($s,$key);}
     }
     if($phase==='finished')$out['results']=familyResults($s);
     return $out;

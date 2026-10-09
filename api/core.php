@@ -96,6 +96,18 @@ function lockRoom(string $pin): array {
     return $s;
 }
 function saveRoom(array $s): void { db()->prepare('UPDATE arena_rooms SET state=? WHERE pin=?')->execute([json_encode($s,JSON_UNESCAPED_UNICODE),$s['pin']]);db()->commit(); }
+// Reveal only the current round. Never return token hashes or private profiles.
+function revealedAnswerCards(array $s, ?string $viewerKey): array {
+    if($s['phase']!=='reveal' || !isset($s['questions'][$s['index']]))return [];
+    $q=$s['questions'][$s['index']];$cards=[];
+    foreach($s['players'] as $key=>$player){
+        $reference=$s['mode']==='family' && $key===($q['subjectKey']??null);
+        $answer=$s['answers'][(string)$s['index']][$key]??null;
+        $choice=$reference?$q['correct']:($answer['choice']??null);
+        $cards[]=['name'=>$player['name'],'avatar'=>$player['avatar']??'astronaut','role'=>$player['role']??null,'isMe'=>$viewerKey!==null && $key===$viewerKey,'reference'=>$reference,'choice'=>$choice,'correct'=>$choice===null?null:$choice===$q['correct'],'points'=>$reference?0:($answer['points']??0)];
+    }
+    return $cards;
+}
 function playerKey(array $s,string $token): string { $key=hash('sha256',$token);if(!isset($s['players'][$key])) fail('Katılımcı oturumu bulunamadı. Yeniden katılın.',401);return $key; }
 function snapshot(array $s,?string $token=null,bool $host=false): array {
     syncQuizClock($s);
@@ -110,6 +122,7 @@ function snapshot(array $s,?string $token=null,bool $host=false): array {
     if($s['mode']==='quiz') {
         $i=$s['index'];$out+=['index'=>$i,'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'revealUntil'=>$s['revealUntil']??null,'countdownUntil'=>$s['countdownUntil']??null,'answeredCount'=>count($s['answers'][(string)$i]??[])];
         if($i>=0 && $phase!=='countdown' && isset($s['questions'][$i])) { $q=$s['questions'][$i];$out['question']=['id'=>$q['id'],'text'=>$q['text'],'options'=>$q['options']];if(in_array($phase,['reveal','finished'])){$out['question']['correct']=$q['correct'];$out['question']['explanation']=$q['explanation']??'';} }
+        if($phase==='reveal')$out['answerCards']=revealedAnswerCards($s,$key);
         if($me){$answer=$s['answers'][(string)$i][$key]??null;$out['myAnswer']=$answer && $phase==='question'?['choice'=>$answer['choice']]:$answer;}
     }
     if($s['mode']==='cloud') {
