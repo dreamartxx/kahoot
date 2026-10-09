@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import "./overview.css";
+import { moduleTeasers } from "./ModuleTeasers";
 
 const modules = [
   {
@@ -118,6 +119,10 @@ export default function Overview({ onChoose }) {
             <span className="overview-module-detail">{m.detail}</span>
             <h2>{m.title}</h2>
             <span className="overview-description">{m.description}</span>
+            <span className="overview-teaser">
+              <span>{moduleTeasers[m.id].notes[0][0]}</span>
+              <span aria-hidden="true">{moduleTeasers[m.id].notes[0][1]}</span>
+            </span>
           </span>
           <span className="overview-card-bottom">
             <span>{m.action}</span>

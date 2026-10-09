@@ -49,6 +49,7 @@ import { setupPwa } from "./pwa";
 import "./style.css";
 import Welcome from "./Welcome";
 import Overview from "./Overview";
+import ModuleTeasers from "./ModuleTeasers";
 import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
 import { characterById } from "./characters";
 import Podium from "./Podium";
@@ -461,18 +462,14 @@ function App() {
                         </span>
                       </div>
                     </div>
-                    <div className="family-intro-art" aria-hidden="true">
-                      <span className="family-art-heart">♥</span>
-                      <div className="family-art-house">🏡</div>
-                      <div className="family-art-note note-one">
-                        Babamın favorisi? 🍝
+                    <div className="family-intro-art">
+                      <span className="family-art-heart" aria-hidden="true">
+                        ♥
+                      </span>
+                      <div className="family-art-house" aria-hidden="true">
+                        🏡
                       </div>
-                      <div className="family-art-note note-two">
-                        Annem hangi rengi sever? 💜
-                      </div>
-                      <div className="family-art-caption">
-                        Birbirimizi yeniden keşfediyoruz.
-                      </div>
+                      <ModuleTeasers mode="family" board />
                     </div>
                   </section>
                 )}
@@ -546,6 +543,9 @@ function App() {
                       <small>Örnek görünüm</small>
                     </div>
                   </section>
+                )}
+                {["quiz", "raffle", "cloud"].includes(tab) && (
+                  <ModuleTeasers mode={tab} />
                 )}
                 {status.admin && (
                   <section className="recent">
