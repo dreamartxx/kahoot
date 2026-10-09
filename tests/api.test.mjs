@@ -11,9 +11,14 @@ const port = 18191,
   db = path.join(dir, "test.sqlite");
 let server, cookie;
 async function call(action, data = {}, options = {}) {
-  let read = ["status", "categories", "questions", "rooms", "room"].includes(
-    action,
-  );
+  let read = [
+    "status",
+    "categories",
+    "questions",
+    "rooms",
+    "room",
+    "users",
+  ].includes(action);
   let url =
     base + "?action=" + action + (read ? "&" + new URLSearchParams(data) : "");
   const r = await fetch(url, {
@@ -21,6 +26,7 @@ async function call(action, data = {}, options = {}) {
     headers: {
       "Content-Type": "application/json",
       ...(options.admin ? { Cookie: cookie } : {}),
+      ...(options.cookie ? { Cookie: options.cookie } : {}),
       ...(options.token ? { "X-Player-Token": options.token } : {}),
       ...(options.origin ? { Origin: options.origin } : {}),
     },
@@ -73,15 +79,25 @@ before(async () => {
     "-r",
     'echo password_hash("local-test-password",PASSWORD_DEFAULT);',
   ]).toString();
-  server = spawn("php", ["-S", `127.0.0.1:${port}`, "scripts/router.php"], {
-    cwd: root,
-    env: {
-      ...process.env,
-      ARENA_TEST_DSN: "sqlite:" + db,
-      ARENA_TEST_ADMIN_HASH: hash,
+  server = spawn(
+    "php",
+    [
+      "-d",
+      `session.save_path=${dir}`,
+      "-S",
+      `127.0.0.1:${port}`,
+      "scripts/router.php",
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        ARENA_TEST_DSN: "sqlite:" + db,
+        ARENA_TEST_ADMIN_HASH: hash,
+      },
+      stdio: "ignore",
     },
-    stdio: "ignore",
-  });
+  );
   let ready = false;
   for (let i = 0; i < 50; i++) {
     try {
@@ -1344,4 +1360,238 @@ test("all ten family questions may be custom; invalid and unauthorized submissio
   );
   const defaultRoom = await create("family", { familyQuestions: [] });
   assert(defaultRoom.prompts.every((p) => !p.id.startsWith("custom-family-")));
+});
+
+test("durable accounts, owner-only management, room isolation and session revocation", async () => {
+  const sql = (code) =>
+    execFileSync("php", [
+      "-r",
+      `$db=new PDO('sqlite:'.$argv[1]);${code}`,
+      db,
+    ]).toString();
+  sql("$db->exec('DELETE FROM arena_limits');");
+  const ownerStatus = await call("status", {}, { admin: true });
+  assert.equal(ownerStatus.data.user.username, "admin");
+  assert.equal(ownerStatus.data.user.role, "owner");
+  assert.equal((await call("users")).status, 401);
+  assert.equal(
+    (await call("user_create", { username: "host", password: "1234" })).status,
+    401,
+  );
+  assert.equal((await fetch(base + "?action=user_create")).status, 405);
+  assert.equal(
+    (
+      await call(
+        "user_create",
+        { username: "host", password: "" },
+        { admin: true },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "user_create",
+        { username: "host", password: "1234", role: "owner" },
+        { admin: true },
+      )
+    ).status,
+    200,
+  );
+  assert.equal(
+    (
+      await call(
+        "user_create",
+        { username: "HOST", password: "1" },
+        { admin: true },
+      )
+    ).status,
+    409,
+  );
+  const users = (await call("users", {}, { admin: true })).data;
+  const host = users.find((u) => u.username === "host");
+  assert.equal(host.role, "host");
+  assert(!JSON.stringify(users).includes("password"));
+  assert.equal(
+    (await call("login", { username: "missing", password: "1234" })).status,
+    401,
+  );
+  const login = await call("login", { username: "HOST", password: "1234" });
+  assert.equal(login.status, 200);
+  assert.match(login.cookie, /HttpOnly/i);
+  assert.match(login.cookie, /SameSite=Strict/i);
+  assert.match(login.cookie, /Max-Age=2592000/);
+  const session = login.cookie.split(";")[0];
+  assert.match(session, /^arena_session=[a-f0-9]{64}$/);
+  const token = session.split("=")[1];
+  const stored = JSON.parse(
+    sql(
+      "echo json_encode($db->query('SELECT token_hash,expires_at FROM arena_sessions')->fetchAll(PDO::FETCH_ASSOC));",
+    ),
+  );
+  assert(stored.every((s) => s.token_hash !== token));
+  const opt = { cookie: session };
+  assert.equal((await call("status", {}, opt)).data.user.username, "host");
+  assert.equal((await call("users", {}, opt)).status, 403);
+  assert.equal(
+    (await call("user_create", { username: "intruder", password: "x" }, opt))
+      .status,
+    403,
+  );
+  assert.equal(
+    (await call("user_update", { id: 1, username: "intruder" }, opt)).status,
+    403,
+  );
+  const own = await create("raffle");
+  for (const mode of ["quiz", "family", "cloud", "raffle"]) {
+    const room = await call(
+      "create",
+      { mode, title: "Sunucu testi", category: "cografya" },
+      opt,
+    );
+    assert.equal(room.status, 200, JSON.stringify(room));
+    assert.equal(room.data.canManage, true);
+    assert.equal(
+      (await call("room", { pin: room.data.pin }, { admin: true })).data
+        .canManage,
+      true,
+    );
+    assert.equal(
+      (await call("room", { pin: room.data.pin })).data.canManage,
+      false,
+    );
+    assert.equal((await call("status", {}, opt)).data.admin, true);
+  }
+  assert((await call("rooms", {}, opt)).data.every((r) => r.pin !== own.pin));
+  const foreign = await call("room", { pin: own.pin }, opt);
+  assert.equal(foreign.data.canManage, false);
+  assert.equal(foreign.data.entries, undefined);
+  for (const action of [
+    "advance",
+    "prompt",
+    "entries",
+    "draw",
+    "close",
+    "family_start",
+    "family_advance",
+  ]) {
+    assert.equal(
+      (await call(action, { pin: own.pin }, opt)).status,
+      403,
+      action,
+    );
+  }
+  const q = {
+    category: "cografya",
+    text: "Sunucuya özel örnek soru hangisidir?",
+    options: ["Bir", "İki", "Üç", "Dört"],
+    correct: 0,
+  };
+  const custom = await call("question_save", q, opt);
+  assert.equal(custom.status, 200);
+  assert.equal(
+    (
+      await call(
+        "user_create",
+        { username: "host2", password: "x" },
+        { admin: true },
+      )
+    ).status,
+    200,
+  );
+  const other = await call("login", { username: "host2", password: "x" });
+  const otherOpt = { cookie: other.cookie.split(";")[0] };
+  assert.equal(
+    (await call("question_delete", { id: custom.data.id }, otherOpt)).status,
+    403,
+  );
+  assert(
+    !(await call("questions", { category: "cografya" }, otherOpt)).data.some(
+      (q) => q.id === custom.data.id,
+    ),
+  );
+  assert.equal(
+    (await call("question_delete", { id: custom.data.id }, { admin: true }))
+      .status,
+    200,
+  );
+  assert.equal(
+    (await call("user_update", { id: 1, active: false }, { admin: true }))
+      .status,
+    400,
+  );
+  assert.equal(
+    (await call("user_update", { id: host.id, password: "z" }, { admin: true }))
+      .status,
+    200,
+  );
+  assert.equal((await call("rooms", {}, opt)).status, 401);
+  assert.equal(
+    (await call("login", { username: "host", password: "1234" })).status,
+    401,
+  );
+  let resetLogin = await call("login", { username: "host", password: "z" });
+  assert.equal(resetLogin.status, 200);
+  const resetOpt = { cookie: resetLogin.cookie.split(";")[0] };
+  assert.equal(
+    (await call("user_update", { id: host.id, active: false }, { admin: true }))
+      .status,
+    200,
+  );
+  assert.equal(
+    (await call("login", { username: "host", password: "z" })).status,
+    401,
+  );
+  assert.equal((await call("status", {}, resetOpt)).data.admin, false);
+  assert.equal(
+    (
+      await call(
+        "user_update",
+        { id: host.id, active: true, username: "Sunucu" },
+        { admin: true },
+      )
+    ).status,
+    200,
+  );
+  assert.equal((await call("status", {}, resetOpt)).data.admin, false);
+  const renewed = await call("login", { username: "Sunucu", password: "z" });
+  assert.equal(renewed.status, 200);
+  const renewedOpt = { cookie: renewed.cookie.split(";")[0] };
+  assert.equal((await call("logout", {}, renewedOpt)).status, 200);
+  assert.equal((await call("rooms", {}, renewedOpt)).status, 401);
+  sql(
+    `$db->exec('UPDATE arena_sessions SET expires_at=1 WHERE user_id=${users.length + 1}');`,
+  );
+  assert.equal((await call("status", {}, otherOpt)).data.admin, false);
+  assert.equal((await call("status", {}, { admin: true })).data.admin, true);
+});
+
+test("existing PHP owner login upgrades once, and active durable sessions extend expiry", async () => {
+  const legacyId = execFileSync("php", [
+    "-r",
+    `session_save_path($argv[2]);session_id(bin2hex(random_bytes(16)));session_start();$db=new PDO('sqlite:'.$argv[1]);$_SESSION['admin_until']=time()+3600;$_SESSION['admin_version']=hash('sha256',$db->query('SELECT password_hash FROM arena_auth WHERE id=1')->fetchColumn());$id=session_id();session_write_close();echo $id;`,
+    db,
+    dir,
+  ]).toString();
+  const legacyOpt = { cookie: "PHPSESSID=" + legacyId };
+  const upgraded = await call("status", {}, legacyOpt);
+  assert.equal(upgraded.data.admin, true);
+  assert.equal(upgraded.data.user.id, 1);
+  const durable = upgraded.cookie.match(/arena_session=[a-f0-9]{64}/)[0];
+  assert.equal((await call("status", {}, legacyOpt)).data.admin, false);
+  execFileSync("php", [
+    "-r",
+    "$db=new PDO('sqlite:'.$argv[1]);$q=$db->prepare('UPDATE arena_sessions SET expires_at=? WHERE token_hash=?');$q->execute([time()+3600,hash('sha256',$argv[2])]);",
+    db,
+    durable.split("=")[1],
+  ]);
+  const extended = await call("status", {}, { cookie: durable });
+  assert.equal(extended.data.admin, true);
+  assert.match(extended.cookie, /Max-Age=2592000/);
+  await call("logout", {}, { cookie: durable });
+  assert.equal(
+    (await call("status", {}, { cookie: durable })).data.admin,
+    false,
+  );
 });

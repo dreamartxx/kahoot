@@ -2,10 +2,9 @@
 declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');header('Cache-Control: no-store');header('X-Content-Type-Options: nosniff');
 require __DIR__.'/core.php';
-session_set_cookie_params(['httponly'=>true,'secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!=='off'),'samesite'=>'Strict','path'=>'/']);session_start();
 $action=$_GET['action']??'status';$method=$_SERVER['REQUEST_METHOD'];
 try {
-    if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured(),'admin'=>admin()]);exit;}
+    if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured(),'admin'=>admin(),'user'=>currentUser()?publicUser(currentUser()):null]);exit;}
     if($method==='POST') {
         if(!str_contains($_SERVER['CONTENT_TYPE']??'','application/json')) fail('JSON gerekli.',415);
         $origin=$_SERVER['HTTP_ORIGIN']??'';
@@ -16,36 +15,24 @@ try {
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
         $in=json_decode($raw,true,64,JSON_THROW_ON_ERROR);if(!is_array($in)) fail('Geçersiz istek.');
     } else $in=$_GET;
-    $writes=['login','logout','password_change','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance'];
+    $writes=['login','logout','password_change','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance'];
     if(in_array($action,$writes,true) && $method!=='POST') fail('POST gerekli.',405);
-    if($action==='login'){rateLimit('login',10);if(!verifyAdminPassword((string)($in['password']??''),adminHash())) fail('Yönetici şifresi hatalı.',401);session_regenerate_id(true);$_SESSION['admin_until']=time()+43200;$_SESSION['admin_version']=hash('sha256',adminHash());echo json_encode(['admin'=>true]);exit;}
-    if($action==='password_change'){
-        needAdmin();rateLimit('password_change',10);$oldHash=adminHash();
-        if(!verifyAdminPassword((string)($in['currentPassword']??''),$oldHash))fail('Mevcut şifreniz hatalı.',401);
-        $pass=$in['newPassword']??'';
-        if(!is_string($pass)||$pass==='')fail('Yeni şifre boş bırakılamaz.');
-        $newHash=makeAdminHash($pass);
-        $q=db()->prepare('UPDATE arena_auth SET password_hash=? WHERE id=1 AND password_hash=?');$q->execute([$newHash,$oldHash]);
-        if($q->rowCount()!==1)fail('Şifre başka bir oturumda değişti. Yeniden giriş yapın.',409);
-        session_regenerate_id(true);$_SESSION['admin_version']=hash('sha256',$newHash);$_SESSION['admin_until']=time()+43200;
-        echo json_encode(['ok'=>true]);exit;
-    }
-    if($action==='logout'){$_SESSION=[];session_destroy();echo '{}';exit;}
+    authActions($action,$in);
     if($action==='categories') { $counts=[];foreach(bank() as $q)$counts[$q['category']]=($counts[$q['category']]??0)+1;echo json_encode($counts);exit; }
     if($action==='questions'){needAdmin();$qs=bank();$cat=$in['category']??'';echo json_encode(array_values(array_filter($qs,fn($q)=>!$cat || $q['category']===$cat)),JSON_UNESCAPED_UNICODE);exit;}
     if($action==='question_save'){
-        needAdmin();$q=['id'=>'custom-'.bin2hex(random_bytes(12)),'category'=>inputText($in['category']??'',2,32,'Kategori'),'text'=>inputText($in['text']??'',5,500,'Soru'),'options'=>[],'correct'=>(int)($in['correct']??-1),'explanation'=>inputText($in['explanation']??'',0,600,'Açıklama')];
+        needAdmin();$q=['ownerId'=>(int)currentUser()['id'],'id'=>'custom-'.bin2hex(random_bytes(12)),'category'=>inputText($in['category']??'',2,32,'Kategori'),'text'=>inputText($in['text']??'',5,500,'Soru'),'options'=>[],'correct'=>(int)($in['correct']??-1),'explanation'=>inputText($in['explanation']??'',0,600,'Açıklama')];
         if(!in_array($q['category'],['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','plakalar','bayraklar','enler','turkiye-tarihi','osmanli-tarihi','islam-tarihi','peygamberler-tarihi'],true)) fail('Kategori geçersiz.');
         if(!is_array($in['options']??null)||count($in['options'])!==4||$q['correct']<0||$q['correct']>3)fail('Dört seçenek ve bir doğru cevap gerekli.');
         foreach($in['options'] as $opt)$q['options'][]=inputText($opt,1,180,'Seçenek');
         if(count(array_unique(array_map('normalize',$q['options'])))!==4)fail('Seçenekler farklı olmalı.');
         db()->prepare('INSERT INTO arena_questions (id,category,content) VALUES (?,?,?)')->execute([$q['id'],$q['category'],json_encode($q,JSON_UNESCAPED_UNICODE)]);echo json_encode($q,JSON_UNESCAPED_UNICODE);exit;
     }
-    if($action==='question_delete'){needAdmin();db()->prepare('DELETE FROM arena_questions WHERE id=?')->execute([$in['id']??'']);echo '{}';exit;}
-    if($action==='rooms'){needAdmin();$q=db()->query('SELECT state FROM arena_rooms ORDER BY created_at DESC LIMIT 50');$out=[];foreach($q as $row){$s=json_decode($row['state'],true);if($s['expiresAt']>time())$out[]=snapshot($s,null,true);}echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;}
+    if($action==='question_delete'){needAdmin();$lookup=db()->prepare('SELECT content FROM arena_questions WHERE id=?');$lookup->execute([$in['id']??'']);$raw=$lookup->fetchColumn();if($raw&&!canManageRoom(json_decode($raw,true)))fail('Bu soruyu yönetme yetkiniz yok.',403);db()->prepare('DELETE FROM arena_questions WHERE id=?')->execute([$in['id']??'']);echo '{}';exit;}
+    if($action==='rooms'){needAdmin();$q=db()->query('SELECT state FROM arena_rooms ORDER BY created_at DESC');$out=[];foreach($q as $row){$s=json_decode($row['state'],true);if($s['expiresAt']>time()&&canManageRoom($s))$out[]=snapshot($s,null,true);if(count($out)>=50)break;}echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;}
     if($action==='create'){
         needAdmin();$mode=$in['mode']??'';if(!in_array($mode,['quiz','cloud','raffle','family']))fail('Modül geçersiz.');
-        $s=['pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
+        $s=['ownerId'=>(int)currentUser()['id'],'pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
         if($mode==='quiz'){
             $s['category']=$in['category']??'cografya';$pool=array_values(array_filter(bank(),fn($q)=>$q['category']===$s['category']));
             $selected=$in['questionIds']??[];
@@ -67,17 +54,19 @@ try {
     }
     if($action==='room'){
         $q=db()->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$in['pin']??'']);$raw=$q->fetchColumn();if(!$raw)fail('Etkinlik bulunamadı.',404);$s=json_decode($raw,true);if($s['expiresAt']<time())fail('Etkinlik süresi doldu.',410);
-        echo json_encode(snapshot($s,$_SERVER['HTTP_X_PLAYER_TOKEN']??null,admin()),JSON_UNESCAPED_UNICODE);exit;
+        echo json_encode(snapshot($s,$_SERVER['HTTP_X_PLAYER_TOKEN']??null,canManageRoom($s)),JSON_UNESCAPED_UNICODE);exit;
     }
     if(!in_array($action,$writes,true))fail('İşlem bulunamadı.',404);
     if(in_array($action,['advance','prompt','entries','draw','close','family_start','family_advance']))needAdmin();
     if(in_array($action,['join','words','answer','family_profile','family_answer']))rateLimit($action,$action==='join'?100:500);
+    currentUser(); // Resolve lazy auth migration before opening the room transaction.
     $s=lockRoom(inputText($in['pin']??'',6,6,'Etkinlik kodu'));
+    if(in_array($action,['advance','prompt','entries','draw','close','family_start','family_advance'],true)&&!canManageRoom($s)){db()->rollBack();fail('Bu etkinliği yönetme yetkiniz yok.',403);}
     if(in_array($s['phase'],['closed','finished']) && $action!=='close')fail('Etkinlik sona erdi.',409);
     $token=$_SERVER['HTTP_X_PLAYER_TOKEN']??'';
     if(str_starts_with($action,'family_')){
         if($s['mode']!=='family')fail('Aile oyunu gerekli.');
-        familyAction($s,$action,$in,$token);saveRoom($s);echo json_encode(snapshot($s,$token,admin()),JSON_UNESCAPED_UNICODE);exit;
+        familyAction($s,$action,$in,$token);saveRoom($s);echo json_encode(snapshot($s,$token,canManageRoom($s)),JSON_UNESCAPED_UNICODE);exit;
     }
     if($action==='join'){
         $name=inputText($in['name']??'',2,32,'İsim');if(count($s['players'])>=300)fail('Etkinlik 300 kişilik kapasiteye ulaştı.',409);
@@ -129,6 +118,6 @@ try {
         $winner=$pool[random_int(0,count($pool)-1)];$s['draw']=['id'=>bin2hex(random_bytes(8)),'startedAt'=>$now,'revealAt'=>$now+11,'settleAt'=>$now+17,'winner'=>$winner];$s['winnerIds'][]=$winner['id'];$s['winners'][]=$s['draw'];$s['draw']['wheelEntries']=$pool;
     }
     if($action==='close')$s['phase']='closed';
-    saveRoom($s);echo json_encode(snapshot($s,$token,admin()),JSON_UNESCAPED_UNICODE);
+    saveRoom($s);echo json_encode(snapshot($s,$token,canManageRoom($s)),JSON_UNESCAPED_UNICODE);
 } catch(JsonException $e){if(isset($db)&&$db->inTransaction())$db->rollBack();fail('Geçersiz JSON.',400);}
 catch(Throwable $e){if(isset($db)&&$db->inTransaction())$db->rollBack();error_log('Arena: '.$e->getMessage());fail('Sunucu işlemi tamamlayamadı. Lütfen tekrar deneyin.',500);}

@@ -7,7 +7,7 @@ mkdir -p "$ARENA_RELEASE_DIR/api" "$ARENA_RELEASE_DIR/data" "$ARENA_RELEASE_DIR/
 cp .htaccess app.html sw.js "$ARENA_RELEASE_DIR/"
 cp assets-build/manifest.webmanifest assets-build/offline.html "$ARENA_RELEASE_DIR/"
 cp -R assets-build/icons "$ARENA_RELEASE_DIR/icons"
-cp api/.htaccess api/core.php api/family.php api/index.php api/setup.php "$ARENA_RELEASE_DIR/api/"
+cp api/.htaccess api/core.php api/auth.php api/family.php api/index.php api/setup.php "$ARENA_RELEASE_DIR/api/"
 cp data/questions.json data/family-prompts.json "$ARENA_RELEASE_DIR/data/"
 cp -R assets-build/assets "$ARENA_RELEASE_DIR/assets-build/"
 cp data/flag-icons-LICENSE.txt "$ARENA_RELEASE_DIR/assets-build/assets/flag-icons-LICENSE.txt"

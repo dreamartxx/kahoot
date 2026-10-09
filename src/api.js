@@ -6,9 +6,14 @@ export async function api(action, data, token) {
     (data && action === "questions"
       ? "&category=" + encodeURIComponent(data.category || "")
       : "");
-  const read = ["status", "categories", "questions", "rooms", "room"].includes(
-    action,
-  );
+  const read = [
+    "status",
+    "categories",
+    "questions",
+    "rooms",
+    "room",
+    "users",
+  ].includes(action);
   const res = await fetch(url, {
     method: read ? "GET" : "POST",
     headers: {
@@ -17,6 +22,7 @@ export async function api(action, data, token) {
     },
     ...(read ? {} : { body: JSON.stringify(data || {}) }),
     cache: "no-store",
+    credentials: "same-origin",
   });
   let json;
   try {

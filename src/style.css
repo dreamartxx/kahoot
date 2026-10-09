@@ -4719,3 +4719,456 @@ dialog.answer-result-popup.result-wrong {
     font-size: 16px;
   }
 }
+/* The public entrance gives the game code the whole stage. */
+.welcome {
+  min-height: 100svh;
+  background: radial-gradient(
+    ellipse at 48% 38%,
+    #8144dc 0,
+    #52229b 52%,
+    #271354 100%
+  );
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 48px;
+  isolation: isolate;
+}
+.welcome-header,
+.welcome-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+.welcome-brand {
+  font:
+    800 29px Manrope,
+    sans-serif;
+  letter-spacing: -1.5px;
+}
+.welcome-brand span {
+  font-weight: 450;
+}
+.welcome-brand i {
+  font-style: normal;
+  color: #ffde67;
+  margin-left: 5px;
+}
+.welcome-login,
+.welcome-footer button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #ffffff40;
+  border-radius: 12px;
+  background: #ffffff12;
+  color: white;
+  padding: 12px 18px;
+  font-weight: 650;
+}
+.welcome-login:hover,
+.welcome-footer button:hover {
+  background: #ffffff28;
+}
+.welcome-center {
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
+  padding: 32px 0 40px;
+  position: relative;
+  z-index: 1;
+}
+.welcome-emblem {
+  position: relative;
+  width: 90px;
+  height: 88px;
+  margin: 0 auto 20px;
+  transform: rotate(-9deg);
+}
+.welcome-emblem b {
+  font: 900 85px Manrope;
+  line-height: 1;
+  color: #fff;
+  text-shadow:
+    0 5px 0 #b5a0ed,
+    0 14px 25px #1c094a60;
+}
+.welcome-emblem span,
+.welcome-emblem i,
+.welcome-emblem small {
+  position: absolute;
+  color: #ffdb5d;
+  font-style: normal;
+  text-shadow: 0 3px 12px #ffcd4c50;
+}
+.welcome-emblem span {
+  left: -8px;
+  top: 8px;
+  font-size: 32px;
+}
+.welcome-emblem i {
+  right: -4px;
+  top: -12px;
+  font-size: 30px;
+}
+.welcome-emblem small {
+  right: -8px;
+  bottom: 8px;
+  font-size: 23px;
+}
+.welcome-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 750;
+  color: #e0ceff;
+}
+.welcome h1 {
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -2.7px;
+  margin: 14px 0;
+}
+.welcome h1 em {
+  font-style: normal;
+  color: #ffdf70;
+}
+.welcome-intro {
+  font-size: 15px;
+  color: #e4d9fa;
+  line-height: 1.6;
+}
+.welcome-pin {
+  max-width: 390px;
+  margin: 28px auto 0;
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 22px;
+  padding: 24px;
+  color: #332747;
+  box-shadow:
+    0 12px 0 #27104c30,
+    0 24px 60px #23044950;
+}
+.welcome-pin label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 0 0 14px;
+}
+.welcome-pin input {
+  width: 100%;
+  height: 76px;
+  border: 2px solid #e7e0ef;
+  border-radius: 11px;
+  background: #f9f7fc;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: 9px;
+  color: #442678;
+  padding: 8px 4px 8px 13px;
+}
+.welcome-pin input::placeholder {
+  color: #b9aec9;
+  letter-spacing: 7px;
+}
+.welcome-pin input:focus {
+  outline: 3px solid #d8c3fc;
+  outline-offset: 2px;
+  border-color: #7850c3;
+}
+.welcome-pin button {
+  width: 100%;
+  margin-top: 14px;
+  background: #28202f;
+  border: 0;
+  border-bottom: 4px solid #110b18;
+  border-radius: 10px;
+  color: #fff;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+}
+.welcome-pin button:hover {
+  background: #493060;
+}
+.welcome-pin p {
+  font-size: 11px;
+  color: #8a8095;
+  margin-top: 16px;
+}
+.welcome-modes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin-top: 32px;
+  color: #eee4ff;
+}
+.welcome-modes span {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.welcome-modes svg {
+  width: 15px;
+  color: #ffdb69;
+}
+.welcome-footer {
+  font-size: 12px;
+  color: #d2bfe9;
+}
+.welcome-footer button {
+  border: 0;
+  font-size: 12px;
+  background: none;
+  padding: 8px 0;
+}
+.welcome-orbit {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid #ffffff0f;
+  border-radius: 50%;
+  width: 680px;
+  height: 680px;
+}
+.orbit-one {
+  left: -420px;
+  top: 18%;
+  border: 80px solid #ffffff04;
+  box-shadow: 0 0 0 70px #ffffff02;
+}
+.orbit-two {
+  right: -400px;
+  bottom: -280px;
+  border: 100px solid #ffffff05;
+  box-shadow: 0 0 0 60px #ffffff03;
+}
+.login-note {
+  font-size: 12px;
+  color: #83768f;
+  line-height: 1.6;
+  margin: 18px 0 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+.login-note svg {
+  margin-top: 2px;
+}
+.account-grid {
+  display: grid;
+  grid-template-columns: minmax(270px, 380px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.account-form,
+.account-list {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 26px;
+}
+.account-form-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.account-form h2,
+.account-list h2 {
+  font-size: 20px;
+}
+.account-list h2 > span {
+  font-size: 13px;
+  color: #877997;
+  padding: 4px 9px;
+  background: #f3eff8;
+  border-radius: 9px;
+  margin-left: 8px;
+}
+.account-list h2 {
+  margin-bottom: 15px;
+}
+.account-form .field small {
+  font-size: 11px;
+  color: #8c8098;
+  line-height: 1.5;
+}
+.account-active {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin: 20px 0;
+}
+.account-active input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--purple);
+}
+.account-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 20px;
+  color: #8b8097;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.account-error {
+  background: #fff0f0;
+  color: #b32e48;
+  padding: 12px;
+  border-radius: 9px;
+  font-size: 13px;
+  margin: 14px 0;
+  line-height: 1.5;
+}
+.account-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #eafaed;
+  color: #27724d;
+  padding: 12px;
+  border-radius: 9px;
+  font-size: 13px;
+  margin: 14px 0;
+  line-height: 1.5;
+}
+.account-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.account-row:last-child {
+  border: 0;
+}
+.account-avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #ece5ff;
+  color: #6a48b3;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.account-info {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+.account-info strong {
+  font-size: 14px;
+}
+.account-info small {
+  font-weight: 400;
+  color: #968a9f;
+}
+.account-info p {
+  font-size: 12px;
+  color: #928599;
+  margin-top: 5px;
+}
+.sidebar nav {
+  overflow-y: auto;
+  flex-shrink: 1;
+  min-height: 100px;
+}
+.sidebar-bottom b {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 900px) {
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+  .welcome {
+    padding: 22px 25px;
+  }
+  .welcome-login {
+    font-size: 12px;
+    padding: 11px;
+  }
+  .welcome-brand {
+    font-size: 24px;
+  }
+}
+@media (max-width: 520px) {
+  .welcome {
+    padding: 18px 20px;
+    min-height: 100svh;
+  }
+  .welcome-header {
+    gap: 10px;
+  }
+  .welcome-login {
+    font-size: 10px;
+    padding: 10px 9px;
+    gap: 5px;
+    border-radius: 9px;
+  }
+  .welcome-login svg {
+    width: 14px;
+  }
+  .welcome-brand {
+    font-size: 21px;
+  }
+  .welcome-center {
+    padding: 28px 0;
+  }
+  .welcome-emblem {
+    margin-bottom: 13px;
+    transform: rotate(-9deg) scale(0.85);
+    height: 76px;
+  }
+  .welcome h1 {
+    font-size: 43px;
+    letter-spacing: -2px;
+  }
+  .welcome-intro {
+    font-size: 13px;
+  }
+  .welcome-pin {
+    margin-top: 23px;
+    padding: 22px;
+  }
+  .welcome-modes {
+    gap: 12px 18px;
+    margin-top: 26px;
+  }
+  .welcome-modes span {
+    font-size: 11px;
+  }
+  .welcome-footer {
+    font-size: 10px;
+    gap: 12px;
+  }
+  .welcome-footer button {
+    font-size: 10px;
+  }
+  .account-form,
+  .account-list {
+    padding: 20px;
+  }
+  .sidebar nav {
+    overflow-y: visible;
+  }
+}

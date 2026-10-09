@@ -40,8 +40,7 @@ function adminHash(): string {
     $db->prepare($sql)->execute([config()['admin_hash']]);
     return $hash=(string)$db->query('SELECT password_hash FROM arena_auth WHERE id=1')->fetchColumn();
 }
-function admin(): bool { return !empty($_SESSION['admin_until']) && $_SESSION['admin_until']>time() && hash_equals(hash('sha256',adminHash()),(string)($_SESSION['admin_version']??'')); }
-function needAdmin(): void { if (!admin()) fail('Yönetici girişi gerekli.',401); }
+require_once __DIR__.'/auth.php';
 function inputText(mixed $s,int $min,int $max,string $label): string {
     if (!is_string($s)) fail($label.' geçersiz.');
     $s=trim(preg_replace('/\s+/u',' ',$s) ?? '');
@@ -55,7 +54,7 @@ function normalize(string $word): string {
 }
 function bank(): array {
     $bank=json_decode(file_get_contents(__DIR__.'/../data/questions.json'),true,512,JSON_THROW_ON_ERROR);
-    foreach(db()->query('SELECT content FROM arena_questions') as $row) $bank[]=json_decode($row['content'],true);
+    foreach(db()->query('SELECT content FROM arena_questions') as $row) { $q=json_decode($row['content'],true);$u=currentUser();if((int)($q['ownerId']??1)===1||($u&&($u['role']==='owner'||(int)$q['ownerId']===(int)$u['id'])))$bank[]=$q; }
     return $bank;
 }
 function rateLimit(string $action,int $limit): void {
@@ -100,11 +99,11 @@ function saveRoom(array $s): void { db()->prepare('UPDATE arena_rooms SET state=
 function playerKey(array $s,string $token): string { $key=hash('sha256',$token);if(!isset($s['players'][$key])) fail('Katılımcı oturumu bulunamadı. Yeniden katılın.',401);return $key; }
 function snapshot(array $s,?string $token=null,bool $host=false): array {
     syncQuizClock($s);
-    if($s['mode']==='family')return familySnapshot($s,$token);
+    if($s['mode']==='family')return familySnapshot($s,$token)+['canManage'=>$host];
     $now=microtime(true);$phase=$s['phase'];
     $visiblePlayers=$s['players'];
     if($s['mode']==='quiz' && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
-    $out=['pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score']],$visiblePlayers))];
+    $out=['canManage'=>$host,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score']],$visiblePlayers))];
     usort($out['players'],fn($a,$b)=>$b['score']<=>$a['score']);
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;
     if($me) $out['me']=['name'=>$me['name'],'score'=>$visiblePlayers[$key]['score']];

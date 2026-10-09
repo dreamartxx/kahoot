@@ -47,6 +47,8 @@ import { quizTransition } from "./quiz-transition";
 import { PwaInstall, PwaNotices } from "./PwaInstall";
 import { setupPwa } from "./pwa";
 import "./style.css";
+import Welcome from "./Welcome";
+import UserManagement from "./UserManagement";
 const modes = {
   family: { name: "Beni Tanıyor musun?", icon: Heart, color: "rose" },
   quiz: { name: "Bilgi yarışması", icon: Trophy, color: "purple" },
@@ -116,6 +118,8 @@ function App() {
   const [route, setRoute] = useState(location.hash.slice(1));
   const [tab, setTab] = useState("home");
   const [status, setStatus] = useState({ configured: true, admin: false });
+  const [authReady, setAuthReady] = useState(false);
+  const [authError, setAuthError] = useState("");
   const [counts, setCounts] = useState({});
   const [rooms, setRooms] = useState([]);
   const [showCompleted, setShowCompleted] = useState(false);
@@ -131,11 +135,14 @@ function App() {
     try {
       let s = await api("status");
       setStatus(s);
+      setAuthReady(true);
+      setAuthError("");
       if (s.configured) {
         setCounts(await api("categories"));
         if (s.admin) setRooms(await api("rooms"));
       }
     } catch (e) {
+      setAuthError(e.message);
       notify(e.message);
     }
   }
@@ -169,7 +176,15 @@ function App() {
       (showCompleted || !["finished", "closed"].includes(room.phase)),
   );
   let body;
-  if (route === "setup")
+  if (!authReady && route !== "setup")
+    body = (
+      <div className="center-page">
+        <ShieldCheck size={40} />
+        <h2>{authError || "Oturumun hazırlanıyor…"}</h2>
+        {authError && <Button onClick={refresh}>Tekrar dene</Button>}
+      </div>
+    );
+  else if (route === "setup")
     body = (
       <Setup
         notify={notify}
@@ -195,13 +210,20 @@ function App() {
         }}
       />
     );
-  } else
+  } else if (!status.admin)
+    body = (
+      <Welcome
+        onLogin={() => setModal({ type: "login" })}
+        onJoin={(pin) => go("join/" + pin)}
+      />
+    );
+  else
     body = (
       <div className="shell">
         <aside className="sidebar">
           <a className="brand" href="#">
             <span className="brand-icon">
-              b<span>✦</span>
+              ?<span>✦</span>
             </span>
             <span>
               bilgi<span className="brand-light">arena</span>
@@ -217,6 +239,9 @@ function App() {
               ["raffle", "Çekiliş", Ticket],
               ["cloud", "Kelime bulutu", Cloud],
               ["library", "Soru kütüphanesi", LibraryBig],
+              ...(status.user?.role === "owner"
+                ? [["users", "Kullanıcı yönetimi", Users]]
+                : []),
             ].map(([id, label, Icon]) => (
               <button
                 className={tab === id ? "active" : ""}
@@ -252,9 +277,7 @@ function App() {
           <div className="sidebar-bottom">
             <span className="avatar">{status.admin ? "Y" : "M"}</span>
             <div>
-              <b>
-                {status.admin ? "Yönetici stüdyosu" : "Merhaba, oyun kurucu!"}
-              </b>
+              <b>{status.user?.username || "Yönetici stüdyosu"}</b>
               <small>
                 {status.admin
                   ? "Etkinlikleriniz hazır"
@@ -266,9 +289,15 @@ function App() {
               className="icon-btn"
               onClick={async () => {
                 if (status.admin) {
-                  await api("logout");
-                  setStatus((s) => ({ ...s, admin: false }));
-                  setRooms([]);
+                  try {
+                    await api("logout");
+                    setStatus((s) => ({ ...s, admin: false, user: null }));
+                    setRooms([]);
+                    setTab("home");
+                    go("");
+                  } catch (e) {
+                    notify(e.message);
+                  }
                 } else setModal({ type: "login" });
               }}
             >
@@ -283,9 +312,11 @@ function App() {
               <b>
                 {tab === "home"
                   ? "Genel bakış"
-                  : tab === "library"
-                    ? "Soru kütüphanesi"
-                    : modes[tab]?.name}
+                  : tab === "users"
+                    ? "Kullanıcı yönetimi"
+                    : tab === "library"
+                      ? "Soru kütüphanesi"
+                      : modes[tab]?.name}
               </b>
             </div>
             <form
@@ -326,7 +357,9 @@ function App() {
                 <a href="#setup">Kurulumu aç</a>
               </div>
             )}
-            {tab === "library" ? (
+            {tab === "users" && status.user?.role === "owner" ? (
+              <UserManagement currentUser={status.user} onUpdate={refresh} />
+            ) : tab === "library" ? (
               <Library admin={status.admin} notify={notify} refresh={refresh} />
             ) : (
               <>
@@ -732,9 +765,9 @@ function App() {
       {modal?.type === "login" && (
         <Login
           onClose={() => setModal(null)}
-          onDone={() => {
+          onDone={(result) => {
             refresh();
-            setStatus((s) => ({ ...s, admin: true }));
+            setStatus((s) => ({ ...s, admin: true, user: result.user }));
             setModal(modal.next || null);
           }}
           notify={notify}
@@ -789,41 +822,63 @@ function App() {
     </>
   );
 }
-function Login({ onClose, onDone, notify }) {
-  const [pass, setPass] = useState(""),
-    [busy, setBusy] = useState(false);
+function Login({ onClose, onDone }) {
+  const [username, setUsername] = useState("admin"),
+    [pass, setPass] = useState(""),
+    [busy, setBusy] = useState(false),
+    [error, setError] = useState("");
   return (
     <Modal title="Stüdyona hoş geldin" onClose={onClose}>
       <p className="muted">
-        Etkinlik oluşturmak ve soruları yönetmek için giriş yap.
+        Bir kez giriş yap, tüm etkinliklerini buradan yönet.
       </p>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
           setBusy(true);
+          setError("");
           try {
-            await api("login", { password: pass });
-            onDone();
+            onDone(await api("login", { username, password: pass }));
           } catch (e) {
-            notify(e.message);
+            setError(e.message);
           } finally {
             setBusy(false);
           }
         }}
       >
-        <Field label="Yönetici şifresi">
+        <Field label="Kullanıcı adı">
           <input
             autoFocus
+            autoComplete="username"
+            name="username"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </Field>
+        <Field label="Şifre">
+          <input
             type="password"
             autoComplete="current-password"
+            name="password"
             required
             value={pass}
             onChange={(e) => setPass(e.target.value)}
           />
         </Field>
+        {error && (
+          <p className="account-error" role="alert">
+            {error}
+          </p>
+        )}
         <Button disabled={busy} className="full">
-          {busy ? "Giriş yapılıyor…" : "Stüdyoya gir"} <ArrowRight size={18} />
+          {busy ? "Giriş yapılıyor…" : "Stüdyoya gir"}
+          <ArrowRight size={18} />
         </Button>
+        <p className="login-note">
+          <ShieldCheck size={16} /> Bu cihazda oturumun açık kalır. Her oyunda
+          tekrar giriş yapman gerekmez.
+        </p>
       </form>
     </Modal>
   );
@@ -1261,6 +1316,14 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         <Button secondary onClick={onBack}>
           Geri dön
         </Button>
+      </div>
+    );
+  if (kind === "host" && admin && !room.canManage)
+    return (
+      <div className="center-page">
+        <ShieldCheck size={48} />
+        <h1>Bu etkinlik başka bir hesaba ait.</h1>
+        <Button onClick={onBack}>Stüdyoya dön</Button>
       </div>
     );
   if (

@@ -2,6 +2,15 @@
 
 QR ile katılımlı Türkçe etkinlik stüdyosu. React + PHP 8.2+ + MySQL/MariaDB; Hostinger Business Web Hosting üzerinde çalışır.
 
+## Giriş ve kullanıcılar
+
+- Ana sayfa katılımcılar için büyük oyun kodu alanını gösterir. Yönetici / Sunucu girişi stüdyoyu açar.
+- Mevcut yönetici şifresi otomatik olarak `admin` kullanıcı adına taşınır. Mevcut geçerli PHP oturumu ilk istekte kalıcı oturuma dönüştürülür. Kullanıcı adı Kullanıcı yönetimi bölümünden değiştirilebilir.
+- Yönetici **Kullanıcı yönetimi** bölümünden kullanıcı adı/şifre verebilir, hesabı düzenleyebilir, şifresini yenileyebilir veya pasife alabilir. Yeni hesaplar yalnızca kendi etkinliklerini ve özel sorularını yönetir; yönetici tümüne erişir. Eski etkinlik ve sorular yöneticiye aittir.
+- Şifre için minimum uzunluk yoktur; boş olamaz. Şifreler SHA-256 ön özeti üzerinden `password_hash` ile saklanır. Kendi şifresini değiştirmek mevcut şifreyi gerektirir.
+- `arena_session` çerezi HttpOnly, HTTPS üzerinde Secure ve SameSite=Strict kullanır; 30 gün geçerlidir, aktif kullanımda günlük yenilenir. Veritabanı yalnızca rastgele 256 bit oturum anahtarının özetini saklar. Çıkış, şifre değişimi ve hesabı pasife alma ilgili oturumları iptal eder. Çerezler silinirse, farklı tarayıcı/domain kullanılırsa veya 30 gün giriş yapılmazsa yeniden giriş gerekir.
+- `arena_users` ve `arena_sessions` ilk yetkili işlemde otomatik oluşturulur; `arena_auth` içindeki mevcut yönetici hash'i korunur. Yeni kurulumda da varsayılan kullanıcı adı `admin` olur.
+
 ## Modüller
 
 - **Bilgi yarışması:** Aile oyunu dışında 18 kategorinin her birinde 250 soru; toplam 4.500 hazır soru. Türkiye kategorisinde yalnız 20 büyükşehir plakası bulunur. Plakalar havuzu 81 ilin kodlarını, ters eşleştirmeleri, şehir çiftlerini ve rotaları içerir. Ülke bayrakları havuzu 196 ülke/bölge bayrağı ile 54 başkent ipucundan oluşur. Bayrak şıkları sunucudan gelen seçenek kodlarıyla yerel SVG görsellerini kullanır. Her tur 10 soru, her soruda dört şık ve tek doğru cevap. Kullanılmamış sorulara öncelik; havuz bitince en eski sorular tekrar kullanılır. Yönetici soruları elle seçebilir veya yeni sorular ekleyebilir. Sunucu süreyi, yanıt tekilliğini ve 500–1.000 arası hız puanını doğrular. Yanlış cevap 0 puan. Doğru cevap ve mevcut sorunun puanı soru kapanmadan katılımcıya gönderilmez.

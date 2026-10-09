@@ -25,7 +25,7 @@ jobs:
           coverage: none
       - run: npm ci
       - run: npm run check:bank
-      - run: php -l api/core.php && php -l api/family.php && php -l api/index.php && php -l api/setup.php
+      - run: php -l api/auth.php && php -l api/core.php && php -l api/family.php && php -l api/index.php && php -l api/setup.php
       - run: npm run build
       - run: npm test
       - name: Publish verified production files
