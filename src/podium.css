@@ -1,0 +1,334 @@
+.results:has(.podium-show) {
+  max-width: 1150px;
+}
+.podium-show {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 34px 28px 20px;
+  margin: 28px 0;
+  background:
+    radial-gradient(ellipse at 48% -10%, #6f48ba 0, transparent 60%),
+    radial-gradient(ellipse at 85% 65%, #283b75, transparent 50%), #15152d;
+  color: #fff;
+  box-shadow:
+    0 25px 60px #3a235333,
+    inset 0 0 0 1px #ffffff20;
+  text-align: center;
+}
+.podium-show:before,
+.podium-show:after {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: 20%;
+  width: 70px;
+  height: 700px;
+  background: linear-gradient(#fff2, transparent);
+  transform: rotate(27deg);
+  pointer-events: none;
+  z-index: -1;
+}
+.podium-show:after {
+  left: auto;
+  right: 20%;
+  transform: rotate(-27deg);
+}
+.podium-heading > span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 800;
+  color: #d8c4ff;
+}
+.podium-heading h3 {
+  font-size: clamp(23px, 3.5vw, 37px);
+  margin: 9px 0;
+  color: white;
+  letter-spacing: -1px;
+}
+.podium-heading p,
+.results .podium-heading p {
+  font-size: 12px;
+  color: #b7acce;
+  margin: 0 0 20px;
+}
+.podium-sparkles {
+  position: absolute;
+  inset: 20px 4% auto;
+  display: flex;
+  justify-content: space-between;
+  color: #ffe4a1;
+  font-size: 28px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.podium-sparkles span {
+  margin-top: 75px;
+  font-size: 15px;
+}
+.podium-stage {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  list-style: none;
+  padding: 42px 0 0;
+  margin: 0;
+  gap: 9px;
+  border-bottom: 3px solid #a190db55;
+  perspective: 1000px;
+}
+.podium-player {
+  flex: 0 1 155px;
+  min-width: 0;
+  position: relative;
+  --step-color: #6974c2;
+  animation: podium-arrive 0.8s both;
+  animation-delay: var(--reveal-delay);
+}
+.podium-rank-1 {
+  --step-color: #eabb52;
+}
+.podium-rank-2 {
+  --step-color: #bccbeb;
+}
+.podium-rank-3 {
+  --step-color: #d79672;
+}
+.podium-rank-4 {
+  --step-color: #9d81d5;
+}
+.podium-rank-5 {
+  --step-color: #648bc2;
+}
+.podium-rank-6 {
+  --step-color: #54aeb0;
+}
+.podium-contestant {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2px 17px;
+  gap: 5px;
+}
+.podium-contestant > .character-avatar {
+  width: clamp(80px, 12vw, 145px);
+  height: clamp(95px, 13vw, 160px);
+  max-width: 100%;
+  transition: transform 0.25s;
+}
+.podium-player:hover .character-avatar {
+  transform: translateY(-8px) scale(1.05);
+}
+.podium-contestant > strong {
+  font-size: clamp(12px, 1.5vw, 18px);
+  line-height: 1.3;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.podium-role {
+  font-size: 11px;
+  color: #bfb3d5;
+}
+.podium-score {
+  font-size: clamp(12px, 1.5vw, 19px);
+  font-weight: 800;
+  color: #ffe6a1;
+  white-space: nowrap;
+}
+.podium-score small {
+  font-size: 9px;
+  font-weight: 500;
+  color: #c7bfdd;
+}
+.podium-crown {
+  position: absolute;
+  top: -39px;
+  font-size: 40px;
+  color: #ffdb6c;
+  text-shadow: 0 0 25px #ffc64a90;
+  transform: rotate(-12deg);
+  z-index: 2;
+  animation: crown-glow 2.5s ease-in-out infinite;
+}
+.podium-step {
+  height: calc(36px + var(--step) * 24px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border-radius: 9px 9px 0 0;
+  padding: 18px 3px 8px;
+  color: #fff;
+  background:
+    linear-gradient(105deg, #ffffff33, transparent 45%, #0003),
+    linear-gradient(
+      var(--step-color),
+      color-mix(in srgb, var(--step-color), #191332 55%)
+    );
+  box-shadow:
+    inset -7px 0 #0002,
+    inset 0 3px #ffffff80,
+    0 8px 24px #0003;
+}
+.podium-step b {
+  font-size: 32px;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 2px 3px #0003;
+}
+.podium-step b small {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  margin-top: 4px;
+  opacity: 0.85;
+}
+.podium-step > span {
+  font-size: 22px;
+  color: #fff7;
+}
+.podium-rank-1 .podium-step {
+  box-shadow:
+    inset -7px 0 #0002,
+    inset 0 3px #fff9,
+    0 0 35px #ffd46930;
+}
+.podium-note,
+.results .podium-note {
+  font-size: 10px;
+  color: #b8abc9;
+  margin: 16px 0 0;
+}
+.ranking-details {
+  margin: 24px auto;
+  text-align: left;
+  max-width: 760px;
+}
+.ranking-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #74518b;
+  padding: 15px;
+  background: #f3edf9;
+  border-radius: 12px;
+}
+.ranking-details .leaderboard {
+  margin-top: 15px;
+}
+@keyframes podium-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(55px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes crown-glow {
+  50% {
+    filter: drop-shadow(0 0 9px #ffdc76);
+    transform: translateY(-4px) rotate(-8deg);
+  }
+}
+@media (max-width: 600px) {
+  .results:has(.podium-show) {
+    padding: 0 8px;
+  }
+  .podium-show {
+    border-radius: 21px;
+    padding: 27px 10px 16px;
+    margin: 22px 0;
+  }
+  .podium-stage {
+    gap: 4px;
+    padding-top: 40px;
+  }
+  .podium-contestant {
+    padding-bottom: 12px;
+    gap: 4px;
+  }
+  .podium-contestant > .character-avatar {
+    width: 100%;
+    height: 76px;
+  }
+  .podium-contestant > strong {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+  .podium-score {
+    font-size: 11px;
+  }
+  .podium-score small {
+    display: block;
+    font-size: 8px;
+  }
+  .podium-step {
+    height: calc(27px + var(--step) * 16px);
+    padding-top: 12px;
+    box-shadow:
+      inset -4px 0 #0002,
+      inset 0 3px #ffffff80;
+  }
+  .podium-step b {
+    font-size: 24px;
+  }
+  .podium-step b small {
+    font-size: 8px;
+  }
+  .podium-step > span {
+    font-size: 15px;
+  }
+  .podium-crown {
+    font-size: 29px;
+    top: -28px;
+  }
+  .podium-role {
+    font-size: 9px;
+  }
+  .podium-heading h3 {
+    font-size: 24px;
+  }
+  .podium-heading > span {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+  .podium-sparkles {
+    font-size: 18px;
+  }
+  .podium-note,
+  .results .podium-note {
+    font-size: 9px;
+  }
+  .ranking-details .leaderboard > div {
+    gap: 8px;
+    padding: 12px 10px;
+  }
+  .ranking-details .leaderboard .character-avatar {
+    width: 36px;
+    height: 42px;
+  }
+  .ranking-details .leaderboard b {
+    font-size: 12px;
+  }
+  .ranking-details .leaderboard strong {
+    font-size: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .podium-player,
+  .podium-crown {
+    animation: none;
+  }
+  .podium-contestant > .character-avatar {
+    transition: none;
+  }
+}

@@ -103,10 +103,10 @@ function snapshot(array $s,?string $token=null,bool $host=false): array {
     $now=microtime(true);$phase=$s['phase'];
     $visiblePlayers=$s['players'];
     if($s['mode']==='quiz' && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
-    $out=['canManage'=>$host,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score']],$visiblePlayers))];
+    $out=['canManage'=>$host,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score'],'avatar'=>$p['avatar']??'astronaut'],$visiblePlayers))];
     usort($out['players'],fn($a,$b)=>$b['score']<=>$a['score']);
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;
-    if($me) $out['me']=['name'=>$me['name'],'score'=>$visiblePlayers[$key]['score']];
+    if($me) $out['me']=['name'=>$me['name'],'score'=>$visiblePlayers[$key]['score'],'avatar'=>$me['avatar']??'astronaut'];
     if($s['mode']==='quiz') {
         $i=$s['index'];$out+=['index'=>$i,'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'revealUntil'=>$s['revealUntil']??null,'countdownUntil'=>$s['countdownUntil']??null,'answeredCount'=>count($s['answers'][(string)$i]??[])];
         if($i>=0 && $phase!=='countdown' && isset($s['questions'][$i])) { $q=$s['questions'][$i];$out['question']=['id'=>$q['id'],'text'=>$q['text'],'options'=>$q['options']];if(in_array($phase,['reveal','finished'])){$out['question']['correct']=$q['correct'];$out['question']['explanation']=$q['explanation']??'';} }

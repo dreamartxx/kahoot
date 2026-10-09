@@ -1622,3 +1622,68 @@ test("existing PHP owner login upgrades once, and active durable sessions extend
     false,
   );
 });
+
+test("characters persist in quiz and family snapshots, results and legacy rooms", async () => {
+  const quiz = await create("quiz");
+  for (const avatar of ["../config.local.php", "invalid", ["fox"]]) {
+    assert.equal(
+      (await call("join", { pin: quiz.pin, name: "Hatalı", avatar })).status,
+      400,
+    );
+  }
+  const joined = await call("join", {
+    pin: quiz.pin,
+    name: "Tilki",
+    avatar: "fox",
+  });
+  assert.equal(joined.status, 200);
+  assert.equal(joined.data.room.me.avatar, "fox");
+  assert.equal(joined.data.room.players[0].avatar, "fox");
+  const reloaded = await call(
+    "room",
+    { pin: quiz.pin },
+    { token: joined.data.token },
+  );
+  assert.equal(reloaded.data.me.avatar, "fox");
+  mutateDB(
+    quiz.pin,
+    "foreach($s['players'] as &$p)unset($p['avatar']);unset($p)",
+  );
+  assert.equal(
+    (await call("room", { pin: quiz.pin })).data.players[0].avatar,
+    "astronaut",
+  );
+  const family = await create("family");
+  const one = await call("join", {
+    pin: family.pin,
+    name: "Ada",
+    role: "Anne",
+    avatar: "wizard",
+  });
+  const two = await call("join", {
+    pin: family.pin,
+    name: "Efe",
+    role: "Baba",
+    avatar: "dragon",
+  });
+  assert.equal(one.data.room.me.avatar, "wizard");
+  assert.deepEqual(
+    two.data.room.players.map((p) => p.avatar),
+    ["wizard", "dragon"],
+  );
+  mutateDB(family.pin, "$s['phase']='finished'");
+  const result = await call("room", { pin: family.pin });
+  assert.deepEqual(
+    result.data.results.ranking.map((p) => p.avatar),
+    ["wizard", "dragon"],
+  );
+  assert.deepEqual(
+    result.data.results.byPerson.map((p) => p.avatar),
+    ["wizard", "dragon"],
+  );
+  const legacy = await create("cloud");
+  assert.equal(
+    (await join(legacy.pin, "Eski İstemci")).room.me.avatar,
+    "astronaut",
+  );
+});

@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 
 const label = (person) => `${person.name} (${person.role})`;
-const avatars = ["🦊", "🐼", "🐯", "🐸", "🐨", "🦁"];
+import { CharacterAvatar } from "./CharacterAvatar";
+import Podium from "./Podium";
 
 function FamilyProfile({ room, action, busy }) {
   const draftKey = `arena-family-draft:${room.pin}:${room.me.id}`;
@@ -111,6 +112,7 @@ function FamilyResults({ results }) {
           aynı sırayı paylaşır.
         </p>
       </div>
+      <Podium players={ranking} />
       <div className="family-highlights">
         <article>
           <Trophy size={25} />
@@ -133,7 +135,10 @@ function FamilyResults({ results }) {
       <div className="family-rankings" aria-label="Aile oyunu puan tablosu">
         {ranking.map((p) => (
           <div className="family-ranking-row" key={p.id}>
-            <span className="family-rank">{p.rank}</span>
+            <span className="family-rank">
+              {p.rank}
+              <CharacterAvatar id={p.avatar} />
+            </span>
             <div>
               <strong>{label(p)}</strong>
               <small>
@@ -162,7 +167,7 @@ function FamilyResults({ results }) {
           return (
             <article key={person.id}>
               <span className="family-person-avatar">
-                {avatars[index % avatars.length]}
+                <CharacterAvatar id={person.avatar} />
               </span>
               <h4>{label(person)}</h4>
               <p>
@@ -271,7 +276,7 @@ export default function FamilyRoom({
               {room.players.map((p, i) => (
                 <div key={p.id}>
                   <span className="family-person-avatar">
-                    {avatars[i % avatars.length]}
+                    <CharacterAvatar id={p.avatar} />
                   </span>
                   <span>
                     <strong>{p.name}</strong>

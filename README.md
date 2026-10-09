@@ -75,3 +75,9 @@ Sorular özgün Türkçe ifadelerle hazırlanmıştır. Konu kontrolü için [NA
 ### Tarih soru havuzlarının bakımı
 
 Dört tarih kategorisinin ilk 150 sorusu `data/history/`, ilave 100 sorusu `data/expansion250/` altındadır. Diğer genişletme içerikleri `scripts/bank250_*.py` içinde tutulur; `scripts/bank_250.py` bunları mevcut kayıtlardan sonra ekler. Aile oyununun 50 hazır sorusu ve özel soru seçeneği bu havuzdan bağımsızdır. `scripts/history_bank.py` konu türüne uygun cevap havuzlarından üç yanlış seçenek seçer. `python3 scripts/build_bank.py` tüm bankayı deterministik üretir. Kur’an anlatımına dayalı soruların açıklamalarında sûre/âyet bulunur; siyer bilgileri soru metninde ayrıca belirtilir. Editoryal başvuru kaynakları `data/question-sources.json` içindedir.
+
+### Katılımcı karakterleri ve final podyumu
+
+Katılımcılar oyun girişinde altı temadan 20 adet 3D görünümlü karakter seçer. Seçim oyun kaydında saklanır, aynı cihazın sonraki katılımında hatırlanır ve bekleme salonu, oyuncu bilgisi, ara sıralama ve finalde görünür. Eski oyun ve istemciler astronot karakteriyle uyumludur. API yalnızca tanımlı karakter kimliklerini kabul eder.
+
+Bilgi yarışması ve aile oyunu finalinde ilk altı katılımcı animasyonlu basamaklı podyumda gösterilir. Eşit puanlar aynı sırayı ve aynı basamak yüksekliğini paylaşır; tam sıralama erişilebilir kalır. Mobil görünüm ve azaltılmış hareket tercihi desteklenir. Görseller `src/characters/` altında, üretim notları `docs/character-art.md` dosyasındadır.

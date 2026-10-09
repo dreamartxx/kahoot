@@ -49,6 +49,10 @@ import { setupPwa } from "./pwa";
 import "./style.css";
 import Welcome from "./Welcome";
 import Overview from "./Overview";
+import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
+import { characterById } from "./characters";
+import Podium from "./Podium";
+import { rankPlayers } from "./ranking";
 const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
 import UserManagement from "./UserManagement";
 const modes = {
@@ -1050,6 +1054,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     ),
     [name, setName] = useState(""),
     [role, setRole] = useState(""),
+    [avatar, setAvatar] = useState(
+      () => characterById(localStorage.getItem("arena:character")).id,
+    ),
     [busy, setBusy] = useState(false),
     [tick, setTick] = useState(Date.now()),
     [qr, setQr] = useState(false),
@@ -1160,9 +1167,11 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       const r = await api("join", {
         pin,
         name,
+        avatar,
         ...(room.mode === "family" ? { role } : {}),
       });
       localStorage.setItem("arena:" + pin, r.token);
+      localStorage.setItem("arena:character", avatar);
       setToken(r.token);
       setRoom(r.room);
     } catch (e) {
@@ -1277,6 +1286,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                 </datalist>
               </Field>
             )}
+            <CharacterPicker value={avatar} onChange={setAvatar} />
             <Button className="full" disabled={busy}>
               {busy ? "Katılıyorsun…" : "Ben de varım!"}{" "}
               <ArrowRight size={18} />
@@ -1359,7 +1369,8 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           {room.me && (
             <>
               {" "}
-              · Merhaba, <b>{room.me.name}</b>
+              · <CharacterAvatar id={room.me.avatar} /> Merhaba,{" "}
+              <b>{room.me.name}</b>
             </>
           )}
         </span>
@@ -1461,18 +1472,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                 <div className="player-chips">
                   {room.players.map((p, i) => (
                     <span key={p.name}>
-                      <i
-                        style={{
-                          background: [
-                            "#e6dcff",
-                            "#dcf0da",
-                            "#ffead1",
-                            "#ffe0e5",
-                          ][i % 4],
-                        }}
-                      >
-                        {["🦊", "🐼", "🐸", "🐯", "🐨"][i % 5]}
-                      </i>
+                      <CharacterAvatar id={p.avatar} />
                       {p.name}
                     </span>
                   ))}
@@ -1605,6 +1605,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                   <div className="mini-ranking">
                     {room.players.slice(0, 3).map((p, i) => (
                       <span key={p.name}>
+                        <CharacterAvatar id={p.avatar} />{" "}
                         {["🥇", "🥈", "🥉"][i]} {p.name} <b>{p.score}</b>
                       </span>
                     ))}
@@ -1795,34 +1796,36 @@ function AnswerResultPopup({ correct, points, correctAnswer }) {
   );
 }
 function Results({ room, host }) {
+  const ranking = rankPlayers(room.players);
   return (
     <div className="results">
-      <div className="big-emoji">🏆</div>
-      <span className="eyebrow">ALKIŞLAR HERKESE!</span>
+      <span className="eyebrow">YARIŞMA TAMAMLANDI</span>
       <h2>
         {room.players[0]?.name || "Yarışma"}
         {room.players.length ? " zirvede!" : " tamamlandı!"}
       </h2>
-      <p>Merak kazandı, güzel anılar birikti.</p>
-      <div className="leaderboard">
-        {room.players.map((p, i) => (
-          <div key={p.name}>
-            <span className="rank">
-              {i < 3 ? ["🥇", "🥈", "🥉"][i] : i + 1}
-            </span>
-            <b>{p.name}</b>
-            <strong>
-              {p.score.toLocaleString("tr")} <small>puan</small>
-            </strong>
-          </div>
-        ))}
-      </div>
+      <Podium players={ranking} />
+      <details className="ranking-details">
+        <summary>Tüm sıralamayı gör · {ranking.length} yarışmacı</summary>
+        <div className="leaderboard">
+          {ranking.map((p) => (
+            <div key={p.name}>
+              <span className="rank">{p.rank}</span>
+              <CharacterAvatar id={p.avatar} />
+              <b>{p.name}</b>
+              <strong>
+                {p.score.toLocaleString("tr")} <small>puan</small>
+              </strong>
+            </div>
+          ))}
+        </div>
+      </details>
       {host && (
         <Button
           secondary
           onClick={() =>
             downloadCSV(
-              room.players.map((p, i) => [i + 1, p.name, p.score]),
+              ranking.map((p) => [p.rank, p.name, p.score]),
               ["Sıra", "İsim", "Puan"],
               "yarışma-sonuçları.csv",
             )
