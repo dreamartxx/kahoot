@@ -1163,3 +1163,119 @@ test("family rooms from before the fifty-question pool keep their original ten p
   assert.equal(deck.length, 20);
   assert(deck.every((q) => legacy.includes(q.promptId)));
 });
+
+test("custom family questions mix with the pool and keep participant answers private in four-choice rounds", async () => {
+  const familyQuestions = [
+    {
+      text: "En sevdiğim kahvaltılık hangisi?",
+      examples: ["Menemen", "Simit", "Tost"],
+    },
+    {
+      text: "En çok sevdiğim yemek hangisi?",
+      examples: ["Mantı", "Pizza", "Köfte"],
+    },
+  ];
+  const room = await create("family", { familyQuestions, seconds: 90 });
+  assert.equal(room.prompts.length, 10);
+  assert.equal(
+    room.prompts.filter((p) => p.id.startsWith("custom-family-")).length,
+    2,
+  );
+  assert.equal(new Set(room.prompts.map((p) => p.text)).size, 10);
+  for (const custom of familyQuestions)
+    assert(room.prompts.some((p) => p.text === custom.text));
+  assert.deepEqual(
+    (await call("room", { pin: room.pin })).data.prompts,
+    room.prompts,
+  );
+  const privateAnswers = [];
+  for (const [index, name] of ["Elif", "Can"].entries()) {
+    const player = await call("join", { pin: room.pin, name, role: "Kuzen" });
+    const answers = Object.fromEntries(
+      room.prompts.map((p, i) => [
+        p.id,
+        p.text === familyQuestions[0].text
+          ? ["Menemen", "Simit"][index]
+          : `${name} özel cevabı ${i}`,
+      ]),
+    );
+    privateAnswers.push(...Object.values(answers));
+    const saved = await call(
+      "family_profile",
+      { pin: room.pin, answers },
+      { token: player.data.token },
+    );
+    assert.equal(saved.status, 200);
+    assert.deepEqual(saved.data.myProfile, answers);
+  }
+  const lobby = JSON.stringify(
+    (await call("room", { pin: room.pin }, { admin: true })).data,
+  );
+  for (const answer of privateAnswers) assert(!lobby.includes(answer));
+  const started = await call(
+    "family_start",
+    { pin: room.pin },
+    { admin: true },
+  );
+  assert.equal(started.status, 200);
+  assert.equal(started.data.total, 20);
+  assert.equal(started.data.question.correct, undefined);
+  const deck = JSON.parse(
+    mutateDB(room.pin, 'echo json_encode($s["questions"])').toString(),
+  );
+  for (const q of deck) {
+    assert.equal(q.options.length, 4);
+    assert.equal(new Set(q.options).size, 4);
+    assert(privateAnswers.includes(q.options[q.correct]));
+    q.options.forEach((option, i) => {
+      if (i !== q.correct) assert(!privateAnswers.includes(option));
+    });
+  }
+  assert.equal(
+    deck.filter((q) => q.text.includes("«En sevdiğim kahvaltılık hangisi?»"))
+      .length,
+    2,
+  );
+});
+
+test("all ten family questions may be custom; invalid and unauthorized submissions are rejected", async () => {
+  const familyQuestions = Array.from({ length: 10 }, (_, i) => ({
+    text: `En sevdiğim aile etkinliği ${i + 1} hangisi?`,
+    examples: ["Piknik", "Yürüyüş", "Sinema"],
+  }));
+  const room = await create("family", { familyQuestions });
+  assert.equal(room.prompts.length, 10);
+  assert(room.prompts.every((p) => p.id.startsWith("custom-family-")));
+  for (const invalid of [
+    "invalid",
+    [null],
+    [{ ...familyQuestions[0], text: "" }],
+    [{ ...familyQuestions[0], examples: ["Tek"] }],
+    [{ ...familyQuestions[0], examples: ["PİKNİK", "piknik", "Tost"] }],
+    [familyQuestions[0], familyQuestions[0]],
+    [...familyQuestions, familyQuestions[0]],
+  ]) {
+    assert.equal(
+      (
+        await call(
+          "create",
+          { mode: "family", title: "Özel aile", familyQuestions: invalid },
+          { admin: true },
+        )
+      ).status,
+      400,
+    );
+  }
+  assert.equal(
+    (
+      await call("create", {
+        mode: "family",
+        title: "Özel aile",
+        familyQuestions,
+      })
+    ).status,
+    401,
+  );
+  const defaultRoom = await create("family", { familyQuestions: [] });
+  assert(defaultRoom.prompts.every((p) => !p.id.startsWith("custom-family-")));
+});

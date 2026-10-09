@@ -12,7 +12,23 @@ function familyRoomPrompts(array $s): array {
     $pool=array_column(familyPrompts(),null,'id');
     return array_map(fn($id)=>$pool[$id],$legacy);
 }
-function selectFamilyPrompts(PDO $db): array {
+function customFamilyPrompts(mixed $input): array {
+    if(!is_array($input)||!array_is_list($input)||count($input)>10)fail('En fazla 10 özel aile sorusu ekleyebilirsin.');
+    $out=[];$seen=[];
+    foreach($input as $row){
+        if(!is_array($row))fail('Özel aile sorusu geçersiz.');
+        $text=inputText($row['text']??'',5,200,'Özel soru');$norm=normalize($text);
+        if($norm===''||isset($seen[$norm]))fail('Özel sorular anlamlı ve birbirinden farklı olmalı.');$seen[$norm]=true;
+        $examples=$row['examples']??null;
+        if(!is_array($examples)||!array_is_list($examples)||count($examples)!==3)fail('Her özel soru için üç farklı örnek şık yaz.');
+        $clean=[];foreach($examples as $value){$value=inputText($value,1,80,'Örnek şık');if(normalize($value)==='')fail('Örnek şıklarda harf veya rakam kullan.');$clean[]=$value;}
+        if(count(array_unique(array_map('normalize',$clean)))!==3)fail('Örnek şıklar birbirinden farklı olmalı.');
+        $out[]=['id'=>'custom-family-'.bin2hex(random_bytes(8)),'self'=>$text,'ask'=>'«'.$text.'» sorusuna kendisi için verdiği cevap hangisi?','examples'=>$clean];
+    }
+    return $out;
+}
+function selectFamilyPrompts(PDO $db, int $count=10, array $excluded=[]): array {
+    if($count===0)return [];
     // Serialize selection and use a monotonic round number, including games
     // created in the same second. The shared history survives room expiry.
     $mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
@@ -21,10 +37,10 @@ function selectFamilyPrompts(PDO $db): array {
     $db->prepare($sql)->execute([$clockId,time()]);
     $clock=$db->prepare('SELECT used_at FROM arena_history WHERE id=?');$clock->execute([$clockId]);$round=(int)$clock->fetchColumn();
     $history=[];foreach($db->query("SELECT id,used_at FROM arena_history WHERE id LIKE 'family-prompt:%'") as $row)$history[$row['id']]=(int)$row['used_at'];
-    $groups=[];foreach(familyPrompts() as $prompt)$groups[$prompt['group']][]=$prompt;
+    $groups=[];foreach(familyPrompts() as $prompt){if(in_array(normalize($prompt['self']),$excluded,true))continue;$groups[$prompt['group']][]=$prompt;}
     $selected=[];
     foreach($groups as $pool){shuffle($pool);usort($pool,fn($a,$b)=>($history['family-prompt:'.$a['id']]??0)<=>($history['family-prompt:'.$b['id']]??0));array_push($selected,...array_slice($pool,0,2));}
-    shuffle($selected);
+    shuffle($selected);$selected=array_slice($selected,0,$count);
     $sql=$mysql?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';
     $record=$db->prepare($sql);foreach($selected as $p)$record->execute(['family-prompt:'.$p['id'],$round]);
     return $selected;

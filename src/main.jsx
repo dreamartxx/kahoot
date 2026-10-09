@@ -42,6 +42,7 @@ import { winnerRotation, wheelEase } from "./wheel-utils";
 import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
 import FamilyRoom from "./FamilyRoom";
+import FamilyQuestionEditor from "./FamilyQuestionEditor";
 import { quizTransition } from "./quiz-transition";
 import { PwaInstall, PwaNotices } from "./PwaInstall";
 import { setupPwa } from "./pwa";
@@ -896,7 +897,11 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
     [busy, setBusy] = useState(false),
     [manual, setManual] = useState(false),
     [qs, setQs] = useState([]),
-    [selected, setSelected] = useState([]);
+    [selected, setSelected] = useState([]),
+    [customFamily, setCustomFamily] = useState(false),
+    [familyQuestions, setFamilyQuestions] = useState([
+      { text: "", examples: ["", "", ""] },
+    ]);
   useEffect(() => {
     if (manual)
       api("questions", { category: cat })
@@ -908,7 +913,7 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
     <Modal
       title={modes[mode].name + " oluştur"}
       onClose={onClose}
-      wide={manual}
+      wide={manual || customFamily}
     >
       <form
         onSubmit={async (e) => {
@@ -923,6 +928,9 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
                 seconds: Number(seconds),
                 prompt,
                 questionIds: manual ? selected : [],
+                ...(mode === "family"
+                  ? { familyQuestions: customFamily ? familyQuestions : [] }
+                  : {}),
               }),
             );
           } catch (e) {
@@ -1015,10 +1023,10 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
             <div className="info-box">
               <Heart size={24} />
               <span>
-                50 soruluk havuzdan 10 soru seçilir. Herkes adını ve ailedeki
-                rolünü yazar, o oyun için seçilen aynı soruları kendisi için
-                cevaplar. Herkes hazır olunca dört şıklı aile yarışması başlar.
-                En az 2 kişiyle oynanır.
+                Hazır havuzdan oyna veya kendi sorularını ekle. Herkes adını ve
+                ailedeki rolünü yazar, aynı 10 soruyu kendisi için cevaplar.
+                Herkes hazır olunca dört şıklı aile yarışması başlar. En az 2
+                kişiyle oynanır.
               </span>
             </div>
             <Field label="Soru başına süre">
@@ -1033,6 +1041,24 @@ function Create({ mode, initialCat, onClose, onDone, notify }) {
                 ))}
               </select>
             </Field>
+            <label className="check-row">
+              <input
+                type="checkbox"
+                checked={customFamily}
+                onChange={(e) => setCustomFamily(e.target.checked)}
+              />
+              Kendi aile sorularımı eklemek istiyorum
+            </label>
+            {customFamily ? (
+              <FamilyQuestionEditor
+                questions={familyQuestions}
+                onChange={setFamilyQuestions}
+              />
+            ) : (
+              <p className="muted">
+                50 soruluk havuzdan her oyun için 10 soru seçilir.
+              </p>
+            )}
             <p className="muted">
               Her aile üyesi için 10 soru sorulur. Doğru cevap 100 puan; kendi
               sorunu cevaplayamazsın.

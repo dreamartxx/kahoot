@@ -1038,6 +1038,8 @@ dialog.wide {
   color: #908499;
   font-weight: 600;
 }
+.family-custom-question input,
+.family-custom-question textarea,
 .field input,
 .field textarea,
 .field select,
@@ -1051,6 +1053,8 @@ dialog.wide {
   color: #54445e;
   outline: none;
 }
+.family-custom-question input:focus,
+.family-custom-question textarea:focus,
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
@@ -4653,5 +4657,65 @@ dialog.answer-result-popup.result-wrong {
   }
   .sidebar {
     padding-top: max(24px, env(safe-area-inset-top));
+  }
+}
+
+.family-question-editor {
+  margin: 18px 0;
+}
+.family-editor-summary {
+  border-radius: 14px;
+  padding: 16px;
+  background: #f4eafa;
+  color: #624477;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.family-editor-summary p {
+  margin: 8px 0 0;
+}
+.family-custom-question {
+  min-width: 0;
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid #e9ddef;
+  border-radius: 14px;
+}
+.family-custom-question legend {
+  padding: 0 8px;
+  color: #744796;
+  font-size: 13px;
+  font-weight: 700;
+}
+.family-custom-question label {
+  display: grid;
+  gap: 8px;
+  color: #796185;
+  font-size: 12px;
+  font-weight: 600;
+}
+.family-custom-question textarea {
+  min-height: 78px;
+  resize: vertical;
+}
+.family-example-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.family-custom-question input {
+  min-width: 0;
+}
+@media (max-width: 560px) {
+  .family-example-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .family-custom-question input,
+  .family-custom-question textarea {
+    font-size: 16px;
   }
 }
