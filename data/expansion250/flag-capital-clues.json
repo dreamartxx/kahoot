@@ -1,0 +1,326 @@
+[
+  {
+    "code": "tr",
+    "name": "Türkiye",
+    "capital": "Ankara",
+    "region": "Asya"
+  },
+  {
+    "code": "de",
+    "name": "Almanya",
+    "capital": "Berlin",
+    "region": "Avrupa"
+  },
+  {
+    "code": "fr",
+    "name": "Fransa",
+    "capital": "Paris",
+    "region": "Avrupa"
+  },
+  {
+    "code": "it",
+    "name": "İtalya",
+    "capital": "Roma",
+    "region": "Avrupa"
+  },
+  {
+    "code": "es",
+    "name": "İspanya",
+    "capital": "Madrid",
+    "region": "Avrupa"
+  },
+  {
+    "code": "pt",
+    "name": "Portekiz",
+    "capital": "Lizbon",
+    "region": "Avrupa"
+  },
+  {
+    "code": "gb",
+    "name": "Birleşik Krallık",
+    "capital": "Londra",
+    "region": "Avrupa"
+  },
+  {
+    "code": "ie",
+    "name": "İrlanda",
+    "capital": "Dublin",
+    "region": "Avrupa"
+  },
+  {
+    "code": "be",
+    "name": "Belçika",
+    "capital": "Brüksel",
+    "region": "Avrupa"
+  },
+  {
+    "code": "nl",
+    "name": "Hollanda",
+    "capital": "Amsterdam",
+    "region": "Avrupa"
+  },
+  {
+    "code": "lu",
+    "name": "Lüksemburg",
+    "capital": "Lüksemburg",
+    "region": "Avrupa"
+  },
+  {
+    "code": "ch",
+    "name": "İsviçre",
+    "capital": "Bern",
+    "region": "Avrupa"
+  },
+  {
+    "code": "at",
+    "name": "Avusturya",
+    "capital": "Viyana",
+    "region": "Avrupa"
+  },
+  {
+    "code": "pl",
+    "name": "Polonya",
+    "capital": "Varşova",
+    "region": "Avrupa"
+  },
+  {
+    "code": "cz",
+    "name": "Çekya",
+    "capital": "Prag",
+    "region": "Avrupa"
+  },
+  {
+    "code": "sk",
+    "name": "Slovakya",
+    "capital": "Bratislava",
+    "region": "Avrupa"
+  },
+  {
+    "code": "hu",
+    "name": "Macaristan",
+    "capital": "Budapeşte",
+    "region": "Avrupa"
+  },
+  {
+    "code": "ro",
+    "name": "Romanya",
+    "capital": "Bükreş",
+    "region": "Avrupa"
+  },
+  {
+    "code": "bg",
+    "name": "Bulgaristan",
+    "capital": "Sofya",
+    "region": "Avrupa"
+  },
+  {
+    "code": "gr",
+    "name": "Yunanistan",
+    "capital": "Atina",
+    "region": "Avrupa"
+  },
+  {
+    "code": "al",
+    "name": "Arnavutluk",
+    "capital": "Tiran",
+    "region": "Avrupa"
+  },
+  {
+    "code": "mk",
+    "name": "Kuzey Makedonya",
+    "capital": "Üsküp",
+    "region": "Avrupa"
+  },
+  {
+    "code": "rs",
+    "name": "Sırbistan",
+    "capital": "Belgrad",
+    "region": "Avrupa"
+  },
+  {
+    "code": "me",
+    "name": "Karadağ",
+    "capital": "Podgorica",
+    "region": "Avrupa"
+  },
+  {
+    "code": "ba",
+    "name": "Bosna-Hersek",
+    "capital": "Saraybosna",
+    "region": "Avrupa"
+  },
+  {
+    "code": "hr",
+    "name": "Hırvatistan",
+    "capital": "Zagreb",
+    "region": "Avrupa"
+  },
+  {
+    "code": "si",
+    "name": "Slovenya",
+    "capital": "Ljubljana",
+    "region": "Avrupa"
+  },
+  {
+    "code": "dk",
+    "name": "Danimarka",
+    "capital": "Kopenhag",
+    "region": "Avrupa"
+  },
+  {
+    "code": "no",
+    "name": "Norveç",
+    "capital": "Oslo",
+    "region": "Avrupa"
+  },
+  {
+    "code": "se",
+    "name": "İsveç",
+    "capital": "Stockholm",
+    "region": "Avrupa"
+  },
+  {
+    "code": "fi",
+    "name": "Finlandiya",
+    "capital": "Helsinki",
+    "region": "Avrupa"
+  },
+  {
+    "code": "is",
+    "name": "İzlanda",
+    "capital": "Reykjavik",
+    "region": "Avrupa"
+  },
+  {
+    "code": "ee",
+    "name": "Estonya",
+    "capital": "Tallinn",
+    "region": "Avrupa"
+  },
+  {
+    "code": "lv",
+    "name": "Letonya",
+    "capital": "Riga",
+    "region": "Avrupa"
+  },
+  {
+    "code": "lt",
+    "name": "Litvanya",
+    "capital": "Vilnius",
+    "region": "Avrupa"
+  },
+  {
+    "code": "ua",
+    "name": "Ukrayna",
+    "capital": "Kyiv",
+    "region": "Avrupa"
+  },
+  {
+    "code": "md",
+    "name": "Moldova",
+    "capital": "Kişinev",
+    "region": "Avrupa"
+  },
+  {
+    "code": "by",
+    "name": "Belarus",
+    "capital": "Minsk",
+    "region": "Avrupa"
+  },
+  {
+    "code": "ru",
+    "name": "Rusya",
+    "capital": "Moskova",
+    "region": "Avrupa"
+  },
+  {
+    "code": "ge",
+    "name": "Gürcistan",
+    "capital": "Tiflis",
+    "region": "Asya"
+  },
+  {
+    "code": "am",
+    "name": "Ermenistan",
+    "capital": "Erivan",
+    "region": "Asya"
+  },
+  {
+    "code": "az",
+    "name": "Azerbaycan",
+    "capital": "Bakü",
+    "region": "Asya"
+  },
+  {
+    "code": "kz",
+    "name": "Kazakistan",
+    "capital": "Astana",
+    "region": "Asya"
+  },
+  {
+    "code": "uz",
+    "name": "Özbekistan",
+    "capital": "Taşkent",
+    "region": "Asya"
+  },
+  {
+    "code": "tm",
+    "name": "Türkmenistan",
+    "capital": "Aşkabat",
+    "region": "Asya"
+  },
+  {
+    "code": "kg",
+    "name": "Kırgızistan",
+    "capital": "Bişkek",
+    "region": "Asya"
+  },
+  {
+    "code": "tj",
+    "name": "Tacikistan",
+    "capital": "Duşanbe",
+    "region": "Asya"
+  },
+  {
+    "code": "mn",
+    "name": "Moğolistan",
+    "capital": "Ulan Batur",
+    "region": "Asya"
+  },
+  {
+    "code": "cn",
+    "name": "Çin",
+    "capital": "Pekin",
+    "region": "Asya"
+  },
+  {
+    "code": "jp",
+    "name": "Japonya",
+    "capital": "Tokyo",
+    "region": "Asya"
+  },
+  {
+    "code": "kr",
+    "name": "Güney Kore",
+    "capital": "Seul",
+    "region": "Asya"
+  },
+  {
+    "code": "kp",
+    "name": "Kuzey Kore",
+    "capital": "Pyongyang",
+    "region": "Asya"
+  },
+  {
+    "code": "in",
+    "name": "Hindistan",
+    "capital": "Yeni Delhi",
+    "region": "Asya"
+  },
+  {
+    "code": "pk",
+    "name": "Pakistan",
+    "capital": "İslamabad",
+    "region": "Asya"
+  }
+]

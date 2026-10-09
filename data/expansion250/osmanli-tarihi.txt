@@ -1,0 +1,101 @@
+# Kurum, sanat, sosyal hayat, diplomasi ve mimari ağırlıklı ilave havuz.
+terim|Osmanlı yazışmalarında bir göreve atama veya imtiyazı bildiren belgeye ne denirdi?|Berat
+terim|Osmanlı mahkemelerindeki kararların ve işlemlerin kaydedildiği defterler hangileridir?|Şer‘iyye sicilleri
+terim|Dîvân-ı Hümâyun'da görüşülen önemli meselelerin kararlarını içeren defterler hangileridir?|Mühimme defterleri
+terim|Osmanlı'da elçilerin görev yaptıkları ülkeler hakkında yazdığı rapor türü hangisidir?|Sefâretnâme
+terim|Osmanlı'da hükümdarın seferlerini ve zaferlerini anlatan eser türü hangisidir?|Gazavâtnâme
+terim|Osmanlı saray düğünleri ve şenliklerini anlatan eser türü hangisidir?|Surnâme
+terim|Osmanlı biyografi geleneğinde şairlerin hayatlarını toplayan eser türü hangisidir?|Tezkire
+terim|Osmanlı belgelerinde padişahın kendi el yazısıyla yazdığı emir veya not hangi adla anılır?|Hatt-ı hümâyun
+terim|Osmanlı'da gayrimüslim tebaanın belirli şartlarda ödediği şahıs vergisine ne denirdi?|Cizye
+terim|Osmanlı'da olağanüstü ihtiyaçlar için konulup zamanla düzenli hâle gelen vergilerin genel adı nedir?|Avârız
+terim|Osmanlı'da bir toprak üzerinde üretim yapan köylü hanelerden alınan çiftlik vergisi hangisidir?|Çift resmi
+terim|Osmanlı'da evlenenlerden alınabilen geleneksel vergi hangi adla bilinir?|Arûs resmi
+terim|Osmanlı'da vergi toplama hakkını belirli bedelle alan kişiye ne denirdi?|Mültezim
+terim|Osmanlı tımar sisteminde geliri en yüksek dirlik grubuna ne denirdi?|Has
+terim|Osmanlı dirlik sisteminde has ile tımar arasındaki gelir grubuna ne denirdi?|Zeâmet
+terim|Osmanlı'da padişahın annesi hangi unvanla anılırdı?|Vâlide sultan
+terim|Osmanlı sarayının dış hizmetler bölümüne ne denirdi?|Bîrun
+terim|Osmanlı'da şehzadelerin yetişmesinde görevlendirilen hocanın unvanı neydi?|Lala
+terim|Osmanlı'da padişahın tahttan indirilmesi hangi terimle anılırdı?|Hal‘
+terim|Osmanlı hanedanında ailenin yaşça büyük ve uygun erkek üyesinin tahta geçmesi ilkesi hangisidir?|Ekber ve erşed
+terim|Osmanlı'da devlet görevlisinin malına hazine adına el konulması hangi uygulamadır?|Müsadere
+terim|Osmanlı seferlerinde erzak ve konaklamayı destekleyen yol ağı ne adla anılır?|Menzil teşkilatı
+terim|Osmanlılarda resmî haber ve emirleri ulaştıran görevliye ne denirdi?|Ulak
+terim|Osmanlı'da dağ geçidi ve yol güvenliğini sağlayan yerel görevliler hangi adla anılırdı?|Derbentçi
+terim|Osmanlı'da bir vakfın yönetiminden sorumlu kişi hangi unvanı taşırdı?|Mütevelli
+terim|Osmanlı'da vakıf kuruluşunun şartlarını yazılı olarak belirleyen belge hangisidir?|Vakfiye
+terim|Osmanlı şehirlerinde halka ücretsiz su dağıtılan küçük yapı hangisidir?|Sebil
+terim|Osmanlı eğitiminde çocukların ilk öğrenim gördüğü okulun yaygın adı nedir?|Sıbyan mektebi
+terim|Osmanlı medreselerinde ders veren hocanın unvanı hangisidir?|Müderris
+terim|Osmanlı eğitim geleneğinde hocadan alınan yeterlik belgesi hangisidir?|İcâzetnâme
+terim|Osmanlı yazı sanatında Arap harfleriyle güzel yazı yazma sanatı hangisidir?|Hat
+terim|Osmanlı kitap sanatında sayfaları altın ve motiflerle süsleme sanatı hangisidir?|Tezhip
+terim|Osmanlı kitaplarında küçük boyutlu, ayrıntılı resim geleneğine ne denir?|Minyatür
+terim|Yoğunlaştırılmış su üzerindeki renklerin kâğıda aktarılmasıyla oluşan geleneksel sanat hangisidir?|Ebru
+terim|Kâğıt veya deriden ince parçalar keserek yapılan geleneksel süsleme sanatı hangisidir?|Katı‘
+terim|Osmanlı sanatında kitapların koruyucu kapaklarının hazırlanmasına ne denir?|Ciltçilik
+terim|Osmanlı müzik geleneğinde belirli bir seyir içinde kullanılan ses düzeni hangisidir?|Makam
+terim|Osmanlı-Türk müziğinde düzenli kuvvetli ve zayıf vuruş kalıbına ne denir?|Usul
+terim|Osmanlı'da geleneksel askerî müzik topluluğuna ne ad verilir?|Mehter
+terim|Osmanlı'da tek kişinin taklit ve anlatımla hikâye aktardığı gösteri türü hangisidir?|Meddahlık
+kisi|Osmanlı'da Humbaracı Ocağı'nı 18. yüzyılda yeniden düzenleyen Ahmed Paşa kimdir?|Humbaracı Ahmed Paşa
+kisi|Osmanlı'da sürat topçularının geliştirilmesinde çalışan Fransız uzman kimdir?|Baron de Tott
+kisi|Osmanlı'nın Londra'ya gönderdiği ilk sürekli büyükelçi kimdir?|Yusuf Agâh Efendi
+kisi|1720'de Paris'e elçi gönderilen ve gözlemlerini sefâretnâmede anlatan kişi kimdir?|Yirmisekiz Çelebi Mehmed Efendi
+kisi|Osmanlı'da 1570'lerde İstanbul Rasathanesi'ni kuran astronom kimdir?|Takıyyüddin
+kisi|Fatih döneminde Semerkant'tan İstanbul'a gelen ünlü astronom kimdir?|Ali Kuşçu
+kisi|Mecelle heyetine başkanlık eden Osmanlı hukukçu ve tarihçisi kimdir?|Ahmed Cevdet Paşa
+kisi|Sanâyi-i Nefîse Mektebi'nin kuruluşunda öne çıkan ressam ve müzeci kimdir?|Osman Hamdi Bey
+kisi|Cerrahiyyetü'l-Hâniyye adlı resimli tıp eserini yazan Osmanlı hekimi kimdir?|Şerefeddin Sabuncuoğlu
+kisi|Marifetnâme adlı ansiklopedik eseri yazan Osmanlı âlimi kimdir?|Erzurumlu İbrahim Hakkı
+kisi|Döneminin hat üstadı olarak “Şeyh” unvanıyla tanınan Amasyalı sanatçı kimdir?|Şeyh Hamdullah
+kisi|Osmanlı hat sanatının 17. yüzyıldaki büyük ustalarından Hâfız kimdir?|Hâfız Osman
+kisi|Lâle Devri şiiri ve İstanbul Türkçesiyle tanınan divan şairi kimdir?|Nedim
+kisi|Hicivleriyle tanınan ve Sihâm-ı Kazâ adlı eseri bulunan şair kimdir?|Nef‘î
+kisi|Hayriyye adlı öğüt kitabını yazan divan şairi kimdir?|Nâbî
+kisi|15. yüzyılda Vesîletü'n-necât adlı mevlidi yazan şair kimdir?|Süleyman Çelebi
+kisi|Harnâme adlı hiciv mesnevisinin şairi kimdir?|Şeyhî
+kisi|İntibah romanını yazan Tanzimat edebiyatçısı kimdir?|Namık Kemal
+kisi|Tercümân-ı Ahvâl'i Şinasi ile çıkaran gazeteci kimdir?|Agâh Efendi
+kisi|Servet-i Fünûn döneminin Rübâb-ı Şikeste şairi kimdir?|Tevfik Fikret
+kisi|Osmanlı klasik müziğinde Segâh Tekbir'in bestesi kendisine atfedilen sanatçı kimdir?|Buhûrîzâde Mustafa Itrî
+kisi|19. yüzyıl Osmanlı bestecilerinden Hammâmîzâde kimdir?|İsmâil Dede Efendi
+kisi|Şarkılarıyla tanınan 19. yüzyıl bestecisi Hacı kimdir?|Hacı Ârif Bey
+kisi|18. yüzyıl Osmanlı müziğinin önemli kadın bestecilerinden, Evcârâ peşreviyle tanınan kimdir?|Dilhayat Kalfa|Dilhayat Kalfa, 18. yüzyıl Osmanlı bestecilerindendir.
+yer|Osmanlı'nın ilk başmimarlarından Hacı İvaz Paşa'nın Yeşil Camii hangi şehirdedir?|Bursa
+yer|Mimar Sinan'ın Şehzade Camii hangi şehirdedir?|İstanbul
+yer|Mimar Sinan'ın Sokullu Mehmed Paşa Köprüsü hangi şehirde Drina Nehri'ni aşar?|Vişegrad
+yer|Osmanlı dönemindeki Eski Köprü ile tanınan Hersek şehri hangisidir?|Mostar
+yer|Gazi Hüsrev Bey Külliyesi'nin bulunduğu Bosna şehri hangisidir?|Saraybosna
+yer|Kalkandelen'deki Alaca Camii bugün hangi ülkededir?|Kuzey Makedonya
+yer|Osmanlı döneminde yapılan Et'hem Bey Camii hangi başkenttedir?|Tiran
+yer|Nurbânû Sultan'ın Atik Vâlide Külliyesi İstanbul'un hangi ilçesindedir?|Üsküdar
+yer|Mihrimah Sultan'ın kara surları yakınındaki camii İstanbul'un hangi semtindedir?|Edirnekapı
+yer|İstanbul'daki Rüstem Paşa Camii hangi tarihî ticaret semtindedir?|Tahtakale
+yapi|Fatih'in İstanbul Boğazı'nın Avrupa yakasına yaptırdığı savunma yapısı hangisidir?|Rumeli Hisarı
+yapi|Yıldırım Bayezid'in Boğaz'ın Anadolu yakasında yaptırdığı savunma yapısı hangisidir?|Anadolu Hisarı
+yapi|II. Abdülhamid'in yönetim merkezi olarak kullandığı saray kompleksi hangisidir?|Yıldız Sarayı
+yapi|Sultan Abdülaziz döneminde Beylerbeyi'nde inşa edilen saray hangisidir?|Beylerbeyi Sarayı
+yapi|Sultan Abdülmecid döneminde Boğaz kıyısında tamamlanan görkemli saray hangisidir?|Dolmabahçe Sarayı
+yapi|III. Selim döneminde Üsküdar'da kurulup daha sonra yenilenen büyük kışla hangisidir?|Selimiye Kışlası
+yapi|III. Ahmed'in Topkapı Sarayı'nın girişine yaptırdığı ünlü su yapısı hangisidir?|III. Ahmed Çeşmesi
+yapi|III. Osman döneminde tamamlanan İstanbul'un barok üsluplu camii hangisidir?|Nuruosmaniye Camii
+savas|1538 Preveze'de Osmanlı donanmasının karşısındaki ittifak donanmasını kim yönetiyordu?|Andrea Doria|Soru karşı tarafın komutanını sorar.|Don Juan de Austria~Horatio Nelson~Kristof Kolomb
+savas|1402 Ankara Savaşı'nda Osmanlıların karşısındaki hükümdar kimdi?|Timur||Şah İsmâil~Şah Abbas~Şirkuh
+savas|1514 Çaldıran'da Osmanlıların karşılaştığı devlet hangisidir?|Safevîler||Memlükler~Venedik~Babürlüler
+savas|1516 Mercidâbık'ta Osmanlıların karşılaştığı devlet hangisidir?|Memlükler||Safevîler~Avusturya~Portekiz
+savas|1526 Mohaç'ta Osmanlıların karşılaştığı krallık hangisidir?|Macaristan Krallığı||Fransa Krallığı~İngiltere Krallığı~İsveç Krallığı
+savas|1571 İnebahtı Savaşı'nın temel askerî özelliği hangisidir?|Deniz savaşı olması||Kale kuşatması olması~Yalnız süvarilerle yapılması~Çöl muharebesi olması
+savas|1853–1856 Kırım Savaşı'nda Osmanlı'nın karşısındaki imparatorluk hangisidir?|Rusya||Britanya~Fransa~Avusturya
+savas|1911 Trablusgarp Savaşı'nda Osmanlı'nın karşısındaki ülke hangisidir?|İtalya||İspanya~Yunanistan~İsveç
+savas|Osmanlı'nın 1535'te ilişkilerini geliştirdiği I. François hangi ülkenin kralıydı?|Fransa||İspanya~Portekiz~İngiltere
+savas|Karlofça görüşmelerinde Osmanlı adına başmurahhas olan devlet adamı kimdir?|Râmi Mehmed Paşa||Sokullu Mehmed Paşa~Köprülü Mehmed Paşa~Mahmud Nedim Paşa
+yil|Osmanlı'nın son döneminde Hicaz Demiryolu Medine'ye hangi yılda ulaştı?|1908
+yil|Düyûn-ı Umûmiye İdaresi hangi yılda kuruldu?|1881
+yil|Osmanlı'nın Selanik-Manastır hattından önce açılan İzmir-Aydın demiryolunun imtiyazı hangi yılda verildi?|1856
+yil|Tercümân-ı Ahvâl gazetesi hangi yılda çıkmaya başladı?|1860
+yil|Osmanlı'da ilk posta teşkilatının nezaret olarak kuruluş yılı hangisidir?|1840
+yil|Gülhane Askerî Tıp Mektebi'nin açılış yılı hangisidir?|1898
+yil|Sanâyi-i Nefîse Mektebi öğretime hangi yılda başladı?|1883
+yil|Osmanlı Devleti ile Rusya arasında Prut Antlaşması hangi yılda yapıldı?|1711

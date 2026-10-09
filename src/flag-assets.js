@@ -1,4 +1,4 @@
-// Local SVG assets from the MIT-licensed flag-icons package.
+// Local SVGs from flag-icons (MIT).
 import flag_tr from "flag-icons/flags/4x3/tr.svg";
 import flag_de from "flag-icons/flags/4x3/de.svg";
 import flag_fr from "flag-icons/flags/4x3/fr.svg";
@@ -99,6 +99,102 @@ import flag_ar from "flag-icons/flags/4x3/ar.svg";
 import flag_cl from "flag-icons/flags/4x3/cl.svg";
 import flag_pe from "flag-icons/flags/4x3/pe.svg";
 import flag_au from "flag-icons/flags/4x3/au.svg";
+import flag_ad from "flag-icons/flags/4x3/ad.svg";
+import flag_af from "flag-icons/flags/4x3/af.svg";
+import flag_ag from "flag-icons/flags/4x3/ag.svg";
+import flag_bb from "flag-icons/flags/4x3/bb.svg";
+import flag_bs from "flag-icons/flags/4x3/bs.svg";
+import flag_bz from "flag-icons/flags/4x3/bz.svg";
+import flag_bj from "flag-icons/flags/4x3/bj.svg";
+import flag_bo from "flag-icons/flags/4x3/bo.svg";
+import flag_bw from "flag-icons/flags/4x3/bw.svg";
+import flag_bn from "flag-icons/flags/4x3/bn.svg";
+import flag_bf from "flag-icons/flags/4x3/bf.svg";
+import flag_bi from "flag-icons/flags/4x3/bi.svg";
+import flag_cm from "flag-icons/flags/4x3/cm.svg";
+import flag_cv from "flag-icons/flags/4x3/cv.svg";
+import flag_cf from "flag-icons/flags/4x3/cf.svg";
+import flag_td from "flag-icons/flags/4x3/td.svg";
+import flag_co from "flag-icons/flags/4x3/co.svg";
+import flag_km from "flag-icons/flags/4x3/km.svg";
+import flag_cg from "flag-icons/flags/4x3/cg.svg";
+import flag_cd from "flag-icons/flags/4x3/cd.svg";
+import flag_cr from "flag-icons/flags/4x3/cr.svg";
+import flag_cu from "flag-icons/flags/4x3/cu.svg";
+import flag_cy from "flag-icons/flags/4x3/cy.svg";
+import flag_ci from "flag-icons/flags/4x3/ci.svg";
+import flag_dj from "flag-icons/flags/4x3/dj.svg";
+import flag_dm from "flag-icons/flags/4x3/dm.svg";
+import flag_do from "flag-icons/flags/4x3/do.svg";
+import flag_ec from "flag-icons/flags/4x3/ec.svg";
+import flag_sv from "flag-icons/flags/4x3/sv.svg";
+import flag_gq from "flag-icons/flags/4x3/gq.svg";
+import flag_er from "flag-icons/flags/4x3/er.svg";
+import flag_sz from "flag-icons/flags/4x3/sz.svg";
+import flag_fj from "flag-icons/flags/4x3/fj.svg";
+import flag_ga from "flag-icons/flags/4x3/ga.svg";
+import flag_gm from "flag-icons/flags/4x3/gm.svg";
+import flag_gd from "flag-icons/flags/4x3/gd.svg";
+import flag_gt from "flag-icons/flags/4x3/gt.svg";
+import flag_gn from "flag-icons/flags/4x3/gn.svg";
+import flag_gw from "flag-icons/flags/4x3/gw.svg";
+import flag_gy from "flag-icons/flags/4x3/gy.svg";
+import flag_ht from "flag-icons/flags/4x3/ht.svg";
+import flag_hn from "flag-icons/flags/4x3/hn.svg";
+import flag_id from "flag-icons/flags/4x3/id.svg";
+import flag_il from "flag-icons/flags/4x3/il.svg";
+import flag_jm from "flag-icons/flags/4x3/jm.svg";
+import flag_ki from "flag-icons/flags/4x3/ki.svg";
+import flag_ls from "flag-icons/flags/4x3/ls.svg";
+import flag_lr from "flag-icons/flags/4x3/lr.svg";
+import flag_li from "flag-icons/flags/4x3/li.svg";
+import flag_mw from "flag-icons/flags/4x3/mw.svg";
+import flag_ml from "flag-icons/flags/4x3/ml.svg";
+import flag_mt from "flag-icons/flags/4x3/mt.svg";
+import flag_mh from "flag-icons/flags/4x3/mh.svg";
+import flag_mr from "flag-icons/flags/4x3/mr.svg";
+import flag_mu from "flag-icons/flags/4x3/mu.svg";
+import flag_fm from "flag-icons/flags/4x3/fm.svg";
+import flag_mc from "flag-icons/flags/4x3/mc.svg";
+import flag_mz from "flag-icons/flags/4x3/mz.svg";
+import flag_mm from "flag-icons/flags/4x3/mm.svg";
+import flag_na from "flag-icons/flags/4x3/na.svg";
+import flag_nr from "flag-icons/flags/4x3/nr.svg";
+import flag_nz from "flag-icons/flags/4x3/nz.svg";
+import flag_ni from "flag-icons/flags/4x3/ni.svg";
+import flag_ne from "flag-icons/flags/4x3/ne.svg";
+import flag_pw from "flag-icons/flags/4x3/pw.svg";
+import flag_pa from "flag-icons/flags/4x3/pa.svg";
+import flag_pg from "flag-icons/flags/4x3/pg.svg";
+import flag_py from "flag-icons/flags/4x3/py.svg";
+import flag_kn from "flag-icons/flags/4x3/kn.svg";
+import flag_lc from "flag-icons/flags/4x3/lc.svg";
+import flag_vc from "flag-icons/flags/4x3/vc.svg";
+import flag_ws from "flag-icons/flags/4x3/ws.svg";
+import flag_sm from "flag-icons/flags/4x3/sm.svg";
+import flag_st from "flag-icons/flags/4x3/st.svg";
+import flag_sc from "flag-icons/flags/4x3/sc.svg";
+import flag_sl from "flag-icons/flags/4x3/sl.svg";
+import flag_sb from "flag-icons/flags/4x3/sb.svg";
+import flag_so from "flag-icons/flags/4x3/so.svg";
+import flag_za from "flag-icons/flags/4x3/za.svg";
+import flag_ss from "flag-icons/flags/4x3/ss.svg";
+import flag_lk from "flag-icons/flags/4x3/lk.svg";
+import flag_sd from "flag-icons/flags/4x3/sd.svg";
+import flag_sr from "flag-icons/flags/4x3/sr.svg";
+import flag_sy from "flag-icons/flags/4x3/sy.svg";
+import flag_tl from "flag-icons/flags/4x3/tl.svg";
+import flag_tg from "flag-icons/flags/4x3/tg.svg";
+import flag_to from "flag-icons/flags/4x3/to.svg";
+import flag_tt from "flag-icons/flags/4x3/tt.svg";
+import flag_tv from "flag-icons/flags/4x3/tv.svg";
+import flag_vu from "flag-icons/flags/4x3/vu.svg";
+import flag_ve from "flag-icons/flags/4x3/ve.svg";
+import flag_ye from "flag-icons/flags/4x3/ye.svg";
+import flag_ps from "flag-icons/flags/4x3/ps.svg";
+import flag_va from "flag-icons/flags/4x3/va.svg";
+import flag_xk from "flag-icons/flags/4x3/xk.svg";
+import flag_tw from "flag-icons/flags/4x3/tw.svg";
 export const flagAssets = {
   tr: flag_tr,
   de: flag_de,
@@ -200,4 +296,100 @@ export const flagAssets = {
   cl: flag_cl,
   pe: flag_pe,
   au: flag_au,
+  ad: flag_ad,
+  af: flag_af,
+  ag: flag_ag,
+  bb: flag_bb,
+  bs: flag_bs,
+  bz: flag_bz,
+  bj: flag_bj,
+  bo: flag_bo,
+  bw: flag_bw,
+  bn: flag_bn,
+  bf: flag_bf,
+  bi: flag_bi,
+  cm: flag_cm,
+  cv: flag_cv,
+  cf: flag_cf,
+  td: flag_td,
+  co: flag_co,
+  km: flag_km,
+  cg: flag_cg,
+  cd: flag_cd,
+  cr: flag_cr,
+  cu: flag_cu,
+  cy: flag_cy,
+  ci: flag_ci,
+  dj: flag_dj,
+  dm: flag_dm,
+  do: flag_do,
+  ec: flag_ec,
+  sv: flag_sv,
+  gq: flag_gq,
+  er: flag_er,
+  sz: flag_sz,
+  fj: flag_fj,
+  ga: flag_ga,
+  gm: flag_gm,
+  gd: flag_gd,
+  gt: flag_gt,
+  gn: flag_gn,
+  gw: flag_gw,
+  gy: flag_gy,
+  ht: flag_ht,
+  hn: flag_hn,
+  id: flag_id,
+  il: flag_il,
+  jm: flag_jm,
+  ki: flag_ki,
+  ls: flag_ls,
+  lr: flag_lr,
+  li: flag_li,
+  mw: flag_mw,
+  ml: flag_ml,
+  mt: flag_mt,
+  mh: flag_mh,
+  mr: flag_mr,
+  mu: flag_mu,
+  fm: flag_fm,
+  mc: flag_mc,
+  mz: flag_mz,
+  mm: flag_mm,
+  na: flag_na,
+  nr: flag_nr,
+  nz: flag_nz,
+  ni: flag_ni,
+  ne: flag_ne,
+  pw: flag_pw,
+  pa: flag_pa,
+  pg: flag_pg,
+  py: flag_py,
+  kn: flag_kn,
+  lc: flag_lc,
+  vc: flag_vc,
+  ws: flag_ws,
+  sm: flag_sm,
+  st: flag_st,
+  sc: flag_sc,
+  sl: flag_sl,
+  sb: flag_sb,
+  so: flag_so,
+  za: flag_za,
+  ss: flag_ss,
+  lk: flag_lk,
+  sd: flag_sd,
+  sr: flag_sr,
+  sy: flag_sy,
+  tl: flag_tl,
+  tg: flag_tg,
+  to: flag_to,
+  tt: flag_tt,
+  tv: flag_tv,
+  vu: flag_vu,
+  ve: flag_ve,
+  ye: flag_ye,
+  ps: flag_ps,
+  va: flag_va,
+  xk: flag_xk,
+  tw: flag_tw,
 };

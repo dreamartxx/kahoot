@@ -1,0 +1,101 @@
+# Anadolu arkeolojisi, sanat tarihi, eğitim, bilim ve Cumhuriyet kronolojisi.
+yer|Neolitik dönemin önemli yerleşimi Aşıklı Höyük hangi ildedir?|Aksaray
+yer|Arslantepe'nin erken devlet oluşumuna ışık tutan kalıntıları hangi ildedir?|Malatya
+yer|Çayönü Tepesi'nin Neolitik kalıntıları hangi ildedir?|Diyarbakır
+yer|Boncuklu Höyük hangi ilimizde Çatalhöyük yakınında bulunur?|Konya
+yer|Nevali Çori'nin kazıldığı alan hangi ilimizin sınırları içindedir?|Şanlıurfa
+yer|Karahan Tepe'nin tarihöncesi yapıları hangi ildedir?|Şanlıurfa
+yer|Karain Mağarası'nın Paleolitik buluntuları hangi ilimizdedir?|Antalya
+yer|Yarımburgaz Mağarası hangi ilimizin tarihöncesi araştırmalarında önemlidir?|İstanbul
+yer|Hacılar Höyük hangi ilimizin yakınındadır?|Burdur
+yer|Beycesultan Höyüğü hangi ilimizdedir?|Denizli
+yer|Tunç Çağı'nın önemli yerleşimi Kültepe dışındaki Acemhöyük hangi ildedir?|Aksaray
+yer|Kültepe-Kaniş'ten farklı olan Asur ticaret merkezi Alişar Höyük hangi ildedir?|Yozgat
+yer|Hitit kenti Şapinuva'nın Ortaköy'deki kalıntıları hangi ildedir?|Çorum
+yer|Geç Hitit döneminin Karatepe-Aslantaş açık hava müzesi hangi ildedir?|Osmaniye
+yer|Geç Hitit kenti Zincirli Höyük hangi ildedir?|Gaziantep
+yer|Hititlerin anıtsal su yapısı Eflatunpınar hangi ildedir?|Konya
+yer|İvriz Kaya Anıtı'nın bulunduğu Halkapınar ilçesi hangi ildedir?|Konya
+yer|Kral Menua'nın sulama kanalıyla ilişkili Urartu merkezi hangi ildedir?|Van
+yer|Urartu kenti Altıntepe hangi ilimizin yakınındadır?|Erzincan
+yer|Urartu yerleşimi Ayanis Kalesi hangi ildedir?|Van
+yer|Kommagene Krallığı'nın Arsameia ören yeri hangi ildedir?|Adıyaman
+yer|Kommagene Kralı I. Antiochos'un anıtsal mezar alanı hangi ildedir?|Adıyaman
+yer|Likya Birliği'nin meclis binasını barındıran Patara hangi ildedir?|Antalya
+yer|Likya'nın kaya mezarlarıyla tanınan Myra kenti hangi ildedir?|Antalya
+yer|Likya kenti Kaunos'un kalıntıları hangi ilimizdedir?|Muğla
+yer|Antik Karia'nın başkenti Halikarnassos'un bulunduğu Bodrum hangi ildedir?|Muğla
+yer|Antik dönem heykeltıraşlık merkezi Aphrodisias hangi ildedir?|Aydın
+yer|Roma dönemindeki Hadrian Tapınağı ile Celsus Kütüphanesi'ni barındıran Efes hangi ildedir?|İzmir
+yer|Zeugma Antik Kenti'nin mozaikleri hangi ilimizin arkeolojik mirasıdır?|Gaziantep
+yer|Roma döneminin Asklepion sağlık merkezi Bergama hangi ildedir?|İzmir
+yer|Roma imparatoru adına yapılan Augustus Tapınağı'nın Anadolu'daki yazıtlı örneği hangi ildedir?|Ankara
+yer|Dara'nın geç Roma ve Bizans kalıntıları hangi ilimizdedir?|Mardin
+yer|Anadolu'daki erken Bizans kiliseleriyle tanınan Binbir Kilise hangi ildedir?|Karaman
+yer|Anadolu Selçuklu dönemi Kubadabad Sarayı kalıntıları hangi ildedir?|Konya
+yer|Artuklu döneminin Malabadi Köprüsü hangi ilimizdedir?|Diyarbakır
+yer|Danişmendli döneminin Yağıbasan medreselerinin bulunduğu Niksar ve merkez hangi ildedir?|Tokat
+yer|İlhanlı döneminin Yakutiye Medresesi hangi ilimizdedir?|Erzurum
+yer|Eşrefoğulları'nın ahşap direkli camii Beyşehir hangi ildedir?|Konya
+yer|Candaroğulları'nın Kasaba köyündeki Mahmud Bey Camii hangi ildedir?|Kastamonu
+yer|Germiyanoğulları Beyliği'nin merkezi olan şehir hangisidir?|Kütahya
+kisi|Anadolu'da Hattuşa'nın başkent olarak gelişmesiyle ilişkilendirilen Eski Hitit kralı kimdir?|I. Hattuşili
+kisi|Kadeş Savaşı'nda Hitit ordusunu yöneten kral kimdir?|II. Muvattalli
+kisi|Mısır Kralı II. Ramses ile Kadeş barışını yapan Hitit kralı kimdir?|III. Hattuşili
+kisi|Kadeş Antlaşması mühründe adı geçen Hitit kraliçesi kimdir?|Puduhepa
+kisi|Lidya'nın zenginliğiyle ünlenen son kralı kimdir?|Kroisos
+kisi|Kommagene'nin Nemrut Dağı anıtlarını yaptıran kralı kimdir?|I. Antiochos
+kisi|Antik Halikarnassos'ta anıt mezarı adına yapılan Karia yöneticisi kimdir?|Mausolos
+kisi|Mausolos'un ölümünden sonra anıt mezarın yapımını sürdüren eşi kimdir?|II. Artemisia
+kisi|Alanya'daki Kızılkule ve tersaneyi yaptıran Selçuklu sultanı kimdir?|I. Alâeddin Keykubad
+kisi|1277'de Türkçenin devlet işlerinde kullanılmasını isteyen fermanıyla anılan Karamanoğlu kimdir?|Mehmed Bey
+kisi|Aydınoğulları'nın deniz seferleriyle tanınan beyi kimdir?|Umur Bey
+kisi|İzmir merkezli erken Türk denizcilik faaliyetleriyle tanınan bey kimdir?|Çaka Bey
+kisi|Sivas merkezli yönetimi ve Türkçe şiirleriyle tanınan 14. yüzyıl hükümdarı kimdir?|Kadı Burhâneddin
+kisi|Mengücekli döneminde Divriği Ulu Camii'ni yaptıran bey kimdir?|Ahmed Şah
+kisi|Divriği Darüşşifası'nı yaptıran hükümdar ailesi mensubu kimdir?|Turan Melek
+kisi|Cumhuriyet'in ilk yıllarında kadın öğretmenlerin mücadelesiyle ve TBMM'nin ilk kadın milletvekillerinden olmasıyla tanınan kimdir?|Nakiye Elgün
+kisi|Türkiye'nin ilk kadın hekimi olarak tanınan Cumhuriyet öncüsü kimdir?|Safiye Ali
+kisi|Türkiye'nin ilk kadın arkeologları arasında yer alan, Hitit kazılarıyla tanınan kişi kimdir?|Halet Çambel
+kisi|Perge ve Side kazılarında çalışan, İstanbul Üniversitesinin ilk kadın arkeologlarından olan kişi kimdir?|Jale İnan
+kisi|1933'te muhtar seçilen ilk kadınlardan, Aydın Demircidere'nin yöneticisi kimdir?|Gül Esin
+kisi|Türkiye'nin ilk kadın belediye başkanı olarak 1950'de Mersin'de göreve gelen kimdir?|Müfide İlhan
+kisi|Hürkuş soyadını alan, Millî Mücadele'ye katılmış uçak tasarımcısı ve pilot kimdir?|Vecihi Hürkuş
+kisi|1930'larda uçak fabrikası girişimiyle tanınan iş insanı kimdir?|Nuri Demirağ
+kisi|Türkiye'nin öncü kadın kimyacılarından, Sorbonne'da doktora yapan bilim insanı kimdir?|Remziye Hisar
+kisi|1933 üniversite reformunda raporuyla etkili olan İsviçreli eğitim uzmanı kimdir?|Albert Malche
+kisi|Türkiye'de köy enstitülerinin kuruluş sürecinde Millî Eğitim Bakanı olan kişi kimdir?|Hasan Âli Yücel
+kisi|Köy enstitülerinin eğitim modelinin geliştirilmesinde başlıca rol oynayan eğitimci kimdir?|İsmail Hakkı Tonguç
+kisi|1930'larda Ankara'da Dil ve Tarih-Coğrafya Fakültesi'nin kuruluşunu destekleyen cumhurbaşkanı kimdir?|Mustafa Kemal Atatürk
+kisi|Anıtkabir projesini Orhan Arda ile birlikte tasarlayan mimar kimdir?|Emin Onat
+kisi|Cumhuriyet dönemi mimarisinde Türk Tarih Kurumu binasını Ertur Yener ile tasarlayan mimar kimdir?|Turgut Cansever
+yil|İzmir İktisat Kongresi hangi yılda toplandı?|1923
+yil|Cumhuriyet'in ilk kapsamlı nüfus sayımı hangi yılda yapıldı?|1927
+yil|Kabotaj Kanunu hangi yılda kabul edildi?|1926
+yil|Millet Mektepleri hangi yılda açıldı?|1929
+yil|Türk kadınına köy muhtarı seçilme hakkı hangi yılda tanındı?|1933
+yil|İlk kadın milletvekilleri TBMM'ye hangi genel seçim yılında girdi?|1935
+yil|Türkiye Cumhuriyet Merkez Bankası hangi yılda faaliyete geçti?|1931
+yil|Türkiye'de Köy Enstitüleri Kanunu hangi yılda kabul edildi?|1940
+yil|TRT hangi yılda kuruldu?|1964
+yil|TRT'nin Ankara'daki ilk televizyon deneme yayını hangi yılda yapıldı?|1968
+yil|Türkiye'nin Birleşmiş Milletler'in kurucu üyeleri arasında yer aldığı yıl hangisidir?|1945
+yil|Ankara Dil ve Tarih-Coğrafya Fakültesi hangi yılda açıldı?|1936
+yil|Türkiye Cumhuriyeti'nin ilk beş yıllık sanayi planı hangi yılda uygulamaya konuldu?|1934
+yil|Kardemir'in temelini oluşturan Karabük Demir Çelik Fabrikalarının temeli hangi yılda atıldı?|1937
+yil|Uşak Şeker Fabrikası hangi yılda üretime başladı?|1926
+yil|Alpullu Şeker Fabrikası hangi yılda işletmeye açıldı?|1926
+yil|Atatürk Orman Çiftliği hangi yılda kuruldu?|1925
+yil|Türkiye'de soyadı olarak Atatürk adı Mustafa Kemal'e hangi yılda verildi?|1934
+yil|Ankara'nın başkent ilan edildiği tarih hangi yıldadır?|1923
+yil|Cumhuriyet döneminin Ankara Garı binası hangi yılda hizmete açıldı?|1937
+yil|Erzurum Kongresi'nin toplandığı yıl hangisidir?|1919
+yil|İkinci İnönü Muharebesi hangi yılda yapıldı?|1921
+yil|Kütahya-Eskişehir Muharebeleri hangi yılda yapıldı?|1921
+yil|Başkomutanlık Kanunu'nun Mustafa Kemal için kabul edildiği yıl hangisidir?|1921
+yil|İzmir'in işgalden kurtuluşu hangi yıldadır?|1922
+yil|Urfa'nın işgalden kurtuluşu hangi yıldadır?|1920
+yil|Maraş'ın işgalden kurtuluşu hangi yıldadır?|1920
+yil|Gaziantep'e Gazi unvanı TBMM tarafından hangi yılda verildi?|1921
+yil|Amasya Görüşmeleri sonunda protokoller hangi yılda imzalandı?|1919
+yil|Türkiye'nin Avrupa Konseyi'ne üye olduğu yıl hangisidir?|1949

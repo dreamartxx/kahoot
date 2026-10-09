@@ -82,14 +82,7 @@ export const categories = [
   desc,
   emoji,
   color,
-  count:
-    id === "turkiye"
-      ? 200
-      : id === "plakalar"
-        ? 81
-        : id.endsWith("-tarihi")
-          ? 150
-          : 100,
+  count: 250,
 }));
 export const catById = (id) =>
   categories.find((c) => c.id === id) || categories[0];

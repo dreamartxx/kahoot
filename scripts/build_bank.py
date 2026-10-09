@@ -769,17 +769,17 @@ Uzaya çıkan ilk insan kimdir?|Yuri Gagarin|Neil Armstrong|Buzz Aldrin|Michael 
 from expanded_bank import expand
 expand(questions,add,direct,provinces)
 flags=json.loads((ROOT/'data/flag-countries.json').read_text())
-for flag in flags:
-    add('bayraklar',f"{flag['name']} ülkesinin bayrağı hangisidir?",'flag:'+flag['code'],['flag:'+f['code'] for f in flags],f"Doğru bayrak: {flag['name']}.")
+for flag in flags[:100]:
+    add('bayraklar',f"{flag['name']} ülkesinin bayrağı hangisidir?",'flag:'+flag['code'],['flag:'+f['code'] for f in flags[:100]],f"Doğru bayrak: {flag['name']}.")
 from history_bank import CATEGORIES as HISTORY_CATEGORIES, extend_history
 extend_history(questions,add)
+from bank_250 import CATEGORY_IDS, extend_to_250
+extend_to_250(questions,add,provinces)
 from collections import Counter
 counts=Counter(q['category'] for q in questions)
-expected={cat:100 for cat in ['cografya','dinozor','hayvanlar','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','bayraklar','enler']}
-expected.update(turkiye=200,plakalar=81)
-expected.update({category:150 for category in HISTORY_CATEGORIES})
+expected={category:250 for category in CATEGORY_IDS}
 assert dict(counts)==expected,(dict(counts),expected)
-assert len(questions)==2081
+assert len(questions)==4500
 assert len({q['id'] for q in questions})==len(questions)
 assert len({q['text'] for q in questions})==len(questions)
 assert sum(q['category']=='turkiye' and 'plaka kodu' in q['text'] for q in questions)==20

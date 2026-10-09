@@ -1,0 +1,101 @@
+# İlave sorular: bilim, edebiyat, kurumlar, şehirler ve hanedanlar.
+bilgin|Kitâbü'l-Hayevân adlı eseriyle tanınan Abbâsî dönemi yazarı kimdir?|Câhiz
+bilgin|Uyûnü'l-ahbâr adlı edebiyat ve kültür derlemesinin yazarı kimdir?|İbn Kuteybe
+bilgin|Murûcü'z-zeheb adlı tarih ve coğrafya eserini yazan kimdir?|Mes‘ûdî
+bilgin|Ahsenü't-tekāsîm adlı coğrafya kitabının yazarı kimdir?|Makdisî
+bilgin|Mu‘cemü'l-büldân adlı coğrafya sözlüğünü hazırlayan kimdir?|Yâkūt el-Hamevî
+bilgin|el-Fihrist adlı kitaplar ve müellifler kataloğunu hazırlayan kişi kimdir?|İbnü'n-Nedîm
+bilgin|Vefeyâtü'l-a‘yân adlı biyografi sözlüğünün yazarı kimdir?|İbn Hallikân
+bilgin|Siyeru a‘lâmi'n-nübelâ adlı biyografi külliyatının yazarı kimdir?|Zehebî
+bilgin|el-Bidâye ve'n-nihâye adlı tarih eserinin yazarı kimdir?|İbn Kesîr
+bilgin|el-Kâmil fi't-târîh adlı eseri yazan tarihçi kimdir?|İbnü'l-Esîr
+bilgin|İbn Hişâm'ın düzenlediği erken siyer eserinin ilk müellifi kimdir?|İbn İshak
+bilgin|et-Tabakātü'l-kübrâ adlı biyografi eserinin müellifi kimdir?|İbn Sa‘d
+bilgin|İslâm coğrafyasında mantık ve felsefe eserleriyle “Arapların filozofu” olarak tanınan kimdir?|Kindî
+bilgin|Hay b. Yakzân adlı felsefî hikâyenin Endülüslü müellifi kimdir?|İbn Tufeyl
+bilgin|Tehâfütü't-Tehâfüt adlı eserinde Gazzâlî'ye cevap veren filozof kimdir?|İbn Rüşd
+bilgin|eş-Şifâ adlı geniş felsefe ve bilim külliyatını yazan kimdir?|İbn Sînâ
+bilgin|Kitâbü'l-Mûsîka'l-kebîr adlı müzik teorisi eserini yazan kimdir?|Fârâbî
+bilgin|Kitâbü Sûreti'l-arz adlı coğrafya eserini yazan Abbâsî dönemi bilgini kimdir?|Hârizmî
+bilgin|Miftâhu'l-hisâb adlı matematik eserini yazan Semerkantlı bilgin kimdir?|Gıyâseddin Cemşîd el-Kâşî
+bilgin|Merâga Rasathanesi'nin kuruluşuna öncülük eden bilgin kimdir?|Nasîrüddin Tûsî
+bilgin|Akciğer kan dolaşımını açıklamasıyla tıp tarihinde tanınan kimdir?|İbnü'n-Nefîs
+bilgin|Gök cisimlerini anlattığı Suverü'l-kevâkib adlı eserini yazan kimdir?|Abdurrahman es-Sûfî
+bilgin|Orta Çağ astronomisindeki gözlemleriyle tanınan Sâbiî bilgin kimdir?|Bettânî
+bilgin|İslâm bilim tarihinde matematik ve tercüme çalışmalarıyla tanınan Harranlı bilgin kimdir?|Sâbit b. Kurre
+bilgin|Tıp eserlerini Arapça ve Süryânîceye çeviren Abbâsî dönemi hekimi kimdir?|Huneyn b. İshak
+bilgin|Endülüs'te botanik ve ilaçlar üzerine el-Câmi‘ adlı eseriyle tanınan kimdir?|İbnü'l-Baytâr
+bilgin|Gülistân ve Bostân adlı eserleriyle tanınan İranlı şair kimdir?|Sa‘dî-i Şîrâzî
+bilgin|Şâhnâme adlı Farsça destanı kaleme alan şair kimdir?|Firdevsî
+bilgin|Mantıku't-tayr adlı alegorik eserinin yazarı kimdir?|Ferîdüddin Attâr
+bilgin|Nefehâtü'l-üns adlı tasavvuf biyografileri eserinin yazarı kimdir?|Abdurrahman-ı Câmî
+terim|İslâm tarihinde Kur'an'ın açıklanmasını konu alan ilim hangisidir?|Tefsir
+terim|İslâm tarihinde rivayetlerin aktarıcı zincirini ifade eden terim hangisidir?|İsnad
+terim|Bir hadis rivayetinde aktarılan asıl söz bölümüne ne denir?|Metin
+terim|Hadis aktaran kişiyi belirten terim hangisidir?|Râvi
+terim|Hadis râvilerinin hayatlarını ve güvenilirliklerini inceleyen literatür hangi adla anılır?|Ricâl
+terim|İslâm hukukunda delillerden hüküm çıkarma yöntemlerini inceleyen alan hangisidir?|Usûl-i fıkıh
+terim|İslâm tarihinde inanç esaslarını aklî delillerle inceleyen ilim hangisidir?|Kelâm
+terim|İslâm kitap kültüründe kitapları elle çoğaltan kişiye ne denirdi?|Müstensih
+terim|Orta Çağ İslâm dünyasında kâğıt, kitap çoğaltma ve kitap satışıyla uğraşan kişiye ne denirdi?|Verrâk
+terim|İslâm eğitim geleneğinde Kur'an okuma eğitimine ağırlık veren ilk mektep türü hangisidir?|Küttâb
+terim|İslâm bilim tarihinde gözlem yapılan astronomi kurumuna ne denir?|Rasathane
+terim|Gök cisimlerinin konumlarını ve astronomi cetvellerini içeren esere ne denir?|Zîc
+terim|Gök cisimlerinin yüksekliğini ölçmekte kullanılan tarihî alet hangisidir?|Usturlap
+terim|Vakit ve kıble tayiniyle uğraşan tarihî görevliye ne denir?|Muvakkit
+terim|İslâm sanatında insan figürü yerine sıkça kullanılan geometrik yıldızlı bezeme türlerinin ortak özelliği nedir?|Geometrik tekrar||Fotoğraf baskısı~Perspektif portre~Hareketli görüntü
+terim|İslâm mimarisinde kıble yönünü gösteren duvar nişine ne denir?|Mihrap
+terim|Camide hutbenin okunduğu basamaklı yapıya ne denir?|Minber
+terim|İslâm tarihinde sınır savunması ve zamanla dinî yaşamla ilişkili yapılara ne denir?|Ribât
+terim|İslâm toplumlarında tasavvuf eğitimi ve toplantıları için kullanılan yapının adlarından biri hangisidir?|Hankah
+terim|Tarihî İslâm devletlerinde hükümdarın adına okunan cuma konuşması ne adla anılır?|Hutbe
+terim|İslâm devletlerinde egemenliği gösteren para basma işlemi hangi nesneyle ilişkilidir?|Sikke
+terim|Emevî ve Abbâsî dönemlerinde kullanılan altın paranın adı nedir?|Dinar
+terim|Erken İslâm tarihinde kullanılan gümüş paranın adı nedir?|Dirhem
+terim|İslâm tarihinde hükümdarın dîvân işlerinde yardımcı üst düzey görevlisinin unvanı nedir?|Vezir
+terim|İslâm tarihinde mahkeme kararını veren yargıç hangi unvanla anılır?|Kadı
+terim|İslâm devletlerinde posta ve haber alma teşkilatı hangi adla anılır?|Berîd
+terim|İslâm tarih yazımında kişileri nesillere veya meslek gruplarına göre sıralayan kitap türü hangisidir?|Tabakāt
+terim|İslâm geleneğinde dinî soruya verilen ilmî cevap hangi adla anılır?|Fetva
+terim|Tarihî medreselerde ders halkasını yürüten öğretici hangi unvanı taşır?|Müderris
+terim|İslâm tarihi kaynaklarında ayın görülmesiyle başlayan ay esaslı takvim hangisidir?|Hicrî kamerî takvim
+hanedan|Kuzey Afrika'da 11. yüzyılda yükselip Endülüs'e de hâkim olan, Yûsuf b. Tâşfîn ile anılan hanedan hangisidir?|Murâbıtlar
+hanedan|Murâbıtların ardından Mağrib ve Endülüs'te güçlenen, İbn Tûmert hareketinden doğan hanedan hangisidir?|Muvahhidler
+hanedan|Fas'ta Bû İnâniyye medreselerini yaptıran hanedan hangisidir?|Merînîler
+hanedan|Tunus'ta 13.–16. yüzyıllarda hüküm süren hanedan hangisidir?|Hafsîler
+hanedan|Kayrevan merkezli, Sicilya seferleriyle tanınan 9. yüzyıl hanedanı hangisidir?|Ağlebîler
+hanedan|Buhara ve Semerkant çevresinde 9.–10. yüzyıllarda hüküm süren İran kökenli hanedan hangisidir?|Sâmânîler
+hanedan|Ahmed b. Tolun'un Mısır'da kurduğu hanedan hangisidir?|Tolunoğulları
+hanedan|Mısır'da Fâtımîlerden önce Muhammed b. Tuğç'un kurduğu hanedan hangisidir?|İhşîdîler
+hanedan|Abbâsî halifeliği sürerken 945'te Bağdat'ta siyasî nüfuz kuran hanedan hangisidir?|Büveyhîler
+hanedan|İran ve Irak'ta Tuğrul Bey döneminde güçlenen Türk-İslâm devleti hangisidir?|Büyük Selçuklular
+hanedan|Suriye'de Nûreddin Mahmud'un mensup olduğu hanedan hangisidir?|Zengîler
+hanedan|Diyarbakır ve Mardin çevresinde Cezerî'yi himaye eden hanedan hangisidir?|Artuklular
+hanedan|Orta Asya'da İslâm'ı benimsemesiyle tanınan Satuk Buğra Han hangi hanedandandır?|Karahanlılar
+hanedan|Gazneli Mahmud'un sarayında bulunan bilginlerin himaye gördüğü devlet hangisidir?|Gazneliler
+hanedan|Semerkant'ta Şâh-ı Zinde ve Bîbî Hanım gibi yapıları geliştiren 14.–15. yüzyıl hanedanı hangisidir?|Timurlular
+hanedan|Delhi Sultanlığı'nın ilk döneminde Kutbüddin Aybeg'in kurduğu Türk hanedanı hangisidir?|Memlükler (Delhi)
+hanedan|Hindistan'da 1526 Panipat Savaşı ardından kurulan devlet hangisidir?|Bâbürlüler
+hanedan|İran'da Şah İsmâil'in 1501'de kurduğu hanedan hangisidir?|Safevîler
+hanedan|İran'da Nâdir Şah'ın mensup olduğu 18. yüzyıl hanedanı hangisidir?|Afşarlar
+hanedan|Fas'ta Marakeş'teki Sa‘dî türbelerini yaptıran hanedan hangisidir?|Sa‘dîler
+yer|Endülüs saray-şehri Medînetüzzehrâ hangi şehir yakınında kurulmuştur?|Kurtuba
+yer|Kütübiyye Camii hangi Fas şehrindedir?|Marakeş
+yer|Hasan Kulesi olarak bilinen tamamlanmamış Muvahhid minaresi hangi Fas şehrindedir?|Rabat
+yer|Bû İnâniyye Medresesi'nin Fas'taki en ünlü örneği hangi şehirdedir?|Fes
+yer|Sâmânî hükümdarı İsmâil'in ünlü tuğla türbesi hangi şehirdedir?|Buhara
+yer|Registan Meydanı'nın üç medresesi hangi şehirdedir?|Semerkant
+yer|Timur'un Gûr-ı Emîr türbesi hangi şehirdedir?|Semerkant
+yer|Ahmed b. Tolun Camii bugün hangi büyük şehirdedir?|Kahire
+yer|Emevîler döneminin saray yapısı Kusayr Amra bugün hangi ülkededir?|Ürdün
+yer|Fâtımîlerin ilk merkezlerinden Mehdiye bugün hangi ülkededir?|Tunus
+yer|Müslüman Sicilya tarihinin merkezi Palermo bugün hangi ülkededir?|İtalya
+yer|Kral II. Roger'ın İdrîsî'yi himaye ettiği ada hangisidir?|Sicilya
+yer|Nasîrüddin Tûsî'nin rasathane kurduğu Merâga bugün hangi ülkededir?|İran
+yer|Kutub Minar adlı tarihî minare hangi Hindistan şehrindedir?|Delhi
+yer|Bâbürlü hükümdarı Ekber'in inşa ettirdiği Fetihpûr Sikri bugün hangi ülkededir?|Hindistan
+yer|Tac Mahal'in bulunduğu tarihî Bâbürlü şehri hangisidir?|Agra
+yer|Bâbürlü eseri Bâdşâhî Camii hangi Pakistan şehrindedir?|Lahor
+yer|Batı Afrika İslâm kitap kültürünün merkezi Timbuktu bugün hangi ülkededir?|Mali
+yer|Kerpiç Ulu Cami ile tanınan Cenne bugün hangi ülkededir?|Mali
+yer|İslâm tarihinin erken dönemindeki Habeşistan hicreti Kızıldeniz'in hangi kıyısına yönelmiştir?|Afrika kıyısına||Avrupa kıyısına~Amerika kıyısına~Avustralya kıyısına

@@ -398,5 +398,389 @@
   {
     "code": "au",
     "name": "Avustralya"
+  },
+  {
+    "code": "ad",
+    "name": "Andorra"
+  },
+  {
+    "code": "af",
+    "name": "Afganistan (2004–2021)"
+  },
+  {
+    "code": "ag",
+    "name": "Antigua ve Barbuda"
+  },
+  {
+    "code": "bb",
+    "name": "Barbados"
+  },
+  {
+    "code": "bs",
+    "name": "Bahamalar"
+  },
+  {
+    "code": "bz",
+    "name": "Belize"
+  },
+  {
+    "code": "bj",
+    "name": "Benin"
+  },
+  {
+    "code": "bo",
+    "name": "Bolivya"
+  },
+  {
+    "code": "bw",
+    "name": "Botsvana"
+  },
+  {
+    "code": "bn",
+    "name": "Brunei"
+  },
+  {
+    "code": "bf",
+    "name": "Burkina Faso"
+  },
+  {
+    "code": "bi",
+    "name": "Burundi"
+  },
+  {
+    "code": "cm",
+    "name": "Kamerun"
+  },
+  {
+    "code": "cv",
+    "name": "Cabo Verde"
+  },
+  {
+    "code": "cf",
+    "name": "Orta Afrika Cumhuriyeti"
+  },
+  {
+    "code": "td",
+    "name": "Çad"
+  },
+  {
+    "code": "co",
+    "name": "Kolombiya"
+  },
+  {
+    "code": "km",
+    "name": "Komorlar"
+  },
+  {
+    "code": "cg",
+    "name": "Kongo - Brazavil"
+  },
+  {
+    "code": "cd",
+    "name": "Kongo - Kinşasa"
+  },
+  {
+    "code": "cr",
+    "name": "Kosta Rika"
+  },
+  {
+    "code": "cu",
+    "name": "Küba"
+  },
+  {
+    "code": "cy",
+    "name": "Kıbrıs"
+  },
+  {
+    "code": "ci",
+    "name": "Côte d’Ivoire"
+  },
+  {
+    "code": "dj",
+    "name": "Cibuti"
+  },
+  {
+    "code": "dm",
+    "name": "Dominika"
+  },
+  {
+    "code": "do",
+    "name": "Dominik Cumhuriyeti"
+  },
+  {
+    "code": "ec",
+    "name": "Ekvador"
+  },
+  {
+    "code": "sv",
+    "name": "El Salvador"
+  },
+  {
+    "code": "gq",
+    "name": "Ekvator Ginesi"
+  },
+  {
+    "code": "er",
+    "name": "Eritre"
+  },
+  {
+    "code": "sz",
+    "name": "Esvatini"
+  },
+  {
+    "code": "fj",
+    "name": "Fiji"
+  },
+  {
+    "code": "ga",
+    "name": "Gabon"
+  },
+  {
+    "code": "gm",
+    "name": "Gambiya"
+  },
+  {
+    "code": "gd",
+    "name": "Grenada"
+  },
+  {
+    "code": "gt",
+    "name": "Guatemala"
+  },
+  {
+    "code": "gn",
+    "name": "Gine"
+  },
+  {
+    "code": "gw",
+    "name": "Gine-Bissau"
+  },
+  {
+    "code": "gy",
+    "name": "Guyana"
+  },
+  {
+    "code": "ht",
+    "name": "Haiti"
+  },
+  {
+    "code": "hn",
+    "name": "Honduras"
+  },
+  {
+    "code": "id",
+    "name": "Endonezya"
+  },
+  {
+    "code": "il",
+    "name": "İsrail"
+  },
+  {
+    "code": "jm",
+    "name": "Jamaika"
+  },
+  {
+    "code": "ki",
+    "name": "Kiribati"
+  },
+  {
+    "code": "ls",
+    "name": "Lesotho"
+  },
+  {
+    "code": "lr",
+    "name": "Liberya"
+  },
+  {
+    "code": "li",
+    "name": "Liechtenstein"
+  },
+  {
+    "code": "mw",
+    "name": "Malavi"
+  },
+  {
+    "code": "ml",
+    "name": "Mali"
+  },
+  {
+    "code": "mt",
+    "name": "Malta"
+  },
+  {
+    "code": "mh",
+    "name": "Marshall Adaları"
+  },
+  {
+    "code": "mr",
+    "name": "Moritanya"
+  },
+  {
+    "code": "mu",
+    "name": "Mauritius"
+  },
+  {
+    "code": "fm",
+    "name": "Mikronezya"
+  },
+  {
+    "code": "mc",
+    "name": "Monako"
+  },
+  {
+    "code": "mz",
+    "name": "Mozambik"
+  },
+  {
+    "code": "mm",
+    "name": "Myanmar (Burma)"
+  },
+  {
+    "code": "na",
+    "name": "Namibya"
+  },
+  {
+    "code": "nr",
+    "name": "Nauru"
+  },
+  {
+    "code": "nz",
+    "name": "Yeni Zelanda"
+  },
+  {
+    "code": "ni",
+    "name": "Nikaragua"
+  },
+  {
+    "code": "ne",
+    "name": "Nijer"
+  },
+  {
+    "code": "pw",
+    "name": "Palau"
+  },
+  {
+    "code": "pa",
+    "name": "Panama"
+  },
+  {
+    "code": "pg",
+    "name": "Papua Yeni Gine"
+  },
+  {
+    "code": "py",
+    "name": "Paraguay"
+  },
+  {
+    "code": "kn",
+    "name": "Saint Kitts ve Nevis"
+  },
+  {
+    "code": "lc",
+    "name": "Saint Lucia"
+  },
+  {
+    "code": "vc",
+    "name": "Saint Vincent ve Grenadinler"
+  },
+  {
+    "code": "ws",
+    "name": "Samoa"
+  },
+  {
+    "code": "sm",
+    "name": "San Marino"
+  },
+  {
+    "code": "st",
+    "name": "Sao Tome ve Principe"
+  },
+  {
+    "code": "sc",
+    "name": "Seyşeller"
+  },
+  {
+    "code": "sl",
+    "name": "Sierra Leone"
+  },
+  {
+    "code": "sb",
+    "name": "Solomon Adaları"
+  },
+  {
+    "code": "so",
+    "name": "Somali"
+  },
+  {
+    "code": "za",
+    "name": "Güney Afrika"
+  },
+  {
+    "code": "ss",
+    "name": "Güney Sudan"
+  },
+  {
+    "code": "lk",
+    "name": "Sri Lanka"
+  },
+  {
+    "code": "sd",
+    "name": "Sudan"
+  },
+  {
+    "code": "sr",
+    "name": "Surinam"
+  },
+  {
+    "code": "sy",
+    "name": "Suriye"
+  },
+  {
+    "code": "tl",
+    "name": "Timor-Leste"
+  },
+  {
+    "code": "tg",
+    "name": "Togo"
+  },
+  {
+    "code": "to",
+    "name": "Tonga"
+  },
+  {
+    "code": "tt",
+    "name": "Trinidad ve Tobago"
+  },
+  {
+    "code": "tv",
+    "name": "Tuvalu"
+  },
+  {
+    "code": "vu",
+    "name": "Vanuatu"
+  },
+  {
+    "code": "ve",
+    "name": "Venezuela"
+  },
+  {
+    "code": "ye",
+    "name": "Yemen"
+  },
+  {
+    "code": "ps",
+    "name": "Filistin Bölgeleri"
+  },
+  {
+    "code": "va",
+    "name": "Vatikan"
+  },
+  {
+    "code": "xk",
+    "name": "Kosova"
+  },
+  {
+    "code": "tw",
+    "name": "Tayvan"
   }
 ]

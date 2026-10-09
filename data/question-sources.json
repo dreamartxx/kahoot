@@ -69,5 +69,31 @@
       "https://hadislerleislam.diyanet.gov.tr/sayfa.php?CILT=7&SAYFA=29",
       "https://hadislerleislam.diyanet.gov.tr/sayfa.php?CILT=6&SAYFA=85"
     ]
+  },
+  "expansion250": {
+    "addedAt": "2026-10-09",
+    "questionCount": 4500,
+    "categoryCount": 18,
+    "questionsPerCategory": 250,
+    "editorialNote": "İlave 2.419 özgün soru. Kaynaklar seçilmiş bilgilerin kontrolü ve ileri okuma içindir; tüm soruların tek tek kaynak eşlemesi değildir. Tarihe bağlı spor rekorları 2024 sonuyla sınırlandırılır. Afganistan görseli 2004–2021 dönemini belirtir. Türkiye kategorisindeki plaka soruları 20 ile sınırlıdır. Aile havuzu değişmez.",
+    "sources": [
+      "https://science.nasa.gov/solar-system/",
+      "https://science.nasa.gov/science-missions/",
+      "https://www.nhm.ac.uk/discover/dino-directory/abelisaurus.html",
+      "https://www.nhm.ac.uk/discover/dino-directory/nodosaurus.html",
+      "https://repository.si.edu/bitstream/handle/10088/21547/1/USNMP_77_2839_1930.pdf",
+      "https://animals.sandiegozoo.org/animals",
+      "https://kulturportali.gov.tr/turkiye/kutahya/gezilecekyer/frgya-vadler",
+      "https://www.kulturportali.gov.tr/turkiye/cankiri/kulturenvanteri/bati-salman-hoyuk",
+      "https://www.uefa.com/uefachampionsleague/history/",
+      "https://www.fifa.com/en/articles/watch-miroslav-klose-goals-record",
+      "https://www.teamusa.com/profiles/michael-phelps",
+      "https://pubs.usgs.gov/pp/p1386k/pdf/07_1386K_kenai.pdf",
+      "https://islamansiklopedisi.org.tr/ibn-sina",
+      "https://kuran.diyanet.gov.tr/tefsir/Y%C3%BBsuf-suresi/1599/3-ayet-tefsiri",
+      "https://kuran.diyanet.gov.tr/tefsir/Y%C3%BBsuf-suresi/1600/4-6-ayet-tefsiri",
+      "https://ataturkansiklopedisi.gov.tr/detay/1681/Jale-%C4%B0nan-%281914-2001%29",
+      "https://www.guineaecuatorialpress.com/index.php/noticias/el_presidente_de_la_republica_proclama_la_ciudad_de_la_paz_como_capital_de_la_republica_de_guinea_ecuatorial_con_la_firma_de_un_decreto_ley"
+    ]
   }
 }

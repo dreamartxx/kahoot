@@ -1,10 +1,11 @@
+import { createHash } from "node:crypto";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 const bank = JSON.parse(
   readFileSync(new URL("../data/questions.json", import.meta.url)),
 );
-test("18 categories contain 2081 unique four-choice questions", () => {
+test("18 categories contain 4500 unique four-choice questions", () => {
   const counts = {};
   const ids = new Set(),
     texts = new Set();
@@ -20,25 +21,8 @@ test("18 categories contain 2081 unique four-choice questions", () => {
     assert(q.text.length > 10);
   }
   assert.equal(Object.keys(counts).length, 18);
-  assert.equal(counts.turkiye, 200);
-  assert.equal(counts.plakalar, 81);
-  assert(
-    Object.entries(counts)
-      .filter(
-        ([key]) =>
-          !["turkiye", "plakalar"].includes(key) && !key.endsWith("-tarihi"),
-      )
-      .every(([, n]) => n === 100),
-  );
-  for (const category of [
-    "turkiye-tarihi",
-    "osmanli-tarihi",
-    "islam-tarihi",
-    "peygamberler-tarihi",
-  ]) {
-    assert.equal(counts[category], 150);
-  }
-  assert.equal(bank.length, 2081);
+  assert(Object.values(counts).every((count) => count === 250));
+  assert.equal(bank.length, 4500);
 });
 
 test("Türkiye retains only 20 metropolitan plates; local specialties cover all 81 provinces", () => {
@@ -52,7 +36,9 @@ test("Türkiye retains only 20 metropolitan plates; local specialties cover all 
   );
   assert.equal(plates.length, 20);
   assert.deepEqual(new Set(plates.map((q) => q.options[q.correct])), major);
-  const dedicated = bank.filter((q) => q.category === "plakalar");
+  const dedicated = bank.filter(
+    (q) => q.category === "plakalar" && q.text.includes(" ilinin trafik"),
+  );
   assert.deepEqual(
     new Set(dedicated.map((q) => q.options[q.correct])),
     new Set(
@@ -77,13 +63,18 @@ test("every flag question has four local SVG choices and the matching country's 
   );
   const codes = new Set(countries.map((c) => c.code));
   const flagQuestions = bank.filter((q) => q.category === "bayraklar");
-  assert.equal(flagQuestions.length, countries.length);
+  assert.equal(flagQuestions.length, 250);
+  assert.equal(countries.length, 196);
   for (const { code, name } of countries) {
     const q = flagQuestions.find(
-      (q) => q.text === `${name} ülkesinin bayrağı hangisidir?`,
+      (q) =>
+        q.text === `${name} ülkesinin bayrağı hangisidir?` ||
+        q.text === `${name} bayrağını dört görsel arasından seçebilir misin?`,
     );
     assert(q);
     assert.equal(q.options[q.correct], `flag:${code}`);
+  }
+  for (const q of flagQuestions) {
     for (const option of q.options) {
       assert(option.startsWith("flag:"));
       assert(codes.has(option.slice(5)));
@@ -100,7 +91,7 @@ test("every flag question has four local SVG choices and the matching country's 
 });
 test("superlative options are names, with optional explanatory measurements", () => {
   const records = bank.filter((q) => q.category === "enler");
-  assert.equal(records.length, 100);
+  assert.equal(records.length, 250);
   for (const q of records) {
     assert(
       q.options.every((option) => !/^\d/.test(option)),
@@ -118,4 +109,13 @@ test("superlative options are names, with optional explanatory measurements", ()
   );
   assert.equal(deepest.options[deepest.correct], "Challenger Çukuru");
   assert(deepest.explanation.includes("10.935"));
+});
+
+test("expansion preserves all 2081 legacy questions and their answers", () => {
+  assert.equal(
+    createHash("sha256")
+      .update(JSON.stringify(bank.slice(0, 2081)))
+      .digest("hex"),
+    "58008cb3d04f2f84a93d110d1fe6a9e5c0851b622f0641e873496bcf976d489a",
+  );
 });

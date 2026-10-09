@@ -225,17 +225,12 @@ test("domain migration accepts exact site origins and rejects lookalikes", async
     assert.equal((await call("create", {}, { origin })).status, 403);
   }
 });
-test("history categories expose 150 questions, support manual additions and rotate ten-question games", async () => {
+test("all categories expose 250 questions, support manual additions and rotate ten-question games", async () => {
   const counts = (await call("categories")).data;
-  for (const category of [
-    "turkiye-tarihi",
-    "osmanli-tarihi",
-    "islam-tarihi",
-    "peygamberler-tarihi",
-  ]) {
-    assert.equal(counts[category], 150);
+  for (const category of Object.keys(counts)) {
+    assert.equal(counts[category], 250);
     const pool = (await call("questions", { category }, { admin: true })).data;
-    assert.equal(pool.length, 150);
+    assert.equal(pool.length, 250);
     const poolIds = new Set(pool.map((q) => q.id));
     const seen = new Set();
     for (let game = 0; game < 2; game++) {
@@ -252,7 +247,7 @@ test("history categories expose 150 questions, support manual additions and rota
       for (const q of state.questions) {
         assert.equal(q.category, category);
         assert(poolIds.has(q.id));
-        assert(!seen.has(q.id), "The next game uses unused history questions");
+        assert(!seen.has(q.id), "The next game uses unused category questions");
         seen.add(q.id);
         const original = pool.find((item) => item.id === q.id);
         assert.equal(q.options.length, 4);
@@ -285,14 +280,20 @@ test("history categories expose 150 questions, support manual additions and rota
     );
     assert.equal(saved.status, 200);
     assert.equal(saved.data.category, category);
-    assert.equal((await call("categories")).data[category], 151);
+    assert.equal((await call("categories")).data[category], 251);
     await call("question_delete", { id: saved.data.id }, { admin: true });
-    assert.equal((await call("categories")).data[category], 150);
+    assert.equal((await call("categories")).data[category], 250);
   }
 });
 test("quiz: ten questions, no repeats until pool exhausted, no early answer/score leaks, idempotency and deadlines", async () => {
+  // Isolate a complete cycle from games created by the category smoke test.
+  execFileSync("php", [
+    "-r",
+    "$d=new PDO('sqlite:'.$argv[1]);$d->exec(\"DELETE FROM arena_history WHERE id LIKE 'cografya-%'\");",
+    db,
+  ]);
   const seen = new Set();
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 25; i++) {
     const r = await create("quiz");
     const raw = execFileSync("php", [
       "-r",
@@ -306,7 +307,7 @@ test("quiz: ten questions, no repeats until pool exhausted, no early answer/scor
       seen.add(q.id);
     }
   }
-  assert.equal(seen.size, 100);
+  assert.equal(seen.size, 250);
   let r = await create("quiz");
   const p = await join(r.pin, "Deniz");
   assert(!p.room.questions);
@@ -413,7 +414,7 @@ test("manual questions persist, validate four options, can be selected explicitl
   const qs = (
     await call("questions", { category: "cografya" }, { admin: true })
   ).data;
-  assert.equal(qs.length, 101);
+  assert.equal(qs.length, 251);
   const selected = [
     good.data.id,
     ...qs
@@ -431,7 +432,7 @@ test("manual questions persist, validate four options, can be selected explicitl
   assert.equal(
     (await call("questions", { category: "cografya" }, { admin: true })).data
       .length,
-    100,
+    250,
   );
 });
 test("cloud: Turkish case normalization, one vote per person per word, editing and prompt reset", async () => {
