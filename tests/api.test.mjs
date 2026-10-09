@@ -225,6 +225,71 @@ test("domain migration accepts exact site origins and rejects lookalikes", async
     assert.equal((await call("create", {}, { origin })).status, 403);
   }
 });
+test("history categories expose 150 questions, support manual additions and rotate ten-question games", async () => {
+  const counts = (await call("categories")).data;
+  for (const category of [
+    "turkiye-tarihi",
+    "osmanli-tarihi",
+    "islam-tarihi",
+    "peygamberler-tarihi",
+  ]) {
+    assert.equal(counts[category], 150);
+    const pool = (await call("questions", { category }, { admin: true })).data;
+    assert.equal(pool.length, 150);
+    const poolIds = new Set(pool.map((q) => q.id));
+    const seen = new Set();
+    for (let game = 0; game < 2; game++) {
+      const room = await create("quiz", { category });
+      const state = JSON.parse(
+        execFileSync("php", [
+          "-r",
+          "$d=new PDO('sqlite:'.$argv[1]);$q=$d->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$argv[2]]);echo $q->fetchColumn();",
+          db,
+          room.pin,
+        ]).toString(),
+      );
+      assert.equal(state.questions.length, 10);
+      for (const q of state.questions) {
+        assert.equal(q.category, category);
+        assert(poolIds.has(q.id));
+        assert(!seen.has(q.id), "The next game uses unused history questions");
+        seen.add(q.id);
+        const original = pool.find((item) => item.id === q.id);
+        assert.equal(q.options.length, 4);
+        assert.equal(q.options[q.correct], original.options[original.correct]);
+      }
+      const player = await join(room.pin, "Tarih oyuncusu");
+      assert.equal(player.room.questions, undefined);
+      await call(
+        "advance",
+        { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" },
+        { admin: true },
+      );
+      const current = (
+        await call("room", { pin: room.pin }, { token: player.token })
+      ).data;
+      assert.equal(current.question.options.length, 4);
+      assert.equal(current.question.correct, undefined);
+      assert.equal(current.question.explanation, undefined);
+      await call("close", { pin: room.pin }, { admin: true });
+    }
+    const saved = await call(
+      "question_save",
+      {
+        category,
+        text: "Yerel test için tarih sorusu",
+        options: ["A", "B", "C", "D"],
+        correct: 1,
+      },
+      { admin: true },
+    );
+    assert.equal(saved.status, 200);
+    assert.equal(saved.data.category, category);
+    assert.equal((await call("categories")).data[category], 151);
+    await call("question_delete", { id: saved.data.id }, { admin: true });
+    assert.equal((await call("categories")).data[category], 150);
+  }
+});
 test("quiz: ten questions, no repeats until pool exhausted, no early answer/score leaks, idempotency and deadlines", async () => {
   const seen = new Set();
   for (let i = 0; i < 10; i++) {

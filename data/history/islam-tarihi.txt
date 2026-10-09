@@ -1,0 +1,151 @@
+# Tür|Soru|Doğru cevap|İsteğe bağlı açıklama
+erken-kisi|Hz. Muhammed'e ilk iman eden eşi kimdir?|Hz. Hatice
+erken-kisi|Hicret yolculuğunda Hz. Muhammed'e eşlik eden sahâbî kimdir?|Hz. Ebû Bekir
+erken-kisi|Hicrî takvimi devlet işlerinde uygulamaya koyan halife kimdir?|Hz. Ömer
+erken-kisi|Kur'an nüshalarını çoğaltıp önemli merkezlere gönderen halife kimdir?|Hz. Osman
+erken-kisi|Dört halife döneminin son halifesi kimdir?|Hz. Ali
+erken-kisi|İslâm tarihinde ilk müezzin olarak tanınan sahâbî kimdir?|Bilâl-i Habeşî
+erken-kisi|Medine'nin savunulması için hendek kazılmasını öneren sahâbî kimdir?|Selmân-ı Fârisî
+erken-kisi|Kur'an'ın Hz. Ebû Bekir döneminde derlenmesi çalışmasını yöneten sahâbî kimdir?|Zeyd b. Sâbit
+erken-kisi|Uhud'da şehit olan, Hz. Muhammed'in amcası kimdir?|Hz. Hamza
+erken-kisi|Hicretten önce Medine'ye Kur'an öğretmek üzere gönderilen sahâbî kimdir?|Mus‘ab b. Umeyr
+erken-kisi|Müslümanların Habeşistan'daki sözcüsü olarak Necâşî'nin huzurunda konuşan sahâbî kimdir?|Ca‘fer b. Ebû Tâlib
+erken-kisi|Hz. Muhammed'i Medine'de evinde misafir eden sahâbî kimdir?|Ebû Eyyûb el-Ensârî
+erken-kisi|Siyer kaynaklarında İslâm'ın ilk kadın şehidi olarak anılan kişi kimdir?|Sümeyye bint Habbât
+erken-kisi|İlk Müslümanların Mekke'de buluştuğu evin sahibi kimdir?|Erkam b. Ebü'l-Erkam
+erken-kisi|Hz. Muhammed'in kızı ve Hz. Ali'nin eşi kimdir?|Hz. Fâtıma
+erken-kisi|Hz. Ebû Bekir'in kızı olan, hadis ve fıkıh bilgisiyle tanınan peygamber eşi kimdir?|Hz. Âişe
+erken-kisi|Hz. Ömer'in kızı olan ve derlenen ilk mushafın kendisinde korunduğu peygamber eşi kimdir?|Hz. Hafsa
+erken-kisi|Seyfullah lakabıyla tanınan İslâm kumandanı kimdir?|Hâlid b. Velîd
+erken-kisi|Mısır'ın fethini yöneten sahâbî kimdir?|Amr b. Âs
+erken-kisi|Kādisiye Savaşı'nda Müslüman ordusunu yöneten kumandan kimdir?|Sa‘d b. Ebû Vakkās
+erken-kisi|Hz. Muhammed'in ömrünün sonunda hazırladığı ordunun genç kumandanı kimdir?|Üsâme b. Zeyd
+erken-kisi|Kur'an yorumculuğuyla tanınan, Hz. Muhammed'in amcası Abbas'ın oğlu kimdir?|Abdullah b. Abbas
+erken-kisi|Habeşistan'da ilk Müslüman göçmenlere sığınma sağlayan hükümdarın unvanı nedir?|Necâşî
+erken-kisi|Emevî Devleti'nin kurucusu kimdir?|Muâviye b. Ebû Süfyân
+erken-kisi|661'de yönetimi Muâviye'ye bırakarak uzlaşan Hz. Ali'nin oğlu kimdir?|Hz. Hasan
+erken-kisi|680'de Kerbelâ'da hayatını kaybeden, Hz. Muhammed'in torunu kimdir?|Hz. Hüseyin
+erken-kisi|Arapça resmî yazışmalar ve para reformuyla tanınan Emevî halifesi kimdir?|Abdülmelik b. Mervân
+erken-kisi|Şam Emeviyye Camii'ni yaptıran halife kimdir?|I. Velîd
+erken-kisi|Emevî döneminde adalet anlayışı ve reformlarıyla tanınan Ömer kimdir?|Ömer b. Abdülazîz
+erken-kisi|711'de İber Yarımadası'na geçen İslâm ordusunun kumandanı kimdir?|Târık b. Ziyâd
+erken-kisi|Endülüs Emevî Emirliği'ni 756'da kuran hükümdar kimdir?|I. Abdurrahman
+erken-kisi|Endülüs'te 929'da halifelik unvanını alan Emevî hükümdarı kimdir?|III. Abdurrahman
+erken-kisi|Abbâsî Devleti'nin ilk halifesi kimdir?|Ebü'l-Abbas es-Seffâh
+erken-kisi|Bağdat'ı yeni başkent olarak kurduran Abbâsî halifesi kimdir?|Ebû Ca‘fer el-Mansûr
+erken-kisi|Abbâsîlerin parlak döneminde hüküm süren, Bermekîlerle birlikte anılan halife kimdir?|Hârûnürreşîd
+erken-kisi|Beytülhikme'deki tercüme faaliyetlerine desteğiyle tanınan Abbâsî halifesi kimdir?|Me'mûn
+erken-kisi|Abbâsî başkentini Sâmerrâ'ya taşıyan halife kimdir?|Mu‘tasım
+erken-kisi|1187'de Kudüs'ü Haçlılardan geri alan hükümdar kimdir?|Selâhaddîn-i Eyyûbî
+erken-kisi|Aynicâlût Savaşı sırasında Memlük sultanı kimdi?|Kutuz
+erken-kisi|Kuzey Afrika'da Kayrevan şehrini kuran kumandan kimdir?|Ukbe b. Nâfi‘
+sehir|Hz. Muhammed'e ilk vahyin geldiği Hira Mağarası hangi şehrin yakınındadır?|Mekke
+sehir|Hicretle birlikte İslâm toplumunun merkezi haline gelen şehir hangisidir?|Medine
+sehir|Emevîlerin Suriye'deki başkenti hangi şehirdi?|Şam
+sehir|Abbâsîlerin 762'de kurduğu başkent hangisidir?|Bağdat
+sehir|Hz. Ali'nin yönetim merkezi yaptığı Irak şehri hangisidir?|Kûfe
+sehir|Hz. Ömer döneminde kurulan, Irak'ın güneyindeki önemli garnizon şehri hangisidir?|Basra
+sehir|Amr b. Âs'ın Mısır'da kurduğu askerî yerleşim hangisidir?|Fustat
+sehir|Ezher Camii ve eğitim merkezi hangi şehirdedir?|Kahire
+sehir|Endülüs Emevîlerinin başkenti olan şehir hangisidir?|Kurtuba
+sehir|Elhamra Sarayı hangi Endülüs şehrindedir?|Gırnata
+sehir|Ukbe Camii ile tanınan, Tunus'taki erken İslâm şehri hangisidir?|Kayrevan
+sehir|Karaviyyîn eğitim merkezi hangi Fas şehrindedir?|Fes
+sehir|Hz. Hüseyin'in 680'de hayatını kaybettiği yer hangisidir?|Kerbelâ
+sehir|Malviye adıyla bilinen sarmal minareli Abbâsî Ulu Camii hangi şehirdedir?|Sâmerrâ
+sehir|Kubbetü's-sahre hangi şehirdedir?|Kudüs
+sehir|Endülüs'teki İşbîliye şehrinin bugünkü adı hangisidir?|Sevilla
+sehir|Endülüs'te Tuleytula adıyla anılan tercüme merkezi bugün hangi şehirdir?|Toledo
+sehir|İmam Buhârî'nin doğduğu ve adını aldığı şehir hangisidir?|Buhara
+sehir|İbn Haldûn'un doğduğu Kuzey Afrika şehri hangisidir?|Tunus
+sehir|Uluğ Bey'in ünlü rasathanesi hangi şehirdedir?|Semerkant
+sehir|Nizâmülmülk'ün 1067'de açtırdığı ünlü Nizâmiye Medresesi hangi şehirdedir?|Bağdat
+sehir|İbn Rüşd'ün doğduğu Endülüs şehri hangisidir?|Kurtuba
+sehir|Mekke ile Medine'yi kapsayan Hicaz bölgesindeki gülleriyle tanınan şehir hangisidir?|Tâif
+sehir|Müslüman gezgin İbn Battûta'nın doğduğu Fas şehri hangisidir?|Tanca
+sehir|Selçuklu döneminde Melikşah'ın başkenti ve Ömer Hayyâm'ın rasathane çalışmalarının merkezi olan şehir hangisidir?|İsfahan
+yil|Mekke'den Medine'ye hicret milâdî hangi yılda gerçekleşti?|622
+yil|Bedir Savaşı milâdî hangi yılda yapıldı?|624
+yil|Uhud Savaşı milâdî hangi yılda gerçekleşti?|625
+yil|Hendek Savaşı milâdî hangi yılda yapıldı?|627
+yil|Hudeybiye Antlaşması milâdî hangi yılda imzalandı?|628
+yil|Mekke'nin fethi milâdî hangi yılda gerçekleşti?|630
+yil|Veda haccı milâdî hangi yılda yapıldı?|632
+yil|Hz. Ömer'in halifeliği milâdî hangi yılda başladı?|634
+yil|Emevî Devleti milâdî hangi yılda kuruldu?|661
+yil|Kerbelâ olayı milâdî hangi yılda gerçekleşti?|680
+yil|Târık b. Ziyâd'ın Endülüs seferi milâdî hangi yılda başladı?|711
+yil|Abbâsîlerin Emevî yönetimine son verdiği yıl hangisidir?|750
+yil|Abbâsîlerle Çin ordusunun karşılaştığı Talas Savaşı hangi yılda yapıldı?|751
+yil|Endülüs Emevî Emirliği hangi yılda kuruldu?|756
+yil|Bağdat şehrinin kuruluşuna hangi yılda başlandı?|762
+yil|Moğolların Bağdat'ı ele geçirerek Abbâsî yönetimine son verdiği yıl hangisidir?|1258
+yil|Memlüklerin Moğolları durdurduğu Aynicâlût Savaşı hangi yılda yapıldı?|1260
+yil|Hıttîn Savaşı ve Kudüs'ün Selâhaddîn tarafından alınması hangi yıldadır?|1187
+yil|Gırnata Emirliği'nin sona erdiği yıl hangisidir?|1492
+yil|Kahire şehrini Fâtımîlerin kurduğu yıl hangisidir?|969
+kavram|Mekke'den Medine'ye göç eden ilk Müslümanlara ne ad verilir?|Muhacir
+kavram|Medine'de muhacirlere destek olan Müslümanlara ne ad verilir?|Ensar
+kavram|Hz. Muhammed'in hayatını konu alan ilim dalı hangisidir?|Siyer
+kavram|Hz. Muhammed'in bizzat katıldığı askerî seferler için hangi terim kullanılır?|Gazve
+kavram|Hz. Muhammed'in katılmadığı, görevlendirdiği birliklerin seferine ne denir?|Seriyye
+kavram|İlk Müslümanların İslâm öncesi Arap toplumunu anlatmak için kullandığı dönem adı hangisidir?|Câhiliye
+kavram|İlk İslâm devletlerinde kamu hazinesine ne denirdi?|Beytülmâl
+kavram|Hz. Peygamber'i Müslüman olarak görmüş ve Müslüman olarak ölmüş kişiyi belirten terim hangisidir?|Sahâbî
+kavram|Sahâbîlerle görüşmüş Müslüman nesle verilen ad hangisidir?|Tâbiîn
+kavram|Bir yöneticiye bağlılık bildiren sözleşmeye İslâm tarihinde ne denir?|Biat
+kavram|İslâm tarihinde kamu hizmetine ayrılan gelir getirici hayır müessesesi hangisidir?|Vakıf
+kavram|İslâm medeniyetinde hastane için kullanılan tarihî ad hangisidir?|Bîmâristan
+kavram|Pazarları ve ölçü-tartı düzenini denetleyen tarihî kurum hangisidir?|Hisbe
+kavram|Hz. Muhammed'in Mekke'den Medine'ye göçünün özel adı nedir?|Hicret
+kavram|İslâm tarihinde eğitim ve öğretim için kurulan geleneksel kurum hangisidir?|Medrese
+kavram|Abbâsî döneminde tercüme ve kitap faaliyetleriyle tanınan kurum hangisidir?|Beytülhikme
+kavram|Hz. Muhammed'in ailesini ve yakınlarını ifade eden terim hangisidir?|Ehl-i beyt
+kavram|Hicret sonrasında muhacirlerle ensar arasında kurulan kardeşliğe ne ad verilir?|Muâhât
+kavram|Mescid-i Nebevî'de eğitim alan ve barınan sahâbîlerin bulunduğu bölüm hangisidir?|Suffe
+kavram|İslâm tarihinde danışarak karar verme ilkesini anlatan terim hangisidir?|Şûra
+bilgin|el-Kānûn fi't-tıb adlı tıp eserinin yazarı kimdir?|İbn Sînâ
+bilgin|Kitâbü'l-Menâzır adlı optik eseriyle tanınan bilim insanı kimdir?|İbnü'l-Heysem
+bilgin|Cebir alanındaki el-Muhtasar adlı eseriyle tanınan matematikçi kimdir?|Hârizmî
+bilgin|Hindistan'ın kültürü ve bilimleri üzerine Tahkīku mâ li'l-Hind'i yazan bilgin kimdir?|Bîrûnî
+bilgin|Aristoteles yorumlarıyla tanınan Endülüslü filozof kimdir?|İbn Rüşd
+bilgin|Mukaddime adlı eseriyle tanınan tarihçi kimdir?|İbn Haldûn
+bilgin|Rihle adlı seyahatnamesiyle tanınan Faslı gezgin kimdir?|İbn Battûta
+bilgin|Cerrahi alet çizimleri içeren et-Tasrîf adlı eserin yazarı kimdir?|Zehrâvî
+bilgin|Otomatik su düzenekleri ve mekanik makineleriyle tanınan Artuklu dönemi bilgini kimdir?|Cezerî
+bilgin|Sicilya Kralı II. Roger için dünya haritası hazırlayan coğrafyacı kimdir?|İdrîsî
+bilgin|el-Medînetü'l-fâzıla adlı eseri yazan filozof kimdir?|Fârâbî
+bilgin|İhyâü ulûmi'd-dîn adlı eserin yazarı kimdir?|Gazzâlî
+bilgin|Çiçek ve kızamık hastalıklarını ele alan eseriyle tanınan hekim kimdir?|Ebû Bekir er-Râzî
+bilgin|el-Câmiu's-sahîh adlı hadis kitabıyla tanınan Buharalı âlim kimdir?|İmam Buhârî
+bilgin|el-Muvatta' adlı eserin müellifi olan Medineli âlim kimdir?|Mâlik b. Enes
+bilgin|Hanefî fıkıh ekolüne adını veren âlim kimdir?|Ebû Hanîfe
+bilgin|er-Risâle adlı fıkıh usulü eserinin yazarı kimdir?|İmam Şâfiî
+bilgin|el-Müsned adlı hadis külliyatının sahibi olan âlim kimdir?|Ahmed b. Hanbel
+bilgin|Câmiu'l-beyân adlı tefsiri ve büyük tarih eseriyle tanınan âlim kimdir?|Taberî
+bilgin|Göçebe Türklerin dilini tanıtan Dîvânu lugāti't-Türk'ün yazarı kimdir?|Kâşgarlı Mahmud
+bilgin|Kutadgu Bilig adlı eserin yazarı kimdir?|Yûsuf Has Hâcib
+bilgin|Siyâsetnâme adlı eseriyle tanınan Selçuklu veziri kimdir?|Nizâmülmülk
+bilgin|Rubâîleri ve Celâlî takvimi çalışmalarıyla tanınan bilgin kimdir?|Ömer Hayyâm
+bilgin|Semerkant'ta Zîc-i Uluğ Bey'in hazırlanmasına öncülük eden hükümdar-astronom kimdir?|Uluğ Bey
+bilgin|Nefhu't-tîb adlı Endülüs tarihi eseriyle tanınan müellif kimdir?|Makkarî
+hanedan|Kahire'yi kuran ve Ezher'i inşa ettiren hanedan hangisidir?|Fâtımîler
+hanedan|Selâhaddîn'in kurduğu hanedan hangisidir?|Eyyûbîler
+hanedan|Aynicâlût zaferini kazanan Mısır merkezli devlet hangisidir?|Memlükler
+hanedan|Gırnata'daki Elhamra Sarayı'nı geliştiren son Endülüs hanedanı hangisidir?|Nasrîler
+hanedan|Kutadgu Bilig'in yazıldığı Türk-İslâm hanedanı hangisidir?|Karahanlılar
+hanedan|Nizâmiye medreseleri hangi devlet döneminde kuruldu?|Büyük Selçuklular
+hanedan|İsfahan'daki İmam Camii ile tanınan İran hanedanı hangisidir?|Safevîler
+hanedan|Hindistan'da Tac Mahal'i yaptıran hanedan hangisidir?|Bâbürlüler
+hanedan|Horasan'da Gazneli Mahmud'un yönetimindeki devlet hangisidir?|Gazneliler
+hanedan|Sultan Ahmed Camii'ni inşa ettiren devlet hangisidir?|Osmanlılar
+olay|628'de Müslümanlarla Mekkeliler arasında yapılan barışın adı nedir?|Hudeybiye Antlaşması
+olay|Medine'nin çevresinde savunma hendeği kazılmasıyla anılan savaş hangisidir?|Hendek Savaşı
+olay|Müslümanların Bizans kuvvetlerine karşı 636'da kazandığı önemli savaş hangisidir?|Yermük Savaşı
+olay|Sâsânîlere karşı 642'de kazanılan ve İran'ın fethini hızlandıran savaş hangisidir?|Nihâvend Savaşı
+olay|Hz. Muhammed'in Medineli gruplarla yaptığı, hicretten önceki bağlılık sözleşmeleri ne adla anılır?|Akabe biatları
+olay|Mekke'de haksızlığa uğrayanları korumak için kurulan ve Hz. Muhammed'in de katıldığı ittifak hangisidir?|Hilfü'l-fudûl
+olay|Medine'deki toplulukların hak ve yükümlülüklerini düzenleyen tarihî metin hangisidir?|Medine Vesikası
+olay|İlk Müslümanların Kızıldeniz'in karşı kıyısına sığındığı göç hangisidir?|Habeşistan hicreti
+olay|Abbâsî yönetimiyle Çin ordusunun Orta Asya'daki karşılaşması hangisidir?|Talas Savaşı
+olay|Hz. Muhammed'in son haccı tarihte hangi adla anılır?|Veda haccı

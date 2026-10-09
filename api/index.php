@@ -35,7 +35,7 @@ try {
     if($action==='questions'){needAdmin();$qs=bank();$cat=$in['category']??'';echo json_encode(array_values(array_filter($qs,fn($q)=>!$cat || $q['category']===$cat)),JSON_UNESCAPED_UNICODE);exit;}
     if($action==='question_save'){
         needAdmin();$q=['id'=>'custom-'.bin2hex(random_bytes(12)),'category'=>inputText($in['category']??'',2,32,'Kategori'),'text'=>inputText($in['text']??'',5,500,'Soru'),'options'=>[],'correct'=>(int)($in['correct']??-1),'explanation'=>inputText($in['explanation']??'',0,600,'Açıklama')];
-        if(!in_array($q['category'],['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','plakalar','bayraklar','enler'],true)) fail('Kategori geçersiz.');
+        if(!in_array($q['category'],['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','plakalar','bayraklar','enler','turkiye-tarihi','osmanli-tarihi','islam-tarihi','peygamberler-tarihi'],true)) fail('Kategori geçersiz.');
         if(!is_array($in['options']??null)||count($in['options'])!==4||$q['correct']<0||$q['correct']>3)fail('Dört seçenek ve bir doğru cevap gerekli.');
         foreach($in['options'] as $opt)$q['options'][]=inputText($opt,1,180,'Seçenek');
         if(count(array_unique(array_map('normalize',$q['options'])))!==4)fail('Seçenekler farklı olmalı.');

@@ -1,0 +1,151 @@
+# Türkiye tarihi: Anadolu uygarlıkları, Selçuklular, Millî Mücadele ve Cumhuriyet.
+yer|Hititlerin yönetim merkezi Hattuşa'nın kalıntıları bugün hangi ilimizdedir?|Çorum
+yer|Neolitik yerleşim Çatalhöyük hangi ilimizin sınırlarında bulunur?|Konya
+yer|Lidya başkenti Sardes bugün hangi ilimizdedir?|Manisa
+yer|Urartu başkenti Tuşpa hangi ilimizle özdeşleşir?|Van
+yer|Friglerin başkenti Gordion hangi ilimizin Polatlı ilçesindedir?|Ankara
+yer|Asur ticaret kolonileri döneminin Kültepe-Kaniş yerleşimi hangi ilimizdedir?|Kayseri
+yer|Kral Midas Anıtı olarak da bilinen Yazılıkaya anıtı hangi ilimizdedir?|Eskişehir
+yer|Hitit başkenti yakınındaki Alacahöyük hangi ilimizdedir?|Çorum
+yer|Eskiçağ kenti Milet, bugün hangi ilimizin sınırları içindedir?|Aydın
+yer|Bergama Antik Kenti hangi ilimizde yer alır?|İzmir
+uygarlik|Kadeş Antlaşması'nı Mısırlılarla imzalayan Anadolu devleti hangisidir?|Hititler
+uygarlik|Tarihte ilk madeni parayı kullanan toplumlardan biri olarak bilinen Anadolu uygarlığı hangisidir?|Lidyalılar
+uygarlik|Kral Midas hangi Anadolu uygarlığıyla ilişkilidir?|Frigler
+uygarlik|Van çevresindeki kaleleri ve sulama kanallarıyla tanınan uygarlık hangisidir?|Urartular
+uygarlik|Efes ve Milet gibi Batı Anadolu kentleri hangi kültür çevresindedir?|İyonlar
+uygarlik|Anadolu'ya çivi yazılı ticaret belgelerini taşıyan tüccarlar hangi uygarlıktandır?|Asurlular
+uygarlik|Hititlerin Anadolu'da karşılaştığı, adını Hatti ülkesine veren eski halk hangisidir?|Hattiler
+uygarlik|İstanbul'u 1453'e kadar başkent olarak kullanan devlet hangisidir?|Bizans İmparatorluğu
+uygarlik|Kadeş Savaşı'nda Hititlerin karşısında hangi uygarlığın ordusu vardı?|Eski Mısırlılar
+uygarlik|İskender'den önce Anadolu'nun büyük bölümünü satraplıklarla yöneten imparatorluk hangisidir?|Persler
+kavram|Hitit krallarının yıllık olay kayıtları hangi adla bilinir?|Anal
+kavram|Hititlerde devlet işlerinde etkili soylular meclisinin adı nedir?|Pankuş
+kavram|Asur tüccarlarının Anadolu'daki ticaret merkezlerine ne ad verilirdi?|Karum
+kavram|Perslerin eyalet yönetimlerine verilen ad hangisidir?|Satraplık
+kavram|İyon kentlerinde bağımsız şehir devletini anlatan terim hangisidir?|Polis
+kavram|Anadolu'daki eski toplumların yerleşim katmanlarının biriktiği tepeye ne denir?|Höyük
+kavram|Lidya ekonomisinde değiş tokuşun yerini kolaylaştıran ödeme aracı hangisidir?|Sikke
+kavram|Antik kentlerde alışveriş ve kamusal buluşma alanı hangi adla anılır?|Agora
+kisi|Malazgirt'te Bizans ordusunu yenen Büyük Selçuklu hükümdarı kimdir?|Alp Arslan
+kisi|Türkiye Selçuklu Devleti'nin kurucusu kabul edilen hükümdar kimdir?|Kutalmışoğlu Süleyman Şah
+kisi|Miryokefalon Savaşı'nda Türkiye Selçuklu ordusunu yöneten sultan kimdir?|II. Kılıç Arslan
+kisi|Alanya'yı alarak şehre kendi adını veren Selçuklu sultanı kimdir?|I. Alâeddin Keykubad
+kisi|Sinop'u 1214'te Türkiye Selçuklu topraklarına katan sultan kimdir?|I. İzzeddin Keykâvus
+kisi|Antalya'yı 1207'de fetheden Türkiye Selçuklu sultanı kimdir?|I. Gıyâseddin Keyhusrev
+kisi|Kösedağ Savaşı sırasında Türkiye Selçuklu tahtında kim bulunuyordu?|II. Gıyâseddin Keyhusrev
+kisi|Ahilik geleneğinde adı öne çıkan, Kırşehir'le özdeşleşen kişi kimdir?|Ahi Evran
+kisi|Mesnevî'nin yazarı olan, Konya'da yaşamış mutasavvıf kimdir?|Mevlânâ Celâleddîn-i Rûmî
+kisi|Risâletü’n-nushiyye adlı eseri de yazan Anadolu şairi kimdir?|Yunus Emre
+kisi|Velâyetnâme geleneği ve Sulucakarahöyük ile anılan mutasavvıf kimdir?|Hacı Bektaş-ı Velî
+yer|Türkiye Selçuklularının uzun süre başkentliğini yapan şehir hangisidir?|Konya
+yer|Türkiye Selçuklularının ilk merkezi olan İznik bugün hangi ilimizdedir?|Bursa
+yer|Çifte Minareli Medrese ile Gök Medrese'nin bulunduğu şehir hangisidir?|Sivas
+yer|Selçuklu döneminin Karatay Medresesi hangi şehirdedir?|Konya
+yer|Mengücekli eseri Divriği Ulu Camii hangi ilimizdedir?|Sivas
+yer|Saltuklu döneminin merkezi olarak bilinen Doğu Anadolu şehri hangisidir?|Erzurum
+yer|Artuklu mimarisinin önemli örneklerini barındıran, Deyrulzafaran yakınındaki ilimiz hangisidir?|Mardin
+yer|Selçuklu döneminin Gevher Nesibe darüşşifası hangi şehirdedir?|Kayseri
+yil|Malazgirt Meydan Muharebesi hangi yılda yapıldı?|1071
+yil|Miryokefalon Muharebesi hangi yılda gerçekleşti?|1176
+yil|Türkiye Selçuklularının Moğollara yenildiği Kösedağ Savaşı hangi yıldadır?|1243
+yil|Türkiye Selçuklu Devleti'nin kuruluşu geleneksel olarak hangi yılla tarihlenir?|1077
+kavram|Selçuklu ticaret yollarında yolcuları ve tüccarları barındıran yapı türü hangisidir?|Kervansaray
+kavram|Selçuklu döneminde hastane işlevi gören kurumun adı hangisidir?|Darüşşifa
+kavram|Anadolu'da esnafın meslek ahlakı ve dayanışmasıyla ilişkili teşkilat hangisidir?|Ahilik
+kavram|Selçuklularda meliklerin eğitim ve yönetiminde görev alan kişiye ne denirdi?|Atabeg
+kavram|Türkiye Selçuklularında bilim ve eğitim faaliyetlerinin yürütüldüğü temel kurum hangisidir?|Medrese
+kavram|Bir yapıya gelir sağlamak için mal veya mülk tahsis edilmesine dayanan kurum hangisidir?|Vakıf
+kisi|Millî Mücadele'nin lideri ve Türkiye Cumhuriyeti'nin ilk cumhurbaşkanı kimdir?|Mustafa Kemal Atatürk
+kisi|Lozan Konferansı'nda Türk heyetine başkanlık eden kişi kimdir?|İsmet İnönü
+kisi|Millî Mücadele'de Doğu Cephesi'nin komutanı kimdir?|Kâzım Karabekir
+kisi|TBMM hükümeti adına Mudanya Mütarekesi görüşmelerine katılan komutan kimdir?|İsmet İnönü
+kisi|Millî Mücadele yıllarında Genelkurmay başkanlığı yapan ve mareşal olan komutan kimdir?|Fevzi Çakmak
+kisi|Batı Cephesi'nin ilk komutanlarından, Moskova büyükelçisi de olmuş kişi kimdir?|Ali Fuat Cebesoy
+kisi|Sultanahmet mitingindeki konuşmalarıyla Millî Mücadele'ye destek veren kadın yazar kimdir?|Halide Edib Adıvar
+kisi|Millî Mücadele'de silahlı müfrezesiyle tanınan Kara Fatma'nın adı nedir?|Fatma Seher Erden
+kisi|Kastamonu'da cephane taşırken hayatını kaybeden Millî Mücadele kahramanı kimdir?|Şerife Bacı
+kisi|Maraş'ta işgale karşı direnişin simgelerinden olan kişi kimdir?|Sütçü İmam
+kisi|Antep savunmasında adı öne çıkan Şahin Bey'in asıl adı hangisidir?|Mehmet Sait
+kisi|İstiklal Marşı'nın bugün kullanılan bestesini yapan kişi kimdir?|Osman Zeki Üngör
+kisi|Cumhuriyet'in ilk başbakanı kimdir?|İsmet İnönü
+kisi|Türkiye Cumhuriyeti'nin ikinci cumhurbaşkanı kimdir?|İsmet İnönü
+kisi|1924'te Türkiye İş Bankası'nın kuruluşunda genel müdür olan kişi kimdir?|Celâl Bayar
+yer|Mustafa Kemal'in 19 Mayıs 1919'da ulaştığı Karadeniz şehri hangisidir?|Samsun
+yer|Millî Mücadele'nin önemli genelgesinin 22 Haziran 1919'da yayımlandığı şehir hangisidir?|Amasya
+yer|Temsil Heyeti'nin bölgesel bir kongrede ilk kez oluşturulduğu şehir hangisidir?|Erzurum
+yer|Millî cemiyetleri tek çatı altında birleştiren Eylül 1919 kongresi hangi şehirde toplandı?|Sivas
+yer|Mustafa Kemal ve Temsil Heyeti 27 Aralık 1919'da hangi şehre geldi?|Ankara
+yer|Birinci TBMM binasının bulunduğu şehir hangisidir?|Ankara
+yer|1923 Türkiye İktisat Kongresi hangi şehirde toplandı?|İzmir
+yer|Millî Mücadele'nin son safhasında 9 Eylül 1922'de kurtarılan şehir hangisidir?|İzmir
+yer|Büyük Taarruz'un başladığı Kocatepe hangi ilimizdedir?|Afyonkarahisar
+yer|Başkomutanlık Meydan Muharebesi'nin yapıldığı Dumlupınar hangi ilimizdedir?|Kütahya
+yer|İstiklal Yolu'nun Karadeniz'deki başlangıç noktası İnebolu hangi ilimizdedir?|Kastamonu
+yer|Mustafa Kemal'in 1919'da halkı işgalleri protestoya çağırdığı Havza hangi ilimizdedir?|Samsun
+yer|Cumhuriyet'in ilk yıllarında başkent olarak kabul edilen şehir hangisidir?|Ankara
+yer|Atatürk'ün 10 Kasım 1938'de vefat ettiği Dolmabahçe Sarayı hangi şehirdedir?|İstanbul
+yer|Atatürk'ün naaşının Anıtkabir'den önce tutulduğu Etnografya Müzesi hangi şehirdedir?|Ankara
+yil|Birinci Türkiye Büyük Millet Meclisi hangi yılda açıldı?|1920
+yil|Sakarya Meydan Muharebesi hangi yılda gerçekleşti?|1921
+yil|Büyük Taarruz hangi yılda yapıldı?|1922
+yil|Lozan Barış Antlaşması hangi yılda imzalandı?|1923
+yil|Saltanatın kaldırılması hangi yılda gerçekleşti?|1922
+yil|Halifeliğin kaldırıldığı yıl hangisidir?|1924
+yil|Tevhid-i Tedrisat Kanunu hangi yılda kabul edildi?|1924
+yil|Türk Medenî Kanunu'nun kabul edildiği yıl hangisidir?|1926
+yil|Yeni Türk harflerinin kabul edildiği yıl hangisidir?|1928
+yil|Soyadı Kanunu hangi yılda kabul edildi?|1934
+yil|Kadınlara milletvekili seçme ve seçilme hakkı hangi yılda tanındı?|1934
+yil|Kadınlara belediye seçimlerine katılma hakkı hangi yılda verildi?|1930
+yil|Türk Tarih Kurumu'nun temellerini atan cemiyet hangi yılda kuruldu?|1931
+yil|Türk Dil Kurumu'nun temellerini atan cemiyet hangi yılda kuruldu?|1932
+yil|Anıtkabir'e nakil töreni hangi yılda yapıldı?|1953
+yil|Türkiye NATO'ya hangi yılda katıldı?|1952
+yil|Hatay'ın Türkiye'ye katılması hangi yılda gerçekleşti?|1939
+yil|Boğazlar konusunda Montrö Sözleşmesi hangi yılda imzalandı?|1936
+yil|Aşar vergisi hangi yılda kaldırıldı?|1925
+yil|İlk düzenli radyo yayınları Türkiye'de hangi yılda başladı?|1927
+belge|Millî egemenlik vurgusuyla 1921'de kabul edilen temel kanunun adı hangisidir?|Teşkilât-ı Esasiye Kanunu
+belge|Eğitim kurumlarını tek yönetim altında birleştiren kanun hangisidir?|Tevhid-i Tedrisat Kanunu
+belge|Toplumsal ilişkileri 1926'da yeniden düzenleyen temel özel hukuk metni hangisidir?|Türk Medenî Kanunu
+belge|1920'de son Osmanlı Meclis-i Mebusanı tarafından kabul edilen millî hedefler belgesi hangisidir?|Misak-ı Millî
+belge|İtilaf Devletleri ile TBMM arasında savaşı fiilen sona erdiren 1922 belgesi hangisidir?|Mudanya Mütarekesi
+belge|Yeni Türk devletinin uluslararası tanınmasında temel rol oynayan 1923 antlaşması hangisidir?|Lozan Barış Antlaşması
+belge|TBMM hükümetinin Sovyet Rusya ile Mart 1921'de imzaladığı antlaşma hangisidir?|Moskova Antlaşması
+belge|TBMM hükümeti ile Fransa arasında Güney Cephesi'ni kapatan 1921 antlaşması hangisidir?|Ankara Antlaşması
+belge|Doğu sınırı konusunda 1921'de Kafkas cumhuriyetleriyle yapılan antlaşma hangisidir?|Kars Antlaşması
+belge|1920'de TBMM hükümetinin Ermenistan'la imzaladığı antlaşma hangisidir?|Gümrü Antlaşması
+belge|Türkiye'nin Boğazlar üzerindeki yetkilerini güçlendiren 1936 belgesi hangisidir?|Montrö Boğazlar Sözleşmesi
+belge|Atatürk'ün 1919–1927 dönemini anlattığı büyük söylevin kitap adı hangisidir?|Nutuk
+belge|1 Kasım 1922'de padişahlık yönetimine son veren karar hangisidir?|Saltanatın kaldırılması
+belge|Kişilerin aile adlarını resmî olarak kullanmasını düzenleyen 1934 kanunu hangisidir?|Soyadı Kanunu
+kavram|İşgale karşı oluşan yerel millî direniş güçlerinin genel adı hangisidir?|Kuvâ-yi Milliye
+kavram|Sivas Kongresi'nde cemiyetlerin birleştirildiği örgütün kısa adı hangisidir?|Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti
+kavram|Sakarya Savaşı öncesinde halkın orduya destek vermesi için yayımlanan emirler hangisidir?|Tekâlif-i Milliye Emirleri
+kavram|Millî Mücadele yıllarında meclisin hem yasama hem yürütme yetkisini kullandığı yönetim modeli hangisidir?|Meclis hükümeti sistemi
+kavram|Milletin kendi yönetimini belirlemesi düşüncesi hangi kavramla ifade edilir?|Millî egemenlik
+kavram|Devlet yönetiminin seçimle oluşan organlara dayandığı yönetim biçimi hangisidir?|Cumhuriyet
+kavram|Devlet ve din işlerinin ayrılmasını esas alan ilke hangisidir?|Laiklik
+kavram|Cumhuriyet'in ilk yıllarında okuryazarlığı artırmak amacıyla açılan kurslar hangi adla anıldı?|Millet Mektepleri
+kavram|Köylüden ürün üzerinden alınırken 1925'te kaldırılan vergi hangisidir?|Aşar
+kavram|Millî Mücadele'de Anadolu'ya silah ve cephane ulaştıran İnebolu–Ankara hattı hangi adla anılır?|İstiklal Yolu
+kurum|1920'de Millî Mücadele haberlerini duyurmak için kurulan haber kurumu hangisidir?|Anadolu Ajansı
+kurum|Atatürk'ün girişimiyle 1924'te kurulan, Cumhuriyet döneminin ilk ulusal bankası hangisidir?|Türkiye İş Bankası
+kurum|Dil araştırmaları için 1932'de kurulan kurumun bugünkü adı hangisidir?|Türk Dil Kurumu
+kurum|Tarih araştırmaları için 1931'de kurulan cemiyetin bugünkü adı hangisidir?|Türk Tarih Kurumu
+kurum|Atatürk döneminde sanayi yatırımlarıyla tanınan, 1933'te kurulan banka hangisidir?|Sümerbank
+kurum|Madencilik yatırımlarını desteklemek için 1935'te kurulan banka hangisidir?|Etibank
+kurum|1935'te maden araştırmaları için kurulan kurumun kısa adı hangisidir?|MTA
+kurum|Türkiye'nin ilk ulusal havayolu işletmesinin devamı olan kuruluş hangisidir?|Türk Hava Yolları
+kurum|1933 üniversite reformuyla Darülfünun'un yerini alan kurum hangisidir?|İstanbul Üniversitesi
+kisi|Cumhuriyet döneminde ilk kadın savaş pilotu olarak tanınan kişi kimdir?|Sabiha Gökçen
+kisi|Türkiye'nin ilk kadın avukatı olarak tanınan kişi kimdir?|Süreyya Ağaoğlu
+kisi|Türk tiyatrosunda sahneye çıkan öncü Müslüman Türk kadın oyuncu kimdir?|Afife Jale
+kisi|Çalıkuşu romanının yazarı olan Cumhuriyet dönemi edebiyatçısı kimdir?|Reşat Nuri Güntekin
+kisi|Yaban romanında Millî Mücadele dönemini ele alan yazar kimdir?|Yakup Kadri Karaosmanoğlu
+kisi|İstiklal Marşı şairinin tam adı hangisidir?|Mehmet Âkif Ersoy
+belge|Türkiye, Yunanistan, Yugoslavya ve Romanya arasında 1934'te yapılan bölgesel anlaşma hangisidir?|Balkan Antantı
+belge|Türkiye, İran, Irak ve Afganistan arasında 1937'de imzalanan pakt hangisidir?|Sadâbâd Paktı
+belge|Türkiye ile Avrupa Ekonomik Topluluğu arasında 1963'te imzalanan ortaklık anlaşması hangisidir?|Ankara Ortaklık Anlaşması
+belge|Birleşmiş Milletler'in 1945'te Türkiye'nin de imzaladığı kurucu belgesi hangisidir?|Birleşmiş Milletler Antlaşması

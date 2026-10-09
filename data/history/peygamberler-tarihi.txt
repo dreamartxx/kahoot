@@ -1,0 +1,151 @@
+# Sorular Kur'an anlatımı ile siyer rivayetlerini açıkça ayırır; sûre/âyetler açıklamadadır.
+peygamber|İslâm inancına göre ilk insan ve ilk peygamber kimdir?|Hz. Âdem|Âdem kıssası için Bakara 2/30–39'a bakılabilir.
+peygamber|Kur'an'a göre tufandan önce kavmini uyarıp gemi yapan peygamber kimdir?|Hz. Nûh|Hûd 11/25–48, Nûh'un kavmi ve gemi kıssasını anlatır.
+peygamber|Kur'an'da Âd kavmine gönderildiği bildirilen peygamber kimdir?|Hz. Hûd|Hûd 11/50'de Hûd'un Âd kavmine gönderilmesi anlatılır.
+peygamber|Kur'an'da Semûd kavmini uyaran peygamber kimdir?|Hz. Sâlih|Hûd 11/61–68, Sâlih ile Semûd kavmini konu alır.
+peygamber|Kur'an'da putları kırması ve ateşe atılması anlatılan peygamber kimdir?|Hz. İbrâhim|Enbiyâ 21/51–70'te İbrâhim'in tevhid mücadelesi anlatılır.
+peygamber|Bakara sûresine göre Kâbe'nin temellerini İbrâhim ile birlikte yükselten oğlu kimdir?|Hz. İsmâil|Bakara 2/127'de İbrâhim ve İsmâil birlikte anılır.
+peygamber|Hûd sûresinde İbrâhim'in eşine müjdelenen, ardından Ya‘kūb'un adı anılan oğul kimdir?|Hz. İshak|Hûd 11/71'de İshak ve onun ardından Ya‘kūb müjdelenir.
+peygamber|Kur'an'daki Yûsuf kıssasında oğlunun hasretiyle üzülen baba kimdir?|Hz. Ya‘kūb|Yûsuf 12/84–87, Ya‘kūb'un üzüntüsünü ve ümidini anlatır.
+peygamber|Kur'an'a göre kardeşleri tarafından kuyuya bırakılan peygamber kimdir?|Hz. Yûsuf|Yûsuf 12/10–15'te kuyuya bırakılma anlatılır.
+peygamber|Kur'an'da Medyen halkına ölçü ve tartıda dürüstlük çağrısı yapan peygamber kimdir?|Hz. Şuayb|Hûd 11/84–86'da ölçü ve tartıda adalet vurgulanır.
+peygamber|Kur'an'da hastalığı sırasında Allah'a dua etmesi anlatılan peygamber kimdir?|Hz. Eyyûb|Enbiyâ 21/83–84 ve Sâd 38/41–44, Eyyûb'un duasını anlatır.
+peygamber|Kur'an'da bir balık tarafından yutulması anlatılan peygamber kimdir?|Hz. Yûnus|Sâffât 37/139–148'de Yûnus kıssası anlatılır.
+peygamber|Kur'an'da Firavun'a karşı gönderilen ve asâsıyla anılan peygamber kimdir?|Hz. Mûsâ|Tâhâ 20/17–24, asâ mucizesi ve Firavun'a gönderilişi konu alır.
+peygamber|Kur'an'a göre Mûsâ'nın kendisine yardımcı olmasını istediği kardeşi kimdir?|Hz. Hârûn|Tâhâ 20/29–32'de Mûsâ, kardeşi Hârûn için dua eder.
+peygamber|Kur'an'a göre Câlût'u öldüren peygamber kimdir?|Hz. Dâvûd|Bakara 2/251'de Dâvûd'un Câlût'u öldürdüğü bildirilir.
+peygamber|Kur'an'da kuşların dilinin öğretildiğini söyleyen hükümdar-peygamber kimdir?|Hz. Süleyman|Neml 27/16'da Süleyman'ın kuşların dilini bildiği anlatılır.
+peygamber|Kur'an'da yaşlılık döneminde bir çocuk için dua eden, Yahyâ'nın babası kimdir?|Hz. Zekeriyyâ|Meryem 19/2–9, Zekeriyyâ'nın duasını ve Yahyâ müjdesini anlatır.
+peygamber|Kur'an'da çocuk yaşta hikmet verildiği bildirilen, Zekeriyyâ'nın oğlu kimdir?|Hz. Yahyâ|Meryem 19/12'de Yahyâ'ya çocukken hikmet verildiği bildirilir.
+peygamber|Kur'an'a göre Meryem'in oğlu olan peygamber kimdir?|Hz. Îsâ|Âl-i İmrân 3/45'te Îsâ, Meryem'in oğlu olarak anılır.
+peygamber|İslâm inancına göre son peygamber kimdir?|Hz. Muhammed|Ahzâb 33/40'ta Muhammed, peygamberlerin sonuncusu olarak anılır.
+peygamber|Kur'an'da halkına Ba‘l'e tapmamalarını söyleyen peygamber kimdir?|Hz. İlyâs|Sâffât 37/123–126'da İlyâs'ın kavmine çağrısı anlatılır.
+peygamber|Meryem sûresinde dürüst bir peygamber olarak anılıp yüce bir makama yükseltildiği bildirilen kişi kimdir?|Hz. İdrîs|Meryem 19/56–57, İdrîs'i konu alır.
+peygamber|Kur'an'da konuk olarak gelen elçiler yüzünden kavmiyle karşı karşıya kalan peygamber kimdir?|Hz. Lût|Hûd 11/77–83'te Lût ve elçi konukları anlatılır.
+peygamber|Kur'an'da Allah'ın kendisini dost edindiği belirtilen peygamber kimdir?|Hz. İbrâhim|Nisâ 4/125, İbrâhim'in Allah tarafından dost edinildiğini bildirir.
+peygamber|Kur'an'da kavmi arasında elli yılı eksik bin yıl kaldığı bildirilen peygamber kimdir?|Hz. Nûh|Ankebût 29/14'te bu süre Nûh için verilir; toplam ömür diye sorulmaz.
+peygamber|Kur'an'da isimlerin kendisine öğretildiği anlatılan ilk insan kimdir?|Hz. Âdem|Bakara 2/31'de Âdem'e isimlerin öğretildiği anlatılır.
+peygamber|Kur'an'da rüyasında on bir yıldız, güneş ve ayı gören peygamber kimdir?|Hz. Yûsuf|Yûsuf 12/4'te rüyadaki gök cisimleri sayılır.
+peygamber|Kur'an'da Allah'ın kendisiyle doğrudan konuştuğu açıkça belirtilen peygamber kimdir?|Hz. Mûsâ|Nisâ 4/164'te Allah'ın Mûsâ ile konuşması bildirilir.
+peygamber|Kur'an'a göre dağların ve kuşların tesbihine katıldığı, zırh yapımı öğretilen peygamber kimdir?|Hz. Dâvûd|Enbiyâ 21/79–80'de Dâvûd ve zırh yapımı anlatılır.
+peygamber|Kur'an'da emrine rüzgâr verildiği bildirilen hükümdar-peygamber kimdir?|Hz. Süleyman|Enbiyâ 21/81 ve Sebe 34/12'de rüzgârın Süleyman'ın emrine verilişi anlatılır.
+peygamber|Kur'an'da beşikteyken konuştuğu anlatılan peygamber kimdir?|Hz. Îsâ|Meryem 19/29–33'te Îsâ'nın beşikte konuşması anlatılır.
+peygamber|Kur'an'da ailesine namazı ve zekâtı emrettiği özellikle belirtilen İbrâhim'in oğlu kimdir?|Hz. İsmâil|Meryem 19/54–55'te İsmâil'in ailesine namazı ve zekâtı emrettiği bildirilir.
+peygamber|Kur'an'da Allah'ın izniyle ölüleri diriltmesi ve hastaları iyileştirmesi anlatılan peygamber kimdir?|Hz. Îsâ|Âl-i İmrân 3/49'da bu mucizelerin Allah'ın izniyle olduğu belirtilir.
+peygamber|Kur'an'da Sebe ülkesinin hükümdarına mektup gönderen peygamber kimdir?|Hz. Süleyman|Neml 27/28–31, mektup gönderilmesini anlatır.
+peygamber|Kur'an'da babasına putlara niçin taptığını soran ve onu uyaran peygamber kimdir?|Hz. İbrâhim|Meryem 19/41–48, İbrâhim'in babasına çağrısını anlatır.
+peygamber|Kur'an'da kendisine yönelik öldürme planını öğrenince Mısır'dan çıkıp Medyen'e yönelen kişi kimdir?|Hz. Mûsâ|Kasas 28/20–22'de Mûsâ'ya kendisini öldürme planı haber verilir ve Medyen'e gider.
+peygamber|Kur'an'da babasına götürülmesi için gömleğini kardeşlerine veren peygamber kimdir?|Hz. Yûsuf|Yûsuf 12/93'te Yûsuf gömleğini babasına göndermelerini ister.
+peygamber|Kur'an'da oğlunu gemiye çağırmasına rağmen oğlu dağa sığınmayı seçen peygamber kimdir?|Hz. Nûh|Hûd 11/42–43'te Nûh ile oğlu arasındaki konuşma anlatılır.
+peygamber|Kur'an'da kavminin yaptığı buzağıya tapılmasını engellemeye çalışan Mûsâ'nın kardeşi kimdir?|Hz. Hârûn|Tâhâ 20/90'da Hârûn'un kavmini uyarması anlatılır.
+peygamber|Kur'an'da Meryem'in bakımını üstlenen kişi kimdir?|Hz. Zekeriyyâ|Âl-i İmrân 3/37'de Zekeriyyâ'nın Meryem'in bakımını üstlendiği bildirilir.
+nesne|Kur'an'a göre Mûsâ'nın yere bıraktığında yılana dönüşen eşyası hangisidir?|Asâ|Tâhâ 20/17–21, Mûsâ'nın asâsını konu alır.
+nesne|Kur'an'daki Yûsuf kıssasında, babasına sahte kanla gösterilen eşya hangisidir?|Gömlek|Yûsuf 12/18'de gömleğe sürülen sahte kan anlatılır.
+nesne|Kur'an'a göre Nûh'un tufan için hazırladığı araç hangisidir?|Gemi|Hûd 11/37–38, geminin yapımını anlatır.
+nesne|Kur'an'da Dâvûd'a yapımı öğretilen koruyucu savaş giysisi hangisidir?|Zırh|Enbiyâ 21/80'de zırh yapımı anılır.
+nesne|Kur'an'a göre Mûsâ'nın annesinin onu içine koyup suya bıraktığı şey nedir?|Sandık|Tâhâ 20/39'da Mûsâ'nın sandığa konulması anlatılır.
+nesne|Kur'an'da Süleyman'ın Sebe hükümdarına gönderdiği yazılı mesajın türü nedir?|Mektup|Neml 27/28–31, Süleyman'ın mektubunu konu alır.
+nesne|Kur'an'da İbrâhim'in kavminin tapındığı ve onun kırdığı nesneler nelerdir?|Putlar|Enbiyâ 21/57–58'de putların kırılması anlatılır.
+nesne|Kur'an'da Mûsâ'ya öğüt ve açıklamaların yazılı olarak verildiği nesneler hangisidir?|Levhalar|A‘râf 7/145'te levhalar anılır.
+nesne|Kur'an'da Sebe hükümdarının Süleyman'ın yanına getirilen yönetim simgesi nedir?|Taht|Neml 27/38–42'de tahtın getirilmesi anlatılır.
+nesne|Kur'an'daki Yûsuf kıssasında kardeşinin yüküne konulan eşya hangisidir?|Su kabı|Yûsuf 12/70'te su kabının kardeşinin yüküne konulması anlatılır.
+hayvan|Kur'an'da Sâlih'in kavmine bir işaret olarak gösterilen hayvan hangisidir?|Dişi deve|A‘râf 7/73'te dişi deve anılır.
+hayvan|Kur'an'da Yûnus'u yuttuğu bildirilen canlı hangisidir?|Balık|Sâffât 37/142'de balık anılır; türü âyette belirtilmez.
+hayvan|Kur'an'da Süleyman'a Sebe'den haber getiren kuş hangisidir?|Hüdhüd|Neml 27/20–28, hüdhüdün getirdiği haberi anlatır.
+hayvan|Kur'an'da Süleyman'ın ordusunu görünce yuvalara girilmesini söyleyen canlı hangisidir?|Karınca|Neml 27/18–19'da karıncanın sözü anlatılır.
+hayvan|Kur'an'daki Yûsuf kıssasında kardeşlerin onu yediğini iddia ettiği hayvan hangisidir?|Kurt|Yûsuf 12/17'de kardeşlerin iddiası aktarılır.
+hayvan|Kur'an'da Mûsâ'nın asâsının dönüştüğü canlı hangisidir?|Yılan|Tâhâ 20/20'de asânın yılana dönüşmesi anlatılır.
+hayvan|Kur'an'da Sâmirî'nin halk için yaptığı heykel hangi hayvan biçimindedir?|Buzağı|Tâhâ 20/88'de buzağı heykeli anlatılır.
+hayvan|Kur'an'daki Yûsuf kıssasında kralın rüyasında zayıfları ve semizleri görülen hayvanlar hangisidir?|İnekler|Yûsuf 12/43'te yedi semiz ve yedi zayıf inek anılır.
+hayvan|Kur'an'da Dâvûd ile Süleyman'ın ekin zararıyla ilgili hükmüne konu olan hayvan sürüsü hangisidir?|Koyunlar|Enbiyâ 21/78'de gece ekine giren koyun sürüsü anılır.
+hayvan|Kur'an'da Süleyman'a akşam vakti sunulan, hızlı koşan hayvanlar hangisidir?|Atlar|Sâd 38/31'de cins atların sunulması anlatılır.
+topluluk|Kur'an'a göre Hûd hangi kavme gönderilmiştir?|Âd|Hûd 11/50'de Âd kavmi anılır.
+topluluk|Kur'an'a göre Sâlih'in kavminin adı nedir?|Semûd|Hûd 11/61'de Semûd kavmi anılır.
+topluluk|Kur'an'da Şuayb'ın ölçü ve tartı konusunda uyardığı halk hangisidir?|Medyen halkı|Hûd 11/84'te Medyen halkına yapılan çağrı anlatılır.
+topluluk|Kur'an'da Mûsâ'nın Firavun'dan kendisiyle göndermesini istediği topluluk hangisidir?|İsrâiloğulları|A‘râf 7/105'te Mûsâ'nın isteği aktarılır.
+topluluk|Kur'an'da Îsâ'nın yakın yardımcıları hangi adla anılır?|Havâriler|Âl-i İmrân 3/52'de havâriler anılır.
+topluluk|Kur'an'da hüdhüdün güneşe secde ettiğini haber verdiği topluluk hangisidir?|Sebe halkı|Neml 27/22–24'te Sebe halkından söz edilir.
+topluluk|Siyer kaynaklarına göre Hz. Muhammed'in mensup olduğu kabile hangisidir?|Kureyş|Hz. Muhammed, Kureyş'in Hâşimoğulları kolundandır.
+topluluk|Kur'an'da balık avı yasağıyla sınanan topluluk hangi adla anılır?|Cumartesi halkı|A‘râf 7/163–166'da deniz kıyısındaki topluluğun sınanması anlatılır.
+kitap|İslâm inancında Hz. Mûsâ'ya verilen kutsal kitap hangisidir?|Tevrat|Mâide 5/44 ve A‘râf 7/145, Mûsâ ve Tevrat bağlamında okunabilir.
+kitap|Kur'an'da Hz. Dâvûd'a verildiği bildirilen kitap hangisidir?|Zebur|Nisâ 4/163'te Dâvûd'a Zebur verildiği bildirilir.
+kitap|Kur'an'da Hz. Îsâ'ya verildiği bildirilen kitap hangisidir?|İncil|Mâide 5/46'da Îsâ'ya İncil verildiği anlatılır.
+kitap|İslâm inancına göre Hz. Muhammed'e vahyedilen kutsal kitap hangisidir?|Kur'an-ı Kerîm|Muhammed 47/2'de Muhammed'e indirilen vahiy anılır.
+yer|Kur'an'a göre Nûh'un gemisinin durduğu yer hangisidir?|Cûdî|Hûd 11/44'te geminin Cûdî'ye oturduğu bildirilir.
+yer|Kur'an'da Mûsâ'nın ilâhî hitabı duyduğu kutsal vadi hangi adla anılır?|Tuvâ|Tâhâ 20/12'de vadinin adı Tuvâ olarak verilir.
+yer|Kur'an'daki Yûsuf kıssasında ailenin sonunda yerleştiği ülke hangisidir?|Mısır|Yûsuf 12/99'da Mısır'a girişten söz edilir.
+yer|Kur'an'a göre Mûsâ'nın Mısır'dan ayrıldıktan sonra yöneldiği yer hangisidir?|Medyen|Kasas 28/22'de Mûsâ'nın Medyen'e yöneldiği anlatılır.
+yer|Kur'an'da Kâbe'nin bulunduğu yer için Âl-i İmrân 96'da kullanılan ad nedir?|Bekke|Âl-i İmrân 3/96'da ilk mâbedin Bekke'de bulunduğu belirtilir.
+yer|Kur'an'da Mûsâ'ya sesleniliş bağlamında sağ tarafından söz edilen dağ hangisidir?|Tûr|Meryem 19/52'de Tûr'un sağ tarafından seslenildiği anlatılır.
+yer|Siyer kaynaklarına göre ilk vahiy hangi mağarada gelmiştir?|Hira Mağarası|Hira, Mekke yakınındaki Nur Dağı'ndadır.
+yer|Siyer kaynaklarına göre Hz. Muhammed hicret yolculuğunda hangi mağarada saklanmıştır?|Sevr Mağarası|Sevr Mağarası, hicret yolculuğunun başındaki sığınaktır.
+yer|Hz. Muhammed'in Veda haccındaki vakfesini yaptığı yer hangisidir?|Arafat|Arafat vakfesi hac ibadetinin temel unsurlarındandır.
+yer|İslâm geleneğinde Hacer'in su arayışını hatırlatan sa‘y hangi iki tepe arasında yapılır?|Safâ ile Merve|Bakara 2/158, Safâ ve Merve'yi Allah'ın işaretlerinden sayar; Hacer bağlantısı hadislerde anlatılır.
+quran-kisi|Kur'an'daki anlatımda Mûsâ'nın karşısına çıktığı Mısır hükümdarının unvanı nedir?|Firavun|Tâhâ 20/24'te Firavun'a gitme emri verilir.
+quran-kisi|Kur'an'da Mûsâ'nın kavminden olup büyük servetiyle gururlanan kişi kimdir?|Kārûn|Kasas 28/76–82, Kārûn'un kıssasını anlatır.
+quran-kisi|Kur'an'da Mûsâ'nın yokluğunda buzağı heykeli yaparak halkı yanıltan kişi kimdir?|Sâmirî|Tâhâ 20/85–97'de Sâmirî'den söz edilir.
+quran-kisi|Kur'an'daki anlatımda Hz. Îsâ'nın annesi kimdir?|Hz. Meryem|Âl-i İmrân 3/45 ve Meryem 19/16–34, Meryem ile Îsâ'yı konu alır.
+quran-kisi|Kur'an'da İsrâiloğulları'na hükümdar olarak tayin edildiği bildirilen kişi kimdir?|Tâlût|Bakara 2/247'de Tâlût'un hükümdarlığı bildirilir.
+quran-kisi|Kur'an'da Dâvûd'un savaşta öldürdüğü kişi kimdir?|Câlût|Bakara 2/251'de Dâvûd'un Câlût'u öldürdüğü anlatılır.
+quran-kisi|Kur'an'da Firavun'un kendisinden yüksek bir yapı yapmasını istediği kişi kimdir?|Hâmân|Kasas 28/38 ve Mü'min 40/36–37'de Hâmân anılır.
+quran-kisi|Kur'an'da İbrâhim'in babasına hitap ettiği En‘âm 74. âyette hangi ad geçer?|Âzer|En‘âm 6/74'te Âzer adı yer alır.
+quran-kisi|Kur'an'a göre Âdem'e secde emrine karşı çıkan kimdir?|İblîs|Bakara 2/34'te İblîs'in emre karşı çıkışı anlatılır.
+quran-kisi|Kur'an'da kendi adıyla anılan sûrede oğluna öğütleri aktarılan bilge kimdir?|Lokmân|Lokmân 31/12–19'da öğütleri yer alır. Peygamber olduğu kesinmiş gibi sorulmamaktadır.
+sayi|Kur'an'daki Yûsuf kıssasında kralın rüyasında kaç semiz inek vardır?|7|Yûsuf 12/43'te yedi semiz ve yedi zayıf inek anılır.
+sayi|Kur'an'a göre Yûsuf'un çocukken gördüğü rüyada kaç yıldız vardır?|11|Yûsuf 12/4'te on bir yıldızdan söz edilir.
+sayi|Kur'an'a göre Mûsâ'nın asâsıyla taşa vurması sonucunda kaç pınar çıkmıştır?|12|Bakara 2/60'ta on iki pınar anılır.
+sayi|Kur'an'da İbrâhim'e dirilişi göstermek için kaç kuş alması söylenir?|4|Bakara 2/260'ta dört kuş alması istenir.
+sayi|Kur'an'da Mûsâ için belirlenen otuz geceye on gece eklenince süre kaç gece olur?|40|A‘râf 7/142'de sürenin kırk geceye tamamlandığı bildirilir.
+sayi|Kur'an'da Mûsâ'nın Medyen'de hayvanlarını suladığı kaç kadın anlatılır?|2|Kasas 28/23'te iki kadın anılır.
+sayi|Kur'an'a göre Nûh kavminin arasında kaç yıl kalmıştır?|950|Ankebût 29/14'te bin yıldan elli yıl eksik süre verilir; bu toplam ömrü anlamına gelmez.
+sayi|Kur'an'da Mûsâ'ya Firavun'a karşı verilen açık işaretlerin sayısı kaçtır?|9|İsrâ 17/101 ve Neml 27/12'de dokuz işaret anılır.
+sayi|Kur'an'da Mûsâ'nın belirlenen buluşma için kavminden seçtiği kişi sayısı kaçtır?|70|A‘râf 7/155'te yetmiş kişinin seçildiği bildirilir.
+sayi|Kur'an'da Zekeriyyâ'nın Âl-i İmrân 41'de verilen işareti, insanlarla kaç gün konuşamamasıdır?|3|Âl-i İmrân 3/41'de üç gün, işaret dışında konuşamama anlatılır.
+eylem|Kur'an'daki Yûsuf kıssasında kıtlığa hazırlık için ürünlerle ilgili ne önerilir?|Tahılı başaklarında saklamak|Yûsuf 12/47–49, bolluk yıllarında depolama önerisini anlatır.
+eylem|Kur'an'da Yûsuf, kendisine kötülük yapan kardeşlerine sonunda nasıl davranır?|Onları bağışlar|Yûsuf 12/92'de Yûsuf kardeşlerini kınamayacağını söyler.
+eylem|Kur'an'da Eyyûb'un şifa bulması için yerine getirmesi istenen hareket nedir?|Ayağını yere vurmak|Sâd 38/42'de ayağını yere vurması ve suyla ilgili yönlendirme anlatılır.
+eylem|Kur'an'da Mûsâ, Medyen'deki iki kadına nasıl yardım eder?|Hayvanlarını sular|Kasas 28/24'te Mûsâ'nın onlar için hayvanları suladığı anlatılır.
+eylem|Kur'an'da Ya‘kūb, oğullarına Mısır'a girerken ne önerir?|Ayrı kapılardan girmek|Yûsuf 12/67'de Ya‘kūb'un tavsiyesi yer alır.
+eylem|Kur'an'da Meryem'e doğum sırasında hurma ağacıyla ilgili ne yapması söylenir?|Ağacın gövdesini silkelemek|Meryem 19/25'te ağacın gövdesini silkelemesi söylenir.
+eylem|Kur'an'da Mûsâ'nın annesine, onu suya bıraktıktan sonra kız kardeşine verdiği görev nedir?|Bebeğin izini takip etmek|Kasas 28/11'de kız kardeşinin Mûsâ'yı uzaktan izlediği anlatılır.
+eylem|Kur'an'da İbrâhim, yeniden dirilişi göstermek için alınan kuşların parçalarıyla ne yapar?|Dağlara parçalar yerleştirir|Bakara 2/260'ta kuşların parçalarının dağlara konulması anlatılır.
+eylem|Kur'an'da Mûsâ'nın karşılaştığı sihirbazlar gerçeği fark edince ne yapar?|Secde edip iman ederler|Tâhâ 20/70'te sihirbazların secde edip iman ettikleri anlatılır.
+eylem|Kur'an'da Mûsâ'ya denizin açılması için ne yapması emredilir?|Asâsıyla denize vurmak|Şuarâ 26/63'te asâyla denize vurma emri yer alır.
+eylem|Kur'an'da Yûsuf'un kardeşleri babalarını ikna etmek için gömleğe ne yapar?|Sahte kan sürerler|Yûsuf 12/18'de gömleğe sahte kan sürüldüğü anlatılır.
+eylem|Kur'an'da Nûh, sel sularından korunmak için oğluna ne söyler?|Gemiye binmesini ister|Hûd 11/42'de Nûh'un oğluna çağrısı yer alır.
+siyer-kisi|Siyer kaynaklarına göre Hz. Muhammed'in babasının adı nedir?|Abdullah
+siyer-kisi|Siyer kaynaklarına göre Hz. Muhammed'in annesinin adı nedir?|Âmine
+siyer-kisi|Siyer kaynaklarına göre Hz. Muhammed'i küçük yaşta koruyup büyüten dedesi kimdir?|Abdülmuttalib
+siyer-kisi|Dedesinin vefatından sonra Hz. Muhammed'in bakımını üstlenen amcası kimdir?|Ebû Tâlib
+siyer-kisi|Siyer kaynaklarında Hz. Muhammed'in Benî Sa‘d'dan sütannesi kimdir?|Halîme
+siyer-kisi|Siyer kaynaklarına göre Hz. Muhammed'in ilk eşinin adı nedir?|Hz. Hatice
+siyer-kisi|Siyer kaynaklarında ilk vahyin ardından Hz. Hatice'nin görüşüne başvurduğu kuzeni kimdir?|Varaka b. Nevfel
+siyer-kisi|Hz. Muhammed'in Mekke'den Medine'ye yolculuğundaki yakın arkadaşı kimdir?|Hz. Ebû Bekir
+siyer-kisi|Siyer kaynaklarına göre hicret gecesi Hz. Muhammed'in yatağında kalan kişi kimdir?|Hz. Ali
+siyer-kisi|Siyer kaynaklarına göre Hz. Muhammed'i Medine'de evinde ağırlayan kişi kimdir?|Ebû Eyyûb el-Ensârî
+siyer-kisi|Hz. Muhammed'in erkek çocuklarından, Mâriye'den doğan oğlunun adı nedir?|İbrâhim
+siyer-kisi|Hz. Muhammed'in soyu hangi kızı üzerinden devam etmiştir?|Hz. Fâtıma
+siyer-kisi|Hz. Muhammed'in Kasvâ adlı devesiyle geldiği hicret yolculuğunda rehberlik yapan kişi kimdir?|Abdullah b. Uraykıt
+siyer-kisi|Siyer kaynaklarına göre Hz. Muhammed'in bakımında annesi Âmine'ye yardımcı olan Ümmü Eymen'in adı nedir?|Bereke
+siyer-kisi|Hz. Muhammed'in şiirleriyle İslâm'ı savunan, ensardan şair sahâbîsi kimdir?|Hassân b. Sâbit
+siyer-kisi|Hz. Muhammed'e Medine'de uzun yıllar hizmet eden, çok hadis rivayet eden sahâbî kimdir?|Enes b. Mâlik
+siyer-kisi|Hz. Muhammed'in yetişmesinde emeği bulunan, Hz. Ali'nin annesi kimdir?|Fâtıma bint Esed
+siyer-kisi|Hz. Muhammed'in hicret hazırlığında yiyecek temin eden, Ebû Bekir'in kızı kimdir?|Esmâ bint Ebû Bekir
+siyer-yer|Hz. Muhammed hangi şehirde dünyaya gelmiştir?|Mekke
+siyer-yer|Hz. Muhammed hangi şehirde vefat etmiştir?|Medine
+siyer-yer|Hz. Muhammed'in annesi Âmine'nin vefat ettiği yer siyer kaynaklarında hangi adla geçer?|Ebvâ
+siyer-yer|Hz. Muhammed, amcası Ebû Tâlib ile eşi Hatice'nin vefatından sonra tebliğ için hangi şehre gitmiştir?|Tâif
+siyer-yer|Hz. Muhammed hicret yolunda Medine'ye varmadan önce hangi yerleşimde mescid inşa etmiştir?|Kubâ
+siyer-yer|Hz. Muhammed'in Medinelilerle hicret öncesinde bağlılık görüşmelerini yaptığı yer hangisidir?|Akabe
+siyer-yer|Hz. Muhammed ile Mekkeliler arasındaki 628 tarihli antlaşmanın yapıldığı yer hangisidir?|Hudeybiye
+siyer-yer|Hz. Muhammed'in son büyük askerî seferi hangi yerin adıyla anılır?|Tebük
+siyer-yer|Hz. Muhammed'in amcası Hamza'nın şehit olduğu savaşın yapıldığı dağın adı nedir?|Uhud
+siyer-yer|Hz. Muhammed'in kabrinin bulunduğu mescid hangisidir?|Mescid-i Nebevî
+siyer-terim|Siyer kaynaklarında Hz. Muhammed'in güvenilirliğini anlatan meşhur unvanı nedir?|el-Emîn
+siyer-terim|Siyer kaynaklarına göre Hz. Muhammed'in büyük oğlu Kāsım'dan aldığı künyesi nedir?|Ebü'l-Kāsım
+siyer-terim|Hz. Muhammed'in doğumunu konu alan edebî eserlerin genel adı nedir?|Mevlid
+siyer-terim|Hz. Muhammed'in fizikî ve ahlâkî özelliklerini anlatan eser türü hangisidir?|Şemâil
+siyer-terim|Hz. Muhammed'in davranış, söz ve onaylarıyla ortaya koyduğu örnekliği ifade eden terim nedir?|Sünnet
+siyer-terim|Hz. Muhammed'in amcası Ebû Tâlib ile eşi Hatice'yi kaybettiği dönem hangi adla anılır?|Hüzün yılı
+siyer-terim|Hz. Muhammed'in peygamberlik görevinin başlaması için kullanılan terim hangisidir?|Bi‘set
+siyer-terim|Hz. Muhammed'in Mekke döneminde gizli davetin merkezi olan ev hangi adla bilinir?|Dârülerkam

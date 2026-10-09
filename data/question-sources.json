@@ -27,5 +27,47 @@
     "https://whc.unesco.org/en/list/798/",
     "https://science.nasa.gov/earth/earth-observatory/salar-de-uyuni-bolivia-6096/"
   ],
-  "flags": {"package": "flag-icons", "version": "7.5.0", "license": "MIT", "source": "https://flagicons.lipis.dev/"}
+  "flags": {
+    "package": "flag-icons",
+    "version": "7.5.0",
+    "license": "MIT",
+    "source": "https://flagicons.lipis.dev/"
+  },
+  "history": {
+    "addedAt": "2026-10-09",
+    "editorialNote": "Özgün soru metinleri; aşağıdakiler editoryal kontrol ve ileri okuma kaynaklarıdır. Kur’an kıssalarına dayanan sorularda sûre/âyet referansı açıklamadadır; siyer anlatıları ayrıca belirtilir. Bu liste her sorunun tek tek kaynak eşlemesi değildir.",
+    "turkiye-tarihi": [
+      "https://ata.msb.gov.tr/Sayfa/SayfaGoster/ataturk-kronolojisi",
+      "https://atam.gov.tr/siyasal-devrimler/",
+      "https://www.kulturportali.gov.tr/portal/gordion",
+      "https://www.kulturportali.gov.tr/portal/hattusahititbaskenti"
+    ],
+    "osmanli-tarihi": [
+      "https://islamansiklopedisi.org.tr/osmanlilar",
+      "https://islamansiklopedisi.org.tr/orhan",
+      "https://islamansiklopedisi.org.tr/enderun",
+      "https://islamansiklopedisi.org.tr/cavus"
+    ],
+    "islam-tarihi": [
+      "https://islamansiklopedisi.org.tr/hulefa-yi-rasidin",
+      "https://islamansiklopedisi.org.tr/emeviler",
+      "https://islamansiklopedisi.org.tr/abbasiler",
+      "https://islamansiklopedisi.org.tr/bedir-gazvesi",
+      "https://islamansiklopedisi.org.tr/hudeybiye-antlasmasi",
+      "https://islamansiklopedisi.org.tr/beytulhikme",
+      "https://islamansiklopedisi.org.tr/ezher",
+      "https://islamansiklopedisi.org.tr/kurtuba",
+      "https://islamansiklopedisi.org.tr/nizamiye-medresesi",
+      "https://islamansiklopedisi.org.tr/abdurrahman-i",
+      "https://islamansiklopedisi.org.tr/hilful-fudul"
+    ],
+    "peygamberler-tarihi": [
+      "https://kuran.diyanet.gov.tr/",
+      "https://islamansiklopedisi.org.tr/muhammed",
+      "https://islamansiklopedisi.org.tr/peygamber",
+      "https://islamansiklopedisi.org.tr/hicret",
+      "https://hadislerleislam.diyanet.gov.tr/sayfa.php?CILT=7&SAYFA=29",
+      "https://hadislerleislam.diyanet.gov.tr/sayfa.php?CILT=6&SAYFA=85"
+    ]
+  }
 }

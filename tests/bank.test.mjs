@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from "node:fs";
 const bank = JSON.parse(
   readFileSync(new URL("../data/questions.json", import.meta.url)),
 );
-test("14 categories contain 1481 unique four-choice questions", () => {
+test("18 categories contain 2081 unique four-choice questions", () => {
   const counts = {};
   const ids = new Set(),
     texts = new Set();
@@ -19,15 +19,26 @@ test("14 categories contain 1481 unique four-choice questions", () => {
     assert(Number.isInteger(q.correct) && q.correct >= 0 && q.correct < 4);
     assert(q.text.length > 10);
   }
-  assert.equal(Object.keys(counts).length, 14);
+  assert.equal(Object.keys(counts).length, 18);
   assert.equal(counts.turkiye, 200);
   assert.equal(counts.plakalar, 81);
   assert(
     Object.entries(counts)
-      .filter(([key]) => !["turkiye", "plakalar"].includes(key))
+      .filter(
+        ([key]) =>
+          !["turkiye", "plakalar"].includes(key) && !key.endsWith("-tarihi"),
+      )
       .every(([, n]) => n === 100),
   );
-  assert.equal(bank.length, 1481);
+  for (const category of [
+    "turkiye-tarihi",
+    "osmanli-tarihi",
+    "islam-tarihi",
+    "peygamberler-tarihi",
+  ]) {
+    assert.equal(counts[category], 150);
+  }
+  assert.equal(bank.length, 2081);
 });
 
 test("Türkiye retains only 20 metropolitan plates; local specialties cover all 81 provinces", () => {

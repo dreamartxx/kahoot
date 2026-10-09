@@ -1,0 +1,151 @@
+# Osmanlı tarihi: hükümdarlar, kurumlar, savaşlar, diplomasi, kültür ve reformlar.
+kisi|Osmanlı hanedanına adını veren kurucu hükümdar kimdir?|Osman Bey
+kisi|Osman Bey'in babası olarak bilinen kişi kimdir?|Ertuğrul Gazi
+kisi|Bursa'nın 1326'da fethi hangi hükümdar döneminde tamamlandı?|Orhan Bey
+kisi|İznik'i 1331'de Osmanlı topraklarına katan hükümdar kimdir?|Orhan Bey
+kisi|Rumeli'ye geçişte adı öne çıkan, Orhan Bey'in oğlu kimdir?|Süleyman Paşa
+kisi|Birinci Kosova Savaşı sırasında Osmanlı tahtında kim vardı?|I. Murad
+kisi|Niğbolu Savaşı'nı kazanan Osmanlı padişahı kimdir?|Yıldırım Bayezid
+kisi|1402 Ankara Savaşı'nda Osmanlı ordusunun başındaki hükümdar kimdir?|Yıldırım Bayezid
+kisi|Fetret Devri'ni sona erdirerek Osmanlı birliğini yeniden kuran hükümdar kimdir?|Çelebi Mehmed
+kisi|1444 Varna Savaşı'nı kazanan Osmanlı padişahı kimdir?|II. Murad
+kisi|İstanbul'un fethi nedeniyle Fatih unvanıyla anılan padişah kimdir?|II. Mehmed
+kisi|Çaldıran Seferi'nde Osmanlı ordusunu yöneten padişah kimdir?|Yavuz Sultan Selim
+kisi|Mohaç Meydan Muharebesi hangi padişah döneminde kazanıldı?|Kanûnî Sultan Süleyman
+kisi|Kıbrıs'ın 1571'de Osmanlı yönetimine girmesi hangi padişah dönemindedir?|II. Selim
+kisi|Sultanahmet Camii'ni yaptıran Osmanlı padişahı kimdir?|I. Ahmed
+kisi|Bağdat'ı 1638'de geri alan Osmanlı padişahı kimdir?|IV. Murad
+kisi|Osmanlı hanedanının son padişahı kimdir?|VI. Mehmed Vahdeddin
+kisi|Osmanlı hanedanından son halife kimdir?|Abdülmecid Efendi
+kisi|Yeniçeri Ocağı'nı kaldıran padişah kimdir?|II. Mahmud
+kisi|Nizâm-ı Cedîd reformları hangi padişahla özdeşleşir?|III. Selim
+kisi|Tanzimat Fermanı'nın ilan edildiği sırada tahtta hangi padişah vardı?|Sultan Abdülmecid
+kisi|1876'da ilk Osmanlı anayasası ilan edildiğinde tahtta kim vardı?|II. Abdülhamid
+kisi|Osmanlı padişahları arasında Avrupa'ya resmî ziyaret yapan ilk hükümdar kimdir?|Sultan Abdülaziz
+kisi|Lâle Devri'nin sadrazamı Nevşehirli kimdir?|Damat İbrahim Paşa
+kisi|Preveze Deniz Savaşı'nda Osmanlı donanmasına kim komuta etti?|Barbaros Hayreddin Paşa
+kisi|Osmanlı denizcisi Pîrî Reis'in amcası olan ünlü denizci kimdir?|Kemal Reis
+kisi|İkinci Viyana Kuşatması'nı yöneten Osmanlı sadrazamı kimdir?|Merzifonlu Kara Mustafa Paşa
+kisi|Köprülüler dönemine adını veren sadrazam kimdir?|Köprülü Mehmed Paşa
+kisi|Tanzimat Fermanı'nı Gülhane'de okuyan devlet adamı kimdir?|Mustafa Reşid Paşa
+kisi|Osmanlı'nın ilk resmî vakanüvisi olarak tanınan tarihçi kimdir?|Naîmâ
+kisi|Osmanlı coğrafyasında gezilerini Seyahatnâme'de anlatan yazar kimdir?|Evliya Çelebi
+kisi|Cihannümâ adlı coğrafya eserini kaleme alan Osmanlı âlimi kimdir?|Kâtip Çelebi
+kisi|Kitâb-ı Bahriye'nin yazarı olan Osmanlı denizcisi kimdir?|Pîrî Reis
+kisi|İstanbul'da Türkçe eserler basan matbaanın 1727'deki kuruluşunda Said Efendi ile çalışan kişi kimdir?|İbrahim Müteferrika
+kisi|Selimiye Camii'nin mimarı kimdir?|Mimar Sinan
+kisi|Sultanahmet Camii'nin mimarı kimdir?|Sedefkâr Mehmed Ağa
+kisi|Dönemin nakkaşlığı ve Surnâme-i Vehbî resimleriyle tanınan sanatçı kimdir?|Levni
+kisi|Osmanlı klasik şiirinde Sultânü'ş-şuarâ unvanıyla tanınan şair kimdir?|Bâkî
+kisi|Leylâ vü Mecnûn mesnevisiyle tanınan 16. yüzyıl şairi kimdir?|Fuzûlî
+kisi|Vatan Yahut Silistre oyununun yazarı kimdir?|Namık Kemal
+yer|Osmanlıların kuruluş çevresi Söğüt bugün hangi ilimizdedir?|Bilecik
+yer|Osmanlıların Bursa'dan sonraki başkentlerinden biri olan Trakya şehri hangisidir?|Edirne
+yer|1453'te Osmanlı başkenti hâline gelen şehir hangisidir?|İstanbul
+yer|Çelebi Mehmed için inşa edilen Yeşil Türbe hangi şehirdedir?|Bursa
+yer|Kanûnî'nin son seferinde kuşattığı kale hangi adla bilinir?|Zigetvar
+yer|Osmanlı'nın 1522'de aldığı, şövalyelerin merkezi olan ada hangisidir?|Rodos
+yer|Osmanlıların 1669'da uzun kuşatma sonunda ele geçirdiği Girit kalesi hangisidir?|Kandiye
+yer|1516 Mercidâbık Savaşı'nın yakınında yapıldığı Suriye şehri hangisidir?|Halep
+yer|1517 Ridâniye Savaşı hangi büyük şehrin yakınında yapıldı?|Kahire
+yer|Osmanlıların 1461'de son verdiği Komnenos devletinin merkezi hangi şehirdi?|Trabzon
+yer|Mimar Sinan'ın Selimiye Camii hangi şehirde bulunur?|Edirne
+yer|Osmanlıların 1452'de yaptırdığı Rumeli Hisarı hangi şehirdedir?|İstanbul
+yer|II. Bayezid Külliyesi'ndeki ünlü darüşşifa hangi şehirdedir?|Edirne
+yer|Osmanlı çiniciliğinin önemli üretim merkezi İznik hangi ilimizdedir?|Bursa
+yer|İbrahim Müteferrika matbaasının kurulduğu şehir hangisidir?|İstanbul
+yer|Osmanlıların 1521'de fethettiği, Tuna ile Sava'nın birleştiği şehir hangisidir?|Belgrad
+yer|Osmanlıların 1534'te aldığı, Dicle kıyısındaki tarihî şehir hangisidir?|Bağdat
+yer|Osmanlı'nın ilk sürekli elçiliği 1793'te hangi şehirde açıldı?|Londra
+yer|Gazi Osman Paşa'nın 1877'de savunduğu Bulgaristan şehri hangisidir?|Plevne
+yer|Osmanlıların 1541'de eyalet merkezi yaptığı, bugünkü Budapeşte'nin batı yakasındaki şehir hangisidir?|Budin
+yil|İstanbul'un Osmanlılar tarafından fethi hangi yıldadır?|1453
+yil|Osmanlı ile Timur orduları arasındaki Ankara Savaşı hangi yıldadır?|1402
+yil|Fetret Devri'nin sona erdiği yıl hangisidir?|1413
+yil|Osmanlıların Niğbolu zaferi hangi yıldadır?|1396
+yil|Birinci Kosova Muharebesi hangi yılda yapıldı?|1389
+yil|İkinci Kosova Muharebesi hangi yılda yapıldı?|1448
+yil|Osmanlıların Varna zaferi hangi yıldadır?|1444
+yil|Çaldıran Muharebesi hangi yılda gerçekleşti?|1514
+yil|Mercidâbık Muharebesi hangi yılda gerçekleşti?|1516
+yil|Ridâniye Muharebesi hangi yılda gerçekleşti?|1517
+yil|Mohaç Muharebesi hangi yılda gerçekleşti?|1526
+yil|Osmanlı donanmasının Preveze zaferi hangi yıldadır?|1538
+yil|Birinci Viyana Kuşatması hangi yılda yapıldı?|1529
+yil|İkinci Viyana Kuşatması hangi yılda yapıldı?|1683
+yil|Osmanlı donanmasının İnebahtı'da yenildiği yıl hangisidir?|1571
+yil|Karlofça Antlaşması hangi yılda imzalandı?|1699
+yil|Pasarofça Antlaşması hangi yılda imzalandı?|1718
+yil|Küçük Kaynarca Antlaşması hangi yılda imzalandı?|1774
+yil|Tanzimat Fermanı hangi yılda ilan edildi?|1839
+yil|Islahat Fermanı hangi yılda ilan edildi?|1856
+yil|Birinci Meşrutiyet hangi yılda ilan edildi?|1876
+yil|İkinci Meşrutiyet hangi yılda ilan edildi?|1908
+yil|Yeniçeri Ocağı'nın kaldırıldığı yıl hangisidir?|1826
+yil|Osmanlı'nın ilk genel erkek nüfus sayımı hangi yılda yapıldı?|1831
+yil|Osmanlı Devleti'nin ilk dış borçlanması hangi yılda gerçekleşti?|1854
+kurum|Osmanlı merkez yönetiminde önemli devlet işlerinin görüşüldüğü kurul hangisidir?|Dîvân-ı Hümâyun
+kurum|Sarayın iç bölümünde eğitim veren okul hangi adla bilinir?|Enderun
+kurum|Osmanlı kapıkulu piyadelerinin en tanınmış ocağı hangisidir?|Yeniçeri Ocağı
+kurum|Osmanlı donanmasının İstanbul'daki ana tersanesi hangi adla anılır?|Tersâne-i Âmire
+kurum|Osmanlı saray mutfakları hangi adla anılır?|Matbah-ı Âmire
+kurum|Osmanlı merkez yönetiminin İstanbul'da 1831'de çıkarmaya başladığı resmî gazete hangisidir?|Takvîm-i Vekāyi
+kurum|Osmanlı'nın 1876 anayasasının adı hangisidir?|Kānûn-ı Esâsî
+kurum|1876 anayasasına göre seçimle oluşan meclisin adı hangisidir?|Meclis-i Mebûsan
+kurum|1876 anayasasına göre üyeleri padişahça atanan meclisin adı hangisidir?|Meclis-i Âyan
+kurum|Osmanlı borçlarının tahsili için 1881'de kurulan idare hangisidir?|Düyûn-ı Umûmiye
+kurum|III. Selim döneminde oluşturulan yeni askerî teşkilat hangisidir?|Nizâm-ı Cedîd
+kurum|Yeniçeri Ocağı'nın kaldırılmasından sonra kurulan ordu hangisidir?|Asâkir-i Mansûre-i Muhammediyye
+kurum|Osmanlı'nın yükseköğretim kurumu olarak 19. yüzyılda açılan okul hangisidir?|Darülfünun
+kurum|Osmanlı döneminde sivil idareci yetiştirmek için 1859'da açılan okul hangisidir?|Mekteb-i Mülkiye
+kurum|Osmanlı'da askerî hekim yetiştirmek için açılan okulun yaygın adı hangisidir?|Mekteb-i Tıbbiye
+gorev|Dîvân-ı Hümâyun'da maliye işlerinden sorumlu görevli kimdir?|Defterdar
+gorev|Padişah tuğrasının çekilmesi ve arazi kayıtlarıyla ilgili divan görevlisi kimdir?|Nişancı
+gorev|Osmanlı yargı ve eğitim teşkilatında kadı atamalarıyla ilgilenen yüksek görevli kimdir?|Kazasker
+gorev|Osmanlı donanmasının başındaki komutana ne denirdi?|Kaptan-ı deryâ
+gorev|Osmanlı taşra yönetiminde eyalet yöneticisinin unvanı hangisidir?|Beylerbeyi
+gorev|Osmanlı'da sancak yönetiminden sorumlu kişiye ne denirdi?|Sancakbeyi
+gorev|Osmanlı şehirlerinde mahkemenin başındaki görevli kimdir?|Kadı
+gorev|Osmanlı ilmiyesinde fetva veren en yüksek dinî makamın unvanı hangisidir?|Şeyhülislâm
+gorev|Osmanlı merkez yönetiminde padişahtan sonraki başlıca yürütme görevlisi kimdir?|Sadrazam
+gorev|Dîvân-ı Hümâyun'un yazışmalarını yöneten görevlinin unvanı hangisidir?|Reîsülküttâb
+gorev|Tımar gelirleri karşılığında askerî hizmet yapan atlı askere ne denirdi?|Tımarlı sipahi
+gorev|Osmanlı'da sınır bölgelerinde keşif ve akın yapan hafif süvariye ne denirdi?|Akıncı
+gorev|Osmanlı esnafında meslek kolunun temsilcisi sayılan görevliye ne denirdi?|Kethüdâ
+gorev|Osmanlı döneminde resmî tarih yazıcısına ne denirdi?|Vakanüvis
+gorev|Dîvân-ı Hümâyun kararlarını iletme ve elçileri karşılama gibi görevleri olan görevlinin unvanı hangisidir?|Çavuş
+kavram|Hizmet karşılığında belirli vergi gelirlerinin tahsis edildiği Osmanlı düzeni hangisidir?|Tımar sistemi
+kavram|Vergi gelirlerinin belirli bedel karşılığında tahsil hakkının verilmesi hangi usuldür?|İltizam
+kavram|Osmanlı'da ömür boyu vergi gelirini işletme hakkı sağlayan usul hangisidir?|Mâlikâne
+kavram|Osmanlı askerleri için üç ayda bir ödenen maaş hangi adla bilinir?|Ulûfe
+kavram|Padişahın tahta çıkışında askere dağıtılan ödeme hangisidir?|Cülûs bahşişi
+kavram|Padişahın yazılı emrine genel olarak ne ad verilirdi?|Ferman
+kavram|Padişahın adını ve unvanını taşıyan stilize işaret hangisidir?|Tuğra
+kavram|Toprak ve vergi kaynaklarının kayda geçirilmesi işlemi hangi adla anılır?|Tahrir
+kavram|Osmanlı'da pazar fiyatlarının resmî olarak belirlenmesine ne denirdi?|Narh
+kavram|İhtiyaç sahiplerine yemek dağıtan vakıf yapısı hangisidir?|İmaret
+kavram|Cami çevresinde okul, aşevi ve benzeri yapıları bir araya getiren bütün hangisidir?|Külliye
+kavram|Osmanlı şehirlerinde değerli malların saklandığı ve satıldığı kapalı çarşı yapısı hangisidir?|Bedesten
+kavram|Osmanlı'da meslek mensuplarının oluşturduğu esnaf örgütü hangisidir?|Lonca
+kavram|Osmanlı padişahlarının erkek çocukları için kullanılan unvan hangisidir?|Şehzade
+kavram|Padişahın tahta çıkması hangi terimle ifade edilirdi?|Cülûs
+antlasma|Osmanlı ile Safevîler arasında 1555'te yapılan barış hangisidir?|Amasya Antlaşması
+antlasma|Osmanlı ile Safevîler arasında 1639'da yapılan antlaşma hangisidir?|Kasr-ı Şîrin Antlaşması
+antlasma|Osmanlı'nın 1699'da önemli Avrupa topraklarını bıraktığı antlaşma hangisidir?|Karlofça Antlaşması
+antlasma|Lâle Devri'nin başlangıcıyla ilişkilendirilen 1718 antlaşması hangisidir?|Pasarofça Antlaşması
+antlasma|Kırım'ın Osmanlı'dan bağımsız sayıldığı 1774 antlaşması hangisidir?|Küçük Kaynarca Antlaşması
+antlasma|Kırım'ın Rusya'ya katılmasını Osmanlı'nın tanıdığı 1792 antlaşması hangisidir?|Yaş Antlaşması
+antlasma|Kırım Savaşı'nı sona erdiren 1856 antlaşması hangisidir?|Paris Antlaşması
+antlasma|1878'de Ayastefanos hükümlerini yeniden düzenleyen antlaşma hangisidir?|Berlin Antlaşması
+antlasma|Osmanlı'nın Trablusgarp Savaşı sonunda İtalya ile yaptığı antlaşma hangisidir?|Uşi Antlaşması
+antlasma|Osmanlı Devleti'nin Birinci Dünya Savaşı sonunda imzaladığı ateşkes hangisidir?|Mondros Mütarekesi
+eser|Pîrî Reis'in denizcilik ve kıyılar üzerine eserinin adı hangisidir?|Kitâb-ı Bahriye
+eser|Evliya Çelebi'nin gezilerini anlattığı eser hangisidir?|Seyahatnâme
+eser|Kâtip Çelebi'nin coğrafya kitabının adı hangisidir?|Cihannümâ
+eser|Şemseddin Sami'nin Türkçe sözlüğünün adı hangisidir?|Kāmûs-ı Türkî
+eser|Şinasi'nin Türk edebiyatının ilk yayımlanmış tiyatro eseri sayılan oyunu hangisidir?|Şair Evlenmesi
+eser|Şeyh Galib'in ünlü mesnevisi hangisidir?|Hüsn ü Aşk
+eser|Osmanlı medenî hukuk derlemesi olarak Ahmed Cevdet Paşa'nın başkanlığında hazırlanan metin hangisidir?|Mecelle
+mahlas|Fatih Sultan Mehmed'in şiirlerinde kullandığı mahlas hangisidir?|Avnî
+mahlas|Kanûnî Sultan Süleyman'ın şiirlerinde kullandığı mahlas hangisidir?|Muhibbî
+eser|İbrahim Müteferrika matbaasında ilk basılan sözlük hangisidir?|Vankulu Lugatı

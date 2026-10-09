@@ -53,6 +53,28 @@ export const categories = [
   ["futbol", "Futbol", "Sahne senin, gol senin", "⚽", "#dff4dc"],
   ["kaleciler", "Kaleciler", "Kalenin efsaneleri", "🧤", "#e1edff"],
   ["arabalar", "Arabalar", "Bilgini vites yükselt", "🏎️", "#ffe6d7"],
+  [
+    "turkiye-tarihi",
+    "Türkiye tarihi",
+    "Anadolu’dan Cumhuriyet’e",
+    "🏛️",
+    "#ffe7db",
+  ],
+  ["osmanli-tarihi", "Osmanlı tarihi", "Altı asrın izinde", "📜", "#f2e6cf"],
+  [
+    "islam-tarihi",
+    "İslam tarihi",
+    "Tarih, bilim ve medeniyet",
+    "🌙",
+    "#dff3ec",
+  ],
+  [
+    "peygamberler-tarihi",
+    "Peygamberler tarihi",
+    "Kıssalar ve hayat hikâyeleri",
+    "📖",
+    "#eae3ff",
+  ],
   ["genel-kultur", "Genel kültür", "Her şeyden biraz", "💡", "#fff1be"],
 ].map(([id, name, desc, emoji, color]) => ({
   id,
@@ -60,7 +82,14 @@ export const categories = [
   desc,
   emoji,
   color,
-  count: id === "turkiye" ? 200 : id === "plakalar" ? 81 : 100,
+  count:
+    id === "turkiye"
+      ? 200
+      : id === "plakalar"
+        ? 81
+        : id.endsWith("-tarihi")
+          ? 150
+          : 100,
 }));
 export const catById = (id) =>
   categories.find((c) => c.id === id) || categories[0];
