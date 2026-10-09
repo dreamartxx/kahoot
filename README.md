@@ -81,3 +81,7 @@ Dört tarih kategorisinin ilk 150 sorusu `data/history/`, ilave 100 sorusu `data
 Katılımcılar oyun girişinde altı temadan 20 adet 3D görünümlü karakter seçer. Seçim oyun kaydında saklanır, aynı cihazın sonraki katılımında hatırlanır ve bekleme salonu, oyuncu bilgisi, ara sıralama ve finalde görünür. Eski oyun ve istemciler astronot karakteriyle uyumludur. API yalnızca tanımlı karakter kimliklerini kabul eder.
 
 Bilgi yarışması ve aile oyunu finalinde ilk altı katılımcı animasyonlu basamaklı podyumda gösterilir. Eşit puanlar aynı sırayı ve aynı basamak yüksekliğini paylaşır; tam sıralama erişilebilir kalır. Mobil görünüm ve azaltılmış hareket tercihi desteklenir. Görseller `src/characters/` altında, üretim notları `docs/character-art.md` dosyasındadır.
+
+### Soru sonu cevap karşılaştırması
+
+Bilgi yarışması ve aile oyununda, yalnızca `reveal` aşamasında o soruya ait katılımcı seçimleri açıklanır. İki kişilik oyunda her katılımcı “Senin cevabın” ve “Karşıdakinin cevabı” kartlarını kendi bakış açısından görür. Doğru seçim yeşil, yanlış seçim kırmızı, yanıtsız soru nötr renktedir; etiket ve simgeler renge ek olarak sonucu açıklar. Kalabalık oyunlarda diğer cevaplar açılır bölümde gösterilir. Aile oyunundaki soru sahibinin kayıtlı yanıtı referans olarak işaretlenir ve puan almaz. Başka soruların profil cevapları veya katılımcı token/hash değerleri gönderilmez. Mevcut sonuç penceresi karşılaştırmayı içerir; 3–2–1 geçişinde kapanır.

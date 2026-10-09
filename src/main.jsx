@@ -50,6 +50,7 @@ import "./style.css";
 import Welcome from "./Welcome";
 import Overview from "./Overview";
 import ModuleTeasers from "./ModuleTeasers";
+import AnswerComparison from "./AnswerComparison";
 import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
 import { characterById } from "./characters";
 import Podium from "./Podium";
@@ -1534,49 +1535,58 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                 />
               </div>
               <h2>{room.question?.text}</h2>
-              <div
-                className={`answer-grid ${room.question?.options.every((option) => option.startsWith("flag:")) ? "flag-answers" : ""}`}
-              >
-                {room.question?.options.map((o, i) => (
-                  <button
-                    key={i}
-                    className={
-                      "answer answer-" +
-                      i +
-                      (room.myAnswer?.choice === i ? " selected" : "") +
-                      (room.phase === "reveal"
-                        ? room.question.correct === i
-                          ? " correct"
-                          : " dim"
-                        : "")
-                    }
-                    disabled={
-                      host ||
-                      screen ||
-                      busy ||
-                      !!room.myAnswer ||
-                      room.phase !== "question" ||
-                      left === 0
-                    }
-                    onClick={() =>
-                      action("answer", {
-                        choice: i,
-                        questionId: room.question.id,
-                      })
-                    }
-                  >
-                    <span className="answer-shape">
-                      {["▲", "◆", "●", "■"][i]}
-                    </span>
-                    <b>
-                      <OptionContent value={o} />
-                    </b>
-                    {room.phase === "reveal" && room.question.correct === i && (
-                      <CheckCircle2 size={24} />
-                    )}
-                  </button>
-                ))}
-              </div>
+              <AnswerComparison
+                room={room}
+                renderOption={(value) => (
+                  <OptionContent value={value} showName />
+                )}
+              />
+              {(room.phase !== "reveal" || !room.answerCards?.length) && (
+                <div
+                  className={`answer-grid ${room.question?.options.every((option) => option.startsWith("flag:")) ? "flag-answers" : ""}`}
+                >
+                  {room.question?.options.map((o, i) => (
+                    <button
+                      key={i}
+                      className={
+                        "answer answer-" +
+                        i +
+                        (room.myAnswer?.choice === i ? " selected" : "") +
+                        (room.phase === "reveal"
+                          ? room.question.correct === i
+                            ? " correct"
+                            : " dim"
+                          : "")
+                      }
+                      disabled={
+                        host ||
+                        screen ||
+                        busy ||
+                        !!room.myAnswer ||
+                        room.phase !== "question" ||
+                        left === 0
+                      }
+                      onClick={() =>
+                        action("answer", {
+                          choice: i,
+                          questionId: room.question.id,
+                        })
+                      }
+                    >
+                      <span className="answer-shape">
+                        {["▲", "◆", "●", "■"][i]}
+                      </span>
+                      <b>
+                        <OptionContent value={o} />
+                      </b>
+                      {room.phase === "reveal" &&
+                        room.question.correct === i && (
+                          <CheckCircle2 size={24} />
+                        )}
+                    </button>
+                  ))}
+                </div>
+              )}
               {room.phase === "question" && room.myAnswer && (
                 <div className="answer-feedback">
                   <CheckCircle2 size={21} /> Cevabın alındı. Sonuç birazdan!
@@ -1716,6 +1726,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         Number.isInteger(room.question?.correct) && (
           <AnswerResultPopup
             key={room.question.id}
+            room={room}
             correct={room.myAnswer.choice === room.question.correct}
             points={room.myAnswer.points}
             correctAnswer={
@@ -1729,7 +1740,8 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     </div>
   );
 }
-function AnswerResultPopup({ correct, points, correctAnswer }) {
+function AnswerResultPopup({ correct, points, correctAnswer, room }) {
+  const compare = room.answerCards?.length > 1;
   const ref = useRef();
   const [open, setOpen] = useState(true);
   useEffect(() => {
@@ -1742,7 +1754,7 @@ function AnswerResultPopup({ correct, points, correctAnswer }) {
   return (
     <dialog
       ref={ref}
-      className={`answer-result-popup ${correct ? "result-correct" : "result-wrong"}`}
+      className={`answer-result-popup ${correct ? "result-correct" : "result-wrong"}${compare ? " has-comparison" : ""}`}
       aria-labelledby="answer-result-title"
       aria-describedby="answer-result-description"
       onCancel={(e) => {
@@ -1775,7 +1787,13 @@ function AnswerResultPopup({ correct, points, correctAnswer }) {
           ? "Bilgine sağlık! Böyle devam et."
           : "Bir sonraki soruda tekrar dene!"}
       </p>
-      {correct ? (
+      {compare ? (
+        <AnswerComparison
+          room={room}
+          compact
+          renderOption={(value) => <OptionContent value={value} showName />}
+        />
+      ) : correct ? (
         <div className="result-points">
           +{points} <span>puan</span>
         </div>

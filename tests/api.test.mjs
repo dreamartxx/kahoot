@@ -1687,3 +1687,152 @@ test("characters persist in quiz and family snapshots, results and legacy rooms"
     "astronaut",
   );
 });
+
+test("quiz answer cards reveal both selections only after the round, with viewer-relative identity", async () => {
+  const r = await create("quiz", { seconds: 90 });
+  const a = await call("join", { pin: r.pin, name: "Yeşil", avatar: "fox" });
+  const b = await call("join", {
+    pin: r.pin,
+    name: "Kırmızı",
+    avatar: "dragon",
+  });
+  await join(r.pin, "Sessiz");
+  assert.equal(a.data.room.answerCards, undefined);
+  const start = await call(
+    "advance",
+    { pin: r.pin, expectedIndex: -1, expectedPhase: "lobby" },
+    { admin: true },
+  );
+  const q = JSON.parse(
+    mutateDB(r.pin, 'echo json_encode($s["questions"][0])').toString(),
+  );
+  for (const [p, choice] of [
+    [a, q.correct],
+    [b, (q.correct + 1) % 4],
+  ]) {
+    const answered = await call(
+      "answer",
+      { pin: r.pin, questionId: q.id, choice },
+      { token: p.data.token },
+    );
+    assert.equal(answered.status, 200);
+    assert.equal(answered.data.answerCards, undefined);
+    assert.equal(answered.data.question.correct, undefined);
+  }
+  assert.equal(
+    (await call("room", { pin: r.pin }, { admin: true })).data.answerCards,
+    undefined,
+  );
+  assert.equal(start.data.answerCards, undefined);
+  const reveal = await call(
+    "advance",
+    { pin: r.pin, expectedIndex: 0, expectedPhase: "question" },
+    { admin: true },
+  );
+  assert.equal(reveal.data.answerCards.length, 3);
+  assert(reveal.data.answerCards.every((p) => !p.isMe));
+  for (const [viewer, name] of [
+    [a, "Yeşil"],
+    [b, "Kırmızı"],
+  ]) {
+    const result = (
+      await call("room", { pin: r.pin }, { token: viewer.data.token })
+    ).data;
+    assert.equal(result.answerCards.find((p) => p.isMe).name, name);
+    assert.equal(result.answerCards.filter((p) => p.isMe).length, 1);
+    assert.equal(result.answerCards[0].choice, q.correct);
+    assert.equal(result.answerCards[0].correct, true);
+    assert.equal(result.answerCards[0].avatar, "fox");
+    assert.equal(result.answerCards[1].choice, (q.correct + 1) % 4);
+    assert.equal(result.answerCards[1].correct, false);
+    assert.equal(result.answerCards[2].choice, null);
+    assert.equal(result.answerCards[2].correct, null);
+    assert(result.answerCards.every((p) => !("token" in p) && !("key" in p)));
+  }
+  mutateDB(
+    r.pin,
+    "$s['phase']='countdown';$s['countdownUntil']=microtime(true)+30",
+  );
+  assert.equal(
+    (await call("room", { pin: r.pin })).data.answerCards,
+    undefined,
+  );
+  mutateDB(r.pin, "$s['phase']='finished'");
+  assert.equal(
+    (await call("room", { pin: r.pin })).data.answerCards,
+    undefined,
+  );
+});
+
+test("family comparison exposes only the current reference answer and guess after reveal", async () => {
+  const r = await create("family", { seconds: 90 });
+  const participants = [];
+  for (const [name, role, avatar] of [
+    ["Ada", "Anne", "wizard"],
+    ["Emir", "Baba", "robot"],
+  ]) {
+    const joined = (await call("join", { pin: r.pin, name, role, avatar }))
+      .data;
+    participants.push(joined);
+    const profile = Object.fromEntries(
+      r.prompts.map((p, i) => [p.id, `${name} özel yanıt ${i}`]),
+    );
+    assert.equal(
+      (
+        await call(
+          "family_profile",
+          { pin: r.pin, answers: profile },
+          { token: joined.token },
+        )
+      ).status,
+      200,
+    );
+  }
+  await call("family_start", { pin: r.pin }, { admin: true });
+  const q = JSON.parse(
+    mutateDB(r.pin, 'echo json_encode($s["questions"][0])').toString(),
+  );
+  const room = (await call("room", { pin: r.pin })).data;
+  const subject = participants.find(
+    (p) => p.room.me.id === room.question.subject.id,
+  );
+  const guesser = participants.find((p) => p !== subject);
+  const guessed = await call(
+    "family_answer",
+    { pin: r.pin, questionId: q.id, choice: (q.correct + 1) % 4 },
+    { token: guesser.token },
+  );
+  assert.equal(guessed.status, 200);
+  assert.equal(guessed.data.answerCards, undefined);
+  assert.equal(guessed.data.question.correct, undefined);
+  assert.equal(
+    (await call("room", { pin: r.pin }, { token: subject.token })).data
+      .answerCards,
+    undefined,
+  );
+  await call(
+    "family_advance",
+    { pin: r.pin, expectedIndex: 0, expectedPhase: "question" },
+    { admin: true },
+  );
+  for (const p of participants) {
+    const result = (await call("room", { pin: r.pin }, { token: p.token }))
+      .data;
+    const reference = result.answerCards.find((c) => c.reference);
+    const guess = result.answerCards.find((c) => !c.reference);
+    assert.equal(result.answerCards.length, 2);
+    assert.equal(result.answerCards.find((c) => c.isMe).name, p.room.me.name);
+    assert.equal(reference.name, subject.room.me.name);
+    assert.equal(reference.choice, q.correct);
+    assert.equal(reference.correct, true);
+    assert.equal(reference.points, 0);
+    assert.equal(guess.name, guesser.room.me.name);
+    assert.equal(guess.correct, false);
+    assert.equal(guess.points, 0);
+    assert.equal(result.profiles, undefined);
+    assert.equal(result.myProfile, undefined);
+    assert(
+      result.answerCards.every((c) => !("profile" in c) && !("answers" in c)),
+    );
+  }
+});

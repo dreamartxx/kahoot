@@ -11,6 +11,7 @@ import {
 const label = (person) => `${person.name} (${person.role})`;
 import { CharacterAvatar } from "./CharacterAvatar";
 import Podium from "./Podium";
+import AnswerComparison from "./AnswerComparison";
 
 function FamilyProfile({ room, action, busy }) {
   const draftKey = `arena-family-draft:${room.pin}:${room.me.id}`;
@@ -328,22 +329,25 @@ export default function FamilyRoom({
           kazanmazsın.
         </div>
       )}
-      <div className="answer-grid">
-        {q.options.map((option, i) => (
-          <button
-            key={i}
-            className={`answer answer-${i}${room.myAnswer?.choice === i ? " selected" : ""}${reveal ? (q.correct === i ? " correct" : " dim") : ""}`}
-            disabled={cannotAnswer}
-            onClick={() =>
-              action("family_answer", { questionId: q.id, choice: i })
-            }
-          >
-            <span className="answer-shape">{["▲", "◆", "●", "■"][i]}</span>
-            <b>{option}</b>
-            {reveal && q.correct === i && <CheckCircle2 size={24} />}
-          </button>
-        ))}
-      </div>
+      <AnswerComparison room={room} />
+      {(!reveal || !room.answerCards?.length) && (
+        <div className="answer-grid">
+          {q.options.map((option, i) => (
+            <button
+              key={i}
+              className={`answer answer-${i}${room.myAnswer?.choice === i ? " selected" : ""}${reveal ? (q.correct === i ? " correct" : " dim") : ""}`}
+              disabled={cannotAnswer}
+              onClick={() =>
+                action("family_answer", { questionId: q.id, choice: i })
+              }
+            >
+              <span className="answer-shape">{["▲", "◆", "●", "■"][i]}</span>
+              <b>{option}</b>
+              {reveal && q.correct === i && <CheckCircle2 size={24} />}
+            </button>
+          ))}
+        </div>
+      )}
       {!reveal && room.myAnswer && (
         <div className="answer-feedback">
           <CheckCircle2 size={20} /> Cevabın alındı. Birazdan öğreniyoruz!

@@ -1,0 +1,318 @@
+.answer-comparison {
+  margin: 24px 0;
+  text-align: left;
+}
+.comparison-heading {
+  text-align: center;
+  margin: 0 0 18px;
+}
+.comparison-heading > span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: #9a7bb0;
+}
+.comparison-heading h3 {
+  font-size: 25px;
+  letter-spacing: -0.6px;
+  margin: 8px 0;
+  color: #574369;
+}
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+.comparison-card {
+  --comparison-accent: #12804f;
+  --comparison-deep: #075534;
+  position: relative;
+  overflow: hidden;
+  padding: 21px;
+  border: 1px solid #ffffff80;
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at top right, #ffffff35, transparent 70%),
+    linear-gradient(140deg, var(--comparison-accent), var(--comparison-deep));
+  color: #fff;
+  box-shadow:
+    0 12px 24px #2b293d18,
+    inset 0 1px #fff4;
+  animation: comparison-enter 0.35s ease-out both;
+  min-width: 0;
+}
+.comparison-wrong {
+  --comparison-accent: #d33650;
+  --comparison-deep: #991b3d;
+}
+.comparison-unanswered {
+  --comparison-accent: #766b88;
+  --comparison-deep: #50445f;
+}
+.comparison-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #fff;
+  opacity: 0.9;
+  margin-bottom: 13px;
+}
+.comparison-person {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.comparison-person .character-avatar {
+  width: 65px;
+  height: 74px;
+}
+.comparison-person > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.comparison-person strong {
+  font-size: 19px;
+  overflow-wrap: anywhere;
+  line-height: 1.3;
+  color: #fff;
+}
+.comparison-person small {
+  font-size: 11px;
+  color: #ffffffc9;
+}
+.comparison-choice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 65px;
+  padding: 16px;
+  margin: 12px 0;
+  background: #ffffff17;
+  border: 1px solid #ffffff2e;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  color: #fff;
+}
+.comparison-choice .flag-option {
+  max-width: 100%;
+}
+.comparison-verdict {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #fff;
+}
+.comparison-verdict > b {
+  flex: 1;
+}
+.comparison-verdict > span {
+  font-weight: 800;
+  font-size: 16px;
+}
+.comparison-reference {
+  display: block;
+  font-size: 10px;
+  color: #ffffffbf;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.comparison-answer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 16px;
+  background: #e6f4ec;
+  border: 1px solid #c6e4d4;
+  border-radius: 13px;
+  color: #246142;
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.comparison-answer > svg {
+  flex-shrink: 0;
+}
+.comparison-answer strong {
+  overflow-wrap: anywhere;
+}
+.comparison-answer .flag-option {
+  display: inline-flex;
+  vertical-align: middle;
+}
+.comparison-more {
+  margin-top: 16px;
+}
+.comparison-more summary {
+  font-size: 12px;
+  font-weight: 700;
+  color: #795496;
+  padding: 12px;
+  cursor: pointer;
+  background: #f1eaf8;
+  border-radius: 10px;
+}
+.comparison-more .comparison-grid {
+  margin-top: 16px;
+}
+.comparison-compact {
+  margin: 20px 0;
+}
+dialog.answer-result-popup.has-comparison {
+  width: min(760px, calc(100vw - 24px));
+  padding: 26px 24px 22px;
+}
+.has-comparison .result-symbol {
+  width: 46px;
+  height: 46px;
+  margin-bottom: 12px;
+  box-shadow: none;
+}
+.has-comparison .result-symbol svg {
+  width: 27px;
+  height: 27px;
+}
+.has-comparison.result-correct .result-symbol {
+  background: #1f9e68;
+}
+.has-comparison.result-wrong .result-symbol {
+  background: #d83d55;
+}
+.has-comparison .result-eyebrow {
+  font-size: 9px;
+}
+.has-comparison h2 {
+  font-size: 26px;
+  margin: 10px 0;
+}
+.has-comparison p {
+  font-size: 12px;
+}
+.has-comparison .comparison-answer {
+  background: #ffffff14;
+  border-color: #fff2;
+  color: #fff;
+}
+@keyframes comparison-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 600px) {
+  .comparison-grid {
+    gap: 10px;
+  }
+  .comparison-card {
+    padding: 13px 11px;
+    border-radius: 16px;
+  }
+  .comparison-label {
+    font-size: 10px;
+    letter-spacing: 0;
+    margin-bottom: 9px;
+  }
+  .comparison-person {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .comparison-person .character-avatar {
+    width: 52px;
+    height: 60px;
+  }
+  .comparison-person strong {
+    font-size: 14px;
+  }
+  .comparison-person small {
+    font-size: 10px;
+  }
+  .comparison-choice {
+    font-size: 16px;
+    padding: 11px 9px;
+    min-height: 72px;
+    margin: 12px 0;
+    gap: 4px;
+  }
+  .comparison-verdict {
+    font-size: 10px;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .comparison-verdict svg {
+    width: 17px;
+    height: 17px;
+  }
+  .comparison-verdict > span {
+    font-size: 12px;
+  }
+  .comparison-reference {
+    font-size: 9px;
+  }
+  .comparison-answer {
+    font-size: 11px;
+    padding: 11px;
+  }
+  .comparison-heading h3 {
+    font-size: 22px;
+  }
+  dialog.answer-result-popup.has-comparison {
+    padding: 22px 13px 16px;
+  }
+  .has-comparison h2 {
+    font-size: 23px;
+    margin: 9px 16px;
+  }
+  .has-comparison .result-symbol {
+    width: 38px;
+    height: 38px;
+  }
+  .has-comparison .result-eyebrow {
+    display: none;
+  }
+  .has-comparison .comparison-compact {
+    margin: 16px 0;
+  }
+  .comparison-choice .flag-option img {
+    max-width: 100%;
+    height: 38px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .comparison-card {
+    animation: none;
+  }
+}
+
+.comparison-answer .flag-option {
+  flex-direction: row;
+  gap: 6px;
+}
+.comparison-answer .flag-option img {
+  width: 34px;
+  height: 26px;
+}
+.comparison-choice .flag-option img {
+  width: 88px;
+  height: 66px;
+}
+.comparison-choice .flag-option > span {
+  font-size: 14px;
+}
+@media (max-width: 600px) {
+  .comparison-choice .flag-option img {
+    width: 58px;
+    height: 44px;
+  }
+}
