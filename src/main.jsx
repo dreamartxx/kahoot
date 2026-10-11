@@ -81,6 +81,7 @@ const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
 import UserManagement from "./UserManagement";
 import Profile from "./Profile";
 import Solo from "./Solo";
+import IdleEvents from "./IdleEvents";
 import "./mobile-shell.css";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -828,6 +829,12 @@ function App() {
       )}
       {body}
       <PwaNotices />
+      {status.admin && (
+        <IdleEvents
+          key={`${status.user?.id}:${!!status.preview}`}
+          onRooms={setRooms}
+        />
+      )}
       {toast && (
         <div role="status" className="toast">
           <AlertCircle size={18} />
@@ -1761,8 +1768,18 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       {room.phase === "closed" ? (
         <div className="center-card">
           <CheckCircle2 size={55} />
-          <h2>Güzel bir etkinlikti!</h2>
-          <p>Katıldığın için teşekkürler.</p>
+          <h2>
+            {room.closeReason
+              ? "Etkinlik iptal edildi"
+              : "Güzel bir etkinlikti!"}
+          </h2>
+          <p>
+            {room.closeReason === "not_started"
+              ? "3 dakika içinde başlatılmadığı için otomatik iptal edildi."
+              : room.closeReason === "cancelled"
+                ? "Kurucu bu etkinliği iptal etti."
+                : "Katıldığın için teşekkürler."}
+          </p>
         </div>
       ) : transition ? (
         <section

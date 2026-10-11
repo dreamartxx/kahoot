@@ -3220,3 +3220,66 @@ test("dedicated mixed pool produces 20 questions from 18 topics with no adjacent
     400,
   );
 });
+
+test("idle lobbies warn after a minute, acknowledgement does not extend expiry, and cancellation persists", async () => {
+  const room = await create("quiz");
+  assert.equal(room.startWarning, false);
+  assert.equal(room.startBy, room.createdAt + 180);
+  mutateDB(room.pin, "$s['createdAt']=time()-61");
+  const warned = await call("room", { pin: room.pin }, { admin: true });
+  assert.equal(warned.data.startWarning, true);
+  assert.equal((await call("room", { pin: room.pin })).data.startWarning, false);
+  assert.equal((await call("idle_continue", { pin: room.pin })).status, 401);
+  const continued = await call("idle_continue", { pin: room.pin }, { admin: true });
+  assert.equal(continued.status, 200);
+  assert.equal(continued.data.startWarning, false);
+  assert.equal(continued.data.startBy, warned.data.startBy);
+  assert.equal((await call("room", { pin: room.pin }, { admin: true })).data.startWarning, false);
+  mutateDB(room.pin, "$s['createdAt']=time()-181");
+  const expired = await call("room", { pin: room.pin });
+  assert.equal(expired.data.phase, "closed");
+  assert.equal(expired.data.closeReason, "not_started");
+  assert.equal(expired.data.startBy, null);
+  mutateDB(room.pin, "if($s['phase']!=='closed'||$s['closedAt']!==$s['createdAt']+180)throw new Exception('Expiry not persisted')");
+  assert.equal((await call("join", { pin: room.pin, name: "Too late" })).status, 409);
+  assert.equal((await call("advance", { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 }, { admin: true })).status, 409);
+  const manual = await create("quiz");
+  assert.equal((await call("idle_cancel", { pin: manual.pin }, { admin: true })).data.closeReason, "cancelled");
+});
+
+test("idle expiry covers family, tournament and undrawn raffles, including list reads and late writes", async () => {
+  for (const mode of ["family", "tournament", "raffle"]) {
+    const room = await create(mode, mode === "tournament" ? { prize: "Test ödülü" } : {});
+    mutateDB(room.pin, "$s['createdAt']=time()-181");
+    const rooms = await call("rooms", {}, { admin: true });
+    const expired = rooms.data.find((r) => r.pin === room.pin);
+    assert.equal(expired.phase, "closed", mode);
+    assert.equal(expired.closeReason, "not_started");
+    mutateDB(room.pin, "if($s['phase']!=='closed')throw new Exception('List expiry not saved')");
+  }
+  const late = await create("quiz");
+  mutateDB(late.pin, "$s['createdAt']=time()-181");
+  assert.equal((await call("idle_continue", { pin: late.pin }, { admin: true })).status, 409);
+  mutateDB(late.pin, "if($s['phase']!=='closed')throw new Exception('Write expiry not saved')");
+});
+
+test("started games and live clouds are not cancelled; stale warning actions cannot close started games", async () => {
+  const room = await create("quiz", { seconds: 90 });
+  const player = await join(room.pin, "Oyuncu");
+  await call("advance", { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 }, { admin: true });
+  mutateDB(room.pin, "$s['createdAt']=time()-300");
+  const playing = await call("room", { pin: room.pin }, { token: player.token, admin: true });
+  assert.equal(playing.data.phase, "question");
+  assert.equal(playing.data.startWarning, false);
+  assert.equal(playing.data.startBy, null);
+  assert.equal((await call("idle_cancel", { pin: room.pin }, { admin: true })).status, 409);
+  assert.equal((await call("room", { pin: room.pin })).data.phase, "question");
+  const cloud = await create("cloud");
+  mutateDB(cloud.pin, "$s['createdAt']=time()-300");
+  assert.equal((await call("room", { pin: cloud.pin })).data.phase, "open");
+  const raffle = await create("raffle");
+  await call("entries", { pin: raffle.pin, names: ["Ada"] }, { admin: true });
+  await call("draw", { pin: raffle.pin }, { admin: true });
+  mutateDB(raffle.pin, "$s['createdAt']=time()-300");
+  assert.equal((await call("room", { pin: raffle.pin })).data.phase, "open");
+});
