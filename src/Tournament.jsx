@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Crown, Gift, Check, Play, Users, Clock } from "lucide-react";
+import {
+  Crown,
+  Gift,
+  Check,
+  Play,
+  Users,
+  Clock,
+  LockKeyhole,
+  ChevronDown,
+} from "lucide-react";
 import { categories, catById } from "./api";
 import { CharacterAvatar } from "./CharacterAvatar";
 import "./tournament.css";
@@ -15,8 +24,9 @@ export function TournamentIntro({ onCreate }) {
           Zirvede buluşalım.
         </h2>
         <p>
-          Futbol benden, gezegenler senden! Güçlü olduğunuz alanları seçin. Aynı
-          alanlar tek turda birleşsin, puanlar büyük finalde buluşsun.
+          Futbol benden, gezegenler senden! Herkes güçlü olduğu tek bir alanı
+          seçsin. Aynı alanlar tek turda birleşsin, puanlar büyük finalde
+          buluşsun.
         </p>
         <button className="btn" onClick={onCreate}>
           <Crown size={20} /> Turnuva oluştur
@@ -71,17 +81,17 @@ export function TournamentBanner({ room }) {
 }
 
 export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
-  const [chosen, setChosen] = useState(room.myCategories || []);
+  const [chosen, setChosen] = useState(room.myCategories?.[0] || "");
   const [prize, setPrize] = useState(room.prize);
   const saved = (room.myCategories || []).join(",");
-  useEffect(() => setChosen(room.myCategories || []), [saved]);
+  useEffect(() => setChosen(room.myCategories?.[0] || ""), [saved]);
   useEffect(() => setPrize(room.prize), [room.prize]);
   const voting = room.phase === "voting";
   const seconds = Math.max(0, Math.ceil((room.voteUntil || 0) - now));
   const canPlay = !screen && room.me;
-  const changed =
-    [...chosen].sort().join(",") !==
-    [...(room.myCategories || [])].sort().join(",");
+  const locked = room.myCategories?.length === 1;
+  const duplicateCount = room.categoryVotes[chosen] || 0;
+  const selectedCategory = categories.find((c) => c.id === chosen);
   return (
     <div className="tournament-layout">
       <section className="tournament-main">
@@ -95,7 +105,7 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
               {voting
                 ? "Her alanda kaç soru olsun?"
                 : canPlay
-                  ? "En iyi olduğun alanları seç"
+                  ? "Tek alan. Tek seçim."
                   : "Şampiyon adaylarını bekliyoruz"}
             </h2>
           </div>
@@ -151,55 +161,77 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
           <>
             <p>
               {canPlay
-                ? "Bir veya birden fazla alan seçebilirsin. Aynı alanı seçenler için tek yarışma yapılır; herkes bütün alanlarda yarışır."
-                : "Katılımcılar QR koduyla gelsin, güçlü oldukları alanları seçsin. Seçilen her alan turnuvaya yalnızca bir kez eklenir."}
+                ? "Herkes yalnızca bir alan seçer. Seçimini onayladıktan sonra değiştiremezsin. Aynı alanı seçenler tek turda buluşur."
+                : "Herkes QR koduyla katılıp tek bir alan seçsin. Aynı alan tekrar seçilirse yeni hak verilmez; o alanda tek tur oynanır."}
             </p>
-            {canPlay && (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  action("tournament_choices", { categories: chosen });
-                }}
-              >
-                <div className="tournament-category-grid">
-                  {categories.map((c) => (
-                    <label
-                      key={c.id}
-                      className={chosen.includes(c.id) ? "is-selected" : ""}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={chosen.includes(c.id)}
-                        disabled={busy}
-                        onChange={() =>
-                          setChosen(
-                            chosen.includes(c.id)
-                              ? chosen.filter((id) => id !== c.id)
-                              : [...chosen, c.id],
-                          )
-                        }
-                      />
-                      <span aria-hidden="true">{c.emoji}</span>
-                      <strong>{c.name}</strong>
-                    </label>
-                  ))}
+            {canPlay &&
+              (locked ? (
+                <div className="tournament-locked-choice" role="status">
+                  <span className="chosen-area-emoji" aria-hidden="true">
+                    {selectedCategory?.emoji}
+                  </span>
+                  <div>
+                    <small>SEÇİMİN KİLİTLENDİ</small>
+                    <strong>{selectedCategory?.name}</strong>
+                    <p>
+                      {duplicateCount > 1
+                        ? `${duplicateCount} kişi aynı alanı seçti. Tek tur oynanacak; yeni seçim hakkı yok.`
+                        : "Alanını seçtin. Artık turnuvaya hazırsın."}
+                    </p>
+                  </div>
+                  <LockKeyhole size={20} />
                 </div>
-                <button
-                  className="btn full"
-                  disabled={
-                    busy ||
-                    chosen.length === 0 ||
-                    (!changed && room.myCategories.length > 0)
-                  }
+              ) : (
+                <form
+                  className="tournament-choice-form"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    action("tournament_choices", { categories: [chosen] });
+                  }}
                 >
-                  <Check size={19} />
-                  {room.myCategories.length && !changed
-                    ? "Alanların kaydedildi"
-                    : "Alanlarımı kaydet"}{" "}
-                  · {chosen.length} alan
-                </button>
-              </form>
-            )}
+                  {room.myCategories?.length > 1 && (
+                    <p className="muted">
+                      Tek alan kuralı güncellendi. Önceki seçimlerinden birini
+                      veya başka bir alanı onayla.
+                    </p>
+                  )}
+                  <label htmlFor="tournament-area">En iyi olduğun alan</label>
+                  <div className="tournament-select-wrap">
+                    <span aria-hidden="true">
+                      {selectedCategory?.emoji || "✨"}
+                    </span>
+                    <select
+                      id="tournament-area"
+                      value={chosen}
+                      required
+                      disabled={busy}
+                      onChange={(e) => setChosen(e.target.value)}
+                    >
+                      <option value="" disabled>
+                        Bir alan seç…
+                      </option>
+                      {categories.map((c) => (
+                        <option key={c.id} value={c.id}>
+                          {c.name}
+                          {room.categoryVotes[c.id]
+                            ? ` · ${room.categoryVotes[c.id]} kişi seçti`
+                            : ""}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown size={20} aria-hidden="true" />
+                  </div>
+                  <p className="tournament-choice-hint">
+                    {duplicateCount
+                      ? `Bu alanı ${duplicateCount} kişi seçti. Sen de seçebilirsin; tek tur olur, ikinci seçim hakkı verilmez.`
+                      : "Seçimini onaylayınca kilitlenir. Herkes seçilen tüm alanlarda yarışır."}
+                  </p>
+                  <button className="btn full" disabled={busy || !chosen}>
+                    <LockKeyhole size={18} />
+                    {busy ? "Kaydediliyor…" : "Seçimimi onayla"}
+                  </button>
+                </form>
+              ))}
             {(host || screen) && (
               <div className="tournament-pin">{room.pin}</div>
             )}
@@ -241,16 +273,16 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
                   <Play size={19} /> Turnuvayı başlat · Soru sayısını oylayın
                 </button>
                 <p className="muted">
-                  En az 2 kişi katılıp alanlarını kaydetmeli. Ödül turnuva
+                  En az 2 kişi katılıp birer alan seçmeli. Ödül turnuva
                   başladıktan sonra değişmez.
                 </p>
               </>
             )}
-            {canPlay && room.myCategories.length > 0 && (
+            {canPlay && locked && (
               <p className="tournament-ready-note">
                 <Check size={19} />{" "}
                 {host
-                  ? "Alanların hazır! Herkes hazır olunca turnuvayı başlatabilirsin."
+                  ? "Seçimin hazır! Herkes hazır olunca turnuvayı başlatabilirsin."
                   : "Hazırsın! Kurucu turnuvayı başlatınca 5 veya 10 soruya oy vereceksin."}
               </p>
             )}
@@ -298,7 +330,7 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
                       : "Soru sayısını seçiyor…"
                     : p.categories.length
                       ? p.categories.map((id) => catById(id).name).join(" · ")
-                      : "Alanlarını seçiyor…"}
+                      : "Alanını seçiyor…"}
                 </small>
               </span>
             </div>

@@ -2108,21 +2108,50 @@ test("tournament deduplicates areas, freezes prize, votes on length and accumula
   for (const invalid of [
     [],
     ["cografya", "cografya"],
+    ["cografya", "futbol"],
     ["unknown"],
     [5],
     "cografya",
   ])
     assert.equal((await choices(ada.token, invalid)).status, 400);
   assert.equal((await choices("wrong", ["cografya"])).status, 401);
-  await choices(ada.token, ["cografya", "futbol"]);
+  assert.equal((await choices(ada.token, ["futbol"])).status, 200);
   assert.equal(
     (await call("tournament_start", { pin: room.pin }, { admin: true })).status,
     409,
   );
-  let updated = await choices(ece.token, ["futbol", "gezegenler"]);
-  assert.equal(updated.data.roundTotal, 3);
+  let updated = await choices(ece.token, ["futbol"]);
+  assert.equal(updated.status, 200);
+  assert.equal(
+    updated.data.roundTotal,
+    1,
+    "Duplicate choices produce one round",
+  );
   assert.equal(updated.data.categoryVotes.futbol, 2);
-  assert.equal(updated.data.readyCount, 2);
+  assert.equal(updated.data.readyCount, 2, "A duplicate still counts as ready");
+  assert.equal(
+    (await choices(ece.token, ["gezegenler"])).status,
+    409,
+    "Duplicate does not grant another choice",
+  );
+  assert.equal(
+    (await choices(ada.token, ["cografya"])).status,
+    409,
+    "The first player's choice is also locked",
+  );
+  assert.equal(
+    (await choices(ece.token, ["futbol"])).status,
+    200,
+    "Retrying the same choice is idempotent",
+  );
+  const resumed = await call("room", { pin: room.pin }, { token: ece.token });
+  assert.deepEqual(resumed.data.myCategories, ["futbol"]);
+  assert.equal(resumed.data.readyCount, 2);
+  const cem = await join(room.pin, "Cem"),
+    deniz = await join(room.pin, "Deniz");
+  await choices(cem.token, ["cografya"]);
+  updated = await choices(deniz.token, ["gezegenler"]);
+  assert.equal(updated.data.roundTotal, 3);
   assert.equal(
     (
       await call(
@@ -2183,7 +2212,9 @@ test("tournament deduplicates areas, freezes prize, votes on length and accumula
     assert.equal((await vote(ada.token, invalid)).status, 400);
   assert.equal((await vote(ada.token, 5)).data.voteCount, 1);
   assert.equal((await vote(ada.token, 5)).data.voteCount, 1);
-  updated = await vote(ece.token, 10);
+  await vote(ece.token, 10);
+  await vote(cem.token, 5);
+  updated = await vote(deniz.token, 10);
   assert.equal(updated.data.phase, "countdown");
   assert.equal(updated.data.questionsPerRound, 10, "Ties choose ten");
   assert.equal(updated.data.total, 30);
@@ -2255,6 +2286,54 @@ test("tournament deduplicates areas, freezes prize, votes on length and accumula
   assert.equal(current.players[0].name, "Ada");
   assert.equal(current.players[0].score, score);
   assert.equal(current.prize, "Kupa");
+});
+
+test("legacy multi-area lobbies must choose one area before starting, then stay locked", async () => {
+  const room = await create("tournament", { prize: "Kupa" });
+  const a = await join(room.pin, "Eski seçim"),
+    b = await join(room.pin, "Tek seçim");
+  await call(
+    "tournament_choices",
+    { pin: room.pin, categories: ["futbol"] },
+    { token: b.token },
+  );
+  mutateDB(
+    room.pin,
+    "$keys=array_keys($s['players']);$s['tournamentChoices'][$keys[0]]=['cografya','gezegenler']",
+  );
+  const before = await call("room", { pin: room.pin }, { token: a.token });
+  assert.equal(before.data.readyCount, 1);
+  assert.equal(
+    (await call("tournament_start", { pin: room.pin }, { admin: true })).status,
+    409,
+  );
+  assert.equal(
+    (
+      await call(
+        "tournament_choices",
+        { pin: room.pin, categories: ["futbol"] },
+        { token: a.token },
+      )
+    ).status,
+    200,
+  );
+  assert.equal(
+    (
+      await call(
+        "tournament_choices",
+        { pin: room.pin, categories: ["cografya"] },
+        { token: a.token },
+      )
+    ).status,
+    409,
+  );
+  const started = await call(
+    "tournament_start",
+    { pin: room.pin },
+    { admin: true },
+  );
+  assert.equal(started.status, 200);
+  assert.deepEqual(started.data.rounds, ["futbol"]);
 });
 
 test("tournament majority, no-vote timeout, early vote closure and reconnect use one stable automatic deck", async () => {

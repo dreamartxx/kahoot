@@ -1,0 +1,204 @@
+.module-guide {
+  margin: 0 0 22px;
+  border: 1px solid #e6ddec;
+  border-radius: 20px;
+  background: linear-gradient(115deg, #fff, #faf7ff);
+  color: #5e496f;
+  overflow: hidden;
+}
+.module-guide summary {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  cursor: pointer;
+  list-style: none;
+  padding: 17px 20px;
+  min-height: 62px;
+}
+.module-guide summary::-webkit-details-marker {
+  display: none;
+}
+.module-guide summary:focus-visible {
+  outline: 3px solid var(--guide-accent);
+  outline-offset: -4px;
+  border-radius: 18px;
+}
+.guide-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  color: var(--guide-accent);
+  background: #f0eafa;
+  flex-shrink: 0;
+}
+.guide-summary-copy {
+  flex: 1;
+  min-width: 0;
+}
+.guide-summary-copy strong {
+  font-size: 15px;
+}
+.guide-summary-copy small {
+  display: block;
+  font-size: 11px;
+  color: #93819f;
+  margin-top: 5px;
+}
+.guide-badge {
+  border-radius: 20px;
+  padding: 6px 10px;
+  background: #f5effa;
+  font-size: 10px;
+  color: var(--guide-accent);
+  white-space: nowrap;
+}
+.guide-chevron {
+  flex-shrink: 0;
+  color: var(--guide-accent);
+  transition: transform 0.2s;
+}
+.module-guide[open] .guide-chevron {
+  transform: rotate(180deg);
+}
+.guide-content {
+  padding: 4px 22px 20px;
+  border-top: 1px solid #eee6f3;
+}
+.guide-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0;
+}
+.guide-title > span {
+  font-size: 32px;
+}
+.guide-title small {
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  color: var(--guide-accent);
+  font-weight: 700;
+}
+.guide-title h3 {
+  font-size: 19px;
+  margin: 5px 0 0;
+}
+.guide-content ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.guide-content li {
+  display: flex;
+  gap: 11px;
+  min-width: 0;
+}
+.guide-step-number {
+  flex-shrink: 0;
+  color: var(--guide-accent);
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid #e7dceb;
+  border-radius: 10px;
+  padding: 8px;
+  height: fit-content;
+}
+.guide-content li strong {
+  font-size: 13px;
+}
+.guide-content li p {
+  font-size: 12px;
+  color: #8a7698;
+  line-height: 1.7;
+  margin: 7px 0 0;
+}
+.guide-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px 15px;
+  border-radius: 12px;
+  background: #f6f0fa;
+  color: #877097;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 20px 0 0;
+}
+.guide-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--guide-accent);
+}
+.room-module-guide {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.overview-module {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.overview-module-tournament {
+  grid-column: 1 / -1;
+}
+.overview-module > .overview-card {
+  width: 100%;
+  flex: 1;
+}
+.module-guide.is-compact {
+  margin-bottom: 11px;
+  border-radius: 16px;
+}
+.module-guide.is-compact summary {
+  padding: 11px 15px;
+  min-height: 54px;
+}
+.module-guide.is-compact .guide-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
+.module-guide.is-compact .guide-summary-copy strong {
+  font-size: 13px;
+}
+.module-guide.is-compact ol {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 800px) {
+  .module-guide summary {
+    padding: 14px;
+    gap: 10px;
+  }
+  .guide-summary-copy strong {
+    font-size: 14px;
+  }
+  .guide-summary-copy small {
+    line-height: 1.5;
+  }
+  .guide-badge {
+    display: none;
+  }
+  .guide-content {
+    padding: 0 16px 16px;
+  }
+  .guide-content ol {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .room-module-guide {
+    margin: 0 17px;
+  }
+  .guide-title h3 {
+    font-size: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-chevron {
+    transition: none;
+  }
+}

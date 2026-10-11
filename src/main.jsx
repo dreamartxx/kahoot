@@ -65,6 +65,7 @@ import "./host-player.css";
 import Welcome from "./Welcome";
 import Overview from "./Overview";
 import ModuleTeasers from "./ModuleTeasers";
+import ModuleGuide from "./ModuleGuide";
 import AnswerComparison from "./AnswerComparison";
 import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
 import { characterById } from "./characters";
@@ -513,6 +514,7 @@ function App() {
                     </span>
                   )}
                 </section>
+                <ModuleGuide mode={tab} />
                 {tab === "tournament" && (
                   <TournamentIntro onCreate={() => create("tournament")} />
                 )}
@@ -1159,10 +1161,11 @@ function Create({
             <div className="info-box">
               <Crown size={24} />
               <span>
-                Katılımcılar güçlü oldukları alanları seçer. Aynı alan tek
-                yarışmada birleşir; herkes tüm alanlarda oynar. Başlangıçta her
-                alan için 5 veya 10 soruya oy verilir. Sorular otomatik
-                hazırlanır, puanlar turnuva boyunca toplanır.
+                Her katılımcı yalnızca bir alan seçer ve onaylanan seçim
+                değişmez. Aynı alan tekrar seçilirse ek hak verilmez; tek tur
+                oynanır. Herkes tüm alanlarda yarışır. Başlangıçta her alan için
+                5 veya 10 soruya oy verilir. Sorular otomatik hazırlanır,
+                puanlar turnuva boyunca toplanır.
               </span>
             </div>
           </>
@@ -1622,6 +1625,11 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           )}
         </span>
       </div>
+      {!screen && ["lobby", "open"].includes(room.phase) && (
+        <div className="room-module-guide">
+          <ModuleGuide mode={room.mode} />
+        </div>
+      )}
       {room.mode === "tournament" && <TournamentBanner room={room} />}
       {host &&
         room.phase === "lobby" &&

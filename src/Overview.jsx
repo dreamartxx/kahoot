@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import "./overview.css";
+import ModuleGuide from "./ModuleGuide";
 import { moduleTeasers } from "./ModuleTeasers";
 
 const modules = [
@@ -108,37 +109,44 @@ export default function Overview({ onChoose }) {
     <section className="overview-grid" aria-label="Etkinlik modülleri">
       <h1 className="overview-sr-only">Bugün ne oynuyoruz?</h1>
       {modules.map((m, i) => (
-        <button
+        <article
           key={m.id}
-          className={`overview-card overview-${m.id}`}
-          onClick={() => onChoose(m.id)}
-          aria-label={m.title}
+          className={`overview-module overview-module-${m.id}`}
         >
-          <span className="overview-card-grain" aria-hidden="true" />
-          <span className="overview-card-top">
-            <span className="overview-module-number">0{i + 1}</span>
-            <span>{m.label}</span>
-            <span className="overview-corner-star" aria-hidden="true">
-              ✦
+          <ModuleGuide mode={m.id} compact />
+          <button
+            className={`overview-card overview-${m.id}`}
+            onClick={() => onChoose(m.id)}
+            aria-label={m.title}
+          >
+            <span className="overview-card-grain" aria-hidden="true" />
+            <span className="overview-card-top">
+              <span className="overview-module-number">0{i + 1}</span>
+              <span>{m.label}</span>
+              <span className="overview-corner-star" aria-hidden="true">
+                ✦
+              </span>
             </span>
-          </span>
-          <ModuleArt type={m.id} />
-          <span className="overview-card-copy">
-            <span className="overview-module-detail">{m.detail}</span>
-            <h2>{m.title}</h2>
-            <span className="overview-description">{m.description}</span>
-            <span className="overview-teaser">
-              <span>{moduleTeasers[m.id].notes[0][0]}</span>
-              <span aria-hidden="true">{moduleTeasers[m.id].notes[0][1]}</span>
+            <ModuleArt type={m.id} />
+            <span className="overview-card-copy">
+              <span className="overview-module-detail">{m.detail}</span>
+              <h2>{m.title}</h2>
+              <span className="overview-description">{m.description}</span>
+              <span className="overview-teaser">
+                <span>{moduleTeasers[m.id].notes[0][0]}</span>
+                <span aria-hidden="true">
+                  {moduleTeasers[m.id].notes[0][1]}
+                </span>
+              </span>
             </span>
-          </span>
-          <span className="overview-card-bottom">
-            <span>{m.action}</span>
-            <span className="overview-arrow">
-              <ArrowUpRight size={23} />
+            <span className="overview-card-bottom">
+              <span>{m.action}</span>
+              <span className="overview-arrow">
+                <ArrowUpRight size={23} />
+              </span>
             </span>
-          </span>
-        </button>
+          </button>
+        </article>
       ))}
     </section>
   );
