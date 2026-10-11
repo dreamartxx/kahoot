@@ -54,8 +54,29 @@ function normalize(string $word): string {
 }
 function bank(): array {
     $bank=json_decode(file_get_contents(__DIR__.'/../data/questions.json'),true,512,JSON_THROW_ON_ERROR);
+    $levels=json_decode(file_get_contents(__DIR__.'/../data/question-levels.json'),true,512,JSON_THROW_ON_ERROR);
+    $general=[];foreach($levels['generalQuestionIds'] as $ids)foreach($ids as $id)$general[$id]=true;
+    foreach($bank as &$q)$q['difficulty']=(isset($general[$q['id']])||($q['difficulty']??null)==='general')?'general':'expert';unset($q);
     foreach(db()->query('SELECT content FROM arena_questions') as $row) { $q=json_decode($row['content'],true);$u=currentUser();if((int)($q['ownerId']??1)===1||($u&&($u['role']==='owner'||(int)$q['ownerId']===(int)$u['id'])))$bank[]=$q; }
+    // Legacy and unclassified custom questions use the limited slot until reviewed.
+    foreach($bank as &$q)$q['difficulty']=($q['difficulty']??null)==='general'?'general':'expert';unset($q);
     return $bank;
+}
+function selectQuizQuestions(array $pool,array $history,bool $manual=false): array {
+    if(count($pool)<10)throw new DomainException('Bu konu için en az 10 geçerli soru gerekli.');
+    $general=array_values(array_filter($pool,fn($q)=>($q['difficulty']??'expert')==='general'));
+    if($manual){
+        if(count($pool)!==10)throw new DomainException('Tam 10 farklı ve geçerli soru seçin.');
+        if(count($general)<9)throw new DomainException('10 soruda en fazla 1 detay / uzmanlık sorusu seçebilirsiniz. En az 9 genel bilgi sorusu seçin.');
+        shuffle($pool);return $pool;
+    }
+    if(count($general)<9)throw new DomainException('Bu konuda yarışma için en az 9 genel bilgi sorusu gerekli.');
+    // Recency is balanced within each level, so unused expert questions never fill general slots.
+    shuffle($pool);usort($pool,fn($a,$b)=>($history[$a['id']]??0)<=>($history[$b['id']]??0));
+    $general=[];$expert=[];
+    foreach($pool as $q){if(($q['difficulty']??'expert')==='general')$general[]=$q;else $expert[]=$q;}
+    $selected=array_merge(array_slice($general,0,$expert?9:10),array_slice($expert,0,1));
+    shuffle($selected);return $selected;
 }
 function rateLimit(string $action,int $limit): void {
     $db=db(); $bucket=intdiv(time(),60);$id=hash('sha256',$action.'|'.($_SERVER['REMOTE_ADDR']??'local').'|'.$bucket);
