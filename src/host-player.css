@@ -1,0 +1,58 @@
+.host-player-banner {
+  max-width: 1300px;
+  margin: 0 auto 24px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #dcc9ed;
+  border-radius: 20px;
+  background: linear-gradient(115deg, #f0e5ff, #fff2e7);
+  color: #76508d;
+}
+.host-player-banner > svg {
+  flex-shrink: 0;
+}
+.host-player-banner > div {
+  flex: 1;
+  min-width: 0;
+}
+.host-player-banner strong {
+  font-size: 18px;
+}
+.host-player-banner p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 5px 0 0;
+  color: #977ca7;
+}
+.host-player-banner .btn {
+  flex-shrink: 0;
+}
+.host-player-banner.is-joined {
+  border-color: #c8e6d0;
+  background: linear-gradient(115deg, #edf8ee, #f8f4ff);
+}
+.host-family-controls {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #ecdde9;
+}
+.host-family-controls p {
+  color: #977ca7;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+@media (max-width: 800px) {
+  .host-player-banner {
+    margin: 0 17px 20px;
+    padding: 18px;
+    flex-wrap: wrap;
+  }
+  .host-player-banner .btn {
+    width: 100%;
+  }
+  .host-player-banner strong {
+    font-size: 16px;
+  }
+}

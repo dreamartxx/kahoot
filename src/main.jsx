@@ -59,6 +59,7 @@ import { quizTransition } from "./quiz-transition";
 import { PwaInstall, PwaNotices } from "./PwaInstall";
 import { setupPwa } from "./pwa";
 import "./style.css";
+import "./host-player.css";
 import Welcome from "./Welcome";
 import Overview from "./Overview";
 import ModuleTeasers from "./ModuleTeasers";
@@ -1170,6 +1171,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     [busy, setBusy] = useState(false),
     [tick, setTick] = useState(Date.now()),
     [qr, setQr] = useState(false),
+    [hostJoining, setHostJoining] = useState(false),
     [sound, setSound] = useState(false);
   const host = kind === "host" && admin,
     screen = kind === "screen",
@@ -1284,6 +1286,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       localStorage.setItem("arena:character", avatar);
       setToken(r.token);
       setRoom(r.room);
+      setHostJoining(false);
     } catch (e) {
       notify(e.message);
     } finally {
@@ -1490,6 +1493,37 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         </span>
       </div>
       {room.mode === "tournament" && <TournamentBanner room={room} />}
+      {host &&
+        room.phase === "lobby" &&
+        ["quiz", "family", "tournament"].includes(room.mode) && (
+          <section
+            className={`host-player-banner ${room.me ? "is-joined" : ""}`}
+            aria-label="Kurucu olarak yarışmaya katıl"
+          >
+            {room.me ? (
+              <CharacterAvatar id={room.me.avatar} />
+            ) : (
+              <Users size={28} />
+            )}
+            <div>
+              <strong>
+                {room.me
+                  ? `${room.me.name}, sen de yarışmacısın!`
+                  : "Sen de yarışmaya katıl!"}
+              </strong>
+              <p>
+                {room.me
+                  ? "Bu ekrandan hem yarışabilir hem oyunu yönetebilirsin."
+                  : "İsmini ve karakterini seç. Oyunu yönetirken soruları sen de cevapla."}
+              </p>
+            </div>
+            {!room.me && (
+              <Button onClick={() => setHostJoining(true)}>
+                <Plus size={18} /> Ben de yarışacağım
+              </Button>
+            )}
+          </section>
+        )}
       {room.phase === "closed" ? (
         <div className="center-card">
           <CheckCircle2 size={55} />
@@ -1684,7 +1718,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                           : "")
                       }
                       disabled={
-                        host ||
+                        !room.me ||
                         screen ||
                         busy ||
                         !!room.myAnswer ||
@@ -1842,7 +1876,46 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           </div>
         </Modal>
       )}
-      {kind === "join" &&
+      {hostJoining && host && !room.me && room.phase === "lobby" && (
+        <Modal
+          title="Sen de yarışmacı ol"
+          onClose={() => setHostJoining(false)}
+        >
+          <p className="muted">
+            Katıldıktan sonra oyunu aynı ekrandan yönetmeye devam edebilirsin.
+          </p>
+          <form onSubmit={join}>
+            <Field label="Oyunda görünecek ismin">
+              <input
+                autoFocus
+                required
+                minLength={2}
+                maxLength={32}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Bir isim ya da takma ad"
+              />
+            </Field>
+            {room.mode === "family" && (
+              <Field label="Ailedeki rolün">
+                <input
+                  required
+                  maxLength={24}
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  placeholder="Anne, baba, çocuk, teyze…"
+                />
+              </Field>
+            )}
+            <CharacterPicker value={avatar} onChange={setAvatar} />
+            <Button className="full" disabled={busy}>
+              {busy ? "Katılıyorsun…" : "Yarışmacı olarak katıl"}
+              <ArrowRight size={18} />
+            </Button>
+          </form>
+        </Modal>
+      )}
+      {(kind === "join" || host) &&
         !isTransitioning &&
         ["quiz", "family", "tournament"].includes(room.mode) &&
         room.phase === "reveal" &&

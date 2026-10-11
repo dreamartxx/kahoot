@@ -212,7 +212,7 @@ export default function FamilyRoom({
       <div className="family-room">
         <div className="family-lobby-layout">
           <section className="family-lobby-card">
-            {room.me && !host && !screen ? (
+            {room.me && !screen ? (
               <FamilyProfile
                 key={room.me.id}
                 room={room}
@@ -238,30 +238,26 @@ export default function FamilyRoom({
                     ? `${room.playerCount} kişi × 10 soru = ${room.playerCount * 10} soruluk oyun. Herkes diğerleri hakkında ${10 * (room.playerCount - 1)} soru cevaplar.`
                     : "Başlamak için en az 2 aile üyesi gerekli."}
                 </p>
-                {host && (
-                  <>
-                    <button
-                      className="btn"
-                      disabled={
-                        busy ||
-                        room.playerCount < 2 ||
-                        room.readyCount !== room.playerCount
-                      }
-                      onClick={() => action("family_start")}
-                    >
-                      <Play size={18} /> Aile yarışmasını başlat
-                    </button>
-                    <a
-                      className="text-btn family-join-link"
-                      href={`#join/${room.pin}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Ben de yarışmacı olarak katılayım <ArrowRight size={16} />
-                    </a>
-                  </>
-                )}
               </>
+            )}
+            {host && (
+              <div className="host-family-controls">
+                <p>
+                  {room.readyCount}/{room.playerCount} kişi hazır. Herkes
+                  cevaplarını kaydedince başlatabilirsin.
+                </p>
+                <button
+                  className="btn"
+                  disabled={
+                    busy ||
+                    room.playerCount < 2 ||
+                    room.readyCount !== room.playerCount
+                  }
+                  onClick={() => action("family_start")}
+                >
+                  <Play size={18} /> Aile yarışmasını başlat
+                </button>
+              </div>
             )}
           </section>
           <aside className="family-roster">
@@ -300,7 +296,6 @@ export default function FamilyRoom({
   if (!q) return null;
   const reveal = room.phase === "reveal";
   const cannotAnswer =
-    host ||
     screen ||
     !room.me ||
     room.ownQuestion ||

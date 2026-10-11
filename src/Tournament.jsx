@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Crown,
-  Gift,
-  Check,
-  Play,
-  Users,
-  Clock,
-  ArrowRight,
-} from "lucide-react";
+import { Crown, Gift, Check, Play, Users, Clock } from "lucide-react";
 import { categories, catById } from "./api";
 import { CharacterAvatar } from "./CharacterAvatar";
 import "./tournament.css";
@@ -86,7 +78,7 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
   useEffect(() => setPrize(room.prize), [room.prize]);
   const voting = room.phase === "voting";
   const seconds = Math.max(0, Math.ceil((room.voteUntil || 0) - now));
-  const canPlay = !host && !screen && room.me;
+  const canPlay = !screen && room.me;
   const changed =
     [...chosen].sort().join(",") !==
     [...(room.myCategories || [])].sort().join(",");
@@ -252,15 +244,14 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
                   En az 2 kişi katılıp alanlarını kaydetmeli. Ödül turnuva
                   başladıktan sonra değişmez.
                 </p>
-                <a className="text-btn" href={`#join/${room.pin}`}>
-                  Ben de yarışmacı olarak katılayım <ArrowRight size={15} />
-                </a>
               </>
             )}
-            {!host && !screen && room.myCategories.length > 0 && (
+            {canPlay && room.myCategories.length > 0 && (
               <p className="tournament-ready-note">
-                <Check size={19} /> Hazırsın! Kurucu turnuvayı başlatınca 5 veya
-                10 soruya oy vereceksin.
+                <Check size={19} />{" "}
+                {host
+                  ? "Alanların hazır! Herkes hazır olunca turnuvayı başlatabilirsin."
+                  : "Hazırsın! Kurucu turnuvayı başlatınca 5 veya 10 soruya oy vereceksin."}
               </p>
             )}
           </>

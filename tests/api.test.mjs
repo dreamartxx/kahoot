@@ -2296,6 +2296,130 @@ test("tournament majority, no-vote timeout, early vote closure and reconnect use
   }
 });
 
+test("creators can join and answer in quiz, family and tournament while retaining management", async () => {
+  for (const mode of ["quiz", "family", "tournament"]) {
+    const room = await create(mode, { prize: "Kitap", seconds: 90 });
+    const joined = await call(
+      "join",
+      { pin: room.pin, name: "Kurucu", role: "Baba", avatar: "robot" },
+      { admin: true },
+    );
+    assert.equal(joined.status, 200);
+    assert.equal(
+      joined.data.room.canManage,
+      true,
+      "Joining must not temporarily remove management",
+    );
+    assert.equal(joined.data.room.me.name, "Kurucu");
+    const opt = { admin: true, token: joined.data.token };
+    const guest = await call("join", {
+      pin: room.pin,
+      name: "Yarışmacı",
+      role: "Çocuk",
+    });
+    assert.equal(guest.status, 200);
+    assert.equal(guest.data.room.canManage, false);
+    const reload = (await call("room", { pin: room.pin }, opt)).data;
+    assert.equal(reload.playerCount, 2);
+    assert.equal(reload.me.name, "Kurucu");
+    assert.equal(reload.canManage, true);
+    if (mode === "family") {
+      for (const [player, options] of [
+        [joined.data, opt],
+        [guest.data, { token: guest.data.token }],
+      ]) {
+        const answers = Object.fromEntries(
+          room.prompts.map((p) => [
+            p.id,
+            player.token === joined.data.token ? "Mantı" : "Pizza",
+          ]),
+        );
+        assert.equal(
+          (await call("family_profile", { pin: room.pin, answers }, options))
+            .status,
+          200,
+        );
+      }
+      assert.equal(
+        (await call("family_start", { pin: room.pin }, opt)).status,
+        200,
+      );
+      mutateDB(
+        room.pin,
+        "foreach($s['questions'] as $i=>$q){if($q['subjectKey']!==hash('sha256'," +
+          JSON.stringify(joined.data.token) +
+          ")){$s['index']=$i;break;}}$s['deadline']=microtime(true)+90",
+      );
+    } else if (mode === "tournament") {
+      await call(
+        "tournament_choices",
+        { pin: room.pin, categories: ["cografya"] },
+        opt,
+      );
+      await call(
+        "tournament_choices",
+        { pin: room.pin, categories: ["cografya"] },
+        { token: guest.data.token },
+      );
+      assert.equal(
+        (await call("tournament_start", { pin: room.pin }, opt)).status,
+        200,
+      );
+      const vote = await call(
+        "tournament_vote",
+        { pin: room.pin, count: 5 },
+        opt,
+      );
+      assert.equal(vote.data.myVote, 5);
+      assert.equal(vote.data.canManage, true);
+      await call(
+        "tournament_vote",
+        { pin: room.pin, count: 5 },
+        { token: guest.data.token },
+      );
+      mutateDB(room.pin, "$s['countdownUntil']=microtime(true)-0.1");
+    } else
+      assert.equal(
+        (
+          await call(
+            "advance",
+            { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" },
+            opt,
+          )
+        ).status,
+        200,
+      );
+    const current = (await call("room", { pin: room.pin }, opt)).data;
+    assert.equal(
+      current.question.correct,
+      undefined,
+      "Creator also waits for reveal",
+    );
+    const correct = Number(
+      mutateDB(
+        room.pin,
+        "echo $s['questions'][" + current.index + "]['correct']",
+      ),
+    );
+    const answer = await call(
+      mode === "family" ? "family_answer" : "answer",
+      { pin: room.pin, questionId: current.question.id, choice: correct },
+      opt,
+    );
+    assert.equal(answer.status, 200, JSON.stringify(answer.data));
+    assert.equal(answer.data.canManage, true);
+    assert.equal(answer.data.myAnswer.choice, correct);
+    assert.equal(answer.data.myAnswer.points, undefined);
+    assert.equal(answer.data.me.score, 0);
+    mutateDB(room.pin, "$s['deadline']=microtime(true)-0.1");
+    const revealed = (await call("room", { pin: room.pin }, opt)).data;
+    assert.equal(revealed.phase, "reveal");
+    assert(revealed.me.score > 0);
+    assert(revealed.answerCards.find((p) => p.isMe).correct);
+    assert.equal((await call("close", { pin: room.pin }, opt)).status, 200);
+  }
+});
+
 test("manual selection enforces the expert cap and custom questions persist their level", async () => {
   const pool = (
     await call("questions", { category: "cografya" }, { admin: true })
