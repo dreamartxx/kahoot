@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 require_once __DIR__.'/family.php';
+require_once __DIR__.'/tournament.php';
 function fail(string $message, int $status = 400): never { http_response_code($status); echo json_encode(['error'=>$message], JSON_UNESCAPED_UNICODE); exit; }
 function privateDir(): string { return dirname(__DIR__,2).'/bilgi-arena-private'; }
 function configured(): bool { return is_file(privateDir().'/config.php') || (PHP_SAPI==='cli-server' && (bool)getenv('ARENA_TEST_DSN')); }
@@ -88,8 +89,9 @@ function rateLimit(string $action,int $limit): void {
 }
 // The server clock drives all screens, even when the host tab is closed or asleep.
 function syncQuizClock(array &$s, ?float $now=null): void {
-    if(!in_array($s['mode'],['quiz','family'],true))return;
+    if(!in_array($s['mode'],['quiz','family','tournament'],true))return;
     $now??=microtime(true);
+    syncTournamentVoting($s,$now);
     while(true){
         if($s['phase']==='question'){
             if($now<$s['deadline'])return;
@@ -135,17 +137,18 @@ function snapshot(array $s,?string $token=null,bool $host=false): array {
     if($s['mode']==='family')return familySnapshot($s,$token)+['canManage'=>$host];
     $now=microtime(true);$phase=$s['phase'];
     $visiblePlayers=$s['players'];
-    if($s['mode']==='quiz' && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
+    if(in_array($s['mode'],['quiz','tournament'],true) && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
     $out=['canManage'=>$host,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score'],'avatar'=>$p['avatar']??'astronaut'],$visiblePlayers))];
     usort($out['players'],fn($a,$b)=>$b['score']<=>$a['score']);
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;
     if($me) $out['me']=['name'=>$me['name'],'score'=>$visiblePlayers[$key]['score'],'avatar'=>$me['avatar']??'astronaut'];
-    if($s['mode']==='quiz') {
+    if(in_array($s['mode'],['quiz','tournament'],true)) {
         $i=$s['index'];$out+=['index'=>$i,'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'revealUntil'=>$s['revealUntil']??null,'countdownUntil'=>$s['countdownUntil']??null,'answeredCount'=>count($s['answers'][(string)$i]??[])];
         if($i>=0 && $phase!=='countdown' && isset($s['questions'][$i])) { $q=$s['questions'][$i];$out['question']=['id'=>$q['id'],'text'=>$q['text'],'options'=>$q['options']];if(in_array($phase,['reveal','finished'])){$out['question']['correct']=$q['correct'];$out['question']['explanation']=$q['explanation']??'';} }
         if($phase==='reveal')$out['answerCards']=revealedAnswerCards($s,$key);
         if($me){$answer=$s['answers'][(string)$i][$key]??null;$out['myAnswer']=$answer && $phase==='question'?['choice'=>$answer['choice']]:$answer;}
     }
+    if($s['mode']==='tournament')$out=array_merge($out,tournamentSnapshot($s,$key));
     if($s['mode']==='cloud') {
         $out['prompt']=$s['prompt'];$out['promptVersion']=$s['promptVersion'];$counts=[];
         foreach($s['submissions'] as $words) foreach($words as $word) $counts[$word]=($counts[$word]??0)+1;

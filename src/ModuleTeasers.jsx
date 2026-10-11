@@ -2,6 +2,18 @@ import React from "react";
 import "./module-teasers.css";
 
 export const moduleTeasers = {
+  tournament: {
+    title: "“Bu alan benim!” diyenler, sahne sizin.",
+    caption: "Futbol benden, gezegenler senden. Bakalım zirve kimin?",
+    notes: [
+      ["Bu alan benim!", "🏆"],
+      ["Ödül için son bir doğru!", "🎁"],
+      ["Futbolda rakip tanımam!", "⚽"],
+      ["Gezegenler benden sorulur!", "🪐"],
+      ["Her alanda bir şans!", "✨"],
+      ["Zirvede buluşalım!", "👑"],
+    ],
+  },
   quiz: {
     title: "“Bunu kesin biliyorum!” diyenler buraya.",
     caption: "Biraz merak, biraz rekabet, bolca “Aaa, öyle miymiş?”",

@@ -3,7 +3,7 @@
 export function quizTransition(room, now) {
   if (
     !room ||
-    !["quiz", "family"].includes(room.mode) ||
+    !["quiz", "family", "tournament"].includes(room.mode) ||
     !["question", "reveal", "countdown"].includes(room.phase) ||
     room.index >= room.total - 1
   )

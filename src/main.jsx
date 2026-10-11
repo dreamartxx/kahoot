@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import {
   LayoutGrid,
   Trophy,
+  Crown,
   Heart,
   Ticket,
   Cloud,
@@ -49,6 +50,11 @@ import flagCountries from "../data/flag-countries.json";
 import FamilyRoom from "./FamilyRoom";
 import FamilyQuestionEditor from "./FamilyQuestionEditor";
 import FamilyQuestionPicker from "./FamilyQuestionPicker";
+import {
+  TournamentIntro,
+  TournamentLobby,
+  TournamentBanner,
+} from "./Tournament";
 import { quizTransition } from "./quiz-transition";
 import { PwaInstall, PwaNotices } from "./PwaInstall";
 import { setupPwa } from "./pwa";
@@ -64,6 +70,7 @@ import { rankPlayers } from "./ranking";
 const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
 import UserManagement from "./UserManagement";
 const modes = {
+  tournament: { name: "Turnuva", icon: Crown, color: "purple" },
   family: { name: "Beni Tanıyor musun?", icon: Heart, color: "rose" },
   quiz: { name: "Bilgi yarışması", icon: Trophy, color: "purple" },
   raffle: { name: "Çekiliş", icon: Ticket, color: "peach" },
@@ -249,6 +256,7 @@ function App() {
             {[
               ["home", "Genel bakış", LayoutGrid],
               ["quiz", "Bilgi yarışması", Trophy],
+              ["tournament", "Turnuva", Crown],
               ["family", "Beni Tanıyor musun?", Heart],
               ["raffle", "Çekiliş", Ticket],
               ["cloud", "Kelime bulutu", Cloud],
@@ -396,24 +404,28 @@ function App() {
                     <h1>
                       {tab === "home"
                         ? "Sıradaki güzel anı başlat."
-                        : tab === "quiz"
-                          ? "Bilgiyi heyecana dönüştür."
-                          : tab === "raffle"
-                            ? "Biraz şans, bolca heyecan."
-                            : tab === "family"
-                              ? "Aynı ev, kaç küçük sır?"
-                              : "Herkesin fikri burada büyür."}
+                        : tab === "tournament"
+                          ? "Alanını seç. Şampiyonluğa oyna."
+                          : tab === "quiz"
+                            ? "Bilgiyi heyecana dönüştür."
+                            : tab === "raffle"
+                              ? "Biraz şans, bolca heyecan."
+                              : tab === "family"
+                                ? "Aynı ev, kaç küçük sır?"
+                                : "Herkesin fikri burada büyür."}
                     </h1>
                     <p>
                       {tab === "home"
                         ? "Yarış, şansını dene, fikrini paylaş. Bugün ne oynuyoruz?"
-                        : tab === "quiz"
-                          ? "Bir konu seç, QR kodunu paylaş. Geri sayım başlasın."
-                          : tab === "raffle"
-                            ? "İsimleri ekle, çarkı döndür. Sürpriz kimin için?"
-                            : tab === "family"
-                              ? "Aileni ne kadar tanıyorsun? Birlikte keşfedin, birlikte gülün."
-                              : "Sorunu sor. Aynı kelimeler buluştukça balonlar büyüsün."}
+                        : tab === "tournament"
+                          ? "Ortak alanlar, ortak heyecan. Büyük ödül için birlikte yarışın."
+                          : tab === "quiz"
+                            ? "Bir konu seç, QR kodunu paylaş. Geri sayım başlasın."
+                            : tab === "raffle"
+                              ? "İsimleri ekle, çarkı döndür. Sürpriz kimin için?"
+                              : tab === "family"
+                                ? "Aileni ne kadar tanıyorsun? Birlikte keşfedin, birlikte gülün."
+                                : "Sorunu sor. Aynı kelimeler buluştukça balonlar büyüsün."}
                     </p>
                   </div>
                   {tab === "quiz" ? (
@@ -429,6 +441,9 @@ function App() {
                     </span>
                   )}
                 </section>
+                {tab === "tournament" && (
+                  <TournamentIntro onCreate={() => create("tournament")} />
+                )}
                 {tab === "quiz" && (
                   <Suspense
                     fallback={
@@ -825,14 +840,17 @@ function Create({
     [title, setTitle] = useState(
       mode === "quiz"
         ? catById(initialCat).name + " Yarışması"
-        : mode === "raffle"
-          ? "Şanslı Anlar"
-          : mode === "family"
-            ? "Bizim Aile"
-            : "Fikirler Buluşuyor",
+        : mode === "tournament"
+          ? "Büyük Bilgi Turnuvası"
+          : mode === "raffle"
+            ? "Şanslı Anlar"
+            : mode === "family"
+              ? "Bizim Aile"
+              : "Fikirler Buluşuyor",
     ),
     [seconds, setSeconds] = useState(mode === "family" ? 45 : 20),
     [prompt, setPrompt] = useState("Bugünü tek kelimeyle anlat!"),
+    [prize, setPrize] = useState(""),
     [busy, setBusy] = useState(false),
     [manual, setManual] = useState(false),
     [qs, setQs] = useState([]),
@@ -871,6 +889,7 @@ function Create({
                 category: cat,
                 seconds: Number(seconds),
                 prompt,
+                ...(mode === "tournament" ? { prize } : {}),
                 questionIds: manual && canManageLibrary ? selected : [],
                 ...(mode === "family"
                   ? {
@@ -981,6 +1000,40 @@ function Create({
                 </span>
               </div>
             )}
+          </>
+        )}
+        {mode === "tournament" && (
+          <>
+            <Field label="Turnuva ödülü">
+              <input
+                required
+                maxLength={200}
+                value={prize}
+                onChange={(e) => setPrize(e.target.value)}
+                placeholder="Örn. Şampiyona kitap hediyesi"
+              />
+            </Field>
+            <Field label="Soru başına süre">
+              <select
+                value={seconds}
+                onChange={(e) => setSeconds(e.target.value)}
+              >
+                {[10, 15, 20, 30, 45, 60, 90].map((n) => (
+                  <option key={n} value={n}>
+                    {n} saniye
+                  </option>
+                ))}
+              </select>
+            </Field>
+            <div className="info-box">
+              <Crown size={24} />
+              <span>
+                Katılımcılar güçlü oldukları alanları seçer. Aynı alan tek
+                yarışmada birleşir; herkes tüm alanlarda oynar. Başlangıçta her
+                alan için 5 veya 10 soruya oy verilir. Sorular otomatik
+                hazırlanır, puanlar turnuva boyunca toplanır.
+              </span>
+            </div>
           </>
         )}
         {mode === "family" && (
@@ -1140,7 +1193,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       try {
         const r = await api("room", { pin }, token);
         if (
-          ["quiz", "family"].includes(r.mode) &&
+          ["quiz", "family", "tournament"].includes(r.mode) &&
           (r.phase === "countdown" ||
             r.phase === "reveal" ||
             (r.phase === "question" && r.deadline - r.serverTime < 5))
@@ -1271,13 +1324,17 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     kind === "join" &&
     !room.me &&
     !closed &&
-    room.mode === "family" &&
+    ["family", "tournament"].includes(room.mode) &&
     room.phase !== "lobby"
   )
     return (
       <div className="center-page">
         <Heart size={48} />
-        <h1>Bu aile yarışı başladı.</h1>
+        <h1>
+          {room.mode === "tournament"
+            ? "Bu turnuva başladı."
+            : "Bu aile yarışı başladı."}
+        </h1>
         <p>Bir sonraki oyunda aramıza katılabilirsin.</p>
         <Button secondary onClick={onBack}>
           Stüdyoya dön
@@ -1432,6 +1489,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           )}
         </span>
       </div>
+      {room.mode === "tournament" && <TournamentBanner room={room} />}
       {room.phase === "closed" ? (
         <div className="center-card">
           <CheckCircle2 size={55} />
@@ -1472,6 +1530,17 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
               : "Yeni soru yükleniyor…"}
           </small>
         </section>
+      ) : room.mode === "tournament" &&
+        ["lobby", "voting"].includes(room.phase) ? (
+        <TournamentLobby
+          room={room}
+          host={host}
+          screen={screen}
+          action={action}
+          busy={busy}
+          now={now}
+          QR={QR}
+        />
       ) : room.mode === "family" ? (
         <FamilyRoom
           room={room}
@@ -1482,7 +1551,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           left={left}
           QR={QR}
         />
-      ) : room.mode === "quiz" ? (
+      ) : ["quiz", "tournament"].includes(room.mode) ? (
         <>
           {room.phase === "lobby" ? (
             <div className="lobby-layout">
@@ -1775,7 +1844,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       )}
       {kind === "join" &&
         !isTransitioning &&
-        ["quiz", "family"].includes(room.mode) &&
+        ["quiz", "family", "tournament"].includes(room.mode) &&
         room.phase === "reveal" &&
         room.me &&
         room.myAnswer &&
@@ -1873,7 +1942,11 @@ function Results({ room, host }) {
   const ranking = rankPlayers(room.players);
   return (
     <div className="results">
-      <span className="eyebrow">YARIŞMA TAMAMLANDI</span>
+      <span className="eyebrow">
+        {room.mode === "tournament"
+          ? "TURNUVA TAMAMLANDI · TOPLAM PUANLAR"
+          : "YARIŞMA TAMAMLANDI"}
+      </span>
       <h2>
         {room.players[0]?.name || "Yarışma"}
         {room.players.length ? " zirvede!" : " tamamlandı!"}

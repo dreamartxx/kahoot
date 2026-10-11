@@ -5,6 +5,14 @@ import { moduleTeasers } from "./ModuleTeasers";
 
 const modules = [
   {
+    id: "tournament",
+    title: "Turnuva",
+    label: "BÜYÜK ÖDÜLE GİDEN YOL",
+    description: "Senin alanın. Ortak heyecan. Büyük final.",
+    detail: "Alanını seç · 5 ya da 10 soru · Toplam puan",
+    action: "Turnuvayı başlat",
+  },
+  {
     id: "quiz",
     title: "Bilgi Yarışması",
     label: "BİLGİNİ KONUŞTUR",
@@ -44,7 +52,7 @@ function ModuleArt({ type }) {
       <span className="overview-art-glow" />
       <span className="overview-spark overview-spark-one">✦</span>
       <span className="overview-spark overview-spark-two">✧</span>
-      {type === "quiz" && (
+      {["quiz", "tournament"].includes(type) && (
         <>
           <span className="overview-answer answer-a">▲</span>
           <span className="overview-answer answer-b">◆</span>

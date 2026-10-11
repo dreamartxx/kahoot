@@ -37,3 +37,20 @@ test("family transitions share the timeline, with no extra countdown after the l
   assert.equal(quizTransition({ ...room, mode: "cloud" }, 105), null);
   assert.equal(quizTransition(null, 105), null);
 });
+
+test("tournament countdown covers first question and category boundaries", () => {
+  const tournament = { ...room, mode: "tournament", total: 30 };
+  assert.deepEqual(
+    quizTransition(
+      { ...tournament, phase: "countdown", index: -1, countdownUntil: 108 },
+      105,
+    ),
+    { number: 3, next: 1 },
+  );
+  assert.deepEqual(quizTransition({ ...tournament, index: 9 }, 105), {
+    number: 3,
+    next: 11,
+  });
+  assert.equal(quizTransition({ ...tournament, index: 29 }, 105), null);
+  assert.equal(quizTransition({ ...tournament, phase: "voting" }, 105), null);
+});

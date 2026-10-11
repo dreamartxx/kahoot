@@ -1598,10 +1598,10 @@ test("durable accounts, owner-only management, room isolation and session revoca
     403,
   );
   const own = await create("raffle");
-  for (const mode of ["quiz", "family", "cloud", "raffle"]) {
+  for (const mode of ["quiz", "family", "cloud", "raffle", "tournament"]) {
     const room = await call(
       "create",
-      { mode, title: "Sunucu testi", category: "cografya" },
+      { mode, title: "Sunucu testi", category: "cografya", prize: "Kupa" },
       opt,
     );
     assert.equal(room.status, 200, JSON.stringify(room));
@@ -1629,6 +1629,9 @@ test("durable accounts, owner-only management, room isolation and session revoca
     "close",
     "family_start",
     "family_advance",
+    "tournament_prize",
+    "tournament_start",
+    "tournament_vote_close",
   ]) {
     assert.equal(
       (await call(action, { pin: own.pin }, opt)).status,
@@ -1988,6 +1991,308 @@ test("family comparison exposes only the current reference answer and guess afte
     assert(
       result.answerCards.every((c) => !("profile" in c) && !("answers" in c)),
     );
+  }
+});
+
+test("tournament deduplicates areas, freezes prize, votes on length and accumulates private scores across rounds", async () => {
+  execFileSync("php", [
+    "-r",
+    "$db=new PDO('sqlite:'.$argv[1]);$db->exec('DELETE FROM arena_limits');",
+    db,
+  ]);
+  assert.equal(
+    (
+      await call(
+        "create",
+        { mode: "tournament", title: "Ödülsüz" },
+        { admin: true },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "create",
+        {
+          mode: "tournament",
+          title: "Elle seçim",
+          prize: "Kupa",
+          questionIds: ["some-question"],
+        },
+        { admin: true },
+      )
+    ).status,
+    400,
+  );
+  const room = await create("tournament", { prize: "Kitap hediyesi" });
+  assert.equal(room.prize, "Kitap hediyesi");
+  assert.equal(
+    (await call("tournament_start", { pin: room.pin }, { admin: true })).status,
+    409,
+  );
+  const ada = await join(room.pin, "Ada"),
+    ece = await join(room.pin, "Ece");
+  const choices = (token, categories) =>
+    call("tournament_choices", { pin: room.pin, categories }, { token });
+  for (const invalid of [
+    [],
+    ["cografya", "cografya"],
+    ["unknown"],
+    [5],
+    "cografya",
+  ])
+    assert.equal((await choices(ada.token, invalid)).status, 400);
+  assert.equal((await choices("wrong", ["cografya"])).status, 401);
+  await choices(ada.token, ["cografya", "futbol"]);
+  assert.equal(
+    (await call("tournament_start", { pin: room.pin }, { admin: true })).status,
+    409,
+  );
+  let updated = await choices(ece.token, ["futbol", "gezegenler"]);
+  assert.equal(updated.data.roundTotal, 3);
+  assert.equal(updated.data.categoryVotes.futbol, 2);
+  assert.equal(updated.data.readyCount, 2);
+  assert.equal(
+    (
+      await call(
+        "tournament_prize",
+        { pin: room.pin, prize: "Kupa" },
+        { token: ada.token },
+      )
+    ).status,
+    401,
+  );
+  assert.equal(
+    (
+      await call(
+        "tournament_prize",
+        { pin: room.pin, prize: "Kupa" },
+        { admin: true },
+      )
+    ).status,
+    200,
+  );
+  updated = await call("tournament_start", { pin: room.pin }, { admin: true });
+  assert.equal(updated.status, 200);
+  assert.equal(updated.data.phase, "voting");
+  assert.equal(updated.data.question, undefined);
+  assert.equal(updated.data.tournamentDecks, undefined);
+  assert.equal(
+    (await call("join", { pin: room.pin, name: "Geç kalan" })).status,
+    409,
+  );
+  assert.equal((await choices(ada.token, ["arabalar"])).status, 409);
+  assert.equal(
+    (await call("tournament_start", { pin: room.pin }, { admin: true })).status,
+    409,
+  );
+  assert.equal(
+    (
+      await call(
+        "tournament_prize",
+        { pin: room.pin, prize: "Başka" },
+        { admin: true },
+      )
+    ).status,
+    409,
+  );
+  assert.equal(
+    (
+      await call(
+        "advance",
+        { pin: room.pin, expectedIndex: -1, expectedPhase: "voting" },
+        { admin: true },
+      )
+    ).status,
+    409,
+  );
+  const vote = (token, count) =>
+    call("tournament_vote", { pin: room.pin, count }, { token });
+  for (const invalid of [7, "5", null])
+    assert.equal((await vote(ada.token, invalid)).status, 400);
+  assert.equal((await vote(ada.token, 5)).data.voteCount, 1);
+  assert.equal((await vote(ada.token, 5)).data.voteCount, 1);
+  updated = await vote(ece.token, 10);
+  assert.equal(updated.data.phase, "countdown");
+  assert.equal(updated.data.questionsPerRound, 10, "Ties choose ten");
+  assert.equal(updated.data.total, 30);
+  assert.equal(updated.data.question, undefined);
+  const deck = JSON.parse(
+    mutateDB(
+      room.pin,
+      "echo json_encode($s['questions']);$s['countdownUntil']=microtime(true)-0.1",
+    ),
+  );
+  assert.equal(new Set(deck.map((q) => q.id)).size, 30);
+  for (let round = 0; round < 3; round++) {
+    const group = deck.slice(round * 10, (round + 1) * 10);
+    assert.equal(new Set(group.map((q) => q.category)).size, 1);
+    assert(group.filter((q) => q.difficulty === "expert").length <= 1);
+  }
+  let current = (await call("room", { pin: room.pin }, { token: ada.token }))
+    .data;
+  assert.equal(current.phase, "question");
+  assert.equal(current.index, 0);
+  assert.equal(current.category, deck[0].category);
+  assert.equal(current.question.correct, undefined);
+  const answered = await call(
+    "answer",
+    { pin: room.pin, questionId: current.question.id, choice: deck[0].correct },
+    { token: ada.token },
+  );
+  assert.equal(answered.status, 200);
+  assert.equal(
+    answered.data.me.score,
+    0,
+    "Points remain private before reveal",
+  );
+  assert.equal(answered.data.myAnswer.points, undefined);
+  assert.equal(
+    (
+      await call(
+        "answer",
+        { pin: room.pin, questionId: current.question.id, choice: 0 },
+        { token: ada.token },
+      )
+    ).status,
+    409,
+  );
+  await call(
+    "advance",
+    { pin: room.pin, expectedIndex: 0, expectedPhase: "question" },
+    { admin: true },
+  );
+  current = (await call("room", { pin: room.pin }, { token: ada.token })).data;
+  const score = current.me.score;
+  assert(score >= 500);
+  assert.equal(current.answerCards.find((p) => p.isMe).correct, true);
+  mutateDB(
+    room.pin,
+    "$s['index']=9;$s['phase']='question';$s['deadline']=microtime(true)-8.2;unset($s['revealUntil'],$s['countdownUntil'])",
+  );
+  current = (await call("room", { pin: room.pin }, { token: ada.token })).data;
+  assert.equal(current.index, 10);
+  assert.equal(current.category, deck[10].category);
+  assert.equal(current.roundIndex, 1);
+  assert.equal(current.me.score, score);
+  mutateDB(
+    room.pin,
+    "$s['index']=29;$s['phase']='question';$s['deadline']=microtime(true)-5.1;unset($s['revealUntil'],$s['countdownUntil'])",
+  );
+  current = (await call("room", { pin: room.pin }, { token: ada.token })).data;
+  assert.equal(current.phase, "finished");
+  assert.equal(current.players[0].name, "Ada");
+  assert.equal(current.players[0].score, score);
+  assert.equal(current.prize, "Kupa");
+});
+
+test("tournament majority, no-vote timeout, early vote closure and reconnect use one stable automatic deck", async () => {
+  for (const scenario of ["five", "timeout", "early"]) {
+    const room = await create("tournament", { prize: "Şampiyonluk kupası" });
+    const people = [];
+    for (const name of ["Ali", "Ece", "Can"]) {
+      const p = await join(room.pin, name);
+      people.push(p);
+      await call(
+        "tournament_choices",
+        { pin: room.pin, categories: ["cografya"] },
+        { token: p.token },
+      );
+    }
+    const start = await call(
+      "tournament_start",
+      { pin: room.pin },
+      { admin: true },
+    );
+    assert.equal(
+      start.data.roundTotal,
+      1,
+      "Shared area produces exactly one round",
+    );
+    assert.equal(
+      (await call("tournament_vote_close", { pin: room.pin }, { admin: true }))
+        .status,
+      409,
+    );
+    if (scenario === "five") {
+      for (let i = 0; i < 3; i++)
+        await call(
+          "tournament_vote",
+          { pin: room.pin, count: i === 2 ? 10 : 5 },
+          { token: people[i].token },
+        );
+    } else if (scenario === "early") {
+      await call(
+        "tournament_vote",
+        { pin: room.pin, count: 5 },
+        { token: people[0].token },
+      );
+      assert.equal(
+        (
+          await call(
+            "tournament_vote_close",
+            { pin: room.pin },
+            { token: people[0].token },
+          )
+        ).status,
+        401,
+      );
+      assert.equal(
+        (
+          await call(
+            "tournament_vote_close",
+            { pin: room.pin },
+            { admin: true },
+          )
+        ).status,
+        200,
+      );
+    } else mutateDB(room.pin, "$s['voteUntil']=microtime(true)-0.1");
+    let snapshot = (
+      await call("room", { pin: room.pin }, { token: people[0].token })
+    ).data;
+    assert.equal(snapshot.phase, "countdown");
+    assert.equal(snapshot.questionsPerRound, scenario === "timeout" ? 10 : 5);
+    assert.equal(snapshot.total, scenario === "timeout" ? 10 : 5);
+    // Advancing the stored timer simulates a reconnect after voting/countdown.
+    mutateDB(
+      room.pin,
+      scenario === "timeout"
+        ? "$s['voteUntil']=microtime(true)-3.1"
+        : "$s['countdownUntil']=microtime(true)-0.1",
+    );
+    const first = (
+      await call("room", { pin: room.pin }, { token: people[0].token })
+    ).data;
+    const second = (
+      await call("room", { pin: room.pin }, { token: people[1].token })
+    ).data;
+    assert.equal(first.phase, "question");
+    assert.deepEqual(
+      first.question,
+      second.question,
+      "Read-only synchronization cannot reshuffle a deck",
+    );
+    assert.equal(
+      (
+        await call(
+          "tournament_vote",
+          { pin: room.pin, count: 10 },
+          { token: people[0].token },
+        )
+      ).status,
+      409,
+    );
+    if (scenario !== "timeout") {
+      const levels = JSON.parse(
+        mutateDB(
+          room.pin,
+          "echo json_encode(array_column($s['questions'],'difficulty'))",
+        ),
+      );
+      assert.deepEqual(levels, Array(5).fill("general"));
+    }
   }
 });
 
