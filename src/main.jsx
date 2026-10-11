@@ -835,6 +835,9 @@ function Create({
     [familyQuestions, setFamilyQuestions] = useState([
       { text: "", examples: ["", "", ""] },
     ]);
+  const selectedExpertCount = qs.filter(
+    (q) => selected.includes(q.id) && q.difficulty !== "general",
+  ).length;
   useEffect(() => {
     if (manual && canManageLibrary)
       api("questions", { category: cat })
@@ -919,7 +922,10 @@ function Create({
             )}
             {manual && canManageLibrary ? (
               <>
-                <p className="muted">{selected.length}/10 soru seçildi</p>
+                <p className="muted" aria-live="polite">
+                  {selected.length}/10 soru seçildi · {selectedExpertCount}/1{" "}
+                  detay / uzmanlık sorusu. En az 9 genel bilgi sorusu seç.
+                </p>
                 <div className="question-pick">
                   {qs.map((q) => (
                     <label key={q.id}>
@@ -927,7 +933,10 @@ function Create({
                         type="checkbox"
                         checked={selected.includes(q.id)}
                         disabled={
-                          selected.length === 10 && !selected.includes(q.id)
+                          !selected.includes(q.id) &&
+                          (selected.length === 10 ||
+                            (q.difficulty !== "general" &&
+                              selectedExpertCount >= 1))
                         }
                         onChange={(e) =>
                           setSelected(
@@ -937,7 +946,16 @@ function Create({
                           )
                         }
                       />
-                      {q.text}
+                      <span>
+                        {q.text}
+                        <small
+                          className={`question-level ${q.difficulty === "general" ? "general" : "expert"}`}
+                        >
+                          {q.difficulty === "general"
+                            ? "Genel bilgi"
+                            : "Detay / uzmanlık"}
+                        </small>
+                      </span>
                     </label>
                   ))}
                 </div>
@@ -946,8 +964,9 @@ function Create({
               <div className="info-box">
                 <Sparkles size={20} />
                 <span>
-                  Havuzdan 10 soru seçilir. Kullanılmamış sorulara öncelik
-                  verilir; havuz tamamlanınca en eski sorular yeniden gelir.
+                  9 genel bilgi + 1 detay / uzmanlık sorusu. Her düzeyde
+                  kullanılmamış sorulara öncelik verilir; o grup tamamlanınca en
+                  eski sorular yeniden gelir. Sorular karışık sırada gelir.
                 </span>
               </div>
             )}
@@ -2551,6 +2570,7 @@ function Library({ admin, notify, refresh }) {
       options: ["", "", "", ""],
       correct: 0,
       explanation: "",
+      difficulty: "general",
     }),
     [busy, setBusy] = useState(false);
   const load = () =>
@@ -2596,7 +2616,12 @@ function Library({ admin, notify, refresh }) {
           <Plus size={18} /> Soru ekle
         </Button>
       </div>
-      <p className="muted">Bu konuda {qs.length} soru</p>
+      <p className="muted">
+        Bu konuda {qs.length} soru ·{" "}
+        {qs.filter((q) => q.difficulty === "general").length} genel bilgi ·{" "}
+        {qs.filter((q) => q.difficulty !== "general").length} detay / uzmanlık.
+        Her 10 soruda en fazla 1 detay sorusu gelir.
+      </p>
       <div className="library-list">
         {qs
           .filter((q) =>
@@ -2626,6 +2651,15 @@ function Library({ admin, notify, refresh }) {
                 ))}
               </div>
               <p>{q.explanation}</p>
+              <p>
+                <span
+                  className={`question-level ${q.difficulty === "general" ? "general" : "expert"}`}
+                >
+                  {q.difficulty === "general"
+                    ? "Genel bilgi"
+                    : "Detay / uzmanlık"}
+                </span>
+              </p>
               {q.id.startsWith("custom-") && (
                 <button
                   className="text-btn"
@@ -2661,6 +2695,7 @@ function Library({ admin, notify, refresh }) {
                   options: ["", "", "", ""],
                   correct: 0,
                   explanation: "",
+                  difficulty: "general",
                 });
                 load();
                 refresh();
@@ -2710,6 +2745,19 @@ function Library({ admin, notify, refresh }) {
                     {String.fromCharCode(65 + i)}
                   </option>
                 ))}
+              </select>
+            </Field>
+            <Field label="Soru düzeyi">
+              <select
+                value={form.difficulty}
+                onChange={(e) =>
+                  setForm({ ...form, difficulty: e.target.value })
+                }
+              >
+                <option value="general">Genel bilgi · Kolay / orta</option>
+                <option value="expert">
+                  Detay / uzmanlık · 10 soruda en fazla 1
+                </option>
               </select>
             </Field>
             <Field label="Cevap açıklaması (isteğe bağlı)">

@@ -260,6 +260,14 @@ test("all categories expose 250 questions, support manual additions and rotate t
         ]).toString(),
       );
       assert.equal(state.questions.length, 10);
+      assert.equal(
+        state.questions.filter((q) => q.difficulty === "general").length,
+        9,
+      );
+      assert.equal(
+        state.questions.filter((q) => q.difficulty === "expert").length,
+        1,
+      );
       for (const q of state.questions) {
         assert.equal(q.category, category);
         assert(poolIds.has(q.id));
@@ -301,7 +309,7 @@ test("all categories expose 250 questions, support manual additions and rotate t
     assert.equal((await call("categories")).data[category], 250);
   }
 });
-test("quiz: ten questions, no repeats until pool exhausted, no early answer/score leaks, idempotency and deadlines", async () => {
+test("quiz: levels rotate independently without early answer/score leaks; idempotency and deadlines", async () => {
   // Isolate a complete cycle from games created by the category smoke test.
   execFileSync("php", [
     "-r",
@@ -309,6 +317,9 @@ test("quiz: ten questions, no repeats until pool exhausted, no early answer/scor
     db,
   ]);
   const seen = new Set();
+  const pool = (
+    await call("questions", { category: "cografya" }, { admin: true })
+  ).data;
   for (let i = 0; i < 25; i++) {
     const r = await create("quiz");
     const raw = execFileSync("php", [
@@ -318,12 +329,25 @@ test("quiz: ten questions, no repeats until pool exhausted, no early answer/scor
       r.pin,
     ]).toString();
     const state = JSON.parse(raw);
+    for (const level of ["general", "expert"]) {
+      const fresh = pool.filter(
+        (q) => q.difficulty === level && !seen.has(q.id),
+      );
+      const chosen = state.questions.filter((q) => q.difficulty === level);
+      assert.equal(chosen.length, level === "general" ? 9 : 1);
+      assert.equal(
+        chosen.filter((q) => !seen.has(q.id)).length,
+        Math.min(fresh.length, chosen.length),
+      );
+    }
     for (const q of state.questions) {
-      assert(!seen.has(q.id), "Unused questions are prioritized");
       seen.add(q.id);
     }
   }
-  assert.equal(seen.size, 250);
+  assert.equal(
+    seen.size,
+    pool.filter((q) => q.difficulty === "general").length + 25,
+  );
   let r = await create("quiz");
   const p = await join(r.pin, "Deniz");
   assert(!p.room.questions);
@@ -1834,5 +1858,88 @@ test("family comparison exposes only the current reference answer and guess afte
     assert(
       result.answerCards.every((c) => !("profile" in c) && !("answers" in c)),
     );
+  }
+});
+
+test("manual selection enforces the expert cap and custom questions persist their level", async () => {
+  const pool = (
+    await call("questions", { category: "cografya" }, { admin: true })
+  ).data;
+  const general = pool.filter((q) => q.difficulty === "general");
+  const expert = pool.filter((q) => q.difficulty === "expert");
+  const payload = {
+    mode: "quiz",
+    title: "Dengeli yarışma",
+    category: "cografya",
+  };
+  const rejected = await call(
+    "create",
+    {
+      ...payload,
+      questionIds: [...general.slice(0, 8), ...expert.slice(0, 2)].map(
+        (q) => q.id,
+      ),
+    },
+    { admin: true },
+  );
+  assert.equal(rejected.status, 400);
+  assert.match(rejected.data.error, /en fazla 1/);
+  for (const chosen of [
+    general.slice(0, 10),
+    [...general.slice(0, 9), expert[0]],
+  ]) {
+    const room = await call(
+      "create",
+      { ...payload, questionIds: chosen.map((q) => q.id) },
+      { admin: true },
+    );
+    assert.equal(room.status, 200);
+    const actual = JSON.parse(
+      execFileSync(
+        "php",
+        [
+          "-r",
+          "$db=new PDO('sqlite:'.$argv[1]);$q=$db->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$argv[2]]);echo $q->fetchColumn();",
+          db,
+          room.data.pin,
+        ],
+        { encoding: "utf8" },
+      ),
+    );
+    assert.deepEqual(
+      actual.questions.map((q) => q.id).sort(),
+      chosen.map((q) => q.id).sort(),
+    );
+    await call("close", { pin: room.data.pin }, { admin: true });
+  }
+  const custom = {
+    category: "cografya",
+    text: "Özel sorunun düzeyi nasıl kaydedilir?",
+    options: ["A", "B", "C", "D"],
+    correct: 0,
+  };
+  assert.equal(
+    (
+      await call(
+        "question_save",
+        { ...custom, difficulty: "easy-but-invalid" },
+        { admin: true },
+      )
+    ).status,
+    400,
+  );
+  for (const level of ["general", "expert", undefined]) {
+    const saved = await call(
+      "question_save",
+      { ...custom, ...(level ? { difficulty: level } : {}) },
+      { admin: true },
+    );
+    assert.equal(saved.status, 200);
+    assert.equal(saved.data.difficulty, level ?? "expert");
+    const loaded = (
+      await call("questions", { category: "cografya" }, { admin: true })
+    ).data.find((q) => q.id === saved.data.id);
+    assert.equal(loaded.difficulty, level ?? "expert");
+    await call("question_delete", { id: saved.data.id }, { admin: true });
   }
 });

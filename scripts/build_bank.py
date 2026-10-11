@@ -775,6 +775,8 @@ from history_bank import CATEGORIES as HISTORY_CATEGORIES, extend_history
 extend_history(questions,add)
 from bank_250 import CATEGORY_IDS, extend_to_250
 extend_to_250(questions,add,provinces)
+from easy_refresh import refresh
+refresh(questions,add)
 from collections import Counter
 counts=Counter(q['category'] for q in questions)
 expected={category:250 for category in CATEGORY_IDS}

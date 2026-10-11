@@ -1114,6 +1114,29 @@ input[type="checkbox"] {
 .question-pick input {
   flex-shrink: 0;
 }
+.question-level {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.question-pick .question-level {
+  display: table;
+  margin-top: 6px;
+}
+.question-level.general {
+  color: #24604a;
+  background: #e2f5ec;
+}
+.question-level.expert {
+  color: #814719;
+  background: #fff0d5;
+}
+.question-pick label:has(input:disabled) {
+  color: #85798e;
+  background: #f8f5fa;
+}
 .toast {
   position: fixed;
   bottom: 27px;

@@ -24,6 +24,8 @@ try {
         needOwner();$q=['ownerId'=>(int)currentUser()['id'],'id'=>'custom-'.bin2hex(random_bytes(12)),'category'=>inputText($in['category']??'',2,32,'Kategori'),'text'=>inputText($in['text']??'',5,500,'Soru'),'options'=>[],'correct'=>(int)($in['correct']??-1),'explanation'=>inputText($in['explanation']??'',0,600,'Açıklama')];
         if(!in_array($q['category'],['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','plakalar','bayraklar','enler','turkiye-tarihi','osmanli-tarihi','islam-tarihi','peygamberler-tarihi'],true)) fail('Kategori geçersiz.');
         if(!is_array($in['options']??null)||count($in['options'])!==4||$q['correct']<0||$q['correct']>3)fail('Dört seçenek ve bir doğru cevap gerekli.');
+        $q['difficulty']=$in['difficulty']??'expert';
+        if(!in_array($q['difficulty'],['general','expert'],true))fail('Soru düzeyi geçersiz.');
         foreach($in['options'] as $opt)$q['options'][]=inputText($opt,1,180,'Seçenek');
         if(count(array_unique(array_map('normalize',$q['options'])))!==4)fail('Seçenekler farklı olmalı.');
         db()->prepare('INSERT INTO arena_questions (id,category,content) VALUES (?,?,?)')->execute([$q['id'],$q['category'],json_encode($q,JSON_UNESCAPED_UNICODE)]);echo json_encode($q,JSON_UNESCAPED_UNICODE);exit;
@@ -36,11 +38,11 @@ try {
         if($mode==='quiz'){
             $s['category']=$in['category']??'cografya';$pool=array_values(array_filter(bank(),fn($q)=>$q['category']===$s['category']));
             $selected=$in['questionIds']??[];
+            if(!is_array($selected))fail('Soru seçimi geçersiz.');
             if($selected)needOwner();
-            if($selected){if(!is_array($selected)||count(array_unique($selected))!==10)fail('Tam 10 farklı soru seçin.');$pool=array_values(array_filter($pool,fn($q)=>in_array($q['id'],$selected,true)));}
-            if(count($pool)<10)fail('Bu konu için en az 10 geçerli soru gerekli.');
+            if($selected){if(count($selected)!==10||count(array_filter($selected,'is_string'))!==10||count(array_unique($selected))!==10)fail('Tam 10 farklı soru seçin.');$pool=array_values(array_filter($pool,fn($q)=>in_array($q['id'],$selected,true)));}
             $history=[];foreach(db()->query('SELECT id,used_at FROM arena_history') as $row)$history[$row['id']]=(int)$row['used_at'];
-            shuffle($pool);usort($pool,fn($a,$b)=>($history[$a['id']]??0)<=>($history[$b['id']]??0));$s['questions']=array_slice($pool,0,10);
+            try{$s['questions']=selectQuizQuestions($pool,$history,(bool)$selected);}catch(DomainException $e){fail($e->getMessage());}
             foreach($s['questions'] as &$question){$correct=$question['options'][$question['correct']];shuffle($question['options']);$question['correct']=array_search($correct,$question['options'],true);}unset($question);
             $s['seconds']=max(10,min(90,(int)($in['seconds']??20)));$s['index']=-1;$s['answers']=[];
         }
