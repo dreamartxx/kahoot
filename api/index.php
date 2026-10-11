@@ -39,20 +39,24 @@ try {
         $s=['ownerId'=>(int)currentUser()['id'],'pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
         if($mode==='quiz'){
             $s['category']=$in['category']??'cografya';
+            $count=$in['questionCount']??($s['category']==='mixed'?20:10);
+            $seconds=$in['seconds']??10;
+            if(!is_int($count)||!in_array($count,[10,15,20],true))fail('Soru sayısı 10, 15 veya 20 olmalı.');
+            if(!is_int($seconds)||!in_array($seconds,[10,15,20],true))fail('Soru süresi 10, 15 veya 20 saniye olmalı.');
             if(is_string($s['category'])&&specialQuiz($s['category'])){
                 if(!empty($in['questionIds']))fail('Bu yarışmada sorular otomatik seçilir.');
-                $s['quizType']=$s['category'];$s['questions']=specialQuizDeck($s['quizType']);
+                $s['quizType']=$s['category'];$s['questions']=specialQuizDeck($s['quizType'],$count);
             }else{
             $pool=array_values(array_filter(bank(),fn($q)=>$q['category']===$s['category']));
             $selected=$in['questionIds']??[];
             if(!is_array($selected))fail('Soru seçimi geçersiz.');
             if($selected)needOwner();
-            if($selected){if(count($selected)!==10||count(array_filter($selected,'is_string'))!==10||count(array_unique($selected))!==10)fail('Tam 10 farklı soru seçin.');$pool=array_values(array_filter($pool,fn($q)=>in_array($q['id'],$selected,true)));}
+            if($selected){if(count($selected)!==$count||count(array_filter($selected,'is_string'))!==$count||count(array_unique($selected))!==$count)fail("Tam $count farklı soru seçin.");$pool=array_values(array_filter($pool,fn($q)=>in_array($q['id'],$selected,true)));}
             $history=[];foreach(db()->query('SELECT id,used_at FROM arena_history') as $row)$history[$row['id']]=(int)$row['used_at'];
-            try{$s['questions']=selectQuizQuestions($pool,$history,(bool)$selected);}catch(DomainException $e){fail($e->getMessage());}
+            try{$s['questions']=selectQuizQuestions($pool,$history,(bool)$selected,$count);}catch(DomainException $e){fail($e->getMessage());}
             foreach($s['questions'] as &$question){$correct=$question['options'][$question['correct']];shuffle($question['options']);$question['correct']=array_search($correct,$question['options'],true);}unset($question);
             }
-            $s['seconds']=max(10,min(90,(int)($in['seconds']??20)));$s['index']=-1;$s['answers']=[];
+            $s['seconds']=$seconds;$s['index']=-1;$s['answers']=[];
         }
         if($mode==='tournament'){if(!empty($in['questionIds']))fail('Turnuvada sorular otomatik seçilir.');$s+=['prize'=>inputText($in['prize']??'',1,200,'Ödül'),'tournamentChoices'=>[],'tournamentVotes'=>[],'tournamentRounds'=>[],'questions'=>[],'answers'=>[],'index'=>-1,'seconds'=>max(10,min(90,(int)($in['seconds']??20)))];}
         if($mode==='family'){$customFamily=customFamilyPrompts($in['familyQuestions']??[]);$chosenFamily=chosenFamilyPrompts($in['familyQuestionIds']??[],$customFamily);$s['profiles']=[];$s['questions']=[];$s['answers']=[];$s['index']=-1;$s['seconds']=max(15,min(90,(int)($in['seconds']??45)));}

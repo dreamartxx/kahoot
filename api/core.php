@@ -64,20 +64,23 @@ function bank(): array {
     foreach($bank as &$q)$q['difficulty']=($q['difficulty']??null)==='general'?'general':'expert';unset($q);
     return $bank;
 }
-function selectQuizQuestions(array $pool,array $history,bool $manual=false): array {
-    if(count($pool)<10)throw new DomainException('Bu konu için en az 10 geçerli soru gerekli.');
+function selectQuizQuestions(array $pool,array $history,bool $manual=false,int $count=10): array {
+    if(!in_array($count,[10,15,20],true))throw new DomainException('Soru sayısı 10, 15 veya 20 olmalı.');
+    $expertLimit=intdiv($count,10);$minimumGeneral=$count-$expertLimit;
+    if(count($pool)<$count)throw new DomainException("Bu konu için en az $count geçerli soru gerekli.");
     $general=array_values(array_filter($pool,fn($q)=>($q['difficulty']??'expert')==='general'));
     if($manual){
-        if(count($pool)!==10)throw new DomainException('Tam 10 farklı ve geçerli soru seçin.');
-        if(count($general)<9)throw new DomainException('10 soruda en fazla 1 detay / uzmanlık sorusu seçebilirsiniz. En az 9 genel bilgi sorusu seçin.');
+        if(count($pool)!==$count)throw new DomainException("Tam $count farklı ve geçerli soru seçin.");
+        if(count($general)<$minimumGeneral)throw new DomainException("$count soruda en fazla $expertLimit detay / uzmanlık sorusu seçebilirsiniz. En az $minimumGeneral genel bilgi sorusu seçin.");
         shuffle($pool);return $pool;
     }
-    if(count($general)<9)throw new DomainException('Bu konuda yarışma için en az 9 genel bilgi sorusu gerekli.');
+    if(count($general)<$minimumGeneral)throw new DomainException("Bu konuda yarışma için en az $minimumGeneral genel bilgi sorusu gerekli.");
     // Recency is balanced within each level, so unused expert questions never fill general slots.
     shuffle($pool);usort($pool,fn($a,$b)=>($history[$a['id']]??0)<=>($history[$b['id']]??0));
     $general=[];$expert=[];
     foreach($pool as $q){if(($q['difficulty']??'expert')==='general')$general[]=$q;else $expert[]=$q;}
-    $selected=array_merge(array_slice($general,0,$expert?9:10),array_slice($expert,0,1));
+    $expertCount=min($expertLimit,count($expert));
+    $selected=array_merge(array_slice($general,0,$count-$expertCount),array_slice($expert,0,$expertCount));
     shuffle($selected);return $selected;
 }
 function rateLimit(string $action,int $limit): void {
