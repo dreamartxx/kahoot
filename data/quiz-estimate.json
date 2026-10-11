@@ -1,0 +1,1636 @@
+[
+  {
+    "id": "estimate-001",
+    "category": "uzay",
+    "text": "Merkür gezegeninin ekvator çapı yaklaşık kaç kilometredir?",
+    "answer": 4879,
+    "unit": "km",
+    "explanation": "NASA'nın metrik gezegen tablosundaki yaklaşık ekvator çapı esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-002",
+    "category": "uzay",
+    "text": "Merkür, Güneş'ten ortalama yaklaşık kaç milyon kilometre uzaktadır?",
+    "answer": 57.9,
+    "unit": "milyon km",
+    "explanation": "Uzaklık yörünge boyunca değişir; tablodaki ortalama değer kullanılır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-003",
+    "category": "uzay",
+    "text": "Merkür Güneş çevresinde bir turunu yaklaşık kaç Dünya gününde tamamlar?",
+    "answer": 88,
+    "unit": "Dünya günü",
+    "explanation": "NASA'nın gezegen tablosundaki yaklaşık yörünge süresi esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-004",
+    "category": "uzay",
+    "text": "Venüs gezegeninin ekvator çapı yaklaşık kaç kilometredir?",
+    "answer": 12104,
+    "unit": "km",
+    "explanation": "NASA'nın metrik gezegen tablosundaki yaklaşık ekvator çapı esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-005",
+    "category": "uzay",
+    "text": "Venüs, Güneş'ten ortalama yaklaşık kaç milyon kilometre uzaktadır?",
+    "answer": 108.2,
+    "unit": "milyon km",
+    "explanation": "Uzaklık yörünge boyunca değişir; tablodaki ortalama değer kullanılır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-006",
+    "category": "uzay",
+    "text": "Venüs Güneş çevresinde bir turunu yaklaşık kaç Dünya gününde tamamlar?",
+    "answer": 224.7,
+    "unit": "Dünya günü",
+    "explanation": "NASA'nın gezegen tablosundaki yaklaşık yörünge süresi esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-007",
+    "category": "uzay",
+    "text": "Dünya gezegeninin ekvator çapı yaklaşık kaç kilometredir?",
+    "answer": 12756,
+    "unit": "km",
+    "explanation": "NASA'nın metrik gezegen tablosundaki yaklaşık ekvator çapı esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-008",
+    "category": "uzay",
+    "text": "Dünya, Güneş'ten ortalama yaklaşık kaç milyon kilometre uzaktadır?",
+    "answer": 149.6,
+    "unit": "milyon km",
+    "explanation": "Uzaklık yörünge boyunca değişir; tablodaki ortalama değer kullanılır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-009",
+    "category": "uzay",
+    "text": "Dünya Güneş çevresinde bir turunu yaklaşık kaç Dünya gününde tamamlar?",
+    "answer": 365.2,
+    "unit": "Dünya günü",
+    "explanation": "NASA'nın gezegen tablosundaki yaklaşık yörünge süresi esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-010",
+    "category": "uzay",
+    "text": "Mars gezegeninin ekvator çapı yaklaşık kaç kilometredir?",
+    "answer": 6792,
+    "unit": "km",
+    "explanation": "NASA'nın metrik gezegen tablosundaki yaklaşık ekvator çapı esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-011",
+    "category": "uzay",
+    "text": "Mars, Güneş'ten ortalama yaklaşık kaç milyon kilometre uzaktadır?",
+    "answer": 228,
+    "unit": "milyon km",
+    "explanation": "Uzaklık yörünge boyunca değişir; tablodaki ortalama değer kullanılır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-012",
+    "category": "uzay",
+    "text": "Mars Güneş çevresinde bir turunu yaklaşık kaç Dünya gününde tamamlar?",
+    "answer": 687,
+    "unit": "Dünya günü",
+    "explanation": "NASA'nın gezegen tablosundaki yaklaşık yörünge süresi esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-013",
+    "category": "uzay",
+    "text": "Jüpiter gezegeninin ekvator çapı yaklaşık kaç kilometredir?",
+    "answer": 142984,
+    "unit": "km",
+    "explanation": "NASA'nın metrik gezegen tablosundaki yaklaşık ekvator çapı esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-014",
+    "category": "uzay",
+    "text": "Jüpiter, Güneş'ten ortalama yaklaşık kaç milyon kilometre uzaktadır?",
+    "answer": 778.5,
+    "unit": "milyon km",
+    "explanation": "Uzaklık yörünge boyunca değişir; tablodaki ortalama değer kullanılır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-015",
+    "category": "uzay",
+    "text": "Jüpiter Güneş çevresinde bir turunu yaklaşık kaç Dünya gününde tamamlar?",
+    "answer": 4331,
+    "unit": "Dünya günü",
+    "explanation": "NASA'nın gezegen tablosundaki yaklaşık yörünge süresi esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-016",
+    "category": "uzay",
+    "text": "Satürn gezegeninin ekvator çapı yaklaşık kaç kilometredir?",
+    "answer": 120536,
+    "unit": "km",
+    "explanation": "NASA'nın metrik gezegen tablosundaki yaklaşık ekvator çapı esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-017",
+    "category": "uzay",
+    "text": "Satürn, Güneş'ten ortalama yaklaşık kaç milyon kilometre uzaktadır?",
+    "answer": 1432,
+    "unit": "milyon km",
+    "explanation": "Uzaklık yörünge boyunca değişir; tablodaki ortalama değer kullanılır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-018",
+    "category": "uzay",
+    "text": "Satürn Güneş çevresinde bir turunu yaklaşık kaç Dünya gününde tamamlar?",
+    "answer": 10747,
+    "unit": "Dünya günü",
+    "explanation": "NASA'nın gezegen tablosundaki yaklaşık yörünge süresi esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-019",
+    "category": "uzay",
+    "text": "Uranüs gezegeninin ekvator çapı yaklaşık kaç kilometredir?",
+    "answer": 51118,
+    "unit": "km",
+    "explanation": "NASA'nın metrik gezegen tablosundaki yaklaşık ekvator çapı esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-020",
+    "category": "uzay",
+    "text": "Uranüs, Güneş'ten ortalama yaklaşık kaç milyon kilometre uzaktadır?",
+    "answer": 2867,
+    "unit": "milyon km",
+    "explanation": "Uzaklık yörünge boyunca değişir; tablodaki ortalama değer kullanılır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-021",
+    "category": "uzay",
+    "text": "Uranüs Güneş çevresinde bir turunu yaklaşık kaç Dünya gününde tamamlar?",
+    "answer": 30589,
+    "unit": "Dünya günü",
+    "explanation": "NASA'nın gezegen tablosundaki yaklaşık yörünge süresi esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-022",
+    "category": "uzay",
+    "text": "Neptün gezegeninin ekvator çapı yaklaşık kaç kilometredir?",
+    "answer": 49528,
+    "unit": "km",
+    "explanation": "NASA'nın metrik gezegen tablosundaki yaklaşık ekvator çapı esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-023",
+    "category": "uzay",
+    "text": "Neptün, Güneş'ten ortalama yaklaşık kaç milyon kilometre uzaktadır?",
+    "answer": 4515,
+    "unit": "milyon km",
+    "explanation": "Uzaklık yörünge boyunca değişir; tablodaki ortalama değer kullanılır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-024",
+    "category": "uzay",
+    "text": "Neptün Güneş çevresinde bir turunu yaklaşık kaç Dünya gününde tamamlar?",
+    "answer": 59800,
+    "unit": "Dünya günü",
+    "explanation": "NASA'nın gezegen tablosundaki yaklaşık yörünge süresi esas alınır.",
+    "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+  },
+  {
+    "id": "estimate-025",
+    "category": "uzay",
+    "text": "Ay'ın Dünya'ya ortalama uzaklığı yaklaşık kaç kilometredir?",
+    "answer": 384400,
+    "unit": "km",
+    "explanation": "Ay'ın uzaklığı yörüngesi boyunca değişir; ortalama uzaklık yaklaşık 384.400 km'dir."
+  },
+  {
+    "id": "estimate-026",
+    "category": "uzay",
+    "text": "Ay'ın çapı yaklaşık kaç kilometredir?",
+    "answer": 3475,
+    "unit": "km",
+    "explanation": "NASA tablosunda Ay'ın çapı yaklaşık 3.475 km olarak verilir."
+  },
+  {
+    "id": "estimate-027",
+    "category": "uzay",
+    "text": "Güneş'in görünür yüzeyinin sıcaklığı yaklaşık kaç santigrat derecedir?",
+    "answer": 5500,
+    "unit": "°C",
+    "explanation": "Fotosfer sıcaklığı yaklaşık 5.500 °C'dir; çekirdek çok daha sıcaktır."
+  },
+  {
+    "id": "estimate-028",
+    "category": "uzay",
+    "text": "Güneş ışığı Dünya'ya yaklaşık kaç saniyede ulaşır?",
+    "answer": 499,
+    "unit": "saniye",
+    "explanation": "Ortalama uzaklık için yolculuk yaklaşık 8 dakika 19 saniyedir."
+  },
+  {
+    "id": "estimate-029",
+    "category": "uzay",
+    "text": "Apollo görevleri sırasında Ay yüzeyinde toplam kaç insan yürüdü?",
+    "answer": 12,
+    "unit": "kişi",
+    "explanation": "1969–1972 arasında altı Apollo inişinde 12 astronot Ay'da yürüdü."
+  },
+  {
+    "id": "estimate-030",
+    "category": "uzay",
+    "text": "İnsanların Ay'a ilk ayak bastığı yıl kaçtır?",
+    "answer": 1969,
+    "unit": "yıl",
+    "explanation": "Apollo 11'in Ay yürüyüşü 1969 yılında gerçekleşti."
+  },
+  {
+    "id": "estimate-031",
+    "category": "uzay",
+    "text": "Uzaya çıkan ilk insan Yuri Gagarin hangi yıl uçtu?",
+    "answer": 1961,
+    "unit": "yıl",
+    "explanation": "Vostok 1 uçuşu 12 Nisan 1961'de yapıldı."
+  },
+  {
+    "id": "estimate-032",
+    "category": "uzay",
+    "text": "Uluslararası Uzay İstasyonu Dünya çevresinde yaklaşık kaç dakikada döner?",
+    "answer": 90,
+    "unit": "dakika",
+    "explanation": "Yörünge yüksekliğine göre değişen süre yaklaşık 90 dakikadır."
+  },
+  {
+    "id": "estimate-033",
+    "category": "uzay",
+    "text": "Halley Kuyruklu Yıldızı Güneş çevresinde ortalama yaklaşık kaç yılda döner?",
+    "answer": 76,
+    "unit": "yıl",
+    "explanation": "Yörünge süresi değişse de yaygın yaklaşık değer 76 yıldır."
+  },
+  {
+    "id": "estimate-034",
+    "category": "uzay",
+    "text": "Mars'ın Phobos ve Deimos adlı toplam kaç doğal uydusu vardır?",
+    "answer": 2,
+    "unit": "uydu",
+    "explanation": "Mars'ın iki uydusu Phobos ve Deimos'tur."
+  },
+  {
+    "id": "estimate-035",
+    "category": "yapilar",
+    "text": "Eyfel Kulesi'nin metal iskeleti yaklaşık kaç ton ağırlığındadır?",
+    "answer": 7300,
+    "unit": "ton",
+    "explanation": "Kulenin metal iskeletinin ağırlığı yaklaşık 7.300 tondur.",
+    "source": "https://www.toureiffel.paris/en/the-monument/key-figures"
+  },
+  {
+    "id": "estimate-036",
+    "category": "yapilar",
+    "text": "Eyfel Kulesi'nin yapımında yaklaşık kaç perçin kullanılmıştır?",
+    "answer": 2500000,
+    "unit": "perçin",
+    "explanation": "Kulenin demir parçaları yaklaşık 2,5 milyon perçinle birleştirilmiştir.",
+    "source": "https://www.toureiffel.paris/en/the-monument/key-figures"
+  },
+  {
+    "id": "estimate-037",
+    "category": "yapilar",
+    "text": "Eyfel Kulesi'nin iskeletinde kaç demir parça bulunur?",
+    "answer": 18038,
+    "unit": "parça",
+    "explanation": "Resmî verilere göre 18.038 demir parça kullanılmıştır.",
+    "source": "https://www.toureiffel.paris/en/the-monument/key-figures"
+  },
+  {
+    "id": "estimate-038",
+    "category": "yapilar",
+    "text": "Eyfel Kulesi ilk açıldığında kaç yıl ayakta kalması planlanmıştı?",
+    "answer": 20,
+    "unit": "yıl",
+    "explanation": "Başlangıçta 20 yıllık bir yapı olarak düşünülmüştü.",
+    "source": "https://www.toureiffel.paris/en/the-monument/key-figures"
+  },
+  {
+    "id": "estimate-039",
+    "category": "yapilar",
+    "text": "Eyfel Kulesi hangi yıl açıldı?",
+    "answer": 1889,
+    "unit": "yıl",
+    "explanation": "1889 Paris Dünya Fuarı için inşa edildi.",
+    "source": "https://www.toureiffel.paris/en/the-monument/key-figures"
+  },
+  {
+    "id": "estimate-040",
+    "category": "yapilar",
+    "text": "Özgürlük Heykeli'nin tacında kaç pencere vardır?",
+    "answer": 25,
+    "unit": "pencere",
+    "explanation": "Tacın içinde 25 pencere bulunur.",
+    "source": "https://www.nps.gov/stli/learn/historyculture/statue-statistics.htm"
+  },
+  {
+    "id": "estimate-041",
+    "category": "yapilar",
+    "text": "Özgürlük Heykeli'nin tacında kaç ışın vardır?",
+    "answer": 7,
+    "unit": "ışın",
+    "explanation": "Tacın yedi ışını vardır.",
+    "source": "https://www.nps.gov/stli/learn/historyculture/statue-statistics.htm"
+  },
+  {
+    "id": "estimate-042",
+    "category": "yapilar",
+    "text": "Özgürlük Heykeli'nin zeminden meşalenin ucuna yüksekliği yaklaşık kaç metredir?",
+    "answer": 93,
+    "unit": "metre",
+    "explanation": "Kaidesi dahil yüksekliği 92,99 metredir; oyunda 93 metre esas alınır.",
+    "source": "https://www.nps.gov/stli/learn/historyculture/statue-statistics.htm"
+  },
+  {
+    "id": "estimate-043",
+    "category": "yapilar",
+    "text": "Özgürlük Heykeli'nin işaret parmağı yaklaşık kaç santimetredir?",
+    "answer": 244,
+    "unit": "cm",
+    "explanation": "Heykelin işaret parmağının uzunluğu 2,44 metredir.",
+    "source": "https://www.nps.gov/stli/learn/historyculture/statue-statistics.htm"
+  },
+  {
+    "id": "estimate-044",
+    "category": "yapilar",
+    "text": "Özgürlük Heykeli'nin burnu yaklaşık kaç santimetredir?",
+    "answer": 137,
+    "unit": "cm",
+    "explanation": "Burnunun uzunluğu yaklaşık 1,37 metredir.",
+    "source": "https://www.nps.gov/stli/learn/historyculture/statue-statistics.htm"
+  },
+  {
+    "id": "estimate-045",
+    "category": "yapilar",
+    "text": "Burç Halife'nin mimari yüksekliği kaç metredir?",
+    "answer": 828,
+    "unit": "metre",
+    "explanation": "Dubai'deki yapının mimari yüksekliği 828 metredir."
+  },
+  {
+    "id": "estimate-046",
+    "category": "yapilar",
+    "text": "Burç Halife'de kaç kat vardır?",
+    "answer": 163,
+    "unit": "kat",
+    "explanation": "Resmî kat sayısı 163'tür; teknik kat sayma yöntemleri farklı olabilir."
+  },
+  {
+    "id": "estimate-047",
+    "category": "yapilar",
+    "text": "Pisa Kulesi'nin yapımına hangi yıl başlandı?",
+    "answer": 1173,
+    "unit": "yıl",
+    "explanation": "Yapım 1173'te başladı ve uzun aralarla devam etti."
+  },
+  {
+    "id": "estimate-048",
+    "category": "yapilar",
+    "text": "Tac Mahal'in ana türbesini çevreleyen kaç minare vardır?",
+    "answer": 4,
+    "unit": "minare",
+    "explanation": "Ana türbenin dört köşesinde birer minare bulunur."
+  },
+  {
+    "id": "estimate-049",
+    "category": "yapilar",
+    "text": "Gize'deki Büyük Piramit'in ilk yapıldığındaki yüksekliği yaklaşık kaç metreydi?",
+    "answer": 147,
+    "unit": "metre",
+    "explanation": "Başlangıçtaki yükseklik yaklaşık 146,6 metredir; tam metreye yuvarlanmıştır."
+  },
+  {
+    "id": "estimate-050",
+    "category": "yapilar",
+    "text": "Sydney Opera Binası hangi yıl resmen açıldı?",
+    "answer": 1973,
+    "unit": "yıl",
+    "explanation": "Resmî açılışı 20 Ekim 1973'te yapıldı."
+  },
+  {
+    "id": "estimate-051",
+    "category": "yapilar",
+    "text": "Londra'daki London Eye dönme dolabının yüksekliği kaç metredir?",
+    "answer": 135,
+    "unit": "metre",
+    "explanation": "London Eye 135 metre yüksekliğindedir."
+  },
+  {
+    "id": "estimate-052",
+    "category": "yapilar",
+    "text": "London Eye'da kaç yolcu kapsülü vardır?",
+    "answer": 32,
+    "unit": "kapsül",
+    "explanation": "Dönme dolapta 32 kapsül bulunur."
+  },
+  {
+    "id": "estimate-053",
+    "category": "yapilar",
+    "text": "Golden Gate Köprüsü'nün ana açıklığı yaklaşık kaç metredir?",
+    "answer": 1280,
+    "unit": "metre",
+    "explanation": "İki ana kule arasındaki açıklık yaklaşık 1.280 metredir."
+  },
+  {
+    "id": "estimate-054",
+    "category": "yapilar",
+    "text": "Golden Gate Köprüsü hangi yıl açıldı?",
+    "answer": 1937,
+    "unit": "yıl",
+    "explanation": "San Francisco'daki köprü 1937'de hizmete açıldı."
+  },
+  {
+    "id": "estimate-055",
+    "category": "yapilar",
+    "text": "Empire State Binası'nda kaç kat vardır?",
+    "answer": 102,
+    "unit": "kat",
+    "explanation": "New York'taki yapının kat sayısı 102'dir."
+  },
+  {
+    "id": "estimate-056",
+    "category": "yapilar",
+    "text": "Empire State Binası hangi yıl açıldı?",
+    "answer": 1931,
+    "unit": "yıl",
+    "explanation": "Bina 1 Mayıs 1931'de açıldı."
+  },
+  {
+    "id": "estimate-057",
+    "category": "yapilar",
+    "text": "Anıtkabir'in Aslanlı Yol'unda kaç aslan heykeli vardır?",
+    "answer": 24,
+    "unit": "heykel",
+    "explanation": "Yolun iki yanında toplam 24 aslan heykeli yer alır."
+  },
+  {
+    "id": "estimate-058",
+    "category": "yapilar",
+    "text": "Anıtkabir'de kaç kule bulunur?",
+    "answer": 10,
+    "unit": "kule",
+    "explanation": "Anıtkabir kompleksinde on kule yer alır."
+  },
+  {
+    "id": "estimate-059",
+    "category": "yapilar",
+    "text": "Sultanahmet Camii'nin kaç minaresi vardır?",
+    "answer": 6,
+    "unit": "minare",
+    "explanation": "Sultanahmet Camii altı minaresiyle tanınır."
+  },
+  {
+    "id": "estimate-060",
+    "category": "yapilar",
+    "text": "Selimiye Camii'nin kaç minaresi vardır?",
+    "answer": 4,
+    "unit": "minare",
+    "explanation": "Edirne'deki Selimiye Camii'nin dört minaresi bulunur."
+  },
+  {
+    "id": "estimate-061",
+    "category": "yapilar",
+    "text": "1915 Çanakkale Köprüsü'nün ana açıklığı kaç metredir?",
+    "answer": 2023,
+    "unit": "metre",
+    "explanation": "Ana açıklığı 2.023 metredir."
+  },
+  {
+    "id": "estimate-062",
+    "category": "yapilar",
+    "text": "Yerebatan Sarnıcı'nda kaç sütun vardır?",
+    "answer": 336,
+    "unit": "sütun",
+    "explanation": "Sarnıç 336 sütunla taşınır."
+  },
+  {
+    "id": "estimate-063",
+    "category": "yapilar",
+    "text": "Moai heykelleriyle tanınan Paskalya Adası'ndaki Ahu Tongariki'de kaç moai yan yana durur?",
+    "answer": 15,
+    "unit": "heykel",
+    "explanation": "Ahu Tongariki'nin platformunda 15 moai bulunur."
+  },
+  {
+    "id": "estimate-064",
+    "category": "yapilar",
+    "text": "Kurtarıcı İsa Heykeli'nin kaide hariç yüksekliği kaç metredir?",
+    "answer": 30,
+    "unit": "metre",
+    "explanation": "Rio'daki heykel 30 metre, kaidesi yaklaşık 8 metredir."
+  },
+  {
+    "id": "estimate-065",
+    "category": "insan",
+    "text": "Yetişkin bir insanın iskeletinde genellikle kaç kemik vardır?",
+    "answer": 206,
+    "unit": "kemik",
+    "explanation": "Kemik sayısında kişisel farklılıklar olabilir; standart yetişkin sayısı 206'dır."
+  },
+  {
+    "id": "estimate-066",
+    "category": "insan",
+    "text": "Yirmilik dişleri de tamamlanmış yetişkin ağızda kaç kalıcı diş bulunur?",
+    "answer": 32,
+    "unit": "diş",
+    "explanation": "Yirmilik dişlerle birlikte tam kalıcı diş dizisi 32 diştir."
+  },
+  {
+    "id": "estimate-067",
+    "category": "insan",
+    "text": "Bir çocuğun tam süt dişi dizisinde kaç diş bulunur?",
+    "answer": 20,
+    "unit": "diş",
+    "explanation": "Tam süt dişi dizisi 20 dişten oluşur."
+  },
+  {
+    "id": "estimate-068",
+    "category": "insan",
+    "text": "İnsan kalbinde kaç odacık vardır?",
+    "answer": 4,
+    "unit": "odacık",
+    "explanation": "İki kulakçık ve iki karıncık bulunur."
+  },
+  {
+    "id": "estimate-069",
+    "category": "insan",
+    "text": "İnsanların boynunda genellikle kaç omur vardır?",
+    "answer": 7,
+    "unit": "omur",
+    "explanation": "Boyun omurgasında yedi servikal omur bulunur."
+  },
+  {
+    "id": "estimate-070",
+    "category": "insan",
+    "text": "Bir insan elinde bilek dahil kaç kemik vardır?",
+    "answer": 27,
+    "unit": "kemik",
+    "explanation": "Bir elde sekiz el bileği, beş tarak ve on dört parmak kemiği bulunur."
+  },
+  {
+    "id": "estimate-071",
+    "category": "insan",
+    "text": "Bir insan ayağında genellikle kaç kemik vardır?",
+    "answer": 26,
+    "unit": "kemik",
+    "explanation": "Standart anatomik sayımda bir ayakta 26 kemik bulunur."
+  },
+  {
+    "id": "estimate-072",
+    "category": "insan",
+    "text": "İnsanlarda genellikle kaç çift kaburga bulunur?",
+    "answer": 12,
+    "unit": "çift",
+    "explanation": "Standart insan iskeletinde 12 çift kaburga vardır."
+  },
+  {
+    "id": "estimate-073",
+    "category": "insan",
+    "text": "Her bir insan kulağının orta bölümünde kaç işitme kemikçiği vardır?",
+    "answer": 3,
+    "unit": "kemikçik",
+    "explanation": "Çekiç, örs ve üzengi üç küçük kemikçiktir."
+  },
+  {
+    "id": "estimate-074",
+    "category": "insan",
+    "text": "İnsan vücut hücrelerinde genellikle kaç kromozom bulunur?",
+    "answer": 46,
+    "unit": "kromozom",
+    "explanation": "Çekirdekli somatik hücrelerde tipik sayı 23 çift, yani 46'dır."
+  },
+  {
+    "id": "estimate-075",
+    "category": "insan",
+    "text": "İnsanlarda ABO sisteminin kaç ana kan grubu vardır?",
+    "answer": 4,
+    "unit": "grup",
+    "explanation": "A, B, AB ve O ana gruplardır; Rh ayrı bir sınıflamadır."
+  },
+  {
+    "id": "estimate-076",
+    "category": "insan",
+    "text": "İnsanların toplam kaç akciğeri vardır?",
+    "answer": 2,
+    "unit": "akciğer",
+    "explanation": "Sağ ve sol olmak üzere iki akciğer bulunur."
+  },
+  {
+    "id": "estimate-077",
+    "category": "insan",
+    "text": "Sağ insan akciğeri kaç lobdan oluşur?",
+    "answer": 3,
+    "unit": "lob",
+    "explanation": "Sağ akciğer üç, sol akciğer iki lobludur."
+  },
+  {
+    "id": "estimate-078",
+    "category": "insan",
+    "text": "Sol insan akciğeri kaç lobdan oluşur?",
+    "answer": 2,
+    "unit": "lob",
+    "explanation": "Kalbe yer açan sol akciğer iki lobludur."
+  },
+  {
+    "id": "estimate-079",
+    "category": "insan",
+    "text": "İnsan dilinde yaygın kabul gören kaç temel tat duyusu vardır?",
+    "answer": 5,
+    "unit": "tat",
+    "explanation": "Tatlı, tuzlu, ekşi, acı ve umami beş temel tattır."
+  },
+  {
+    "id": "estimate-080",
+    "category": "insan",
+    "text": "Tipik insan kafatası, kulak kemikçikleri hariç kaç kemikten oluşur?",
+    "answer": 22,
+    "unit": "kemik",
+    "explanation": "Sekiz kafatası ve on dört yüz kemiği toplam 22 eder."
+  },
+  {
+    "id": "estimate-081",
+    "category": "insan",
+    "text": "İnsan vücudunun en küçük kemiği üzengi yaklaşık kaç milimetre uzunluğundadır?",
+    "answer": 3,
+    "unit": "mm",
+    "explanation": "Üzengi yaklaşık 3 milimetredir; kişiden kişiye değişebilir."
+  },
+  {
+    "id": "estimate-082",
+    "category": "insan",
+    "text": "Bir yetişkinin ince bağırsağı ders kitaplarında yaklaşık kaç metre uzunluğunda anlatılır?",
+    "answer": 6,
+    "unit": "metre",
+    "explanation": "Ölçüm koşullarına göre değişir; yaygın anatomik yaklaşık değer 6 metredir."
+  },
+  {
+    "id": "estimate-083",
+    "category": "insan",
+    "text": "Normal gebelik süresi, son adet tarihinden itibaren yaklaşık kaç hafta sayılır?",
+    "answer": 40,
+    "unit": "hafta",
+    "explanation": "Standart gebelik hesabı son adet başlangıcından yaklaşık 40 haftadır."
+  },
+  {
+    "id": "estimate-084",
+    "category": "insan",
+    "text": "İnsanların kaç çift kraniyal siniri vardır?",
+    "answer": 12,
+    "unit": "çift",
+    "explanation": "Kraniyal sinirler geleneksel olarak 12 çift olarak sınıflanır."
+  },
+  {
+    "id": "estimate-085",
+    "category": "hayvanlar",
+    "text": "Bir ahtapotun kaç kalbi vardır?",
+    "answer": 3,
+    "unit": "kalp",
+    "explanation": "İki kalp solungaçlara, biri vücudun geri kalanına kan pompalar."
+  },
+  {
+    "id": "estimate-086",
+    "category": "hayvanlar",
+    "text": "Bir ahtapotun kaç kolu vardır?",
+    "answer": 8,
+    "unit": "kol",
+    "explanation": "Ahtapotlar sekiz kollu kafadanbacaklılardır."
+  },
+  {
+    "id": "estimate-087",
+    "category": "hayvanlar",
+    "text": "Bir kalamarın sekiz koluna ek olarak kaç uzun yakalama dokunacı vardır?",
+    "answer": 2,
+    "unit": "dokunaç",
+    "explanation": "Kalamarların sekiz kolu ve iki uzun yakalama dokunacı vardır."
+  },
+  {
+    "id": "estimate-088",
+    "category": "hayvanlar",
+    "text": "Bir örümceğin kaç bacağı vardır?",
+    "answer": 8,
+    "unit": "bacak",
+    "explanation": "Örümcekler sekiz bacaklı eklembacaklılardır."
+  },
+  {
+    "id": "estimate-089",
+    "category": "hayvanlar",
+    "text": "Bir böceğin yetişkin halinde kaç bacağı vardır?",
+    "answer": 6,
+    "unit": "bacak",
+    "explanation": "Böceklerin üç çift bacağı vardır."
+  },
+  {
+    "id": "estimate-090",
+    "category": "hayvanlar",
+    "text": "Bir bal arısının kaç kanadı vardır?",
+    "answer": 4,
+    "unit": "kanat",
+    "explanation": "İki çift kanadı bulunur; uçuşta kancalarla birlikte hareket ederler."
+  },
+  {
+    "id": "estimate-091",
+    "category": "hayvanlar",
+    "text": "Bir bal arısının basit ve bileşik gözleri dahil toplam kaç gözü vardır?",
+    "answer": 5,
+    "unit": "göz",
+    "explanation": "İki bileşik ve üç basit göz bulunur."
+  },
+  {
+    "id": "estimate-092",
+    "category": "hayvanlar",
+    "text": "Bir yusufçuğun kaç kanadı vardır?",
+    "answer": 4,
+    "unit": "kanat",
+    "explanation": "Yusufçuklar iki çift kanat taşır."
+  },
+  {
+    "id": "estimate-093",
+    "category": "hayvanlar",
+    "text": "Bir zürafanın uzun boynunda genellikle kaç omur vardır?",
+    "answer": 7,
+    "unit": "omur",
+    "explanation": "Zürafaların da çoğu memeli gibi yedi boyun omuru vardır."
+  },
+  {
+    "id": "estimate-094",
+    "category": "hayvanlar",
+    "text": "Bir ineğin midesi kaç bölmeden oluşur?",
+    "answer": 4,
+    "unit": "bölme",
+    "explanation": "İşkembe, börkenek, kırkbayır ve şirden dört bölmedir."
+  },
+  {
+    "id": "estimate-095",
+    "category": "hayvanlar",
+    "text": "Bir devenin üst ve alt göz kapaklarına ek koruyucu kapakla toplam kaç göz kapağı vardır?",
+    "answer": 3,
+    "unit": "kapak",
+    "explanation": "Her gözde üst, alt ve üçüncü koruyucu göz kapağı bulunur."
+  },
+  {
+    "id": "estimate-096",
+    "category": "hayvanlar",
+    "text": "Bir çift hörgüçlü devenin kaç hörgücü vardır?",
+    "answer": 2,
+    "unit": "hörgüç",
+    "explanation": "Baktriya devesi iki hörgüçlüdür."
+  },
+  {
+    "id": "estimate-097",
+    "category": "hayvanlar",
+    "text": "Bir tek hörgüçlü devenin kaç hörgücü vardır?",
+    "answer": 1,
+    "unit": "hörgüç",
+    "explanation": "Dromedary olarak bilinen deve tek hörgüçlüdür."
+  },
+  {
+    "id": "estimate-098",
+    "category": "hayvanlar",
+    "text": "Tipik bir denizyıldızında kaç kol görülür?",
+    "answer": 5,
+    "unit": "kol",
+    "explanation": "Pek çok tanıdık tür beş kolludur; daha fazla kollu türler de vardır."
+  },
+  {
+    "id": "estimate-099",
+    "category": "hayvanlar",
+    "text": "Bir deniz kestanesinin Aristoteles feneri denen ağzında kaç diş vardır?",
+    "answer": 5,
+    "unit": "diş",
+    "explanation": "Aristoteles fenerinde beş sert diş bulunur."
+  },
+  {
+    "id": "estimate-100",
+    "category": "hayvanlar",
+    "text": "Bir devekuşunun her ayağında kaç parmak vardır?",
+    "answer": 2,
+    "unit": "parmak",
+    "explanation": "Devekuşları iki parmaklı ayaklarıyla tanınır."
+  },
+  {
+    "id": "estimate-101",
+    "category": "hayvanlar",
+    "text": "Bir köpeğin tam yetişkin diş dizisinde kaç diş vardır?",
+    "answer": 42,
+    "unit": "diş",
+    "explanation": "Yetişkin köpeklerin standart kalıcı diş sayısı 42'dir."
+  },
+  {
+    "id": "estimate-102",
+    "category": "hayvanlar",
+    "text": "Bir kedinin tam yetişkin diş dizisinde kaç diş vardır?",
+    "answer": 30,
+    "unit": "diş",
+    "explanation": "Yetişkin kedilerin standart kalıcı diş sayısı 30'dur."
+  },
+  {
+    "id": "estimate-103",
+    "category": "hayvanlar",
+    "text": "Bir tavşanın üst ön bölümünde arkadaki küçük çift dahil kaç kesici diş vardır?",
+    "answer": 4,
+    "unit": "diş",
+    "explanation": "Tavşanların üst çenesinde iki büyük ve arkalarında iki küçük kesici vardır."
+  },
+  {
+    "id": "estimate-104",
+    "category": "hayvanlar",
+    "text": "Kelebeklerin yaşam döngüsü yumurta, larva, pupa ve yetişkin olmak üzere kaç ana aşamalıdır?",
+    "answer": 4,
+    "unit": "aşama",
+    "explanation": "Tam başkalaşım dört temel aşamada anlatılır."
+  },
+  {
+    "id": "estimate-105",
+    "category": "dunya",
+    "text": "Dünya yüzeyinin yaklaşık yüzde kaçı okyanuslarla kaplıdır?",
+    "answer": 71,
+    "unit": "yüzde",
+    "explanation": "Okyanuslar Dünya yüzeyinin yaklaşık yüzde 71'ini kaplar."
+  },
+  {
+    "id": "estimate-106",
+    "category": "dunya",
+    "text": "Okyanusların ortalama derinliği NOAA'nın 2010 tahminine göre kaç metredir?",
+    "answer": 3682,
+    "unit": "metre",
+    "explanation": "NOAA ve WHOI'nin 2010 tahmini yaklaşık 3.682 metredir."
+  },
+  {
+    "id": "estimate-107",
+    "category": "dunya",
+    "text": "NOAA'nın verdiği Challenger Deep derinliği yaklaşık kaç metredir?",
+    "answer": 10935,
+    "unit": "metre",
+    "explanation": "Ölçümlere göre değerler değişir; bu soruda NOAA'nın 10.935 metrelik değeri esas alınır."
+  },
+  {
+    "id": "estimate-108",
+    "category": "dunya",
+    "text": "Everest'in 2020 ortak ölçümünde açıklanan yüksekliği yaklaşık kaç metredir?",
+    "answer": 8849,
+    "unit": "metre",
+    "explanation": "Nepal ve Çin'in açıkladığı 8.848,86 metre tam metreye yuvarlanmıştır."
+  },
+  {
+    "id": "estimate-109",
+    "category": "dunya",
+    "text": "Ağrı Dağı'nın yaygın kabul gören yüksekliği kaç metredir?",
+    "answer": 5137,
+    "unit": "metre",
+    "explanation": "Büyük Ağrı'nın yaygın verilen yüksekliği 5.137 metredir."
+  },
+  {
+    "id": "estimate-110",
+    "category": "dunya",
+    "text": "Kilimanjaro'nun Uhuru zirvesi kaç metre yüksekliğindedir?",
+    "answer": 5895,
+    "unit": "metre",
+    "explanation": "Afrika'nın en yüksek zirvesi 5.895 metredir."
+  },
+  {
+    "id": "estimate-111",
+    "category": "dunya",
+    "text": "Fuji Dağı'nın yüksekliği kaç metredir?",
+    "answer": 3776,
+    "unit": "metre",
+    "explanation": "Japonya'nın simge dağı 3.776 metredir."
+  },
+  {
+    "id": "estimate-112",
+    "category": "dunya",
+    "text": "Baykal Gölü'nün en büyük derinliği yaklaşık kaç metredir?",
+    "answer": 1642,
+    "unit": "metre",
+    "explanation": "Baykal Gölü'nün en derin noktası yaklaşık 1.642 metredir."
+  },
+  {
+    "id": "estimate-113",
+    "category": "dunya",
+    "text": "Dünya'nın Ekvator çevresi yaklaşık kaç kilometredir?",
+    "answer": 40075,
+    "unit": "km",
+    "explanation": "Ekvator çevresi yaklaşık 40.075 kilometredir."
+  },
+  {
+    "id": "estimate-114",
+    "category": "dunya",
+    "text": "Dünya atmosferindeki kuru havanın yaklaşık yüzde kaçı azottur?",
+    "answer": 78,
+    "unit": "yüzde",
+    "explanation": "Kuru havanın yaklaşık yüzde 78'i azottur."
+  },
+  {
+    "id": "estimate-115",
+    "category": "dunya",
+    "text": "Dünya atmosferindeki kuru havanın yaklaşık yüzde kaçı oksijendir?",
+    "answer": 21,
+    "unit": "yüzde",
+    "explanation": "Oksijenin oranı yaklaşık yüzde 21'dir."
+  },
+  {
+    "id": "estimate-116",
+    "category": "dunya",
+    "text": "Türkiye'de kaç coğrafi bölge vardır?",
+    "answer": 7,
+    "unit": "bölge",
+    "explanation": "Türkiye yedi coğrafi bölgeye ayrılır."
+  },
+  {
+    "id": "estimate-117",
+    "category": "dunya",
+    "text": "Türkiye'de kaç il vardır?",
+    "answer": 81,
+    "unit": "il",
+    "explanation": "Türkiye'nin il sayısı 81'dir."
+  },
+  {
+    "id": "estimate-118",
+    "category": "dunya",
+    "text": "Yedi kıtalı modele göre Dünya'da kaç kıta vardır?",
+    "answer": 7,
+    "unit": "kıta",
+    "explanation": "Asya, Avrupa, Afrika, Kuzey Amerika, Güney Amerika, Okyanusya ve Antarktika sayılır."
+  },
+  {
+    "id": "estimate-119",
+    "category": "dunya",
+    "text": "Günümüzde yaygın beş okyanuslu sınıflamada kaç okyanus vardır?",
+    "answer": 5,
+    "unit": "okyanus",
+    "explanation": "Pasifik, Atlantik, Hint, Arktik ve Güney okyanusları sayılır."
+  },
+  {
+    "id": "estimate-120",
+    "category": "dunya",
+    "text": "Türkiye'nin kaç ülkeyle kara sınırı vardır?",
+    "answer": 8,
+    "unit": "ülke",
+    "explanation": "Bulgaristan, Yunanistan, Gürcistan, Ermenistan, Azerbaycan, İran, Irak ve Suriye."
+  },
+  {
+    "id": "estimate-121",
+    "category": "dunya",
+    "text": "ABD bayrağında kaç yıldız vardır?",
+    "answer": 50,
+    "unit": "yıldız",
+    "explanation": "Her yıldız bir eyaleti temsil eder."
+  },
+  {
+    "id": "estimate-122",
+    "category": "dunya",
+    "text": "ABD bayrağında kaç şerit vardır?",
+    "answer": 13,
+    "unit": "şerit",
+    "explanation": "On üç şerit ilk on üç koloniyi temsil eder."
+  },
+  {
+    "id": "estimate-123",
+    "category": "dunya",
+    "text": "Avrupa Birliği bayrağında kaç yıldız vardır?",
+    "answer": 12,
+    "unit": "yıldız",
+    "explanation": "On iki yıldız üye sayısını değil, birlik ve bütünlüğü simgeler."
+  },
+  {
+    "id": "estimate-124",
+    "category": "dunya",
+    "text": "Kanada bayrağındaki akçaağaç yaprağı kaç uçludur?",
+    "answer": 11,
+    "unit": "uç",
+    "explanation": "Bayraktaki stilize yaprak on bir uçludur."
+  },
+  {
+    "id": "estimate-125",
+    "category": "spor",
+    "text": "Bir maratonun resmî uzunluğu kaç metredir?",
+    "answer": 42195,
+    "unit": "metre",
+    "explanation": "Maraton mesafesi 42 kilometre 195 metredir."
+  },
+  {
+    "id": "estimate-126",
+    "category": "spor",
+    "text": "Standart açık hava atletizm pistinin iç kulvarında bir tur kaç metredir?",
+    "answer": 400,
+    "unit": "metre",
+    "explanation": "Standart pistte ölçüm çizgisinden bir tur 400 metredir."
+  },
+  {
+    "id": "estimate-127",
+    "category": "spor",
+    "text": "Olimpik uzun kulvar yüzme havuzu kaç metre uzunluğundadır?",
+    "answer": 50,
+    "unit": "metre",
+    "explanation": "Uzun kulvar olimpik havuz uzunluğu 50 metredir."
+  },
+  {
+    "id": "estimate-128",
+    "category": "spor",
+    "text": "Basketbol potasının çemberi yerden kaç santimetre yüksektir?",
+    "answer": 305,
+    "unit": "cm",
+    "explanation": "Standart çember yüksekliği 3,05 metredir."
+  },
+  {
+    "id": "estimate-129",
+    "category": "spor",
+    "text": "Futbol kalesinin iki direği arasındaki iç genişlik kaç santimetredir?",
+    "answer": 732,
+    "unit": "cm",
+    "explanation": "Standart kale genişliği 7,32 metredir."
+  },
+  {
+    "id": "estimate-130",
+    "category": "spor",
+    "text": "Futbol kalesinin üst direğinin yerden yüksekliği kaç santimetredir?",
+    "answer": 244,
+    "unit": "cm",
+    "explanation": "Üst direğin alt kenarı yerden 2,44 metredir."
+  },
+  {
+    "id": "estimate-131",
+    "category": "spor",
+    "text": "Futbolda penaltı noktası kale çizgisinden kaç metre uzaktadır?",
+    "answer": 11,
+    "unit": "metre",
+    "explanation": "Penaltı noktası kale çizgisine 11 metre uzaklıktadır."
+  },
+  {
+    "id": "estimate-132",
+    "category": "spor",
+    "text": "Bir futbol takımı kaleci dahil sahaya kaç oyuncuyla çıkar?",
+    "answer": 11,
+    "unit": "oyuncu",
+    "explanation": "Saha futbolunda başlangıç kadrosu 11 oyuncudur."
+  },
+  {
+    "id": "estimate-133",
+    "category": "spor",
+    "text": "FIFA Dünya Kupası'nı 2022 sonu itibarıyla Brezilya kaç kez kazanmıştır?",
+    "answer": 5,
+    "unit": "şampiyonluk",
+    "explanation": "Brezilya 1958, 1962, 1970, 1994 ve 2002'de kazandı."
+  },
+  {
+    "id": "estimate-134",
+    "category": "spor",
+    "text": "Bir voleybol takımı sahada kaç oyuncuyla oynar?",
+    "answer": 6,
+    "unit": "oyuncu",
+    "explanation": "Salon voleybolunda aynı anda altı oyuncu bulunur."
+  },
+  {
+    "id": "estimate-135",
+    "category": "spor",
+    "text": "Bir basketbol takımı sahada kaç oyuncuyla oynar?",
+    "answer": 5,
+    "unit": "oyuncu",
+    "explanation": "Bir takım aynı anda beş oyuncuyla oynar."
+  },
+  {
+    "id": "estimate-136",
+    "category": "spor",
+    "text": "Olimpiyat simgesinde kaç halka vardır?",
+    "answer": 5,
+    "unit": "halka",
+    "explanation": "Olimpiyat simgesi birbirine geçen beş halkadan oluşur."
+  },
+  {
+    "id": "estimate-137",
+    "category": "spor",
+    "text": "Dekatlon kaç atletizm dalından oluşur?",
+    "answer": 10,
+    "unit": "dal",
+    "explanation": "Dekatlon on farklı atletizm yarışmasını birleştirir."
+  },
+  {
+    "id": "estimate-138",
+    "category": "spor",
+    "text": "Heptatlon kaç atletizm dalından oluşur?",
+    "answer": 7,
+    "unit": "dal",
+    "explanation": "Heptatlon yedi farklı atletizm yarışmasından oluşur."
+  },
+  {
+    "id": "estimate-139",
+    "category": "spor",
+    "text": "Bir snooker oyununda başlangıçta kaç kırmızı top vardır?",
+    "answer": 15,
+    "unit": "top",
+    "explanation": "Başlangıç düzeninde 15 kırmızı top bulunur."
+  },
+  {
+    "id": "estimate-140",
+    "category": "spor",
+    "text": "Standart bowlingde devrilmeye çalışılan kaç lobut vardır?",
+    "answer": 10,
+    "unit": "lobut",
+    "explanation": "Tenpin bowling on lobutla oynanır."
+  },
+  {
+    "id": "estimate-141",
+    "category": "spor",
+    "text": "Bir curling takımının standart dört kişilik oyunda bir end boyunca toplam kaç taşı vardır?",
+    "answer": 8,
+    "unit": "taş",
+    "explanation": "Dört oyuncu ikişer taş atar; takımın toplam sekiz taşı vardır."
+  },
+  {
+    "id": "estimate-142",
+    "category": "spor",
+    "text": "Masa tenisi masasının uzunluğu kaç santimetredir?",
+    "answer": 274,
+    "unit": "cm",
+    "explanation": "Standart masa uzunluğu 2,74 metredir."
+  },
+  {
+    "id": "estimate-143",
+    "category": "spor",
+    "text": "Hentbol kalesinin genişliği kaç metredir?",
+    "answer": 3,
+    "unit": "metre",
+    "explanation": "Standart hentbol kalesi üç metre genişliğindedir."
+  },
+  {
+    "id": "estimate-144",
+    "category": "spor",
+    "text": "Usain Bolt'un 2009'da koştuğu 100 metre dünya rekoru kaç saniyedir?",
+    "answer": 9.58,
+    "unit": "saniye",
+    "explanation": "Berlin'de 16 Ağustos 2009'da 9,58 saniye koştu."
+  },
+  {
+    "id": "estimate-145",
+    "category": "spor",
+    "text": "Michael Phelps olimpiyat kariyerinde toplam kaç altın madalya kazandı?",
+    "answer": 23,
+    "unit": "altın madalya",
+    "explanation": "Phelps olimpiyatlarda 23 altın madalya kazandı."
+  },
+  {
+    "id": "estimate-146",
+    "category": "spor",
+    "text": "Michael Phelps olimpiyat kariyerinde toplam kaç madalya kazandı?",
+    "answer": 28,
+    "unit": "madalya",
+    "explanation": "Toplamı 23 altın, üç gümüş ve iki bronzla 28'dir."
+  },
+  {
+    "id": "estimate-147",
+    "category": "spor",
+    "text": "Nadia Comăneci Montreal 1976'da tam puan aldığında kaç yaşındaydı?",
+    "answer": 14,
+    "unit": "yaş",
+    "explanation": "Comăneci 1976 Olimpiyatları sırasında 14 yaşındaydı."
+  },
+  {
+    "id": "estimate-148",
+    "category": "spor",
+    "text": "Bir golf sahasının standart tam turunda kaç delik oynanır?",
+    "answer": 18,
+    "unit": "delik",
+    "explanation": "Standart tam golf turu 18 delikten oluşur."
+  },
+  {
+    "id": "estimate-149",
+    "category": "spor",
+    "text": "Standart bir dart tahtasında en dıştaki numaralı bölmeler kaç farklı sayıyı gösterir?",
+    "answer": 20,
+    "unit": "sayı",
+    "explanation": "Tahtanın numaralı dilimleri 1'den 20'ye kadardır."
+  },
+  {
+    "id": "estimate-150",
+    "category": "kultur",
+    "text": "Modern standart bir piyanoda kaç tuş vardır?",
+    "answer": 88,
+    "unit": "tuş",
+    "explanation": "Standart piyanoda 52 beyaz ve 36 siyah tuş bulunur."
+  },
+  {
+    "id": "estimate-151",
+    "category": "kultur",
+    "text": "Standart piyanoda kaç siyah tuş vardır?",
+    "answer": 36,
+    "unit": "tuş",
+    "explanation": "88 tuşlu piyanodaki siyah tuş sayısı 36'dır."
+  },
+  {
+    "id": "estimate-152",
+    "category": "kultur",
+    "text": "Klasik bir gitarın kaç teli vardır?",
+    "answer": 6,
+    "unit": "tel",
+    "explanation": "Standart klasik gitar altı tellidir."
+  },
+  {
+    "id": "estimate-153",
+    "category": "kultur",
+    "text": "Bir kemanın kaç teli vardır?",
+    "answer": 4,
+    "unit": "tel",
+    "explanation": "Kemanın standart akordu dört tel üzerinde yapılır."
+  },
+  {
+    "id": "estimate-154",
+    "category": "kultur",
+    "text": "Standart bir satranç oyununda başlangıçta toplam kaç taş vardır?",
+    "answer": 32,
+    "unit": "taş",
+    "explanation": "İki oyuncunun on altışar taşı vardır."
+  },
+  {
+    "id": "estimate-155",
+    "category": "kultur",
+    "text": "Bir oyuncunun satranç başlangıcında kaç piyonu vardır?",
+    "answer": 8,
+    "unit": "piyon",
+    "explanation": "Her oyuncu sekiz piyonla başlar."
+  },
+  {
+    "id": "estimate-156",
+    "category": "kultur",
+    "text": "Jokersiz standart bir iskambil destesinde kaç kart vardır?",
+    "answer": 52,
+    "unit": "kart",
+    "explanation": "Dört türün her birinde on üç kart bulunur."
+  },
+  {
+    "id": "estimate-157",
+    "category": "kultur",
+    "text": "Standart çift altılı domino takımında kaç taş vardır?",
+    "answer": 28,
+    "unit": "taş",
+    "explanation": "Sıfırdan altıya değerler taşıyan çift altılı takım 28 taştır."
+  },
+  {
+    "id": "estimate-158",
+    "category": "kultur",
+    "text": "Standart okey takımında sahte okeyler dahil kaç taş vardır?",
+    "answer": 106,
+    "unit": "taş",
+    "explanation": "104 numaralı taşın yanında iki sahte okey bulunur."
+  },
+  {
+    "id": "estimate-159",
+    "category": "kultur",
+    "text": "Standart bir tavlada toplam kaç pul vardır?",
+    "answer": 30,
+    "unit": "pul",
+    "explanation": "Her oyuncunun 15 pulu vardır."
+  },
+  {
+    "id": "estimate-160",
+    "category": "kultur",
+    "text": "Klasik 3×3 Rubik küpünün dış yüzlerinde toplam kaç küçük renkli kare görünür?",
+    "answer": 54,
+    "unit": "kare",
+    "explanation": "Altı yüzün her birinde dokuz renkli kare vardır."
+  },
+  {
+    "id": "estimate-161",
+    "category": "kultur",
+    "text": "Bir Rubik küpü standart renk düzeninde kaç farklı renge sahiptir?",
+    "answer": 6,
+    "unit": "renk",
+    "explanation": "Klasik küp altı farklı renk kullanır."
+  },
+  {
+    "id": "estimate-162",
+    "category": "kultur",
+    "text": "Pamuk Prenses masalında kaç cüce vardır?",
+    "answer": 7,
+    "unit": "cüce",
+    "explanation": "Masal yedi cüceyle tanınır."
+  },
+  {
+    "id": "estimate-163",
+    "category": "kultur",
+    "text": "J. K. Rowling'in ana Harry Potter roman serisi kaç kitaptır?",
+    "answer": 7,
+    "unit": "kitap",
+    "explanation": "Ana roman serisi yedi kitaptan oluşur."
+  },
+  {
+    "id": "estimate-164",
+    "category": "kultur",
+    "text": "Yüzüklerin Efendisi'nin Peter Jackson imzalı ana film serisi kaç filmdir?",
+    "answer": 3,
+    "unit": "film",
+    "explanation": "Yüzük Kardeşliği, İki Kule ve Kralın Dönüşü üçlemedir."
+  },
+  {
+    "id": "estimate-165",
+    "category": "kultur",
+    "text": "The Beatles grubunun klasik kadrosunda kaç kişi vardı?",
+    "answer": 4,
+    "unit": "kişi",
+    "explanation": "John Lennon, Paul McCartney, George Harrison ve Ringo Starr."
+  },
+  {
+    "id": "estimate-166",
+    "category": "kultur",
+    "text": "Beethoven tamamlanmış ve numaralandırılmış kaç senfoni yazdı?",
+    "answer": 9,
+    "unit": "senfoni",
+    "explanation": "Bestecinin tamamlanmış dokuz numaralı senfonisi vardır."
+  },
+  {
+    "id": "estimate-167",
+    "category": "kultur",
+    "text": "Vivaldi'nin Dört Mevsim eseri kaç konçertodan oluşur?",
+    "answer": 4,
+    "unit": "konçerto",
+    "explanation": "İlkbahar, Yaz, Sonbahar ve Kış için birer konçerto vardır."
+  },
+  {
+    "id": "estimate-168",
+    "category": "kultur",
+    "text": "Türk alfabesinde kaç harf vardır?",
+    "answer": 29,
+    "unit": "harf",
+    "explanation": "1928'de kabul edilen Türk alfabesi 29 harften oluşur."
+  },
+  {
+    "id": "estimate-169",
+    "category": "kultur",
+    "text": "İstiklâl Marşı'nın yazılı tam metni kaç kıtadır?",
+    "answer": 10,
+    "unit": "kıta",
+    "explanation": "Marşın tam şiir metni on kıtadır; genellikle ilk ikisi söylenir."
+  },
+  {
+    "id": "estimate-170",
+    "category": "tarih",
+    "text": "Titanic'in ilk seferinde battığı yıl kaçtır?",
+    "answer": 1912,
+    "unit": "yıl",
+    "explanation": "Titanic 15 Nisan 1912'de battı."
+  },
+  {
+    "id": "estimate-171",
+    "category": "tarih",
+    "text": "Titanic'te kaç baca vardı?",
+    "answer": 4,
+    "unit": "baca",
+    "explanation": "Dört bacadan biri görünüm ve havalandırma amacıyla kullanılıyordu."
+  },
+  {
+    "id": "estimate-172",
+    "category": "tarih",
+    "text": "İlk modern Olimpiyat Oyunları Atina'da hangi yıl yapıldı?",
+    "answer": 1896,
+    "unit": "yıl",
+    "explanation": "Modern Olimpiyatların ilk organizasyonu 1896 Atina'dır."
+  },
+  {
+    "id": "estimate-173",
+    "category": "tarih",
+    "text": "Berlin Duvarı'nın geçişlere açıldığı yıl kaçtır?",
+    "answer": 1989,
+    "unit": "yıl",
+    "explanation": "Duvar 9 Kasım 1989'da geçişlere açıldı."
+  },
+  {
+    "id": "estimate-174",
+    "category": "tarih",
+    "text": "Türkiye Cumhuriyeti hangi yıl ilan edildi?",
+    "answer": 1923,
+    "unit": "yıl",
+    "explanation": "Cumhuriyet 29 Ekim 1923'te ilan edildi."
+  },
+  {
+    "id": "estimate-175",
+    "category": "tarih",
+    "text": "Türkiye Büyük Millet Meclisi hangi yıl açıldı?",
+    "answer": 1920,
+    "unit": "yıl",
+    "explanation": "TBMM 23 Nisan 1920'de açıldı."
+  },
+  {
+    "id": "estimate-176",
+    "category": "tarih",
+    "text": "İstanbul'un Osmanlılar tarafından fethedildiği yıl kaçtır?",
+    "answer": 1453,
+    "unit": "yıl",
+    "explanation": "İstanbul 29 Mayıs 1453'te fethedildi."
+  },
+  {
+    "id": "estimate-177",
+    "category": "tarih",
+    "text": "Türk harflerinin kabul edildiği yıl kaçtır?",
+    "answer": 1928,
+    "unit": "yıl",
+    "explanation": "Yeni Türk harfleri 1928'de kabul edildi."
+  },
+  {
+    "id": "estimate-178",
+    "category": "tarih",
+    "text": "Çanakkale Deniz Zaferi hangi yıl kazanıldı?",
+    "answer": 1915,
+    "unit": "yıl",
+    "explanation": "18 Mart 1915, Çanakkale Deniz Zaferi'nin tarihidir."
+  },
+  {
+    "id": "estimate-179",
+    "category": "tarih",
+    "text": "İnsanlığın ilk yapay uydusu Sputnik 1 hangi yıl fırlatıldı?",
+    "answer": 1957,
+    "unit": "yıl",
+    "explanation": "Sputnik 1, 4 Ekim 1957'de fırlatıldı."
+  },
+  {
+    "id": "estimate-180",
+    "category": "tarih",
+    "text": "Wright kardeşlerin motorlu ve kontrollü ilk başarılı uçuşu hangi yıl yapıldı?",
+    "answer": 1903,
+    "unit": "yıl",
+    "explanation": "Kitty Hawk yakınlarındaki uçuş 17 Aralık 1903'te gerçekleşti."
+  },
+  {
+    "id": "estimate-181",
+    "category": "gunluk",
+    "text": "Standart bir trafik ışığında kaç ana renk vardır?",
+    "answer": 3,
+    "unit": "renk",
+    "explanation": "Kırmızı, sarı ve yeşil ana renklerdir."
+  },
+  {
+    "id": "estimate-182",
+    "category": "gunluk",
+    "text": "Bir uçak kara kutusunun yaygın dış rengi turuncudur; standart uçuş kayıt sistemi kaç temel kayıt cihazından oluşur?",
+    "answer": 2,
+    "unit": "cihaz",
+    "explanation": "Geleneksel sistemde uçuş verisi ve kokpit ses kayıt cihazları bulunur; birleşik modeller de vardır."
+  },
+  {
+    "id": "estimate-183",
+    "category": "gunluk",
+    "text": "Bir yetişkin bisikletinin standart tekerlek sayısı kaçtır?",
+    "answer": 2,
+    "unit": "tekerlek",
+    "explanation": "Standart bisiklet iki tekerleklidir."
+  },
+  {
+    "id": "estimate-184",
+    "category": "gunluk",
+    "text": "Mors alfabesindeki SOS işaretinde toplam kaç kısa ve uzun sinyal bulunur?",
+    "answer": 9,
+    "unit": "sinyal",
+    "explanation": "Üç kısa, üç uzun, üç kısa sinyal kullanılır."
+  },
+  {
+    "id": "estimate-185",
+    "category": "gunluk",
+    "text": "Bir standart 35 mm fotoğraf makinesi film rulosunun yaygın uzun versiyonu kaç pozluktur?",
+    "answer": 36,
+    "unit": "poz",
+    "explanation": "Yaygın uzun fotoğraf filmi 36 poz olarak satılır."
+  },
+  {
+    "id": "estimate-186",
+    "category": "gunluk",
+    "text": "Bir saat kadranındaki klasik Roma rakamı XII hangi sayıyı gösterir?",
+    "answer": 12,
+    "unit": "saat",
+    "explanation": "XII, on ikiyi gösterir."
+  },
+  {
+    "id": "estimate-187",
+    "category": "gunluk",
+    "text": "Bir standart tam boy bilgisayar klavyesinde F1'den başlayan işlev tuşları genellikle kaç tanedir?",
+    "answer": 12,
+    "unit": "tuş",
+    "explanation": "Klasik tam boy klavyelerde F1–F12 işlev tuşları vardır."
+  },
+  {
+    "id": "estimate-188",
+    "category": "gunluk",
+    "text": "Bir standart QR kodun üç köşesinde kaç büyük konum belirleme karesi bulunur?",
+    "answer": 3,
+    "unit": "kare",
+    "explanation": "Standart QR kodda üç büyük köşe işareti vardır; Micro QR farklıdır."
+  },
+  {
+    "id": "estimate-189",
+    "category": "gunluk",
+    "text": "Bir müzik CD'sinin standart çapı kaç santimetredir?",
+    "answer": 12,
+    "unit": "cm",
+    "explanation": "Tam boy CD'nin çapı 12 santimetredir."
+  },
+  {
+    "id": "estimate-190",
+    "category": "gunluk",
+    "text": "Bir vinil uzunçaların yaygın büyük formatı kaç inç çapındadır?",
+    "answer": 12,
+    "unit": "inç",
+    "explanation": "LP plakların yaygın büyük formatı 12 inçtir."
+  },
+  {
+    "id": "estimate-191",
+    "category": "gunluk",
+    "text": "Bir standart A4 kâğıdının kısa kenarı kaç milimetredir?",
+    "answer": 210,
+    "unit": "mm",
+    "explanation": "A4 boyutu 210 × 297 milimetredir."
+  },
+  {
+    "id": "estimate-192",
+    "category": "gunluk",
+    "text": "Bir standart A4 kâğıdının uzun kenarı kaç milimetredir?",
+    "answer": 297,
+    "unit": "mm",
+    "explanation": "A4 boyutu 210 × 297 milimetredir."
+  },
+  {
+    "id": "estimate-193",
+    "category": "gunluk",
+    "text": "Bir standart LEGO 2×4 tuğlanın üstünde kaç çıkıntı vardır?",
+    "answer": 8,
+    "unit": "çıkıntı",
+    "explanation": "İki sıra halinde dörder çıkıntı bulunur."
+  },
+  {
+    "id": "estimate-194",
+    "category": "gunluk",
+    "text": "Bir tenis topunun yüzeyini oluşturan keçe örtü geleneksel olarak kaç parçadır?",
+    "answer": 2,
+    "unit": "parça",
+    "explanation": "Kavisli iki keçe parçası topun çevresinde birleşir."
+  },
+  {
+    "id": "estimate-195",
+    "category": "gunluk",
+    "text": "Satrançta bir at taşının oyun başında bulunduğu karelerin toplam sayısı kaçtır?",
+    "answer": 4,
+    "unit": "kare",
+    "explanation": "Her oyuncunun iki atı vardır; başlangıçta dört at karesi doludur."
+  },
+  {
+    "id": "estimate-196",
+    "category": "gunluk",
+    "text": "Bir standart dart tahtasının merkezindeki iç boğa gözü kaç puandır?",
+    "answer": 50,
+    "unit": "puan",
+    "explanation": "İç boğa gözü 50, dış halka 25 puandır."
+  },
+  {
+    "id": "estimate-197",
+    "category": "gunluk",
+    "text": "Bir Scrabble oyununun İngilizce standart setinde kaç harf taşı vardır?",
+    "answer": 100,
+    "unit": "taş",
+    "explanation": "İngilizce standart Scrabble seti iki boş taş dahil 100 taştır."
+  },
+  {
+    "id": "estimate-198",
+    "category": "gunluk",
+    "text": "Bir standart Monopoly tahtasının çevresinde kaç durak vardır?",
+    "answer": 40,
+    "unit": "durak",
+    "explanation": "Klasik Monopoly tahtası 40 kareden oluşur."
+  },
+  {
+    "id": "estimate-199",
+    "category": "gunluk",
+    "text": "Bir standart langırtta iki takımın toplam kaç oyuncu figürü bulunur?",
+    "answer": 22,
+    "unit": "figür",
+    "explanation": "Yaygın tek kalecili düzende takımlar on birer figürdür; farklı masa tipleri de vardır."
+  },
+  {
+    "id": "estimate-200",
+    "category": "gunluk",
+    "text": "Bir klasik İskambil destesindeki resimli vale, kız ve papaz kartlarının toplam sayısı kaçtır?",
+    "answer": 12,
+    "unit": "kart",
+    "explanation": "Dört türün her birinde vale, kız ve papaz bulunur."
+  }
+]

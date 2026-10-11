@@ -3,6 +3,69 @@ import { BookOpen, ChevronDown, Sparkles } from "lucide-react";
 import "./module-guide.css";
 
 const guides = {
+  estimate: {
+    name: "En Yakın Tahmin",
+    emoji: "🎯",
+    accent: "#a879bf",
+    intro: "Tam bilmesen de en yakını sen olabilirsin.",
+    steps: [
+      [
+        "Oyunu kur",
+        "200 soruluk havuzdan 10 soru hazırlanır. QR veya oyun kodunu paylaş.",
+      ],
+      [
+        "Tahminini yaz",
+        "Sayıyı, ekrandaki birime göre yaz. Tahminler süre bitene kadar gizli kalır.",
+      ],
+      [
+        "En yakın kazanır",
+        "Gerçek cevaba en yakın olan 1.000 puan alır. Eşit yakınlık varsa hepsi puan kazanır.",
+      ],
+    ],
+    note: "Hesaplama sorusu yok. Önceki oyunun soruları sonraki oyuna gelmez.",
+  },
+  binary: {
+    name: "Sence Hangisi?",
+    emoji: "🤔",
+    accent: "#549888",
+    intro: "Evet mi? Hayır mı? Şaşırmaya hazır ol.",
+    steps: [
+      [
+        "Bir araya gelin",
+        "200 ilginç sorudan 10'u seçilir. Kodu veya QR'ı paylaş.",
+      ],
+      [
+        "Tarafını seç",
+        "Evet ya da Hayır'a dokun. Doğru ve hızlı cevapla puan kazan.",
+      ],
+      [
+        "Gerçeği keşfet",
+        "Süre bitince doğru cevabı ve açıklamasını gör. 3–2–1 ile otomatik devam et.",
+      ],
+    ],
+    note: "Sorular kişisel görüş değil, doğrulanabilir bilgiler sorar. Önceki oyunun soruları tekrarlanmaz.",
+  },
+  mixed: {
+    name: "Ortaya Karışık",
+    emoji: "🎲",
+    accent: "#bd9755",
+    intro: "18 konu. 20 soru. Her tur yeni bir karışım.",
+    steps: [
+      [
+        "Karışımı başlat",
+        "Bu oyuna ait 250 soruluk havuzdan 20 soru otomatik seçilir.",
+      ],
+      [
+        "Her alanda yarış",
+        "18 kategorinin her birinden bir soru gelir. İki farklı kategori bir kez daha sorulur.",
+      ],
+      [
+        "Yeni tur, yeni sorular",
+        "Aynı kurucunun önceki karışık yarışmasındaki 20 soru bir sonraki oyunda kullanılmaz.",
+      ],
+    ],
+    note: "Kategoriler en fazla iki kez görünür. Tamamı genel bilgi sorularıdır.",
+  },
   solo: {
     name: "Kendini Dene",
     emoji: "✨",
@@ -32,7 +95,7 @@ const guides = {
     steps: [
       [
         "Oyunu kur",
-        "Bir konu seç, 10 soruluk yarışmanı oluştur. Kodu veya QR’ı paylaş.",
+        "Klasik bir konu ya da özel yarışma seç. Oyununu oluştur, kodu veya QR’ı paylaş.",
       ],
       [
         "Doğru şıkkı bul",

@@ -66,6 +66,12 @@ import Welcome from "./Welcome";
 import Overview from "./Overview";
 import ModuleTeasers from "./ModuleTeasers";
 import ModuleGuide from "./ModuleGuide";
+import {
+  QuizFormats,
+  EstimateRound,
+  quizFormats,
+  quizFormat,
+} from "./QuizFormats";
 import AnswerComparison from "./AnswerComparison";
 import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
 import { characterById } from "./characters";
@@ -281,7 +287,7 @@ function App() {
       notify(e.message);
     }
   };
-  const total = Object.values(counts).reduce((a, b) => a + b, 0);
+  const total = Object.values(counts).reduce((a, b) => a + b, 0) + 400;
   const visibleRooms = rooms.filter(
     (room) =>
       (["home", "events"].includes(tab) || room.mode === tab) &&
@@ -579,6 +585,9 @@ function App() {
                 <ModuleGuide mode={tab} />
                 {tab === "tournament" && (
                   <TournamentIntro onCreate={() => create("tournament")} />
+                )}
+                {tab === "quiz" && (
+                  <QuizFormats onChoose={(id) => create("quiz", id)} />
                 )}
                 {tab === "quiz" && (
                   <Suspense
@@ -1048,7 +1057,8 @@ function Create({
   const [cat, setCat] = useState(initialCat),
     [title, setTitle] = useState(
       mode === "quiz"
-        ? catById(initialCat).name + " Yarışması"
+        ? (quizFormat(initialCat)?.name || catById(initialCat).name) +
+            " Yarışması"
         : mode === "tournament"
           ? "Büyük Bilgi Turnuvası"
           : mode === "raffle"
@@ -1070,11 +1080,13 @@ function Create({
     [familyQuestions, setFamilyQuestions] = useState([
       { text: "", examples: ["", "", ""] },
     ]);
+  const format = mode === "quiz" ? quizFormat(cat) : null;
   const selectedExpertCount = qs.filter(
     (q) => selected.includes(q.id) && q.difficulty !== "general",
   ).length;
   useEffect(() => {
-    if (manual && canManageLibrary)
+    if (quizFormat(cat)) setManual(false);
+    if (manual && canManageLibrary && !quizFormat(cat))
       api("questions", { category: cat })
         .then(setQs)
         .catch((e) => notify(e.message));
@@ -1099,7 +1111,8 @@ function Create({
                 seconds: Number(seconds),
                 prompt,
                 ...(mode === "tournament" ? { prize } : {}),
-                questionIds: manual && canManageLibrary ? selected : [],
+                questionIds:
+                  manual && canManageLibrary && !format ? selected : [],
                 ...(mode === "family"
                   ? {
                       familyQuestions: customFamily ? familyQuestions : [],
@@ -1127,8 +1140,13 @@ function Create({
         {mode === "quiz" && (
           <>
             <div className="form-grid">
-              <Field label="Konu">
+              <Field label="Oyun / konu">
                 <select value={cat} onChange={(e) => setCat(e.target.value)}>
+                  {quizFormats.map((f) => (
+                    <option value={f.id} key={f.id}>
+                      {f.emoji} {f.name} · {f.total} soru
+                    </option>
+                  ))}
                   {categories.map((c) => (
                     <option value={c.id} key={c.id}>
                       {c.emoji} {c.name}
@@ -1149,7 +1167,7 @@ function Create({
                 </select>
               </Field>
             </div>
-            {canManageLibrary && (
+            {canManageLibrary && !format && (
               <label className="check-row">
                 <input
                   type="checkbox"
@@ -1159,7 +1177,7 @@ function Create({
                 Soruları kendim seçmek istiyorum
               </label>
             )}
-            {manual && canManageLibrary ? (
+            {manual && canManageLibrary && !format ? (
               <>
                 <p className="muted" aria-live="polite">
                   {selected.length}/10 soru seçildi · {selectedExpertCount}/1{" "}
@@ -1203,9 +1221,9 @@ function Create({
               <div className="info-box">
                 <Sparkles size={20} />
                 <span>
-                  9 genel bilgi + 1 detay / uzmanlık sorusu. Her düzeyde
-                  kullanılmamış sorulara öncelik verilir; o grup tamamlanınca en
-                  eski sorular yeniden gelir. Sorular karışık sırada gelir.
+                  {format
+                    ? format.rules
+                    : "9 genel bilgi + 1 detay / uzmanlık sorusu. Her düzeyde kullanılmamış sorulara öncelik verilir; o grup tamamlanınca en eski sorular yeniden gelir. Sorular karışık sırada gelir."}
                 </span>
               </div>
             )}
@@ -1703,7 +1721,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       </div>
       {!screen && ["lobby", "open"].includes(room.phase) && (
         <div className="room-module-guide">
-          <ModuleGuide mode={room.mode} />
+          <ModuleGuide
+            mode={quizFormat(room.quizType) ? room.quizType : room.mode}
+          />
         </div>
       )}
       {room.mode === "tournament" && <TournamentBanner room={room} />}
@@ -1804,7 +1824,10 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           {room.phase === "lobby" ? (
             <div className="lobby-layout">
               <section className="lobby-main">
-                <div className="big-emoji">{catById(room.category).emoji}</div>
+                <div className="big-emoji">
+                  {quizFormat(room.quizType)?.emoji ||
+                    catById(room.category).emoji}
+                </div>
                 <h2>
                   {host || screen
                     ? "Herkes burada mı?"
@@ -1817,7 +1840,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                 </p>
                 <div className="lobby-meta">
                   <span>
-                    <LibraryBig size={18} /> 10 soru
+                    <LibraryBig size={18} /> {room.total} soru
                   </span>
                   <span>
                     <Clock size={18} /> {room.seconds} saniye
@@ -1885,7 +1908,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           ) : room.phase === "finished" ? (
             <Results room={room} host={host} />
           ) : (
-            <div className="quiz-stage">
+            <div className={`quiz-stage quiz-${room.quizType || "classic"}`}>
               <div className="quiz-progress">
                 <span>
                   SORU <b>{room.index + 1}</b> / {room.total}
@@ -1907,64 +1930,85 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                   }}
                 />
               </div>
+              {room.quizType === "mixed" && room.question?.category && (
+                <span className="quiz-category-label">
+                  {catById(room.question.category).emoji}{" "}
+                  {catById(room.question.category).name}
+                </span>
+              )}
               <h2>{room.question?.text}</h2>
+              {room.quizType === "estimate" && (
+                <EstimateRound
+                  key={room.question?.id}
+                  room={room}
+                  screen={screen}
+                  busy={busy}
+                  left={left}
+                  action={action}
+                />
+              )}
               <AnswerComparison
                 room={room}
                 renderOption={(value) => (
                   <OptionContent value={value} showName />
                 )}
               />
-              {(room.phase !== "reveal" || !room.answerCards?.length) && (
-                <div
-                  className={`answer-grid ${room.question?.options.every((option) => option.startsWith("flag:")) ? "flag-answers" : ""}`}
-                >
-                  {room.question?.options.map((o, i) => (
-                    <button
-                      key={i}
-                      className={
-                        "answer answer-" +
-                        i +
-                        (room.myAnswer?.choice === i ? " selected" : "") +
-                        (room.phase === "reveal"
-                          ? room.question.correct === i
-                            ? " correct"
-                            : " dim"
-                          : "")
-                      }
-                      disabled={
-                        !room.me ||
-                        screen ||
-                        busy ||
-                        !!room.myAnswer ||
-                        room.phase !== "question" ||
-                        left === 0
-                      }
-                      onClick={() =>
-                        action("answer", {
-                          choice: i,
-                          questionId: room.question.id,
-                        })
-                      }
-                    >
-                      <span className="answer-shape">
-                        {["▲", "◆", "●", "■"][i]}
-                      </span>
-                      <b>
-                        <OptionContent value={o} />
-                      </b>
-                      {room.phase === "reveal" &&
-                        room.question.correct === i && (
-                          <CheckCircle2 size={24} />
-                        )}
-                    </button>
-                  ))}
-                </div>
-              )}
-              {room.phase === "question" && room.myAnswer && (
-                <div className="answer-feedback">
-                  <CheckCircle2 size={21} /> Cevabın alındı. Sonuç birazdan!
-                </div>
-              )}
+              {room.quizType !== "estimate" &&
+                (room.phase !== "reveal" || !room.answerCards?.length) && (
+                  <div
+                    className={`answer-grid ${room.question?.options.every((option) => option.startsWith("flag:")) ? "flag-answers" : ""}`}
+                  >
+                    {room.question?.options.map((o, i) => (
+                      <button
+                        key={i}
+                        className={
+                          "answer answer-" +
+                          i +
+                          (room.myAnswer?.choice === i ? " selected" : "") +
+                          (room.phase === "reveal"
+                            ? room.question.correct === i
+                              ? " correct"
+                              : " dim"
+                            : "")
+                        }
+                        disabled={
+                          !room.me ||
+                          screen ||
+                          busy ||
+                          !!room.myAnswer ||
+                          room.phase !== "question" ||
+                          left === 0
+                        }
+                        onClick={() =>
+                          action("answer", {
+                            choice: i,
+                            questionId: room.question.id,
+                          })
+                        }
+                      >
+                        <span className="answer-shape">
+                          {room.quizType === "binary"
+                            ? ["✓", "✕"][i]
+                            : ["▲", "◆", "●", "■"][i]}
+                        </span>
+                        <b>
+                          <OptionContent value={o} />
+                        </b>
+                        {room.phase === "reveal" &&
+                          room.question.correct === i && (
+                            <CheckCircle2 size={24} />
+                          )}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              {room.quizType !== "estimate" &&
+                room.phase === "question" &&
+                room.myAnswer && (
+                  <div className="answer-feedback">
+                    <CheckCircle2 size={21} /> Cevabın alındı. Sonuç birazdan!
+                  </div>
+                )}
               {room.phase === "reveal" && (
                 <div className="reveal-note">
                   {room.myAnswer && (
@@ -1984,6 +2028,15 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                     </details>
                   ) : (
                     <p>{room.question?.explanation}</p>
+                  )}
+                  {room.question?.source && (
+                    <a
+                      href={room.question.source}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Bilginin kaynağını gör ↗
+                    </a>
                   )}
                   <div className="mini-ranking">
                     {room.players.slice(0, 3).map((p, i) => (
@@ -2135,6 +2188,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         room.phase === "reveal" &&
         room.me &&
         room.myAnswer &&
+        room.quizType !== "estimate" &&
         Number.isInteger(room.question?.correct) && (
           <AnswerResultPopup
             key={room.question.id}

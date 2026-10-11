@@ -2950,3 +2950,273 @@ test("solo timeouts, mixed topics, and a new device resume the same private game
     409,
   );
 });
+
+test("estimate quiz conceals guesses, handles decimal ties, and awards only the closest once", async () => {
+  const room = await create("quiz", { category: "estimate" }),
+    { pin } = room;
+  assert.equal(room.quizType, "estimate");
+  assert.equal(room.total, 10);
+  const ada = await join(pin, "Ada"),
+    ece = await join(pin, "Ece"),
+    cem = await join(pin, "Cem");
+  await join(pin, "Deniz");
+  await call(
+    "advance",
+    { pin, expectedIndex: -1, expectedPhase: "lobby" },
+    { admin: true },
+  );
+  mutateDB(
+    pin,
+    "$s['questions'][0]['answer']=100.5;$s['questions'][0]['unit']='metre'",
+  );
+  let current = (await call("room", { pin }, { token: ada.token })).data;
+  assert.equal(current.question.answer, undefined);
+  assert.equal(current.question.source, undefined);
+  assert.equal(current.estimateResults, undefined);
+  assert.equal(current.question.options, undefined);
+  assert.equal(
+    (
+      await call(
+        "answer",
+        { pin, questionId: current.question.id, guess: "1e3" },
+        { token: ada.token },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "answer",
+        { pin, questionId: current.question.id, guess: "Infinity" },
+        { token: ada.token },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "answer",
+        { pin, questionId: current.question.id, guess: "1.000.000" },
+        { token: ada.token },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "answer",
+        { pin, questionId: current.question.id, guess: [] },
+        { token: ada.token },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "answer",
+        { pin, questionId: "old", guess: "99.5" },
+        { token: ada.token },
+      )
+    ).status,
+    409,
+  );
+  const answered = await call(
+    "answer",
+    { pin, questionId: current.question.id, guess: "99,5" },
+    { token: ada.token },
+  );
+  assert.equal(answered.status, 200);
+  assert.deepEqual(answered.data.myAnswer, { guess: 99.5 });
+  assert.equal(answered.data.me.score, 0);
+  assert.equal(
+    (
+      await call(
+        "answer",
+        { pin, questionId: current.question.id, guess: 100.5 },
+        { token: ada.token },
+      )
+    ).status,
+    409,
+  );
+  await call(
+    "answer",
+    { pin, questionId: current.question.id, guess: "101.5" },
+    { token: ece.token },
+  );
+  await call(
+    "answer",
+    { pin, questionId: current.question.id, guess: 500 },
+    { token: cem.token },
+  );
+  const hidden = (await call("room", { pin }, { admin: true })).data;
+  assert.ok(hidden.players.every((p) => p.score === 0));
+  assert.equal(hidden.estimateResults, undefined);
+  const reveal = await call(
+    "advance",
+    { pin, expectedIndex: 0, expectedPhase: "question" },
+    { admin: true },
+  );
+  assert.equal(reveal.status, 200);
+  assert.equal(reveal.data.question.answer, 100.5);
+  const results = reveal.data.estimateResults;
+  assert.equal(results.find((p) => p.name === "Ada").points, 1000);
+  assert.equal(results.find((p) => p.name === "Ece").points, 1000);
+  assert.equal(results.find((p) => p.name === "Cem").points, 0);
+  assert.equal(results.find((p) => p.name === "Deniz").guess, null);
+  assert.equal(
+    (await call("room", { pin }, { token: ada.token })).data.me.score,
+    1000,
+  );
+  mutateDB(pin, "$s['revealUntil']=microtime(true)-4");
+  const next = (await call("room", { pin }, { token: ada.token })).data;
+  assert.equal(next.index, 1);
+  assert.equal(next.me.score, 1000);
+  assert.equal(next.question.answer, undefined);
+  const none = await call(
+    "advance",
+    { pin, expectedIndex: 1, expectedPhase: "question" },
+    { admin: true },
+  );
+  assert.equal(none.status, 200);
+  assert.ok(none.data.estimateResults.every((p) => p.points === 0));
+  assert.equal(
+    (await call("room", { pin }, { token: ada.token })).data.me.score,
+    1000,
+  );
+});
+
+test("estimate deadlines award closest guesses on reads and preserve them on later writes", async () => {
+  const { pin } = await create("quiz", { category: "estimate" }),
+    player = await join(pin, "Tahminci");
+  await call(
+    "advance",
+    { pin, expectedIndex: -1, expectedPhase: "lobby" },
+    { admin: true },
+  );
+  let current = (await call("room", { pin })).data;
+  await call(
+    "answer",
+    { pin, questionId: current.question.id, guess: "-2,125" },
+    { token: player.token },
+  );
+  mutateDB(pin, "$s['deadline']=microtime(true)-1");
+  for (let i = 0; i < 2; i++) {
+    const r = (await call("room", { pin }, { token: player.token })).data;
+    assert.equal(r.phase, "reveal");
+    assert.equal(r.me.score, 1000);
+    assert.equal(r.myAnswer.guess, -2.125);
+  }
+  await call(
+    "advance",
+    { pin, expectedIndex: 0, expectedPhase: "reveal" },
+    { admin: true },
+  );
+  const next = (await call("room", { pin }, { token: player.token })).data;
+  assert.equal(next.index, 1);
+  assert.equal(next.me.score, 1000);
+});
+
+test("binary games show exactly Evet/Hayır, score normally, and reject nonexistent choices", async () => {
+  const { pin } = await create("quiz", { category: "binary" }),
+    player = await join(pin, "Meraklı");
+  const start = await call(
+    "advance",
+    { pin, expectedIndex: -1, expectedPhase: "lobby" },
+    { admin: true },
+  );
+  assert.deepEqual(start.data.question.options, ["Evet", "Hayır"]);
+  assert.equal(start.data.question.correct, undefined);
+  assert.equal(
+    (
+      await call(
+        "answer",
+        { pin, questionId: start.data.question.id, choice: 2 },
+        { token: player.token },
+      )
+    ).status,
+    400,
+  );
+  mutateDB(pin, "$s['questions'][0]['correct']=0");
+  const a = await call(
+    "answer",
+    { pin, questionId: start.data.question.id, choice: 0 },
+    { token: player.token },
+  );
+  assert.equal(a.status, 200);
+  assert.equal(a.data.me.score, 0);
+  const r = await call(
+    "advance",
+    { pin, expectedIndex: 0, expectedPhase: "question" },
+    { admin: true },
+  );
+  assert.equal(r.data.question.correct, 0);
+  assert.ok(r.data.players[0].score >= 500);
+  assert.ok(r.data.question.explanation.length > 10);
+  assert.equal(r.data.answerCards[0].correct, true);
+});
+
+test("dedicated mixed pool produces 20 questions from 18 topics with no adjacent-game repeats", async () => {
+  const decks = [];
+  for (let i = 0; i < 15; i++) {
+    const room = await create("quiz", { category: "mixed" });
+    assert.equal(room.total, 20);
+    assert.equal(room.quizType, "mixed");
+    let deck;
+    execFileSync("php", [
+      "-r",
+      `$db=new PDO('sqlite:'.$argv[1]);$q=$db->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$argv[2]]);$s=json_decode($q->fetchColumn(),true);file_put_contents($argv[3],json_encode($s['questions']));`,
+      db,
+      room.pin,
+      path.join(dir, "mixed.json"),
+    ]);
+    const { readFileSync } = await import("node:fs");
+    deck = JSON.parse(readFileSync(path.join(dir, "mixed.json")));
+    const counts = {};
+    for (const q of deck) counts[q.category] = (counts[q.category] || 0) + 1;
+    assert.equal(Object.keys(counts).length, 18);
+    assert.equal(Object.values(counts).filter((n) => n === 2).length, 2);
+    assert.ok(Object.values(counts).every((n) => n <= 2));
+    assert.ok(
+      deck.every((q) => q.difficulty === "general" && q.options.length === 4),
+    );
+    if (i)
+      assert.equal(
+        deck.filter((q) => decks[i - 1].some((p) => p.id === q.id)).length,
+        0,
+      );
+    decks.push(deck);
+  }
+  for (const type of ["estimate", "binary"]) {
+    const a = await create("quiz", { category: type }),
+      b = await create("quiz", { category: type });
+    const ids = (pin) =>
+      JSON.parse(
+        execFileSync("php", [
+          "-r",
+          `$db=new PDO('sqlite:'.$argv[1]);$q=$db->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$argv[2]]);echo json_encode(array_column(json_decode($q->fetchColumn(),true)['questions'],'id'));`,
+          db,
+          pin,
+        ]),
+      );
+    assert.equal(ids(a.pin).filter((id) => ids(b.pin).includes(id)).length, 0);
+  }
+  assert.equal(
+    (
+      await call(
+        "create",
+        {
+          mode: "quiz",
+          category: "mixed",
+          title: "Yanlış seçim",
+          questionIds: ["x"],
+        },
+        { admin: true },
+      )
+    ).status,
+    400,
+  );
+});

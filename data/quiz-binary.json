@@ -1,0 +1,2402 @@
+[
+  {
+    "id": "binary-001",
+    "category": "hayvanlar",
+    "text": "Ahtapotların üç kalbi var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "İki kalp solungaçlara, bir kalp vücudun geri kalanına kan pompalar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-002",
+    "category": "hayvanlar",
+    "text": "Ahtapotların kanı insan kanı gibi kırmızı mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Oksijen taşıyan hemosiyanin nedeniyle ahtapot kanı mavimsi görünür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-003",
+    "category": "hayvanlar",
+    "text": "Yarasalar tamamen kör müdür?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Yarasalar görebilir; birçok tür ayrıca yankıyla yön bulur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-004",
+    "category": "hayvanlar",
+    "text": "Penguenler kuş olmalarına rağmen doğal olarak uçamaz mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Penguenler uçamayan, yüzmeye uyum sağlamış kuşlardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-005",
+    "category": "hayvanlar",
+    "text": "Kutup ayıları doğal yaşam alanlarında penguenlerle birlikte yaşar mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Kutup ayıları Arktik'te, penguenler doğal olarak Güney Yarımküre'de yaşar; doğal dağılımları çakışmaz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-006",
+    "category": "hayvanlar",
+    "text": "Balinalar yavrularını sütle besler mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Balinalar memelidir ve yavrularını sütle besler.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-007",
+    "category": "hayvanlar",
+    "text": "Yunuslar solungaçlarıyla suyun altında nefes alır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Yunuslar akciğerleriyle hava solur, bu nedenle yüzeye çıkar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-008",
+    "category": "hayvanlar",
+    "text": "Köpekbalıklarının iskeleti büyük ölçüde kıkırdaktan mı oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Köpekbalıkları kıkırdaklı balıklar grubundadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-009",
+    "category": "hayvanlar",
+    "text": "Bir örümcek biyolojik olarak böcek sayılır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Örümcekler örümceğimsidir; böcekler ayrı bir eklembacaklı sınıfıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-010",
+    "category": "hayvanlar",
+    "text": "Böceklerin yetişkin halinde genellikle altı bacağı var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Böceklerde üç çift bacak bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-011",
+    "category": "hayvanlar",
+    "text": "Zürafanın boyun omuru sayısı genellikle insanınkiyle aynı mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Her ikisinde de genellikle yedi boyun omuru bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-012",
+    "category": "hayvanlar",
+    "text": "Develer hörgüçlerinde su mu depolar?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Hörgüçlerde su değil yağ depolanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-013",
+    "category": "hayvanlar",
+    "text": "Erkek denizatları yavruları taşıyan bireyler olabilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Dişinin bıraktığı yumurtalar erkeğin kuluçka kesesinde gelişir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-014",
+    "category": "hayvanlar",
+    "text": "Devekuşları tehlikeden kaçmak için başlarını kuma gömer mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Bu yaygın bir efsanedir; yuvadaki yumurtalara eğilmeleri yanlış yorumlanabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-015",
+    "category": "hayvanlar",
+    "text": "Flamingoların pembe rengi besinleriyle ilişkili midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Besinlerdeki karotenoid pigmentler tüylerin pembe renginde rol oynar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-016",
+    "category": "hayvanlar",
+    "text": "Koalalar ayı ailesinin bir üyesi midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Koalalar ayı değil keseli memelidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-017",
+    "category": "hayvanlar",
+    "text": "Ornitorenk yumurtlayan bir memeli midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ornitorenk, yumurtlayan tek delikli memelilerden biridir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-018",
+    "category": "hayvanlar",
+    "text": "Bütün memeliler canlı yavru mu doğurur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Ornitorenk ve ekidneler gibi tek delikli memeliler yumurtlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-019",
+    "category": "hayvanlar",
+    "text": "Bir kelebek yaşamına tırtıl olarak mı başlar, yani hiç yumurta dönemi yok mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Kelebek yaşam döngüsü yumurtayla başlar; tırtıl larva evresidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-020",
+    "category": "hayvanlar",
+    "text": "Kelebekler başkalaşım sırasında pupa evresinden geçer mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Tam başkalaşım yumurta, larva, pupa ve yetişkin evrelerinden oluşur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-021",
+    "category": "hayvanlar",
+    "text": "Karıncalar da böcek midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Karıncalar altı bacaklı böceklerdir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-022",
+    "category": "hayvanlar",
+    "text": "Bir salyangozun kabuğu büyüdükçe kendisi tarafından oluşturulur mu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Manto dokusu kabuğun büyümesine katılan maddeleri salgılar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-023",
+    "category": "hayvanlar",
+    "text": "Bütün denizyıldızları mutlaka beş kollu mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Beş kollu türler yaygındır ama daha fazla kollu türler de vardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-024",
+    "category": "hayvanlar",
+    "text": "Denizanalarının insanlardaki gibi bir kalbi var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Denizanalarında insanlardaki gibi kalp ve damar sistemi bulunmaz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-025",
+    "category": "hayvanlar",
+    "text": "Deniz süngerleri bitki değil hayvan mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Süngerler hayvanlar âleminde sınıflandırılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-026",
+    "category": "hayvanlar",
+    "text": "Mercanlar temelde hayvansal canlılardan mı oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Mercan polipleri hayvandır; birçok mercan fotosentetik ortaklarla birlikte yaşar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-027",
+    "category": "hayvanlar",
+    "text": "Yılanların göz kapaklarını kapatarak göz kırpması mümkün müdür?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Yılanların gözleri saydam bir pulla örtülüdür; hareketli göz kapakları yoktur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-028",
+    "category": "hayvanlar",
+    "text": "Kaplumbağalar kabuklarından çıkıp başka bir kabuğa taşınabilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Kabuk iskeletlerinin bir parçasıdır; çıkarılabilir bir ev değildir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-029",
+    "category": "hayvanlar",
+    "text": "Yengeçler büyürken dış iskeletlerini değiştirebilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Kabuk değiştirme, eklembacaklıların büyümesine olanak sağlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-030",
+    "category": "hayvanlar",
+    "text": "Istakozlar da kabuk değiştiren eklembacaklılar mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Istakozlar büyüme sürecinde dış iskeletlerini değiştirir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-031",
+    "category": "hayvanlar",
+    "text": "Bir bal arısının yalnızca iki gözü mü vardır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İki bileşik gözüne ek olarak üç basit gözü bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-032",
+    "category": "hayvanlar",
+    "text": "Ahtapotlar omurgalı hayvanlar mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Ahtapotlar omurgasız yumuşakçalardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-033",
+    "category": "hayvanlar",
+    "text": "Güvercinler yavrularını kursak sütü denen bir salgıyla besleyebilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Hem dişi hem erkek güvercin kursak sütü üretir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-034",
+    "category": "hayvanlar",
+    "text": "Bütün kuş türleri uçabilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Devekuşu ve penguen gibi uçamayan kuşlar vardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-035",
+    "category": "hayvanlar",
+    "text": "Yarasalar aktif uçabilen memeliler midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Yarasalar kanat çırparak sürdürülebilir aktif uçuş yapabilen memelilerdir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-036",
+    "category": "hayvanlar",
+    "text": "Uçan sincaplar yarasalar gibi kanat çırparak mı uçar?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Uçan sincaplar deri zarlarıyla süzülür, yarasalar gibi aktif uçmaz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-037",
+    "category": "hayvanlar",
+    "text": "Kurbağalar yaşamlarının bazı evrelerinde başkalaşım geçirir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Birçok kurbağa türünde iribaş evresi yetişkin forma dönüşür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-038",
+    "category": "hayvanlar",
+    "text": "Timsahlar sıcakkanlı birer memeli midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Timsahlar vücut ısısı çevreden etkilenen sürüngenlerdir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-039",
+    "category": "hayvanlar",
+    "text": "Bütün köpekbalıkları yumurtlayarak mı çoğalır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Bazı türler yumurtlar, bazıları canlı yavru doğurur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-040",
+    "category": "hayvanlar",
+    "text": "Ahtapotlar vücut renklerini değiştirebilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Derilerindeki pigment hücreleri ve diğer yapılar renk değiştirmeyi sağlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-041",
+    "category": "uzay",
+    "text": "Venüs'teki bir eksen dönüşü, Güneş çevresindeki bir turundan daha uzun mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Venüs yaklaşık 243 Dünya gününde döner, yaklaşık 225 günde yörüngesini tamamlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-042",
+    "category": "uzay",
+    "text": "Güneş Sistemi'nin en sıcak gezegeni Güneş'e en yakın olan Merkür müdür?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Güçlü sera etkisi nedeniyle Venüs'ün ortalama yüzeyi daha sıcaktır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-043",
+    "category": "uzay",
+    "text": "Venüs, Dünya'ya göre ters yönde dönen gezegenlerden biri midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Venüs'ün eksen dönüşü geriye doğrudur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-044",
+    "category": "uzay",
+    "text": "Satürn Güneş Sistemi'nde halkası olan tek gezegen midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Jüpiter, Uranüs ve Neptün'ün de halkaları vardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-045",
+    "category": "uzay",
+    "text": "Jüpiter katı yüzeyli bir kaya gezegeni midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Jüpiter bir gaz devidir; Dünya'daki gibi belirgin katı yüzeyi yoktur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-046",
+    "category": "uzay",
+    "text": "Güneş bir yıldız mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Güneş, Güneş Sistemi'nin merkezindeki yıldızdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-047",
+    "category": "uzay",
+    "text": "Ay kendi ışığını üreterek mi parlar?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Ay çoğunlukla Güneş'ten aldığı ışığı yansıtır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-048",
+    "category": "uzay",
+    "text": "Ay'ın evreleri genellikle Dünya'nın gölgesinin Ay'a düşmesinden mi oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Evreler aydınlanan yarının bize görünen kısmıyla ilgilidir; Dünya'nın gölgesi Ay tutulmasında rol oynar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-049",
+    "category": "uzay",
+    "text": "Ay'ın Dünya'ya yaklaşık hep aynı yüzünü göstermesi, kendi ekseninde döndüğü anlamına gelir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ay'ın dönüş süresi yörünge süresine eşittir; bu eşzamanlı dönüştür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-050",
+    "category": "uzay",
+    "text": "Ay'ın uzak yüzü her zaman karanlıkta mı kalır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Uzak yüz de Güneş ışığı alır; uzak yüz ile karanlık yüz aynı kavram değildir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-051",
+    "category": "uzay",
+    "text": "Mars'ta günbatımı çevresinde Güneş'in yakınındaki gökyüzü mavi görünebilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Mars tozu ışığı Dünya'dakinden farklı saçar; Güneş çevresinde mavilik görülebilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-052",
+    "category": "uzay",
+    "text": "Uzay boşluğunda ses, hava olmadan normal biçimde yayılır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Ses mekanik dalgadır ve yayılmak için maddesel bir ortam gerekir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-053",
+    "category": "uzay",
+    "text": "Uzay istasyonundaki astronotlar Dünya'nın kütleçekimi tamamen bittiği için mi ağırlıksız görünür?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İstasyon ve astronotlar birlikte sürekli serbest düşüş halindedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-054",
+    "category": "uzay",
+    "text": "Dünya Güneş çevresinde dolanırken kendi ekseninde de döner mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Dünya hem günlük eksen dönüşü hem yıllık yörünge hareketi yapar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-055",
+    "category": "uzay",
+    "text": "Plüton günümüzde sekiz ana gezegenden biri olarak mı sınıflandırılır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Plüton cüce gezegen olarak sınıflandırılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-056",
+    "category": "uzay",
+    "text": "Kuyruklu yıldızların kuyrukları genel olarak Güneş'ten uzak yöne uzanır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Güneş rüzgârı ve ışınım basıncı kuyrukları Güneş'ten uzağa yöneltir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-057",
+    "category": "uzay",
+    "text": "Bir meteor göktaşı olarak yere ulaşmadan önce atmosferde ışık izi oluşturabilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Atmosfere girişte oluşan ışık olayı meteordur; yere ulaşan parçaya meteorit denir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-058",
+    "category": "uzay",
+    "text": "Bir ışık yılı zaman değil uzaklık birimi midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Işık yılı, ışığın bir yılda aldığı uzaklıktır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-059",
+    "category": "uzay",
+    "text": "Kutup Yıldızı gökyüzündeki en parlak yıldız mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Gece gökyüzündeki en parlak yıldız Sirius'tur; Kutup Yıldızı yön bulmadaki konumuyla tanınır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-060",
+    "category": "uzay",
+    "text": "Güneş tutulmasında Ay, Dünya ile Güneş arasına girer mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ay'ın uygun hizalanmada Güneş'i örtmesi Güneş tutulması oluşturur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-061",
+    "category": "uzay",
+    "text": "Ay tutulmasında Güneş, Dünya ile Ay arasına mı girer?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Ay tutulmasında Dünya, Güneş ile Ay arasındadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-062",
+    "category": "uzay",
+    "text": "Uranüs çok eğik dönme ekseni nedeniyle yan yatmış gibi mi döner?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Yaklaşık 98 derecelik eksen eğikliği bu benzetmeye yol açar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-063",
+    "category": "uzay",
+    "text": "Mars'ın Phobos ve Deimos adlı iki uydusu var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Mars'ın iki doğal uydusu bu adları taşır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-064",
+    "category": "uzay",
+    "text": "Merkür'ün Dünya gibi büyük bir doğal uydusu var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Merkür'ün doğal uydusu yoktur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-065",
+    "category": "uzay",
+    "text": "Samanyolu yalnızca Güneş ve sekiz gezegenden mi oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Samanyolu çok sayıda yıldız, gaz ve toz içeren bir galaksidir; Güneş Sistemi onun küçük bir parçasıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-066",
+    "category": "dunya",
+    "text": "Antarktika, az yağış aldığı için bir çöl sayılır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Çöl tanımı yalnızca sıcaklığa değil yağış azlığına dayanır; Antarktika kutup çölüdür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-067",
+    "category": "dunya",
+    "text": "Dünya'daki bütün çöller sürekli sıcak mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Soğuk ve kutupsal çöller de vardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-068",
+    "category": "dunya",
+    "text": "Pasifik Okyanusu Atlantik Okyanusu'ndan daha büyük müdür?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Pasifik, Dünya'nın en büyük okyanus havzasıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-069",
+    "category": "dunya",
+    "text": "Dünya'nın en derin gölü Baykal mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Baykal Gölü yaklaşık 1.642 metrelik derinliğiyle bilinir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-070",
+    "category": "dunya",
+    "text": "Ölü Deniz'in suyu tatlı mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Ölü Deniz çok tuzlu bir göldür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-071",
+    "category": "dunya",
+    "text": "Hazar Denizi coğrafi olarak dünyanın en büyük kapalı gölü kabul edilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Adında deniz geçse de kapalı bir iç su kütlesidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-072",
+    "category": "dunya",
+    "text": "İstanbul hem Avrupa hem Asya kıtalarında yer alır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "İstanbul Boğazı'nın iki yakasında kentin Avrupa ve Asya bölümleri bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-073",
+    "category": "dunya",
+    "text": "İstanbul Türkiye'nin başkenti midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Türkiye'nin başkenti Ankara'dır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-074",
+    "category": "dunya",
+    "text": "Avustralya'nın başkenti Sydney midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Başkent Canberra'dır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-075",
+    "category": "dunya",
+    "text": "Brezilya'nın resmî dili Portekizce midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Brezilya'nın resmî dili Portekizcedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-076",
+    "category": "dunya",
+    "text": "Brezilya'nın başkenti Rio de Janeiro mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Brezilya'nın başkenti Brasília'dır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-077",
+    "category": "dunya",
+    "text": "İsviçre'nin denize kıyısı var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İsviçre denize kıyısı olmayan bir Avrupa ülkesidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-078",
+    "category": "dunya",
+    "text": "Nepal bayrağı alışılmış dörtgen ulusal bayraklardan farklı bir şekle sahip midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Nepal bayrağı birleşik iki üçgen biçimindedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-079",
+    "category": "dunya",
+    "text": "Kanada bayrağında meşe yaprağı mı vardır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Kanada bayrağında stilize akçaağaç yaprağı vardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-080",
+    "category": "dunya",
+    "text": "Avrupa Birliği bayrağındaki yıldız sayısı üye ülke sayısıyla birlikte değişir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Bayraktaki yıldız sayısı sabit olarak on ikidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-081",
+    "category": "dunya",
+    "text": "ABD bayrağında yıldızlar eyaletleri temsil eder mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Bayraktaki elli yıldız elli eyaleti temsil eder.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-082",
+    "category": "dunya",
+    "text": "Kuzey Kutbu bir kara kıtasının üzerinde midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Coğrafi Kuzey Kutbu Arktik Okyanusu üzerindedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-083",
+    "category": "dunya",
+    "text": "Güney Kutbu Antarktika kıtası üzerinde midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Coğrafi Güney Kutbu Antarktika'nın buz örtüsü üzerindedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-084",
+    "category": "dunya",
+    "text": "Dünya'nın eksen eğikliği mevsimlerin oluşmasında temel etken midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Eksen eğikliği yıl boyunca ışınların gelişini ve gün uzunluğunu değiştirir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-085",
+    "category": "dunya",
+    "text": "Kuzey ve Güney Yarımküre aynı anda genellikle aynı mevsimi mi yaşar?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Yarımkürelerde mevsimler ters zamanlarda yaşanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-086",
+    "category": "dunya",
+    "text": "Ekvator Dünya'yı kuzey ve güney yarımkürelere ayırır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ekvator sıfır derece enlemdir ve iki yarımküreyi ayırır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-087",
+    "category": "dunya",
+    "text": "Başlangıç meridyeni enlem ölçmek için mi kullanılır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Başlangıç meridyeni boylam için referanstır; enlem Ekvator'a göre ölçülür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-088",
+    "category": "dunya",
+    "text": "Dünya'nın yüzeyi kusursuz bir küre biçiminde midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Dünya kutuplardan basık, Ekvator çevresinde şişkin bir şekle yakındır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-089",
+    "category": "dunya",
+    "text": "Volkanlar okyanus tabanında da oluşabilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Denizaltı volkanları okyanuslarda yaygındır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-090",
+    "category": "dunya",
+    "text": "Buzdağları yalnızca donmuş deniz suyundan mı oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Buzdağları çoğunlukla karada oluşmuş tatlı su buzul buzunun kopmasıyla oluşur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-091",
+    "category": "dunya",
+    "text": "Gelgitlerin oluşmasında Ay'ın çekimi önemli bir rol oynar mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ay ve Güneş'in kütleçekimi gelgitleri etkiler; Ay'ın katkısı başlıcadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-092",
+    "category": "dunya",
+    "text": "Tsunami sıradan biçimde rüzgârın oluşturduğu bir dalga mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Tsunamiler çoğunlukla deniz tabanının ani yer değiştirmesinden kaynaklanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-093",
+    "category": "dunya",
+    "text": "Pamukkale'nin beyaz travertenleri mineral çökelmesiyle mi oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Kalsiyum karbonatın çökelmesi beyaz travertenleri oluşturur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-094",
+    "category": "dunya",
+    "text": "Kapadokya'daki peribacaları yalnızca insanlar tarafından oyularak mı oluşturuldu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Ana şekiller volkanik malzemelerin aşınmasıyla doğal olarak oluşmuştur; bazıları sonradan oyulmuştur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-095",
+    "category": "dunya",
+    "text": "Van Gölü'nün suyu sodalı ve tuzlu mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Van Gölü sodalı, tuzlu bir kapalı havza gölüdür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-096",
+    "category": "insan",
+    "text": "İnsan vücudunun en büyük organı deri midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Deri vücudu kaplayan en büyük organdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-097",
+    "category": "insan",
+    "text": "İnsanların sağ ve sol akciğerleri eşit sayıda loba mı sahiptir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Sağ akciğer üç, sol akciğer iki lobludur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-098",
+    "category": "insan",
+    "text": "İnsanların normalde iki çift, yani dört akciğeri mi vardır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İnsanlarda sağ ve sol olmak üzere iki akciğer bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-099",
+    "category": "insan",
+    "text": "Dilin farklı bölgeleri yalnızca tek bir tadı algılar biçimindeki keskin tat haritası doğru mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Tat duyuları dilin geniş bölgelerinde algılanabilir; keskin bölgelere ayrılmış harita doğru değildir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-100",
+    "category": "insan",
+    "text": "Umami temel tatlardan biri midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Umami tatlı, tuzlu, ekşi ve acıyla birlikte beş temel tattandır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-101",
+    "category": "insan",
+    "text": "Diş minesi insan vücudundaki en sert dokulardan biri midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Diş minesi yoğun mineral yapısıyla vücudun en sert dokusudur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-102",
+    "category": "insan",
+    "text": "İnsan iskeletindeki bütün kemikler ömür boyunca aynı sayıda ayrı parça olarak mı kalır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Büyüme sırasında bazı kemikler birleşir; sayı yaşla değişebilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-103",
+    "category": "insan",
+    "text": "Orta kulakta çekiç, örs ve üzengi adlı kemikçikler var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Bu üç küçük kemik ses titreşimlerinin iletimine katılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-104",
+    "category": "insan",
+    "text": "Kırmızı kan hücreleri oksijen taşımada görev alır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Hemoglobin içeren kırmızı kan hücreleri oksijen taşır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-105",
+    "category": "insan",
+    "text": "İnsanların yalnızca yüzde onluk beyin bölümünü kullandığı iddiası doğru mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Bu bir efsanedir; farklı görevlerde beynin çok sayıda bölgesi etkinleşir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-106",
+    "category": "insan",
+    "text": "Göz bebeği kas dokusundan yapılmış siyah bir disk midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Göz bebeği irisin ortasındaki açıklıktır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-107",
+    "category": "insan",
+    "text": "Gözün renkli bölümü iris midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "İris, göz bebeğinin çevresindeki renkli bölümdür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-108",
+    "category": "insan",
+    "text": "İnsanların kalbi dört odacıklı mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "İki kulakçık ve iki karıncıktan oluşur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-109",
+    "category": "insan",
+    "text": "İnsan kalbi göğüs kafesinin bütünüyle sağ tarafında mı bulunur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Normal anatomide kalp göğsün orta bölümünde, büyük kısmı sola uzanacak biçimdedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-110",
+    "category": "insan",
+    "text": "İnsanların doğal dişleri kırıldıktan sonra köpekbalığı dişleri gibi sürekli yeniden çıkar mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İnsanlar süt ve kalıcı diş dizilerine sahiptir; kalıcı dişler sürekli yenilenmez.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-111",
+    "category": "bitki-gida",
+    "text": "Mantarlar biyolojik sınıflamada bitki sayılır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Mantarlar bitkilerden ayrı bir âlem oluşturur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-112",
+    "category": "bitki-gida",
+    "text": "Bambu bir çimen akrabası, yani buğdaygiller üyesi midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Bambular buğdaygiller ailesindendir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-113",
+    "category": "bitki-gida",
+    "text": "Yer fıstığı botanik olarak baklagil midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Yer fıstığı fasulye ve mercimekle aynı ailede bir baklagildir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-114",
+    "category": "bitki-gida",
+    "text": "Yer fıstığının meyveleri genellikle ağacın dallarında mı olgunlaşır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Yer fıstığının meyveleri toprağın altında gelişir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-115",
+    "category": "bitki-gida",
+    "text": "Kakao çekirdekleri bir ağacın meyvelerinin içinde mi büyür?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Kakao çekirdekleri kakao ağacının meyvelerindeki tohumlardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-116",
+    "category": "bitki-gida",
+    "text": "Beyaz çikolata mutlaka koyu renk veren kakao kuru maddesini içerir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Beyaz çikolatada kakao yağı bulunur; koyu renkli kakao kuru maddesi bulunmaz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-117",
+    "category": "bitki-gida",
+    "text": "Vanilya bir orkide türünden mi elde edilir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ticari vanilya bazı Vanilla cinsi orkidelerin meyvelerinden elde edilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-118",
+    "category": "bitki-gida",
+    "text": "Tarçın bitkinin iç kabuğundan mı elde edilir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Tarçın ağacının iç kabuğu baharat olarak kullanılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-119",
+    "category": "bitki-gida",
+    "text": "Safran bitkinin kökünden mi elde edilir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Safran çiçeğinin tepeciklerinden elde edilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-120",
+    "category": "bitki-gida",
+    "text": "Karanfil baharatı kurutulmuş çiçek tomurcuğu mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Karanfil ağacının açılmamış çiçek tomurcukları kurutulur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-121",
+    "category": "bitki-gida",
+    "text": "Zencefil mutfakta kök dense de botanik olarak bir rizom mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Yenen bölüm yer altında büyüyen bir gövde, yani rizomdur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-122",
+    "category": "bitki-gida",
+    "text": "Patatesin yediğimiz kısmı bitkinin meyvesi midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Patatesin yenen yumrusu değişime uğramış gövdedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-123",
+    "category": "bitki-gida",
+    "text": "Domates botanik açıdan meyve midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Çiçeğin yumurtalığından gelişen, tohum içeren bir meyvedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-124",
+    "category": "bitki-gida",
+    "text": "Salatalık botanik açıdan meyve sayılır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Mutfakta sebze sayılsa da botanik olarak meyvedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-125",
+    "category": "bitki-gida",
+    "text": "Çileğin dışındaki küçük noktalar botanik açıdan ayrı küçük meyvecikler midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Dıştaki akenler küçük meyvelerdir; her birinin içinde bir tohum bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-126",
+    "category": "bitki-gida",
+    "text": "Bütün kaktüslerin yaprakları geniş ve yassı mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Çoğu kaktüste yapraklar dikenlere dönüşmüştür; fotosentezin büyük kısmını gövde yapar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-127",
+    "category": "bitki-gida",
+    "text": "Bitkiler yalnızca gündüz mü solunum yapar?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Canlı bitki hücreleri hem gündüz hem gece solunum yapar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-128",
+    "category": "bitki-gida",
+    "text": "Yeşil bitkilerde fotosentez için ışık gerekli midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Fotosentezin ışığa bağlı tepkimeleri ışık enerjisini kullanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-129",
+    "category": "bitki-gida",
+    "text": "Siyah ve yeşil çay aynı bitki türünden elde edilebilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Her ikisi de Camellia sinensis'ten elde edilir; işleme biçimleri farklıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-130",
+    "category": "bitki-gida",
+    "text": "Kahve çekirdeği aslında kahve meyvesinin tohumu mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Kavrulan kahve çekirdekleri meyvenin içindeki tohumlardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-131",
+    "category": "bitki-gida",
+    "text": "Ananas yüksek bir ağacın dallarında mı büyür?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Ananas yere yakın otsu bir bitkinin üzerinde gelişir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-132",
+    "category": "bitki-gida",
+    "text": "Olgunlaşmış ayçiçeği başları gün boyunca sürekli Güneş'i takip eder mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Genç bitkiler takip hareketi yapar; olgun çiçek başları çoğunlukla doğuya yönelir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-133",
+    "category": "bitki-gida",
+    "text": "Bir ağacın bütün yaş halkaları her koşulda kusursuz birer takvim yılına eşit midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İklim ve büyüme koşulları eksik ya da yalancı halkalar oluşturabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-134",
+    "category": "bitki-gida",
+    "text": "Acı biberin yakıcılığında kapsaisin etkili midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Kapsaisin ısı ve ağrı algısıyla ilişkili reseptörleri uyarır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-135",
+    "category": "bitki-gida",
+    "text": "Nane ferahlığı ağızdaki sıcaklığı mutlaka gerçekten düşürdüğü için mi hissedilir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Mentol soğuk algısıyla ilişkili reseptörleri uyarır; duyum gerçek sıcaklık düşüşü gerektirmez.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-136",
+    "category": "bilim-teknoloji",
+    "text": "Uçakların kara kutuları genellikle siyah renkte midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Kolay bulunmaları için çoğunlukla parlak turuncudur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-137",
+    "category": "bilim-teknoloji",
+    "text": "Standart bir QR kodun üç köşesinde büyük konum işaretleri var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Bu üç işaret tarayıcının kodu yönlendirmesine yardım eder.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-138",
+    "category": "bilim-teknoloji",
+    "text": "Bir barkodla QR kodu aynı tek boyutlu biçim midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Klasik çizgili barkod bir boyutlu, QR kod iki boyutludur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-139",
+    "category": "bilim-teknoloji",
+    "text": "Bluetooth adı tarihî bir kralın lakabından mı gelir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ad, Danimarka kralı Harald Bluetooth'un lakabından gelir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-140",
+    "category": "bilim-teknoloji",
+    "text": "Bluetooth'un çalışması için mutlaka internet bağlantısı gerekir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Bluetooth cihazlar arasında kısa mesafeli kablosuz bağlantı kurabilir; internet şart değildir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-141",
+    "category": "bilim-teknoloji",
+    "text": "GPS konum belirlemede uydulardan gelen sinyallerden yararlanır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "GPS alıcısı uydu sinyalleriyle konumunu hesaplar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-142",
+    "category": "bilim-teknoloji",
+    "text": "Wi-Fi ile internet tamamen aynı şey midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Wi-Fi yerel kablosuz bağlantı teknolojisidir; internet ayrı bir ağlar bütünüdür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-143",
+    "category": "bilim-teknoloji",
+    "text": "Bir termosta vakum kullanılması ısı aktarımını azaltabilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Vakum, iletim ve taşınım yoluyla ısı geçişini azaltır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-144",
+    "category": "bilim-teknoloji",
+    "text": "Bir mıknatıs bütün metal türlerini aynı biçimde güçlüce çeker mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Demir gibi bazı metaller güçlü tepki verir; bütün metaller aynı özelliği göstermez.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-145",
+    "category": "bilim-teknoloji",
+    "text": "Paslanmaz çelik, koşullar ne olursa olsun asla paslanmaz mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Uygunsuz koşullarda paslanmaz çelikte de korozyon oluşabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-146",
+    "category": "bilim-teknoloji",
+    "text": "Cam normal oda sıcaklığında yavaşça akan sıradan bir sıvı mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Cam amorf katıdır; eski camların kalınlığı normal oda sıcaklığında akmayla açıklanmaz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-147",
+    "category": "bilim-teknoloji",
+    "text": "Cam üretiminde silis kumu önemli bir hammadde midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Birçok cam türünün ana hammaddesi silistir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-148",
+    "category": "bilim-teknoloji",
+    "text": "Elektrik kablolarında bakır kullanılması iyi iletken olmasıyla ilişkili midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Bakır iyi elektrik iletkenliği nedeniyle yaygın kullanılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-149",
+    "category": "bilim-teknoloji",
+    "text": "Gökkuşağı oluşumunda ışığın su damlalarında kırılması ve yansıması rol oynar mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Işık damlada kırılır, içten yansır ve renklerine ayrılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-150",
+    "category": "bilim-teknoloji",
+    "text": "Gökkuşağı tam olarak yedi ayrı ve keskin renk şeridinden mi oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Görünür tayf süreklidir; yedi renk geleneksel bir sınıflamadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-151",
+    "category": "bilim-teknoloji",
+    "text": "Şimşeği gök gürültüsünden önce görmemizin nedeni ışığın daha hızlı olması mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Işık sesten çok daha hızlı yayıldığı için önce ışık görülür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-152",
+    "category": "bilim-teknoloji",
+    "text": "Bir yıldırım aynı yere birden fazla kez düşebilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Yıldırım aynı yapıya veya noktaya tekrar tekrar düşebilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-153",
+    "category": "bilim-teknoloji",
+    "text": "Saf su normal basınçta her sıcaklıkta mutlaka sıvı halde midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Sıcaklığa göre katı, sıvı ya da gaz halde bulunabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-154",
+    "category": "bilim-teknoloji",
+    "text": "Su donduğunda genellikle hacmi küçülür mü?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Normal buz yapısı sıvı sudan daha düşük yoğunluktadır; donarken hacim artar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-155",
+    "category": "bilim-teknoloji",
+    "text": "Buzun suda yüzmesi, buzun sıvı sudan daha düşük yoğunlukta olmasıyla açıklanır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Buzun daha düşük yoğunluğu yüzmesini sağlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-156",
+    "category": "kultur",
+    "text": "Standart modern piyanoda 88 tuş var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Yaygın standart 52 beyaz ve 36 siyah tuştur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-157",
+    "category": "kultur",
+    "text": "Piyanodaki siyah tuş sayısı beyaz tuş sayısından fazla mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Standart piyanoda 36 siyah, 52 beyaz tuş vardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-158",
+    "category": "kultur",
+    "text": "Keman yayla çalınan telli bir çalgı mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Keman yaylı çalgılar ailesindedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-159",
+    "category": "kultur",
+    "text": "Klarnet yaylı çalgılar ailesinde midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Klarnet tek kamışlı bir üflemeli çalgıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-160",
+    "category": "kultur",
+    "text": "The Beatles'ın klasik kadrosu dört kişiden mi oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Lennon, McCartney, Harrison ve Starr klasik dörtlüdür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-161",
+    "category": "kultur",
+    "text": "Beethoven'ın Dokuzuncu Senfonisi'nde insan sesi kullanılır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Son bölüm koro ve solistlerle ünlüdür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-162",
+    "category": "kultur",
+    "text": "Vivaldi'nin Dört Mevsim'i bir resim dizisi midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Dört Mevsim dört keman konçertosundan oluşan müzik eseridir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-163",
+    "category": "kultur",
+    "text": "Mona Lisa tablosunu Leonardo da Vinci mi yaptı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Mona Lisa, Leonardo da Vinci'nin eseridir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-164",
+    "category": "kultur",
+    "text": "Mona Lisa günümüzde Roma'daki Kolezyum'da mı sergilenir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Tablo Paris'teki Louvre Müzesi'nde sergilenir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-165",
+    "category": "kultur",
+    "text": "Michelangelo'nun Davut heykeli mermerden yapılmış mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ünlü Davut heykeli mermerden oyulmuştur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-166",
+    "category": "kultur",
+    "text": "Satrançta bir piyon son sıraya ulaşınca başka bir taşa dönüşebilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Piyon vezir, kale, fil veya ata terfi edebilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-167",
+    "category": "kultur",
+    "text": "Satrançta şah normal bir hamlede üç kare ilerleyebilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Şah normal hamlede bir kare gider; rok özel bir hamledir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-168",
+    "category": "kultur",
+    "text": "Satrançta rok hem şahın hem kalenin hareket ettiği özel bir hamle midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Rokta şah ve kale belirli koşullarla birlikte hareket eder.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-169",
+    "category": "kultur",
+    "text": "Bir satranç oyununa her oyuncu iki vezirle mi başlar?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Başlangıçta her oyuncunun bir veziri vardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-170",
+    "category": "kultur",
+    "text": "Harry Potter'ın ana roman serisi yedi kitaptan mı oluşur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ana roman serisi yedi kitaptır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-171",
+    "category": "kultur",
+    "text": "Sherlock Holmes gerçek bir tarihî polis memuru mudur?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Sherlock Holmes, Arthur Conan Doyle'un kurmaca dedektifidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-172",
+    "category": "kultur",
+    "text": "Küçük Prens'in yazarı Antoine de Saint-Exupéry aynı zamanda pilot muydu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Saint-Exupéry yazarlığının yanında havacılık yaptı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-173",
+    "category": "kultur",
+    "text": "Don Kişot romanını William Shakespeare mi yazdı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Don Kişot'un yazarı Miguel de Cervantes'tir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-174",
+    "category": "kultur",
+    "text": "İstiklâl Marşı'nın sözlerini Mehmet Âkif Ersoy mu yazdı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Marşın şairi Mehmet Âkif Ersoy'dur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-175",
+    "category": "kultur",
+    "text": "Türk alfabesinde Q, W ve X resmî harfler arasında mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Türk alfabesinin 29 harfi arasında bu üç harf bulunmaz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-176",
+    "category": "tarih",
+    "text": "Eyfel Kulesi başlangıçta kalıcı olması kesinleşmiş bir yapı olarak mı planlandı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İlk plan 20 yıl ayakta kalmasıydı; bilimsel ve iletişim amaçları korunmasına katkı sağladı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-177",
+    "category": "tarih",
+    "text": "Eyfel Kulesi 1889 Dünya Fuarı için mi yapıldı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Kule Paris'teki 1889 Dünya Fuarı için inşa edildi.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-178",
+    "category": "tarih",
+    "text": "Özgürlük Heykeli Fransa'dan ABD'ye bir armağan mıydı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Heykel Fransız halkının ABD'ye armağanı olarak tasarlandı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-179",
+    "category": "tarih",
+    "text": "Özgürlük Heykeli'nin dış yüzeyi katı altından mı yapılmıştır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Heykelin dış kaplaması bakırdır; meşalede altın varak vardır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-180",
+    "category": "tarih",
+    "text": "Titanic'in dört bacasının tümü aynı işlevde kazan dumanı mı atıyordu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Dördüncü baca esas olarak havalandırma ve görünüm amacı taşıyordu.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-181",
+    "category": "tarih",
+    "text": "Titanic ilk seferinde mi battı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Titanic 1912'deki ilk transatlantik seferinde battı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-182",
+    "category": "tarih",
+    "text": "Berlin Duvarı'nın geçişlere açılması 1989 yılında mı oldu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Geçişler 9 Kasım 1989'da açıldı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-183",
+    "category": "tarih",
+    "text": "İlk modern Olimpiyatlar Paris'te mi düzenlendi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İlk modern Olimpiyatlar 1896'da Atina'da yapıldı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-184",
+    "category": "tarih",
+    "text": "Ay'a ilk ayak basan insan Neil Armstrong muydu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Armstrong, Apollo 11 göreviyle Ay'a ilk adımı attı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-185",
+    "category": "tarih",
+    "text": "Uzaya çıkan ilk insan Neil Armstrong muydu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İlk insan Yuri Gagarin'dir; 1961'de Vostok 1 ile uçtu.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-186",
+    "category": "tarih",
+    "text": "Ankara, Cumhuriyet ilanından önce başkent ilan edilmiş miydi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Ankara 13 Ekim 1923'te, Cumhuriyet ise 29 Ekim'de ilan edildi.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-187",
+    "category": "tarih",
+    "text": "TBMM Cumhuriyet ilanından sonra mı açıldı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "TBMM 23 Nisan 1920'de, Cumhuriyet'ten önce açıldı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-188",
+    "category": "tarih",
+    "text": "Türk alfabesi reformu 1928 yılında mı gerçekleşti?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Yeni Türk harfleri 1928'de kabul edildi.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-189",
+    "category": "tarih",
+    "text": "İstanbul'un 1453'teki fethini Kanuni Sultan Süleyman mı gerçekleştirdi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "İstanbul'u Fatih Sultan Mehmet fethetti.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-190",
+    "category": "tarih",
+    "text": "Anıtkabir İstanbul'da mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Anıtkabir Ankara'dadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-191",
+    "category": "spor",
+    "text": "Bir maraton tam olarak 40 kilometre midir?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Resmî maraton mesafesi 42,195 kilometredir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-192",
+    "category": "spor",
+    "text": "Olimpiyat simgesinde beş halka var mıdır?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Birbirine geçen beş halka Olimpiyatların simgesidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-193",
+    "category": "spor",
+    "text": "Futbolda kaleci dahil bir takım sahaya normalde on bir kişiyle çıkar mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Standart saha futbolunda takım on bir oyuncudan oluşur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-194",
+    "category": "spor",
+    "text": "Futbolda kaleciler ellerini sahanın her yerinde serbestçe kullanabilir mi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Kalecilerin el kullanma ayrıcalığı kendi ceza alanlarıyla sınırlıdır ve ek kurallara tabidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-195",
+    "category": "spor",
+    "text": "Basketbolda bir takım sahada aynı anda altı oyuncuyla mı oynar?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Bir basketbol takımı sahada beş oyuncuyla oynar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-196",
+    "category": "spor",
+    "text": "Voleybolda normal salon takımının sahada altı oyuncusu olur mu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Salon voleybolunda sahadaki oyuncu sayısı altıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-197",
+    "category": "spor",
+    "text": "Teniste sıfır puan için İngilizce 'love' sözcüğü kullanılır mı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Tenis puanlamasında sıfır 'love' olarak söylenir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-198",
+    "category": "spor",
+    "text": "Bir bowling oyununda standart düzende on lobut bulunur mu?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 0,
+    "explanation": "Tenpin bowling on lobutla oynanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-199",
+    "category": "spor",
+    "text": "Usain Bolt'un 2009'daki 100 metre rekoru on saniyenin üzerinde miydi?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Bolt 9,58 saniye koştu; bu on saniyenin altındadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "binary-200",
+    "category": "spor",
+    "text": "Michael Phelps olimpiyat madalyalarını atletizmde mi kazandı?",
+    "options": [
+      "Evet",
+      "Hayır"
+    ],
+    "correct": 1,
+    "explanation": "Phelps olimpiyat madalyalarını yüzme branşında kazandı.",
+    "difficulty": "general"
+  }
+]

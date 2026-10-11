@@ -2,6 +2,7 @@
 declare(strict_types=1);
 require_once __DIR__.'/family.php';
 require_once __DIR__.'/tournament.php';
+require_once __DIR__.'/quiz-formats.php';
 function fail(string $message, int $status = 400): never { http_response_code($status); echo json_encode(['error'=>$message], JSON_UNESCAPED_UNICODE); exit; }
 function privateDir(): string { return dirname(__DIR__,2).'/bilgi-arena-private'; }
 function configured(): bool { return is_file(privateDir().'/config.php') || (PHP_SAPI==='cli-server' && (bool)getenv('ARENA_TEST_DSN')); }
@@ -95,7 +96,7 @@ function syncQuizClock(array &$s, ?float $now=null): void {
     while(true){
         if($s['phase']==='question'){
             if($now<$s['deadline'])return;
-            $s['phase']='reveal';$s['revealUntil']=$s['deadline']+5;
+            scoreEstimates($s);$s['phase']='reveal';$s['revealUntil']=$s['deadline']+5;
         } elseif($s['phase']==='reveal'){
             $until=$s['revealUntil']??($s['deadline']+5);
             $s['revealUntil']=$until;
@@ -121,6 +122,7 @@ function lockRoom(string $pin): array {
 function saveRoom(array $s): void { db()->prepare('UPDATE arena_rooms SET state=? WHERE pin=?')->execute([json_encode($s,JSON_UNESCAPED_UNICODE),$s['pin']]);db()->commit(); }
 // Reveal only the current round. Never return token hashes or private profiles.
 function revealedAnswerCards(array $s, ?string $viewerKey): array {
+    if(($s['quizType']??'')==='estimate')return [];
     if($s['phase']!=='reveal' || !isset($s['questions'][$s['index']]))return [];
     $q=$s['questions'][$s['index']];$cards=[];
     foreach($s['players'] as $key=>$player){
@@ -138,15 +140,23 @@ function snapshot(array $s,?string $token=null,bool $host=false): array {
     $now=microtime(true);$phase=$s['phase'];
     $visiblePlayers=$s['players'];
     if(in_array($s['mode'],['quiz','tournament'],true) && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
-    $out=['canManage'=>$host,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score'],'avatar'=>$p['avatar']??'astronaut'],$visiblePlayers))];
+    $out=['quizType'=>$s['quizType']??'classic','canManage'=>$host,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score'],'avatar'=>$p['avatar']??'astronaut'],$visiblePlayers))];
     usort($out['players'],fn($a,$b)=>$b['score']<=>$a['score']);
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;
     if($me) $out['me']=['name'=>$me['name'],'score'=>$visiblePlayers[$key]['score'],'avatar'=>$me['avatar']??'astronaut'];
     if(in_array($s['mode'],['quiz','tournament'],true)) {
         $i=$s['index'];$out+=['index'=>$i,'total'=>count($s['questions']),'seconds'=>$s['seconds'],'deadline'=>$s['deadline']??null,'revealUntil'=>$s['revealUntil']??null,'countdownUntil'=>$s['countdownUntil']??null,'answeredCount'=>count($s['answers'][(string)$i]??[])];
-        if($i>=0 && $phase!=='countdown' && isset($s['questions'][$i])) { $q=$s['questions'][$i];$out['question']=['id'=>$q['id'],'text'=>$q['text'],'options'=>$q['options']];if(in_array($phase,['reveal','finished'])){$out['question']['correct']=$q['correct'];$out['question']['explanation']=$q['explanation']??'';} }
+        if($i>=0 && $phase!=='countdown' && isset($s['questions'][$i])) {
+            $q=$s['questions'][$i];$out['question']=['id'=>$q['id'],'text'=>$q['text'],'category'=>$q['category']??null];
+            if(($s['quizType']??'')==='estimate'){
+                $out['question']['unit']=$q['unit'];
+                if(in_array($phase,['reveal','finished'])){$out['question']['answer']=$q['answer'];$out['estimateResults']=estimateResults($s,$key);}
+            }else{$out['question']['options']=$q['options'];if(in_array($phase,['reveal','finished']))$out['question']['correct']=$q['correct'];}
+            if(in_array($phase,['reveal','finished'])){$out['question']['explanation']=$q['explanation']??'';$out['question']['source']=$q['source']??null;}
+        }
         if($phase==='reveal')$out['answerCards']=revealedAnswerCards($s,$key);
-        if($me){$answer=$s['answers'][(string)$i][$key]??null;$out['myAnswer']=$answer && $phase==='question'?['choice'=>$answer['choice']]:$answer;}
+        if($me){$answer=$s['answers'][(string)$i][$key]??null;$out['myAnswer']=$answer && $phase==='question'?(($s['quizType']??'')==='estimate'?['guess'=>$answer['guess']]:['choice'=>$answer['choice']]):$answer;}
+
     }
     if($s['mode']==='tournament')$out=array_merge($out,tournamentSnapshot($s,$key));
     if($s['mode']==='cloud') {

@@ -7,7 +7,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build && node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check:bank": "python3 scripts/build_bank.py --check"
+    "check:bank": "python3 scripts/build_bank.py --check && python3 scripts/build_quiz_formats.py --check"
   },
   "dependencies": {
     "flag-icons": "^7.5.0",
