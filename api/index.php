@@ -20,6 +20,7 @@ try {
     authActions($action,$in);
     if($action==='categories') { $counts=[];foreach(bank() as $q)$counts[$q['category']]=($counts[$q['category']]??0)+1;echo json_encode($counts);exit; }
     if($action==='questions'){needOwner();$qs=bank();$cat=$in['category']??'';echo json_encode(array_values(array_filter($qs,fn($q)=>!$cat || $q['category']===$cat)),JSON_UNESCAPED_UNICODE);exit;}
+    if($action==='family_questions'){needAdmin();echo json_encode(array_map(fn($p)=>['id'=>$p['id'],'text'=>$p['self']],familyPrompts()),JSON_UNESCAPED_UNICODE);exit;}
     if($action==='question_save'){
         needOwner();$q=['ownerId'=>(int)currentUser()['id'],'id'=>'custom-'.bin2hex(random_bytes(12)),'category'=>inputText($in['category']??'',2,32,'Kategori'),'text'=>inputText($in['text']??'',5,500,'Soru'),'options'=>[],'correct'=>(int)($in['correct']??-1),'explanation'=>inputText($in['explanation']??'',0,600,'Açıklama')];
         if(!in_array($q['category'],['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','plakalar','bayraklar','enler','turkiye-tarihi','osmanli-tarihi','islam-tarihi','peygamberler-tarihi'],true)) fail('Kategori geçersiz.');
@@ -46,11 +47,11 @@ try {
             foreach($s['questions'] as &$question){$correct=$question['options'][$question['correct']];shuffle($question['options']);$question['correct']=array_search($correct,$question['options'],true);}unset($question);
             $s['seconds']=max(10,min(90,(int)($in['seconds']??20)));$s['index']=-1;$s['answers']=[];
         }
-        if($mode==='family'){$customFamily=customFamilyPrompts($in['familyQuestions']??[]);$s['profiles']=[];$s['questions']=[];$s['answers']=[];$s['index']=-1;$s['seconds']=max(15,min(90,(int)($in['seconds']??45)));}
+        if($mode==='family'){$customFamily=customFamilyPrompts($in['familyQuestions']??[]);$chosenFamily=chosenFamilyPrompts($in['familyQuestionIds']??[],$customFamily);$s['profiles']=[];$s['questions']=[];$s['answers']=[];$s['index']=-1;$s['seconds']=max(15,min(90,(int)($in['seconds']??45)));}
         if($mode==='cloud'){$s['prompt']=inputText($in['prompt']??'Bugünü tek kelimeyle anlat!',3,200,'Soru');$s['promptVersion']=1;$s['submissions']=[];$s['phase']='open';}
         if($mode==='raffle'){$s['entries']=[];$s['winnerIds']=[];$s['winners']=[];$s['draw']=null;$s['phase']='open';}
         $db=db();$db->beginTransaction();
-        if($mode==='family'){$s['familyPrompts']=array_merge($customFamily,selectFamilyPrompts($db,10-count($customFamily),array_map(fn($p)=>normalize($p['self']),$customFamily)));shuffle($s['familyPrompts']);}
+        if($mode==='family'){$s['familyPrompts']=array_merge($customFamily,selectFamilyPrompts($db,10-count($customFamily),array_map(fn($p)=>normalize($p['self']),$customFamily),$chosenFamily));shuffle($s['familyPrompts']);}
         for($attempt=0;$attempt<5;$attempt++){try{$db->prepare('INSERT INTO arena_rooms (pin,state,created_at) VALUES (?,?,?)')->execute([$s['pin'],json_encode($s,JSON_UNESCAPED_UNICODE),time()]);break;}catch(PDOException $e){if(!in_array((string)$e->getCode(),['23000','23505']))throw $e;$s['pin']=(string)random_int(100000,999999);if($attempt===4)throw $e;}}
         foreach($s['questions']??[] as $q){$sql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';$db->prepare($sql)->execute([$q['id'],time()]);}
         $db->commit();echo json_encode(snapshot($s,null,true),JSON_UNESCAPED_UNICODE);exit;
