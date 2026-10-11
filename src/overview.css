@@ -20,7 +20,7 @@
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: auto;
+  grid-auto-rows: 1fr;
   gap: 22px;
   min-height: calc(100svh - 60px);
 }
@@ -666,102 +666,144 @@
   }
 }
 
-/* Secondary modes share a compact row; the main party games keep their artwork. */
-.shell .overview-module-compact > .overview-card {
-  min-height: 0;
-  padding: 76px 24px 20px;
-  border-radius: 24px;
-  box-shadow:
-    inset 0 1px 0 #fff3,
-    0 10px 24px #30204014;
-}
-.overview-module-compact .overview-card::after {
-  display: none;
-}
-.overview-module-compact .overview-card-top {
-  padding-right: 75px;
-  font-size: 8px;
-  letter-spacing: 1px;
-}
-.overview-module-compact .overview-module-number,
-.overview-module-compact .overview-corner-star,
-.overview-module-compact .overview-teaser {
-  display: none;
-}
-.shell .overview-module-compact .overview-card .overview-card-copy {
-  width: 100%;
-  max-width: 100%;
-  margin-top: 0;
-  padding-top: 12px;
-  padding-right: 80px;
-}
-.shell .overview-module-compact .overview-card h2 {
-  font-size: clamp(24px, 2.1vw, 30px);
-  letter-spacing: -0.8px;
-  margin: 0 0 9px;
-  line-height: 1.15;
-}
-.overview-module-compact .overview-module-detail {
-  display: none;
-}
-.shell .overview-module-compact .overview-description {
-  font-size: 12px;
-  line-height: 1.65;
-  color: #f1ecffcc;
-}
-.overview-compact-symbol {
+/* A distinct dimensional illustration for each game, in the same card frame. */
+.overview-target {
   position: absolute;
-  right: 24px;
-  top: 89px;
+  top: 24px;
+  left: 38px;
+  width: 166px;
+  height: 166px;
   display: grid;
   place-items: center;
-  width: 66px;
-  height: 66px;
-  border-radius: 21px;
-  color: #e4edff;
-  background: linear-gradient(145deg, #ffffff29, #ffffff09);
-  border: 1px solid #ffffff30;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #ffdb73 0 15%,
+    #fff6d9 16% 29%,
+    #638ef0 30% 43%,
+    #eaf5ff 44% 56%,
+    #638ef0 57% 68%,
+    #badaff 69%
+  );
+  border: 3px solid #e6f5ff;
   box-shadow:
-    inset 0 1px 0 #ffffff40,
-    0 8px 18px #12133320;
-  transform: rotate(-7deg);
+    inset 5px 6px 12px #fff8,
+    inset -6px -7px 10px #1a3b8d55,
+    6px 8px 0 #3c62a9,
+    10px 15px 0 #244777,
+    16px 25px 23px #152e6944;
+  transform: perspective(500px) rotateY(-22deg) rotateX(8deg);
 }
-.overview-tournament .overview-compact-symbol {
-  color: #ffe4a7;
-  transform: rotate(7deg);
+.overview-target > span {
+  color: #966128;
+  font-size: 29px;
+  text-shadow: 0 1px #fff;
 }
-.shell .overview-module-compact .overview-card-bottom {
-  margin-top: 20px;
-  padding-top: 13px;
+.overview-target-arrow {
+  position: absolute;
+  right: 23px;
+  top: -18px;
+  color: #ffe49c;
+  font-size: 130px;
+  font-weight: 900;
+  line-height: 1;
+  transform: rotate(180deg);
+  filter: drop-shadow(3px 5px 1px #af7445);
+}
+.overview-solo-bolt {
+  position: absolute;
+  left: 8px;
+  bottom: 38px;
+  font-size: 47px;
+  filter: drop-shadow(0 8px 5px #16346455);
+  transform: rotate(-12deg);
+}
+.overview-record,
+.overview-final {
+  position: absolute;
+  bottom: -1px;
+  right: 26px;
+  z-index: 4;
+  padding: 12px 17px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #fffdf5, #fff1b9);
+  color: #83612e;
   font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.6px;
+  border: 1px solid #fff;
+  box-shadow:
+    0 5px 0 #ac936c,
+    0 12px 20px #22233a25;
+  transform: rotate(6deg);
 }
-.overview-module-compact .overview-arrow {
-  width: 32px;
-  height: 32px;
+.overview-podium {
+  position: absolute;
+  left: 27px;
+  right: 21px;
+  bottom: 25px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+  transform: perspective(550px) rotateY(-10deg);
 }
-.overview-module-compact .overview-arrow svg {
-  width: 18px;
-  height: 18px;
+.overview-podium > span {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 69px;
+  border-radius: 9px 9px 3px 3px;
+  background: linear-gradient(125deg, #e9edff, #8699c8);
+  color: #485b96;
+  font-size: 28px;
+  font-weight: 900;
+  border-top: 5px solid #fff9;
+  box-shadow:
+    5px 6px 0 #49598b,
+    0 14px 20px #16183b40;
+}
+.overview-podium > span:nth-child(2) {
+  height: 103px;
+  background: linear-gradient(120deg, #ffeebb, #d9a54f);
+  color: #94611c;
+  box-shadow:
+    5px 6px 0 #986427,
+    0 14px 20px #16183b40;
+}
+.overview-podium > span:nth-child(3) {
+  height: 53px;
+  background: linear-gradient(120deg, #f1c6a6, #b37c69);
+  color: #815548;
+  box-shadow: 5px 6px 0 #7b504b;
+}
+.overview-champion {
+  position: absolute;
+  left: 74px;
+  top: -5px;
+  font-size: 107px;
+  line-height: 1;
+  filter: drop-shadow(0 10px 8px #27133655);
+  animation: overviewFloat 5s ease-in-out infinite;
+}
+.overview-prize {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  font-size: 46px;
+  transform: rotate(14deg);
+  filter: drop-shadow(0 8px 6px #261a3444);
+}
+.overview-final {
+  right: 35px;
+  bottom: -9px;
+  transform: rotate(-4deg);
 }
 @media (max-width: 800px) {
-  .shell .overview-module-compact > .overview-card {
-    padding: 72px 20px 18px;
+  .shell .overview-content .overview-grid {
+    grid-auto-rows: 1fr;
   }
-  .overview-compact-symbol {
-    right: 20px;
-    top: 83px;
-    width: 58px;
-    height: 58px;
-    border-radius: 18px;
-  }
-  .overview-compact-symbol svg {
-    width: 30px;
-    height: 30px;
-  }
-  .shell .overview-module-compact .overview-card .overview-card-copy {
-    padding-right: 68px;
-  }
-  .shell .overview-module-compact .overview-card h2 {
-    font-size: 25px;
+  .shell .overview-card:hover .overview-art {
+    transform: rotate(-7deg) scale(0.42);
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, Target, Trophy } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import "./overview.css";
 import ModuleGuide from "./ModuleGuide";
 import { moduleTeasers } from "./ModuleTeasers";
@@ -61,13 +61,35 @@ function ModuleArt({ type }) {
       <span className="overview-art-glow" />
       <span className="overview-spark overview-spark-one">✦</span>
       <span className="overview-spark overview-spark-two">✧</span>
-      {["quiz", "tournament", "solo"].includes(type) && (
+      {type === "quiz" && (
         <>
           <span className="overview-answer answer-a">▲</span>
           <span className="overview-answer answer-b">◆</span>
           <span className="overview-answer answer-c">●</span>
           <span className="overview-trophy">🏆</span>
           <span className="overview-score">✦ +1.000</span>
+        </>
+      )}
+      {type === "solo" && (
+        <>
+          <span className="overview-target">
+            <span>★</span>
+          </span>
+          <span className="overview-target-arrow">➶</span>
+          <span className="overview-solo-bolt">⚡</span>
+          <span className="overview-record">✦ YENİ REKOR</span>
+        </>
+      )}
+      {type === "tournament" && (
+        <>
+          <span className="overview-podium">
+            <span>2</span>
+            <span>1</span>
+            <span>3</span>
+          </span>
+          <span className="overview-champion">🏆</span>
+          <span className="overview-prize">🎁</span>
+          <span className="overview-final">★ BÜYÜK FİNAL</span>
         </>
       )}
       {type === "family" && (
@@ -119,7 +141,7 @@ export default function Overview({ onChoose }) {
       {modules.map((m, i) => (
         <article
           key={m.id}
-          className={`overview-module overview-module-${m.id} ${["solo", "tournament"].includes(m.id) ? "overview-module-compact" : ""}`}
+          className={`overview-module overview-module-${m.id}`}
         >
           <ModuleGuide mode={m.id} compact />
           <button
@@ -135,17 +157,7 @@ export default function Overview({ onChoose }) {
                 ✦
               </span>
             </span>
-            {["solo", "tournament"].includes(m.id) ? (
-              <span className="overview-compact-symbol" aria-hidden="true">
-                {m.id === "solo" ? (
-                  <Target size={35} strokeWidth={1.6} />
-                ) : (
-                  <Trophy size={35} strokeWidth={1.6} />
-                )}
-              </span>
-            ) : (
-              <ModuleArt type={m.id} />
-            )}
+            <ModuleArt type={m.id} />
             <span className="overview-card-copy">
               <span className="overview-module-detail">{m.detail}</span>
               <h2>{m.title}</h2>
