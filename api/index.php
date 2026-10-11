@@ -86,7 +86,7 @@ try {
             $existing=array_filter($s['entries'],fn($e)=>normalize($e['name'])===normalize($name));
             if(!$existing){if(count($s['entries'])>=2000)fail('Katılımcı kapasitesi doldu.',409);$s['entries'][]=['id'=>bin2hex(random_bytes(8)),'name'=>$name];}
         }
-        saveRoom($s);echo json_encode(['token'=>$token,'room'=>snapshot($s,$token)],JSON_UNESCAPED_UNICODE);exit;
+        saveRoom($s);echo json_encode(['token'=>$token,'room'=>snapshot($s,$token,canManageRoom($s))],JSON_UNESCAPED_UNICODE);exit;
     }
     if($action==='answer'){
         $key=playerKey($s,$token);if(!in_array($s['mode'],['quiz','tournament'],true)||$s['phase']!=='question')fail('Bu sorunun yanıt süresi bitti.',409);
