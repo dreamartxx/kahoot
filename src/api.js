@@ -10,6 +10,7 @@ export async function api(action, data, token) {
     "status",
     "categories",
     "questions",
+    "family_questions",
     "rooms",
     "room",
     "users",

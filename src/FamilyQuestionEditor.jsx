@@ -1,7 +1,11 @@
 import React from "react";
 import { Plus, Trash2 } from "lucide-react";
 
-export default function FamilyQuestionEditor({ questions, onChange }) {
+export default function FamilyQuestionEditor({
+  questions,
+  onChange,
+  manual = false,
+}) {
   const edit = (index, patch) =>
     onChange(questions.map((q, i) => (i === index ? { ...q, ...patch } : q)));
   return (
@@ -12,7 +16,9 @@ export default function FamilyQuestionEditor({ questions, onChange }) {
         </strong>
         <p>
           Kendini anlatan sorular yaz: “En sevdiğim kahvaltılık hangisi?” gibi.
-          Kalan sorular havuzdan tamamlanır.
+          {manual
+            ? " Kalan soruları aşağıdaki havuzdan sen seçersin."
+            : " Kalan sorular havuzdan tamamlanır."}
         </p>
         <p>
           Örnek şıklar doğru cevap değildir. Herkes kendi cevabını telefondan

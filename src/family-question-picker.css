@@ -1,0 +1,129 @@
+.family-question-picker {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #efcfe0;
+  background: linear-gradient(135deg, #fff3f7, #f7f1ff);
+}
+.family-picker-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #a83c78;
+}
+.family-picker-heading > svg {
+  flex-shrink: 0;
+}
+.family-picker-heading h3 {
+  font-size: 17px;
+  margin: 0;
+}
+.family-picker-heading p,
+.family-picker-hint {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #80617c;
+  margin: 6px 0;
+}
+.family-picker-heading strong {
+  margin-left: auto;
+  white-space: nowrap;
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: white;
+  font-size: 16px;
+}
+.family-picker-hint {
+  margin: 14px 0;
+}
+.family-picker-search {
+  position: relative;
+  display: block;
+  margin-bottom: 12px;
+}
+.family-picker-search svg {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9a6c95;
+}
+.family-picker-search input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px 10px 40px;
+  border: 1px solid #e5cddd;
+  border-radius: 12px;
+  background: white;
+  font: inherit;
+  font-size: 16px;
+}
+.family-picker-list {
+  display: grid;
+  gap: 9px;
+  max-height: 330px;
+  overflow-y: auto;
+  padding: 3px;
+}
+.family-picker-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  min-height: 54px;
+  border: 1px solid #eddfeb;
+  border-radius: 13px;
+  background: white;
+  color: #60455c;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.family-picker-card input {
+  accent-color: #b44182;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.family-picker-card > svg {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #b44182;
+}
+.family-picker-card.is-selected {
+  border-color: #cf7aab;
+  background: #fff4fa;
+  box-shadow: 0 3px 10px #b4418210;
+}
+.family-picker-card:has(input:disabled) {
+  opacity: 0.55;
+  cursor: default;
+}
+.family-picker-card:focus-within,
+.family-picker-search input:focus-visible {
+  outline: 2px solid #b44182;
+  outline-offset: 2px;
+}
+.family-picker-error {
+  color: #a92553;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.family-picker-clear {
+  margin-top: 12px;
+}
+@media (max-width: 600px) {
+  .family-question-picker {
+    padding: 14px;
+  }
+  .family-picker-heading {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .family-picker-heading h3 {
+    font-size: 15px;
+  }
+  .family-picker-heading > svg {
+    display: none;
+  }
+}

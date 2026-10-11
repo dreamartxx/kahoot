@@ -27,7 +27,19 @@ function customFamilyPrompts(mixed $input): array {
     }
     return $out;
 }
-function selectFamilyPrompts(PDO $db, int $count=10, array $excluded=[]): array {
+function chosenFamilyPrompts(mixed $ids, array $custom): ?array {
+    if(!is_array($ids)||!array_is_list($ids)||count($ids)>10||count(array_filter($ids,'is_string'))!==count($ids)||count(array_unique($ids))!==count($ids))fail('Aile sorusu seçimi geçersiz.');
+    if(!$ids)return null;
+    if(count($ids)+count($custom)!==10)fail('Hazır ve özel soruların toplamı 10 olmalı.');
+    $pool=array_column(familyPrompts(),null,'id');$selected=[];$excluded=array_map(fn($p)=>normalize($p['self']),$custom);
+    foreach($ids as $id){
+        if(!isset($pool[$id]))fail('Seçilen aile sorusu bulunamadı.');
+        if(in_array(normalize($pool[$id]['self']),$excluded,true))fail('Aynı soruyu hem hazır hem özel soru olarak ekleyemezsin.');
+        $selected[]=$pool[$id];
+    }
+    return $selected;
+}
+function selectFamilyPrompts(PDO $db, int $count=10, array $excluded=[], ?array $chosen=null): array {
     if($count===0)return [];
     // Serialize selection and use a monotonic round number, including games
     // created in the same second. The shared history survives room expiry.
@@ -37,10 +49,13 @@ function selectFamilyPrompts(PDO $db, int $count=10, array $excluded=[]): array 
     $db->prepare($sql)->execute([$clockId,time()]);
     $clock=$db->prepare('SELECT used_at FROM arena_history WHERE id=?');$clock->execute([$clockId]);$round=(int)$clock->fetchColumn();
     $history=[];foreach($db->query("SELECT id,used_at FROM arena_history WHERE id LIKE 'family-prompt:%'") as $row)$history[$row['id']]=(int)$row['used_at'];
-    $groups=[];foreach(familyPrompts() as $prompt){if(in_array(normalize($prompt['self']),$excluded,true))continue;$groups[$prompt['group']][]=$prompt;}
-    $selected=[];
-    foreach($groups as $pool){shuffle($pool);usort($pool,fn($a,$b)=>($history['family-prompt:'.$a['id']]??0)<=>($history['family-prompt:'.$b['id']]??0));array_push($selected,...array_slice($pool,0,2));}
-    shuffle($selected);$selected=array_slice($selected,0,$count);
+    $selected=$chosen;
+    if($selected===null){
+        $groups=[];foreach(familyPrompts() as $prompt){if(in_array(normalize($prompt['self']),$excluded,true))continue;$groups[$prompt['group']][]=$prompt;}
+        $selected=[];
+        foreach($groups as $pool){shuffle($pool);usort($pool,fn($a,$b)=>($history['family-prompt:'.$a['id']]??0)<=>($history['family-prompt:'.$b['id']]??0));array_push($selected,...array_slice($pool,0,2));}
+        shuffle($selected);$selected=array_slice($selected,0,$count);
+    }
     $sql=$mysql?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';
     $record=$db->prepare($sql);foreach($selected as $p)$record->execute(['family-prompt:'.$p['id'],$round]);
     return $selected;

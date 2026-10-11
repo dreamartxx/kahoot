@@ -48,6 +48,7 @@ import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
 import FamilyRoom from "./FamilyRoom";
 import FamilyQuestionEditor from "./FamilyQuestionEditor";
+import FamilyQuestionPicker from "./FamilyQuestionPicker";
 import { quizTransition } from "./quiz-transition";
 import { PwaInstall, PwaNotices } from "./PwaInstall";
 import { setupPwa } from "./pwa";
@@ -837,6 +838,8 @@ function Create({
     [qs, setQs] = useState([]),
     [selected, setSelected] = useState([]),
     [customFamily, setCustomFamily] = useState(false),
+    [manualFamily, setManualFamily] = useState(false),
+    [familySelected, setFamilySelected] = useState([]),
     [familyQuestions, setFamilyQuestions] = useState([
       { text: "", examples: ["", "", ""] },
     ]);
@@ -854,7 +857,7 @@ function Create({
     <Modal
       title={modes[mode].name + " oluştur"}
       onClose={onClose}
-      wide={manual || customFamily}
+      wide={manual || customFamily || manualFamily}
     >
       <form
         onSubmit={async (e) => {
@@ -870,7 +873,10 @@ function Create({
                 prompt,
                 questionIds: manual && canManageLibrary ? selected : [],
                 ...(mode === "family"
-                  ? { familyQuestions: customFamily ? familyQuestions : [] }
+                  ? {
+                      familyQuestions: customFamily ? familyQuestions : [],
+                      familyQuestionIds: manualFamily ? familySelected : [],
+                    }
                   : {}),
               }),
             );
@@ -982,10 +988,10 @@ function Create({
             <div className="info-box">
               <Heart size={24} />
               <span>
-                Hazır havuzdan oyna veya kendi sorularını ekle. Herkes adını ve
-                ailedeki rolünü yazar, aynı 10 soruyu kendisi için cevaplar.
-                Herkes hazır olunca dört şıklı aile yarışması başlar. En az 2
-                kişiyle oynanır.
+                Soruları kendin seç, rastgele oyna veya kendi sorularını ekle.
+                Herkes adını ve ailedeki rolünü yazar, aynı 10 soruyu kendisi
+                için cevaplar. Herkes hazır olunca dört şıklı aile yarışması
+                başlar. En az 2 kişiyle oynanır.
               </span>
             </div>
             <Field label="Soru başına süre">
@@ -1000,6 +1006,15 @@ function Create({
                 ))}
               </select>
             </Field>
+            <Field label="Hazır sorular nasıl seçilsin?">
+              <select
+                value={manualFamily ? "manual" : "random"}
+                onChange={(e) => setManualFamily(e.target.value === "manual")}
+              >
+                <option value="random">Rastgele seçilsin</option>
+                <option value="manual">Soruları ben seçeyim</option>
+              </select>
+            </Field>
             <label className="check-row">
               <input
                 type="checkbox"
@@ -1012,11 +1027,21 @@ function Create({
               <FamilyQuestionEditor
                 questions={familyQuestions}
                 onChange={setFamilyQuestions}
+                manual={manualFamily}
               />
             ) : (
-              <p className="muted">
-                50 soruluk havuzdan her oyun için 10 soru seçilir.
-              </p>
+              !manualFamily && (
+                <p className="muted">
+                  50 soruluk havuzdan her oyun için 10 soru seçilir.
+                </p>
+              )
+            )}
+            {manualFamily && (
+              <FamilyQuestionPicker
+                selected={familySelected}
+                onChange={setFamilySelected}
+                count={10 - (customFamily ? familyQuestions.length : 0)}
+              />
             )}
             <p className="muted">
               Her aile üyesi için 10 soru sorulur. Doğru cevap 100 puan; kendi
@@ -1045,7 +1070,14 @@ function Create({
         )}
         <Button
           className="full"
-          disabled={busy || (manual && selected.length !== 10)}
+          disabled={
+            busy ||
+            (manual && selected.length !== 10) ||
+            (manualFamily &&
+              familySelected.length +
+                (customFamily ? familyQuestions.length : 0) !==
+                10)
+          }
         >
           {busy ? "Hazırlanıyor…" : "Etkinliği oluştur"}{" "}
           <ArrowRight size={18} />

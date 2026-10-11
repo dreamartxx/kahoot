@@ -15,6 +15,7 @@ async function call(action, data = {}, options = {}) {
     "status",
     "categories",
     "questions",
+    "family_questions",
     "rooms",
     "room",
     "users",
@@ -1344,6 +1345,117 @@ test("custom family questions mix with the pool and keep participant answers pri
   );
 });
 
+test("family hosts choose exact prompts, mix custom questions, and invalid selections are rejected", async () => {
+  assert.equal((await call("family_questions")).status, 401);
+  const catalog = (await call("family_questions", {}, { admin: true })).data;
+  assert.equal(catalog.length, 50);
+  assert(catalog.every((p) => Object.keys(p).sort().join() === "id,text"));
+  const ids = catalog.slice(0, 10).map((p) => p.id);
+  const room = await create("family", { familyQuestionIds: ids });
+  assert.deepEqual(room.prompts.map((p) => p.id).sort(), [...ids].sort());
+  const participant = await call("join", {
+    pin: room.pin,
+    name: "Elif",
+    role: "Anne",
+  });
+  assert.equal(participant.status, 200);
+  const joined = await call(
+    "room",
+    { pin: room.pin },
+    { token: participant.data.token },
+  );
+  assert.deepEqual(
+    joined.data.prompts.map((p) => p.id).sort(),
+    [...ids].sort(),
+  );
+  const answers = Object.fromEntries(ids.map((id) => [id, "Benim tercihim"]));
+  assert.equal(
+    (
+      await call(
+        "family_profile",
+        { pin: room.pin, answers },
+        { token: participant.data.token },
+      )
+    ).status,
+    200,
+  );
+  const custom = {
+    text: "En sevdiğim aile buluşması hangisi?",
+    examples: ["Piknik", "Kahvaltı", "Bayram"],
+  };
+  const mixed = await create("family", {
+    familyQuestionIds: ids.slice(0, 9),
+    familyQuestions: [custom],
+  });
+  assert.equal(mixed.prompts.length, 10);
+  assert.deepEqual(
+    mixed.prompts
+      .filter((p) => !p.id.startsWith("custom-family-"))
+      .map((p) => p.id)
+      .sort(),
+    ids.slice(0, 9).sort(),
+  );
+  assert(mixed.prompts.some((p) => p.text === custom.text));
+  for (const invalid of [
+    "food",
+    { 1: "food" },
+    [null],
+    ids.slice(0, 9),
+    [...ids, "color"],
+    [...ids.slice(0, 9), ids[0]],
+    [...ids.slice(0, 9), "unknown"],
+  ]) {
+    assert.equal(
+      (
+        await call(
+          "create",
+          { mode: "family", title: "Soru seçimi", familyQuestionIds: invalid },
+          { admin: true },
+        )
+      ).status,
+      400,
+    );
+  }
+  assert.equal(
+    (
+      await call(
+        "create",
+        {
+          mode: "family",
+          title: "Fazla soru",
+          familyQuestionIds: ids,
+          familyQuestions: [custom],
+        },
+        { admin: true },
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "create",
+        {
+          mode: "family",
+          title: "Aynı soru",
+          familyQuestionIds: ids.slice(0, 9),
+          familyQuestions: [{ ...custom, text: catalog[0].text }],
+        },
+        { admin: true },
+      )
+    ).status,
+    400,
+  );
+  const recorded = JSON.parse(
+    execFileSync("php", [
+      "-r",
+      "$db=new PDO('sqlite:'.$argv[1]);echo json_encode($db->query(\"SELECT id FROM arena_history WHERE id LIKE 'family-prompt:%'\")->fetchAll(PDO::FETCH_COLUMN));",
+      db,
+    ]).toString(),
+  );
+  assert(ids.every((id) => recorded.includes("family-prompt:" + id)));
+});
+
 test("all ten family questions may be custom; invalid and unauthorized submissions are rejected", async () => {
   const familyQuestions = Array.from({ length: 10 }, (_, i) => ({
     text: `En sevdiğim aile etkinliği ${i + 1} hangisi?`,
@@ -1447,6 +1559,24 @@ test("durable accounts, owner-only management, room isolation and session revoca
   assert.match(login.cookie, /SameSite=Strict/i);
   assert.match(login.cookie, /Max-Age=2592000/);
   const session = login.cookie.split(";")[0];
+  const familyCatalog = await call("family_questions", {}, { cookie: session });
+  assert.equal(familyCatalog.status, 200);
+  const hostChoice = familyCatalog.data.slice(0, 10).map((p) => p.id);
+  const chosenRoom = await call(
+    "create",
+    {
+      mode: "family",
+      title: "Sunucunun seçtikleri",
+      familyQuestionIds: hostChoice,
+    },
+    { cookie: session },
+  );
+  assert.equal(chosenRoom.status, 200);
+  assert.deepEqual(
+    chosenRoom.data.prompts.map((p) => p.id).sort(),
+    hostChoice.sort(),
+  );
+  assert.equal((await call("questions", {}, { cookie: session })).status, 403);
   assert.match(session, /^arena_session=[a-f0-9]{64}$/);
   const token = session.split("=")[1];
   const stored = JSON.parse(
