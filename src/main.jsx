@@ -38,7 +38,12 @@ import QRCode from "qrcode";
 import { api, categories, catById } from "./api";
 import { stripHeader } from "./import-utils";
 import { bubbleMetrics } from "./cloud-utils";
-import { winnerRotation, wheelEase } from "./wheel-utils";
+import {
+  winnerRotation,
+  wheelEase,
+  wheelSpin,
+  wheelLanding,
+} from "./wheel-utils";
 import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
 import FamilyRoom from "./FamilyRoom";
@@ -2095,6 +2100,7 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
 function RaffleWheel({ room, now, preview = false, onSettled }) {
   const canvas = useRef();
   const rotor = useRef();
+  const rotation = useRef(0);
   const latest = useRef();
   const finish = useRef(onSettled);
   finish.current = onSettled;
@@ -2187,16 +2193,21 @@ function RaffleWheel({ room, now, preview = false, onSettled }) {
 
   useEffect(() => {
     let frame,
-      angle = 0,
+      angle = rotation.current,
       landing = null,
       stopped = false;
     const id = draw?.id;
+    const origin = angle;
+    // Polling updates the winner, but must not reset the animation clock.
+    const clock = performance.now();
+    const serverTime =
+      latest.current.time + (clock - latest.current.clock) / 1000;
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const tick = (stamp) => {
       const current = latest.current;
-      const time = current.time + (stamp - current.clock) / 1000;
+      const time = serverTime + (stamp - clock) / 1000;
       if (!id) {
         rotor.current.style.transform = "rotate(0deg)";
         return;
@@ -2204,25 +2215,42 @@ function RaffleWheel({ room, now, preview = false, onSettled }) {
       const index = current.entries.findIndex(
         (e) => e.id === current.draw?.winner?.id,
       );
+      const motion = wheelSpin(
+        time - current.draw.startedAt,
+        current.draw.revealAt - current.draw.startedAt,
+      );
+      if (!landing && !reducedMotion) angle = origin + motion.angle;
       if (index >= 0 && !landing) {
-        const target = winnerRotation(index, current.entries.length, angle);
         if (
           reducedMotion ||
-          time >= (current.draw.settleAt ?? current.draw.revealAt)
+          serverTime >= (current.draw.settleAt ?? current.draw.revealAt)
         ) {
-          angle = target;
+          angle = winnerRotation(index, current.entries.length, angle);
           stopped = true;
-        } else landing = { from: angle, target, start: stamp };
+        } else
+          landing = {
+            ...wheelLanding(
+              index,
+              current.entries.length,
+              angle,
+              motion.speed,
+              (current.draw.settleAt ?? current.draw.revealAt) - time,
+            ),
+            start: stamp,
+          };
       }
       if (landing) {
-        const progress = Math.min(1, (stamp - landing.start) / 4000);
+        const progress = Math.min(
+          1,
+          (stamp - landing.start) / (landing.duration * 1000),
+        );
         angle =
-          landing.from + (landing.target - landing.from) * wheelEase(progress);
+          landing.from +
+          (landing.target - landing.from) * wheelEase(progress, landing.slope);
         stopped = progress === 1;
       } else if (!stopped)
-        angle = reducedMotion
-          ? 0
-          : Math.max(0, time - current.draw.startedAt) * 720;
+        angle = reducedMotion ? origin : origin + motion.angle;
+      rotation.current = angle;
       rotor.current.style.transform = `rotate(${angle}deg)`;
       if (stopped) {
         setLanded(id);
