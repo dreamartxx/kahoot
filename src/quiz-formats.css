@@ -25,6 +25,7 @@
   gap: 18px;
 }
 .format-card {
+  position: relative;
   --format-bg: #f4eaff;
   --format-accent: #7d4baf;
   --format-glow: #d9bdef;
@@ -50,8 +51,8 @@
   text-align: left;
   flex: 1;
   border: 1px solid #ffffffd0;
-  border-radius: 0 0 24px 24px;
-  padding: 25px;
+  border-radius: 24px;
+  padding: 80px 25px 25px;
   background:
     radial-gradient(circle at 95% 12%, var(--format-glow), transparent 48%),
     var(--format-bg);
@@ -135,10 +136,6 @@
   font-size: 13px;
   font-weight: 800;
   color: var(--format-accent);
-}
-.format-card .module-guide {
-  margin: 0;
-  border-radius: 19px 19px 0 0;
 }
 .quiz-category-label {
   display: block;
@@ -326,12 +323,12 @@
     grid-template-columns: 1fr;
   }
   .format-card > button {
-    padding: 24px;
+    padding: 80px 24px 24px;
   }
   .format-art {
     position: absolute;
     right: 24px;
-    top: 34px;
+    top: 90px;
     font-size: 53px;
     opacity: 0.85;
   }

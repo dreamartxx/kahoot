@@ -1,144 +1,46 @@
 .module-guide {
   margin: 0 0 22px;
-  border: 1px solid #e6ddec;
-  border-radius: 20px;
-  background: linear-gradient(115deg, #fff, #faf7ff);
-  color: #5e496f;
-  overflow: hidden;
+  width: fit-content;
 }
-.module-guide summary {
-  display: flex;
+.guide-trigger {
+  display: inline-flex;
   align-items: center;
-  gap: 13px;
-  cursor: pointer;
-  list-style: none;
-  padding: 17px 20px;
-  min-height: 62px;
-}
-.module-guide summary::-webkit-details-marker {
-  display: none;
-}
-.module-guide summary:focus-visible {
-  outline: 3px solid var(--guide-accent);
-  outline-offset: -4px;
-  border-radius: 18px;
-}
-.guide-icon {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 13px;
-  color: var(--guide-accent);
-  background: #f0eafa;
-  flex-shrink: 0;
-}
-.guide-summary-copy {
-  flex: 1;
-  min-width: 0;
-}
-.guide-summary-copy strong {
-  font-size: 15px;
-}
-.guide-summary-copy small {
-  display: block;
-  font-size: 11px;
-  color: #93819f;
-  margin-top: 5px;
-}
-.guide-badge {
-  border-radius: 20px;
-  padding: 6px 10px;
-  background: #f5effa;
-  font-size: 10px;
-  color: var(--guide-accent);
-  white-space: nowrap;
-}
-.guide-chevron {
-  flex-shrink: 0;
-  color: var(--guide-accent);
-  transition: transform 0.2s;
-}
-.module-guide[open] .guide-chevron {
-  transform: rotate(180deg);
-}
-.guide-content {
-  padding: 4px 22px 20px;
-  border-top: 1px solid #eee6f3;
-}
-.guide-title {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin: 20px 0;
-}
-.guide-title > span {
-  font-size: 32px;
-}
-.guide-title small {
-  font-size: 9px;
-  letter-spacing: 1.2px;
-  color: var(--guide-accent);
-  font-weight: 700;
-}
-.guide-title h3 {
-  font-size: 19px;
-  margin: 5px 0 0;
-}
-.guide-content ol {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.guide-content li {
-  display: flex;
-  gap: 11px;
-  min-width: 0;
-}
-.guide-step-number {
-  flex-shrink: 0;
-  color: var(--guide-accent);
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 11px 16px;
+  border: 1px solid #ffffffb3;
+  border-radius: 999px;
+  background: linear-gradient(130deg, #fff, #f2eafa);
+  color: #5f4180;
+  font: inherit;
   font-size: 12px;
   font-weight: 800;
-  border: 1px solid #e7dceb;
-  border-radius: 10px;
-  padding: 8px;
-  height: fit-content;
+  box-shadow:
+    0 4px 0 #4d2d7118,
+    0 8px 22px #25113718;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
-.guide-content li strong {
-  font-size: 13px;
+.guide-trigger:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 5px 0 #4d2d7120,
+    0 10px 25px #25113725;
 }
-.guide-content li p {
-  font-size: 12px;
-  color: #8a7698;
-  line-height: 1.7;
-  margin: 7px 0 0;
+.guide-trigger:focus-visible,
+.guide-close:focus-visible,
+.guide-done:focus-visible {
+  outline: 3px solid #d6b754;
+  outline-offset: 3px;
 }
-.guide-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  padding: 13px 15px;
-  border-radius: 12px;
-  background: #f6f0fa;
-  color: #877097;
-  font-size: 11px;
-  line-height: 1.7;
-  margin: 20px 0 0;
-}
-.guide-note svg {
-  flex-shrink: 0;
-  margin-top: 2px;
-  color: var(--guide-accent);
-}
-.room-module-guide {
-  max-width: 1300px;
-  margin: 0 auto;
+.module-guide.is-compact {
+  margin: 0;
 }
 .overview-module {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -146,59 +48,204 @@
 .overview-module-tournament {
   grid-column: 1 / -1;
 }
-.overview-module > .overview-card {
+.shell .overview-module > .overview-card {
   width: 100%;
   flex: 1;
+  padding-top: 80px;
 }
-.module-guide.is-compact {
-  margin-bottom: 11px;
-  border-radius: 16px;
+.overview-module > .module-guide,
+.format-card > .module-guide {
+  position: absolute;
+  right: 18px;
+  top: 17px;
+  z-index: 5;
 }
-.module-guide.is-compact summary {
-  padding: 11px 15px;
-  min-height: 54px;
+.overview-module .overview-art {
+  top: 108px;
 }
-.module-guide.is-compact .guide-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
+.room-module-guide {
+  max-width: 1300px;
+  margin: 0 auto;
 }
-.module-guide.is-compact .guide-summary-copy strong {
+dialog.guide-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 28px;
+  border: 1px solid #fff;
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at top right, #eee2fa, transparent 58%), #fffdfd;
+  color: #392b49;
+  box-shadow: 0 25px 90px #21103455;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: guideReveal 0.22s ease-out;
+}
+dialog.guide-dialog::backdrop {
+  background: #25143b9c;
+  backdrop-filter: blur(8px);
+}
+.guide-popup-head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.guide-popup-emoji {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  font-size: 32px;
+  background: #fff9;
+  border-radius: 18px;
+  box-shadow: 0 5px 0 #6b418312;
+}
+.guide-eyebrow {
+  color: var(--guide-accent);
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  font-weight: 800;
+}
+.guide-popup-head h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 7px 0 0;
+}
+.guide-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #dfd4e9;
+  border-radius: 50%;
+  background: #fffc;
+  color: #675076;
+  cursor: pointer;
+}
+.guide-intro {
+  color: #786384;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 20px 0;
+}
+.guide-content ol {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.guide-content li {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 16px;
+  background: #fff9;
+  border: 1px solid #ece3f1;
+  border-radius: 17px;
+}
+.guide-step-number {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f2ebf8;
+  color: var(--guide-accent);
   font-size: 13px;
+  font-weight: 900;
 }
-.module-guide.is-compact ol {
-  grid-template-columns: 1fr;
+.guide-content li strong {
+  font-size: 15px;
+}
+.guide-content li p {
+  font-size: 13px;
+  color: #74617f;
+  line-height: 1.65;
+  margin: 6px 0 0;
+}
+.guide-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  margin: 17px 0;
+  background: #f4edf9;
+  border-radius: 15px;
+  color: #745a88;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.guide-note svg {
+  flex-shrink: 0;
+  color: var(--guide-accent);
+  margin-top: 2px;
+}
+.guide-done {
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  border-radius: 15px;
+  background: #7150aa;
+  color: white;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #4b327b;
+}
+@keyframes guideReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 @media (max-width: 800px) {
-  .module-guide summary {
-    padding: 14px;
-    gap: 10px;
-  }
-  .guide-summary-copy strong {
-    font-size: 14px;
-  }
-  .guide-summary-copy small {
-    line-height: 1.5;
-  }
-  .guide-badge {
-    display: none;
-  }
-  .guide-content {
-    padding: 0 16px 16px;
-  }
-  .guide-content ol {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
   .room-module-guide {
     margin: 0 17px;
   }
-  .guide-title h3 {
-    font-size: 18px;
+  .overview-module > .module-guide,
+  .format-card > .module-guide {
+    top: 14px;
+    right: 14px;
+  }
+  dialog.guide-dialog {
+    padding: 20px;
+    border-radius: 23px;
+  }
+  .guide-popup-emoji {
+    width: 44px;
+    height: 44px;
+    font-size: 26px;
+  }
+  .guide-popup-head {
+    gap: 9px;
+  }
+  .guide-popup-head h2 {
+    font-size: 20px;
+  }
+  .guide-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+  .guide-content li {
+    padding: 13px;
+    gap: 10px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .guide-chevron {
+  .guide-trigger {
     transition: none;
+  }
+  dialog.guide-dialog {
+    animation: none;
   }
 }

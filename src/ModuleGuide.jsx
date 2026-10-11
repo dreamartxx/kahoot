@@ -1,5 +1,6 @@
-import React from "react";
-import { BookOpen, ChevronDown, Sparkles } from "lucide-react";
+import React, { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { BookOpen, Sparkles, X } from "lucide-react";
 import "./module-guide.css";
 
 const guides = {
@@ -194,33 +195,62 @@ const guides = {
   },
 };
 
-export default function ModuleGuide({ mode, compact = false }) {
-  const guide = guides[mode];
-  if (!guide) return null;
-  return (
-    <details
-      className={`module-guide ${compact ? "is-compact" : ""}`}
+function GuidePopup({ guide, onClose }) {
+  const ref = useRef(null);
+  const titleId = useId();
+  useEffect(() => {
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    ref.current.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, []);
+  return createPortal(
+    <dialog
+      ref={ref}
+      className="guide-dialog"
       style={{ "--guide-accent": guide.accent }}
+      aria-labelledby={titleId}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          const bounds = event.currentTarget.getBoundingClientRect();
+          if (
+            event.clientX < bounds.left ||
+            event.clientX > bounds.right ||
+            event.clientY < bounds.top ||
+            event.clientY > bounds.bottom
+          )
+            onClose();
+        }
+      }}
     >
-      <summary aria-label={`${guide.name}: Nasıl oynanır?`}>
-        <span className="guide-icon">
-          <BookOpen size={20} />
+      <div className="guide-popup-head">
+        <span className="guide-popup-emoji" aria-hidden="true">
+          {guide.emoji}
         </span>
-        <span className="guide-summary-copy">
-          <strong>Nasıl oynanır?</strong>
-          {!compact && <small>{guide.intro}</small>}
-        </span>
-        <span className="guide-badge">3 adımda</span>
-        <ChevronDown className="guide-chevron" size={19} />
-      </summary>
-      <div className="guide-content">
-        <div className="guide-title">
-          <span aria-hidden="true">{guide.emoji}</span>
-          <div>
-            <small>OYUN REHBERİN</small>
-            <h3>{guide.name}</h3>
-          </div>
+        <div>
+          <span className="guide-eyebrow">3 ADIMDA OYUNA HAZIR OL</span>
+          <h2 id={titleId}>{guide.name}</h2>
         </div>
+        <button
+          type="button"
+          className="guide-close"
+          onClick={onClose}
+          aria-label="Oyun rehberini kapat"
+          autoFocus
+        >
+          <X size={21} />
+        </button>
+      </div>
+      <p className="guide-intro">{guide.intro}</p>
+      <div className="guide-content">
         <ol>
           {guide.steps.map(([title, text], i) => (
             <li key={title}>
@@ -233,10 +263,39 @@ export default function ModuleGuide({ mode, compact = false }) {
           ))}
         </ol>
         <p className="guide-note">
-          <Sparkles size={17} />
+          <Sparkles size={18} />
           <span>{guide.note}</span>
         </p>
       </div>
-    </details>
+      <button type="button" className="guide-done" onClick={onClose}>
+        Anladım, hazırım!
+      </button>
+    </dialog>,
+    document.body,
+  );
+}
+
+export default function ModuleGuide({ mode, compact = false }) {
+  const [open, setOpen] = useState(false);
+  const guide = guides[mode];
+  if (!guide) return null;
+  return (
+    <div
+      className={`module-guide ${compact ? "is-compact" : ""}`}
+      style={{ "--guide-accent": guide.accent }}
+    >
+      <button
+        type="button"
+        className="guide-trigger"
+        aria-label={`${guide.name}: Nasıl oynanır?`}
+        aria-haspopup="dialog"
+        onClick={() => setOpen(true)}
+      >
+        <BookOpen size={18} />
+        <span>Nasıl oynanır?</span>
+        <Sparkles size={14} aria-hidden="true" />
+      </button>
+      {open && <GuidePopup guide={guide} onClose={() => setOpen(false)} />}
+    </div>
   );
 }
