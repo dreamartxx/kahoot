@@ -38,7 +38,12 @@ try {
         needAdmin();$mode=$in['mode']??'';if(!in_array($mode,['quiz','cloud','raffle','family','tournament']))fail('Modül geçersiz.');
         $s=['ownerId'=>(int)currentUser()['id'],'pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
         if($mode==='quiz'){
-            $s['category']=$in['category']??'cografya';$pool=array_values(array_filter(bank(),fn($q)=>$q['category']===$s['category']));
+            $s['category']=$in['category']??'cografya';
+            if(is_string($s['category'])&&specialQuiz($s['category'])){
+                if(!empty($in['questionIds']))fail('Bu yarışmada sorular otomatik seçilir.');
+                $s['quizType']=$s['category'];$s['questions']=specialQuizDeck($s['quizType']);
+            }else{
+            $pool=array_values(array_filter(bank(),fn($q)=>$q['category']===$s['category']));
             $selected=$in['questionIds']??[];
             if(!is_array($selected))fail('Soru seçimi geçersiz.');
             if($selected)needOwner();
@@ -46,13 +51,14 @@ try {
             $history=[];foreach(db()->query('SELECT id,used_at FROM arena_history') as $row)$history[$row['id']]=(int)$row['used_at'];
             try{$s['questions']=selectQuizQuestions($pool,$history,(bool)$selected);}catch(DomainException $e){fail($e->getMessage());}
             foreach($s['questions'] as &$question){$correct=$question['options'][$question['correct']];shuffle($question['options']);$question['correct']=array_search($correct,$question['options'],true);}unset($question);
+            }
             $s['seconds']=max(10,min(90,(int)($in['seconds']??20)));$s['index']=-1;$s['answers']=[];
         }
         if($mode==='tournament'){if(!empty($in['questionIds']))fail('Turnuvada sorular otomatik seçilir.');$s+=['prize'=>inputText($in['prize']??'',1,200,'Ödül'),'tournamentChoices'=>[],'tournamentVotes'=>[],'tournamentRounds'=>[],'questions'=>[],'answers'=>[],'index'=>-1,'seconds'=>max(10,min(90,(int)($in['seconds']??20)))];}
         if($mode==='family'){$customFamily=customFamilyPrompts($in['familyQuestions']??[]);$chosenFamily=chosenFamilyPrompts($in['familyQuestionIds']??[],$customFamily);$s['profiles']=[];$s['questions']=[];$s['answers']=[];$s['index']=-1;$s['seconds']=max(15,min(90,(int)($in['seconds']??45)));}
         if($mode==='cloud'){$s['prompt']=inputText($in['prompt']??'Bugünü tek kelimeyle anlat!',3,200,'Soru');$s['promptVersion']=1;$s['submissions']=[];$s['phase']='open';}
         if($mode==='raffle'){$s['entries']=[];$s['winnerIds']=[];$s['winners']=[];$s['draw']=null;$s['phase']='open';}
-        $db=db();$db->beginTransaction();
+        $db=db();if(!$db->inTransaction())$db->beginTransaction();
         if($mode==='family'){$s['familyPrompts']=array_merge($customFamily,selectFamilyPrompts($db,10-count($customFamily),array_map(fn($p)=>normalize($p['self']),$customFamily),$chosenFamily));shuffle($s['familyPrompts']);}
         for($attempt=0;$attempt<5;$attempt++){try{$db->prepare('INSERT INTO arena_rooms (pin,state,created_at) VALUES (?,?,?)')->execute([$s['pin'],json_encode($s,JSON_UNESCAPED_UNICODE),time()]);break;}catch(PDOException $e){if(!in_array((string)$e->getCode(),['23000','23505']))throw $e;$s['pin']=(string)random_int(100000,999999);if($attempt===4)throw $e;}}
         foreach($s['questions']??[] as $q){$sql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';$db->prepare($sql)->execute([$q['id'],time()]);}
@@ -93,16 +99,20 @@ try {
         $key=playerKey($s,$token);if(!in_array($s['mode'],['quiz','tournament'],true)||$s['phase']!=='question')fail('Bu sorunun yanıt süresi bitti.',409);
         $i=(string)$s['index'];$q=$s['questions'][$s['index']];if(($in['questionId']??'')!==$q['id'])fail('Yeni soruya geçildi.',409);
         if(isset($s['answers'][$i][$key]))fail('Yanıtınız zaten alındı.',409);
-        $choice=$in['choice']??null;if(!is_int($choice)||$choice<0||$choice>3)fail('Seçenek geçersiz.');
+        if(($s['quizType']??'')==='estimate'){
+            $guess=estimateValue($in['guess']??null);$s['answers'][$i][$key]=['guess'=>$guess,'points'=>0];
+        }else{
+        $choice=$in['choice']??null;if(!is_int($choice)||$choice<0||$choice>=count($q['options']))fail('Seçenek geçersiz.');
         $correct=$choice===$q['correct'];$points=$correct?(int)round(500+500*max(0,($s['deadline']-microtime(true))/$s['seconds'])):0;
         $s['answers'][$i][$key]=['choice'=>$choice,'points'=>$points];$s['players'][$key]['score']+=$points;
+        }
     }
     if($action==='advance'){
         if(!in_array($s['mode'],['quiz','tournament'],true))fail('Yarışma gerekli.');
         if($s['mode']==='tournament'&&!in_array($s['phase'],['question','reveal'],true))fail('Turnuvanın hazırlığı tamamlanmalı.',409);
         if($s['phase']==='countdown')fail('Yeni soru hazırlanıyor.',409);
         if(($in['expectedIndex']??null)!==$s['index']||($in['expectedPhase']??null)!==$s['phase'])fail('Ekran güncellendi; tekrar deneyin.',409);
-        if($s['phase']==='question'){$s['phase']='reveal';$s['revealUntil']=microtime(true)+5;}
+        if($s['phase']==='question'){scoreEstimates($s);$s['phase']='reveal';$s['revealUntil']=microtime(true)+5;}
         elseif($s['index']===count($s['questions'])-1)$s['phase']='finished';
         else{$s['index']++;$s['phase']='question';$s['deadline']=microtime(true)+$s['seconds'];unset($s['revealUntil'],$s['countdownUntil']);}
     }
