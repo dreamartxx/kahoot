@@ -2348,10 +2348,11 @@ async function readNames(file) {
   throw new Error(".xlsx veya .csv dosyası seçin.");
 }
 function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
-  const [names, setNames] = useState(""),
+  const [name, setName] = useState(""),
     [imported, setImported] = useState(null),
     [uploading, setUploading] = useState(false);
   const input = useRef();
+  const nameInput = useRef();
   const stage = useRef();
   const [settledDraw, setSettledDraw] = useState(null);
   const drawing =
@@ -2401,35 +2402,41 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
         <aside className="raffle-panel">
           <h3>Şans havuzu</h3>
           <p>
-            Her satıra bir isim yaz veya bir liste yükle.
+            Bir isim ekle, şansa bir yer aç!
             <br />
             Aynı isimler bir kez eklenir.
           </p>
           <form
+            className="raffle-name-form"
             onSubmit={async (e) => {
               e.preventDefault();
-              if (
-                await action("entries", {
-                  names: names
-                    .split(/\r?\n/)
-                    .map((s) => s.trim())
-                    .filter(Boolean),
-                })
-              )
-                setNames("");
+              if (!name.trim() || busy || drawing) return;
+              if (await action("entries", { names: [name.trim()] })) {
+                setName("");
+                nameInput.current?.focus();
+              }
             }}
           >
-            <Field label="Katılımcı isimleri">
-              <textarea
-                placeholder={"Ayşe Yılmaz\nDeniz Kaya\nEce Demir"}
-                value={names}
-                onChange={(e) => setNames(e.target.value)}
-                rows={5}
-                required
-              />
+            <Field label="İsim yaz">
+              <div className="raffle-name-input">
+                <Users size={20} aria-hidden="true" />
+                <input
+                  ref={nameInput}
+                  type="text"
+                  placeholder="Örn. Ayşe Yılmaz"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  maxLength={80}
+                  readOnly={busy || !!drawing}
+                  required
+                />
+              </div>
             </Field>
-            <Button secondary className="full" disabled={busy || drawing}>
-              <Plus size={17} /> Havuza ekle
+            <Button
+              className="full raffle-name-add"
+              disabled={busy || drawing || !name.trim()}
+            >
+              <Plus size={20} /> İsim ekle
             </Button>
           </form>
           <div className="or-divider">veya</div>

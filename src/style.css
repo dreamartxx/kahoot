@@ -1844,6 +1844,34 @@ input[type="checkbox"] {
   color: #ad98b9;
   margin: 10px 0 20px;
 }
+.raffle-name-form {
+  padding: 16px;
+  border: 1px solid #e8d6f8;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #faf4ff, #fff8ef);
+}
+.raffle-name-input {
+  position: relative;
+}
+.raffle-name-input > svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a36bcc;
+  pointer-events: none;
+}
+.raffle-name-input input {
+  min-height: 52px;
+  padding-left: 44px;
+  font-size: 16px;
+  background: white;
+}
+.raffle-name-add {
+  min-height: 48px;
+  font-size: 14px;
+  box-shadow: 0 6px 16px #a36bcc26;
+}
 .or-divider {
   display: flex;
   align-items: center;
@@ -2800,9 +2828,6 @@ input[type="checkbox"] {
   }
   .winner-announcement h2 {
     font-size: 26px;
-  }
-  .raffle-panel .field textarea {
-    font-size: 16px;
   }
   .library-toolbar > select {
     width: 100%;
