@@ -34,8 +34,13 @@ function tournamentAction(array &$s,string $action,array $in,string $token): voi
         $key=playerKey($s,$token);
         if($s['phase']!=='lobby')fail('Turnuva başladı; alanlar artık değiştirilemez.',409);
         $ids=$in['categories']??null;$allowed=tournamentCategoryIds();
-        if(!is_array($ids)||!array_is_list($ids)||count($ids)<1||count($ids)>count($allowed)||count(array_filter($ids,'is_string'))!==count($ids)||count(array_unique($ids))!==count($ids))fail('En az bir farklı alan seç.');
+        if(!is_array($ids)||!array_is_list($ids)||count($ids)!==1||count(array_filter($ids,'is_string'))!==count($ids)||count(array_unique($ids))!==count($ids))fail('Yalnızca bir alan seç.');
         foreach($ids as $id)if(!in_array($id,$allowed,true))fail('Seçilen alan geçersiz.');
+        $existing=$s['tournamentChoices'][$key]??[];
+        if(count($existing)===1){
+            if($existing===$ids)return; // Safe retry after an interrupted response.
+            fail('Alan seçimin kaydedildi. Başkası aynı alanı seçse de yeni seçim hakkı verilmez.',409);
+        }
         $s['tournamentChoices'][$key]=$ids;
     } elseif($action==='tournament_prize'){
         if($s['phase']!=='lobby')fail('Turnuva başladı; ödül artık değiştirilemez.',409);
@@ -44,7 +49,7 @@ function tournamentAction(array &$s,string $action,array $in,string $token): voi
         if($s['phase']!=='lobby')fail('Turnuva zaten başladı.',409);
         if(!empty($in['questionIds']))fail('Turnuvada sorular otomatik seçilir.');
         if(count($s['players'])<2)fail('Turnuva için en az iki katılımcı gerekli.',409);
-        foreach($s['players'] as $key=>$player)if(empty($s['tournamentChoices'][$key]))fail('Önce herkes güçlü olduğu alanları seçmeli.',409);
+        foreach($s['players'] as $key=>$player)if(count($s['tournamentChoices'][$key]??[])!==1)fail('Önce herkes tek bir alan seçmeli.',409);
         $s['prize']=inputText($s['prize']??'',1,200,'Ödül');
         $s['tournamentRounds']=array_keys(tournamentSelection($s));shuffle($s['tournamentRounds']);
         $bank=bank();$history=[];foreach(db()->query('SELECT id,used_at FROM arena_history') as $row)$history[$row['id']]=(int)$row['used_at'];
@@ -75,6 +80,6 @@ function tournamentSnapshot(array $s,?string $key): array {
     $roundIndex=max(0,intdiv(max(0,$s['index']),max(1,$s['questionsPerRound']??10)));
     $participants=[];foreach($s['players'] as $id=>$player)$participants[]=['name'=>$player['name'],'avatar'=>$player['avatar']??'astronaut','categories'=>$s['tournamentChoices'][$id]??[],'voted'=>isset($s['tournamentVotes'][$id])];
     return ['prize'=>$s['prize'],'rounds'=>$rounds,'roundIndex'=>$roundIndex,'roundTotal'=>count($rounds),'questionsPerRound'=>$s['questionsPerRound']??null,'category'=>$rounds[$roundIndex]??null,
-        'categoryVotes'=>$selection,'readyCount'=>count($s['tournamentChoices']),'tournamentParticipants'=>$participants,'myCategories'=>$key?($s['tournamentChoices'][$key]??[]):[],
+        'categoryVotes'=>$selection,'readyCount'=>count(array_filter($s['tournamentChoices'],fn($choices)=>count($choices)===1)),'tournamentParticipants'=>$participants,'myCategories'=>$key?($s['tournamentChoices'][$key]??[]):[],
         'voteUntil'=>$s['voteUntil']??null,'voteCount'=>count($s['tournamentVotes']),'votes'=>['5'=>count(array_filter($s['tournamentVotes'],fn($v)=>$v===5)),'10'=>count(array_filter($s['tournamentVotes'],fn($v)=>$v===10))],'myVote'=>$key?($s['tournamentVotes'][$key]??null):null];
 }
