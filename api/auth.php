@@ -79,6 +79,13 @@ function authActions(string $action,array $in): void {
         if((int)$u['id']===1)$db->prepare('UPDATE arena_auth SET password_hash=? WHERE id=1')->execute([$hash]);
         $db->prepare('DELETE FROM arena_sessions WHERE user_id=?')->execute([$u['id']]);$db->commit();$u['password_hash']=$hash;startAuthSession($u);echo '{"ok":true}';exit;
     }
+    if($action==='profile_update'){
+        needAdmin();rateLimit('profile_update',30);$u=currentUser();
+        foreach(array_keys($in) as $key)if($key!=='username')fail('Yalnızca kendi kullanıcı adınızı güncelleyebilirsiniz.');
+        $name=usernameValue($in['username']??'');
+        try{db()->prepare('UPDATE arena_users SET username=?,username_key=? WHERE id=?')->execute([$name,usernameKey($name),$u['id']]);}catch(PDOException $e){if(in_array((string)$e->getCode(),['23000','23505']))fail('Bu kullanıcı adı zaten kullanılıyor.',409);throw $e;}
+        $u['username']=$name;echo json_encode(['user'=>publicUser($u)],JSON_UNESCAPED_UNICODE);exit;
+    }
     if($action==='users'){needOwner();echo json_encode(array_map('publicUser',db()->query('SELECT * FROM arena_users ORDER BY id')->fetchAll()),JSON_UNESCAPED_UNICODE);exit;}
     if($action==='user_create'){
         needOwner();rateLimit('user_create',30);$name=usernameValue($in['username']??'');$pass=$in['password']??'';

@@ -1588,6 +1588,76 @@ test("durable accounts, owner-only management, room isolation and session revoca
   const opt = { cookie: session };
   assert.equal((await call("status", {}, opt)).data.user.username, "host");
   assert.equal((await call("users", {}, opt)).status, 403);
+  // Profile data always belongs to the authenticated account, even with a forged ID.
+  const self = await call("status", { id: 1 }, opt);
+  assert.equal(self.data.user.id, host.id);
+  assert.deepEqual(Object.keys(self.data.user).sort(), [
+    "active",
+    "id",
+    "role",
+    "username",
+  ]);
+  assert.equal(
+    (await call("profile_update", { username: "nobody" })).status,
+    401,
+  );
+  assert.equal((await fetch(base + "?action=profile_update")).status, 405);
+  for (const extra of [
+    { id: 1 },
+    { role: "owner" },
+    { active: false },
+    { password: "replacement" },
+  ]) {
+    assert.equal(
+      (await call("profile_update", { username: "forged", ...extra }, opt))
+        .status,
+      400,
+    );
+  }
+  assert.equal(
+    (await call("profile_update", { username: "admin" }, opt)).status,
+    409,
+  );
+  assert.equal(
+    (await call("profile_update", { username: "bad name" }, opt)).status,
+    400,
+  );
+  assert.equal(
+    (await call("profile_update", { username: "" }, opt)).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "profile_update",
+        { username: "changed" },
+        { ...opt, origin: "https://untrusted.example" },
+      )
+    ).status,
+    403,
+  );
+  const renamed = await call(
+    "profile_update",
+    { username: "host.updated" },
+    opt,
+  );
+  assert.equal(renamed.status, 200);
+  assert.equal(renamed.data.user.id, host.id);
+  assert.equal(renamed.data.user.role, "host");
+  assert.equal(
+    (await call("status", {}, opt)).data.user.username,
+    "host.updated",
+  );
+  assert.equal(
+    (await call("status", {}, { admin: true })).data.user.username,
+    "admin",
+  );
+  assert.equal((await call("users", {}, opt)).status, 403);
+  assert.equal(
+    (await call("profile_update", { username: "host" }, opt)).status,
+    200,
+  );
+
   assert.equal(
     (await call("user_create", { username: "intruder", password: "x" }, opt))
       .status,

@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import {
   LayoutGrid,
+  UserRound,
+  KeyRound,
+  CalendarDays,
   Trophy,
   Crown,
   Heart,
@@ -18,7 +21,6 @@ import {
   Play,
   X,
   Check,
-  LogOut,
   Copy,
   Maximize,
   Volume2,
@@ -70,6 +72,8 @@ import Podium from "./Podium";
 import { rankPlayers } from "./ranking";
 const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
 import UserManagement from "./UserManagement";
+import Profile from "./Profile";
+import "./mobile-shell.css";
 const modes = {
   tournament: { name: "Turnuva", icon: Crown, color: "purple" },
   family: { name: "Beni Tanıyor musun?", icon: Heart, color: "rose" },
@@ -173,6 +177,24 @@ function App() {
     addEventListener("hashchange", fn);
     return () => removeEventListener("hashchange", fn);
   }, []);
+  useEffect(() => {
+    const page = route.startsWith("studio/") ? route.slice(7) : "home";
+    const allowed = [
+      "home",
+      "events",
+      "profile",
+      "users",
+      "library",
+      ...Object.keys(modes),
+    ];
+    setTab(
+      !allowed.includes(page)
+        ? "home"
+        : ["users", "library"].includes(page) && status.user?.role !== "owner"
+          ? "profile"
+          : page,
+    );
+  }, [route, status.user?.role]);
   const go = (path) => (location.hash = path);
   const create = (mode, cat = "cografya") => {
     if (!status.configured) {
@@ -186,15 +208,28 @@ function App() {
     );
   };
   const nav = (id) => {
+    if (["users", "library"].includes(id) && status.user?.role !== "owner")
+      id = "profile";
     setTab(id);
-    go("");
+    go(id === "home" ? "" : "studio/" + id);
     window.scrollTo(0, 0);
     if (id === "library" && !status.admin) setModal({ type: "login" });
+  };
+  const logout = async () => {
+    try {
+      await api("logout");
+      setStatus((s) => ({ ...s, admin: false, user: null }));
+      setRooms([]);
+      setTab("home");
+      go("");
+    } catch (e) {
+      notify(e.message);
+    }
   };
   const total = Object.values(counts).reduce((a, b) => a + b, 0);
   const visibleRooms = rooms.filter(
     (room) =>
-      (tab === "home" || room.mode === tab) &&
+      (["home", "events"].includes(tab) || room.mode === tab) &&
       (showCompleted || !["finished", "closed"].includes(room.phase)),
   );
   let body;
@@ -256,17 +291,16 @@ function App() {
           <nav>
             {[
               ["home", "Genel bakış", LayoutGrid],
+              ["events", "Etkinliklerim", CalendarDays],
               ["quiz", "Bilgi yarışması", Trophy],
               ["tournament", "Turnuva", Crown],
               ["family", "Beni Tanıyor musun?", Heart],
               ["raffle", "Çekiliş", Ticket],
               ["cloud", "Kelime bulutu", Cloud],
               ...(status.user?.role === "owner"
-                ? [
-                    ["library", "Soru kütüphanesi", LibraryBig],
-                    ["users", "Kullanıcı yönetimi", Users],
-                  ]
+                ? [["library", "Soru kütüphanesi", LibraryBig]]
                 : []),
+              ["profile", "Profil ve ayarlar", UserRound],
             ].map(([id, label, Icon]) => (
               <button
                 className={tab === id ? "active" : ""}
@@ -278,12 +312,6 @@ function App() {
                 {tab === id && <span className="nav-dot" />}
               </button>
             ))}
-            <PwaInstall />
-            {status.admin && (
-              <button onClick={() => setModal({ type: "password" })}>
-                <Settings size={20} /> Şifremi değiştir
-              </button>
-            )}
           </nav>
           <div className="sidebar-tip">
             <div className="tip-icon">
@@ -299,37 +327,39 @@ function App() {
               Nasıl çalışır? <ArrowUpRight size={15} />
             </button>
           </div>
-          <div className="sidebar-bottom">
-            <span className="avatar">{status.admin ? "Y" : "M"}</span>
+          <button
+            className="sidebar-bottom profile-shortcut"
+            onClick={() => nav("profile")}
+          >
+            <span className="avatar">
+              {status.user?.username?.slice(0, 1).toLocaleUpperCase("tr")}
+            </span>
             <div>
-              <b>{status.user?.username || "Yönetici stüdyosu"}</b>
-              <small>
-                {status.admin
-                  ? "Etkinlikleriniz hazır"
-                  : "Birlikte daha eğlenceli"}
-              </small>
+              <b>{status.user?.username}</b>
+              <small>Profil ve kullanıcı ayarları</small>
             </div>
-            <button
-              aria-label={status.admin ? "Çıkış yap" : "Yönetici girişi"}
-              className="icon-btn"
-              onClick={async () => {
-                if (status.admin) {
-                  try {
-                    await api("logout");
-                    setStatus((s) => ({ ...s, admin: false, user: null }));
-                    setRooms([]);
-                    setTab("home");
-                    go("");
-                  } catch (e) {
-                    notify(e.message);
-                  }
-                } else setModal({ type: "login" });
-              }}
-            >
-              {status.admin ? <LogOut size={17} /> : <Settings size={17} />}
-            </button>
-          </div>
+            <ChevronRight size={18} />
+          </button>
         </aside>
+        <header className="mobile-app-header">
+          <button
+            className="mobile-brand"
+            onClick={() => nav("home")}
+            aria-label="Ana sayfaya dön"
+          >
+            <span>
+              ?<i>✦</i>
+            </span>
+            bilgi<b>arena</b>
+          </button>
+          <button
+            className="mobile-profile-button"
+            onClick={() => nav("profile")}
+            aria-label="Profil ve ayarlar"
+          >
+            {status.user?.username?.slice(0, 1).toLocaleUpperCase("tr")}
+          </button>
+        </header>
         <main className={`main ${tab === "home" ? "overview-main" : ""}`}>
           {tab !== "home" && (
             <header className="topbar">
@@ -338,11 +368,15 @@ function App() {
                 <b>
                   {tab === "home"
                     ? "Genel bakış"
-                    : tab === "users"
-                      ? "Kullanıcı yönetimi"
-                      : tab === "library"
-                        ? "Soru kütüphanesi"
-                        : modes[tab]?.name}
+                    : tab === "profile"
+                      ? "Profil ve ayarlar"
+                      : tab === "events"
+                        ? "Etkinliklerim"
+                        : tab === "users"
+                          ? "Kullanıcı yönetimi"
+                          : tab === "library"
+                            ? "Soru kütüphanesi"
+                            : modes[tab]?.name}
                 </b>
               </div>
               <form
@@ -388,12 +422,49 @@ function App() {
                 <a href="#setup">Kurulumu aç</a>
               </div>
             )}
-            {tab === "users" && status.user?.role === "owner" ? (
+            {tab === "profile" ? (
+              <Profile
+                user={status.user}
+                rooms={rooms}
+                onPassword={() => setModal({ type: "password" })}
+                onLogout={logout}
+                onUsers={() => nav("users")}
+                onLibrary={() => nav("library")}
+                onHelp={() => setModal({ type: "how" })}
+                onUpdate={(user) => setStatus((s) => ({ ...s, user }))}
+              />
+            ) : tab === "events" ? (
+              <section className="my-events-intro">
+                <span className="eyebrow">SENİN OYUN ALANIN</span>
+                <h1>Etkinliklerim</h1>
+                <p>Oyunlarına kaldığın yerden devam et.</p>
+                <Button onClick={() => nav("home")}>
+                  <Plus size={18} /> Yeni etkinlik oluştur
+                </Button>
+              </section>
+            ) : tab === "users" && status.user?.role === "owner" ? (
               <UserManagement currentUser={status.user} onUpdate={refresh} />
             ) : tab === "library" && status.user?.role === "owner" ? (
               <Library admin={status.admin} notify={notify} refresh={refresh} />
             ) : tab === "home" ? (
-              <Overview onChoose={nav} />
+              <>
+                <section className="mobile-home-intro">
+                  <span>MERHABA, {status.user?.username}</span>
+                  <h1>
+                    Bugün ne oynuyoruz? <span>✦</span>
+                  </h1>
+                  <p>Bir oyun seç, birlikte güzel anlar biriktir.</p>
+                  <button onClick={() => setModal({ type: "join" })}>
+                    <KeyRound size={24} />
+                    <span>
+                      <strong>Oyun kodun mu var?</strong>
+                      <small>Kodunu gir, hemen katıl</small>
+                    </span>
+                    <ArrowRight size={22} />
+                  </button>
+                </section>
+                <Overview onChoose={nav} />
+              </>
             ) : (
               <>
                 <section className="page-heading">
@@ -570,63 +641,63 @@ function App() {
                 {["quiz", "raffle", "cloud"].includes(tab) && (
                   <ModuleTeasers mode={tab} />
                 )}
-                {status.admin && (
-                  <section className="recent">
-                    <div className="section-heading recent-heading">
-                      <h2>Etkinliklerin</h2>
-                      <label className="completed-toggle">
-                        <input
-                          type="checkbox"
-                          checked={showCompleted}
-                          onChange={(event) =>
-                            setShowCompleted(event.target.checked)
-                          }
-                        />
-                        Tamamlananları göster
-                      </label>
-                      <button className="text-btn" onClick={refresh}>
-                        <RefreshCw size={14} /> Yenile
-                      </button>
-                    </div>
-                    {visibleRooms.length ? (
-                      visibleRooms.map((r) => (
-                        <button
-                          className="room-row"
-                          key={r.pin}
-                          onClick={() => go("host/" + r.pin)}
-                        >
-                          <span className={"room-icon " + modes[r.mode].color}>
-                            {React.createElement(modes[r.mode].icon, {
-                              size: 20,
-                            })}
-                          </span>
-                          <div>
-                            <b>{r.title}</b>
-                            <small>
-                              {modes[r.mode].name} · Kod: {r.pin}
-                            </small>
-                          </div>
-                          <span className="room-status">
-                            {["finished", "closed"].includes(r.phase)
-                              ? "Tamamlandı"
-                              : "Açık"}
-                          </span>
-                          <span>
-                            <Users size={15} /> {r.playerCount}
-                          </span>
-                          <ChevronRight size={18} />
-                        </button>
-                      ))
-                    ) : (
-                      <div className="empty">
-                        {showCompleted
-                          ? "Henüz etkinlik yok. Yeni bir etkinlik oluşturarak başlayabilirsin."
-                          : "Açık etkinlik yok. Yeni bir etkinlik oluşturabilir veya tamamlananları gösterebilirsin."}
-                      </div>
-                    )}
-                  </section>
-                )}
               </>
+            )}
+            {["events", ...Object.keys(modes)].includes(tab) && (
+              <section className="recent">
+                <div className="section-heading recent-heading">
+                  <h2>{tab === "events" ? "Oyunların" : "Etkinliklerin"}</h2>
+                  <label className="completed-toggle">
+                    <input
+                      type="checkbox"
+                      checked={showCompleted}
+                      onChange={(event) =>
+                        setShowCompleted(event.target.checked)
+                      }
+                    />
+                    Tamamlananları göster
+                  </label>
+                  <button className="text-btn" onClick={refresh}>
+                    <RefreshCw size={14} /> Yenile
+                  </button>
+                </div>
+                {visibleRooms.length ? (
+                  visibleRooms.map((r) => (
+                    <button
+                      className="room-row"
+                      key={r.pin}
+                      onClick={() => go("host/" + r.pin)}
+                    >
+                      <span className={"room-icon " + modes[r.mode].color}>
+                        {React.createElement(modes[r.mode].icon, {
+                          size: 20,
+                        })}
+                      </span>
+                      <div>
+                        <b>{r.title}</b>
+                        <small>
+                          {modes[r.mode].name} · Kod: {r.pin}
+                        </small>
+                      </div>
+                      <span className="room-status">
+                        {["finished", "closed"].includes(r.phase)
+                          ? "Tamamlandı"
+                          : "Açık"}
+                      </span>
+                      <span>
+                        <Users size={15} /> {r.playerCount}
+                      </span>
+                      <ChevronRight size={18} />
+                    </button>
+                  ))
+                ) : (
+                  <div className="empty">
+                    {showCompleted
+                      ? "Henüz etkinlik yok. Yeni bir etkinlik oluşturarak başlayabilirsin."
+                      : "Açık etkinlik yok. Yeni bir etkinlik oluşturabilir veya tamamlananları gösterebilirsin."}
+                  </div>
+                )}
+              </section>
             )}
             {tab !== "home" && (
               <footer>
@@ -642,6 +713,30 @@ function App() {
             )}
           </div>
         </main>
+        <nav className="mobile-bottom-nav" aria-label="Mobil gezinme">
+          {[
+            ["home", "Ana sayfa", LayoutGrid],
+            ["events", "Etkinliklerim", CalendarDays],
+            ["join", "Katıl", KeyRound],
+            ["profile", "Profil", UserRound],
+          ].map(([id, label, Icon]) => (
+            <button
+              key={id}
+              className={
+                tab === id || (id === "profile" && tab === "users")
+                  ? "active"
+                  : ""
+              }
+              aria-current={tab === id ? "page" : undefined}
+              onClick={() =>
+                id === "join" ? setModal({ type: "join" }) : nav(id)
+              }
+            >
+              <Icon size={22} />
+              <span>{label}</span>
+            </button>
+          ))}
+        </nav>
       </div>
     );
   return (
@@ -665,6 +760,39 @@ function App() {
           notify={notify}
         />
       )}{" "}
+      {modal?.type === "join" && (
+        <Modal title="Oyuna katıl" onClose={() => setModal(null)}>
+          <form
+            className="mobile-join-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (/^\d{6}$/.test(joining)) {
+                setModal(null);
+                go("join/" + joining);
+              } else notify("6 haneli etkinlik kodunu girin.");
+            }}
+          >
+            <p>Arkadaşlarının paylaştığı 6 haneli kodu yaz.</p>
+            <Field label="Oyun kodu">
+              <input
+                autoFocus
+                inputMode="numeric"
+                autoComplete="off"
+                enterKeyHint="go"
+                pattern="[0-9]{6}"
+                maxLength={6}
+                required
+                placeholder="000000"
+                value={joining}
+                onChange={(e) => setJoining(e.target.value.replace(/\D/g, ""))}
+              />
+            </Field>
+            <Button className="full">
+              Oyuna katıl <ArrowRight size={20} />
+            </Button>
+          </form>
+        </Modal>
+      )}
       {modal?.type === "password" && (
         <ChangePassword onClose={() => setModal(null)} notify={notify} />
       )}
@@ -793,7 +921,9 @@ function ChangePassword({ onClose, notify }) {
           setError("");
           try {
             await api("password_change", { currentPassword, newPassword });
-            notify("Şifren değiştirildi. Diğer yönetici oturumları kapatıldı.");
+            notify(
+              "Şifren değiştirildi. Hesabının diğer oturumları kapatıldı.",
+            );
             onClose();
           } catch (e) {
             setError(e.message);
