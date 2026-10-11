@@ -115,3 +115,13 @@ Standart hesap yalnızca oturumuna ait hesap bilgilerini ve kendi etkinliklerini
 
 
 Her modül kartının üstünde, modül sayfasında ve oyun bekleme alanında “Nasıl oynanır?” rehberi bulunur. Üç adımlı paneller HTML details/summary kullanır; klavye ve mobil ekranlarla uyumludur. Turnuva alan seçimi tek satırlık yerel açılır listeden yapılır; kaydedildikten sonra kilitli seçim kartı gösterilir.
+
+
+### Kendini Dene ve tek cihaz oturumu
+
+- `Kendini Dene`: giriş yapan hesap, 18 konu veya karışık konulardan tek başına 10 soru oynar. 30 saniye/soru; her doğru 100 puan, en fazla 1.000. En fazla bir uzmanlık sorusu ve önceki turdaki sorulardan kaçınan seçim kullanılır. Yanıt sonrası doğru şık/açıklama, 5 saniyelik sonuç ve 3–2–1 geçişi gelir. Sayaç sayfa kapalıyken de ilerler.
+- Tamamlanan testlerin kişisel ve konu bazlı rekorları, doğruluk oranı ve son sekiz deneme hesapta saklanır. Yarım bırakılan test kaydedilmez. Bu 10 sorunun sonucu genel uzmanlık ölçümü olarak sunulmaz. Skor, süre ve yanıt kontrolü sunucudadır; yalnızca mevcut soru ve sonuçta cevap özeti paylaşılır. Başkasının oyununa/rekoruna erişim yoktur.
+- Normal hesapta yeni giriş, önceki tüm oturumları iptal eder. Kullanıcı satırı kilidi ve tek aktif oturum kaydı eşzamanlı girişleri sıralar; eski kurulumdaki oturumlardan yalnızca ilk doğrulanan korunur. Sayfalar 15 saniyede ve yeniden odaklanınca oturumu kontrol eder. Aynı tarayıcının sekmeleri ortak oturumu kullanır. Yönetici birden fazla cihazda oturum açabilir.
+- Yönetici: Profil → Kullanıcı yönetimi → **Kullanıcı olarak test et**. Şifre gerektirmeden kullanıcının yetkileriyle arayüz açılır; üst şeritte **Yöneticiye dön** bulunur. Kullanıcının gerçek oturumu kesilmez. Test sırasında kullanıcı adı/şifre değiştirilemez, kütüphane ve kullanıcı yönetimi açılmaz. Tek kişilik test puanları ayrı tutulur; etkinlik işlemleri seçilen kullanıcının alanında uygulanır.
+- Yeni tablolar `arena_active_sessions`, `arena_previews`, `arena_solo`, `arena_solo_results` mevcut kurulumda otomatik oluşturulur. Yayın paketi `api/solo.php` içerir.
+- API testleri: cihaz değişimi, yönetici istisnası/test görünümü, hesap/puan izolasyonu, cevap gizliliği, tekrar yanıt, süre aşımı, farklı cihazdan devam, otomatik geçişler ve rekorun yalnızca bir kez kaydedilmesi.

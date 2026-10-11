@@ -1,0 +1,569 @@
+.solo-page {
+  max-width: 1160px;
+  margin: auto;
+}
+.solo-heading {
+  margin-bottom: 24px;
+}
+.solo-heading h1 {
+  font-size: clamp(32px, 4vw, 50px);
+  letter-spacing: -1.8px;
+  margin: 8px 0;
+}
+.solo-heading h1 span {
+  color: #ae89ea;
+  margin-left: 16px;
+}
+.solo-heading p {
+  color: #827a90;
+  line-height: 1.6;
+}
+.solo-dashboard {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 24px;
+  margin-top: 25px;
+}
+.solo-launch,
+.solo-records,
+.solo-stage,
+.solo-result,
+.solo-history {
+  border-radius: 28px;
+  border: 1px solid #e8e2ef;
+  padding: 32px;
+  background: #fff;
+  box-shadow: 0 14px 40px #39205c08;
+}
+.solo-launch {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 100% 0, #dacafa, transparent 65%), #f7f2ff;
+}
+.solo-launch h2 {
+  font-size: clamp(30px, 4vw, 43px);
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  margin: 20px 0;
+}
+.solo-launch p {
+  max-width: 320px;
+  line-height: 1.65;
+  color: #786984;
+}
+.solo-launch .field {
+  position: relative;
+  z-index: 1;
+  margin: 28px 0 16px;
+}
+.solo-launch select {
+  width: 100%;
+  font-size: 16px;
+  min-height: 54px;
+  border-radius: 14px;
+  border: 1px solid #d7c6ed;
+  background: #fffc;
+  padding: 12px;
+  color: #402d62;
+}
+.solo-orb {
+  position: absolute;
+  right: 30px;
+  top: 28px;
+  width: 86px;
+  height: 86px;
+  border-radius: 27px;
+  background: linear-gradient(130deg, #b387ed, #6035a8);
+  box-shadow:
+    inset 3px 3px 5px #fff8,
+    inset -5px -7px 9px #37116477,
+    8px 15px 22px #5a329633;
+  color: #fff;
+  font-size: 66px;
+  text-align: center;
+  font-weight: 900;
+  transform: rotate(12deg);
+}
+.solo-orb span {
+  position: absolute;
+  right: -13px;
+  top: -16px;
+  color: #ffd666;
+  font-size: 36px;
+  text-shadow: 1px 3px #bd852e;
+}
+.solo-rules {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+  font-size: 11px;
+  color: #85718f;
+  flex-wrap: wrap;
+}
+.solo-rules span + span:before {
+  content: "·";
+  margin-right: 10px;
+}
+.solo-record-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #ac8941;
+}
+.solo-record-heading span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+.solo-record-heading h2 {
+  font-size: 24px;
+  letter-spacing: -0.6px;
+  color: #393047;
+  margin: 5px 0;
+}
+.solo-best {
+  display: block;
+  font-size: 72px;
+  letter-spacing: -4px;
+  color: #69409d;
+  margin-top: 32px;
+}
+.solo-best small {
+  font-size: 18px;
+  letter-spacing: 0;
+  color: #a59aaf;
+  margin-left: 10px;
+}
+.solo-records > p {
+  font-size: 13px;
+  color: #8e8199;
+}
+.solo-topic-records {
+  max-height: 270px;
+  overflow: auto;
+  margin-top: 24px;
+}
+.solo-topic-records > div:not(.solo-record-empty) {
+  padding: 14px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #efeaf5;
+  font-size: 14px;
+}
+.solo-topic-records small {
+  display: block;
+  color: #a194ad;
+  font-size: 11px;
+  margin: 5px 0 0 25px;
+}
+.solo-topic-records strong {
+  color: #7850a7;
+}
+.solo-record-empty {
+  background: #faf8fd;
+  padding: 25px;
+  border-radius: 20px;
+  color: #ae98c3;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 14px;
+}
+.solo-stage {
+  margin-top: 25px;
+}
+.solo-game-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+  color: #83738f;
+}
+.solo-game-top span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.solo-game-top strong {
+  color: #67418f;
+}
+.solo-progress {
+  height: 6px;
+  background: #eee5f7;
+  border-radius: 99px;
+  margin: 20px 0;
+}
+.solo-progress i {
+  display: block;
+  height: 100%;
+  background: #9870c7;
+  border-radius: inherit;
+  transition: width 0.4s;
+}
+.solo-clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #8b789e;
+  font-size: 13px;
+}
+.solo-stage h2 {
+  text-align: center;
+  font-size: clamp(23px, 3vw, 34px);
+  line-height: 1.4;
+  max-width: 850px;
+  margin: 30px auto;
+}
+.solo-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.solo-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  min-height: 90px;
+  border-radius: 18px;
+  border: 1px solid #dfd3ed;
+  background: linear-gradient(135deg, #f9f4ff, #fff);
+  color: #51376c;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.solo-option:focus-visible {
+  outline: 3px solid #8d65b6;
+  outline-offset: 3px;
+}
+.solo-option:hover:not(:disabled) {
+  background: #eee2fe;
+  transform: translateY(-2px);
+}
+.solo-option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+.solo-option.correct {
+  background: #e1f7e9;
+  border-color: #76c596;
+  color: #246642;
+}
+.solo-option.incorrect {
+  background: #ffe1e5;
+  border-color: #e78693;
+  color: #a1364a;
+}
+.solo-option.muted-option {
+  opacity: 0.5;
+}
+.solo-letter {
+  background: #fff9;
+  border-radius: 10px;
+  min-width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+.solo-flag {
+  width: 95px;
+  max-height: 70px;
+  object-fit: contain;
+}
+.solo-feedback {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 18px;
+  line-height: 1.6;
+}
+.solo-feedback.good {
+  background: #e9f9ef;
+  color: #30784a;
+}
+.solo-feedback.bad {
+  background: #fff0f1;
+  color: #ac4a5e;
+}
+.solo-feedback p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.solo-end {
+  display: block;
+  margin: 25px auto 0;
+  font-size: 12px !important;
+  color: #9889a4 !important;
+}
+.solo-countdown {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #9272ad;
+}
+.solo-countdown strong {
+  font-size: 130px;
+  color: #8e59c7;
+  text-shadow: 4px 7px #e7d7fa;
+  animation: solo-pop 0.7s both;
+}
+.solo-countdown span {
+  font-size: 13px;
+}
+.solo-result {
+  text-align: center;
+  margin-top: 25px;
+}
+.solo-medal {
+  font-size: 70px;
+  filter: drop-shadow(0 10px 8px #b0873330);
+}
+.solo-result h2 {
+  font-size: 34px;
+}
+.solo-result-score {
+  display: block;
+  font-size: 65px;
+  color: #77509f;
+}
+.solo-result-score small {
+  font-size: 18px;
+  color: #ab9cb5;
+}
+.solo-result > p {
+  color: #8d7f98;
+  line-height: 1.7;
+}
+.solo-record {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  background: #fff4d2;
+  color: #977329;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+.solo-context {
+  font-size: 13px;
+  max-width: 480px;
+  margin: 20px auto;
+}
+.solo-result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.solo-review {
+  text-align: left;
+  margin-top: 30px;
+  background: #fbf9fd;
+  border-radius: 18px;
+  padding: 20px;
+}
+.solo-review summary {
+  font-weight: 750;
+  cursor: pointer;
+  padding: 8px;
+}
+.solo-review article {
+  border-top: 1px solid #eee5f5;
+  padding: 20px 0;
+}
+.solo-review h3 {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.solo-review p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+.solo-review small {
+  color: #9585a0;
+  line-height: 1.6;
+}
+.review-good {
+  color: #318654;
+}
+.review-bad {
+  color: #b65f6d;
+}
+.solo-history {
+  margin-top: 24px;
+}
+.solo-history h2 {
+  font-size: 21px;
+}
+.solo-history > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.solo-history article {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: #faf7fe;
+  padding: 18px;
+  border-radius: 15px;
+}
+.solo-history article > span {
+  font-size: 28px;
+}
+.solo-history article > div {
+  flex: 1;
+  font-size: 14px;
+}
+.solo-history small {
+  display: block;
+  font-size: 11px;
+  color: #ac9bb8;
+  margin-top: 5px;
+}
+.solo-history b {
+  color: #8860ae;
+}
+.preview-banner {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: #473461;
+  color: #fff;
+  padding: 13px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.preview-banner button {
+  background: #f1d6ff;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: #4e3269;
+  font-weight: 750;
+  cursor: pointer;
+}
+.account-preview {
+  font-size: 11px !important;
+  max-width: 110px;
+  line-height: 1.4;
+}
+.overview-solo {
+  --overview-start: #5678a9;
+  --overview-end: #353065;
+  --overview-light: #a7c5f2;
+  --overview-shadow: #404579;
+  --overview-accent: #dfebff;
+}
+.overview-module-solo {
+  grid-column: 1/-1;
+}
+.overview-solo .overview-art {
+  opacity: 0.95;
+}
+@keyframes solo-pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0.2;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@media (max-width: 800px) {
+  .solo-dashboard {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .solo-heading h1 {
+    font-size: 34px;
+  }
+  .solo-launch,
+  .solo-records,
+  .solo-stage,
+  .solo-result,
+  .solo-history {
+    padding: 23px 18px;
+    border-radius: 22px;
+  }
+  .solo-launch h2 {
+    font-size: 34px;
+  }
+  .solo-orb {
+    right: 25px;
+    top: 32px;
+    width: 70px;
+    height: 70px;
+    font-size: 54px;
+  }
+  .solo-launch p {
+    max-width: 240px;
+  }
+  .solo-game-top {
+    font-size: 12px;
+  }
+  .solo-options {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .solo-option {
+    min-height: 64px;
+    padding: 13px;
+    font-size: 16px;
+  }
+  .solo-stage h2 {
+    font-size: 23px;
+    margin: 24px 0;
+  }
+  .solo-history > div {
+    grid-template-columns: 1fr;
+  }
+  .solo-result h2 {
+    font-size: 28px;
+  }
+  .solo-result-score {
+    font-size: 54px;
+  }
+  .solo-best {
+    font-size: 64px;
+  }
+  .preview-banner {
+    padding: 10px 16px;
+    gap: 8px;
+    font-size: 12px;
+  }
+  .solo-feedback {
+    padding: 16px;
+    font-size: 14px;
+  }
+  .solo-game-top > span:first-child {
+    max-width: 55%;
+  }
+  .solo-review {
+    padding: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .solo-countdown strong {
+    animation: none;
+  }
+  .solo-progress i {
+    transition: none;
+  }
+}

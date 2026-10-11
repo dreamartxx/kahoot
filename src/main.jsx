@@ -74,8 +74,10 @@ import { rankPlayers } from "./ranking";
 const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
 import UserManagement from "./UserManagement";
 import Profile from "./Profile";
+import Solo from "./Solo";
 import "./mobile-shell.css";
 const modes = {
+  solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
   tournament: { name: "Turnuva", icon: Crown, color: "purple" },
   family: { name: "Beni Tanıyor musun?", icon: Heart, color: "rose" },
   quiz: { name: "Bilgi yarışması", icon: Trophy, color: "purple" },
@@ -166,6 +168,7 @@ function App() {
       if (s.configured) {
         setCounts(await api("categories"));
         if (s.admin) setRooms(await api("rooms"));
+        else setRooms([]);
       }
     } catch (e) {
       setAuthError(e.message);
@@ -178,6 +181,57 @@ function App() {
     addEventListener("hashchange", fn);
     return () => removeEventListener("hashchange", fn);
   }, []);
+  useEffect(() => {
+    let stopped = false;
+    async function checkSession() {
+      try {
+        const next = await api("status");
+        if (stopped) return;
+        setStatus((previous) => {
+          if (previous.user?.id !== next.user?.id) {
+            setRooms([]);
+            setModal(null);
+          }
+          if (previous.admin && !next.admin) {
+            setRooms([]);
+            setModal(null);
+            notify(
+              "Oturumun kapandı. Başka bir cihazdan giriş yapılmış veya hesabın güncellenmiş olabilir.",
+            );
+          }
+          return next;
+        });
+      } catch {
+        /* A temporary network loss must not sign the user out. */
+      }
+    }
+    const timer = setInterval(checkSession, 15000);
+    const focus = () => {
+      if (!document.hidden) checkSession();
+    };
+    addEventListener("focus", focus);
+    document.addEventListener("visibilitychange", focus);
+    return () => {
+      stopped = true;
+      clearInterval(timer);
+      removeEventListener("focus", focus);
+      document.removeEventListener("visibilitychange", focus);
+    };
+  }, []);
+  async function changePreview(action, userId) {
+    try {
+      const next = await api(action, { userId });
+      setStatus((s) => ({ ...s, ...next }));
+      setRooms([]);
+      setModal(null);
+      setTab(action === "preview_stop" ? "users" : "home");
+      go(action === "preview_stop" ? "studio/users" : "");
+      window.scrollTo(0, 0);
+      await refresh();
+    } catch (e) {
+      notify(e.message);
+    }
+  }
   useEffect(() => {
     const page = route.startsWith("studio/") ? route.slice(7) : "home";
     const allowed = [
@@ -293,6 +347,7 @@ function App() {
             {[
               ["home", "Genel bakış", LayoutGrid],
               ["events", "Etkinliklerim", CalendarDays],
+              ["solo", "Kendini Dene", Sparkles],
               ["quiz", "Bilgi yarışması", Trophy],
               ["tournament", "Turnuva", Crown],
               ["family", "Beni Tanıyor musun?", Heart],
@@ -426,6 +481,7 @@ function App() {
             {tab === "profile" ? (
               <Profile
                 user={status.user}
+                preview={Boolean(status.preview)}
                 rooms={rooms}
                 onPassword={() => setModal({ type: "password" })}
                 onLogout={logout}
@@ -434,6 +490,8 @@ function App() {
                 onHelp={() => setModal({ type: "how" })}
                 onUpdate={(user) => setStatus((s) => ({ ...s, user }))}
               />
+            ) : tab === "solo" ? (
+              <Solo key={`${status.user.id}-${Boolean(status.preview)}`} />
             ) : tab === "events" ? (
               <section className="my-events-intro">
                 <span className="eyebrow">SENİN OYUN ALANIN</span>
@@ -444,7 +502,11 @@ function App() {
                 </Button>
               </section>
             ) : tab === "users" && status.user?.role === "owner" ? (
-              <UserManagement currentUser={status.user} onUpdate={refresh} />
+              <UserManagement
+                currentUser={status.user}
+                onUpdate={refresh}
+                onPreview={(id) => changePreview("preview_start", id)}
+              />
             ) : tab === "library" && status.user?.role === "owner" ? (
               <Library admin={status.admin} notify={notify} refresh={refresh} />
             ) : tab === "home" ? (
@@ -645,62 +707,63 @@ function App() {
                 )}
               </>
             )}
-            {["events", ...Object.keys(modes)].includes(tab) && (
-              <section className="recent">
-                <div className="section-heading recent-heading">
-                  <h2>{tab === "events" ? "Oyunların" : "Etkinliklerin"}</h2>
-                  <label className="completed-toggle">
-                    <input
-                      type="checkbox"
-                      checked={showCompleted}
-                      onChange={(event) =>
-                        setShowCompleted(event.target.checked)
-                      }
-                    />
-                    Tamamlananları göster
-                  </label>
-                  <button className="text-btn" onClick={refresh}>
-                    <RefreshCw size={14} /> Yenile
-                  </button>
-                </div>
-                {visibleRooms.length ? (
-                  visibleRooms.map((r) => (
-                    <button
-                      className="room-row"
-                      key={r.pin}
-                      onClick={() => go("host/" + r.pin)}
-                    >
-                      <span className={"room-icon " + modes[r.mode].color}>
-                        {React.createElement(modes[r.mode].icon, {
-                          size: 20,
-                        })}
-                      </span>
-                      <div>
-                        <b>{r.title}</b>
-                        <small>
-                          {modes[r.mode].name} · Kod: {r.pin}
-                        </small>
-                      </div>
-                      <span className="room-status">
-                        {["finished", "closed"].includes(r.phase)
-                          ? "Tamamlandı"
-                          : "Açık"}
-                      </span>
-                      <span>
-                        <Users size={15} /> {r.playerCount}
-                      </span>
-                      <ChevronRight size={18} />
+            {tab !== "solo" &&
+              ["events", ...Object.keys(modes)].includes(tab) && (
+                <section className="recent">
+                  <div className="section-heading recent-heading">
+                    <h2>{tab === "events" ? "Oyunların" : "Etkinliklerin"}</h2>
+                    <label className="completed-toggle">
+                      <input
+                        type="checkbox"
+                        checked={showCompleted}
+                        onChange={(event) =>
+                          setShowCompleted(event.target.checked)
+                        }
+                      />
+                      Tamamlananları göster
+                    </label>
+                    <button className="text-btn" onClick={refresh}>
+                      <RefreshCw size={14} /> Yenile
                     </button>
-                  ))
-                ) : (
-                  <div className="empty">
-                    {showCompleted
-                      ? "Henüz etkinlik yok. Yeni bir etkinlik oluşturarak başlayabilirsin."
-                      : "Açık etkinlik yok. Yeni bir etkinlik oluşturabilir veya tamamlananları gösterebilirsin."}
                   </div>
-                )}
-              </section>
-            )}
+                  {visibleRooms.length ? (
+                    visibleRooms.map((r) => (
+                      <button
+                        className="room-row"
+                        key={r.pin}
+                        onClick={() => go("host/" + r.pin)}
+                      >
+                        <span className={"room-icon " + modes[r.mode].color}>
+                          {React.createElement(modes[r.mode].icon, {
+                            size: 20,
+                          })}
+                        </span>
+                        <div>
+                          <b>{r.title}</b>
+                          <small>
+                            {modes[r.mode].name} · Kod: {r.pin}
+                          </small>
+                        </div>
+                        <span className="room-status">
+                          {["finished", "closed"].includes(r.phase)
+                            ? "Tamamlandı"
+                            : "Açık"}
+                        </span>
+                        <span>
+                          <Users size={15} /> {r.playerCount}
+                        </span>
+                        <ChevronRight size={18} />
+                      </button>
+                    ))
+                  ) : (
+                    <div className="empty">
+                      {showCompleted
+                        ? "Henüz etkinlik yok. Yeni bir etkinlik oluşturarak başlayabilirsin."
+                        : "Açık etkinlik yok. Yeni bir etkinlik oluşturabilir veya tamamlananları gösterebilirsin."}
+                    </div>
+                  )}
+                </section>
+              )}
             {tab !== "home" && (
               <footer>
                 <span>
@@ -743,6 +806,17 @@ function App() {
     );
   return (
     <>
+      {status.preview && (
+        <div className="preview-banner" role="status">
+          <span>
+            <b>{status.preview.username}</b> olarak test ediyorsun · Hesap
+            bilgileri korunur, test skorları ayrı tutulur.
+          </span>
+          <button onClick={() => changePreview("preview_stop")}>
+            Yöneticiye dön
+          </button>
+        </div>
+      )}
       {body}
       <PwaNotices />
       {toast && (
@@ -853,7 +927,9 @@ function Login({ onClose, onDone }) {
   return (
     <Modal title="Stüdyona hoş geldin" onClose={onClose}>
       <p className="muted">
-        Bir kez giriş yap, tüm etkinliklerini buradan yönet.
+        Bir kez giriş yap, tüm etkinliklerini buradan yönet. Yeni cihazdan giriş
+        yaptığında önceki cihazdaki oturumun kapanır. Yönetici hesabı bu
+        sınırdan muaftır.
       </p>
       <form
         onSubmit={async (e) => {

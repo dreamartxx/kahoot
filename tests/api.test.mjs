@@ -13,6 +13,8 @@ let server, cookie;
 async function call(action, data = {}, options = {}) {
   let read = [
     "status",
+    "solo_summary",
+    "solo_state",
     "categories",
     "questions",
     "family_questions",
@@ -2650,4 +2652,301 @@ test("manual selection enforces the expert cap and custom questions persist thei
     assert.equal(loaded.difficulty, level ?? "expert");
     await call("question_delete", { id: saved.data.id }, { admin: true });
   }
+});
+
+const sql = (code) =>
+  execFileSync("php", [
+    "-r",
+    `$db=new PDO('sqlite:'.$argv[1]);${code}`,
+    db,
+  ]).toString();
+const clearLoginLimits = () => sql("$db->exec('DELETE FROM arena_limits');");
+const sessionCookie = (r) => r.cookie.split(";")[0];
+async function soloUser(name) {
+  clearLoginLimits();
+  assert.equal(
+    (
+      await call(
+        "user_create",
+        { username: name, password: "test" },
+        { admin: true },
+      )
+    ).status,
+    200,
+  );
+  const login = await call("login", { username: name, password: "test" });
+  assert.equal(login.status, 200);
+  return { cookie: sessionCookie(login), id: login.data.user.id };
+}
+const soloMutation = (scope, code) =>
+  sql(
+    `$q=$db->prepare('SELECT state FROM arena_solo WHERE scope=?');$q->execute([${JSON.stringify(scope)}]);$s=json_decode($q->fetchColumn(),true);${code};$db->prepare('UPDATE arena_solo SET state=? WHERE scope=?')->execute([json_encode($s),${JSON.stringify(scope)}]);`,
+  );
+
+test("normal accounts have one active session; admin devices remain independent", async () => {
+  const first = await soloUser("one-device");
+  const second = await call("login", {
+    username: "one-device",
+    password: "test",
+  });
+  assert.equal(second.status, 200);
+  const secondOpt = { cookie: sessionCookie(second) };
+  assert.equal((await call("status", {}, first)).data.admin, false);
+  assert.equal((await call("rooms", {}, first)).status, 401);
+  assert.equal(
+    (await call("profile_update", { username: "stolen" }, first)).status,
+    401,
+  );
+  assert.equal((await call("status", {}, secondOpt)).data.admin, true);
+  await call("logout", {}, first); // A revoked device cannot log out the active one.
+  assert.equal((await call("status", {}, secondOpt)).data.admin, true);
+  const ownerTwo = await call("login", { password: "local-test-password" });
+  assert.equal(ownerTwo.status, 200);
+  assert.equal((await call("status", {}, { admin: true })).data.admin, true);
+  assert.equal(
+    (await call("status", {}, { cookie: sessionCookie(ownerTwo) })).data.admin,
+    true,
+  );
+});
+
+test("admin can test a user's interface without replacing their session or changing credentials", async () => {
+  const user = await soloUser("preview-user");
+  assert.equal((await fetch(base + "?action=preview_start")).status, 405);
+  assert.equal((await call("preview_start", { userId: 1 }, user)).status, 403);
+  assert.equal((await call("preview_stop", {}, user)).status, 403);
+  const owner = await call("login", { password: "local-test-password" });
+  const opt = { cookie: sessionCookie(owner) };
+  assert.equal(
+    (
+      await call(
+        "preview_start",
+        { userId: user.id },
+        { ...opt, origin: "https://evil.example" },
+      )
+    ).status,
+    403,
+  );
+  const preview = await call("preview_start", { userId: user.id }, opt);
+  assert.equal(preview.status, 200);
+  assert.equal(preview.data.user.id, user.id);
+  assert.equal(preview.data.user.role, "host");
+  assert.equal(preview.data.preview.username, "preview-user");
+  assert.equal((await call("status", {}, user)).data.admin, true);
+  assert.equal((await call("users", {}, opt)).status, 403);
+  assert.equal((await call("questions", {}, opt)).status, 403);
+  assert.equal(
+    (await call("profile_update", { username: "changed" }, opt)).status,
+    403,
+  );
+  assert.equal(
+    (
+      await call(
+        "password_change",
+        { currentPassword: "test", newPassword: "other" },
+        opt,
+      )
+    ).status,
+    403,
+  );
+  assert.equal((await call("preview_start", { userId: 1 }, opt)).status, 403);
+  const game = await call("solo_start", { category: "futbol" }, opt);
+  assert.equal(game.status, 200);
+  assert.equal(game.data.preview, true);
+  const hash = await import("node:crypto");
+  const scope =
+    "test:" +
+    hash.createHash("sha256").update(opt.cookie.split("=")[1]).digest("hex");
+  soloMutation(scope, "$s['deadline']=microtime(true)-1000");
+  const result = await call("solo_state", {}, opt);
+  assert.equal(result.data.game.phase, "finished");
+  assert.equal(result.data.stats.games, 1);
+  assert.equal((await call("solo_summary", {}, user)).data.stats.games, 0);
+  const back = await call("preview_stop", {}, opt);
+  assert.equal(back.data.user.role, "owner");
+  assert.equal(back.data.preview, null);
+  assert.equal(
+    (await call("status", {}, user)).data.user.username,
+    "preview-user",
+  );
+  assert.equal(
+    (await call("status", {}, { admin: true })).data.user.role,
+    "owner",
+  );
+});
+
+test("solo mode protects questions, validates actions, and persists a server-scored personal record", async () => {
+  const user = await soloUser("solo-player"),
+    scope = `user:${user.id}`;
+  assert.equal((await call("solo_summary")).status, 401);
+  assert.equal(
+    (await call("solo_start", { category: "cografya" })).status,
+    401,
+  );
+  assert.equal((await fetch(base + "?action=solo_start")).status, 405);
+  assert.equal(
+    (
+      await call(
+        "solo_start",
+        { category: "cografya" },
+        { ...user, origin: "https://evil.example" },
+      )
+    ).status,
+    403,
+  );
+  assert.equal(
+    (await call("solo_start", { category: "unknown" }, user)).status,
+    400,
+  );
+  let start = await call(
+    "solo_start",
+    { category: "cografya", score: 999999 },
+    user,
+  );
+  assert.equal(start.status, 200);
+  let game = start.data.game;
+  const id = game.id;
+  assert.equal(game.score, 0);
+  assert.equal(game.question.correct, undefined);
+  assert.equal(game.questions, undefined);
+  assert.equal(game.review, undefined);
+  assert.equal(game.question.options.length, 4);
+  assert.equal(
+    (await call("solo_start", { category: "futbol" }, user)).status,
+    409,
+  );
+  assert.equal((await call("solo_state", {}, user)).data.game.id, id);
+  assert.equal(
+    (
+      await call(
+        "solo_answer",
+        { gameId: id, questionId: game.question.id, choice: 4 },
+        user,
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await call(
+        "solo_answer",
+        { gameId: "fake", questionId: game.question.id, choice: 0 },
+        user,
+      )
+    ).status,
+    409,
+  );
+  const another = await soloUser("solo-other");
+  assert.equal(
+    (await call("solo_state", { userId: user.id }, another)).data.game,
+    null,
+  );
+  assert.equal(
+    (
+      await call(
+        "solo_answer",
+        { gameId: id, questionId: game.question.id, choice: 0 },
+        another,
+      )
+    ).status,
+    409,
+  );
+  const questions = JSON.parse(
+    soloMutation(scope, "echo json_encode($s['questions'])"),
+  );
+  assert.equal(questions.length, 10);
+  assert.ok(questions.filter((q) => q.difficulty === "expert").length <= 1);
+  for (let i = 0; i < 10; i++) {
+    const q = questions[i],
+      choice = i < 8 ? q.correct : (q.correct + 1) % 4;
+    const answer = await call(
+      "solo_answer",
+      { gameId: id, questionId: q.id, choice, score: 100000, userId: 1 },
+      user,
+    );
+    assert.equal(answer.status, 200);
+    assert.equal(answer.data.game.phase, "reveal");
+    assert.equal(answer.data.game.question.correct, q.correct);
+    assert.equal(
+      (
+        await call(
+          "solo_answer",
+          { gameId: id, questionId: q.id, choice },
+          user,
+        )
+      ).status,
+      409,
+    );
+    soloMutation(scope, "$s['until']=microtime(true)-0.1");
+    const countdown = await call("solo_state", {}, user);
+    if (i < 9) {
+      assert.equal(countdown.data.game.phase, "countdown");
+      assert.equal(countdown.data.game.question, undefined);
+      soloMutation(scope, "$s['until']=microtime(true)-0.1");
+      game = (await call("solo_state", {}, user)).data.game;
+      assert.equal(game.index, i + 1);
+      assert.equal(game.question.correct, undefined);
+    }
+  }
+  const finished = await call("solo_summary", {}, user);
+  assert.equal(finished.data.game.phase, "finished");
+  assert.equal(finished.data.game.score, 800);
+  assert.equal(finished.data.game.correctCount, 8);
+  assert.equal(finished.data.game.review.length, 10);
+  assert.equal(finished.data.stats.best, 800);
+  assert.equal(finished.data.stats.games, 1);
+  assert.equal(+finished.data.stats.categories[0].best, 800);
+  assert.equal((await call("solo_state", {}, user)).data.stats.games, 1); // Refresh never duplicates a result.
+  const next = await call("solo_start", { category: "cografya" }, user);
+  assert.notEqual(next.data.game.id, id);
+  const nextIds = JSON.parse(
+    soloMutation(scope, "echo json_encode(array_column($s['questions'],'id'))"),
+  );
+  assert.equal(
+    nextIds.filter((id) => questions.some((q) => q.id === id)).length,
+    0,
+  );
+  await call("solo_abandon", { gameId: next.data.game.id }, user);
+  const summary = await call("solo_summary", {}, user);
+  assert.equal(summary.data.game, null);
+  assert.equal(summary.data.stats.games, 1);
+  assert.equal((await call("solo_summary", {}, another)).data.stats.games, 0);
+});
+
+test("solo timeouts, mixed topics, and a new device resume the same private game", async () => {
+  const user = await soloUser("solo-resume");
+  const start = await call("solo_start", { category: "mixed" }, user);
+  assert.equal(start.status, 200);
+  const again = await call("login", {
+    username: "solo-resume",
+    password: "test",
+  });
+  const opt = { cookie: sessionCookie(again) };
+  assert.equal((await call("solo_state", {}, user)).status, 401);
+  assert.equal(
+    (await call("solo_state", {}, opt)).data.game.id,
+    start.data.game.id,
+  );
+  soloMutation(`user:${user.id}`, "$s['deadline']=microtime(true)-1000");
+  const end = await call("solo_state", {}, opt);
+  assert.equal(end.data.game.phase, "finished");
+  assert.equal(end.data.game.score, 0);
+  assert.equal(
+    end.data.game.review.filter((q) => q.choice === null).length,
+    10,
+  );
+  assert.equal(end.data.stats.games, 1);
+  assert.equal(
+    (
+      await call(
+        "solo_answer",
+        {
+          gameId: start.data.game.id,
+          questionId: start.data.game.question.id,
+          choice: 0,
+        },
+        opt,
+      )
+    ).status,
+    409,
+  );
 });

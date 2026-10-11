@@ -6,6 +6,14 @@ import { moduleTeasers } from "./ModuleTeasers";
 
 const modules = [
   {
+    id: "solo",
+    title: "Kendini Dene",
+    label: "BUGÜNKÜ RAKİBİN DÜNKÜ SEN",
+    description: "Merak et. Kendini keşfet. Rekorunu geç.",
+    detail: "Tek kişi · 10 soru · Kişisel rekorlar",
+    action: "Kendime meydan okuyorum",
+  },
+  {
     id: "tournament",
     title: "Turnuva",
     label: "BÜYÜK ÖDÜLE GİDEN YOL",
@@ -53,7 +61,7 @@ function ModuleArt({ type }) {
       <span className="overview-art-glow" />
       <span className="overview-spark overview-spark-one">✦</span>
       <span className="overview-spark overview-spark-two">✧</span>
-      {["quiz", "tournament"].includes(type) && (
+      {["quiz", "tournament", "solo"].includes(type) && (
         <>
           <span className="overview-answer answer-a">▲</span>
           <span className="overview-answer answer-b">◆</span>

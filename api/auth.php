@@ -6,6 +6,8 @@ function authSchema(): void {
     $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
     $db->exec('CREATE TABLE IF NOT EXISTS arena_users (id '.($mysql?'INT AUTO_INCREMENT PRIMARY KEY':'INTEGER PRIMARY KEY AUTOINCREMENT').', username VARCHAR(64) NOT NULL, username_key VARCHAR(64) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL, role VARCHAR(16) NOT NULL, active INT NOT NULL DEFAULT 1)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_sessions (token_hash VARCHAR(64) PRIMARY KEY, user_id INT NOT NULL, auth_version VARCHAR(64) NOT NULL, expires_at BIGINT NOT NULL)');
+    $db->exec('CREATE TABLE IF NOT EXISTS arena_active_sessions (user_id INT PRIMARY KEY, token_hash VARCHAR(64) NOT NULL)');
+    $db->exec('CREATE TABLE IF NOT EXISTS arena_previews (token_hash VARCHAR(64) PRIMARY KEY, target_id INT NOT NULL, started_at BIGINT NOT NULL)');
     $sql=$mysql?'INSERT IGNORE INTO arena_users (id,username,username_key,password_hash,role,active) VALUES (1,?,?,?,\'owner\',1)':'INSERT INTO arena_users (id,username,username_key,password_hash,role,active) VALUES (1,?,?,?,\'owner\',1) ON CONFLICT DO NOTHING';
     $db->prepare($sql)->execute(['admin','admin',adminHash()]);$ready=true;
 }
@@ -20,12 +22,29 @@ function clearLegacySession(): void {
     $_SESSION=[];session_destroy();setcookie(session_name(),'',['expires'=>time()-3600,'path'=>'/','httponly'=>true,'samesite'=>'Strict']);unset($_COOKIE[session_name()]);
 }
 function startAuthSession(array $u): void {
-    $token=bin2hex(random_bytes(32));$expires=time()+30*86400;
-    db()->prepare('INSERT INTO arena_sessions (token_hash,user_id,auth_version,expires_at) VALUES (?,?,?,?)')->execute([hash('sha256',$token),$u['id'],hash('sha256',$u['password_hash']),$expires]);
-    authCookie($token,$expires);$GLOBALS['arena_user']=$u;$GLOBALS['arena_user_loaded']=true;
-    db()->prepare('DELETE FROM arena_sessions WHERE expires_at < ?')->execute([time()]);
+    $db=db();$db->beginTransaction();
+    // Serialize logins for one account, including concurrent requests on MySQL.
+    $q=$db->prepare('SELECT * FROM arena_users WHERE id=?'.($db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?' FOR UPDATE':''));$q->execute([$u['id']]);$fresh=$q->fetch();
+    if(!$fresh || !(int)$fresh['active'] || !hash_equals($fresh['password_hash'],$u['password_hash'])){$db->rollBack();fail('Hesap değişti. Yeniden giriş yapın.',401);}
+    $u=$fresh;$token=bin2hex(random_bytes(32));$digest=hash('sha256',$token);$expires=time()+30*86400;
+    if($u['role']!=='owner'){
+        $db->prepare('DELETE FROM arena_sessions WHERE user_id=?')->execute([$u['id']]);
+        $db->prepare('DELETE FROM arena_active_sessions WHERE user_id=?')->execute([$u['id']]);
+        $db->prepare('INSERT INTO arena_active_sessions (user_id,token_hash) VALUES (?,?)')->execute([$u['id'],$digest]);
+    }
+    $db->prepare('INSERT INTO arena_sessions (token_hash,user_id,auth_version,expires_at) VALUES (?,?,?,?)')->execute([$digest,$u['id'],hash('sha256',$u['password_hash']),$expires]);
+    $db->commit();authCookie($token,$expires);$GLOBALS['arena_user']=$u;$GLOBALS['arena_user_loaded']=true;
+    $db->prepare('DELETE FROM arena_sessions WHERE expires_at < ?')->execute([time()]);
+    $db->exec('DELETE FROM arena_previews WHERE token_hash NOT IN (SELECT token_hash FROM arena_sessions)');
 }
-function currentUser(): ?array {
+function singleSessionValid(array $u,string $digest): bool {
+    if($u['role']==='owner')return true;
+    $db=db();$sql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'INSERT IGNORE INTO arena_active_sessions (user_id,token_hash) VALUES (?,?)':'INSERT INTO arena_active_sessions (user_id,token_hash) VALUES (?,?) ON CONFLICT(user_id) DO NOTHING';
+    // Upgrade old sessions atomically: only the first existing device remains valid.
+    $db->prepare($sql)->execute([$u['id'],$digest]);$q=$db->prepare('SELECT token_hash FROM arena_active_sessions WHERE user_id=?');$q->execute([$u['id']]);
+    return hash_equals((string)$q->fetchColumn(),$digest);
+}
+function sessionUser(): ?array {
     if($GLOBALS['arena_user_loaded']??false)return $GLOBALS['arena_user']??null;
     $GLOBALS['arena_user_loaded']=true;
     if(!configured())return null;
@@ -34,7 +53,7 @@ function currentUser(): ?array {
     authSchema();
     if(preg_match('/^[a-f0-9]{64}$/D',$token)){
         $q=db()->prepare('SELECT u.*,s.auth_version,s.expires_at FROM arena_sessions s JOIN arena_users u ON u.id=s.user_id WHERE s.token_hash=?');$q->execute([hash('sha256',$token)]);$u=$q->fetch();
-        if($u && (int)$u['active']===1 && (int)$u['expires_at']>time() && hash_equals(hash('sha256',$u['password_hash']),$u['auth_version'])){
+        if($u && (int)$u['active']===1 && (int)$u['expires_at']>time() && hash_equals(hash('sha256',$u['password_hash']),$u['auth_version']) && singleSessionValid($u,hash('sha256',$token))){
             if((int)$u['expires_at']<time()+29*86400){$expires=time()+30*86400;db()->prepare('UPDATE arena_sessions SET expires_at=? WHERE token_hash=?')->execute([$expires,hash('sha256',$token)]);authCookie($token,$expires);}
             return $GLOBALS['arena_user']=$u;
         }
@@ -48,6 +67,15 @@ function currentUser(): ?array {
     }
     return null;
 }
+function currentUser(): ?array {
+    $actor=sessionUser();if(!$actor || $actor['role']!=='owner')return $actor;
+    if(array_key_exists('arena_preview_user',$GLOBALS))return $GLOBALS['arena_preview_user']??$actor;
+    $q=db()->prepare('SELECT u.* FROM arena_previews p JOIN arena_users u ON u.id=p.target_id WHERE p.token_hash=? AND u.active=1 AND u.role<>\'owner\'');$q->execute([hash('sha256',$_COOKIE['arena_session']??'')]);
+    $target=$q->fetch();$GLOBALS['arena_preview_user']=$target?:null;
+    return $target?:$actor;
+}
+function isPreview(): bool { $actor=sessionUser();$user=currentUser();return $actor && $user && (int)$actor['id']!==(int)$user['id']; }
+function authStatus(): array { $u=currentUser();return ['admin'=>$u!==null,'user'=>$u?publicUser($u):null,'preview'=>isPreview()?['adminUsername'=>sessionUser()['username'],'username'=>$u['username']]:null]; }
 function admin(): bool {return currentUser()!==null;}
 function needAdmin(): void {if(!admin())fail('Giriş yapmanız gerekli.',401);}
 function needOwner(): void {needAdmin();if(currentUser()['role']!=='owner')fail('Bu işlem yalnızca yöneticiye açık.',403);}
@@ -59,6 +87,20 @@ function usernameValue(mixed $value): string {
 }
 function usernameKey(string $name): string {return mb_strtolower(str_replace('İ','i',$name));}
 function authActions(string $action,array $in): void {
+    if($action==='preview_start'){
+        needOwner();$q=db()->prepare('SELECT * FROM arena_users WHERE id=?');$q->execute([(int)($in['userId']??0)]);$target=$q->fetch();
+        if(!$target || !(int)$target['active'] || $target['role']==='owner')fail('Aktif bir kullanıcı seçin.');
+        $digest=hash('sha256',$_COOKIE['arena_session']??'');
+        db()->prepare('DELETE FROM arena_previews WHERE token_hash=?')->execute([$digest]);
+        db()->prepare('INSERT INTO arena_previews (token_hash,target_id,started_at) VALUES (?,?,?)')->execute([$digest,$target['id'],time()]);
+        unset($GLOBALS['arena_preview_user']);echo json_encode(authStatus(),JSON_UNESCAPED_UNICODE);exit;
+    }
+    if($action==='preview_stop'){
+        $actor=sessionUser();if(!$actor||$actor['role']!=='owner')fail('Bu işlem yalnızca yöneticiye açık.',403);
+        db()->prepare('DELETE FROM arena_previews WHERE token_hash=?')->execute([hash('sha256',$_COOKIE['arena_session']??'')]);
+        unset($GLOBALS['arena_preview_user']);echo json_encode(authStatus(),JSON_UNESCAPED_UNICODE);exit;
+    }
+    if(in_array($action,['password_change','profile_update'],true)&&isPreview())fail('Test görünümünde hesap bilgileri değiştirilemez. Yöneticiye dönün.',403);
     if($action==='login'){
         rateLimit('login',10);authSchema();$name=(string)($in['username']??'admin');$q=db()->prepare('SELECT * FROM arena_users WHERE username_key=?');$q->execute([usernameKey(trim($name))]);$u=$q->fetch();
         // Always verify a real hash, including when the username is unknown.

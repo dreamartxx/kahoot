@@ -3,6 +3,27 @@ import { BookOpen, ChevronDown, Sparkles } from "lucide-react";
 import "./module-guide.css";
 
 const guides = {
+  solo: {
+    name: "Kendini Dene",
+    emoji: "✨",
+    accent: "#7b68ac",
+    intro: "Tek başına oyna. Kendi rekorunu geç.",
+    steps: [
+      [
+        "Konunu seç",
+        "Bir konu veya karışık konular seç. Kimseyi beklemeden 10 soruluk testine başla.",
+      ],
+      [
+        "Kendini dene",
+        "Her soruda 30 saniyen var. Dört şıktan birini seç; her doğru cevap 100 puan. Sorular 3–2–1 ile ilerler.",
+      ],
+      [
+        "Gelişimini gör",
+        "Test sonunda doğru oranını ve cevaplarını incele. En yüksek skorların ve son denemelerin hesabında saklanır.",
+      ],
+    ],
+    note: "Her turda en fazla bir uzmanlık sorusu gelir. Yarım bırakılan testler rekorlara eklenmez.",
+  },
   quiz: {
     name: "Bilgi yarışması",
     emoji: "⚡",

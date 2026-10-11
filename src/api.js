@@ -8,6 +8,8 @@ export async function api(action, data, token) {
       : "");
   const read = [
     "status",
+    "solo_summary",
+    "solo_state",
     "categories",
     "questions",
     "family_questions",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Users, Plus, ShieldCheck, Pencil, X, Check } from "lucide-react";
 import { api } from "./api";
-export default function UserManagement({ currentUser, onUpdate }) {
+export default function UserManagement({ currentUser, onUpdate, onPreview }) {
   const [users, setUsers] = useState([]),
     [editing, setEditing] = useState(null),
     [name, setName] = useState(""),
@@ -185,6 +185,15 @@ export default function UserManagement({ currentUser, onUpdate }) {
                     {u.active ? "Aktif" : "Pasif"}
                   </p>
                 </div>
+                {u.role !== "owner" && u.active && (
+                  <button
+                    className="text-btn account-preview"
+                    aria-label={`${u.username} olarak test et`}
+                    onClick={() => onPreview(u.id)}
+                  >
+                    Kullanıcı olarak test et
+                  </button>
+                )}
                 <button
                   className="icon-btn"
                   aria-label={`${u.username} hesabını düzenle`}

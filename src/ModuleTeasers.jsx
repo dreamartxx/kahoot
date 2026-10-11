@@ -2,6 +2,7 @@ import React from "react";
 import "./module-teasers.css";
 
 export const moduleTeasers = {
+  solo: { notes: [["Acaba ne kadar biliyorum?", "✨"]] },
   tournament: {
     title: "“Bu alan benim!” diyenler, sahne sizin.",
     caption: "Futbol benden, gezegenler senden. Bakalım zirve kimin?",

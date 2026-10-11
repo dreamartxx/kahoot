@@ -16,6 +16,7 @@ import { PwaInstall } from "./PwaInstall";
 
 export default function Profile({
   user,
+  preview = false,
   rooms,
   onPassword,
   onLogout,
@@ -75,6 +76,11 @@ export default function Profile({
           <span>{owner ? "Açık etkinlik" : "Açık etkinliğin"}</span>
         </div>
       </section>
+      {preview && (
+        <p className="notice">
+          Admin test görünümünde kullanıcı adı ve şifre değiştirilemez.
+        </p>
+      )}
       <div className="profile-grid">
         <form className="profile-card" onSubmit={save}>
           <h2>
@@ -87,6 +93,7 @@ export default function Profile({
           <label className="field">
             <span>Kullanıcı adı</span>
             <input
+              disabled={preview}
               autoComplete="username"
               name="username"
               required
@@ -116,7 +123,7 @@ export default function Profile({
           )}
           <button
             className="btn full"
-            disabled={busy || username.trim() === user.username}
+            disabled={preview || busy || username.trim() === user.username}
           >
             {busy ? "Kaydediliyor…" : "Değişiklikleri kaydet"}
             <Check size={18} />
@@ -129,7 +136,11 @@ export default function Profile({
           <h2>
             <Settings size={21} /> Kullanıcı ayarları
           </h2>
-          <button className="profile-setting-row" onClick={onPassword}>
+          <button
+            className="profile-setting-row"
+            disabled={preview}
+            onClick={onPassword}
+          >
             <span className="setting-icon">
               <KeyRound size={21} />
             </span>
