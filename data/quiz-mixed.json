@@ -182,20 +182,6 @@
     "difficulty": "general"
   },
   {
-    "id": "ulkeler-3c8071b5ee68ab",
-    "category": "ulkeler",
-    "text": "Kenya şilini hangi ülkenin para birimidir?",
-    "options": [
-      "Kenya",
-      "Uruguay",
-      "Fas",
-      "Tayland"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Kenya.",
-    "difficulty": "general"
-  },
-  {
     "id": "turkiye-ecc7d19dbe7020",
     "category": "turkiye",
     "text": "Kırşehir hangi coğrafi bölgemizdeki illerdendir?",
@@ -378,20 +364,6 @@
     "difficulty": "general"
   },
   {
-    "id": "turkiye-93387266cd0761",
-    "category": "turkiye",
-    "text": "Türk bayrağında hangi iki şekil bulunur?",
-    "options": [
-      "Güneş ve kartal",
-      "Aslan ve güneş",
-      "Ay ve yıldız",
-      "Çınar ve hilal"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Ay ve yıldız.",
-    "difficulty": "general"
-  },
-  {
     "id": "cografya-c40d028084572d",
     "category": "cografya",
     "text": "Bering Boğazı hangi iki kıtayı ayırır?",
@@ -571,20 +543,6 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Kuzey.",
-    "difficulty": "general"
-  },
-  {
-    "id": "cografya-4ac457e2e22f44",
-    "category": "cografya",
-    "text": "Afrika'yı kuzeyden çevreleyen deniz hangisidir?",
-    "options": [
-      "Karadeniz",
-      "Bering Denizi",
-      "Akdeniz",
-      "Baltık Denizi"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Akdeniz.",
     "difficulty": "general"
   },
   {
@@ -2030,20 +1988,6 @@
     "difficulty": "general"
   },
   {
-    "id": "plakalar-4aa79073a7ab0c",
-    "category": "plakalar",
-    "text": "Ağrı ilinin trafik plaka kodu hangisidir?",
-    "options": [
-      "05",
-      "47",
-      "28",
-      "04"
-    ],
-    "correct": 3,
-    "explanation": "Ağrı: 04.",
-    "difficulty": "general"
-  },
-  {
     "id": "meshur-dd16dd26364e1d",
     "category": "meshur",
     "text": "Karpuz ve surlar hangi ilimizi hatırlatır?",
@@ -2209,20 +2153,6 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Samsun.",
-    "difficulty": "general"
-  },
-  {
-    "id": "meshur-d268d0c1f33f71",
-    "category": "meshur",
-    "text": "Tiftik keçisi ve Beypazarı kurusuyla tanınan ilimiz hangisidir?",
-    "options": [
-      "Adana",
-      "Kırıkkale",
-      "Karaman",
-      "Ankara"
-    ],
-    "correct": 3,
-    "explanation": "Tiftik keçisi, Ankara ilinin tanınmış değerlerindendir.",
     "difficulty": "general"
   },
   {
@@ -2394,20 +2324,6 @@
     "difficulty": "general"
   },
   {
-    "id": "enler-d9715932383285",
-    "category": "enler",
-    "text": "Akdeniz'in yüzölçümü en büyük adası hangisidir?",
-    "options": [
-      "Kıbrıs",
-      "Girit",
-      "Sicilya",
-      "Sardinya"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Sicilya. Sicilya, İtalya'ya bağlıdır ve yaklaşık 25.700 kilometrekarelik yüzölçümüne sahiptir.",
-    "difficulty": "general"
-  },
-  {
     "id": "bayraklar-0e212fb79225b0",
     "category": "bayraklar",
     "text": "Kuzey Makedonya ülkesinin bayrağı hangisidir?",
@@ -2573,20 +2489,6 @@
     ],
     "correct": 2,
     "explanation": "Doğru bayrak: Nepal.",
-    "difficulty": "general"
-  },
-  {
-    "id": "bayraklar-5632969dcfe7b0",
-    "category": "bayraklar",
-    "text": "Finlandiya: beyaz zemin üzerinde mavi haç. Bu tarife uyan bayrak hangisidir?",
-    "options": [
-      "flag:fi",
-      "flag:dm",
-      "flag:sk",
-      "flag:vn"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: flag:fi.",
     "difficulty": "general"
   },
   {
@@ -2758,20 +2660,6 @@
     "difficulty": "general"
   },
   {
-    "id": "turkiye-tarihi-bfc9dff90df056",
-    "category": "turkiye-tarihi",
-    "text": "Atatürk'ün 10 Kasım 1938'de vefat ettiği Dolmabahçe Sarayı hangi şehirdedir?",
-    "options": [
-      "İstanbul",
-      "Ankara",
-      "Aydın",
-      "İzmir"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: İstanbul.",
-    "difficulty": "general"
-  },
-  {
     "id": "osmanli-tarihi-dabbb75685bc5c",
     "category": "osmanli-tarihi",
     "text": "Topkapı Sarayı'nı görmek isteyen biri hangi şehre gitmelidir?",
@@ -2937,20 +2825,6 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Yavuz Sultan Selim.",
-    "difficulty": "general"
-  },
-  {
-    "id": "osmanli-tarihi-f14a64780ede17",
-    "category": "osmanli-tarihi",
-    "text": "Osmanlı'da askerî hekim yetiştirmek için açılan okulun yaygın adı hangisidir?",
-    "options": [
-      "Mekteb-i Tıbbiye",
-      "Kānûn-ı Esâsî",
-      "Nizâm-ı Cedîd",
-      "Dîvân-ı Hümâyun"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Mekteb-i Tıbbiye.",
     "difficulty": "general"
   },
   {
@@ -3122,20 +2996,6 @@
     "difficulty": "general"
   },
   {
-    "id": "islam-tarihi-f56f414f015d3d",
-    "category": "islam-tarihi",
-    "text": "Emevî Devleti'nin kurucusu kimdir?",
-    "options": [
-      "Hz. Hatice",
-      "Hârûnürreşîd",
-      "Hz. Hüseyin",
-      "Muâviye b. Ebû Süfyân"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Muâviye b. Ebû Süfyân.",
-    "difficulty": "general"
-  },
-  {
     "id": "peygamberler-tarihi-a194f72d27c1a6",
     "category": "peygamberler-tarihi",
     "text": "Hz. Muhammed'in hicret ettiği şehrin adı nedir?",
@@ -3301,20 +3161,6 @@
     ],
     "correct": 3,
     "explanation": "Lokmân 31/12–19'da öğütleri yer alır. Peygamber olduğu kesinmiş gibi sorulmamaktadır.",
-    "difficulty": "general"
-  },
-  {
-    "id": "peygamberler-tarihi-19af8ccae32ba0",
-    "category": "peygamberler-tarihi",
-    "text": "Kur'an'da Mûsâ'nın Firavun'dan kendisiyle göndermesini istediği topluluk hangisidir?",
-    "options": [
-      "Cumartesi halkı",
-      "Âd",
-      "Semûd",
-      "İsrâiloğulları"
-    ],
-    "correct": 3,
-    "explanation": "A‘râf 7/105'te Mûsâ'nın isteği aktarılır.",
     "difficulty": "general"
   },
   {
@@ -3510,19 +3356,183 @@
     "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
   },
   {
-    "id": "dunya-kupasi-7115c0696595f9",
-    "category": "dunya-kupasi",
-    "text": "2018 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "id": "film-84981bcbef9e65",
+    "category": "film",
+    "text": "Şrek'in prenses sevgilisinin adı nedir?",
     "options": [
-      "Güney Kore ve Japonya",
-      "Batı Almanya",
-      "Brezilya",
-      "Hırvatistan"
+      "Belle",
+      "Aurora",
+      "Fiona",
+      "Rapunzel"
+    ],
+    "correct": 2,
+    "explanation": "Fiona, Şrek'in macerasının merkezindeki prensestir.",
+    "topic": "animasyon",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-1a8e7b686acef1",
+    "category": "film",
+    "text": "Canavarlar, Inc. filminde Sulley'nin yakın arkadaşı kimdir?",
+    "options": [
+      "Woody",
+      "Buzz Lightyear",
+      "Lightning McQueen",
+      "Mike Wazowski"
     ],
     "correct": 3,
-    "explanation": "2018: Fransa birinci, Hırvatistan ikinci oldu.",
-    "difficulty": "general",
-    "topic": "finalistler",
-    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+    "explanation": "Sulley ve Mike birlikte çalışan iki arkadaştır.",
+    "topic": "animasyon",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-d0c8a77c4c1223",
+    "category": "film",
+    "text": "Galaksinin Koruyucuları'ndaki Groot neye benzeyen bir varlıktır?",
+    "options": [
+      "Kuşa",
+      "Kayaya",
+      "Ahtapota",
+      "Ağaca"
+    ],
+    "correct": 3,
+    "explanation": "Groot, ağaç benzeri bir canlıdır.",
+    "topic": "filmler-ve-karakterler",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-9643a81cccc8c7",
+    "category": "film",
+    "text": "Film konuşmalarının ekranda yazıyla gösterilen çevirisine ne denir?",
+    "options": [
+      "Senaryo",
+      "Altyazı",
+      "Afiş",
+      "Jenerik"
+    ],
+    "correct": 1,
+    "explanation": "Altyazı, diyalogların yazılı biçimde izlenmesini sağlar.",
+    "topic": "sinema-dili",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-0511c313e30655",
+    "category": "film",
+    "text": "Arabalar / Cars filmlerinin kırmızı yarış arabası kimdir?",
+    "options": [
+      "Şimşek McQueen",
+      "Doc Hudson",
+      "Luigi",
+      "Mater"
+    ],
+    "correct": 0,
+    "explanation": "Şimşek McQueen serinin yarışçı kahramanıdır.",
+    "topic": "animasyon",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-8a463cbdf40533",
+    "category": "film",
+    "text": "La La Land'de Sebastian'ın tutkusu hangi müzik türüdür?",
+    "options": [
+      "Rap",
+      "Country",
+      "Opera",
+      "Caz"
+    ],
+    "correct": 3,
+    "explanation": "Sebastian, caz piyanisti olarak kendi yolunu arar.",
+    "topic": "filmler-ve-karakterler",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-c37b78eb761d5f",
+    "category": "film",
+    "text": "Yıldız Savaşları'nda Jedi'ların kullandığı ünlü silah nedir?",
+    "options": [
+      "Balta",
+      "Yay",
+      "Bumerang",
+      "Işın kılıcı"
+    ],
+    "correct": 3,
+    "explanation": "Işın kılıçları Jedi ve Sith karakterleriyle özdeşleşir.",
+    "topic": "filmler-ve-karakterler",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-15371686dd3c41",
+    "category": "film",
+    "text": "Recep İvedik (2008) filminde Recep İvedik karakterini hangi oyuncu canlandırdı?",
+    "options": [
+      "Şener Şen",
+      "Cem Yılmaz",
+      "Aras Bulut İynemli",
+      "Şahan Gökbakar"
+    ],
+    "correct": 3,
+    "explanation": "Recep İvedik (2008) filmindeki Recep İvedik rolünde Şahan Gökbakar yer alır.",
+    "topic": "yesilcam-ve-turk-oyuncular",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-523314e1c817db",
+    "category": "film",
+    "text": "E.T. filmindeki E.T. nasıl bir varlıktır?",
+    "options": [
+      "Uzaylı",
+      "Büyücü",
+      "Robot",
+      "Hayalet"
+    ],
+    "correct": 0,
+    "explanation": "Elliott, Dünya'da kalan bir uzaylıyla arkadaş olur.",
+    "topic": "filmler-ve-karakterler",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-bc5509906de8de",
+    "category": "film",
+    "text": "Baba / The Godfather (1972) filmini kim yönetti?",
+    "options": [
+      "Yavuz Turgul",
+      "Wes Anderson",
+      "Quentin Tarantino",
+      "Francis Ford Coppola"
+    ],
+    "correct": 3,
+    "explanation": "Baba / The Godfather (1972) filminin yönetmeni Francis Ford Coppola.",
+    "topic": "yonetmenler",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-68fddf1daacf49",
+    "category": "film",
+    "text": "Ters Yüz / Inside Out filmindeki duygular hangi çocuğun zihninde yaşar?",
+    "options": [
+      "Rapunzel",
+      "Riley",
+      "Moana",
+      "Elsa"
+    ],
+    "correct": 1,
+    "explanation": "Riley'nin taşınmayla değişen hayatı duyguların macerasını başlatır.",
+    "topic": "animasyon",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-2875ef21855797",
+    "category": "film",
+    "text": "Çizim veya modelleri hareket ediyormuş gibi gösteren sinema tekniği nedir?",
+    "options": [
+      "Kostüm",
+      "Altyazı",
+      "Dublaj",
+      "Animasyon"
+    ],
+    "correct": 3,
+    "explanation": "Animasyon, art arda gösterilen görüntülerle hareket izlenimi oluşturur.",
+    "topic": "sinema-dili",
+    "difficulty": "general"
   }
 ]
