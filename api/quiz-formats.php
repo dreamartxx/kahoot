@@ -15,7 +15,7 @@ function specialQuizDeck(string $type,int $count=10): array {
         $categories=array_keys($groups);shuffle($categories);$deck=[];
         usort($categories,fn($a,$b)=>($rotation['used'][$groups[$a][0]['id']]??0)<=>($rotation['used'][$groups[$b][0]['id']]??0));
         foreach(array_slice($categories,0,$count) as $category)$deck[]=array_shift($groups[$category]);
-        // Short rounds use distinct topics; a twenty-question round needs two repeats.
+        // Cover distinct topics first, then repeat only when the round is longer.
         usort($categories,fn($a,$b)=>(int)in_array($a,$rotation['extras'],true)<=>(int)in_array($b,$rotation['extras'],true));
         $rotation['extras']=array_slice($categories,0,max(0,$count-count($deck)));
         foreach($rotation['extras'] as $category)$deck[]=array_shift($groups[$category]);
