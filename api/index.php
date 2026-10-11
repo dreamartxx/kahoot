@@ -4,7 +4,7 @@ header('Content-Type: application/json; charset=utf-8');header('Cache-Control: n
 require __DIR__.'/core.php';
 $action=$_GET['action']??'status';$method=$_SERVER['REQUEST_METHOD'];
 try {
-    if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured(),'admin'=>admin(),'user'=>currentUser()?publicUser(currentUser()):null]);exit;}
+    if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured()]+authStatus());exit;}
     if($method==='POST') {
         if(!str_contains($_SERVER['CONTENT_TYPE']??'','application/json')) fail('JSON gerekli.',415);
         $origin=$_SERVER['HTTP_ORIGIN']??'';
@@ -15,9 +15,10 @@ try {
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
         $in=json_decode($raw,true,64,JSON_THROW_ON_ERROR);if(!is_array($in)) fail('Geçersiz istek.');
     } else $in=$_GET;
-    $writes=['login','logout','password_change','profile_update','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance','tournament_choices','tournament_prize','tournament_start','tournament_vote','tournament_vote_close'];
+    $writes=['solo_start','solo_answer','solo_abandon','preview_start','preview_stop','login','logout','password_change','profile_update','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance','tournament_choices','tournament_prize','tournament_start','tournament_vote','tournament_vote_close'];
     if(in_array($action,$writes,true) && $method!=='POST') fail('POST gerekli.',405);
     authActions($action,$in);
+    if(str_starts_with($action,'solo_')){require_once __DIR__.'/solo.php';soloActions($action,$in);}
     if($action==='categories') { $counts=[];foreach(bank() as $q)$counts[$q['category']]=($counts[$q['category']]??0)+1;echo json_encode($counts);exit; }
     if($action==='questions'){needOwner();$qs=bank();$cat=$in['category']??'';echo json_encode(array_values(array_filter($qs,fn($q)=>!$cat || $q['category']===$cat)),JSON_UNESCAPED_UNICODE);exit;}
     if($action==='family_questions'){needAdmin();echo json_encode(array_map(fn($p)=>['id'=>$p['id'],'text'=>$p['self']],familyPrompts()),JSON_UNESCAPED_UNICODE);exit;}
