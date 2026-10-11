@@ -15,7 +15,7 @@ try {
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
         $in=json_decode($raw,true,64,JSON_THROW_ON_ERROR);if(!is_array($in)) fail('Geçersiz istek.');
     } else $in=$_GET;
-    $writes=['login','logout','password_change','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance','tournament_choices','tournament_prize','tournament_start','tournament_vote','tournament_vote_close'];
+    $writes=['login','logout','password_change','profile_update','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance','tournament_choices','tournament_prize','tournament_start','tournament_vote','tournament_vote_close'];
     if(in_array($action,$writes,true) && $method!=='POST') fail('POST gerekli.',405);
     authActions($action,$in);
     if($action==='categories') { $counts=[];foreach(bank() as $q)$counts[$q['category']]=($counts[$q['category']]??0)+1;echo json_encode($counts);exit; }
