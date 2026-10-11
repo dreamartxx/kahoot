@@ -770,20 +770,6 @@
     "difficulty": "general"
   },
   {
-    "id": "dinozor-08df62a7913ed3",
-    "category": "dinozor",
-    "text": "Fosillerle çalışan araştırmacı bulduğu kemiği neden dikkatle çıkarır?",
-    "options": [
-      "Kırılgan olabileceği için",
-      "Canlanacağı için",
-      "Uçacağı için",
-      "Işık saçacağı için"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Kırılgan olabileceği için.",
-    "difficulty": "general"
-  },
-  {
     "id": "hayvanlar-8ee16e9e5a6cb5",
     "category": "hayvanlar",
     "text": "Yeni Zelanda'nın uçamayan, uzun gagalı kuşu hangisidir?",
@@ -963,20 +949,6 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Kuş.",
-    "difficulty": "general"
-  },
-  {
-    "id": "hayvanlar-b7d221f58f4535",
-    "category": "hayvanlar",
-    "text": "Ren geyiği hangi yaşam ortamıyla en çok ilişkilidir?",
-    "options": [
-      "Deniz",
-      "Tatlı su",
-      "Kutup bölgesi",
-      "Çöl"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Kutup bölgesi.",
     "difficulty": "general"
   },
   {
@@ -1162,20 +1134,6 @@
     "difficulty": "general"
   },
   {
-    "id": "arabalar-91ef27e149fd6f",
-    "category": "arabalar",
-    "text": "Koltuk başlığı ne işe yarar?",
-    "options": [
-      "Baş ve boyun desteği sağlamaya",
-      "Egzoz gazını temizlemeye",
-      "Motoru soğutmaya",
-      "Yakıtı püskürtmeye"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Baş ve boyun desteği sağlamaya.",
-    "difficulty": "general"
-  },
-  {
     "id": "futbol-d1d520b22fb533",
     "category": "futbol",
     "text": "1998 FIFA Erkekler Dünya Kupası'nın ev sahibi ülke veya ülkeleri hangisiydi?",
@@ -1355,20 +1313,6 @@
     ],
     "correct": 2,
     "explanation": "Highbury, Arsenal kulübünün tarihindeki iç saha statlarından biridir; soru güncel sponsorluk adını sormaz.",
-    "difficulty": "general"
-  },
-  {
-    "id": "futbol-4d307f5cb6fd85",
-    "category": "futbol",
-    "text": "EURO 2008 Erkekler Avrupa Futbol Şampiyonası'nı kim kazandı?",
-    "options": [
-      "İspanya",
-      "Sovyetler Birliği",
-      "Portekiz",
-      "Danimarka"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: İspanya.",
     "difficulty": "general"
   },
   {
@@ -1554,20 +1498,6 @@
     "difficulty": "general"
   },
   {
-    "id": "kaleciler-e7704f8371764e",
-    "category": "kaleciler",
-    "text": "Kalecinin sağ ve sol yana uzanarak topa müdahale etmesi hangisidir?",
-    "options": [
-      "Santra",
-      "Plonjon",
-      "Taç",
-      "Röveşata"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Plonjon.",
-    "difficulty": "general"
-  },
-  {
     "id": "gezegenler-fd9bd1d9ee9ca4",
     "category": "gezegenler",
     "text": "Olympus Mons adlı dev volkan hangi gezegendedir?",
@@ -1747,20 +1677,6 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Kutup ışıkları.",
-    "difficulty": "general"
-  },
-  {
-    "id": "gezegenler-c75b2a58837137",
-    "category": "gezegenler",
-    "text": "Jüpiter'in dört büyük uydusunu 1610'da gözlemleyen bilim insanı kimdir?",
-    "options": [
-      "Edwin Hubble",
-      "Galileo Galilei",
-      "Stephen Hawking",
-      "Albert Einstein"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Galileo Galilei.",
     "difficulty": "general"
   },
   {
@@ -1946,20 +1862,6 @@
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-6165b0fab18c6c",
-    "category": "genel-kultur",
-    "text": "Pazartesiden sonra hangi gün gelir?",
-    "options": [
-      "Cuma",
-      "Pazar",
-      "Salı",
-      "Cumartesi"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Salı.",
-    "difficulty": "general"
-  },
-  {
     "id": "plakalar-9e50f676167a2a",
     "category": "plakalar",
     "text": "Sinop'ta kayıtlı bir otomobil için hangi plaka kodunu seçmelisin?",
@@ -2139,20 +2041,6 @@
     ],
     "correct": 3,
     "explanation": "Ağrı: 04.",
-    "difficulty": "general"
-  },
-  {
-    "id": "plakalar-bc2c3addfcb9f7",
-    "category": "plakalar",
-    "text": "63 ile başlayan bir Türk araç plakası hangi ili gösterir?",
-    "options": [
-      "Karabük",
-      "Şanlıurfa",
-      "Tekirdağ",
-      "Rize"
-    ],
-    "correct": 1,
-    "explanation": "63, Şanlıurfa iline tahsis edilmiş plaka kodudur.",
     "difficulty": "general"
   },
   {
@@ -2338,20 +2226,6 @@
     "difficulty": "general"
   },
   {
-    "id": "meshur-07aa571683ccc2",
-    "category": "meshur",
-    "text": "Zırh kıymasıyla hazırlanan acılı kebabı ve şalgamıyla tanınan ilimiz hangisidir?",
-    "options": [
-      "Aydın",
-      "Bitlis",
-      "Nevşehir",
-      "Adana"
-    ],
-    "correct": 3,
-    "explanation": "Adana kebabı, Adana ilinin tanınmış değerlerindendir.",
-    "difficulty": "general"
-  },
-  {
     "id": "enler-97ad31858853ae",
     "category": "enler",
     "text": "Güneş çevresindeki bir turunu en kısa sürede tamamlayan gezegen hangisidir?",
@@ -2531,20 +2405,6 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Sicilya. Sicilya, İtalya'ya bağlıdır ve yaklaşık 25.700 kilometrekarelik yüzölçümüne sahiptir.",
-    "difficulty": "general"
-  },
-  {
-    "id": "enler-e8930dc1f0341b",
-    "category": "enler",
-    "text": "Bu meyvelerden hangisi tipik bir meyve olarak en büyük kütleye ulaşır?",
-    "options": [
-      "Kiraz",
-      "Üzüm tanesi",
-      "Erik",
-      "Karpuz"
-    ],
-    "correct": 3,
-    "explanation": "Bu meyvelerden hangisi tipik bir meyve olarak en büyük kütleye ulaşır? Bu karşılaştırmada doğru seçenek Karpuz. Değerlendirme yalnızca soruda verilen dört seçenek ve belirtilen ölçüt içindir.",
     "difficulty": "general"
   },
   {
@@ -2730,20 +2590,6 @@
     "difficulty": "general"
   },
   {
-    "id": "bayraklar-3d727e2ccc8888",
-    "category": "bayraklar",
-    "text": "Türkmenistan ülkesinin bayrağı hangisidir?",
-    "options": [
-      "flag:se",
-      "flag:tm",
-      "flag:az",
-      "flag:uz"
-    ],
-    "correct": 1,
-    "explanation": "Doğru bayrak: Türkmenistan.",
-    "difficulty": "general"
-  },
-  {
     "id": "turkiye-tarihi-f2d7e638c8feed",
     "category": "turkiye-tarihi",
     "text": "Millî Mücadele'nin önemli genelgesinin 22 Haziran 1919'da yayımlandığı şehir hangisidir?",
@@ -2926,20 +2772,6 @@
     "difficulty": "general"
   },
   {
-    "id": "turkiye-tarihi-944dcc2220d798",
-    "category": "turkiye-tarihi",
-    "text": "Başkomutanlık Meydan Muharebesi'nin yapıldığı Dumlupınar hangi ilimizdedir?",
-    "options": [
-      "Kütahya",
-      "Eskişehir",
-      "Ankara",
-      "Kayseri"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Kütahya.",
-    "difficulty": "general"
-  },
-  {
     "id": "osmanli-tarihi-dabbb75685bc5c",
     "category": "osmanli-tarihi",
     "text": "Topkapı Sarayı'nı görmek isteyen biri hangi şehre gitmelidir?",
@@ -3119,20 +2951,6 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Mekteb-i Tıbbiye.",
-    "difficulty": "general"
-  },
-  {
-    "id": "osmanli-tarihi-c4645ba1c3ced6",
-    "category": "osmanli-tarihi",
-    "text": "Padişahların yaşadığı büyük yönetim yapısına ne denir?",
-    "options": [
-      "Tuğra",
-      "Padişah",
-      "Saray",
-      "Divan"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Saray.",
     "difficulty": "general"
   },
   {
@@ -3498,5 +3316,213 @@
     "correct": 3,
     "explanation": "A‘râf 7/105'te Mûsâ'nın isteği aktarılır.",
     "difficulty": "general"
+  },
+  {
+    "id": "dunya-kupasi-222920c9ef594e",
+    "category": "dunya-kupasi",
+    "text": "1970 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Arjantin",
+      "İsveç",
+      "Macaristan",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "1970 şampiyonu Brezilya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-0a6d9f7a8b697d",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası tribünlerinin sesiyle özdeşleşen çalgı hangisiydi?",
+    "options": [
+      "Piyano",
+      "Keman",
+      "Arp",
+      "Vuvuzela"
+    ],
+    "correct": 3,
+    "explanation": "Güney Afrika’daki tribünlerde vuvuzelalar çok yaygındı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-ec43d8d80aaea9",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nda Samuel Eto'o hangi millî takımın formasını giydi?",
+    "options": [
+      "Kamerun",
+      "Almanya",
+      "Brezilya",
+      "Kolombiya"
+    ],
+    "correct": 0,
+    "explanation": "Samuel Eto'o, 2010 turnuvasına Kamerun millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-41308636b6e2b8",
+    "category": "dunya-kupasi",
+    "text": "Türkiye adına 2002’de Senegal’e altın golü kim attı?",
+    "options": [
+      "Hakan Şükür",
+      "Nihat Kahveci",
+      "İlhan Mansız",
+      "Arif Erdem"
+    ],
+    "correct": 2,
+    "explanation": "İlhan Mansız uzatmada attığı golle maçı bitirdi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-9888390b0d9ae5",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda çeyrek finale kaç takım kalır?",
+    "options": [
+      "8",
+      "4",
+      "6",
+      "16"
+    ],
+    "correct": 0,
+    "explanation": "Dört çeyrek final maçında sekiz takım oynar.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-1402d5bb80f8c6",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası’nda Gheorghe Hagi hangi millî takımın formasını giydi?",
+    "options": [
+      "Senegal",
+      "Romanya",
+      "Brezilya",
+      "Japonya"
+    ],
+    "correct": 1,
+    "explanation": "Gheorghe Hagi, 1994 turnuvasına Romanya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-43627cd9d32c75",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası maskotu Footix hangi hayvandı?",
+    "options": [
+      "Kartal",
+      "Baykuş",
+      "Horoz",
+      "Penguen"
+    ],
+    "correct": 2,
+    "explanation": "Horoz, Fransa’nın simgelerinden biridir.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-e2c920302f5be5",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Clint Dempsey hangi millî takımın formasını giydi?",
+    "options": [
+      "ABD",
+      "Hollanda",
+      "Güney Kore",
+      "Brezilya"
+    ],
+    "correct": 0,
+    "explanation": "Clint Dempsey, 2014 turnuvasına ABD millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5e5050425ef770",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası grup aşamasında beraberlik yapan takım kaç puan alır?",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "0"
+    ],
+    "correct": 1,
+    "explanation": "Beraberlikte iki takım da birer puan alır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-4cbfc0c57a2010",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’ndaki Altın Ayakkabı ödülü hangi başarıyla ilişkilidir?",
+    "options": [
+      "Gol krallığı",
+      "En az faul",
+      "En çok korner",
+      "En çok taç atışı"
+    ],
+    "correct": 0,
+    "explanation": "Gol sayısı ve gerektiğinde eşitlik kriterleriyle belirlenir.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://inside.fifa.com/en/tournaments/mens/worldcup/2018russia/news/157-awards-piece-2986294"
+  },
+  {
+    "id": "dunya-kupasi-c310bc7eca138c",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası finalinde Brezilya’nın iki golünü kim attı?",
+    "options": [
+      "Ronaldinho",
+      "Kaká",
+      "Ronaldo",
+      "Rivaldo"
+    ],
+    "correct": 2,
+    "explanation": "Ronaldo’nun golleri Almanya karşısında 2-0’ı getirdi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d98609377b670b",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda “son 16” turuna kaç takım katılır?",
+    "options": [
+      "16",
+      "32",
+      "12",
+      "8"
+    ],
+    "correct": 0,
+    "explanation": "Bu turda on altı takım sekiz eşleşmede oynar.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-7115c0696595f9",
+    "category": "dunya-kupasi",
+    "text": "2018 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Güney Kore ve Japonya",
+      "Batı Almanya",
+      "Brezilya",
+      "Hırvatistan"
+    ],
+    "correct": 3,
+    "explanation": "2018: Fransa birinci, Hırvatistan ikinci oldu.",
+    "difficulty": "general",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
   }
 ]

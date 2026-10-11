@@ -60,6 +60,13 @@ export const categories = [
   ["enler", "Enler", "En büyük, en uzun, en hızlı", "🏔️", "#e4f1db"],
   ["gezegenler", "Gezegenler", "Yıldızlara doğru", "🪐", "#e7e4ff"],
   ["futbol", "Futbol", "Sahne senin, gol senin", "⚽", "#dff4dc"],
+  [
+    "dunya-kupasi",
+    "Dünya Kupası",
+    "Finaller, efsaneler ve 2002 heyecanı",
+    "🏆",
+    "#fff0bd",
+  ],
   ["kaleciler", "Kaleciler", "Kalenin efsaneleri", "🧤", "#e1edff"],
   ["arabalar", "Arabalar", "Bilgini vites yükselt", "🏎️", "#ffe6d7"],
   [

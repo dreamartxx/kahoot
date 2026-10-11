@@ -14,7 +14,7 @@ const general = new Set([
   ...bank.filter((q) => q.difficulty === "general").map((q) => q.id),
 ]);
 
-test("editorial general pools cover all 18 categories with stable IDs and room to rotate", () => {
+test("legacy editorial general pools cover their 18 categories with stable IDs and room to rotate", () => {
   assert.equal(Object.keys(levels.generalQuestionIds).length, 18);
   assert.equal(
     new Set(Object.values(levels.generalQuestionIds).flat()).size,
@@ -119,7 +119,7 @@ test("each category replaces fifty records with easier content while retaining 2
   );
   const allIds = new Set(bank.map((q) => q.id));
   assert.equal(Object.keys(replaced).length, 18);
-  assert.equal(bank.filter((q) => q.difficulty === "general").length, 900);
+  assert.equal(bank.filter((q) => q.difficulty === "general" && q.category !== "dunya-kupasi").length, 900);
   for (const [category, ids] of Object.entries(replaced)) {
     assert.equal(ids.length, 50);
     assert.equal(new Set(ids).size, 50);

@@ -59398,5 +59398,4005 @@
     "correct": 2,
     "explanation": "Bu yaşam evrelerinden hangisi insan hayatında en önce gelir? Bu karşılaştırmada doğru seçenek Bebeklik. Değerlendirme yalnızca soruda verilen dört seçenek ve belirtilen ölçüt içindir.",
     "difficulty": "general"
+  },
+  {
+    "id": "dunya-kupasi-054a6a8299a2fe",
+    "category": "dunya-kupasi",
+    "text": "1930 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Şili",
+      "ABD",
+      "Güney Afrika",
+      "Uruguay"
+    ],
+    "correct": 3,
+    "explanation": "1930 şampiyonu Uruguay oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-e7c75d6bf7f8d2",
+    "category": "dunya-kupasi",
+    "text": "1930 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Hollanda",
+      "Uruguay",
+      "Brezilya",
+      "Çekoslovakya"
+    ],
+    "correct": 1,
+    "explanation": "1930 turnuvasının ev sahibi: Uruguay.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-34f9f882e8b6ff",
+    "category": "dunya-kupasi",
+    "text": "1930 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Fransa",
+      "Arjantin",
+      "Meksika",
+      "İspanya"
+    ],
+    "correct": 1,
+    "explanation": "1930: Uruguay birinci, Arjantin ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-501104f593f798",
+    "category": "dunya-kupasi",
+    "text": "1930 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Gary Lineker",
+      "Just Fontaine",
+      "Guillermo Stábile",
+      "Garrincha"
+    ],
+    "correct": 2,
+    "explanation": "1930 turnuvasının en golcü oyuncusu Guillermo Stábile oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-0e7755ae971865",
+    "category": "dunya-kupasi",
+    "text": "1934 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Katar",
+      "Fransa",
+      "Brezilya",
+      "İtalya"
+    ],
+    "correct": 3,
+    "explanation": "1934 şampiyonu İtalya oldu.",
+    "difficulty": "expert",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-8f8cd23ad1c9fd",
+    "category": "dunya-kupasi",
+    "text": "1934 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Hırvatistan",
+      "Brezilya",
+      "İtalya",
+      "Hollanda"
+    ],
+    "correct": 2,
+    "explanation": "1934 turnuvasının ev sahibi: İtalya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-506e944d77cb3f",
+    "category": "dunya-kupasi",
+    "text": "1934 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Çekoslovakya",
+      "Hırvatistan",
+      "Arjantin",
+      "Batı Almanya"
+    ],
+    "correct": 0,
+    "explanation": "1934: İtalya birinci, Çekoslovakya ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-43125b5945e035",
+    "category": "dunya-kupasi",
+    "text": "1934 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Ronaldo",
+      "Oldřich Nejedlý",
+      "Harry Kane",
+      "Garrincha"
+    ],
+    "correct": 1,
+    "explanation": "1934 turnuvasının en golcü oyuncusu Oldřich Nejedlý oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-745cb444193f7a",
+    "category": "dunya-kupasi",
+    "text": "1938 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "İspanya",
+      "Güney Kore ve Japonya",
+      "Batı Almanya",
+      "İtalya"
+    ],
+    "correct": 3,
+    "explanation": "1938 şampiyonu İtalya oldu.",
+    "difficulty": "expert",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-37400649f2da82",
+    "category": "dunya-kupasi",
+    "text": "1938 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Batı Almanya",
+      "Fransa",
+      "Meksika",
+      "İngiltere"
+    ],
+    "correct": 1,
+    "explanation": "1938 turnuvasının ev sahibi: Fransa.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-352cb3106507b2",
+    "category": "dunya-kupasi",
+    "text": "1938 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Macaristan",
+      "Katar",
+      "Meksika",
+      "İtalya"
+    ],
+    "correct": 0,
+    "explanation": "1938: İtalya birinci, Macaristan ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-146de0249e8a4d",
+    "category": "dunya-kupasi",
+    "text": "1938 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Eusébio",
+      "Paolo Rossi",
+      "Sándor Kocsis",
+      "Leônidas"
+    ],
+    "correct": 3,
+    "explanation": "1938 turnuvasının en golcü oyuncusu Leônidas oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-bd53366896bfc8",
+    "category": "dunya-kupasi",
+    "text": "1950 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Güney Kore ve Japonya",
+      "Hollanda",
+      "Uruguay",
+      "İngiltere"
+    ],
+    "correct": 2,
+    "explanation": "1950 şampiyonu Uruguay oldu.",
+    "difficulty": "expert",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-d205447c104e3a",
+    "category": "dunya-kupasi",
+    "text": "1950 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "İsviçre",
+      "Fransa",
+      "Şili",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "1950 turnuvasının ev sahibi: Brezilya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-294544b421101a",
+    "category": "dunya-kupasi",
+    "text": "1950 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Meksika",
+      "Almanya",
+      "Brezilya",
+      "Uruguay"
+    ],
+    "correct": 2,
+    "explanation": "1950: Uruguay birinci, Brezilya ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-5b95a26f0fd34a",
+    "category": "dunya-kupasi",
+    "text": "1950 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Just Fontaine",
+      "Kylian Mbappé",
+      "James Rodríguez",
+      "Ademir"
+    ],
+    "correct": 3,
+    "explanation": "1950 turnuvasının en golcü oyuncusu Ademir oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-c777ba54d20175",
+    "category": "dunya-kupasi",
+    "text": "1954 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "İsveç",
+      "Katar",
+      "İspanya",
+      "Batı Almanya"
+    ],
+    "correct": 3,
+    "explanation": "1954 şampiyonu Batı Almanya oldu.",
+    "difficulty": "expert",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-64a31a11fe1389",
+    "category": "dunya-kupasi",
+    "text": "1954 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Katar",
+      "İspanya",
+      "Arjantin",
+      "İsviçre"
+    ],
+    "correct": 3,
+    "explanation": "1954 turnuvasının ev sahibi: İsviçre.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-8988023e69dc31",
+    "category": "dunya-kupasi",
+    "text": "1954 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "İspanya",
+      "Güney Kore ve Japonya",
+      "Meksika",
+      "Macaristan"
+    ],
+    "correct": 3,
+    "explanation": "1954: Batı Almanya birinci, Macaristan ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-46e9feb5461dac",
+    "category": "dunya-kupasi",
+    "text": "1954 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Sándor Kocsis",
+      "Guillermo Stábile",
+      "Ronaldo",
+      "Leônidas"
+    ],
+    "correct": 0,
+    "explanation": "1954 turnuvasının en golcü oyuncusu Sándor Kocsis oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-3fdc34aa281005",
+    "category": "dunya-kupasi",
+    "text": "1958 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Macaristan",
+      "Brezilya",
+      "Güney Kore ve Japonya",
+      "Katar"
+    ],
+    "correct": 1,
+    "explanation": "1958 şampiyonu Brezilya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-167c91022e87dd",
+    "category": "dunya-kupasi",
+    "text": "1958 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "İsviçre",
+      "Meksika",
+      "Şili",
+      "İsveç"
+    ],
+    "correct": 3,
+    "explanation": "1958 turnuvasının ev sahibi: İsveç.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-84af96d519e549",
+    "category": "dunya-kupasi",
+    "text": "1958 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Hollanda",
+      "İsveç",
+      "Katar",
+      "Rusya"
+    ],
+    "correct": 1,
+    "explanation": "1958: Brezilya birinci, İsveç ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-b5533d7d59a314",
+    "category": "dunya-kupasi",
+    "text": "1958 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Paolo Rossi",
+      "Just Fontaine",
+      "Miroslav Klose",
+      "Eusébio"
+    ],
+    "correct": 1,
+    "explanation": "1958 turnuvasının en golcü oyuncusu Just Fontaine oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-33cccd03a3d1fc",
+    "category": "dunya-kupasi",
+    "text": "1962 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "İspanya",
+      "İsviçre",
+      "İsveç",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "1962 şampiyonu Brezilya oldu.",
+    "difficulty": "expert",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-ea609887c69b6e",
+    "category": "dunya-kupasi",
+    "text": "1962 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Şili",
+      "Arjantin",
+      "Güney Afrika",
+      "İtalya"
+    ],
+    "correct": 0,
+    "explanation": "1962 turnuvasının ev sahibi: Şili.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-1d5a2c19179c74",
+    "category": "dunya-kupasi",
+    "text": "1962 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Çekoslovakya",
+      "Rusya",
+      "Brezilya",
+      "Şili"
+    ],
+    "correct": 0,
+    "explanation": "1962: Brezilya birinci, Çekoslovakya ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-7f8d3b224bde2a",
+    "category": "dunya-kupasi",
+    "text": "1962 Dünya Kupası’nda gol krallığını paylaşan oyunculardan biri hangisiydi?",
+    "options": [
+      "Garrincha",
+      "Sándor Kocsis",
+      "Ademir",
+      "James Rodríguez"
+    ],
+    "correct": 0,
+    "explanation": "Garrincha dört golle altı ortak gol kralından biriydi; Vavá da bu gruptaydı.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-a3cbe912d9103d",
+    "category": "dunya-kupasi",
+    "text": "1966 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Fransa",
+      "İngiltere",
+      "Güney Kore ve Japonya",
+      "İtalya"
+    ],
+    "correct": 1,
+    "explanation": "1966 şampiyonu İngiltere oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-866be74ccd645b",
+    "category": "dunya-kupasi",
+    "text": "1966 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Brezilya",
+      "Uruguay",
+      "Çekoslovakya",
+      "İngiltere"
+    ],
+    "correct": 3,
+    "explanation": "1966 turnuvasının ev sahibi: İngiltere.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-1fcf3cf1a032b9",
+    "category": "dunya-kupasi",
+    "text": "1966 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Macaristan",
+      "Güney Afrika",
+      "Batı Almanya",
+      "İngiltere"
+    ],
+    "correct": 2,
+    "explanation": "1966: İngiltere birinci, Batı Almanya ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-afce1339d2c84e",
+    "category": "dunya-kupasi",
+    "text": "1966 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Harry Kane",
+      "Oldřich Nejedlý",
+      "Eusébio",
+      "James Rodríguez"
+    ],
+    "correct": 2,
+    "explanation": "1966 turnuvasının en golcü oyuncusu Eusébio oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-222920c9ef594e",
+    "category": "dunya-kupasi",
+    "text": "1970 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Arjantin",
+      "İsveç",
+      "Macaristan",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "1970 şampiyonu Brezilya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-72ec333d68dbf1",
+    "category": "dunya-kupasi",
+    "text": "1970 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Hırvatistan",
+      "Şili",
+      "İngiltere",
+      "Meksika"
+    ],
+    "correct": 3,
+    "explanation": "1970 turnuvasının ev sahibi: Meksika.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-88d44284fdfcd0",
+    "category": "dunya-kupasi",
+    "text": "1970 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "İtalya",
+      "Meksika",
+      "Çekoslovakya",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "explanation": "1970: Brezilya birinci, İtalya ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-4d74be0b981868",
+    "category": "dunya-kupasi",
+    "text": "1970 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Gerd Müller",
+      "Ademir",
+      "Eusébio",
+      "Salvatore Schillaci"
+    ],
+    "correct": 0,
+    "explanation": "1970 turnuvasının en golcü oyuncusu Gerd Müller oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-b8a368841b49a3",
+    "category": "dunya-kupasi",
+    "text": "1974 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Macaristan",
+      "Batı Almanya",
+      "ABD",
+      "Güney Afrika"
+    ],
+    "correct": 1,
+    "explanation": "1974 şampiyonu Batı Almanya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-6f507f639610b6",
+    "category": "dunya-kupasi",
+    "text": "1974 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Şili",
+      "Fransa",
+      "Batı Almanya",
+      "Brezilya"
+    ],
+    "correct": 2,
+    "explanation": "1974 turnuvasının ev sahibi: Batı Almanya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-6835cfb3e266c4",
+    "category": "dunya-kupasi",
+    "text": "1974 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Meksika",
+      "Çekoslovakya",
+      "Hollanda",
+      "Batı Almanya"
+    ],
+    "correct": 2,
+    "explanation": "1974: Batı Almanya birinci, Hollanda ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-df83ffedc44bcb",
+    "category": "dunya-kupasi",
+    "text": "1974 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Garrincha",
+      "Guillermo Stábile",
+      "Just Fontaine",
+      "Grzegorz Lato"
+    ],
+    "correct": 3,
+    "explanation": "1974 turnuvasının en golcü oyuncusu Grzegorz Lato oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-747c497affbaf9",
+    "category": "dunya-kupasi",
+    "text": "1978 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Arjantin",
+      "İtalya",
+      "İngiltere",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "explanation": "1978 şampiyonu Arjantin oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-c05768c99db274",
+    "category": "dunya-kupasi",
+    "text": "1978 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "İsveç",
+      "Çekoslovakya",
+      "Rusya",
+      "Arjantin"
+    ],
+    "correct": 3,
+    "explanation": "1978 turnuvasının ev sahibi: Arjantin.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-fc28b27e184dcd",
+    "category": "dunya-kupasi",
+    "text": "1978 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Brezilya",
+      "Hollanda",
+      "Çekoslovakya",
+      "Batı Almanya"
+    ],
+    "correct": 1,
+    "explanation": "1978: Arjantin birinci, Hollanda ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-3294040033beb0",
+    "category": "dunya-kupasi",
+    "text": "1978 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Ronaldo",
+      "Harry Kane",
+      "Mario Kempes",
+      "Garrincha"
+    ],
+    "correct": 2,
+    "explanation": "1978 turnuvasının en golcü oyuncusu Mario Kempes oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-ee00c8bf562be7",
+    "category": "dunya-kupasi",
+    "text": "1982 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Çekoslovakya",
+      "İtalya",
+      "Güney Kore ve Japonya",
+      "Katar"
+    ],
+    "correct": 1,
+    "explanation": "1982 şampiyonu İtalya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-8e9ade3d37694d",
+    "category": "dunya-kupasi",
+    "text": "1982 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Güney Afrika",
+      "İspanya",
+      "Meksika",
+      "İsviçre"
+    ],
+    "correct": 1,
+    "explanation": "1982 turnuvasının ev sahibi: İspanya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-44d3d964e2af8a",
+    "category": "dunya-kupasi",
+    "text": "1982 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Çekoslovakya",
+      "Batı Almanya",
+      "ABD",
+      "Güney Afrika"
+    ],
+    "correct": 1,
+    "explanation": "1982: İtalya birinci, Batı Almanya ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-956c2385490080",
+    "category": "dunya-kupasi",
+    "text": "1982 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Hristo Stoichkov",
+      "James Rodríguez",
+      "Paolo Rossi",
+      "Gerd Müller"
+    ],
+    "correct": 2,
+    "explanation": "1982 turnuvasının en golcü oyuncusu Paolo Rossi oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-cfefcb4b0ffdc3",
+    "category": "dunya-kupasi",
+    "text": "1986 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Güney Afrika",
+      "Çekoslovakya",
+      "Arjantin",
+      "Hırvatistan"
+    ],
+    "correct": 2,
+    "explanation": "1986 şampiyonu Arjantin oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-82ad4f022a4cba",
+    "category": "dunya-kupasi",
+    "text": "1986 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Hırvatistan",
+      "ABD",
+      "Meksika",
+      "Güney Afrika"
+    ],
+    "correct": 2,
+    "explanation": "1986 turnuvasının ev sahibi: Meksika.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-be97b2ccacd70c",
+    "category": "dunya-kupasi",
+    "text": "1986 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Hollanda",
+      "Batı Almanya",
+      "İspanya",
+      "İsviçre"
+    ],
+    "correct": 1,
+    "explanation": "1986: Arjantin birinci, Batı Almanya ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-efc4dcb252df2e",
+    "category": "dunya-kupasi",
+    "text": "1986 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Grzegorz Lato",
+      "Gary Lineker",
+      "Davor Šuker",
+      "Mario Kempes"
+    ],
+    "correct": 1,
+    "explanation": "1986 turnuvasının en golcü oyuncusu Gary Lineker oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-5b575055abb029",
+    "category": "dunya-kupasi",
+    "text": "1990 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Fransa",
+      "Hırvatistan",
+      "Batı Almanya",
+      "Macaristan"
+    ],
+    "correct": 2,
+    "explanation": "1990 şampiyonu Batı Almanya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-292baf001cfa56",
+    "category": "dunya-kupasi",
+    "text": "1990 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "İtalya",
+      "İngiltere",
+      "Meksika",
+      "Hırvatistan"
+    ],
+    "correct": 0,
+    "explanation": "1990 turnuvasının ev sahibi: İtalya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-2a96f3e8285e36",
+    "category": "dunya-kupasi",
+    "text": "1990 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Arjantin",
+      "Brezilya",
+      "Şili",
+      "Batı Almanya"
+    ],
+    "correct": 0,
+    "explanation": "1990: Batı Almanya birinci, Arjantin ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-040f4b47675e5e",
+    "category": "dunya-kupasi",
+    "text": "1990 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Ademir",
+      "Garrincha",
+      "Salvatore Schillaci",
+      "Harry Kane"
+    ],
+    "correct": 2,
+    "explanation": "1990 turnuvasının en golcü oyuncusu Salvatore Schillaci oldu.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-e25f84b32d34dd",
+    "category": "dunya-kupasi",
+    "text": "1994 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Güney Kore ve Japonya",
+      "Brezilya",
+      "Batı Almanya",
+      "Katar"
+    ],
+    "correct": 1,
+    "explanation": "1994 şampiyonu Brezilya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-68262be6774f88",
+    "category": "dunya-kupasi",
+    "text": "1994 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "ABD",
+      "Uruguay",
+      "Şili",
+      "İspanya"
+    ],
+    "correct": 0,
+    "explanation": "1994 turnuvasının ev sahibi: ABD.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d0c47ea7c747ef",
+    "category": "dunya-kupasi",
+    "text": "1994 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Batı Almanya",
+      "Brezilya",
+      "İtalya",
+      "Macaristan"
+    ],
+    "correct": 2,
+    "explanation": "1994: Brezilya birinci, İtalya ikinci oldu.",
+    "difficulty": "expert",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-b9cc1126189a1e",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası’nda Oleg Salenko ile gol krallığını paylaşan Bulgar oyuncu kimdi?",
+    "options": [
+      "Eusébio",
+      "Hristo Stoichkov",
+      "Paolo Rossi",
+      "Grzegorz Lato"
+    ],
+    "correct": 1,
+    "explanation": "Hristo Stoichkov ve Oleg Salenko altışar gol attı.",
+    "difficulty": "expert",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-cf0b6822669837",
+    "category": "dunya-kupasi",
+    "text": "1998 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Meksika",
+      "Hollanda",
+      "Fransa",
+      "Hırvatistan"
+    ],
+    "correct": 2,
+    "explanation": "1998 şampiyonu Fransa oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5dfe350be9bb49",
+    "category": "dunya-kupasi",
+    "text": "1998 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Fransa",
+      "Almanya",
+      "İngiltere",
+      "İsviçre"
+    ],
+    "correct": 0,
+    "explanation": "1998 turnuvasının ev sahibi: Fransa.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-cb74a5e61314c0",
+    "category": "dunya-kupasi",
+    "text": "1998 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Macaristan",
+      "Batı Almanya",
+      "İtalya",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "1998: Fransa birinci, Brezilya ikinci oldu.",
+    "difficulty": "general",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-b4b23563c0416b",
+    "category": "dunya-kupasi",
+    "text": "1998 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Gerd Müller",
+      "Leônidas",
+      "Davor Šuker",
+      "Mario Kempes"
+    ],
+    "correct": 2,
+    "explanation": "1998 turnuvasının en golcü oyuncusu Davor Šuker oldu.",
+    "difficulty": "general",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-b0c00ff43e4162",
+    "category": "dunya-kupasi",
+    "text": "2002 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Brezilya",
+      "ABD",
+      "Almanya",
+      "Macaristan"
+    ],
+    "correct": 0,
+    "explanation": "2002 şampiyonu Brezilya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-6b0287019e6ed6",
+    "category": "dunya-kupasi",
+    "text": "2002 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "İtalya",
+      "Güney Kore ve Japonya",
+      "İsveç",
+      "Şili"
+    ],
+    "correct": 1,
+    "explanation": "2002 turnuvasının ev sahibi: Güney Kore ve Japonya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-810c9b8544654a",
+    "category": "dunya-kupasi",
+    "text": "2002 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "İsveç",
+      "Almanya",
+      "Fransa",
+      "Güney Afrika"
+    ],
+    "correct": 1,
+    "explanation": "2002: Brezilya birinci, Almanya ikinci oldu.",
+    "difficulty": "general",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-2af5d81174fd3d",
+    "category": "dunya-kupasi",
+    "text": "2002 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Ronaldo",
+      "Miroslav Klose",
+      "Paolo Rossi",
+      "Oldřich Nejedlý"
+    ],
+    "correct": 0,
+    "explanation": "2002 turnuvasının en golcü oyuncusu Ronaldo oldu.",
+    "difficulty": "general",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-970e0d5c18d922",
+    "category": "dunya-kupasi",
+    "text": "2006 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Hollanda",
+      "Güney Kore ve Japonya",
+      "Hırvatistan",
+      "İtalya"
+    ],
+    "correct": 3,
+    "explanation": "2006 şampiyonu İtalya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-8cf2102416aa50",
+    "category": "dunya-kupasi",
+    "text": "2006 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Almanya",
+      "Meksika",
+      "Hırvatistan",
+      "İtalya"
+    ],
+    "correct": 0,
+    "explanation": "2006 turnuvasının ev sahibi: Almanya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-a6c755b0ba9d00",
+    "category": "dunya-kupasi",
+    "text": "2006 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "İsveç",
+      "Şili",
+      "Fransa",
+      "Hollanda"
+    ],
+    "correct": 2,
+    "explanation": "2006: İtalya birinci, Fransa ikinci oldu.",
+    "difficulty": "general",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-fa33c47aab959b",
+    "category": "dunya-kupasi",
+    "text": "2006 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Gerd Müller",
+      "Gary Lineker",
+      "Miroslav Klose",
+      "Mario Kempes"
+    ],
+    "correct": 2,
+    "explanation": "2006 turnuvasının en golcü oyuncusu Miroslav Klose oldu.",
+    "difficulty": "general",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-8a0b26ed8515f2",
+    "category": "dunya-kupasi",
+    "text": "2010 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Batı Almanya",
+      "Fransa",
+      "İspanya",
+      "İtalya"
+    ],
+    "correct": 2,
+    "explanation": "2010 şampiyonu İspanya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5ef3c142449b97",
+    "category": "dunya-kupasi",
+    "text": "2010 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Çekoslovakya",
+      "ABD",
+      "Güney Afrika",
+      "Meksika"
+    ],
+    "correct": 2,
+    "explanation": "2010 turnuvasının ev sahibi: Güney Afrika.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-7404b4474a6fda",
+    "category": "dunya-kupasi",
+    "text": "2010 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Katar",
+      "Hollanda",
+      "Fransa",
+      "Batı Almanya"
+    ],
+    "correct": 1,
+    "explanation": "2010: İspanya birinci, Hollanda ikinci oldu.",
+    "difficulty": "general",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-0710d72470e37c",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nda eşitlik kriterleri sonunda Altın Ayakkabı ödülünü kim aldı?",
+    "options": [
+      "Paolo Rossi",
+      "Salvatore Schillaci",
+      "Ronaldo",
+      "Thomas Müller"
+    ],
+    "correct": 3,
+    "explanation": "Beş gol atan Thomas Müller, asist kriteriyle ödülü aldı.",
+    "difficulty": "general",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-cefd57dad9ac35",
+    "category": "dunya-kupasi",
+    "text": "2014 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Almanya",
+      "İtalya",
+      "Macaristan",
+      "Rusya"
+    ],
+    "correct": 0,
+    "explanation": "2014 şampiyonu Almanya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-7c632423a6c4b1",
+    "category": "dunya-kupasi",
+    "text": "2014 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "İsveç",
+      "Brezilya",
+      "Hollanda",
+      "İngiltere"
+    ],
+    "correct": 1,
+    "explanation": "2014 turnuvasının ev sahibi: Brezilya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-e8920188f17387",
+    "category": "dunya-kupasi",
+    "text": "2014 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Şili",
+      "Arjantin",
+      "Brezilya",
+      "İsviçre"
+    ],
+    "correct": 1,
+    "explanation": "2014: Almanya birinci, Arjantin ikinci oldu.",
+    "difficulty": "general",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-49556566ed5653",
+    "category": "dunya-kupasi",
+    "text": "2014 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "James Rodríguez",
+      "Salvatore Schillaci",
+      "Ademir",
+      "Hristo Stoichkov"
+    ],
+    "correct": 0,
+    "explanation": "2014 turnuvasının en golcü oyuncusu James Rodríguez oldu.",
+    "difficulty": "general",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-f207de9903d9f0",
+    "category": "dunya-kupasi",
+    "text": "2018 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Fransa",
+      "Almanya",
+      "ABD",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "explanation": "2018 şampiyonu Fransa oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-a38956a1dbf547",
+    "category": "dunya-kupasi",
+    "text": "2018 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Rusya",
+      "İsveç",
+      "İspanya",
+      "Şili"
+    ],
+    "correct": 0,
+    "explanation": "2018 turnuvasının ev sahibi: Rusya.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-7115c0696595f9",
+    "category": "dunya-kupasi",
+    "text": "2018 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Güney Kore ve Japonya",
+      "Batı Almanya",
+      "Brezilya",
+      "Hırvatistan"
+    ],
+    "correct": 3,
+    "explanation": "2018: Fransa birinci, Hırvatistan ikinci oldu.",
+    "difficulty": "general",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-4b1f73253318c1",
+    "category": "dunya-kupasi",
+    "text": "2018 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Kylian Mbappé",
+      "Harry Kane",
+      "Davor Šuker",
+      "Gary Lineker"
+    ],
+    "correct": 1,
+    "explanation": "2018 turnuvasının en golcü oyuncusu Harry Kane oldu.",
+    "difficulty": "general",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-3de7eaae1d5187",
+    "category": "dunya-kupasi",
+    "text": "2022 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Güney Afrika",
+      "Katar",
+      "Arjantin",
+      "Rusya"
+    ],
+    "correct": 2,
+    "explanation": "2022 şampiyonu Arjantin oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-0d91d9a972ed96",
+    "category": "dunya-kupasi",
+    "text": "2022 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
+    "options": [
+      "Güney Kore ve Japonya",
+      "Macaristan",
+      "Hırvatistan",
+      "Katar"
+    ],
+    "correct": 3,
+    "explanation": "2022 turnuvasının ev sahibi: Katar.",
+    "difficulty": "general",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-f94f9107bcd164",
+    "category": "dunya-kupasi",
+    "text": "2022 FIFA Dünya Kupası final sıralamasında ikinci olan takım hangisiydi?",
+    "options": [
+      "Hırvatistan",
+      "Rusya",
+      "Arjantin",
+      "Fransa"
+    ],
+    "correct": 3,
+    "explanation": "2022: Arjantin birinci, Fransa ikinci oldu.",
+    "difficulty": "general",
+    "topic": "finalistler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-88dab45334dd5c",
+    "category": "dunya-kupasi",
+    "text": "2022 FIFA Dünya Kupası’nın gol kralı kimdi?",
+    "options": [
+      "Grzegorz Lato",
+      "Kylian Mbappé",
+      "Gerd Müller",
+      "Salvatore Schillaci"
+    ],
+    "correct": 1,
+    "explanation": "2022 turnuvasının en golcü oyuncusu Kylian Mbappé oldu.",
+    "difficulty": "general",
+    "topic": "gol-krallari",
+    "source": "https://www.fifa.com/it/tournaments/mens/worldcup/canadamexicousa2026/articles/fontaine-mbappe-ronaldo-e-tutti-i-capocannoniere-della-storia-della-coppa"
+  },
+  {
+    "id": "dunya-kupasi-fbe796301d14a4",
+    "category": "dunya-kupasi",
+    "text": "1970 Dünya Kupası’nda Pelé hangi millî takımın formasını giydi?",
+    "options": [
+      "Arjantin",
+      "Brezilya",
+      "Senegal",
+      "Danimarka"
+    ],
+    "correct": 1,
+    "explanation": "Pelé, 1970 turnuvasına Brezilya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-1549c0090869a5",
+    "category": "dunya-kupasi",
+    "text": "1986 Dünya Kupası’nda Diego Maradona hangi millî takımın formasını giydi?",
+    "options": [
+      "Avustralya",
+      "Arjantin",
+      "Kosta Rika",
+      "Danimarka"
+    ],
+    "correct": 1,
+    "explanation": "Diego Maradona, 1986 turnuvasına Arjantin millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-ce1f6ac8389c29",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası’nda Zinedine Zidane hangi millî takımın formasını giydi?",
+    "options": [
+      "Fransa",
+      "Kamerun",
+      "Bulgaristan",
+      "Avustralya"
+    ],
+    "correct": 0,
+    "explanation": "Zinedine Zidane, 1998 turnuvasına Fransa millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-8a999448a2d611",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda Lionel Messi hangi millî takımın formasını giydi?",
+    "options": [
+      "Fildişi Sahili",
+      "Kamerun",
+      "Güney Kore",
+      "Arjantin"
+    ],
+    "correct": 3,
+    "explanation": "Lionel Messi, 2022 turnuvasına Arjantin millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-7b588db6f59290",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda Ronaldo hangi millî takımın formasını giydi?",
+    "options": [
+      "Kolombiya",
+      "ABD",
+      "Senegal",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "Ronaldo, 2002 turnuvasına Brezilya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-b3b7c197585cca",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası’nda Cristiano Ronaldo hangi millî takımın formasını giydi?",
+    "options": [
+      "Galler",
+      "Güney Kore",
+      "Polonya",
+      "Portekiz"
+    ],
+    "correct": 3,
+    "explanation": "Cristiano Ronaldo, 2018 turnuvasına Portekiz millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-c5bd620fa122f7",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Miroslav Klose hangi millî takımın formasını giydi?",
+    "options": [
+      "ABD",
+      "Japonya",
+      "Almanya",
+      "Kolombiya"
+    ],
+    "correct": 2,
+    "explanation": "Miroslav Klose, 2014 turnuvasına Almanya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5913ddc0e81af7",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası’nda Kylian Mbappé hangi millî takımın formasını giydi?",
+    "options": [
+      "Danimarka",
+      "Kolombiya",
+      "Fransa",
+      "Kamerun"
+    ],
+    "correct": 2,
+    "explanation": "Kylian Mbappé, 2018 turnuvasına Fransa millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-a158437e42d7c5",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası’nda Luka Modrić hangi millî takımın formasını giydi?",
+    "options": [
+      "Almanya",
+      "Avustralya",
+      "Fildişi Sahili",
+      "Hırvatistan"
+    ],
+    "correct": 3,
+    "explanation": "Luka Modrić, 2018 turnuvasına Hırvatistan millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-dae4cd85585aae",
+    "category": "dunya-kupasi",
+    "text": "1974 Dünya Kupası’nda Johan Cruyff hangi millî takımın formasını giydi?",
+    "options": [
+      "Hollanda",
+      "Fildişi Sahili",
+      "Polonya",
+      "Fransa"
+    ],
+    "correct": 0,
+    "explanation": "Johan Cruyff, 1974 turnuvasına Hollanda millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-77d88219e10fd0",
+    "category": "dunya-kupasi",
+    "text": "1966 Dünya Kupası’nda Eusébio hangi millî takımın formasını giydi?",
+    "options": [
+      "Romanya",
+      "Hollanda",
+      "Portekiz",
+      "Polonya"
+    ],
+    "correct": 2,
+    "explanation": "Eusébio, 1966 turnuvasına Portekiz millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-dd2129ccc0af64",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nda Diego Forlán hangi millî takımın formasını giydi?",
+    "options": [
+      "Uruguay",
+      "Kolombiya",
+      "Japonya",
+      "Polonya"
+    ],
+    "correct": 0,
+    "explanation": "Diego Forlán, 2010 turnuvasına Uruguay millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-28e12d19b0ab7b",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Luis Suárez hangi millî takımın formasını giydi?",
+    "options": [
+      "Uruguay",
+      "Güney Kore",
+      "Almanya",
+      "İran"
+    ],
+    "correct": 0,
+    "explanation": "Luis Suárez, 2014 turnuvasına Uruguay millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-ae8101b6ee55c4",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda James Rodríguez hangi millî takımın formasını giydi?",
+    "options": [
+      "Suudi Arabistan",
+      "Hollanda",
+      "Polonya",
+      "Kolombiya"
+    ],
+    "correct": 3,
+    "explanation": "James Rodríguez, 2014 turnuvasına Kolombiya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-7355c4c7c285ff",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası’nda Carlos Valderrama hangi millî takımın formasını giydi?",
+    "options": [
+      "Kosta Rika",
+      "Hırvatistan",
+      "Kolombiya",
+      "Kamerun"
+    ],
+    "correct": 2,
+    "explanation": "Carlos Valderrama, 1994 turnuvasına Kolombiya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-b5b7d61de0d56f",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nda Didier Drogba hangi millî takımın formasını giydi?",
+    "options": [
+      "Suudi Arabistan",
+      "Fildişi Sahili",
+      "Ukrayna",
+      "Polonya"
+    ],
+    "correct": 1,
+    "explanation": "Didier Drogba, 2010 turnuvasına Fildişi Sahili millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-ec43d8d80aaea9",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nda Samuel Eto'o hangi millî takımın formasını giydi?",
+    "options": [
+      "Kamerun",
+      "Almanya",
+      "Brezilya",
+      "Kolombiya"
+    ],
+    "correct": 0,
+    "explanation": "Samuel Eto'o, 2010 turnuvasına Kamerun millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-22571fdd89581b",
+    "category": "dunya-kupasi",
+    "text": "1990 Dünya Kupası’nda Roger Milla hangi millî takımın formasını giydi?",
+    "options": [
+      "Japonya",
+      "Kamerun",
+      "Danimarka",
+      "Portekiz"
+    ],
+    "correct": 1,
+    "explanation": "Roger Milla, 1990 turnuvasına Kamerun millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-1f926bafba0ad8",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası’nda Sadio Mané hangi millî takımın formasını giydi?",
+    "options": [
+      "Galler",
+      "Danimarka",
+      "Senegal",
+      "Brezilya"
+    ],
+    "correct": 2,
+    "explanation": "Sadio Mané, 2018 turnuvasına Senegal millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-0cbf02ddae3540",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda El Hadji Diouf hangi millî takımın formasını giydi?",
+    "options": [
+      "Suudi Arabistan",
+      "Senegal",
+      "ABD",
+      "Kolombiya"
+    ],
+    "correct": 1,
+    "explanation": "El Hadji Diouf, 2002 turnuvasına Senegal millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-6a600cf48c8744",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda Son Heung-min hangi millî takımın formasını giydi?",
+    "options": [
+      "Güney Kore",
+      "Kolombiya",
+      "Kosta Rika",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "explanation": "Son Heung-min, 2022 turnuvasına Güney Kore millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-646e5cd132aa55",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda Park Ji-sung hangi millî takımın formasını giydi?",
+    "options": [
+      "İran",
+      "Güney Kore",
+      "Avustralya",
+      "Galler"
+    ],
+    "correct": 1,
+    "explanation": "Park Ji-sung, 2002 turnuvasına Güney Kore millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-0a84479e862216",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda Hidetoshi Nakata hangi millî takımın formasını giydi?",
+    "options": [
+      "Ukrayna",
+      "Bulgaristan",
+      "Japonya",
+      "Fransa"
+    ],
+    "correct": 2,
+    "explanation": "Hidetoshi Nakata, 2002 turnuvasına Japonya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-1ff5872e914284",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nda Keisuke Honda hangi millî takımın formasını giydi?",
+    "options": [
+      "Japonya",
+      "Avustralya",
+      "Uruguay",
+      "Fildişi Sahili"
+    ],
+    "correct": 0,
+    "explanation": "Keisuke Honda, 2010 turnuvasına Japonya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-2959a215eae033",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nda Landon Donovan hangi millî takımın formasını giydi?",
+    "options": [
+      "Güney Kore",
+      "İran",
+      "Galler",
+      "ABD"
+    ],
+    "correct": 3,
+    "explanation": "Landon Donovan, 2010 turnuvasına ABD millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-e2c920302f5be5",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Clint Dempsey hangi millî takımın formasını giydi?",
+    "options": [
+      "ABD",
+      "Hollanda",
+      "Güney Kore",
+      "Brezilya"
+    ],
+    "correct": 0,
+    "explanation": "Clint Dempsey, 2014 turnuvasına ABD millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-0ccbd8876493b3",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Javier Hernández hangi millî takımın formasını giydi?",
+    "options": [
+      "Kosta Rika",
+      "Fildişi Sahili",
+      "Romanya",
+      "Meksika"
+    ],
+    "correct": 3,
+    "explanation": "Javier Hernández, 2014 turnuvasına Meksika millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-cf00f797beab07",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Guillermo Ochoa hangi millî takımın formasını giydi?",
+    "options": [
+      "Japonya",
+      "Meksika",
+      "Almanya",
+      "Fildişi Sahili"
+    ],
+    "correct": 1,
+    "explanation": "Guillermo Ochoa, 2014 turnuvasına Meksika millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-1560628768caa7",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Keylor Navas hangi millî takımın formasını giydi?",
+    "options": [
+      "Kosta Rika",
+      "Suudi Arabistan",
+      "Fildişi Sahili",
+      "Romanya"
+    ],
+    "correct": 0,
+    "explanation": "Keylor Navas, 2014 turnuvasına Kosta Rika millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d67eb60211018e",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Tim Cahill hangi millî takımın formasını giydi?",
+    "options": [
+      "Güney Kore",
+      "Uruguay",
+      "Avustralya",
+      "İran"
+    ],
+    "correct": 2,
+    "explanation": "Tim Cahill, 2014 turnuvasına Avustralya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-f643833368642c",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda Salem Al-Dawsari hangi millî takımın formasını giydi?",
+    "options": [
+      "Güney Kore",
+      "Senegal",
+      "Almanya",
+      "Suudi Arabistan"
+    ],
+    "correct": 3,
+    "explanation": "Salem Al-Dawsari, 2022 turnuvasına Suudi Arabistan millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-0a8996fdf8f393",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası’nda Sami Al-Jaber hangi millî takımın formasını giydi?",
+    "options": [
+      "ABD",
+      "Arjantin",
+      "Suudi Arabistan",
+      "Fransa"
+    ],
+    "correct": 2,
+    "explanation": "Sami Al-Jaber, 1998 turnuvasına Suudi Arabistan millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-4e399a2cfddccd",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası’nda Ali Daei hangi millî takımın formasını giydi?",
+    "options": [
+      "Kamerun",
+      "İran",
+      "Galler",
+      "Fransa"
+    ],
+    "correct": 1,
+    "explanation": "Ali Daei, 1998 turnuvasına İran millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-1402d5bb80f8c6",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası’nda Gheorghe Hagi hangi millî takımın formasını giydi?",
+    "options": [
+      "Senegal",
+      "Romanya",
+      "Brezilya",
+      "Japonya"
+    ],
+    "correct": 1,
+    "explanation": "Gheorghe Hagi, 1994 turnuvasına Romanya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5be6c51a36cd50",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası’nda Hristo Stoichkov hangi millî takımın formasını giydi?",
+    "options": [
+      "İran",
+      "Hırvatistan",
+      "Meksika",
+      "Bulgaristan"
+    ],
+    "correct": 3,
+    "explanation": "Hristo Stoichkov, 1994 turnuvasına Bulgaristan millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-0d65039d53c6b2",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası’nda Davor Šuker hangi millî takımın formasını giydi?",
+    "options": [
+      "Hırvatistan",
+      "Meksika",
+      "Uruguay",
+      "Romanya"
+    ],
+    "correct": 0,
+    "explanation": "Davor Šuker, 1998 turnuvasına Hırvatistan millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-75acdc04b3d556",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda Robert Lewandowski hangi millî takımın formasını giydi?",
+    "options": [
+      "Galler",
+      "Polonya",
+      "Arjantin",
+      "Ukrayna"
+    ],
+    "correct": 1,
+    "explanation": "Robert Lewandowski, 2022 turnuvasına Polonya millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-2559b53413d478",
+    "category": "dunya-kupasi",
+    "text": "2006 Dünya Kupası’nda Andriy Shevchenko hangi millî takımın formasını giydi?",
+    "options": [
+      "Meksika",
+      "Hollanda",
+      "Ukrayna",
+      "Almanya"
+    ],
+    "correct": 2,
+    "explanation": "Andriy Shevchenko, 2006 turnuvasına Ukrayna millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d5576280600498",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda Gareth Bale hangi millî takımın formasını giydi?",
+    "options": [
+      "Uruguay",
+      "Senegal",
+      "İran",
+      "Galler"
+    ],
+    "correct": 3,
+    "explanation": "Gareth Bale, 2022 turnuvasına Galler millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-0a0db0ef4e5f99",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası’nda Christian Eriksen hangi millî takımın formasını giydi?",
+    "options": [
+      "Fransa",
+      "Güney Kore",
+      "Arjantin",
+      "Danimarka"
+    ],
+    "correct": 3,
+    "explanation": "Christian Eriksen, 2018 turnuvasına Danimarka millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d5d209f1786ba7",
+    "category": "dunya-kupasi",
+    "text": "Türkiye 2002 Dünya Kupası’nı hangi dereceyle bitirdi?",
+    "options": [
+      "Birinci",
+      "Üçüncü",
+      "İkinci",
+      "Dördüncü"
+    ],
+    "correct": 1,
+    "explanation": "Türkiye bronz madalyayla döndü.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-038f65301f88fc",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda Türkiye’nin teknik direktörü kimdi?",
+    "options": [
+      "Şenol Güneş",
+      "Fatih Terim",
+      "Mustafa Denizli",
+      "Ersun Yanal"
+    ],
+    "correct": 0,
+    "explanation": "Takımı Şenol Güneş çalıştırıyordu.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-8924bd0af15c50",
+    "category": "dunya-kupasi",
+    "text": "Türkiye, 2002 Dünya Kupası üçüncülük maçında kimi yendi?",
+    "options": [
+      "Senegal",
+      "Japonya",
+      "Güney Kore",
+      "İngiltere"
+    ],
+    "correct": 2,
+    "explanation": "Türkiye ev sahibi Güney Kore’yi 3-2 yendi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-06d0cbe7bc74be",
+    "category": "dunya-kupasi",
+    "text": "Türkiye’nin 2002 Dünya Kupası yarı finalindeki rakibi hangisiydi?",
+    "options": [
+      "Fransa",
+      "Almanya",
+      "Brezilya",
+      "İtalya"
+    ],
+    "correct": 2,
+    "explanation": "Türkiye yarı finalde Brezilya ile karşılaştı.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-93daa0a1268ed8",
+    "category": "dunya-kupasi",
+    "text": "Türkiye 2002 Dünya Kupası çeyrek finalinde hangi takımı eledi?",
+    "options": [
+      "Senegal",
+      "Nijerya",
+      "Gana",
+      "Kamerun"
+    ],
+    "correct": 0,
+    "explanation": "İlhan Mansız’ın altın golüyle Senegal elendi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-9fdf371e510624",
+    "category": "dunya-kupasi",
+    "text": "Türkiye 2002 Dünya Kupası son 16 turunda hangi ev sahibini eledi?",
+    "options": [
+      "Meksika",
+      "Japonya",
+      "Brezilya",
+      "Güney Kore"
+    ],
+    "correct": 1,
+    "explanation": "Ümit Davala’nın golü Japonya karşısında turu getirdi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-41308636b6e2b8",
+    "category": "dunya-kupasi",
+    "text": "Türkiye adına 2002’de Senegal’e altın golü kim attı?",
+    "options": [
+      "Hakan Şükür",
+      "Nihat Kahveci",
+      "İlhan Mansız",
+      "Arif Erdem"
+    ],
+    "correct": 2,
+    "explanation": "İlhan Mansız uzatmada attığı golle maçı bitirdi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-ddcdc624ed78ff",
+    "category": "dunya-kupasi",
+    "text": "Türkiye’nin 2002 Dünya Kupası Japonya maçındaki golünü kim attı?",
+    "options": [
+      "Ümit Davala",
+      "Yıldıray Baştürk",
+      "Tugay Kerimoğlu",
+      "Emre Belözoğlu"
+    ],
+    "correct": 0,
+    "explanation": "Ümit Davala’nın kafa golüyle maç 1-0 bitti.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-f07c604b9320da",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda Türkiye’nin kalesini ağırlıklı olarak kim korudu?",
+    "options": [
+      "Uğurcan Çakır",
+      "Altay Bayındır",
+      "Volkan Demirel",
+      "Rüştü Reçber"
+    ],
+    "correct": 3,
+    "explanation": "Rüştü Reçber turnuvada Türkiye’nin kalecisiydi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-f49cda085980e4",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası üçüncülük maçının ilk saniyelerinde Türkiye adına kim gol attı?",
+    "options": [
+      "İlhan Mansız",
+      "Hasan Şaş",
+      "Hakan Şükür",
+      "Ümit Davala"
+    ],
+    "correct": 2,
+    "explanation": "Hakan Şükür yaklaşık 11. saniyede gol buldu.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-04a8862a528be8",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası üçüncülük maçında Türkiye’nin diğer iki golünü kim attı?",
+    "options": [
+      "İlhan Mansız",
+      "Tugay Kerimoğlu",
+      "Nihat Kahveci",
+      "Emre Belözoğlu"
+    ],
+    "correct": 0,
+    "explanation": "Hakan Şükür’ün açılış golünü İlhan Mansız’ın iki golü izledi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-5b8d95408631e3",
+    "category": "dunya-kupasi",
+    "text": "Türkiye’nin 2002 Dünya Kupası grubunda hangi Güney Amerika takımı vardı?",
+    "options": [
+      "Paraguay",
+      "Arjantin",
+      "Uruguay",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "Brezilya ve Türkiye C Grubu’nda yer aldı.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-d066b2edf454fc",
+    "category": "dunya-kupasi",
+    "text": "Türkiye’nin 2002 Dünya Kupası grubundaki Orta Amerika temsilcisi hangisiydi?",
+    "options": [
+      "Kosta Rika",
+      "Meksika",
+      "Honduras",
+      "Panama"
+    ],
+    "correct": 0,
+    "explanation": "Türkiye, Kosta Rika ile 1-1 berabere kaldı.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-e98f124aaf9eb6",
+    "category": "dunya-kupasi",
+    "text": "Türkiye, 2002 Dünya Kupası grup aşamasında hangi Asya takımını 3-0 yendi?",
+    "options": [
+      "Güney Kore",
+      "Japonya",
+      "Çin",
+      "Suudi Arabistan"
+    ],
+    "correct": 2,
+    "explanation": "Çin karşısındaki galibiyet gruptan çıkışa katkı sağladı.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-335a2c156f96ef",
+    "category": "dunya-kupasi",
+    "text": "Türkiye’nin 2002 Dünya Kupası’ndaki ilk golünü hangi futbolcu attı?",
+    "options": [
+      "Hasan Şaş",
+      "Bülent Korkmaz",
+      "Hakan Şükür",
+      "İlhan Mansız"
+    ],
+    "correct": 0,
+    "explanation": "Hasan Şaş ilk maçta Brezilya ağlarını buldu.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-9008d5290d8c7f",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda Türkiye yarı finale gelene kadar hangi iki takımı eleme turunda yendi?",
+    "options": [
+      "İngiltere ve Almanya",
+      "İspanya ve Portekiz",
+      "Fransa ve İtalya",
+      "Japonya ve Senegal"
+    ],
+    "correct": 3,
+    "explanation": "Son 16’da Japonya, çeyrek finalde Senegal elendi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-0b2ee470615f41",
+    "category": "dunya-kupasi",
+    "text": "Türkiye’nin fiilen katıldığı ilk Dünya Kupası finalleri hangi yıl oynandı?",
+    "options": [
+      "1982",
+      "1954",
+      "1966",
+      "1930"
+    ],
+    "correct": 1,
+    "explanation": "Türkiye ilk kez 1954 İsviçre’de sahaya çıktı.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-1499fd9304799b",
+    "category": "dunya-kupasi",
+    "text": "Türkiye 1954 Dünya Kupası’nda hangi Asya takımını 7-0 yendi?",
+    "options": [
+      "İran",
+      "Japonya",
+      "Çin",
+      "Güney Kore"
+    ],
+    "correct": 3,
+    "explanation": "Bu maç Türkiye’nin Dünya Kupası tarihindeki büyük galibiyetlerindendir.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-99101928ac2af9",
+    "category": "dunya-kupasi",
+    "text": "Türkiye, 2002 Dünya Kupası finallerine gitmek için barajda hangi ülkeyi eledi?",
+    "options": [
+      "Polonya",
+      "Avusturya",
+      "İskoçya",
+      "İsveç"
+    ],
+    "correct": 1,
+    "explanation": "Avusturya iki maç sonunda elendi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-280f936b96be17",
+    "category": "dunya-kupasi",
+    "text": "Türkiye’nin 2002 Dünya Kupası kadrosunda kaptanlık yapan savunma oyuncusu hangisiydi?",
+    "options": [
+      "Çağlar Söyüncü",
+      "Bülent Korkmaz",
+      "Servet Çetin",
+      "Merih Demiral"
+    ],
+    "correct": 1,
+    "explanation": "Bülent Korkmaz 2002 kadrosunun tecrübeli liderlerindendi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-3ab39b89114696",
+    "category": "dunya-kupasi",
+    "text": "1986 Dünya Kupası’ndaki “Tanrı’nın Eli” golü kiminle özdeşleşir?",
+    "options": [
+      "Michel Platini",
+      "Diego Maradona",
+      "Pelé",
+      "Zico"
+    ],
+    "correct": 1,
+    "explanation": "Maradona bu golü İngiltere’ye karşı attı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-70539125ece83a",
+    "category": "dunya-kupasi",
+    "text": "Maradona’nın 1986’da art arda rakiplerini geçerek attığı ünlü gol hangi ülkeye karşıydı?",
+    "options": [
+      "İspanya",
+      "İtalya",
+      "Portekiz",
+      "İngiltere"
+    ],
+    "correct": 3,
+    "explanation": "Arjantin–İngiltere çeyrek finali iki ünlü gole sahne oldu.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-8e3a99dc42e3ea",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası finalinde iki kafa golü atan Fransız yıldız kimdi?",
+    "options": [
+      "David Trezeguet",
+      "Nicolas Anelka",
+      "Zinedine Zidane",
+      "Thierry Henry"
+    ],
+    "correct": 2,
+    "explanation": "Zidane finalde iki kez kafa vuruşuyla gol attı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-c310bc7eca138c",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası finalinde Brezilya’nın iki golünü kim attı?",
+    "options": [
+      "Ronaldinho",
+      "Kaká",
+      "Ronaldo",
+      "Rivaldo"
+    ],
+    "correct": 2,
+    "explanation": "Ronaldo’nun golleri Almanya karşısında 2-0’ı getirdi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-4cdab3fa72eaa5",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası finalinde İspanya’ya kupayı getiren golü kim attı?",
+    "options": [
+      "Xavi",
+      "Fernando Torres",
+      "David Villa",
+      "Andrés Iniesta"
+    ],
+    "correct": 3,
+    "explanation": "Iniesta uzatmada finalin tek golünü attı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-9eca5f6083f8ce",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası finalinde Almanya’nın galibiyet golünü kim attı?",
+    "options": [
+      "Thomas Müller",
+      "Miroslav Klose",
+      "Mario Götze",
+      "Mesut Özil"
+    ],
+    "correct": 2,
+    "explanation": "Götze uzatmada Arjantin’e karşı gol attı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-441d41d5e4b38b",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası finalinde üç gol atan Fransız yıldız kimdi?",
+    "options": [
+      "Olivier Giroud",
+      "Antoine Griezmann",
+      "Kylian Mbappé",
+      "Karim Benzema"
+    ],
+    "correct": 2,
+    "explanation": "Mbappé finalde hat-trick yaptı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5fab935c30becb",
+    "category": "dunya-kupasi",
+    "text": "1966 Dünya Kupası finalinde hat-trick yapan İngiliz futbolcu kimdi?",
+    "options": [
+      "Geoff Hurst",
+      "Bobby Charlton",
+      "Bobby Moore",
+      "Gary Lineker"
+    ],
+    "correct": 0,
+    "explanation": "Geoff Hurst finalde üç gol attı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-4f87e89b475801",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası yarı finalinde Brezilya’yı 7-1 yenen takım hangisiydi?",
+    "options": [
+      "Hollanda",
+      "Almanya",
+      "Arjantin",
+      "Fransa"
+    ],
+    "correct": 1,
+    "explanation": "Almanya Belo Horizonte’de tarihi bir galibiyet aldı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-6e64b5e8cd7ac2",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda James Rodríguez’in ünlü göğüs kontrolü ve vole golü hangi ülkeye karşıydı?",
+    "options": [
+      "İtalya",
+      "Brezilya",
+      "Almanya",
+      "Uruguay"
+    ],
+    "correct": 3,
+    "explanation": "Kolombiyalı yıldız bu golü son 16 turunda attı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-e0011acd72addd",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Robin van Persie’nin uçan kafa golü hangi takıma karşıydı?",
+    "options": [
+      "Şili",
+      "İspanya",
+      "Meksika",
+      "Arjantin"
+    ],
+    "correct": 1,
+    "explanation": "Hollanda’nın İspanya’yı 5-1 yendiği maçta geldi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-146057c1c34508",
+    "category": "dunya-kupasi",
+    "text": "2006 Dünya Kupası finalinde kırmızı kartla oyundan atılan Fransız kaptan kimdi?",
+    "options": [
+      "Patrick Vieira",
+      "Lilian Thuram",
+      "Thierry Henry",
+      "Zinedine Zidane"
+    ],
+    "correct": 3,
+    "explanation": "Zidane uzatma bölümünde oyundan atıldı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d3239256a119d2",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası finalini penaltılarda kazanan takım hangisiydi?",
+    "options": [
+      "Almanya",
+      "İtalya",
+      "Brezilya",
+      "Arjantin"
+    ],
+    "correct": 2,
+    "explanation": "Brezilya, golsüz biten finalin ardından penaltılarda kazandı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-f066fa4390154c",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası finalinin galibi hangi yöntemle belirlendi?",
+    "options": [
+      "Kura çekimiyle",
+      "Penaltı atışlarıyla",
+      "Tekrar maçıyla",
+      "Altın golle"
+    ],
+    "correct": 1,
+    "explanation": "Uzatma sonunda skor 3-3 olunca penaltılara geçildi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-cba82e32474a79",
+    "category": "dunya-kupasi",
+    "text": "2006 Dünya Kupası finalinde kupayı kazanan İtalya’nın kalecisi kimdi?",
+    "options": [
+      "Gianluigi Buffon",
+      "Dino Zoff",
+      "Walter Zenga",
+      "Gianluigi Donnarumma"
+    ],
+    "correct": 0,
+    "explanation": "İtalya’nın kalesinde Buffon vardı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-8db15109556943",
+    "category": "dunya-kupasi",
+    "text": "2010’da ilk kez Dünya Kupası şampiyonu olan İspanya’nın kaptan kalecisi kimdi?",
+    "options": [
+      "Víctor Valdés",
+      "David de Gea",
+      "Pepe Reina",
+      "Iker Casillas"
+    ],
+    "correct": 3,
+    "explanation": "Casillas kupayı kaptan olarak kaldırdı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-52e7c2e7395b73",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda Arjantin’in penaltı kurtarışlarıyla öne çıkan kalecisi kimdi?",
+    "options": [
+      "Willy Caballero",
+      "Emiliano Martínez",
+      "Sergio Romero",
+      "Franco Armani"
+    ],
+    "correct": 1,
+    "explanation": "Martínez özellikle eleme turlarındaki penaltılarda öne çıktı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-15a5fa14fd2b25",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda hem Altın Top alan hem kalecilik yapan Alman kimdi?",
+    "options": [
+      "Sepp Maier",
+      "Oliver Kahn",
+      "Jens Lehmann",
+      "Manuel Neuer"
+    ],
+    "correct": 1,
+    "explanation": "Kahn turnuvanın en iyi oyuncusu seçildi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-92259ac551b177",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası’nda Altın Top ödülünü hangi Hırvat oyuncu aldı?",
+    "options": [
+      "Mario Mandžukić",
+      "Luka Modrić",
+      "Ivan Rakitić",
+      "Ivan Perišić"
+    ],
+    "correct": 1,
+    "explanation": "Finalist Hırvatistan’ın lideri Modrić ödülü kazandı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d7d2c132bcbc52",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda Altın Top ödülünü kim kazandı?",
+    "options": [
+      "Julián Álvarez",
+      "Luka Modrić",
+      "Lionel Messi",
+      "Kylian Mbappé"
+    ],
+    "correct": 2,
+    "explanation": "Messi turnuvanın en iyi oyuncusu seçildi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-e3f91606e658df",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nda Altın Top ödülünü alan Uruguaylı kimdi?",
+    "options": [
+      "Diego Godín",
+      "Luis Suárez",
+      "Diego Forlán",
+      "Edinson Cavani"
+    ],
+    "correct": 2,
+    "explanation": "Forlán Uruguay’ın yarı finale çıkışında öne çıktı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-ff1a65c581b2ee",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda Altın Eldiven ödülünü kim aldı?",
+    "options": [
+      "Julio César",
+      "Iker Casillas",
+      "Joe Hart",
+      "Manuel Neuer"
+    ],
+    "correct": 3,
+    "explanation": "Şampiyon Almanya’nın kalecisi Neuer ödülü kazandı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-aed6e5d903573c",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası’nda Altın Eldiven kazanan Belçikalı kimdi?",
+    "options": [
+      "Simon Mignolet",
+      "Matz Sels",
+      "Thibaut Courtois",
+      "Koen Casteels"
+    ],
+    "correct": 2,
+    "explanation": "Courtois üçüncü olan Belçika’nın kalecisiydi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-043ce0893ba432",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda yarı finale çıkan ilk Afrika millî takımı hangisiydi?",
+    "options": [
+      "Senegal",
+      "Fas",
+      "Kamerun",
+      "Gana"
+    ],
+    "correct": 1,
+    "explanation": "Fas, Portekiz’i eleyerek yarı finale çıktı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-3951dad96e58a5",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda yarı finale çıkan ev sahibi Asya takımı hangisiydi?",
+    "options": [
+      "Japonya",
+      "Güney Kore",
+      "İran",
+      "Çin"
+    ],
+    "correct": 1,
+    "explanation": "Güney Kore turnuvayı dördüncü bitirdi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-907afae98b60a6",
+    "category": "dunya-kupasi",
+    "text": "1990 Dünya Kupası’nda çeyrek finale çıkan Kamerun’un dansıyla tanınan golcüsü kimdi?",
+    "options": [
+      "Samuel Eto'o",
+      "Roger Milla",
+      "George Weah",
+      "Didier Drogba"
+    ],
+    "correct": 1,
+    "explanation": "Milla köşe bayrağı önündeki gol sevinçleriyle hatırlanır.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-c2bd2821fd0fb6",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası açılışında son şampiyon Fransa’yı yenen Afrika takımı hangisiydi?",
+    "options": [
+      "Nijerya",
+      "Tunus",
+      "Senegal",
+      "Güney Afrika"
+    ],
+    "correct": 2,
+    "explanation": "Senegal açılış maçını 1-0 kazandı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-c489820247ffdb",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nda Arjantin’i grup maçında 2-1 yenen takım hangisiydi?",
+    "options": [
+      "Suudi Arabistan",
+      "Polonya",
+      "Meksika",
+      "Avustralya"
+    ],
+    "correct": 0,
+    "explanation": "Suudi Arabistan turnuvanın büyük sürprizlerinden birini yaptı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-bf6d0a5841a7c0",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası grubunda hem Almanya’yı hem İspanya’yı yenen takım hangisiydi?",
+    "options": [
+      "İran",
+      "Avustralya",
+      "Japonya",
+      "Güney Kore"
+    ],
+    "correct": 2,
+    "explanation": "Japonya iki eski şampiyonu da 2-1 yendi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-e41a19acb1ce57",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nda İtalya, İngiltere ve Uruguay’ın grubunu lider bitiren takım hangisiydi?",
+    "options": [
+      "Kolombiya",
+      "ABD",
+      "Meksika",
+      "Kosta Rika"
+    ],
+    "correct": 3,
+    "explanation": "Kosta Rika güçlü rakiplerinin önünde grup lideri oldu.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-216de6e38e429a",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası’nda ilk katılımında üçüncü olan Avrupa ülkesi hangisiydi?",
+    "options": [
+      "Hırvatistan",
+      "Slovenya",
+      "Slovakya",
+      "Ukrayna"
+    ],
+    "correct": 0,
+    "explanation": "Hırvatistan, Davor Šuker’in golleriyle üçüncülüğe ulaştı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-bae3e007c8011c",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası’nı üçüncü bitiren takım hangisiydi?",
+    "options": [
+      "Belçika",
+      "Brezilya",
+      "İngiltere",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "explanation": "Belçika üçüncülük maçında İngiltere’yi yendi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-e2c4407df115e1",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nı üçüncü bitiren takım hangisiydi?",
+    "options": [
+      "Fas",
+      "Portekiz",
+      "İngiltere",
+      "Hırvatistan"
+    ],
+    "correct": 3,
+    "explanation": "Hırvatistan üçüncülük maçında Fas’ı yendi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-58259f42e6c6ec",
+    "category": "dunya-kupasi",
+    "text": "1970 Dünya Kupası finalinde Brezilya’nın ünlü takım golünü tamamlayan sağ bek kimdi?",
+    "options": [
+      "Cafu",
+      "Roberto Carlos",
+      "Carlos Alberto",
+      "Dani Alves"
+    ],
+    "correct": 2,
+    "explanation": "Kaptan Carlos Alberto finalin son golünü attı.",
+    "difficulty": "expert",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d5634e4f23044b",
+    "category": "dunya-kupasi",
+    "text": "1974 Dünya Kupası’nda “Total Futbol” ile anılan finalist hangisiydi?",
+    "options": [
+      "Polonya",
+      "İtalya",
+      "Hollanda",
+      "Arjantin"
+    ],
+    "correct": 2,
+    "explanation": "Johan Cruyff’un liderlik ettiği Hollanda bu anlayışla anılır.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-20c7534f81357a",
+    "category": "dunya-kupasi",
+    "text": "1954 Dünya Kupası finalindeki Batı Almanya zaferi hangi adla anılır?",
+    "options": [
+      "Bern Mucizesi",
+      "Paris Destanı",
+      "Roma Gecesi",
+      "İstanbul Mucizesi"
+    ],
+    "correct": 0,
+    "explanation": "Batı Almanya, Bern’de Macaristan’ı 3-2 yendi.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-4cf7fc6f4690d9",
+    "category": "dunya-kupasi",
+    "text": "1950 Dünya Kupası’nda Brezilya’nın Uruguay’a yenilmesi hangi stadyumla özdeşleşir?",
+    "options": [
+      "Maracanã",
+      "Wembley",
+      "Camp Nou",
+      "Azteca"
+    ],
+    "correct": 0,
+    "explanation": "Maracanazo adı bu stadyumdan gelir.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-3f8784e2dc6dc2",
+    "category": "dunya-kupasi",
+    "text": "1982 Dünya Kupası’nda İtalya’yı şampiyonluğa taşıyan teknik direktör kimdi?",
+    "options": [
+      "Carlo Ancelotti",
+      "Roberto Mancini",
+      "Enzo Bearzot",
+      "Marcello Lippi"
+    ],
+    "correct": 2,
+    "explanation": "Bearzot’un İtalya’sı finalde Batı Almanya’yı yendi.",
+    "difficulty": "expert",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-7a5d67f1b4c4e5",
+    "category": "dunya-kupasi",
+    "text": "1998’de Dünya Kupası’nı oyuncu, 2018’de teknik direktör olarak kazanan Fransız kimdi?",
+    "options": [
+      "Arsène Wenger",
+      "Didier Deschamps",
+      "Laurent Blanc",
+      "Zinedine Zidane"
+    ],
+    "correct": 1,
+    "explanation": "Deschamps 1998’de kaptan, 2018’de teknik direktördü.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-88d3756dcfb854",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası şampiyonu Arjantin’in teknik direktörü kimdi?",
+    "options": [
+      "Marcelo Bielsa",
+      "Mauricio Pochettino",
+      "Diego Simeone",
+      "Lionel Scaloni"
+    ],
+    "correct": 3,
+    "explanation": "Scaloni, Arjantin’i 2022 şampiyonluğuna taşıdı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-6dc52fd9c76c07",
+    "category": "dunya-kupasi",
+    "text": "1966 Dünya Kupası maskotu Willie hangi hayvandı?",
+    "options": [
+      "Leopar",
+      "Kurt",
+      "Kaplan",
+      "Aslan"
+    ],
+    "correct": 3,
+    "explanation": "Willie bir aslan olarak tasarlandı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-91c5213e6533fd",
+    "category": "dunya-kupasi",
+    "text": "1970 Dünya Kupası maskotu Juanito hangi ülkenin turnuvasına aitti?",
+    "options": [
+      "İspanya",
+      "Arjantin",
+      "İtalya",
+      "Meksika"
+    ],
+    "correct": 3,
+    "explanation": "Juanito Meksika 1970’in maskotuydu.",
+    "difficulty": "expert",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-489e61712b89a1",
+    "category": "dunya-kupasi",
+    "text": "1982 Dünya Kupası maskotu Naranjito hangi meyveden esinlenmişti?",
+    "options": [
+      "Elma",
+      "Ananas",
+      "Muz",
+      "Portakal"
+    ],
+    "correct": 3,
+    "explanation": "Naranjito İspanya 1982 için tasarlanan bir portakaldı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-6ec386ed0949fb",
+    "category": "dunya-kupasi",
+    "text": "1986 Dünya Kupası maskotu Pique hangi bitki ürünü biçimindeydi?",
+    "options": [
+      "Mısır",
+      "Patlıcan",
+      "Acı biber",
+      "Domates"
+    ],
+    "correct": 2,
+    "explanation": "Meksika’nın maskotu sombrero takan bir acı biberdi.",
+    "difficulty": "expert",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-c01905c47768b6",
+    "category": "dunya-kupasi",
+    "text": "1990 Dünya Kupası’nın çubuk biçimli maskotunun adı neydi?",
+    "options": [
+      "Footix",
+      "Ciao",
+      "Zakumi",
+      "Fuleco"
+    ],
+    "correct": 1,
+    "explanation": "İtalya 1990’ın maskotu Ciao idi.",
+    "difficulty": "expert",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-0d502b7e3d1950",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası maskotu Striker hangi hayvandı?",
+    "options": [
+      "Tilki",
+      "Kedi",
+      "Köpek",
+      "Ayı"
+    ],
+    "correct": 2,
+    "explanation": "ABD turnuvasının maskotu Striker bir köpekti.",
+    "difficulty": "expert",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-43627cd9d32c75",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası maskotu Footix hangi hayvandı?",
+    "options": [
+      "Kartal",
+      "Baykuş",
+      "Horoz",
+      "Penguen"
+    ],
+    "correct": 2,
+    "explanation": "Horoz, Fransa’nın simgelerinden biridir.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-9aea42375afa9f",
+    "category": "dunya-kupasi",
+    "text": "2006 Dünya Kupası maskotu Goleo VI hangi hayvandı?",
+    "options": [
+      "Leopar",
+      "Kurt",
+      "Ayı",
+      "Aslan"
+    ],
+    "correct": 3,
+    "explanation": "Goleo VI’ya konuşan top Pille eşlik ediyordu.",
+    "difficulty": "expert",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-547325b68b64d4",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası maskotu Zakumi hangi hayvandı?",
+    "options": [
+      "Leopar",
+      "Zebra",
+      "Fil",
+      "Zürafa"
+    ],
+    "correct": 0,
+    "explanation": "Güney Afrika 2010’un maskotu yeşil saçlı bir leopardı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-4f82c88580481b",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası maskotu Fuleco hangi hayvandan esinlendi?",
+    "options": [
+      "Kanguru",
+      "Koala",
+      "Panda",
+      "Armadillo"
+    ],
+    "correct": 3,
+    "explanation": "Fuleco Brezilya’ya özgü bir armadillodan esinlendi.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-33a3d4140e74ea",
+    "category": "dunya-kupasi",
+    "text": "2018 Dünya Kupası maskotu Zabivaka hangi hayvandı?",
+    "options": [
+      "Geyik",
+      "Tilki",
+      "Kurt",
+      "Ayı"
+    ],
+    "correct": 2,
+    "explanation": "Zabivaka gözlük takan bir kurt olarak tasarlandı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-92ca474eaa6885",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası maskotunun adı hangisiydi?",
+    "options": [
+      "Footix",
+      "Striker",
+      "Ciao",
+      "La’eeb"
+    ],
+    "correct": 3,
+    "explanation": "Katar 2022’nin maskotu La’eeb idi.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-3e14eb8d45c770",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda ilk resmî maskot hangi turnuvada tanıtıldı?",
+    "options": [
+      "Uruguay 1930",
+      "Fransa 1938",
+      "İngiltere 1966",
+      "İtalya 1934"
+    ],
+    "correct": 2,
+    "explanation": "İlk resmî maskot World Cup Willie idi.",
+    "difficulty": "expert",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
+  },
+  {
+    "id": "dunya-kupasi-0a6d9f7a8b697d",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası tribünlerinin sesiyle özdeşleşen çalgı hangisiydi?",
+    "options": [
+      "Piyano",
+      "Keman",
+      "Arp",
+      "Vuvuzela"
+    ],
+    "correct": 3,
+    "explanation": "Güney Afrika’daki tribünlerde vuvuzelalar çok yaygındı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-9cd751dbb27971",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nın “Waka Waka” şarkısıyla öne çıkan sanatçı kimdi?",
+    "options": [
+      "Shakira",
+      "Adele",
+      "Madonna",
+      "Beyoncé"
+    ],
+    "correct": 0,
+    "explanation": "Shakira şarkıyı Freshlyground ile seslendirdi.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://inside.fifa.com/tournaments/mens/worldcup/2018russia/media-releases/2018-fifa-world-cup-russiatm-official-song-live-it-up-to-be-performed-by-all-sta"
+  },
+  {
+    "id": "dunya-kupasi-4d2f8545b87102",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası’nın “La Copa de la Vida” şarkısını kim söyledi?",
+    "options": [
+      "Ricky Martin",
+      "Enrique Iglesias",
+      "Luis Fonsi",
+      "Marc Anthony"
+    ],
+    "correct": 0,
+    "explanation": "Ricky Martin’in şarkısı turnuvayla özdeşleşti.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://inside.fifa.com/tournaments/mens/worldcup/2018russia/media-releases/2018-fifa-world-cup-russiatm-official-song-live-it-up-to-be-performed-by-all-sta"
+  },
+  {
+    "id": "dunya-kupasi-ce3d04cf71a02a",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası finali hangi stadyumda oynandı?",
+    "options": [
+      "Wembley",
+      "Maracanã",
+      "Lusail",
+      "Azteca"
+    ],
+    "correct": 2,
+    "explanation": "Final Katar’daki Lusail Stadyumu’ndaydı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/es/tournaments/mens/worldcup/articles/todas-las-finales-de-la-copa-mundial-de-la-fifa"
+  },
+  {
+    "id": "dunya-kupasi-e95a6ba4b16c56",
+    "category": "dunya-kupasi",
+    "text": "1966 Dünya Kupası finalinin Londra’daki sahnesi hangi stadyumdu?",
+    "options": [
+      "Old Trafford",
+      "Stamford Bridge",
+      "Wembley",
+      "Anfield"
+    ],
+    "correct": 2,
+    "explanation": "İngiltere finali Wembley’de kazandı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/es/tournaments/mens/worldcup/articles/todas-las-finales-de-la-copa-mundial-de-la-fifa"
+  },
+  {
+    "id": "dunya-kupasi-8db78d57525524",
+    "category": "dunya-kupasi",
+    "text": "1970 ve 1986 Dünya Kupası finallerine ev sahipliği yapan Meksika stadyumu hangisiydi?",
+    "options": [
+      "Rose Bowl",
+      "San Siro",
+      "Azteca",
+      "Maracanã"
+    ],
+    "correct": 2,
+    "explanation": "İki final de Mexico City’deki Azteca’da oynandı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/es/tournaments/mens/worldcup/articles/todas-las-finales-de-la-copa-mundial-de-la-fifa"
+  },
+  {
+    "id": "dunya-kupasi-da38bff572a772",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası finalinin oynandığı ABD stadyumu hangisiydi?",
+    "options": [
+      "Rose Bowl",
+      "Allianz Arena",
+      "Santiago Bernabéu",
+      "Wembley"
+    ],
+    "correct": 0,
+    "explanation": "Final Pasadena’daki Rose Bowl’da oynandı.",
+    "difficulty": "expert",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/es/tournaments/mens/worldcup/articles/todas-las-finales-de-la-copa-mundial-de-la-fifa"
+  },
+  {
+    "id": "dunya-kupasi-3640f8d024bd5c",
+    "category": "dunya-kupasi",
+    "text": "1970 Dünya Kupası’nın siyah-beyaz panelleriyle tanınan resmî topunun adı neydi?",
+    "options": [
+      "Brazuca",
+      "Al Rihla",
+      "Telstar",
+      "Jabulani"
+    ],
+    "correct": 2,
+    "explanation": "Telstar, siyah-beyaz televizyon görüntüsüyle de özdeşleşti.",
+    "difficulty": "expert",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-64b78b62635a05",
+    "category": "dunya-kupasi",
+    "text": "1978 Dünya Kupası’nda kullanılan ve tasarımıyla tanınan top hangisiydi?",
+    "options": [
+      "Telstar 18",
+      "Teamgeist",
+      "Fevernova",
+      "Tango"
+    ],
+    "correct": 3,
+    "explanation": "Arjantin 1978’de Tango kullanıldı.",
+    "difficulty": "expert",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-b569d7d95292df",
+    "category": "dunya-kupasi",
+    "text": "1986 Dünya Kupası’nın resmî topu hangi adı taşıyordu?",
+    "options": [
+      "Jabulani",
+      "Questra",
+      "Azteca",
+      "Tricolore"
+    ],
+    "correct": 2,
+    "explanation": "Meksika 1986’nın topu Azteca idi.",
+    "difficulty": "expert",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-4da78c024b3202",
+    "category": "dunya-kupasi",
+    "text": "1994 Dünya Kupası’nda kullanılan resmî topun adı hangisiydi?",
+    "options": [
+      "Fevernova",
+      "Questra",
+      "Al Rihla",
+      "Brazuca"
+    ],
+    "correct": 1,
+    "explanation": "ABD 1994’te Questra kullanıldı.",
+    "difficulty": "expert",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-c78cc31f0e5874",
+    "category": "dunya-kupasi",
+    "text": "1998 Dünya Kupası’nın resmî topunun adı neydi?",
+    "options": [
+      "Azteca",
+      "Tango",
+      "Telstar",
+      "Tricolore"
+    ],
+    "correct": 3,
+    "explanation": "Tricolore adı Fransa’nın üç rengine gönderme yapar.",
+    "difficulty": "expert",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-a41c11ae9a6524",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası’nda kullanılan resmî top hangisiydi?",
+    "options": [
+      "Fevernova",
+      "Jabulani",
+      "Questra",
+      "Brazuca"
+    ],
+    "correct": 0,
+    "explanation": "Kore/Japonya 2002’nin topu Fevernova idi.",
+    "difficulty": "expert",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-845b3d8ddae375",
+    "category": "dunya-kupasi",
+    "text": "2006 Dünya Kupası’nın resmî maç topu hangi adı taşıyordu?",
+    "options": [
+      "Teamgeist",
+      "Azteca",
+      "Al Rihla",
+      "Tricolore"
+    ],
+    "correct": 0,
+    "explanation": "Almanya 2006’da Teamgeist kullanıldı.",
+    "difficulty": "expert",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-d4fa837a941b6c",
+    "category": "dunya-kupasi",
+    "text": "2010 Dünya Kupası’nın çok konuşulan resmî topu hangisiydi?",
+    "options": [
+      "Telstar 18",
+      "Questra",
+      "Tango",
+      "Jabulani"
+    ],
+    "correct": 3,
+    "explanation": "Güney Afrika 2010’un topu Jabulani idi.",
+    "difficulty": "general",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-9496b471dcfcbd",
+    "category": "dunya-kupasi",
+    "text": "2014 Dünya Kupası’nın resmî maç topunun adı neydi?",
+    "options": [
+      "Fevernova",
+      "Tricolore",
+      "Brazuca",
+      "Teamgeist"
+    ],
+    "correct": 2,
+    "explanation": "Brazuca Brezilya 2014’te kullanıldı.",
+    "difficulty": "general",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-362159072896ab",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası’nın başlangıç aşamalarındaki resmî topunun adı neydi?",
+    "options": [
+      "Al Rihla",
+      "Questra",
+      "Jabulani",
+      "Tango"
+    ],
+    "correct": 0,
+    "explanation": "Al Rihla kullanıldı; final aşamasında Al Hilm devreye girdi.",
+    "difficulty": "general",
+    "topic": "kupa-toplari",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history"
+  },
+  {
+    "id": "dunya-kupasi-c73293bed17bad",
+    "category": "dunya-kupasi",
+    "text": "FIFA Dünya Kupası’nda kulüpler yerine hangi takımlar yarışır?",
+    "options": [
+      "Okul takımları",
+      "Millî takımlar",
+      "Şehir takımları",
+      "Şirket takımları"
+    ],
+    "correct": 1,
+    "explanation": "Erkekler Dünya Kupası millî takımlar arasında oynanır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-4fd91a286c2bef",
+    "category": "dunya-kupasi",
+    "text": "Erkekler FIFA Dünya Kupası normal takvimde kaç yılda bir düzenlenir?",
+    "options": [
+      "5",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 3,
+    "explanation": "Normal turnuva aralığı dört yıldır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-9090d49150717a",
+    "category": "dunya-kupasi",
+    "text": "FIFA Dünya Kupası hangi spor dalına aittir?",
+    "options": [
+      "Hentbol",
+      "Basketbol",
+      "Futbol",
+      "Voleybol"
+    ],
+    "correct": 2,
+    "explanation": "Buradaki FIFA Dünya Kupası futbol turnuvasıdır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d793ed9932982e",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nı düzenleyen uluslararası kuruluş hangisidir?",
+    "options": [
+      "IOC",
+      "UEFA",
+      "FIBA",
+      "FIFA"
+    ],
+    "correct": 3,
+    "explanation": "FIFA dünya futbolunun uluslararası yönetim kuruluşudur.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-c41626907b7d45",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası grubunda bir galibiyet, 1994’ten itibaren kaç puan getirir?",
+    "options": [
+      "4",
+      "1",
+      "2",
+      "3"
+    ],
+    "correct": 3,
+    "explanation": "1994 turnuvasından itibaren galibiyet üç puandır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5e5050425ef770",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası grup aşamasında beraberlik yapan takım kaç puan alır?",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "0"
+    ],
+    "correct": 1,
+    "explanation": "Beraberlikte iki takım da birer puan alır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-918d89ab71bc29",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda normal maç süresi, eklenen süre hariç kaç dakikadır?",
+    "options": [
+      "80",
+      "90",
+      "100",
+      "60"
+    ],
+    "correct": 1,
+    "explanation": "Normal süre iki devrede toplam 90 dakikadır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.theifab.com/laws/latest/"
+  },
+  {
+    "id": "dunya-kupasi-34cc5f53a28986",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası maçında bir takım kaleci dahil sahaya kaç oyuncuyla başlar?",
+    "options": [
+      "11",
+      "12",
+      "10",
+      "9"
+    ],
+    "correct": 0,
+    "explanation": "Standart başlangıç kadrosu on bir oyuncudur.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.theifab.com/laws/latest/"
+  },
+  {
+    "id": "dunya-kupasi-f96bd9ca2f95fa",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda kırmızı kart gören oyuncuya ne olur?",
+    "options": [
+      "İki gol kazanır",
+      "Kaptan olur",
+      "Oyundan atılır",
+      "Kaleci olur"
+    ],
+    "correct": 2,
+    "explanation": "Kırmızı kart ihraç anlamına gelir.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.theifab.com/laws/latest/"
+  },
+  {
+    "id": "dunya-kupasi-1d0ab8b07ee917",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası eleme maçında normal süre berabere biterse önce hangi bölüm oynanır?",
+    "options": [
+      "Yeni kura",
+      "Doğrudan final",
+      "Tekrar grup maçı",
+      "Uzatma"
+    ],
+    "correct": 3,
+    "explanation": "Standart eleme maçlarında önce iki uzatma devresi oynanır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.theifab.com/laws/latest/"
+  },
+  {
+    "id": "dunya-kupasi-5129ae30bdb98d",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda standart uzatma bölümü toplam kaç dakikadır?",
+    "options": [
+      "30",
+      "45",
+      "10",
+      "15"
+    ],
+    "correct": 0,
+    "explanation": "Uzatma iki 15 dakikalık devreden oluşur.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.theifab.com/laws/latest/"
+  },
+  {
+    "id": "dunya-kupasi-68e1bbc04949c3",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda uzatma sonunda eşitlik sürerse kazanan nasıl belirlenir?",
+    "options": [
+      "Korner sayısıyla",
+      "Topa sahip olma oranıyla",
+      "Seyirci oylamasıyla",
+      "Penaltı atışlarıyla"
+    ],
+    "correct": 3,
+    "explanation": "Eşitlik penaltı atışlarıyla bozulur.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.theifab.com/laws/latest/"
+  },
+  {
+    "id": "dunya-kupasi-9d6a9e97bf570d",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’ndaki Altın Eldiven ödülü hangi oyuncu rolüne yöneliktir?",
+    "options": [
+      "Kaleci",
+      "Kanat",
+      "Santrfor",
+      "Orta saha"
+    ],
+    "correct": 0,
+    "explanation": "Altın Eldiven en iyi kaleciye verilen ödüldür.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://inside.fifa.com/en/tournaments/mens/worldcup/2018russia/news/157-awards-piece-2986294"
+  },
+  {
+    "id": "dunya-kupasi-67a561caa85559",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’ndaki Altın Top ödülü neyi onurlandırır?",
+    "options": [
+      "En yüksek tribünü",
+      "Turnuvanın en iyi oyuncusunu",
+      "En büyük stadyumu",
+      "En hızlı topu"
+    ],
+    "correct": 1,
+    "explanation": "Altın Top bireysel oyuncu performansı ödülüdür.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://inside.fifa.com/en/tournaments/mens/worldcup/2018russia/news/157-awards-piece-2986294"
+  },
+  {
+    "id": "dunya-kupasi-4cbfc0c57a2010",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’ndaki Altın Ayakkabı ödülü hangi başarıyla ilişkilidir?",
+    "options": [
+      "Gol krallığı",
+      "En az faul",
+      "En çok korner",
+      "En çok taç atışı"
+    ],
+    "correct": 0,
+    "explanation": "Gol sayısı ve gerektiğinde eşitlik kriterleriyle belirlenir.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://inside.fifa.com/en/tournaments/mens/worldcup/2018russia/news/157-awards-piece-2986294"
+  },
+  {
+    "id": "dunya-kupasi-f3a3370888dffe",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda “hat-trick” yapan oyuncu bir maçta kaç gol atmıştır?",
+    "options": [
+      "4",
+      "2",
+      "3",
+      "5"
+    ],
+    "correct": 2,
+    "explanation": "Hat-trick üç gol anlamına gelir.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.theifab.com/laws/latest/"
+  },
+  {
+    "id": "dunya-kupasi-d98609377b670b",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda “son 16” turuna kaç takım katılır?",
+    "options": [
+      "16",
+      "32",
+      "12",
+      "8"
+    ],
+    "correct": 0,
+    "explanation": "Bu turda on altı takım sekiz eşleşmede oynar.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-9888390b0d9ae5",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda çeyrek finale kaç takım kalır?",
+    "options": [
+      "8",
+      "4",
+      "6",
+      "16"
+    ],
+    "correct": 0,
+    "explanation": "Dört çeyrek final maçında sekiz takım oynar.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-18cef4b1eaa942",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda üçüncülük maçını hangi takımlar oynar?",
+    "options": [
+      "Grup sonuncuları",
+      "Çeyrek finali kaybeden tüm takımlar",
+      "Yarı finali kaybedenler",
+      "Finali kazananlar"
+    ],
+    "correct": 2,
+    "explanation": "Yarı finalde elenen iki takım üçüncülük için karşılaşır.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-220c061737fe79",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası’nda VAR kısaltması hangi sistemi anlatır?",
+    "options": [
+      "Video yardımcı hakem",
+      "Yedek kaptanlık",
+      "Yeni bir puan sistemi",
+      "Turnuva kura yöntemi"
+    ],
+    "correct": 0,
+    "explanation": "VAR, video yardımcı hakem sistemidir.",
+    "difficulty": "general",
+    "topic": "temel-bilgiler",
+    "source": "https://www.theifab.com/laws/latest/"
+  },
+  {
+    "id": "dunya-kupasi-6441bc03884653",
+    "category": "dunya-kupasi",
+    "text": "2022 sonuna kadar erkekler Dünya Kupası’nı en çok kazanan ülke hangisiydi?",
+    "options": [
+      "İtalya",
+      "Brezilya",
+      "Arjantin",
+      "Almanya"
+    ],
+    "correct": 1,
+    "explanation": "Brezilya bu dönemin sonunda beş şampiyonluğa sahipti.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-3f17b9df36b325",
+    "category": "dunya-kupasi",
+    "text": "2022 sonuna kadar üç Dünya Kupası şampiyonluğu bulunan futbolcu kimdi?",
+    "options": [
+      "Cristiano Ronaldo",
+      "Pelé",
+      "Diego Maradona",
+      "Lionel Messi"
+    ],
+    "correct": 1,
+    "explanation": "Pelé 1958, 1962 ve 1970’te şampiyon kadrodaydı.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-14cbfcdd9da8fe",
+    "category": "dunya-kupasi",
+    "text": "2022 sonu itibarıyla erkekler Dünya Kupası toplam gol rekorunun sahibi kimdi?",
+    "options": [
+      "Miroslav Klose",
+      "Gerd Müller",
+      "Lionel Messi",
+      "Ronaldo"
+    ],
+    "correct": 0,
+    "explanation": "Klose 16 golle bu tarihte listenin başındaydı.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-d4f42cc7aeb2f0",
+    "category": "dunya-kupasi",
+    "text": "2022 sonuna kadar bir Dünya Kupası turnuvasında 13 gol atan oyuncu kimdi?",
+    "options": [
+      "Eusébio",
+      "Harry Kane",
+      "Pelé",
+      "Just Fontaine"
+    ],
+    "correct": 3,
+    "explanation": "Fontaine 1958’de 13 gol kaydetti.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-2e2350ed7d8761",
+    "category": "dunya-kupasi",
+    "text": "Dünya Kupası 2022 sona erdiğinde erkeklerde en fazla maça çıkmış futbolcu kimdi?",
+    "options": [
+      "Lionel Messi",
+      "Lothar Matthäus",
+      "Miroslav Klose",
+      "Cristiano Ronaldo"
+    ],
+    "correct": 0,
+    "explanation": "Messi 2022 finaliyle 26 Dünya Kupası maçına ulaştı.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5d8463026cff0c",
+    "category": "dunya-kupasi",
+    "text": "2022 sonuna kadar erkekler Dünya Kupası’nda gol atan en yaşlı futbolcu kimdi?",
+    "options": [
+      "Roger Milla",
+      "Zlatan Ibrahimović",
+      "Didier Drogba",
+      "Samuel Eto'o"
+    ],
+    "correct": 0,
+    "explanation": "Milla 1994’te 42 yaşındayken gol attı.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-b49aadcf128d7b",
+    "category": "dunya-kupasi",
+    "text": "2022 sonuna kadar Dünya Kupası finalinde gol atan en genç erkek futbolcu kimdi?",
+    "options": [
+      "Kylian Mbappé",
+      "Pelé",
+      "Michael Owen",
+      "Lionel Messi"
+    ],
+    "correct": 1,
+    "explanation": "Pelé 1958 finalinde 17 yaşındaydı.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-5df26390fecc60",
+    "category": "dunya-kupasi",
+    "text": "Erkekler Dünya Kupası’nın Afrika kıtasında düzenlenen ilk turnuvası hangisiydi?",
+    "options": [
+      "Güney Afrika 2010",
+      "Meksika 1986",
+      "İspanya 1982",
+      "Katar 2022"
+    ],
+    "correct": 0,
+    "explanation": "2010 turnuvası Afrika’daki ilk erkekler Dünya Kupası’ydı.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-82134111357205",
+    "category": "dunya-kupasi",
+    "text": "Erkekler Dünya Kupası’nın Asya’da düzenlenen ilk turnuvası hangisiydi?",
+    "options": [
+      "Güney Kore/Japonya 2002",
+      "Katar 2022",
+      "ABD 1994",
+      "İtalya 1990"
+    ],
+    "correct": 0,
+    "explanation": "2002 turnuvası hem Asya’daki ilk organizasyon hem ilk ortak ev sahipliğiydi.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-6e2810bfdaf5da",
+    "category": "dunya-kupasi",
+    "text": "1942 ve 1946 Dünya Kupalarının oynanmamasının temel nedeni neydi?",
+    "options": [
+      "İkinci Dünya Savaşı ve etkileri",
+      "FIFA’nın kalıcı kapanması",
+      "Top bulunamaması",
+      "Futbolun yasaklanması"
+    ],
+    "correct": 0,
+    "explanation": "Savaş ve savaş sonrası koşullar turnuvaların yapılamamasına yol açtı.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-30aee0ff7aa510",
+    "category": "dunya-kupasi",
+    "text": "1950 Dünya Kupası’nın şampiyon belirleme düzeni nasıl farklıydı?",
+    "options": [
+      "Son aşamada final grubu vardı",
+      "Tüm maçlar penaltıyla oynandı",
+      "Şampiyon kura ile seçildi",
+      "Yalnız iki ülke katıldı"
+    ],
+    "correct": 0,
+    "explanation": "1950’de tek final yerine dört takımlı final grubu oynandı.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-b59366d9b4014d",
+    "category": "dunya-kupasi",
+    "text": "1934 ve 1938 Dünya Kupalarını art arda kazanan ülke hangisiydi?",
+    "options": [
+      "İtalya",
+      "Almanya",
+      "Brezilya",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "explanation": "İtalya iki turnuvada da şampiyon oldu.",
+    "difficulty": "general",
+    "topic": "tarih-ve-rekorlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
   }
 ]

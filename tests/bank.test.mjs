@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from "node:fs";
 const bank = JSON.parse(
   readFileSync(new URL("../data/questions.json", import.meta.url)),
 );
-test("18 categories contain 4500 unique four-choice questions", () => {
+test("19 categories contain 4750 unique four-choice questions", () => {
   const counts = {};
   const ids = new Set(),
     texts = new Set();
@@ -20,9 +20,9 @@ test("18 categories contain 4500 unique four-choice questions", () => {
     assert(Number.isInteger(q.correct) && q.correct >= 0 && q.correct < 4);
     assert(q.text.length > 10);
   }
-  assert.equal(Object.keys(counts).length, 18);
+  assert.equal(Object.keys(counts).length, 19);
   assert(Object.values(counts).every((count) => count === 250));
-  assert.equal(bank.length, 4500);
+  assert.equal(bank.length, 4750);
 });
 
 test("Türkiye retains only 20 metropolitan plates; local specialties cover all 81 provinces", () => {
@@ -118,4 +118,24 @@ test("expansion preserves all 2081 legacy questions and their answers", () => {
       .digest("hex"),
     "58008cb3d04f2f84a93d110d1fe6a9e5c0851b622f0641e873496bcf976d489a",
   );
+});
+
+test("World Cup archive has 250 original questions, broad topics, sources and limited specialist detail", () => {
+  const pool = bank.filter((q) => q.category === "dunya-kupasi");
+  assert.equal(pool.length, 250);
+  assert(pool.filter((q) => q.difficulty === "general").length >= 190);
+  assert(pool.filter((q) => q.difficulty === "expert").length > 0);
+  assert.equal(pool.filter((q) => q.topic === "turkiye").length, 20);
+  assert(new Set(pool.map((q) => q.topic)).size >= 10);
+  for (const q of pool) {
+    assert(q.explanation.length >= 15);
+    assert(["fifa.com", "www.fifa.com", "www.tff.org", "www.theifab.com", "inside.fifa.com"].includes(new URL(q.source).hostname));
+    assert(!q.text.includes("son şampiyon kim"), "Time-dependent records must state their cutoff");
+  }
+  const answer = (fragment) => { const q = pool.find((q) => q.text.includes(fragment)); assert(q, fragment); return q.options[q.correct]; };
+  assert.equal(answer("1950 FIFA Dünya Kupası şampiyonluğunu"), "Uruguay");
+  assert.equal(answer("Türkiye 2002 Dünya Kupası’nı hangi dereceyle"), "Üçüncü");
+  assert.equal(answer("2022 sonu itibarıyla erkekler Dünya Kupası toplam gol"), "Miroslav Klose");
+  assert.equal(answer("2010 Dünya Kupası’nda eşitlik kriterleri"), "Thomas Müller");
+  assert.equal(answer("1950 Dünya Kupası’nın şampiyon belirleme"), "Son aşamada final grubu vardı");
 });

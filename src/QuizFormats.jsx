@@ -37,11 +37,11 @@ export const quizFormats = [
     pool: 250,
     total: 20,
     kicker: "HER KONUDAN BİR TUTAM",
-    tag: "18 kategori · Senin seçimin",
+    tag: "19 kategori · Senin seçimin",
     description:
       "Uzaydan futbola, tarihten hayvanlara. Bir sonraki sorunun nereden geleceği sürpriz!",
     rules:
-      "Kendine ait 250 soruluk genel bilgi havuzu. 10 ve 15 soruluk oyunlarda kategoriler tekrarlanmaz. 20 soruda 18 kategoriden birer soru, iki farklı kategoriden birer ek soru gelir. Hiçbir kategori ikiyi geçmez; önceki yarışmanın soruları tamamen dışarıda kalır.",
+      "Kendine ait 250 soruluk genel bilgi havuzu. 10 ve 15 soruluk oyunlarda kategoriler tekrarlanmaz. 20 soruda 19 kategoriden birer soru, bir kategoriden bir ek soru gelir. Hiçbir kategori ikiyi geçmez; önceki yarışmanın soruları tamamen dışarıda kalır.",
   },
 ];
 export const quizFormat = (id) => quizFormats.find((f) => f.id === id);

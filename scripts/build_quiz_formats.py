@@ -423,7 +423,7 @@ mixed=[]
 for i,cat in enumerate(cats):
     pool=[q for q in bank if q['category']==cat and (q['id'] in general or q.get('difficulty')=='general')]
     pool.sort(key=lambda q:hashlib.sha256(('mixed-v1:'+q['id']).encode()).hexdigest())
-    for q in pool[:14 if i<16 else 13]:
+    for q in pool[:250//len(cats)+(1 if i<250%len(cats) else 0)]:
         mixed.append(dict(q,difficulty='general'))
 assert len(estimate)==200,len(estimate)
 assert len(binary)==200,len(binary)

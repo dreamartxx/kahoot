@@ -3159,7 +3159,7 @@ test("binary games show exactly Evet/Hayır, score normally, and reject nonexist
   assert.equal(r.data.answerCards[0].correct, true);
 });
 
-test("dedicated mixed pool produces 20 questions from 18 topics with no adjacent-game repeats", async () => {
+test("dedicated mixed pool produces 20 questions from 19 topics with no adjacent-game repeats", async () => {
   const decks = [];
   for (let i = 0; i < 15; i++) {
     const room = await create("quiz", { category: "mixed" });
@@ -3177,8 +3177,8 @@ test("dedicated mixed pool produces 20 questions from 18 topics with no adjacent
     deck = JSON.parse(readFileSync(path.join(dir, "mixed.json")));
     const counts = {};
     for (const q of deck) counts[q.category] = (counts[q.category] || 0) + 1;
-    assert.equal(Object.keys(counts).length, 18);
-    assert.equal(Object.values(counts).filter((n) => n === 2).length, 2);
+    assert.equal(Object.keys(counts).length, 19);
+    assert.equal(Object.values(counts).filter((n) => n === 2).length, 1);
     assert.ok(Object.values(counts).every((n) => n <= 2));
     assert.ok(
       deck.every((q) => q.difficulty === "general" && q.options.length === 4),
@@ -3302,7 +3302,7 @@ test("quiz setup defaults to ten seconds and accepts selectable lengths across a
       if (category === "mixed") {
         const counts = {};
         deck.forEach((q) => counts[q.category] = (counts[q.category] || 0) + 1);
-        assert.equal(Object.keys(counts).length, Math.min(18, questionCount));
+        assert.equal(Object.keys(counts).length, Math.min(19, questionCount));
         assert(Math.max(...Object.values(counts)) <= (questionCount === 20 ? 2 : 1));
       }
       if (category === "cografya") assert.equal(deck.filter((q) => q.difficulty === "expert").length, Math.floor(questionCount / 10));
@@ -3335,4 +3335,23 @@ test("quiz setup rejects unsupported options and matches manual selection to the
       assert.equal((await call("create", {mode: "quiz", title: "Seçim kontrolü", category: "cografya", questionCount: count, questionIds}, {admin: true})).status, 400);
     }
   }
+});
+
+test("World Cup category supports 10/15/20 questions, manual library access and tournament/solo selection", async () => {
+  const counts = await call("categories");
+  assert.equal(counts.data["dunya-kupasi"], 250);
+  const library = await call("questions", {category: "dunya-kupasi"}, {admin: true});
+  assert.equal(library.data.length, 250);
+  for (const questionCount of [10, 15, 20]) {
+    const room = await create("quiz", {category: "dunya-kupasi", questionCount});
+    assert.equal(room.total, questionCount);
+    const deck = JSON.parse(mutateDB(room.pin, "echo json_encode($s['questions'])").toString());
+    assert(deck.every((q) => q.category === "dunya-kupasi"));
+    assert.equal(deck.filter((q) => q.difficulty === "expert").length, Math.floor(questionCount / 10));
+  }
+  const tournament = await create("tournament", {prize: "Kupa"});
+  const player = await join(tournament.pin, "Kupa Taraftarı");
+  assert.equal((await call("tournament_choices", {pin: tournament.pin, categories: ["dunya-kupasi"]}, {token: player.token})).status, 200);
+  const solo = await call("solo_start", {category: "dunya-kupasi"}, {admin: true});
+  assert.equal(solo.status, 200);
 });

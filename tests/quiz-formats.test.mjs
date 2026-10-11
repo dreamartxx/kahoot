@@ -43,6 +43,6 @@ test("special pools contain 200 estimates, 200 binary claims and 250 balanced mi
     assert.equal(q.options.length, 4);
     assert.equal(q.difficulty, "general");
   }
-  assert.equal(Object.keys(counts).length, 18);
+  assert.equal(Object.keys(counts).length, 19);
   assert.ok(Object.values(counts).every((n) => n === 13 || n === 14));
 });
