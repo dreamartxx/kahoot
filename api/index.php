@@ -15,7 +15,7 @@ try {
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
         $in=json_decode($raw,true,64,JSON_THROW_ON_ERROR);if(!is_array($in)) fail('Geçersiz istek.');
     } else $in=$_GET;
-    $writes=['solo_start','solo_answer','solo_abandon','preview_start','preview_stop','login','logout','password_change','profile_update','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance','tournament_choices','tournament_prize','tournament_start','tournament_vote','tournament_vote_close'];
+    $writes=['idle_continue','idle_cancel','solo_start','solo_answer','solo_abandon','preview_start','preview_stop','login','logout','password_change','profile_update','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance','tournament_choices','tournament_prize','tournament_start','tournament_vote','tournament_vote_close'];
     if(in_array($action,$writes,true) && $method!=='POST') fail('POST gerekli.',405);
     authActions($action,$in);
     if(str_starts_with($action,'solo_')){require_once __DIR__.'/solo.php';soloActions($action,$in);}
@@ -33,7 +33,7 @@ try {
         db()->prepare('INSERT INTO arena_questions (id,category,content) VALUES (?,?,?)')->execute([$q['id'],$q['category'],json_encode($q,JSON_UNESCAPED_UNICODE)]);echo json_encode($q,JSON_UNESCAPED_UNICODE);exit;
     }
     if($action==='question_delete'){needOwner();$lookup=db()->prepare('SELECT content FROM arena_questions WHERE id=?');$lookup->execute([$in['id']??'']);$raw=$lookup->fetchColumn();if($raw&&!canManageRoom(json_decode($raw,true)))fail('Bu soruyu yönetme yetkiniz yok.',403);db()->prepare('DELETE FROM arena_questions WHERE id=?')->execute([$in['id']??'']);echo '{}';exit;}
-    if($action==='rooms'){needAdmin();$q=db()->query('SELECT state FROM arena_rooms ORDER BY created_at DESC');$out=[];foreach($q as $row){$s=json_decode($row['state'],true);if($s['expiresAt']>time()&&canManageRoom($s))$out[]=snapshot($s,null,true);if(count($out)>=50)break;}echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;}
+    if($action==='rooms'){needAdmin();$q=db()->query('SELECT state FROM arena_rooms ORDER BY created_at DESC');$out=[];foreach($q as $row){$s=expireStoredRoom($row['state']);if($s['expiresAt']>time()&&canManageRoom($s))$out[]=snapshot($s,null,true);if(count($out)>=50)break;}echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;}
     if($action==='create'){
         needAdmin();$mode=$in['mode']??'';if(!in_array($mode,['quiz','cloud','raffle','family','tournament']))fail('Modül geçersiz.');
         $s=['ownerId'=>(int)currentUser()['id'],'pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
@@ -65,16 +65,21 @@ try {
         $db->commit();echo json_encode(snapshot($s,null,true),JSON_UNESCAPED_UNICODE);exit;
     }
     if($action==='room'){
-        $q=db()->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$in['pin']??'']);$raw=$q->fetchColumn();if(!$raw)fail('Etkinlik bulunamadı.',404);$s=json_decode($raw,true);if($s['expiresAt']<time())fail('Etkinlik süresi doldu.',410);
+        $q=db()->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$in['pin']??'']);$raw=$q->fetchColumn();if(!$raw)fail('Etkinlik bulunamadı.',404);$s=expireStoredRoom($raw);if($s['expiresAt']<time())fail('Etkinlik süresi doldu.',410);
         echo json_encode(snapshot($s,$_SERVER['HTTP_X_PLAYER_TOKEN']??null,canManageRoom($s)),JSON_UNESCAPED_UNICODE);exit;
     }
     if(!in_array($action,$writes,true))fail('İşlem bulunamadı.',404);
-    if(in_array($action,['advance','prompt','entries','draw','close','family_start','family_advance','tournament_prize','tournament_start','tournament_vote_close']))needAdmin();
+    if(in_array($action,['idle_continue','idle_cancel','advance','prompt','entries','draw','close','family_start','family_advance','tournament_prize','tournament_start','tournament_vote_close']))needAdmin();
     if(in_array($action,['join','words','answer','family_profile','family_answer','tournament_choices','tournament_vote']))rateLimit($action,$action==='join'?100:500);
     currentUser(); // Resolve lazy auth migration before opening the room transaction.
     $s=lockRoom(inputText($in['pin']??'',6,6,'Etkinlik kodu'));
-    if(in_array($action,['advance','prompt','entries','draw','close','family_start','family_advance','tournament_prize','tournament_start','tournament_vote_close'],true)&&!canManageRoom($s)){db()->rollBack();fail('Bu etkinliği yönetme yetkiniz yok.',403);}
-    if(in_array($s['phase'],['closed','finished']) && $action!=='close')fail('Etkinlik sona erdi.',409);
+    if(in_array($action,['idle_continue','idle_cancel','advance','prompt','entries','draw','close','family_start','family_advance','tournament_prize','tournament_start','tournament_vote_close'],true)&&!canManageRoom($s)){db()->rollBack();fail('Bu etkinliği yönetme yetkiniz yok.',403);}
+    if(in_array($s['phase'],['closed','finished']) && $action!=='close'){saveRoom($s);fail(($s['closeReason']??'')==='not_started'?'Etkinlik 3 dakika içinde başlatılmadığı için otomatik iptal edildi.':'Etkinlik sona erdi.',409);}
+    if(in_array($action,['idle_continue','idle_cancel'],true)){
+        if(!awaitingStart($s))fail('Etkinlik zaten başladı; ekran güncellenecek.',409);
+        if($action==='idle_continue')$s['startWarningAcknowledged']=true;
+        else {$s['phase']='closed';$s['closeReason']='cancelled';$s['closedAt']=time();}
+    }
     $token=$_SERVER['HTTP_X_PLAYER_TOKEN']??'';
     if(str_starts_with($action,'tournament_')){tournamentAction($s,$action,$in,$token);saveRoom($s);echo json_encode(snapshot($s,$token,canManageRoom($s)),JSON_UNESCAPED_UNICODE);exit;}
     if(str_starts_with($action,'family_')){

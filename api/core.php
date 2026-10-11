@@ -88,6 +88,30 @@ function rateLimit(string $action,int $limit): void {
     if((int)$q->fetchColumn()>$limit) fail('Çok fazla deneme. Bir dakika sonra tekrar deneyin.',429);
     if(random_int(1,100)===1) $db->prepare('DELETE FROM arena_limits WHERE expires_at < ?')->execute([time()]);
 }
+// A lobby has a fixed three-minute start window; acknowledging never extends it.
+function awaitingStart(array $s): bool {
+    return (in_array($s['mode'],['quiz','family','tournament'],true)&&$s['phase']==='lobby')
+        ||($s['mode']==='raffle'&&$s['phase']==='open'&&empty($s['draw']));
+}
+function syncIdleClock(array &$s, ?float $now=null): void {
+    $now??=microtime(true);
+    if(awaitingStart($s)&&$now>=$s['createdAt']+180){$s['phase']='closed';$s['closeReason']='not_started';$s['closedAt']=$s['createdAt']+180;}
+}
+function idleSnapshot(array $s,bool $host): array {
+    $pending=awaitingStart($s);
+    return ['closeReason'=>$s['closeReason']??null,'startBy'=>$pending?$s['createdAt']+180:null,
+        'startWarning'=>$host&&$pending&&empty($s['startWarningAcknowledged'])&&microtime(true)>=$s['createdAt']+60];
+}
+// Compare-and-swap prevents a read from closing a room that another request just started.
+function expireStoredRoom(string $raw): array {
+    $s=json_decode($raw,true);$pending=awaitingStart($s);syncIdleClock($s);
+    if($pending&&($s['closeReason']??null)==='not_started'){
+        $q=db()->prepare('UPDATE arena_rooms SET state=? WHERE pin=? AND state=?');
+        $q->execute([json_encode($s,JSON_UNESCAPED_UNICODE),$s['pin'],$raw]);
+        if(!$q->rowCount()){$q=db()->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$s['pin']]);$s=json_decode($q->fetchColumn(),true);syncIdleClock($s);}
+    }
+    return $s;
+}
 // The server clock drives all screens, even when the host tab is closed or asleep.
 function syncQuizClock(array &$s, ?float $now=null): void {
     if(!in_array($s['mode'],['quiz','family','tournament'],true))return;
@@ -116,6 +140,7 @@ function lockRoom(string $pin): array {
     if(!$raw){$db->rollBack();fail('Bu kodla açık bir etkinlik bulunamadı.',404);}
     $s=json_decode($raw,true);
     if($s['expiresAt']<time()){ $db->rollBack();fail('Bu etkinliğin süresi doldu.',410); }
+    syncIdleClock($s);
     syncQuizClock($s);
     return $s;
 }
@@ -135,8 +160,9 @@ function revealedAnswerCards(array $s, ?string $viewerKey): array {
 }
 function playerKey(array $s,string $token): string { $key=hash('sha256',$token);if(!isset($s['players'][$key])) fail('Katılımcı oturumu bulunamadı. Yeniden katılın.',401);return $key; }
 function snapshot(array $s,?string $token=null,bool $host=false): array {
+    syncIdleClock($s);
     syncQuizClock($s);
-    if($s['mode']==='family')return familySnapshot($s,$token)+['canManage'=>$host];
+    if($s['mode']==='family')return familySnapshot($s,$token)+['canManage'=>$host]+idleSnapshot($s,$host);
     $now=microtime(true);$phase=$s['phase'];
     $visiblePlayers=$s['players'];
     if(in_array($s['mode'],['quiz','tournament'],true) && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
@@ -171,5 +197,5 @@ function snapshot(array $s,?string $token=null,bool $host=false): array {
         $out['winners']=array_values(array_filter($s['winners'],fn($w)=>$now >= ($w['settleAt']??$w['revealAt'])));
         if($host) $out['entries']=$s['entries'];
     }
-    return $out;
+    return $out+idleSnapshot($s,$host);
 }
