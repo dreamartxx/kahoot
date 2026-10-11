@@ -11,7 +11,7 @@ const guides = {
     steps: [
       [
         "Oyunu kur",
-        "200 soruluk havuzdan 10 soru hazırlanır. QR veya oyun kodunu paylaş.",
+        "200 soruluk havuzdan 10, 15 veya 20 soru seç. Soru süresi 10 saniye; istersen 15 veya 20 yap. QR veya oyun kodunu paylaş.",
       ],
       [
         "Tahminini yaz",
@@ -32,7 +32,7 @@ const guides = {
     steps: [
       [
         "Bir araya gelin",
-        "200 ilginç sorudan 10'u seçilir. Kodu veya QR'ı paylaş.",
+        "200 ilginç sorudan 10, 15 veya 20 soru hazırlanır. Süreyi 10, 15 veya 20 saniye seç. Kodu veya QR'ı paylaş.",
       ],
       [
         "Tarafını seç",
@@ -49,19 +49,19 @@ const guides = {
     name: "Ortaya Karışık",
     emoji: "🎲",
     accent: "#bd9755",
-    intro: "18 konu. 20 soru. Her tur yeni bir karışım.",
+    intro: "18 konu. Soru sayısı senin seçimin.",
     steps: [
       [
         "Karışımı başlat",
-        "Bu oyuna ait 250 soruluk havuzdan 20 soru otomatik seçilir.",
+        "250 soruluk havuzdan 10, 15 veya 20 soru hazırlanır. Soru süresi varsayılan 10 saniye; 15 veya 20 de seçebilirsin.",
       ],
       [
         "Her alanda yarış",
-        "18 kategorinin her birinden bir soru gelir. İki farklı kategori bir kez daha sorulur.",
+        "10 ve 15 soruda her soru farklı konudan gelir. 20 soruda 18 konuya ek olarak iki konu bir kez daha sorulur.",
       ],
       [
         "Yeni tur, yeni sorular",
-        "Aynı kurucunun önceki karışık yarışmasındaki 20 soru bir sonraki oyunda kullanılmaz.",
+        "Aynı kurucunun önceki karışık yarışmasındaki sorular bir sonraki oyunda kullanılmaz.",
       ],
     ],
     note: "Kategoriler en fazla iki kez görünür. Tamamı genel bilgi sorularıdır.",
@@ -95,7 +95,7 @@ const guides = {
     steps: [
       [
         "Oyunu kur",
-        "Klasik bir konu ya da özel yarışma seç. Oyununu oluştur, kodu veya QR’ı paylaş.",
+        "Konu ve soru sayısını (10, 15, 20) seç. Süre 10 saniyeden başlar; 15 veya 20 de seçebilirsin. Kodu veya QR’ı paylaş.",
       ],
       [
         "Doğru şıkkı bul",

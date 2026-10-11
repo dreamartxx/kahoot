@@ -1074,7 +1074,12 @@ function Create({
               ? "Bizim Aile"
               : "Fikirler Buluşuyor",
     ),
-    [seconds, setSeconds] = useState(mode === "family" ? 45 : 20),
+    [seconds, setSeconds] = useState(
+      mode === "family" ? 45 : mode === "quiz" ? 10 : 20,
+    ),
+    [questionCount, setQuestionCount] = useState(
+      initialCat === "mixed" ? 20 : 10,
+    ),
     [prompt, setPrompt] = useState("Bugünü tek kelimeyle anlat!"),
     [prize, setPrize] = useState(""),
     [busy, setBusy] = useState(false),
@@ -1088,6 +1093,7 @@ function Create({
       { text: "", examples: ["", "", ""] },
     ]);
   const format = mode === "quiz" ? quizFormat(cat) : null;
+  const expertLimit = Math.floor(questionCount / 10);
   const selectedExpertCount = qs.filter(
     (q) => selected.includes(q.id) && q.difficulty !== "general",
   ).length;
@@ -1116,6 +1122,7 @@ function Create({
                 title,
                 category: cat,
                 seconds: Number(seconds),
+                ...(mode === "quiz" ? { questionCount } : {}),
                 prompt,
                 ...(mode === "tournament" ? { prize } : {}),
                 questionIds:
@@ -1151,7 +1158,7 @@ function Create({
                 <select value={cat} onChange={(e) => setCat(e.target.value)}>
                   {quizFormats.map((f) => (
                     <option value={f.id} key={f.id}>
-                      {f.emoji} {f.name} · {f.total} soru
+                      {f.emoji} {f.name}
                     </option>
                   ))}
                   {categories.map((c) => (
@@ -1166,7 +1173,7 @@ function Create({
                   value={seconds}
                   onChange={(e) => setSeconds(e.target.value)}
                 >
-                  {[10, 15, 20, 30, 45, 60, 90].map((n) => (
+                  {[10, 15, 20].map((n) => (
                     <option value={n} key={n}>
                       {n} saniye
                     </option>
@@ -1174,6 +1181,21 @@ function Create({
                 </select>
               </Field>
             </div>
+            <Field label="Soru sayısı">
+              <select
+                value={questionCount}
+                onChange={(e) => {
+                  setQuestionCount(Number(e.target.value));
+                  setSelected([]);
+                }}
+              >
+                {[10, 15, 20].map((n) => (
+                  <option value={n} key={n}>
+                    {n} soru
+                  </option>
+                ))}
+              </select>
+            </Field>
             {canManageLibrary && !format && (
               <label className="check-row">
                 <input
@@ -1187,8 +1209,9 @@ function Create({
             {manual && canManageLibrary && !format ? (
               <>
                 <p className="muted" aria-live="polite">
-                  {selected.length}/10 soru seçildi · {selectedExpertCount}/1{" "}
-                  detay / uzmanlık sorusu. En az 9 genel bilgi sorusu seç.
+                  {selected.length}/{questionCount} soru seçildi ·{" "}
+                  {selectedExpertCount}/{expertLimit} detay / uzmanlık sorusu.
+                  En az {questionCount - expertLimit} genel bilgi sorusu seç.
                 </p>
                 <div className="question-pick">
                   {qs.map((q) => (
@@ -1198,9 +1221,9 @@ function Create({
                         checked={selected.includes(q.id)}
                         disabled={
                           !selected.includes(q.id) &&
-                          (selected.length === 10 ||
+                          (selected.length === questionCount ||
                             (q.difficulty !== "general" &&
-                              selectedExpertCount >= 1))
+                              selectedExpertCount >= expertLimit))
                         }
                         onChange={(e) =>
                           setSelected(
@@ -1229,8 +1252,8 @@ function Create({
                 <Sparkles size={20} />
                 <span>
                   {format
-                    ? format.rules
-                    : "9 genel bilgi + 1 detay / uzmanlık sorusu. Her düzeyde kullanılmamış sorulara öncelik verilir; o grup tamamlanınca en eski sorular yeniden gelir. Sorular karışık sırada gelir."}
+                    ? `${questionCount} soruluk oyun · ${seconds} saniye/soru. ${format.rules}`
+                    : `${questionCount - expertLimit} genel bilgi + en fazla ${expertLimit} detay / uzmanlık sorusu. Her düzeyde kullanılmamış sorulara öncelik verilir; o grup tamamlanınca en eski sorular yeniden gelir. Sorular karışık sırada gelir.`}
                 </span>
               </div>
             )}
@@ -1360,7 +1383,7 @@ function Create({
           className="full"
           disabled={
             busy ||
-            (manual && selected.length !== 10) ||
+            (manual && selected.length !== questionCount) ||
             (manualFamily &&
               familySelected.length +
                 (customFamily ? familyQuestions.length : 0) !==

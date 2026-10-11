@@ -92,7 +92,7 @@ export default function QuizCategoryPicker({ counts, onChoose }) {
           <Sparkles size={19} />
           <span>
             <b>Konunu seç, sahneye çık.</b>
-            <small>{categories.length} konu · Her turda 10 soru</small>
+            <small>{categories.length} konu · 10, 15 veya 20 soru</small>
           </span>
         </div>
         <div className="quiz-picker-tools">
@@ -256,7 +256,7 @@ export default function QuizCategoryPicker({ counts, onChoose }) {
                       </span>
                       <i />
                       <span>
-                        <b>10</b> soruluk tur
+                        <b>10 / 15 / 20</b> soru
                       </span>
                     </span>
                   </span>

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 function specialQuiz(string $category): bool {return in_array($category,['estimate','binary','mixed'],true);}
 function specialQuizBank(string $type): array {return json_decode(file_get_contents(__DIR__.'/../data/quiz-'.$type.'.json'),true,512,JSON_THROW_ON_ERROR);}
-function specialQuizDeck(string $type): array {
+function specialQuizDeck(string $type,int $count=10): array {
     $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
     $db->exec('CREATE TABLE IF NOT EXISTS arena_quiz_rotation (scope VARCHAR(100) PRIMARY KEY, state TEXT NOT NULL)');
     $db->beginTransaction();$db->prepare('UPDATE arena_users SET active=active WHERE id=?')->execute([currentUser()['id']]);
@@ -13,12 +13,13 @@ function specialQuizDeck(string $type): array {
     if($type==='mixed'){
         $groups=[];foreach($pool as $question)$groups[$question['category']][]=$question;
         $categories=array_keys($groups);shuffle($categories);$deck=[];
-        foreach($categories as $category)$deck[]=array_shift($groups[$category]);
-        // Eighteen topics => exactly two repeats in a twenty-question round.
+        usort($categories,fn($a,$b)=>($rotation['used'][$groups[$a][0]['id']]??0)<=>($rotation['used'][$groups[$b][0]['id']]??0));
+        foreach(array_slice($categories,0,$count) as $category)$deck[]=array_shift($groups[$category]);
+        // Short rounds use distinct topics; a twenty-question round needs two repeats.
         usort($categories,fn($a,$b)=>(int)in_array($a,$rotation['extras'],true)<=>(int)in_array($b,$rotation['extras'],true));
-        $rotation['extras']=array_slice($categories,0,20-count($deck));
+        $rotation['extras']=array_slice($categories,0,max(0,$count-count($deck)));
         foreach($rotation['extras'] as $category)$deck[]=array_shift($groups[$category]);
-    }else $deck=array_slice($pool,0,10);
+    }else $deck=array_slice($pool,0,$count);
     shuffle($deck);$rotation['round']++;$rotation['previous']=array_column($deck,'id');
     foreach($deck as &$question){$rotation['used'][$question['id']]=$rotation['round'];if($type!=='estimate'){$correct=$question['options'][$question['correct']];if($type!=='binary')shuffle($question['options']);$question['correct']=array_search($correct,$question['options'],true);}}unset($question);
     $sql=$mysql?'INSERT INTO arena_quiz_rotation (scope,state) VALUES (?,?) ON DUPLICATE KEY UPDATE state=VALUES(state)':'INSERT INTO arena_quiz_rotation (scope,state) VALUES (?,?) ON CONFLICT(scope) DO UPDATE SET state=excluded.state';

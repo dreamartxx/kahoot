@@ -912,7 +912,7 @@ test("family deadlines, invalid choices, stale questions and tied ranks", async 
 
 test("quiz and family auto-advance through reveal, synchronized 3–2–1 and final results without host requests", async () => {
   for (const mode of ["quiz", "family"]) {
-    const r = await create(mode, { seconds: 30 });
+    const r = await create(mode, { seconds: 20 });
     const pin = r.pin;
     const players = [];
     for (const name of ["Otomatik Bir", "Otomatik İki"]) {
@@ -981,8 +981,8 @@ test("quiz and family auto-advance through reveal, synchronized 3–2–1 and fi
     assert.notEqual(next.question.id, oldId);
     assert.equal(next.question.correct, undefined);
     assert(
-      next.deadline - next.serverTime > 29 &&
-        next.deadline - next.serverTime <= 30,
+      next.deadline - next.serverTime > 19 &&
+        next.deadline - next.serverTime <= 20,
     );
     const responder =
       mode === "quiz"
@@ -1918,7 +1918,7 @@ test("characters persist in quiz and family snapshots, results and legacy rooms"
 });
 
 test("quiz answer cards reveal both selections only after the round, with viewer-relative identity", async () => {
-  const r = await create("quiz", { seconds: 90 });
+  const r = await create("quiz", { seconds: 20 });
   const a = await call("join", { pin: r.pin, name: "Yeşil", avatar: "fox" });
   const b = await call("join", {
     pin: r.pin,
@@ -2449,7 +2449,7 @@ test("tournament majority, no-vote timeout, early vote closure and reconnect use
 
 test("creators can join and answer in quiz, family and tournament while retaining management", async () => {
   for (const mode of ["quiz", "family", "tournament"]) {
-    const room = await create(mode, { prize: "Kitap", seconds: 90 });
+    const room = await create(mode, { prize: "Kitap", seconds: mode === "quiz" ? 20 : 90 });
     const joined = await call(
       "join",
       { pin: room.pin, name: "Kurucu", role: "Baba", avatar: "robot" },
@@ -3264,7 +3264,7 @@ test("idle expiry covers family, tournament and undrawn raffles, including list 
 });
 
 test("started games and live clouds are not cancelled; stale warning actions cannot close started games", async () => {
-  const room = await create("quiz", { seconds: 90 });
+  const room = await create("quiz", { seconds: 20 });
   const player = await join(room.pin, "Oyuncu");
   await call("advance", { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 }, { admin: true });
   mutateDB(room.pin, "$s['createdAt']=time()-300");
@@ -3282,4 +3282,57 @@ test("started games and live clouds are not cancelled; stale warning actions can
   await call("draw", { pin: raffle.pin }, { admin: true });
   mutateDB(raffle.pin, "$s['createdAt']=time()-300");
   assert.equal((await call("room", { pin: raffle.pin })).data.phase, "open");
+});
+
+test("quiz setup defaults to ten seconds and accepts selectable lengths across all formats", async () => {
+  for (const category of ["cografya", "estimate", "binary", "mixed"]) {
+    const defaultRoom = await call("create", { mode: "quiz", title: "Varsayılan tur", category }, { admin: true });
+    assert.equal(defaultRoom.status, 200);
+    assert.equal(defaultRoom.data.seconds, 10);
+    assert.equal(defaultRoom.data.total, category === "mixed" ? 20 : 10);
+    let previous = new Set();
+    for (const [questionCount, seconds] of [[10, 10], [20, 15], [15, 20], [20, 10]]) {
+      const room = await create("quiz", { category, questionCount, seconds });
+      assert.equal(room.total, questionCount);
+      assert.equal(room.seconds, seconds);
+      const deck = JSON.parse(mutateDB(room.pin, "echo json_encode($s['questions'])").toString());
+      assert.equal(new Set(deck.map((q) => q.id)).size, questionCount);
+      if (category !== "cografya") assert(deck.every((q) => !previous.has(q.id)), "A different round length must still exclude the previous deck");
+      previous = new Set(deck.map((q) => q.id));
+      if (category === "mixed") {
+        const counts = {};
+        deck.forEach((q) => counts[q.category] = (counts[q.category] || 0) + 1);
+        assert.equal(Object.keys(counts).length, Math.min(18, questionCount));
+        assert(Math.max(...Object.values(counts)) <= (questionCount === 20 ? 2 : 1));
+      }
+      if (category === "cografya") assert.equal(deck.filter((q) => q.difficulty === "expert").length, Math.floor(questionCount / 10));
+      const started = await call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, { admin: true });
+      assert(started.data.deadline - started.data.serverTime > seconds - 1);
+      assert(started.data.deadline - started.data.serverTime <= seconds);
+      mutateDB(room.pin, "$s['index']=count($s['questions'])-1;$s['phase']='question';$s['deadline']=microtime(true)-6");
+      const finished = await call("room", { pin: room.pin });
+      assert.equal(finished.data.phase, "finished");
+      assert.equal(finished.data.index, questionCount - 1);
+    }
+  }
+});
+
+test("quiz setup rejects unsupported options and matches manual selection to the chosen size", async () => {
+  for (const option of [{questionCount: 0}, {questionCount: 11}, {questionCount: 25}, {questionCount: "15"}, {questionCount: []}, {seconds: 9}, {seconds: 30}, {seconds: "10"}]) {
+    const r = await call("create", {mode: "quiz", title: "Geçersiz seçenek", category: "cografya", ...option}, {admin: true});
+    assert.equal(r.status, 400);
+  }
+  const bank = (await call("questions", {category: "cografya"}, {admin: true})).data;
+  const general = bank.filter((q) => q.difficulty === "general").map((q) => q.id);
+  const expert = bank.filter((q) => q.difficulty === "expert").map((q) => q.id);
+  for (const count of [15, 20]) {
+    const limit = Math.floor(count / 10);
+    const ids = [...general.slice(0, count - limit), ...expert.slice(0, limit)];
+    const room = await create("quiz", {questionCount: count, questionIds: ids});
+    assert.equal(room.total, count);
+    assert.deepEqual(JSON.parse(mutateDB(room.pin, "echo json_encode(array_column($s['questions'],'id'))").toString()).sort(), ids.sort());
+    for (const questionIds of [ids.slice(1), [...general.slice(0, count - limit - 1), ...expert.slice(0, limit + 1)]]) {
+      assert.equal((await call("create", {mode: "quiz", title: "Seçim kontrolü", category: "cografya", questionCount: count, questionIds}, {admin: true})).status, 400);
+    }
+  }
 });

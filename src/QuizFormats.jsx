@@ -15,7 +15,7 @@ export const quizFormats = [
     description:
       "Bir ahtapotun kaç kalbi var? Eyfel'de kaç perçin? Hesap yapma, içinden geçeni söyle.",
     rules:
-      "200 soruluk havuzdan 10 soru. Sayısal tahminini gizli gönder. Süre sonunda en yakın tahmin 1.000 puan alır; eşit yakınlıktakilerin hepsi kazanır. Bir önceki oyunun soruları tekrar gelmez.",
+      "200 soruluk havuzdan seçtiğin sayıda soru. Sayısal tahminini gizli gönder. Süre sonunda en yakın tahmin 1.000 puan alır; eşit yakınlıktakilerin hepsi kazanır. Bir önceki oyunun soruları tekrar gelmez.",
   },
   {
     id: "binary",
@@ -28,7 +28,7 @@ export const quizFormats = [
     description:
       "Yarasalar gerçekten kör mü? Bildiğini sandığın şeyler seni şaşırtabilir.",
     rules:
-      "200 ilginç sorudan 10 tanesi gelir. Evet veya Hayır seç; doğru ve hızlı cevapla puan kazan. Soru kapanınca açıklamasını gör. Bir önceki oyunun soruları tekrar gelmez.",
+      "200 ilginç sorudan seçtiğin sayıda soru gelir. Evet veya Hayır seç; doğru ve hızlı cevapla puan kazan. Soru kapanınca açıklamasını gör. Bir önceki oyunun soruları tekrar gelmez.",
   },
   {
     id: "mixed",
@@ -37,11 +37,11 @@ export const quizFormats = [
     pool: 250,
     total: 20,
     kicker: "HER KONUDAN BİR TUTAM",
-    tag: "18 kategori · 20 soru",
+    tag: "18 kategori · Senin seçimin",
     description:
       "Uzaydan futbola, tarihten hayvanlara. Bir sonraki sorunun nereden geleceği sürpriz!",
     rules:
-      "Kendine ait 250 soruluk genel bilgi havuzundan 20 soru. Her 18 kategoriden bir soru, iki farklı kategoriden birer ek soru gelir. Hiçbir kategori ikiyi geçmez; önceki yarışmanın soruları tamamen dışarıda kalır.",
+      "Kendine ait 250 soruluk genel bilgi havuzu. 10 ve 15 soruluk oyunlarda kategoriler tekrarlanmaz. 20 soruda 18 kategoriden birer soru, iki farklı kategoriden birer ek soru gelir. Hiçbir kategori ikiyi geçmez; önceki yarışmanın soruları tamamen dışarıda kalır.",
   },
 ];
 export const quizFormat = (id) => quizFormats.find((f) => f.id === id);
@@ -78,7 +78,7 @@ export function QuizFormats({ onChoose }) {
                   <b>{f.pool}</b> soruluk havuz
                 </span>
                 <span>
-                  <b>{f.total}</b> soruluk oyun
+                  <b>10 · 15 · 20</b> soru seçeneği
                 </span>
               </div>
               <span className="format-cta">
