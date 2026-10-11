@@ -1,7 +1,7 @@
 /* Only the offline notice and app icons are cached. Games, auth, HTML, and
    application bundles always use the network, so deploys cannot serve stale rounds. */
 const CACHE_PREFIX = "bilgi-arena-offline-";
-const CACHE_NAME = CACHE_PREFIX + "e85c44eeac5147af";
+const CACHE_NAME = CACHE_PREFIX + "f3c02193dfa40c5c";
 const OFFLINE_URL = "/offline.html";
 const OFFLINE_FILES = [
   OFFLINE_URL,
