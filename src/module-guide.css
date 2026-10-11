@@ -45,9 +45,6 @@
   flex-direction: column;
   min-width: 0;
 }
-.overview-module-tournament {
-  grid-column: 1 / -1;
-}
 .shell .overview-module > .overview-card {
   width: 100%;
   flex: 1;

@@ -88,10 +88,6 @@
   --overview-light: #ae8293;
   --overview-shadow: #3d294c;
   --overview-accent: #ffe9ac;
-  grid-column: 1 / -1;
-}
-.overview-tournament .overview-trophy {
-  font-size: 150px;
 }
 .tournament-banner {
   max-width: 1300px;

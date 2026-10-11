@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Target, Trophy } from "lucide-react";
 import "./overview.css";
 import ModuleGuide from "./ModuleGuide";
 import { moduleTeasers } from "./ModuleTeasers";
@@ -119,7 +119,7 @@ export default function Overview({ onChoose }) {
       {modules.map((m, i) => (
         <article
           key={m.id}
-          className={`overview-module overview-module-${m.id}`}
+          className={`overview-module overview-module-${m.id} ${["solo", "tournament"].includes(m.id) ? "overview-module-compact" : ""}`}
         >
           <ModuleGuide mode={m.id} compact />
           <button
@@ -135,7 +135,17 @@ export default function Overview({ onChoose }) {
                 ✦
               </span>
             </span>
-            <ModuleArt type={m.id} />
+            {["solo", "tournament"].includes(m.id) ? (
+              <span className="overview-compact-symbol" aria-hidden="true">
+                {m.id === "solo" ? (
+                  <Target size={35} strokeWidth={1.6} />
+                ) : (
+                  <Trophy size={35} strokeWidth={1.6} />
+                )}
+              </span>
+            ) : (
+              <ModuleArt type={m.id} />
+            )}
             <span className="overview-card-copy">
               <span className="overview-module-detail">{m.detail}</span>
               <h2>{m.title}</h2>
