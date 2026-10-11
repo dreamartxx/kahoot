@@ -30,6 +30,7 @@ const themes = {
   "osmanli-tarihi": ["#a6843d", "#43382b", "#ffe5a5", "TARİHE DOKUN"],
   "islam-tarihi": ["#328f85", "#183d45", "#b1f6d7", "GEÇMİŞİ KEŞFET"],
   "peygamberler-tarihi": ["#7462ab", "#363455", "#dfd1ff", "KISSALARI KEŞFET"],
+  film: ["#b04971", "#342441", "#ffdba1", "IŞIKLAR, KAMERA, YARIŞ!"],
   "dunya-kupasi": ["#ad812c", "#473253", "#ffe99b", "KUPANIN PEŞİNDE"],
   "genel-kultur": ["#bf8834", "#5b344d", "#ffe99d", "MERAKINI TAKİP ET"],
 };

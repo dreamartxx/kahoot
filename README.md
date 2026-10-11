@@ -128,9 +128,9 @@ Her modül kartının üstünde, modül sayfasında ve oyun bekleme alanında �
 
 ### Özel bilgi yarışmaları
 
-Bilgi yarışması ekranında üç ayrı oyun kartı bulunur. En Yakın Tahmin ve Sence Hangisi? kendi 200 soruluk havuzlarını, Ortaya Karışık ayrı 250 soruluk havuzunu kullanır. Her biri 10/15/20 soru ile kurulabilir; varsayılan sayı ilk ikisinde 10, karışıkta 20'dir. Karışık havuz 19 kategoriyi kapsar (kategori başına 13–14 soru); 20 soruluk oyunda 19 kategoriden birer soru ve bir kategoriden bir ek soru gelir. Aynı kategori en fazla iki kez görünür. Oyun sırası ve dört şık karıştırılır.
+Bilgi yarışması ekranında üç ayrı oyun kartı bulunur. En Yakın Tahmin ve Sence Hangisi? kendi 200 soruluk havuzlarını, Ortaya Karışık ayrı 250 soruluk havuzunu kullanır. Her biri 10/15/20 soru ile kurulabilir; varsayılan sayı ilk ikisinde 10, karışıkta 20'dir. Karışık havuz 20 kategoriyi kapsar (kategori başına 12–13 soru); 10/15/20 soruluk oyunlarda her soru farklı kategoriden gelir. Oyun sırası ve dört şık karıştırılır.
 
-`arena_quiz_rotation` kurucu ve oyun türüne göre önceki desteyi ve kullanım geçmişini saklar. Önceki oyunun soruları tamamen dışlanır, kullanılmamış/en eski sorular öncelenir; karışık oyunda tekrar eden kategori de dönüşümlüdür. Yönetici test görünümünün seçim geçmişi ayrıdır. Oda ve seçim geçmişi aynı işlemde kaydedilir. Yeni oyunlarda elle soru seçimi yoktur; eski odalar sakladıkları desteyle devam eder.
+`arena_quiz_rotation` kurucu ve oyun türüne göre önceki desteyi ve kullanım geçmişini saklar. Önceki oyunun soruları tamamen dışlanır, kullanılmamış/en eski sorular öncelenir; karışık oyunda 20 soruya kadar kategoriler tekrarlanmaz. Yönetici test görünümünün seçim geçmişi ayrıdır. Oda ve seçim geçmişi aynı işlemde kaydedilir. Yeni oyunlarda elle soru seçimi yoktur; eski odalar sakladıkları desteyle devam eder.
 
 Tahmin soruları matematik işlemi yerine dünya, doğa, uzay, yapılar, kültür ve spor hakkında sayısal bilgiler sorar. Katılımcı belirtilen birimde sayıyı yazar; virgül/nokta ile en fazla üç ondalık basamak kabul edilir. Tahminler soru kapanana kadar gizlidir. En küçük mutlak farkı veren herkes 1.000 puan alır; eşit uzaklıktaki tahminler birlikte kazanır, hız puanı yoktur. Sonuç kartlarında gerçek cevap, tahminler, farklar ve puanlar görünür. Puanlama sunucuda yalnız bir kez uygulanır. Sence Hangisi? yalnız Evet/Hayır seçeneklerini kullanır; mevcut doğru cevap/hız puanlaması geçerlidir. Her iki mod mevcut otomatik geçiş, 3–2–1 ve final podyumunu kullanır.
 
@@ -150,8 +150,17 @@ Klasik oyunda otomatik ve elle seçim aynı uzunluğu kullanır: 10 ve 15 soruda
 
 ### Dünya Kupası arşivi
 
-`dunya-kupasi` kategorisi, 1930–2022 erkekler FIFA Dünya Kupaları hakkında 250 özgün Türkçe, dört şıklı soru içerir. Kaynağı `scripts/world_cup_bank.py`, dağıtılan çıktı `data/questions.json` dosyasıdır. Genel havuz 19 × 250 = 4.750 soruya çıkar; eski 4.500 kayıt korunur. Kategori normal yarışma, Kendini Dene ve turnuvada kullanılabilir; karışık havuza da dengeli biçimde katılır.
+`dunya-kupasi` kategorisi, 1930–2022 erkekler FIFA Dünya Kupaları hakkında 250 özgün Türkçe, dört şıklı soru içerir. Kaynağı `scripts/world_cup_bank.py`, dağıtılan çıktı `data/questions.json` dosyasıdır. Bu ekleme önceki 4.500 kaydı korur; Film kategorisiyle birlikte genel havuz 20 × 250 = 5.000 sorudur. Kategori normal yarışma, Kendini Dene ve turnuvada kullanılabilir; karışık havuza da dengeli biçimde katılır.
 
 İçerik: şampiyonlar, ev sahipleri, finalistler, gol kralları, yıldızlar, Türkiye, unutulmaz anlar, maskotlar/müzik/stadyumlar, maç topları, temel bilgiler ve tarih/rekorlar. 199 genel ve 51 uzmanlık sorusu vardır; mevcut deste seçimi 10/15 soruda en çok 1, 20 soruda en çok 2 uzmanlık sorusu seçer. Rekorlar açıkça 2022 sonuyla sınırlandırılır. 1950 final grubu ve 1962/1994 ortak gol krallıkları gibi istisnalar soru metninde açıklanır.
 
 Tarihsel kontrol kaynakları [FIFA eski turnuvalar](https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina), [FIFA modern turnuvalar](https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain), [TFF millî takım tarihi](https://www.tff.org/default.aspx?pageID=314), [FIFA maskotlar](https://www.fifa.com/en/articles/world-cup-mascots-in-history) ve [FIFA maç topları](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/ball-balls-history) sayfalarıdır. Her soruda açıklama ve referans bağlantısı bulunur.
+
+
+### Film arşivi
+
+`film` kategorisi `scripts/film_bank.py` ile üretilen 250 özgün Türkçe, dört şıklı ve açıklamalı sorudan oluşur. 25 Türk oyuncu/rol, 25 dünya sineması oyuncu/rol, 25 yönetmen, 50 animasyon, 50 film/karakter, 25 Türk filmi, 25 sinema terimi ve 25 Oscar/festival sorusu vardır. 225 genel, 25 uzmanlık sorusu bulunur. Mevcut seçim dengesi 10/15 soruda en çok 1, 20 soruda en çok 2 uzmanlık sorusuna izin verir.
+
+Oyuncu ve yönetmen sorularında filmin sürümü/yılı belirtilir. Oscar sorularındaki yıl tören yılıdır; gösterim yılıyla karıştırılmaz. Soru kontrolünde [Akademi tören arşivi](https://www.oscars.org/oscars/ceremonies/2020), [Pixar film sayfaları](https://www.pixar.com/feature-films), [Chaplin arşivi](https://www.charliechaplin.com/en/films/1) ve [SESAM Arzu Film filmografisi](https://sesam.org.tr/uyeler/arzu-film/) gibi referanslar kullanılır; tekil kaynak bağlantıları ilgili sorularda saklanır. Metinler özgün yazılmıştır, alıntı diyalog ve şarkı sözü kullanılmaz.
+
+Film kartı, yönetici soru kütüphanesi/elle seçim, Kendini Dene ve turnuva aynı kategori kimliğini kullanır. Önceki 4.750 soru değiştirilmeden korunur. Karışık havuz 250 soruda kalır ve artık 20 konu içerir; 20 soruluk yarışmada da konu tekrarı gerekmez. Yapı, zorluk, sürüm ayrımı, deste dönüşümü ve mod entegrasyonları test edilir.

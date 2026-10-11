@@ -67,6 +67,7 @@ export const categories = [
     "🏆",
     "#fff0bd",
   ],
+  ["film", "Film", "Yeşilçam’dan dünya sinemasına", "🎬", "#ffe2ed"],
   ["kaleciler", "Kaleciler", "Kalenin efsaneleri", "🧤", "#e1edff"],
   ["arabalar", "Arabalar", "Bilgini vites yükselt", "🏎️", "#ffe6d7"],
   [

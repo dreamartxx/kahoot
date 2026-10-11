@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from "node:fs";
 const bank = JSON.parse(
   readFileSync(new URL("../data/questions.json", import.meta.url)),
 );
-test("19 categories contain 4750 unique four-choice questions", () => {
+test("20 categories contain 5000 unique four-choice questions", () => {
   const counts = {};
   const ids = new Set(),
     texts = new Set();
@@ -20,9 +20,9 @@ test("19 categories contain 4750 unique four-choice questions", () => {
     assert(Number.isInteger(q.correct) && q.correct >= 0 && q.correct < 4);
     assert(q.text.length > 10);
   }
-  assert.equal(Object.keys(counts).length, 19);
+  assert.equal(Object.keys(counts).length, 20);
   assert(Object.values(counts).every((count) => count === 250));
-  assert.equal(bank.length, 4750);
+  assert.equal(bank.length, 5000);
 });
 
 test("Türkiye retains only 20 metropolitan plates; local specialties cover all 81 provinces", () => {
@@ -138,4 +138,25 @@ test("World Cup archive has 250 original questions, broad topics, sources and li
   assert.equal(answer("2022 sonu itibarıyla erkekler Dünya Kupası toplam gol"), "Miroslav Klose");
   assert.equal(answer("2010 Dünya Kupası’nda eşitlik kriterleri"), "Thomas Müller");
   assert.equal(answer("1950 Dünya Kupası’nın şampiyon belirleme"), "Son aşamada final grubu vardı");
+});
+
+test("film archive balances Turkish/world cinema, animation and general knowledge", () => {
+  const pool = bank.filter((q) => q.category === "film");
+  assert.equal(pool.length, 250);
+  assert.equal(pool.filter((q) => q.difficulty === "general").length, 225);
+  assert.equal(pool.filter((q) => q.difficulty === "expert").length, 25);
+  assert.equal(new Set(pool.map((q) => q.topic)).size, 8);
+  assert.equal(pool.filter((q) => q.topic === "animasyon").length, 50);
+  assert.equal(pool.filter((q) => q.topic === "turk-filmleri" || q.topic === "yesilcam-ve-turk-oyuncular").length, 50);
+  for (const q of pool) assert(q.explanation.length > 20, q.text);
+  const answer = (fragment) => { const q = pool.find((q) => q.text.includes(fragment)); assert(q, fragment); return q.options[q.correct]; };
+  assert.equal(answer("G.O.R.A. (2004) filmini kim yönetti"), "Ömer Faruk Sorak");
+  assert.equal(answer("2017 Oscar töreninde"), "Ay Işığı / Moonlight");
+  assert.equal(answer("2020 Oscar töreninde"), "Parazit / Parasite");
+  assert.equal(answer("Örümcek-Adam (2002) filminde Peter Parker"), "Tobey Maguire");
+  assert.equal(answer("Hababam Sınıfı (1975) filminde Mahmut Hoca"), "Münir Özkul");
+  assert.equal(answer("Coco filminin kültürel dünyası"), "Meksika");
+  const awards = pool.filter((q) => q.text.includes("Oscar töreninde"));
+  assert.equal(awards.length, 20);
+  assert(awards.every((q) => q.source.endsWith(q.text.slice(0, 4))));
 });

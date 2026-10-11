@@ -49,7 +49,7 @@ const guides = {
     name: "Ortaya Karışık",
     emoji: "🎲",
     accent: "#bd9755",
-    intro: "19 konu. Soru sayısı senin seçimin.",
+    intro: "20 konu. Soru sayısı senin seçimin.",
     steps: [
       [
         "Karışımı başlat",
@@ -57,7 +57,7 @@ const guides = {
       ],
       [
         "Her alanda yarış",
-        "10 ve 15 soruda her soru farklı konudan gelir. 20 soruda 19 konuya ek olarak bir konu bir kez daha sorulur.",
+        "10, 15 veya 20 soruluk oyunlarda her soru farklı bir konudan gelir.",
       ],
       [
         "Yeni tur, yeni sorular",

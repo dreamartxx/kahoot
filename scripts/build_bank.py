@@ -779,11 +779,13 @@ from easy_refresh import refresh
 refresh(questions,add)
 from world_cup_bank import world_cup_questions
 questions.extend(world_cup_questions())
+from film_bank import film_questions
+questions.extend(film_questions())
 from collections import Counter
 counts=Counter(q['category'] for q in questions)
-expected={category:250 for category in (*CATEGORY_IDS,'dunya-kupasi')}
+expected={category:250 for category in (*CATEGORY_IDS,'dunya-kupasi','film')}
 assert dict(counts)==expected,(dict(counts),expected)
-assert len(questions)==4750
+assert len(questions)==5000
 assert len({q['id'] for q in questions})==len(questions)
 assert len({q['text'] for q in questions})==len(questions)
 assert sum(q['category']=='turkiye' and 'plaka kodu' in q['text'] for q in questions)==20

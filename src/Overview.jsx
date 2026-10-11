@@ -26,7 +26,7 @@ const modules = [
     title: "Bilgi Yarışması",
     label: "BİLGİNİ KONUŞTUR",
     description: "Konunu seç. Heyecanı başlat.",
-    detail: "19 konu · 3 özel yarışma",
+    detail: "20 konu · 3 özel yarışma",
     action: "Konuları keşfet",
   },
   {

@@ -24,7 +24,7 @@ try {
     if($action==='family_questions'){needAdmin();echo json_encode(array_map(fn($p)=>['id'=>$p['id'],'text'=>$p['self']],familyPrompts()),JSON_UNESCAPED_UNICODE);exit;}
     if($action==='question_save'){
         needOwner();$q=['ownerId'=>(int)currentUser()['id'],'id'=>'custom-'.bin2hex(random_bytes(12)),'category'=>inputText($in['category']??'',2,32,'Kategori'),'text'=>inputText($in['text']??'',5,500,'Soru'),'options'=>[],'correct'=>(int)($in['correct']??-1),'explanation'=>inputText($in['explanation']??'',0,600,'Açıklama')];
-        if(!in_array($q['category'],['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','plakalar','bayraklar','enler','turkiye-tarihi','osmanli-tarihi','islam-tarihi','peygamberler-tarihi','dunya-kupasi'],true)) fail('Kategori geçersiz.');
+        if(!in_array($q['category'],['cografya','dinozor','hayvanlar','turkiye','ulkeler','gezegenler','futbol','kaleciler','arabalar','genel-kultur','meshur','plakalar','bayraklar','enler','turkiye-tarihi','osmanli-tarihi','islam-tarihi','peygamberler-tarihi','dunya-kupasi','film'],true)) fail('Kategori geçersiz.');
         if(!is_array($in['options']??null)||count($in['options'])!==4||$q['correct']<0||$q['correct']>3)fail('Dört seçenek ve bir doğru cevap gerekli.');
         $q['difficulty']=$in['difficulty']??'expert';
         if(!in_array($q['difficulty'],['general','expert'],true))fail('Soru düzeyi geçersiz.');

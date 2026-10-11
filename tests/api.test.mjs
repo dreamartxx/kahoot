@@ -3159,7 +3159,7 @@ test("binary games show exactly Evet/Hayır, score normally, and reject nonexist
   assert.equal(r.data.answerCards[0].correct, true);
 });
 
-test("dedicated mixed pool produces 20 questions from 19 topics with no adjacent-game repeats", async () => {
+test("dedicated mixed pool produces 20 questions from 20 topics with no adjacent-game repeats", async () => {
   const decks = [];
   for (let i = 0; i < 15; i++) {
     const room = await create("quiz", { category: "mixed" });
@@ -3177,8 +3177,8 @@ test("dedicated mixed pool produces 20 questions from 19 topics with no adjacent
     deck = JSON.parse(readFileSync(path.join(dir, "mixed.json")));
     const counts = {};
     for (const q of deck) counts[q.category] = (counts[q.category] || 0) + 1;
-    assert.equal(Object.keys(counts).length, 19);
-    assert.equal(Object.values(counts).filter((n) => n === 2).length, 1);
+    assert.equal(Object.keys(counts).length, 20);
+    assert.equal(Object.values(counts).filter((n) => n === 2).length, 0);
     assert.ok(Object.values(counts).every((n) => n <= 2));
     assert.ok(
       deck.every((q) => q.difficulty === "general" && q.options.length === 4),
@@ -3302,7 +3302,7 @@ test("quiz setup defaults to ten seconds and accepts selectable lengths across a
       if (category === "mixed") {
         const counts = {};
         deck.forEach((q) => counts[q.category] = (counts[q.category] || 0) + 1);
-        assert.equal(Object.keys(counts).length, Math.min(19, questionCount));
+        assert.equal(Object.keys(counts).length, Math.min(20, questionCount));
         assert(Math.max(...Object.values(counts)) <= (questionCount === 20 ? 2 : 1));
       }
       if (category === "cografya") assert.equal(deck.filter((q) => q.difficulty === "expert").length, Math.floor(questionCount / 10));
@@ -3354,4 +3354,29 @@ test("World Cup category supports 10/15/20 questions, manual library access and 
   assert.equal((await call("tournament_choices", {pin: tournament.pin, categories: ["dunya-kupasi"]}, {token: player.token})).status, 200);
   const solo = await call("solo_start", {category: "dunya-kupasi"}, {admin: true});
   assert.equal(solo.status, 200);
+  assert.equal((await call("solo_abandon", {gameId: solo.data.game.id}, {admin: true})).status, 200);
+});
+
+test("film category supports rotating 10/15/20 decks, manual selection, solo and tournament", async () => {
+  assert.equal((await call("categories")).data.film, 250);
+  const library = await call("questions", {category: "film"}, {admin: true});
+  assert.equal(library.data.length, 250);
+  let previous = [];
+  for (const questionCount of [10, 15, 20]) {
+    const room = await create("quiz", {category: "film", questionCount});
+    assert.equal(room.total, questionCount);
+    const deck = JSON.parse(mutateDB(room.pin, "echo json_encode($s['questions'])").toString());
+    assert(deck.every((q) => q.category === "film"));
+    assert.equal(deck.filter((q) => q.difficulty === "expert").length, Math.floor(questionCount / 10));
+    assert.equal(deck.filter((q) => previous.includes(q.id)).length, 0);
+    previous = deck.map((q) => q.id);
+  }
+  const questionIds = library.data.filter((q) => q.difficulty === "general").slice(0, 10).map((q) => q.id);
+  assert.equal((await create("quiz", {category: "film", questionCount: 10, questionIds})).total, 10);
+  const tournament = await create("tournament", {prize: "Sinema gecesi"});
+  const player = await join(tournament.pin, "Film Sever");
+  assert.equal((await call("tournament_choices", {pin: tournament.pin, categories: ["film"]}, {token: player.token})).status, 200);
+  const solo = await call("solo_start", {category: "film"}, {admin: true});
+  assert.equal(solo.status, 200);
+  assert.equal((await call("solo_abandon", {gameId: solo.data.game.id}, {admin: true})).status, 200);
 });

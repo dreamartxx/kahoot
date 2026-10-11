@@ -119,7 +119,7 @@ test("each category replaces fifty records with easier content while retaining 2
   );
   const allIds = new Set(bank.map((q) => q.id));
   assert.equal(Object.keys(replaced).length, 18);
-  assert.equal(bank.filter((q) => q.difficulty === "general" && q.category !== "dunya-kupasi").length, 900);
+  assert.equal(bank.filter((q) => q.difficulty === "general" && !["dunya-kupasi", "film"].includes(q.category)).length, 900);
   for (const [category, ids] of Object.entries(replaced)) {
     assert.equal(ids.length, 50);
     assert.equal(new Set(ids).size, 50);
