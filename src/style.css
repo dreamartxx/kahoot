@@ -5220,3 +5220,17 @@ dialog.answer-result-popup.result-wrong {
     overflow-y: visible;
   }
 }
+
+/* The installation entry uses the same rendered icon as the launcher. */
+.pwa-install-mark {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  box-shadow: 0 3px 0 #462494, 0 7px 13px #7450bd3b;
+  transform: perspective(160px) rotateY(-12deg) rotateZ(-6deg);
+}
+.pwa-install-intro img {
+  box-shadow: 0 5px 0 #56309d, 0 14px 28px #7b54be40;
+  transform: perspective(320px) rotateY(-10deg) rotateZ(-5deg);
+}

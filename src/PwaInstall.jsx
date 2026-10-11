@@ -1,13 +1,6 @@
 import { createPortal } from "react-dom";
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Download,
-  Smartphone,
-  X,
-  WifiOff,
-  RefreshCw,
-  Share,
-} from "lucide-react";
+import { Download, X, WifiOff, RefreshCw, Share } from "lucide-react";
 import { getInstallPrompt, isStandalone, promptInstall } from "./pwa";
 
 export function PwaInstall({ className = "" }) {
@@ -46,7 +39,14 @@ export function PwaInstall({ className = "" }) {
         className={`pwa-install-button ${className}`}
         onClick={() => setOpen(true)}
       >
-        <Smartphone size={19} /> Uygulamayı yükle
+        <img
+          className="pwa-install-mark"
+          src="/icons/icon-192.png?v=pearl-gold-3d"
+          width="36"
+          height="36"
+          alt=""
+        />{" "}
+        Ana ekrana ekle
       </button>
       {open &&
         createPortal(
@@ -68,7 +68,7 @@ export function PwaInstall({ className = "" }) {
             </div>
             <div className="pwa-install-intro">
               <img
-                src="/icons/icon-192.png?v=question-stars"
+                src="/icons/icon-192.png?v=pearl-gold-3d"
                 alt="Bilgi Arena uygulama simgesi"
                 width="76"
                 height="76"
