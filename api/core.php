@@ -17,7 +17,7 @@ function config(): array {
     if ($cfg !== null) return $cfg;
     $file = privateDir().'/config.php';
     if (is_file($file)) return $cfg = require $file;
-    if (getenv('ARENA_TEST_DSN') && PHP_SAPI === 'cli-server') return $cfg = ['dsn'=>getenv('ARENA_TEST_DSN'),'user'=>(string)getenv('ARENA_TEST_DB_USER'),'password'=>(string)getenv('ARENA_TEST_DB_PASSWORD'),'admin_hash'=>getenv('ARENA_TEST_ADMIN_HASH'),'origin'=>'http://127.0.0.1:8091'];
+    if (getenv('ARENA_TEST_DSN') && PHP_SAPI === 'cli-server') return $cfg = ['dsn'=>getenv('ARENA_TEST_DSN'),'user'=>(string)getenv('ARENA_TEST_DB_USER'),'password'=>(string)getenv('ARENA_TEST_DB_PASSWORD'),'admin_hash'=>getenv('ARENA_TEST_ADMIN_HASH'),'origin'=>getenv('ARENA_TEST_ORIGIN')?:'http://127.0.0.1:8091'];
     fail('Sunucu kurulumu henüz tamamlanmadı. Yönetici kurulumu gerekli.',503);
 }
 function db(): PDO {
