@@ -1754,7 +1754,6 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           Katılım ücretsiz · En fazla {room.participantLimit || 10} canlı
           katılımcı
           {room.mode === "raffle" ? ` · ${room.raffleLimit || 50} isim` : ""}.
-          Kredi oyunu başlatan hesaptan düşer. Yönetici test hesabı ücretsizdir.
         </p>
       )}
       {!screen && ["lobby", "open"].includes(room.phase) && (
@@ -1911,7 +1910,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                       })
                     }
                   >
-                    <Play size={18} /> Yarışmayı başlat · 1 kredi
+                    <Play size={18} /> Yarışmayı başlat
                   </Button>
                 )}
                 <div className="player-chips">
@@ -2465,7 +2464,7 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
         </p>
         {host ? (
           <Button disabled={busy} onClick={() => action("cloud_start")}>
-            Soruyu başlat · 1 kredi
+            Soruyu başlat
           </Button>
         ) : (
           <p>Sunucunun soruyu başlatması bekleniyor.</p>
@@ -2590,7 +2589,7 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
               />
             </Field>
             <Button secondary disabled={busy}>
-              Yeni soruya geç · 1 kredi
+              Yeni soruya geç
             </Button>
           </form>
           <Button
@@ -2938,7 +2937,7 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
             }}
           >
             <Sparkles size={20} />
-            {drawing ? "Heyecan devam ediyor…" : "Çarkı çevir · 1 kredi"}
+            {drawing ? "Heyecan devam ediyor…" : "Çarkı çevir"}
           </Button>
         )}
       </section>
