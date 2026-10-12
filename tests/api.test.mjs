@@ -258,13 +258,25 @@ test("domain migration accepts exact site origins and rejects lookalikes", async
   for (const origin of [
     "http://127.0.0.1:8091",
     "https://ailecekeglen.com.tr",
+    "https://www.ailecekeglen.com.tr",
   ]) {
     assert.equal((await call("create", {}, { origin })).status, 401);
+    const validLogin = await call(
+      "login",
+      { username: "admin", password: "local-test-password" },
+      { origin },
+    );
+    assert.equal(validLogin.status, 200);
+    assert.equal(validLogin.data.admin, true);
   }
   for (const origin of [
     "https://khaki-panther-692104.hostingersite.com.attacker.invalid",
     "https://another-site.hostingersite.com",
     "https://ailecekeglen.com.tr.attacker.invalid",
+    "https://www.ailecekeglen.com.tr.attacker.invalid",
+    "https://ailecekeglen.com",
+    "http://ailecekeglen.com.tr",
+    "http://www.ailecekeglen.com.tr",
     "http://khaki-panther-692104.hostingersite.com",
   ]) {
     assert.equal((await call("create", {}, { origin })).status, 403);
