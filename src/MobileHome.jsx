@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import ModuleGuide from "./ModuleGuide";
 import { characterById } from "./characters";
 const cards = [
@@ -7,6 +7,8 @@ const cards = [
   ["family", "Beni Tanıyor musun?", "Birbirinizi yeniden keşfedin."],
   ["raffle", "Çarkıfelek", "Şans bu kez kimden yana?"],
   ["cloud", "Kelime Bulutu", "Bir kelime, bin fikir."],
+  ["tournament", "Turnuva", "Bu evin şampiyonu kim?"],
+  ["solo", "Kendini Dene", "Kendi rekorunu geç."],
 ];
 export default function MobileHome({ username, onChoose, onJoin }) {
   const [pin, setPin] = useState("");
@@ -68,6 +70,24 @@ export default function MobileHome({ username, onChoose, onJoin }) {
                   </>
                 )}
                 {id === "raffle" && <span className="mini-wheel">★</span>}
+                {id === "tournament" && (
+                  <>
+                    <img src={characterById("knight").image} alt="" />
+                    <span className="game-trophy">
+                      <i>★</i>
+                    </span>
+                    <b className="game-spark">✦</b>
+                  </>
+                )}
+                {id === "solo" && (
+                  <>
+                    <span className="game-target">
+                      <i>↗</i>
+                    </span>
+                    <img src={characterById("astronaut").image} alt="" />
+                    <b className="game-spark">✦</b>
+                  </>
+                )}
                 {id === "cloud" && (
                   <>
                     <span className="mini-bubble">
@@ -83,22 +103,6 @@ export default function MobileHome({ username, onChoose, onJoin }) {
               <p>{description}</p>
               <ArrowUpRight className="mobile-tile-arrow" size={17} />
             </button>
-          </article>
-        ))}
-      </div>
-      <div className="mobile-extra-grid">
-        {[
-          ["tournament", "🏆", "Turnuva", "Bu evin şampiyonu kim?"],
-          ["solo", "🎯", "Kendini Dene", "Bugünkü rakibin dünkü sen."],
-        ].map(([id, art, title, description]) => (
-          <article key={id} className={`mobile-extra mobile-extra-${id}`}>
-            <button onClick={() => onChoose(id)}>
-              <span aria-hidden="true">{art}</span>
-              <h3>{title}</h3>
-              <p>{description}</p>
-              <ArrowRight size={16} />
-            </button>
-            <ModuleGuide mode={id} compact />
           </article>
         ))}
       </div>
