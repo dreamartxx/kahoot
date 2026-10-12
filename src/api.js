@@ -18,6 +18,32 @@ export function onBrowserVerification(listener) {
   listener(browserVerification);
   return () => verificationListeners.delete(listener);
 }
+async function roomResponse(url, options) {
+  const controller = new AbortController();
+  const cancel = () => controller.abort(options.signal?.reason);
+  let timedOut = false;
+  if (options.signal?.aborted) cancel();
+  else options.signal?.addEventListener("abort", cancel, { once: true });
+  const timer = setTimeout(() => {
+    timedOut = true;
+    controller.abort();
+  }, 8000);
+  try {
+    const res = await fetch(url, { ...options, signal: controller.signal });
+    // Bound the response body too: headers alone do not complete a room poll.
+    return { res, raw: await res.text() };
+  } catch (error) {
+    if (timedOut)
+      throw Object.assign(
+        new Error("Bağlantı gecikti. Otomatik olarak yeniden bağlanılıyor."),
+        { code: "ROOM_TIMEOUT" },
+      );
+    throw error;
+  } finally {
+    clearTimeout(timer);
+    options.signal?.removeEventListener("abort", cancel);
+  }
+}
 export async function api(action, data, token, { signal } = {}) {
   // A CDN challenge needs a normal page navigation. Repeating API requests
   // cannot complete it and can prolong the traffic spike that triggered it.
@@ -60,7 +86,7 @@ export async function api(action, data, token, { signal } = {}) {
     "room",
     "users",
   ].includes(action);
-  const res = await fetch(url, {
+  const options = {
     signal,
     method: read ? "GET" : "POST",
     headers: {
@@ -70,8 +96,14 @@ export async function api(action, data, token, { signal } = {}) {
     ...(read ? {} : { body: JSON.stringify(data || {}) }),
     cache: "no-store",
     credentials: "same-origin",
-  });
-  const raw = await res.text();
+  };
+  const { res, raw } =
+    action === "room"
+      ? await roomResponse(url, options)
+      : await fetch(url, options).then(async (res) => ({
+          res,
+          raw: await res.text(),
+        }));
   let json;
   try {
     json = JSON.parse(raw);

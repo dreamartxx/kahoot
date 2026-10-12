@@ -62,3 +62,51 @@ test("ordinary authorization failures and transient HTML errors do not latch ver
   assert.equal((await c.api("status")).ok, true);
   assert.equal(calls, 3);
 });
+for (const stalledAt of ["headers", "body"]) {
+  test(`stalled room ${stalledAt} times out and a later poll can recover`, async (t) => {
+    const c = await client();
+    t.mock.timers.enable({ apis: ["setTimeout"] });
+    let calls = 0;
+    t.mock.method(globalThis, "fetch", (_url, { signal }) => {
+      calls++;
+      if (calls > 1)
+        return Promise.resolve(new Response('{"phase":"question"}'));
+      const pending = new Promise((_resolve, reject) => {
+        signal.addEventListener("abort", () => reject(signal.reason), {
+          once: true,
+        });
+      });
+      return stalledAt === "headers"
+        ? pending
+        : Promise.resolve({ text: () => pending });
+    });
+    const request = c.api("room", { pin: "123456" });
+    const rejected = assert.rejects(request, { code: "ROOM_TIMEOUT" });
+    await Promise.resolve();
+    t.mock.timers.tick(8000);
+    await rejected;
+    assert.equal(c.getBrowserVerification(), null);
+    assert.equal(calls, 1); // The API does not retry on its own or overlap requests.
+    assert.equal((await c.api("room", { pin: "123456" })).phase, "question");
+  });
+}
+test("leaving the room still aborts the in-flight request", async (t) => {
+  const c = await client();
+  const parent = new AbortController();
+  t.mock.method(
+    globalThis,
+    "fetch",
+    (_url, { signal }) =>
+      new Promise((_resolve, reject) => {
+        signal.addEventListener("abort", () => reject(signal.reason), {
+          once: true,
+        });
+      }),
+  );
+  const request = c.api("room", { pin: "123456" }, null, {
+    signal: parent.signal,
+  });
+  const rejected = assert.rejects(request, { name: "AbortError" });
+  parent.abort();
+  await rejected;
+});
