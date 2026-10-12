@@ -2,8 +2,10 @@
 declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');header('Cache-Control: no-store');header('X-Content-Type-Options: nosniff');
 require __DIR__.'/core.php';
+require __DIR__.'/mobile.php';
 $action=$_GET['action']??'status';$method=$_SERVER['REQUEST_METHOD'];
 try {
+    prepareMobileSession();
     if(configured())creditSchema();
     if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured()]+authStatus());exit;}
     if($method==='POST') {
@@ -11,6 +13,7 @@ try {
         $origin=$_SERVER['HTTP_ORIGIN']??'';
         // Exact deployment addresses keep domain migrations compatible with the private setup config.
         $allowedOrigins=[config()['origin'],'https://khaki-panther-692104.hostingersite.com','https://ailecekeglen.com.tr','https://www.ailecekeglen.com.tr'];
+        if(mobileClient())$allowedOrigins[]='https://localhost';
         if($origin && !in_array($origin,$allowedOrigins,true)) fail('Geçersiz kaynak.',403);
         if((int)($_SERVER['CONTENT_LENGTH']??0)>1048576) fail('İstek çok büyük.',413);
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
