@@ -91,6 +91,8 @@ import "./mobile-shell.css";
 import MobileHome from "./MobileHome";
 import { setupNative, joinUrl, publicOrigin } from "./native";
 import "./android-design.css";
+import "./app-theme.css";
+import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
   tournament: { name: "Turnuva", icon: Crown, color: "purple" },
@@ -3430,6 +3432,7 @@ function Setup({ notify, onDone }) {
   );
 }
 setupPwa();
+setupAppearance();
 setupNative().catch(() => console.warn("Mobil gezinme başlatılamadı."));
 createRoot(document.getElementById("root")).render(
   <>

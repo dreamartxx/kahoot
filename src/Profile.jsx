@@ -17,6 +17,7 @@ import { PwaInstall } from "./PwaInstall";
 import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
 import { characterById } from "./characters";
 import PrivacyLinks from "./PrivacyLinks";
+import Preferences from "./Preferences";
 
 export default function Profile({
   user,
@@ -110,6 +111,7 @@ export default function Profile({
           Admin test görünümünde kullanıcı adı ve şifre değiştirilemez.
         </p>
       )}
+      <Preferences />
       <Credits />
       <div className="profile-grid">
         <form className="profile-card" onSubmit={save}>

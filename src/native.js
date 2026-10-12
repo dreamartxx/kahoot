@@ -1,4 +1,5 @@
 import { Capacitor, CapacitorHttp, registerPlugin } from "@capacitor/core";
+import { refreshReminders } from "./reminders.js";
 export const nativeApp = Capacitor.isNativePlatform();
 export const publicOrigin = nativeApp
   ? "https://ailecekeglen.com.tr"
@@ -96,8 +97,14 @@ export async function setupNative() {
   const launch = await App.getLaunchUrl();
   if (launch) open(launch);
   await App.addListener("appStateChange", ({ isActive }) => {
-    if (isActive) dispatchEvent(new Event("focus"));
+    if (isActive) {
+      dispatchEvent(new Event("focus"));
+      refreshReminders().catch(() =>
+        console.warn("Hatırlatmalar yenilenemedi."),
+      );
+    }
   });
+  refreshReminders().catch(() => console.warn("Hatırlatmalar başlatılamadı."));
   await App.addListener("backButton", () => {
     const dialog = [...document.querySelectorAll("dialog[open]")].at(-1);
     if (dialog) {
