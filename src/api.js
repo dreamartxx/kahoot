@@ -10,7 +10,18 @@ const creditActions = new Set([
   "credit_refund",
 ]);
 const pendingCreditRequests = new Map();
+let browserVerification = null;
+const verificationListeners = new Set();
+export const getBrowserVerification = () => browserVerification;
+export function onBrowserVerification(listener) {
+  verificationListeners.add(listener);
+  listener(browserVerification);
+  return () => verificationListeners.delete(listener);
+}
 export async function api(action, data, token, { signal } = {}) {
+  // A CDN challenge needs a normal page navigation. Repeating API requests
+  // cannot complete it and can prolong the traffic spike that triggered it.
+  if (browserVerification) throw browserVerification;
   const fingerprint = creditActions.has(action)
     ? action + JSON.stringify(data || {})
     : null;
@@ -60,10 +71,26 @@ export async function api(action, data, token, { signal } = {}) {
     cache: "no-store",
     credentials: "same-origin",
   });
+  const raw = await res.text();
   let json;
   try {
-    json = await res.json();
+    json = JSON.parse(raw);
   } catch {
+    if (
+      res.status === 403 &&
+      /text\/html/i.test(res.headers.get("content-type") || "") &&
+      /checking your browser before accessing|bot verification/i.test(raw)
+    ) {
+      browserVerification = Object.assign(
+        new Error(
+          "Tarayıcı doğrulaması gerekiyor. Oyuna devam etmek için sayfayı yenile.",
+        ),
+        { code: "BROWSER_VERIFICATION", status: 403 },
+      );
+      for (const listener of verificationListeners)
+        listener(browserVerification);
+      throw browserVerification;
+    }
     throw new Error("Sunucuya ulaşılamadı. Lütfen bağlantınızı kontrol edin.");
   }
   if (fingerprint && res.status < 500)

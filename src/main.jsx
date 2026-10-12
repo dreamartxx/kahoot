@@ -40,6 +40,7 @@ import {
 import QRCode from "qrcode";
 import { api, categories, catById } from "./api";
 import { roomPollDelay } from "./room-polling";
+import BrowserVerification from "./BrowserVerification";
 import { stripHeader } from "./import-utils";
 import { bubbleMetrics } from "./cloud-utils";
 import {
@@ -1471,6 +1472,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         }
       } catch (e) {
         if (!dead) setError(e.message);
+        if (e.code === "BROWSER_VERIFICATION") finished = true;
         delay = roomPollDelay(null, { failures: ++failures });
       }
       inFlight = false;
@@ -3422,4 +3424,9 @@ function Setup({ notify, onDone }) {
   );
 }
 setupPwa();
-createRoot(document.getElementById("root")).render(<App />);
+createRoot(document.getElementById("root")).render(
+  <>
+    <App />
+    <BrowserVerification />
+  </>,
+);
