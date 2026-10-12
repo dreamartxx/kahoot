@@ -76,6 +76,16 @@ Sorular özgün Türkçe ifadelerle hazırlanmıştır. Konu kontrolü için [NA
 
 Dört tarih kategorisinin ilk 150 sorusu `data/history/`, ilave 100 sorusu `data/expansion250/` altındadır. Diğer genişletme içerikleri `scripts/bank250_*.py` içinde tutulur; `scripts/bank_250.py` bunları mevcut kayıtlardan sonra ekler. Aile oyununun 50 hazır sorusu ve özel soru seçeneği bu havuzdan bağımsızdır. `scripts/history_bank.py` konu türüne uygun cevap havuzlarından üç yanlış seçenek seçer. `python3 scripts/build_bank.py` tüm bankayı deterministik üretir. Kur’an anlatımına dayalı soruların açıklamalarında sûre/âyet bulunur; siyer bilgileri soru metninde ayrıca belirtilir. Editoryal başvuru kaynakları `data/question-sources.json` içindedir.
 
+### MySQL bağlantıları ve oyun güncelleme yükü
+
+MySQL bağlantıları PHP çalışanı başına kalıcı PDO bağlantısıyla yeniden kullanılır. Hostinger'ın saniyede 20 **yeni** bağlantı sınırı nedeniyle her istekte yeni bağlantı açılmaz. Özel `config.php` dosyasında `persistent => false` ile geri alınabilir. İstek başında ve kapanışında açık işlemler geri alınır; doğrulama hatası veya `exit` oda/kredi kilidini sonraki isteğe taşımaz. SQLite test bağlantıları kalıcı değildir.
+
+Auth, kredi, solo ve özel yarışma şemaları bağlantı başına sürümle kontrol edilir. Tekrarlanan istekler DDL çalıştırmaz; bağlantı yenilenince veya şema sürümü değişince kontrol yeniden yapılır. Tablo değiştirildiğinde ilgili `ensureSchema` sürümü artırılmalıdır. Kullanıcı yetkileri, oturumlar ve bakiyeler önbelleğe alınmaz. Şema hazırlığı işlem açılmadan yapılır; böylece MySQL DDL komutları oyun işlemini örtülü olarak commit edemez.
+
+Oda ekranları 1,5–1,75 saniye aralıklarla ve geçiş sınırlarında güncellenir; 3–2–1 mevcut sunucu zaman çizelgesinden cihazda çizilir. Arka plan sekmeleri 5 saniyeye yavaşlar, görünür olunca hemen güncellenir, bitmiş/kapalı odalar sorgulamayı bırakır. Hatalarda 2–15 saniyelik artan bekleme ve küçük rastgele gecikmeler eşzamanlı istek yığılmasını azaltır. Bu değişiklikler tek başına bir katılımcı kapasitesi garantisi değildir.
+
+CI, MySQL 8 üzerinde farklı HTTP isteklerinin aynı bağlantıyı kullandığını, şema hazırlığının tekrar etmediğini ve erken çıkış/hata sonrası rollback işlemini denetler (`tests/mysql-persistence.test.mjs`). Yerelde MySQL yoksa yalnızca bu test atlanır; API/oyun testleri SQLite ile çalışır.
+
 ### Katılımcı karakterleri ve final podyumu
 
 Katılımcılar oyun girişinde altı temadan 20 adet 3D görünümlü karakter seçer. Seçim oyun kaydında saklanır, aynı cihazın sonraki katılımında hatırlanır ve bekleme salonu, oyuncu bilgisi, ara sıralama ve finalde görünür. Eski oyun ve istemciler astronot karakteriyle uyumludur. API yalnızca tanımlı karakter kimliklerini kabul eder.

@@ -2,9 +2,11 @@
 declare(strict_types=1);
 // Solo games never expose the deck or accept client-supplied scores.
 function soloSchema(): void {
+    ensureSchema('solo',1,static function():void{
     $db=db();$text=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'LONGTEXT':'TEXT';
     $db->exec('CREATE TABLE IF NOT EXISTS arena_solo (scope VARCHAR(80) PRIMARY KEY, state '.$text.' NOT NULL)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_solo_results (scope VARCHAR(80) NOT NULL, id VARCHAR(32) NOT NULL, category VARCHAR(32) NOT NULL, score INT NOT NULL, correct_count INT NOT NULL, finished_at BIGINT NOT NULL, PRIMARY KEY(scope,id))');
+    });
 }
 function soloScope(): string {return isPreview()?'test:'.hash('sha256',$_COOKIE['arena_session']):'user:'.currentUser()['id'];}
 function soloSync(array &$s): void {

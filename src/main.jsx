@@ -39,6 +39,7 @@ import {
 } from "lucide-react";
 import QRCode from "qrcode";
 import { api, categories, catById } from "./api";
+import { roomPollDelay } from "./room-polling";
 import { stripHeader } from "./import-utils";
 import { bubbleMetrics } from "./cloud-utils";
 import {
@@ -1447,18 +1448,22 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     }
   };
   useEffect(() => {
-    let dead = false;
+    let dead = false,
+      inFlight = false,
+      finished = false,
+      failures = 0;
+    const controller = new AbortController();
     async function poll() {
-      let delay = 1400;
+      if (dead || inFlight || finished) return;
+      inFlight = true;
+      let delay;
       try {
-        const r = await api("room", { pin }, token);
-        if (
-          ["quiz", "family", "tournament"].includes(r.mode) &&
-          (r.phase === "countdown" ||
-            r.phase === "reveal" ||
-            (r.phase === "question" && r.deadline - r.serverTime < 5))
-        )
-          delay = 300;
+        const r = await api("room", { pin }, token, {
+          signal: controller.signal,
+        });
+        failures = 0;
+        delay = roomPollDelay(r, { hidden: document.hidden });
+        finished = delay === null;
         if (!dead) {
           offset.current = r.serverTime - Date.now() / 1000;
           setRoom(r);
@@ -1466,14 +1471,25 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         }
       } catch (e) {
         if (!dead) setError(e.message);
+        delay = roomPollDelay(null, { failures: ++failures });
       }
-      if (!dead) timeout = setTimeout(poll, delay);
+      inFlight = false;
+      if (!dead && !finished) timeout = setTimeout(poll, delay);
     }
     let timeout;
+    const wake = () => {
+      if (!document.hidden && !inFlight && !finished) {
+        clearTimeout(timeout);
+        poll();
+      }
+    };
+    document.addEventListener("visibilitychange", wake);
     poll();
     const t = setInterval(() => setTick(Date.now()), 200);
     return () => {
       dead = true;
+      controller.abort();
+      document.removeEventListener("visibilitychange", wake);
       clearTimeout(timeout);
       clearInterval(t);
     };

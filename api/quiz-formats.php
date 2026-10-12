@@ -2,7 +2,7 @@
 declare(strict_types=1);
 function specialQuiz(string $category): bool {return in_array($category,['estimate','binary','mixed'],true);}
 function specialQuizBank(string $type): array {return json_decode(file_get_contents(__DIR__.'/../data/quiz-'.$type.'.json'),true,512,JSON_THROW_ON_ERROR);}
-function specialQuizSchema(): void {db()->exec('CREATE TABLE IF NOT EXISTS arena_quiz_rotation (scope VARCHAR(100) PRIMARY KEY, state TEXT NOT NULL)');}
+function specialQuizSchema(): void {ensureSchema('quiz_rotation',1,static function():void{db()->exec('CREATE TABLE IF NOT EXISTS arena_quiz_rotation (scope VARCHAR(100) PRIMARY KEY, state TEXT NOT NULL)');});}
 function specialQuizDeck(string $type,int $count=10): array {
     $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
     if(!$db->inTransaction())throw new LogicException('Quiz selection needs room transaction');$db->prepare('UPDATE arena_users SET active=active WHERE id=?')->execute([currentUser()['id']]);

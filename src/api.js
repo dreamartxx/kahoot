@@ -10,7 +10,7 @@ const creditActions = new Set([
   "credit_refund",
 ]);
 const pendingCreditRequests = new Map();
-export async function api(action, data, token) {
+export async function api(action, data, token, { signal } = {}) {
   const fingerprint = creditActions.has(action)
     ? action + JSON.stringify(data || {})
     : null;
@@ -50,6 +50,7 @@ export async function api(action, data, token) {
     "users",
   ].includes(action);
   const res = await fetch(url, {
+    signal,
     method: read ? "GET" : "POST",
     headers: {
       "Content-Type": "application/json",
