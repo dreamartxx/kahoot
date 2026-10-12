@@ -128,3 +128,46 @@
     font-size: 20px;
   }
 }
+
+.game-credit-notice {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1100px;
+  margin: 16px auto;
+  padding: 14px 20px;
+  border: 1px solid #e3d7f5;
+  border-radius: 18px;
+  background: linear-gradient(110deg, #fff9e8, #f3ecff);
+  color: #49355f;
+  text-align: left;
+}
+.game-credit-notice > span {
+  font-size: 30px;
+  color: #b68c2c;
+}
+.game-credit-notice small {
+  display: block;
+  font-size: 12px;
+  color: #77638a;
+}
+.game-credit-notice strong {
+  display: block;
+  font-size: 19px;
+  margin-top: 3px;
+}
+.game-credit-notice p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .game-credit-notice {
+    padding: 12px 14px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+  .game-credit-notice strong {
+    font-size: 17px;
+  }
+}

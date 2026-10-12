@@ -33,6 +33,9 @@ export async function api(action, data, token) {
       : "") +
     (action === "credits" && data?.userId
       ? "&userId=" + encodeURIComponent(data.userId)
+      : "") +
+    (action === "credits" && data?.pin
+      ? "&pin=" + encodeURIComponent(data.pin)
       : "");
   const read = [
     "credits",

@@ -98,7 +98,12 @@ function creditCapacity(int $id): void {
 }
 function creditActions(string $action,array $in): void {
     if(!in_array($action,['credits','credit_update','credit_bonus','credit_refund'],true))return;
-    needAdmin();$id=(int)($in['userId']??currentUser()['id']);if($id!==(int)currentUser()['id'])needOwner();
+    needAdmin();$id=(int)($in['userId']??currentUser()['id']);
+    if($action==='credits'&&isset($in['pin'])){
+        $pin=inputText($in['pin'],6,6,'Etkinlik kodu');$q=db()->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$pin]);$raw=$q->fetchColumn();if(!$raw)fail('Etkinlik bulunamadı.',404);
+        $room=json_decode($raw,true);if(!canManageRoom($room))fail('Bu etkinliğin kredi bilgisini görme yetkiniz yok.',403);$id=(int)($room['ownerId']??1);
+    }
+    if($id!==(int)currentUser()['id'])needOwner();
     if($action==='credits'){creditReconcile($id);$out=creditSummary($id)+['preview'=>isPreview()];$q=db()->prepare('SELECT event_key AS id,kind,title,amount,bonus_used AS bonusUsed,state,created_at AS createdAt,note FROM arena_credit_events WHERE user_id=? ORDER BY created_at DESC,event_key DESC LIMIT 50');$q->execute([$id]);$out['history']=$q->fetchAll();echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;}
     needOwner();$req=creditRequest($in);$db=db();$db->beginTransaction();$a=creditAccount($id,true);
     $q=$db->prepare('SELECT user_id FROM arena_credit_changes WHERE request_key=?');$q->execute([$req]);if($q->fetchColumn()){$db->rollBack();fail('Bu yönetim işlemi zaten kaydedildi.',409);}

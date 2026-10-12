@@ -81,6 +81,7 @@ const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
 import UserManagement from "./UserManagement";
 import Profile from "./Profile";
 import Solo from "./Solo";
+import GameCreditNotice, { gameCreditMoment } from "./GameCreditNotice";
 import IdleEvents from "./IdleEvents";
 import "./mobile-shell.css";
 const modes = {
@@ -1731,6 +1732,16 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       {error && (
         <div className="notice danger">Bağlantı bekleniyor: {error}</div>
       )}
+      {host &&
+        !screen &&
+        ["quiz", "family", "tournament"].includes(room.mode) &&
+        gameCreditMoment(room) && (
+          <GameCreditNotice
+            key={`${pin}:${gameCreditMoment(room)}`}
+            pin={pin}
+            moment={gameCreditMoment(room)}
+          />
+        )}
       <div className="event-title">
         <span className="eyebrow">
           <Radio size={15} /> {modes[room.mode].name}

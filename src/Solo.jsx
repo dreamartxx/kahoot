@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { api, categories, catById } from "./api";
 import ModuleGuide from "./ModuleGuide";
+import GameCreditNotice, { gameCreditMoment } from "./GameCreditNotice";
 import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
 import "./solo.css";
@@ -145,6 +146,12 @@ export default function Solo() {
             Yenile
           </button>
         </div>
+      )}
+      {(playing || finished) && gameCreditMoment(game) && (
+        <GameCreditNotice
+          key={`${game.id}:${gameCreditMoment(game)}`}
+          moment={gameCreditMoment(game)}
+        />
       )}
       {!data ? (
         <p className="empty">Kişisel oyun alanın hazırlanıyor…</p>

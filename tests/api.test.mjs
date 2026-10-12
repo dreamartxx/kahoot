@@ -4169,3 +4169,38 @@ test("credit periods reset at Istanbul midnight including month and year boundar
   );
   assert.equal(periods[0].dailyResetAt, periods[0].monthlyResetAt);
 });
+
+test("room credit balances belong to the host and stay private from participants and other hosts", async () => {
+  const user = await soloUser("credit-room-view");
+  const other = await soloUser("credit-room-other");
+  const room = await creditRoom(user);
+  const guest = await join(room.pin, "Kredi misafiri");
+  assert.equal((await call("credits", { pin: room.pin })).status, 401);
+  assert.equal(
+    (await call("credits", { pin: room.pin }, { token: guest.token })).status,
+    401,
+  );
+  assert.equal((await call("credits", { pin: room.pin }, other)).status, 403);
+  assert.equal((await call("credits", { pin: "000000" }, user)).status, 404);
+  assert.equal((await startCreditQuiz(user, room)).status, 200);
+  const own = (await call("credits", { pin: room.pin }, user)).data;
+  assert.equal(own.available, 9);
+  const adminView = (await call("credits", { pin: room.pin }, { admin: true }))
+    .data;
+  assert.equal(adminView.unlimited, false);
+  assert.equal(
+    adminView.available,
+    9,
+    "admin sees the room owner's balance, not their unlimited balance",
+  );
+  mutateDB(room.pin, "$s['deadline']=microtime(true)-1000");
+  assert.equal(
+    (await call("room", { pin: room.pin }, user)).data.phase,
+    "finished",
+  );
+  assert.equal(
+    (await call("credits", { pin: room.pin }, user)).data.available,
+    9,
+    "completion does not charge again",
+  );
+});
