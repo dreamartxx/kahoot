@@ -246,6 +246,7 @@ test("admin authorization, cross-origin protection and private files", async () 
   );
 });
 test("domain migration accepts exact site origins and rejects lookalikes", async () => {
+  clearLoginLimits(); // Other sign-in scenarios must not exhaust this test's IP quota.
   const login = await call(
     "login",
     { password: "local-test-password" },
