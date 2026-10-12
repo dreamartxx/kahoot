@@ -2,14 +2,15 @@
 declare(strict_types=1);
 // Durable, revocable browser sessions. Only a digest of the cookie is stored.
 function authSchema(): void {
-    static $ready=false;if($ready)return;
+    ensureSchema('auth',1,static function():void{
     $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
     $db->exec('CREATE TABLE IF NOT EXISTS arena_users (id '.($mysql?'INT AUTO_INCREMENT PRIMARY KEY':'INTEGER PRIMARY KEY AUTOINCREMENT').', username VARCHAR(64) NOT NULL, username_key VARCHAR(64) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL, role VARCHAR(16) NOT NULL, active INT NOT NULL DEFAULT 1)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_sessions (token_hash VARCHAR(64) PRIMARY KEY, user_id INT NOT NULL, auth_version VARCHAR(64) NOT NULL, expires_at BIGINT NOT NULL)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_active_sessions (user_id INT PRIMARY KEY, token_hash VARCHAR(64) NOT NULL)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_previews (token_hash VARCHAR(64) PRIMARY KEY, target_id INT NOT NULL, started_at BIGINT NOT NULL)');
     $sql=$mysql?'INSERT IGNORE INTO arena_users (id,username,username_key,password_hash,role,active) VALUES (1,?,?,?,\'owner\',1)':'INSERT INTO arena_users (id,username,username_key,password_hash,role,active) VALUES (1,?,?,?,\'owner\',1) ON CONFLICT DO NOTHING';
-    $db->prepare($sql)->execute(['admin','admin',adminHash()]);$ready=true;
+    $db->prepare($sql)->execute(['admin','admin',adminHash()]);
+    });
 }
 function publicUser(array $u): array {return ['id'=>(int)$u['id'],'username'=>$u['username'],'role'=>$u['role'],'active'=>(bool)$u['active']];}
 function authCookie(string $token,int $expires): void {

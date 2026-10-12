@@ -17,13 +17,41 @@ function config(): array {
     if ($cfg !== null) return $cfg;
     $file = privateDir().'/config.php';
     if (is_file($file)) return $cfg = require $file;
-    if (getenv('ARENA_TEST_DSN') && PHP_SAPI === 'cli-server') return $cfg = ['dsn'=>getenv('ARENA_TEST_DSN'),'user'=>'','password'=>'','admin_hash'=>getenv('ARENA_TEST_ADMIN_HASH'),'origin'=>'http://127.0.0.1:8091'];
+    if (getenv('ARENA_TEST_DSN') && PHP_SAPI === 'cli-server') return $cfg = ['dsn'=>getenv('ARENA_TEST_DSN'),'user'=>(string)getenv('ARENA_TEST_DB_USER'),'password'=>(string)getenv('ARENA_TEST_DB_PASSWORD'),'admin_hash'=>getenv('ARENA_TEST_ADMIN_HASH'),'origin'=>'http://127.0.0.1:8091'];
     fail('Sunucu kurulumu henüz tamamlanmadı. Yönetici kurulumu gerekli.',503);
 }
 function db(): PDO {
     static $db;
-    if (!$db) { $c=config(); $db=new PDO($c['dsn'],$c['user'],$c['password'],[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]); }
+    if (!$db) {
+        $c=config();
+        $options=[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC];
+        // Hostinger limits NEW connections per second. Reuse one per PHP worker.
+        // SQLite development databases must not share persistent connections.
+        if(str_starts_with($c['dsn'],'mysql:'))$options[PDO::ATTR_PERSISTENT]=$c['persistent']??true;
+        $db=new PDO($c['dsn'],$c['user'],$c['password'],$options);
+        if($db->inTransaction())$db->rollBack();
+        // fail() exits directly, so catch/finally alone cannot release room locks.
+        register_shutdown_function(static function()use($db):void{
+            try{if($db->inTransaction())$db->rollBack();}
+            catch(Throwable $e){error_log('Arena: database transaction cleanup failed');}
+        });
+    }
     return $db;
+}
+function ensureSchema(string $name,int $version,callable $migrate): void {
+    static $ready=[];
+    if(($ready[$name]??null)===$version)return;
+    if(!preg_match('/^[a-z_]+$/D',$name))throw new LogicException('Invalid schema name');
+    $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
+    // A connection-local marker survives reuse, but disappears on reconnect.
+    // Never cache account/session/credit data here: these remain fresh per request.
+    $key='@arena_schema_'.$name;
+    if(!$mysql||(int)$db->query('SELECT '.$key)->fetchColumn()!==$version){
+        if($db->inTransaction())throw new LogicException('Prepare schema before transaction');
+        $migrate();
+        if($mysql)$db->exec('SET '.$key.' = '.(int)$version);
+    }
+    $ready[$name]=$version;
 }
 function migrate(PDO $db): void {
     $db->exec('CREATE TABLE IF NOT EXISTS arena_rooms (pin VARCHAR(6) PRIMARY KEY, state '.($db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'LONGTEXT':'TEXT').' NOT NULL, created_at BIGINT NOT NULL)');

@@ -2,11 +2,13 @@
 declare(strict_types=1);
 // Account quotas and game state are changed in the same database transaction.
 function creditSchema(): void {
-    static $ready=false;if($ready)return;$db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
+    ensureSchema('credits',1,static function():void{
+    $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
     $db->exec('CREATE TABLE IF NOT EXISTS arena_credit_accounts (user_id INT PRIMARY KEY, daily_limit INT NOT NULL DEFAULT 10, monthly_limit INT NOT NULL DEFAULT 150, participant_limit INT NOT NULL DEFAULT 10, room_limit INT NOT NULL DEFAULT 1, raffle_limit INT NOT NULL DEFAULT 50, bonus INT NOT NULL DEFAULT 0)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_credit_events (event_key VARCHAR(160) PRIMARY KEY, user_id INT NOT NULL, kind VARCHAR(32) NOT NULL, title VARCHAR(100) NOT NULL, amount INT NOT NULL, bonus_used INT NOT NULL DEFAULT 0, period_day VARCHAR(10) NOT NULL, period_month VARCHAR(7) NOT NULL, state VARCHAR(16) NOT NULL, created_at BIGINT NOT NULL, note VARCHAR(300) NOT NULL DEFAULT \'\''.($mysql?', INDEX credit_user_state (user_id,state)':'').')');
     if(!$mysql)$db->exec('CREATE INDEX IF NOT EXISTS credit_user_state ON arena_credit_events (user_id,state)');
-    $db->exec('CREATE TABLE IF NOT EXISTS arena_credit_changes (request_key VARCHAR(100) PRIMARY KEY, user_id INT NOT NULL, actor_id INT NOT NULL, kind VARCHAR(20) NOT NULL, amount INT NOT NULL, note VARCHAR(300) NOT NULL, created_at BIGINT NOT NULL)');$ready=true;
+    $db->exec('CREATE TABLE IF NOT EXISTS arena_credit_changes (request_key VARCHAR(100) PRIMARY KEY, user_id INT NOT NULL, actor_id INT NOT NULL, kind VARCHAR(20) NOT NULL, amount INT NOT NULL, note VARCHAR(300) NOT NULL, created_at BIGINT NOT NULL)');
+    });
 }
 function creditPeriod(?DateTimeImmutable $now=null): array {
     $now=($now??new DateTimeImmutable('now'))->setTimezone(new DateTimeZone('Europe/Istanbul'));
