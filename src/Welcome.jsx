@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MobileHome from "./MobileHome";
+import PrivacyLinks from "./PrivacyLinks";
 import {
   ArrowRight,
   ShieldCheck,
@@ -98,6 +99,7 @@ export default function Welcome({ onLogin, onJoin }) {
         </section>
         <footer className="welcome-footer">
           <span>Telefonun hazırsa, sen de hazırsın.</span>
+          <PrivacyLinks />
           <button onClick={onLogin}>
             Etkinlik oluştur <ArrowRight size={16} />
           </button>

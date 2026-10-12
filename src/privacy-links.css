@@ -1,0 +1,8 @@
+.privacy-links { margin: 18px 0; font-size: 12px; text-align: center; color: #6b627c; }
+.privacy-links nav { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 10px; }
+.privacy-links a { color: inherit; text-decoration: underline; text-underline-offset: 3px; padding: 10px 0; }
+.privacy-links a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 3px; }
+.privacy-links p { max-width: 440px; margin: 8px auto; }
+.welcome-footer .privacy-links { color: #eee6ff; margin: 0; }
+.welcome-footer { flex-wrap: wrap; }
+

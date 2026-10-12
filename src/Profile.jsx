@@ -16,6 +16,7 @@ import { api } from "./api";
 import { PwaInstall } from "./PwaInstall";
 import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
 import { characterById } from "./characters";
+import PrivacyLinks from "./PrivacyLinks";
 
 export default function Profile({
   user,
@@ -229,6 +230,7 @@ export default function Profile({
           </button>
         </section>
       </div>
+      <PrivacyLinks />
       {!owner && (
         <p className="profile-privacy">
           <ShieldCheck size={17} /> Bu alanda yalnızca kendi hesap bilgilerini

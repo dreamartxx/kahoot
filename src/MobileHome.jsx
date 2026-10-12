@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import ModuleGuide from "./ModuleGuide";
 import { characterById } from "./characters";
+import PrivacyLinks from "./PrivacyLinks";
 const cards = [
   ["quiz", "Bilgi Yarışması", "Bilgini konuştur."],
   ["family", "Beni Tanıyor musun?", "Birbirinizi yeniden keşfedin."],
@@ -107,6 +108,7 @@ export default function MobileHome({ username, onChoose, onJoin }) {
         ))}
       </div>
       <p className="mobile-home-foot">En güzel anılar, birlikte oynarken. ♥</p>
+      <PrivacyLinks />
     </section>
   );
 }
