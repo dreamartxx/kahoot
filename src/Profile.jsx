@@ -11,6 +11,7 @@ import {
   Check,
   Settings,
 } from "lucide-react";
+import Credits from "./Credits";
 import { api } from "./api";
 import { PwaInstall } from "./PwaInstall";
 
@@ -81,6 +82,7 @@ export default function Profile({
           Admin test görünümünde kullanıcı adı ve şifre değiştirilemez.
         </p>
       )}
+      <Credits />
       <div className="profile-grid">
         <form className="profile-card" onSubmit={save}>
           <h2>

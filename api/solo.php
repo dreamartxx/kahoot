@@ -51,19 +51,21 @@ function soloStats(string $scope): array {
 function soloActions(string $action,array $in): never {
     needAdmin();soloSchema();$scope=soloScope();$db=db();
     if(!in_array($action,['solo_summary','solo_state','solo_start','solo_answer','solo_abandon'],true))fail('İşlem bulunamadı.',404);
-    if($action==='solo_start')rateLimit('solo_start',30);
-    $db->beginTransaction();
+    if($action==='solo_start'){rateLimit('solo_start',30);creditReconcile((int)currentUser()['id']);}
+    $db->beginTransaction();creditAccount((int)currentUser()['id'],true);
     // One writable game per account. This also serializes two simultaneous starts.
     $db->prepare('UPDATE arena_users SET active=active WHERE id=?')->execute([currentUser()['id']]);
     $q=$db->prepare('SELECT state FROM arena_solo WHERE scope=?'.($db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?' FOR UPDATE':''));$q->execute([$scope]);$raw=$q->fetchColumn();$s=$raw?json_decode($raw,true):null;
     if($s){soloSync($s);soloSave($scope,$s);}
     if($action==='solo_start'){
         if($s && !in_array($s['phase'],['finished','abandoned'],true)){$db->rollBack();fail('Devam eden testini tamamla veya bitir.',409);}
+        creditCapacity((int)currentUser()['id']);
         $category=$in['category']??'mixed';if(!is_string($category))fail('Geçerli bir konu seçin.');
         $pool=array_values(array_filter(bank(),fn($q)=>$category==='mixed'||$q['category']===$category));
         $history=[];foreach($s['questions']??[] as $old)$history[$old['id']]=time();
         try{$questions=selectQuizQuestions($pool,$history);}catch(DomainException $e){$db->rollBack();fail($e->getMessage());}
         foreach($questions as &$question){$correct=$question['options'][$question['correct']];shuffle($question['options']);$question['correct']=array_search($correct,$question['options'],true);}unset($question);
+        if(currentUser()['role']!=='owner'&&!isPreview())creditSpend((int)currentUser()['id'],'action:'.currentUser()['id'].':'.creditRequest($in),'solo','Kendini Dene · '.$category);
         $s=['id'=>bin2hex(random_bytes(16)),'category'=>$category,'questions'=>$questions,'answers'=>[],'phase'=>'question','index'=>0,'deadline'=>microtime(true)+30];
     }
     if(in_array($action,['solo_answer','solo_abandon'],true)){

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Users, Plus, ShieldCheck, Pencil, X, Check } from "lucide-react";
+import Credits from "./Credits";
 import { api } from "./api";
 export default function UserManagement({ currentUser, onUpdate, onPreview }) {
+  const [creditUser, setCreditUser] = useState(null);
   const [users, setUsers] = useState([]),
     [editing, setEditing] = useState(null),
     [name, setName] = useState(""),
@@ -194,6 +196,9 @@ export default function UserManagement({ currentUser, onUpdate, onPreview }) {
                     Kullanıcı olarak test et
                   </button>
                 )}
+                <button className="text-btn" onClick={() => setCreditUser(u)}>
+                  Krediler
+                </button>
                 <button
                   className="icon-btn"
                   aria-label={`${u.username} hesabını düzenle`}
@@ -206,6 +211,12 @@ export default function UserManagement({ currentUser, onUpdate, onPreview }) {
           )}
         </div>
       </div>
+      {creditUser && (
+        <section>
+          <h2>{creditUser.username} · Kullanım hakları</h2>
+          <Credits key={creditUser.id} userId={creditUser.id} manage />
+        </section>
+      )}
     </section>
   );
 }

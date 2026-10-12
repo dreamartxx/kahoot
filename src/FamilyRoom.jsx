@@ -255,7 +255,7 @@ export default function FamilyRoom({
                   }
                   onClick={() => action("family_start")}
                 >
-                  <Play size={18} /> Aile yarışmasını başlat
+                  <Play size={18} /> Aile yarışmasını başlat · 1 kredi
                 </button>
               </div>
             )}

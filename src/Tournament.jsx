@@ -270,7 +270,8 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
                   }
                   onClick={() => action("tournament_start")}
                 >
-                  <Play size={19} /> Turnuvayı başlat · Soru sayısını oylayın
+                  <Play size={19} /> Turnuvayı başlat · {room.roundTotal} kredi
+                  ayır
                 </button>
                 <p className="muted">
                   En az 2 kişi katılıp birer alan seçmeli. Ödül turnuva

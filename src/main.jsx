@@ -1390,7 +1390,7 @@ function Create({
                 10)
           }
         >
-          {busy ? "Hazırlanıyor…" : "Etkinliği oluştur"}{" "}
+          {busy ? "Hazırlanıyor…" : "Etkinliği oluştur · ücretsiz"}{" "}
           <ArrowRight size={18} />
         </Button>
       </form>
@@ -1749,6 +1749,14 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           )}
         </span>
       </div>
+      {host && ["lobby", "open"].includes(room.phase) && (
+        <p className="credit-capacity-note">
+          Katılım ücretsiz · En fazla {room.participantLimit || 10} canlı
+          katılımcı
+          {room.mode === "raffle" ? ` · ${room.raffleLimit || 50} isim` : ""}.
+          Kredi oyunu başlatan hesaptan düşer. Yönetici test hesabı ücretsizdir.
+        </p>
+      )}
       {!screen && ["lobby", "open"].includes(room.phase) && (
         <div className="room-module-guide">
           <ModuleGuide
@@ -1903,7 +1911,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                       })
                     }
                   >
-                    <Play size={18} /> Yarışmayı başlat
+                    <Play size={18} /> Yarışmayı başlat · 1 kredi
                   </Button>
                 )}
                 <div className="player-chips">
@@ -2447,6 +2455,23 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
     setWords((room.myWords || []).join(", "));
     setPrompt(room.prompt);
   }, [room.promptVersion]);
+  if (room.phase === "lobby")
+    return (
+      <div className="center-card">
+        <h2>{room.prompt}</h2>
+        <p>Katılımcılar gelince soruyu başlat. Oda oluşturmak ücretsiz.</p>
+        <p>
+          {room.playerCount} / {room.participantLimit || 10} kişi katıldı.
+        </p>
+        {host ? (
+          <Button disabled={busy} onClick={() => action("cloud_start")}>
+            Soruyu başlat · 1 kredi
+          </Button>
+        ) : (
+          <p>Sunucunun soruyu başlatması bekleniyor.</p>
+        )}
+      </div>
+    );
   return (
     <div className={`cloud-room ${screen ? "cloud-screen" : ""}`}>
       <h2>{room.prompt}</h2>
@@ -2549,7 +2574,10 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
                   "Yeni soru önceki kelime bulutunu temizleyecek. Devam edilsin mi?",
                 )
               )
-                await action("prompt", { prompt });
+                await action("prompt", {
+                  prompt,
+                  promptVersion: room.promptVersion,
+                });
             }}
           >
             <Field label="Yeni bir soru sor">
@@ -2562,7 +2590,7 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
               />
             </Field>
             <Button secondary disabled={busy}>
-              Yeni soruya geç
+              Yeni soruya geç · 1 kredi
             </Button>
           </form>
           <Button
@@ -2900,7 +2928,9 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
           <Button
             disabled={busy || drawing || room.remainingCount === 0}
             onClick={async () => {
-              if (await action("draw"))
+              if (
+                await action("draw", { expectedDrawId: room.draw?.id ?? null })
+              )
                 stage.current?.scrollIntoView({
                   behavior: "smooth",
                   block: "start",
@@ -2908,7 +2938,7 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
             }}
           >
             <Sparkles size={20} />
-            {drawing ? "Heyecan devam ediyor…" : "Çarkı çevir!"}
+            {drawing ? "Heyecan devam ediyor…" : "Çarkı çevir · 1 kredi"}
           </Button>
         )}
       </section>

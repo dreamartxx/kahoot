@@ -10,6 +10,7 @@ import {
   X,
 } from "lucide-react";
 import { api, categories, catById } from "./api";
+import Credits from "./Credits";
 import ModuleGuide from "./ModuleGuide";
 import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
@@ -126,6 +127,7 @@ export default function Solo() {
         <p>Merakını takip et. Bildiklerini keşfet. Kendi rekorunu geç.</p>
       </div>
       <ModuleGuide mode="solo" />
+      {!playing && <Credits />}
       {data?.preview && (
         <p className="notice">
           Admin testi: bu denemeler kullanıcının skorlarına eklenmez.
@@ -264,7 +266,7 @@ export default function Solo() {
               onClick={() => action("solo_start", { category: game.category })}
               disabled={busy}
             >
-              <RotateCcw size={18} /> Tekrar dene
+              <RotateCcw size={18} /> Tekrar dene · 1 kredi
             </button>
             <button
               className="btn secondary"
@@ -338,7 +340,7 @@ export default function Solo() {
                 disabled={busy}
                 onClick={() => action("solo_start", { category })}
               >
-                Hemen başla <ArrowRight size={20} />
+                Hemen başla · 1 kredi <ArrowRight size={20} />
               </button>
               <div className="solo-rules">
                 <span>10 soru</span>

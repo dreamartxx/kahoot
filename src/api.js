@@ -1,12 +1,41 @@
+const creditActions = new Set([
+  "advance",
+  "family_start",
+  "cloud_start",
+  "prompt",
+  "draw",
+  "solo_start",
+  "credit_update",
+  "credit_bonus",
+  "credit_refund",
+]);
+const pendingCreditRequests = new Map();
 export async function api(action, data, token) {
+  const fingerprint = creditActions.has(action)
+    ? action + JSON.stringify(data || {})
+    : null;
+  if (fingerprint) {
+    let requestId = pendingCreditRequests.get(fingerprint);
+    if (!requestId) {
+      requestId = Array.from(crypto.getRandomValues(new Uint8Array(16)), (n) =>
+        n.toString(16).padStart(2, "0"),
+      ).join("");
+      pendingCreditRequests.set(fingerprint, requestId);
+    }
+    data = { ...data, requestId };
+  }
   const url =
     "/api/index.php?action=" +
     action +
     (data && action === "room" ? "&pin=" + encodeURIComponent(data.pin) : "") +
     (data && action === "questions"
       ? "&category=" + encodeURIComponent(data.category || "")
+      : "") +
+    (action === "credits" && data?.userId
+      ? "&userId=" + encodeURIComponent(data.userId)
       : "");
   const read = [
+    "credits",
     "status",
     "solo_summary",
     "solo_state",
@@ -33,7 +62,10 @@ export async function api(action, data, token) {
   } catch {
     throw new Error("Sunucuya ulaşılamadı. Lütfen bağlantınızı kontrol edin.");
   }
+  if (fingerprint && res.status < 500)
+    pendingCreditRequests.delete(fingerprint);
   if (!res.ok) throw new Error(json.error || "İşlem tamamlanamadı.");
+  if (fingerprint) dispatchEvent(new Event("arena-credits-changed"));
   return json;
 }
 export const categories = [

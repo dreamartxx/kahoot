@@ -1,0 +1,130 @@
+.credits-panel {
+  margin: 22px 0;
+  padding: 26px;
+  border: 1px solid #e7dcf5;
+  border-radius: 24px;
+  background: linear-gradient(125deg, #fff, #f5effe);
+  color: #49355f;
+}
+.credits-heading {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.credits-heading > span {
+  font-size: 35px;
+  color: #ba9348;
+}
+.credits-heading small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #8a719c;
+}
+.credits-heading h2 {
+  margin: 5px 0;
+  font-size: 23px;
+}
+.credits-heading > button {
+  margin-left: auto;
+}
+.credit-balances {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.credit-balances > div {
+  background: #fffc;
+  padding: 18px;
+  border-radius: 17px;
+  border: 1px solid #e9e0f5;
+}
+.credit-balances strong {
+  display: block;
+  font-size: 32px;
+  margin: 8px 0;
+}
+.credit-balances em {
+  font-style: normal;
+  font-size: 16px;
+  color: #94819f;
+}
+.credit-balances span {
+  display: block;
+  font-size: 11px;
+  color: #887295;
+}
+.credit-rules {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 18px 0;
+}
+.credit-rules summary {
+  cursor: pointer;
+  font-weight: 750;
+  min-height: 30px;
+}
+.credit-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.credit-admin form {
+  margin: 18px 0;
+  padding: 18px;
+  background: #fff9;
+  border-radius: 17px;
+}
+.credit-history {
+  padding: 0;
+  list-style: none;
+}
+.credit-history li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e8deef;
+  font-size: 12px;
+}
+.credit-history li > div {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.credit-history small {
+  display: block;
+  margin-top: 5px;
+  color: #897795;
+}
+.credit-history li > b {
+  white-space: nowrap;
+}
+.credit-capacity-note {
+  padding: 12px 16px;
+  background: #f3edf9;
+  border-radius: 13px;
+  color: #70568a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .credits-panel {
+    padding: 18px;
+  }
+  .credit-balances {
+    grid-template-columns: 1fr 1fr;
+  }
+  .credit-balances > div:last-child {
+    grid-column: 1/-1;
+  }
+  .credit-fields {
+    grid-template-columns: 1fr;
+  }
+  .credit-history li {
+    flex-wrap: wrap;
+  }
+  .credits-heading h2 {
+    font-size: 20px;
+  }
+}

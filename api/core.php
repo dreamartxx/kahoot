@@ -43,6 +43,8 @@ function adminHash(): string {
     return $hash=(string)$db->query('SELECT password_hash FROM arena_auth WHERE id=1')->fetchColumn();
 }
 require_once __DIR__.'/auth.php';
+require_once __DIR__.'/credits.php';
+require_once __DIR__.'/solo.php';
 function inputText(mixed $s,int $min,int $max,string $label): string {
     if (!is_string($s)) fail($label.' geçersiz.');
     $s=trim(preg_replace('/\s+/u',' ',$s) ?? '');
@@ -93,7 +95,7 @@ function rateLimit(string $action,int $limit): void {
 }
 // A lobby has a fixed three-minute start window; acknowledging never extends it.
 function awaitingStart(array $s): bool {
-    return (in_array($s['mode'],['quiz','family','tournament'],true)&&$s['phase']==='lobby')
+    return (in_array($s['mode'],['quiz','family','tournament','cloud'],true)&&$s['phase']==='lobby')
         ||($s['mode']==='raffle'&&$s['phase']==='open'&&empty($s['draw']));
 }
 function syncIdleClock(array &$s, ?float $now=null): void {
@@ -147,7 +149,7 @@ function lockRoom(string $pin): array {
     syncQuizClock($s);
     return $s;
 }
-function saveRoom(array $s): void { db()->prepare('UPDATE arena_rooms SET state=? WHERE pin=?')->execute([json_encode($s,JSON_UNESCAPED_UNICODE),$s['pin']]);db()->commit(); }
+function saveRoom(array $s): void { creditSettleTournament($s);db()->prepare('UPDATE arena_rooms SET state=? WHERE pin=?')->execute([json_encode($s,JSON_UNESCAPED_UNICODE),$s['pin']]);db()->commit(); }
 // Reveal only the current round. Never return token hashes or private profiles.
 function revealedAnswerCards(array $s, ?string $viewerKey): array {
     if(($s['quizType']??'')==='estimate')return [];
@@ -165,11 +167,11 @@ function playerKey(array $s,string $token): string { $key=hash('sha256',$token);
 function snapshot(array $s,?string $token=null,bool $host=false): array {
     syncIdleClock($s);
     syncQuizClock($s);
-    if($s['mode']==='family')return familySnapshot($s,$token)+['canManage'=>$host]+idleSnapshot($s,$host);
+    if($s['mode']==='family')return familySnapshot($s,$token)+['canManage'=>$host,'participantLimit'=>$s['participantLimit']??10,'raffleLimit'=>$s['raffleLimit']??50]+idleSnapshot($s,$host);
     $now=microtime(true);$phase=$s['phase'];
     $visiblePlayers=$s['players'];
     if(in_array($s['mode'],['quiz','tournament'],true) && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
-    $out=['quizType'=>$s['quizType']??'classic','canManage'=>$host,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score'],'avatar'=>$p['avatar']??'astronaut'],$visiblePlayers))];
+    $out=['quizType'=>$s['quizType']??'classic','canManage'=>$host,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'participantLimit'=>$s['participantLimit']??10,'raffleLimit'=>$s['raffleLimit']??50,'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score'],'avatar'=>$p['avatar']??'astronaut'],$visiblePlayers))];
     usort($out['players'],fn($a,$b)=>$b['score']<=>$a['score']);
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;
     if($me) $out['me']=['name'=>$me['name'],'score'=>$visiblePlayers[$key]['score'],'avatar'=>$me['avatar']??'astronaut'];

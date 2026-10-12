@@ -4,6 +4,7 @@ import { spawn, execFileSync } from "node:child_process";
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { randomUUID } from "node:crypto";
 const dir = mkdtempSync(path.join(tmpdir(), "arena-test-")),
   root = path.resolve(import.meta.dirname, "..");
 const port = 18191,
@@ -11,7 +12,23 @@ const port = 18191,
   db = path.join(dir, "test.sqlite");
 let server, cookie;
 async function call(action, data = {}, options = {}) {
+  if (
+    [
+      "advance",
+      "family_start",
+      "cloud_start",
+      "prompt",
+      "draw",
+      "solo_start",
+      "credit_update",
+      "credit_bonus",
+      "credit_refund",
+    ].includes(action) &&
+    !("requestId" in data)
+  )
+    data = { ...data, requestId: randomUUID() };
   let read = [
+    "credits",
     "status",
     "solo_summary",
     "solo_state",
@@ -62,6 +79,15 @@ const create = async (mode, extra = {}) => {
     { admin: true },
   );
   assert.equal(r.status, 200, JSON.stringify(r));
+  if (mode === "cloud") {
+    const started = await call(
+      "cloud_start",
+      { pin: r.data.pin },
+      { admin: true },
+    );
+    assert.equal(started.status, 200);
+    return started.data;
+  }
   return r.data;
 };
 const join = async (pin, name) => {
@@ -518,7 +544,7 @@ test("cloud: Turkish case normalization, one vote per person per word, editing a
   );
   const reset = await call(
     "prompt",
-    { pin: r.pin, prompt: "Yarın ne olsun?" },
+    { pin: r.pin, prompt: "Yarın ne olsun?", promptVersion: 1 },
     { admin: true },
   );
   assert.equal(reset.data.words.length, 0);
@@ -1588,6 +1614,10 @@ test("durable accounts, owner-only management, room isolation and session revoca
   );
   assert(stored.every((s) => s.token_hash !== token));
   const opt = { cookie: session };
+  assert.equal(
+    (await call("close", { pin: chosenRoom.data.pin }, opt)).status,
+    200,
+  );
   assert.equal((await call("status", {}, opt)).data.user.username, "host");
   assert.equal((await call("users", {}, opt)).status, 403);
   // Profile data always belongs to the authenticated account, even with a forged ID.
@@ -1688,6 +1718,10 @@ test("durable accounts, owner-only management, room isolation and session revoca
       false,
     );
     assert.equal((await call("status", {}, opt)).data.admin, true);
+    assert.equal(
+      (await call("close", { pin: room.data.pin }, opt)).status,
+      200,
+    );
   }
   assert((await call("rooms", {}, opt)).data.every((r) => r.pin !== own.pin));
   const foreign = await call("room", { pin: own.pin }, opt);
@@ -2449,7 +2483,10 @@ test("tournament majority, no-vote timeout, early vote closure and reconnect use
 
 test("creators can join and answer in quiz, family and tournament while retaining management", async () => {
   for (const mode of ["quiz", "family", "tournament"]) {
-    const room = await create(mode, { prize: "Kitap", seconds: mode === "quiz" ? 20 : 90 });
+    const room = await create(mode, {
+      prize: "Kitap",
+      seconds: mode === "quiz" ? 20 : 90,
+    });
     const joined = await call(
       "join",
       { pin: room.pin, name: "Kurucu", role: "Baba", avatar: "robot" },
@@ -3228,51 +3265,103 @@ test("idle lobbies warn after a minute, acknowledgement does not extend expiry, 
   mutateDB(room.pin, "$s['createdAt']=time()-61");
   const warned = await call("room", { pin: room.pin }, { admin: true });
   assert.equal(warned.data.startWarning, true);
-  assert.equal((await call("room", { pin: room.pin })).data.startWarning, false);
+  assert.equal(
+    (await call("room", { pin: room.pin })).data.startWarning,
+    false,
+  );
   assert.equal((await call("idle_continue", { pin: room.pin })).status, 401);
-  const continued = await call("idle_continue", { pin: room.pin }, { admin: true });
+  const continued = await call(
+    "idle_continue",
+    { pin: room.pin },
+    { admin: true },
+  );
   assert.equal(continued.status, 200);
   assert.equal(continued.data.startWarning, false);
   assert.equal(continued.data.startBy, warned.data.startBy);
-  assert.equal((await call("room", { pin: room.pin }, { admin: true })).data.startWarning, false);
+  assert.equal(
+    (await call("room", { pin: room.pin }, { admin: true })).data.startWarning,
+    false,
+  );
   mutateDB(room.pin, "$s['createdAt']=time()-181");
   const expired = await call("room", { pin: room.pin });
   assert.equal(expired.data.phase, "closed");
   assert.equal(expired.data.closeReason, "not_started");
   assert.equal(expired.data.startBy, null);
-  mutateDB(room.pin, "if($s['phase']!=='closed'||$s['closedAt']!==$s['createdAt']+180)throw new Exception('Expiry not persisted')");
-  assert.equal((await call("join", { pin: room.pin, name: "Too late" })).status, 409);
-  assert.equal((await call("advance", { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 }, { admin: true })).status, 409);
+  mutateDB(
+    room.pin,
+    "if($s['phase']!=='closed'||$s['closedAt']!==$s['createdAt']+180)throw new Exception('Expiry not persisted')",
+  );
+  assert.equal(
+    (await call("join", { pin: room.pin, name: "Too late" })).status,
+    409,
+  );
+  assert.equal(
+    (
+      await call(
+        "advance",
+        { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 },
+        { admin: true },
+      )
+    ).status,
+    409,
+  );
   const manual = await create("quiz");
-  assert.equal((await call("idle_cancel", { pin: manual.pin }, { admin: true })).data.closeReason, "cancelled");
+  assert.equal(
+    (await call("idle_cancel", { pin: manual.pin }, { admin: true })).data
+      .closeReason,
+    "cancelled",
+  );
 });
 
 test("idle expiry covers family, tournament and undrawn raffles, including list reads and late writes", async () => {
   for (const mode of ["family", "tournament", "raffle"]) {
-    const room = await create(mode, mode === "tournament" ? { prize: "Test ödülü" } : {});
+    const room = await create(
+      mode,
+      mode === "tournament" ? { prize: "Test ödülü" } : {},
+    );
     mutateDB(room.pin, "$s['createdAt']=time()-181");
     const rooms = await call("rooms", {}, { admin: true });
     const expired = rooms.data.find((r) => r.pin === room.pin);
     assert.equal(expired.phase, "closed", mode);
     assert.equal(expired.closeReason, "not_started");
-    mutateDB(room.pin, "if($s['phase']!=='closed')throw new Exception('List expiry not saved')");
+    mutateDB(
+      room.pin,
+      "if($s['phase']!=='closed')throw new Exception('List expiry not saved')",
+    );
   }
   const late = await create("quiz");
   mutateDB(late.pin, "$s['createdAt']=time()-181");
-  assert.equal((await call("idle_continue", { pin: late.pin }, { admin: true })).status, 409);
-  mutateDB(late.pin, "if($s['phase']!=='closed')throw new Exception('Write expiry not saved')");
+  assert.equal(
+    (await call("idle_continue", { pin: late.pin }, { admin: true })).status,
+    409,
+  );
+  mutateDB(
+    late.pin,
+    "if($s['phase']!=='closed')throw new Exception('Write expiry not saved')",
+  );
 });
 
 test("started games and live clouds are not cancelled; stale warning actions cannot close started games", async () => {
   const room = await create("quiz", { seconds: 20 });
   const player = await join(room.pin, "Oyuncu");
-  await call("advance", { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 }, { admin: true });
+  await call(
+    "advance",
+    { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 },
+    { admin: true },
+  );
   mutateDB(room.pin, "$s['createdAt']=time()-300");
-  const playing = await call("room", { pin: room.pin }, { token: player.token, admin: true });
+  const playing = await call(
+    "room",
+    { pin: room.pin },
+    { token: player.token, admin: true },
+  );
   assert.equal(playing.data.phase, "question");
   assert.equal(playing.data.startWarning, false);
   assert.equal(playing.data.startBy, null);
-  assert.equal((await call("idle_cancel", { pin: room.pin }, { admin: true })).status, 409);
+  assert.equal(
+    (await call("idle_cancel", { pin: room.pin }, { admin: true })).status,
+    409,
+  );
   assert.equal((await call("room", { pin: room.pin })).data.phase, "question");
   const cloud = await create("cloud");
   mutateDB(cloud.pin, "$s['createdAt']=time()-300");
@@ -3286,30 +3375,60 @@ test("started games and live clouds are not cancelled; stale warning actions can
 
 test("quiz setup defaults to ten seconds and accepts selectable lengths across all formats", async () => {
   for (const category of ["cografya", "estimate", "binary", "mixed"]) {
-    const defaultRoom = await call("create", { mode: "quiz", title: "Varsayılan tur", category }, { admin: true });
+    const defaultRoom = await call(
+      "create",
+      { mode: "quiz", title: "Varsayılan tur", category },
+      { admin: true },
+    );
     assert.equal(defaultRoom.status, 200);
     assert.equal(defaultRoom.data.seconds, 10);
     assert.equal(defaultRoom.data.total, category === "mixed" ? 20 : 10);
     let previous = new Set();
-    for (const [questionCount, seconds] of [[10, 10], [20, 15], [15, 20], [20, 10]]) {
+    for (const [questionCount, seconds] of [
+      [10, 10],
+      [20, 15],
+      [15, 20],
+      [20, 10],
+    ]) {
       const room = await create("quiz", { category, questionCount, seconds });
       assert.equal(room.total, questionCount);
       assert.equal(room.seconds, seconds);
-      const deck = JSON.parse(mutateDB(room.pin, "echo json_encode($s['questions'])").toString());
+      const deck = JSON.parse(
+        mutateDB(room.pin, "echo json_encode($s['questions'])").toString(),
+      );
       assert.equal(new Set(deck.map((q) => q.id)).size, questionCount);
-      if (category !== "cografya") assert(deck.every((q) => !previous.has(q.id)), "A different round length must still exclude the previous deck");
+      if (category !== "cografya")
+        assert(
+          deck.every((q) => !previous.has(q.id)),
+          "A different round length must still exclude the previous deck",
+        );
       previous = new Set(deck.map((q) => q.id));
       if (category === "mixed") {
         const counts = {};
-        deck.forEach((q) => counts[q.category] = (counts[q.category] || 0) + 1);
+        deck.forEach(
+          (q) => (counts[q.category] = (counts[q.category] || 0) + 1),
+        );
         assert.equal(Object.keys(counts).length, Math.min(20, questionCount));
-        assert(Math.max(...Object.values(counts)) <= (questionCount === 20 ? 2 : 1));
+        assert(
+          Math.max(...Object.values(counts)) <= (questionCount === 20 ? 2 : 1),
+        );
       }
-      if (category === "cografya") assert.equal(deck.filter((q) => q.difficulty === "expert").length, Math.floor(questionCount / 10));
-      const started = await call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, { admin: true });
+      if (category === "cografya")
+        assert.equal(
+          deck.filter((q) => q.difficulty === "expert").length,
+          Math.floor(questionCount / 10),
+        );
+      const started = await call(
+        "advance",
+        { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" },
+        { admin: true },
+      );
       assert(started.data.deadline - started.data.serverTime > seconds - 1);
       assert(started.data.deadline - started.data.serverTime <= seconds);
-      mutateDB(room.pin, "$s['index']=count($s['questions'])-1;$s['phase']='question';$s['deadline']=microtime(true)-6");
+      mutateDB(
+        room.pin,
+        "$s['index']=count($s['questions'])-1;$s['phase']='question';$s['deadline']=microtime(true)-6",
+      );
       const finished = await call("room", { pin: room.pin });
       assert.equal(finished.data.phase, "finished");
       assert.equal(finished.data.index, questionCount - 1);
@@ -3318,21 +3437,72 @@ test("quiz setup defaults to ten seconds and accepts selectable lengths across a
 });
 
 test("quiz setup rejects unsupported options and matches manual selection to the chosen size", async () => {
-  for (const option of [{questionCount: 0}, {questionCount: 11}, {questionCount: 25}, {questionCount: "15"}, {questionCount: []}, {seconds: 9}, {seconds: 30}, {seconds: "10"}]) {
-    const r = await call("create", {mode: "quiz", title: "Geçersiz seçenek", category: "cografya", ...option}, {admin: true});
+  for (const option of [
+    { questionCount: 0 },
+    { questionCount: 11 },
+    { questionCount: 25 },
+    { questionCount: "15" },
+    { questionCount: [] },
+    { seconds: 9 },
+    { seconds: 30 },
+    { seconds: "10" },
+  ]) {
+    const r = await call(
+      "create",
+      {
+        mode: "quiz",
+        title: "Geçersiz seçenek",
+        category: "cografya",
+        ...option,
+      },
+      { admin: true },
+    );
     assert.equal(r.status, 400);
   }
-  const bank = (await call("questions", {category: "cografya"}, {admin: true})).data;
-  const general = bank.filter((q) => q.difficulty === "general").map((q) => q.id);
+  const bank = (
+    await call("questions", { category: "cografya" }, { admin: true })
+  ).data;
+  const general = bank
+    .filter((q) => q.difficulty === "general")
+    .map((q) => q.id);
   const expert = bank.filter((q) => q.difficulty === "expert").map((q) => q.id);
   for (const count of [15, 20]) {
     const limit = Math.floor(count / 10);
     const ids = [...general.slice(0, count - limit), ...expert.slice(0, limit)];
-    const room = await create("quiz", {questionCount: count, questionIds: ids});
+    const room = await create("quiz", {
+      questionCount: count,
+      questionIds: ids,
+    });
     assert.equal(room.total, count);
-    assert.deepEqual(JSON.parse(mutateDB(room.pin, "echo json_encode(array_column($s['questions'],'id'))").toString()).sort(), ids.sort());
-    for (const questionIds of [ids.slice(1), [...general.slice(0, count - limit - 1), ...expert.slice(0, limit + 1)]]) {
-      assert.equal((await call("create", {mode: "quiz", title: "Seçim kontrolü", category: "cografya", questionCount: count, questionIds}, {admin: true})).status, 400);
+    assert.deepEqual(
+      JSON.parse(
+        mutateDB(
+          room.pin,
+          "echo json_encode(array_column($s['questions'],'id'))",
+        ).toString(),
+      ).sort(),
+      ids.sort(),
+    );
+    for (const questionIds of [
+      ids.slice(1),
+      [...general.slice(0, count - limit - 1), ...expert.slice(0, limit + 1)],
+    ]) {
+      assert.equal(
+        (
+          await call(
+            "create",
+            {
+              mode: "quiz",
+              title: "Seçim kontrolü",
+              category: "cografya",
+              questionCount: count,
+              questionIds,
+            },
+            { admin: true },
+          )
+        ).status,
+        400,
+      );
     }
   }
 });
@@ -3340,43 +3510,649 @@ test("quiz setup rejects unsupported options and matches manual selection to the
 test("World Cup category supports 10/15/20 questions, manual library access and tournament/solo selection", async () => {
   const counts = await call("categories");
   assert.equal(counts.data["dunya-kupasi"], 250);
-  const library = await call("questions", {category: "dunya-kupasi"}, {admin: true});
+  const library = await call(
+    "questions",
+    { category: "dunya-kupasi" },
+    { admin: true },
+  );
   assert.equal(library.data.length, 250);
   for (const questionCount of [10, 15, 20]) {
-    const room = await create("quiz", {category: "dunya-kupasi", questionCount});
+    const room = await create("quiz", {
+      category: "dunya-kupasi",
+      questionCount,
+    });
     assert.equal(room.total, questionCount);
-    const deck = JSON.parse(mutateDB(room.pin, "echo json_encode($s['questions'])").toString());
+    const deck = JSON.parse(
+      mutateDB(room.pin, "echo json_encode($s['questions'])").toString(),
+    );
     assert(deck.every((q) => q.category === "dunya-kupasi"));
-    assert.equal(deck.filter((q) => q.difficulty === "expert").length, Math.floor(questionCount / 10));
+    assert.equal(
+      deck.filter((q) => q.difficulty === "expert").length,
+      Math.floor(questionCount / 10),
+    );
   }
-  const tournament = await create("tournament", {prize: "Kupa"});
+  const tournament = await create("tournament", { prize: "Kupa" });
   const player = await join(tournament.pin, "Kupa Taraftarı");
-  assert.equal((await call("tournament_choices", {pin: tournament.pin, categories: ["dunya-kupasi"]}, {token: player.token})).status, 200);
-  const solo = await call("solo_start", {category: "dunya-kupasi"}, {admin: true});
+  assert.equal(
+    (
+      await call(
+        "tournament_choices",
+        { pin: tournament.pin, categories: ["dunya-kupasi"] },
+        { token: player.token },
+      )
+    ).status,
+    200,
+  );
+  const solo = await call(
+    "solo_start",
+    { category: "dunya-kupasi" },
+    { admin: true },
+  );
   assert.equal(solo.status, 200);
-  assert.equal((await call("solo_abandon", {gameId: solo.data.game.id}, {admin: true})).status, 200);
+  assert.equal(
+    (await call("solo_abandon", { gameId: solo.data.game.id }, { admin: true }))
+      .status,
+    200,
+  );
 });
 
 test("film category supports rotating 10/15/20 decks, manual selection, solo and tournament", async () => {
   assert.equal((await call("categories")).data.film, 250);
-  const library = await call("questions", {category: "film"}, {admin: true});
+  const library = await call(
+    "questions",
+    { category: "film" },
+    { admin: true },
+  );
   assert.equal(library.data.length, 250);
   let previous = [];
   for (const questionCount of [10, 15, 20]) {
-    const room = await create("quiz", {category: "film", questionCount});
+    const room = await create("quiz", { category: "film", questionCount });
     assert.equal(room.total, questionCount);
-    const deck = JSON.parse(mutateDB(room.pin, "echo json_encode($s['questions'])").toString());
+    const deck = JSON.parse(
+      mutateDB(room.pin, "echo json_encode($s['questions'])").toString(),
+    );
     assert(deck.every((q) => q.category === "film"));
-    assert.equal(deck.filter((q) => q.difficulty === "expert").length, Math.floor(questionCount / 10));
+    assert.equal(
+      deck.filter((q) => q.difficulty === "expert").length,
+      Math.floor(questionCount / 10),
+    );
     assert.equal(deck.filter((q) => previous.includes(q.id)).length, 0);
     previous = deck.map((q) => q.id);
   }
-  const questionIds = library.data.filter((q) => q.difficulty === "general").slice(0, 10).map((q) => q.id);
-  assert.equal((await create("quiz", {category: "film", questionCount: 10, questionIds})).total, 10);
-  const tournament = await create("tournament", {prize: "Sinema gecesi"});
+  const questionIds = library.data
+    .filter((q) => q.difficulty === "general")
+    .slice(0, 10)
+    .map((q) => q.id);
+  assert.equal(
+    (await create("quiz", { category: "film", questionCount: 10, questionIds }))
+      .total,
+    10,
+  );
+  const tournament = await create("tournament", { prize: "Sinema gecesi" });
   const player = await join(tournament.pin, "Film Sever");
-  assert.equal((await call("tournament_choices", {pin: tournament.pin, categories: ["film"]}, {token: player.token})).status, 200);
-  const solo = await call("solo_start", {category: "film"}, {admin: true});
+  assert.equal(
+    (
+      await call(
+        "tournament_choices",
+        { pin: tournament.pin, categories: ["film"] },
+        { token: player.token },
+      )
+    ).status,
+    200,
+  );
+  const solo = await call("solo_start", { category: "film" }, { admin: true });
   assert.equal(solo.status, 200);
-  assert.equal((await call("solo_abandon", {gameId: solo.data.game.id}, {admin: true})).status, 200);
+  assert.equal(
+    (await call("solo_abandon", { gameId: solo.data.game.id }, { admin: true }))
+      .status,
+    200,
+  );
+});
+
+const creditBalance = async (user) => {
+  const r = await call("credits", {}, user);
+  assert.equal(r.status, 200, JSON.stringify(r));
+  return r.data;
+};
+const creditRoom = async (user, mode = "quiz") => {
+  const r = await call(
+    "create",
+    { mode, title: "Kredi testi", category: "cografya", prize: "Aile kupası" },
+    user,
+  );
+  assert.equal(r.status, 200, JSON.stringify(r));
+  return r.data;
+};
+const setCreditLimits = async (user, extra = {}) => {
+  const r = await call(
+    "credit_update",
+    {
+      userId: user.id,
+      dailyLimit: 10,
+      monthlyLimit: 150,
+      participantLimit: 10,
+      roomLimit: 1,
+      raffleLimit: 50,
+      note: "Yerel limit testi",
+      ...extra,
+    },
+    { admin: true },
+  );
+  assert.equal(r.status, 200, JSON.stringify(r));
+};
+const startCreditQuiz = (user, room, extra = {}) =>
+  call(
+    "advance",
+    { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1, ...extra },
+    user,
+  );
+
+test("credits: private balances, free creation/cancellation, one open event and participant caps", async () => {
+  const user = await soloUser("credit-capacity");
+  const fresh = await creditBalance(user);
+  assert.equal(fresh.dailyRemaining, 10);
+  assert.equal(fresh.monthlyRemaining, 150);
+  assert.equal(fresh.available, 10);
+  assert.equal(fresh.participantLimit, 10);
+  assert.equal((await call("credits")).status, 401);
+  assert.equal((await call("credits", { userId: 1 }, user)).status, 403);
+  assert.equal(
+    (
+      await call(
+        "credit_bonus",
+        { userId: user.id, amount: 5, note: "Yetkisiz bonus" },
+        user,
+      )
+    ).status,
+    403,
+  );
+  assert.equal(
+    (await call("credit_update", { userId: user.id }, user)).status,
+    403,
+  );
+  const room = await creditRoom(user);
+  assert.equal((await creditBalance(user)).available, 10);
+  assert.equal(
+    (await call("create", { mode: "raffle", title: "İkinci oda" }, user))
+      .status,
+    409,
+  );
+  assert.equal(
+    (await call("solo_start", { category: "cografya" }, user)).status,
+    409,
+  );
+  // The host is an ordinary participant when joining their own room.
+  for (let i = 0; i < 10; i++)
+    assert.equal(
+      (
+        await call(
+          "join",
+          { pin: room.pin, name: "Kişi " + i },
+          i === 0 ? user : {},
+        )
+      ).status,
+      200,
+    );
+  assert.equal(
+    (await call("join", { pin: room.pin, name: "On birinci" })).status,
+    409,
+  );
+  assert.equal((await creditBalance(user)).available, 10);
+  assert.equal((await call("close", { pin: room.pin }, user)).status, 200);
+  const unused = await creditRoom(user, "cloud");
+  assert.equal(unused.phase, "lobby");
+  mutateDB(unused.pin, "$s['createdAt']=time()-181");
+  assert.equal(
+    (await call("room", { pin: unused.pin }, user)).data.phase,
+    "closed",
+  );
+  assert.equal((await creditBalance(user)).available, 10);
+  const solo = await call("solo_start", { category: "cografya" }, user);
+  assert.equal(solo.status, 200);
+  assert.equal((await creditBalance(user)).available, 9);
+  assert.equal(
+    (
+      await call(
+        "create",
+        { mode: "quiz", title: "Solo sırasında", category: "cografya" },
+        user,
+      )
+    ).status,
+    409,
+  );
+  assert.equal(
+    (await call("solo_abandon", { gameId: solo.data.game.id }, user)).status,
+    200,
+  );
+  assert.equal(
+    (await creditBalance(user)).available,
+    9,
+    "voluntary abandonment is not refundable",
+  );
+});
+
+test("credits: daily/monthly caps, bonus fallback, retries, refunds and ongoing games", async () => {
+  const user = await soloUser("credit-quota");
+  await setCreditLimits(user, { dailyLimit: 1, monthlyLimit: 2 });
+  let room = await creditRoom(user);
+  const requestId = randomUUID();
+  assert.equal(
+    (await startCreditQuiz(user, room, { requestId: null })).status,
+    400,
+  );
+  assert.equal((await creditBalance(user)).available, 1);
+  const starts = await Promise.all([
+    startCreditQuiz(user, room, { requestId }),
+    startCreditQuiz(user, room, { requestId }),
+  ]);
+  assert.deepEqual(starts.map((r) => r.status).sort(), [200, 409]);
+  let balance = await creditBalance(user);
+  assert.equal(balance.available, 0);
+  assert.equal(balance.history.length, 1);
+  assert.equal(balance.monthlyRemaining, 1);
+  assert.equal(
+    (
+      await call(
+        "advance",
+        { pin: room.pin, expectedPhase: "question", expectedIndex: 0 },
+        user,
+      )
+    ).status,
+    200,
+    "paid game continues at zero credits",
+  );
+  assert.equal((await call("close", { pin: room.pin }, user)).status, 200);
+  room = await creditRoom(user);
+  assert.equal((await startCreditQuiz(user, room)).status, 409);
+  assert.equal(
+    (await call("room", { pin: room.pin }, user)).data.phase,
+    "lobby",
+  );
+  assert.equal((await creditBalance(user)).history.length, 1);
+  const refund = {
+    userId: user.id,
+    eventId: balance.history[0].id,
+    note: "Doğrulanmış teknik sorun",
+    requestId: randomUUID(),
+  };
+  assert.equal((await call("credit_refund", refund, user)).status, 403);
+  assert.equal(
+    (await call("credit_refund", refund, { admin: true })).status,
+    200,
+  );
+  assert.equal(
+    (await call("credit_refund", refund, { admin: true })).status,
+    409,
+  );
+  assert.equal(
+    (
+      await call(
+        "credit_refund",
+        { ...refund, requestId: randomUUID() },
+        { admin: true },
+      )
+    ).status,
+    200,
+  );
+  assert.equal((await creditBalance(user)).available, 1);
+  assert.equal((await startCreditQuiz(user, room)).status, 200);
+  await call("close", { pin: room.pin }, user);
+  // A new day restores the daily allowance but still counts this month's use.
+  sql(
+    `$db->exec("UPDATE arena_credit_events SET period_day='2000-01-01' WHERE user_id=${user.id} AND state='spent'");`,
+  );
+  balance = await creditBalance(user);
+  assert.equal(balance.dailyRemaining, 1);
+  assert.equal(balance.monthlyRemaining, 1);
+  room = await creditRoom(user);
+  assert.equal((await startCreditQuiz(user, room)).status, 200);
+  await call("close", { pin: room.pin }, user);
+  await setCreditLimits(user, { dailyLimit: 10, monthlyLimit: 2 });
+  assert.equal(
+    (await creditBalance(user)).available,
+    0,
+    "monthly cap is independent of daily reset",
+  );
+  const bonus = {
+    userId: user.id,
+    amount: 2,
+    note: "Test bonusu",
+    requestId: randomUUID(),
+  };
+  assert.equal(
+    (await call("credit_bonus", bonus, { admin: true })).status,
+    200,
+  );
+  assert.equal(
+    (await call("credit_bonus", bonus, { admin: true })).status,
+    409,
+  );
+  room = await creditRoom(user);
+  assert.equal((await startCreditQuiz(user, room)).status, 200);
+  balance = await creditBalance(user);
+  assert.equal(balance.bonus, 1);
+  assert.equal(balance.monthlyRemaining, 0);
+  const bonusEvent = balance.history.find((e) => e.bonusUsed === 1);
+  assert(bonusEvent);
+  await call(
+    "credit_refund",
+    { userId: user.id, eventId: bonusEvent.id, note: "Bonus iade testi" },
+    { admin: true },
+  );
+  assert.equal((await creditBalance(user)).bonus, 2);
+  // Resetting the month does not accumulate old daily credits.
+  sql(
+    `$db->exec("UPDATE arena_credit_events SET period_day='2000-01-01',period_month='2000-01' WHERE user_id=${user.id}");`,
+  );
+  balance = await creditBalance(user);
+  assert.equal(balance.dailyRemaining, 10);
+  assert.equal(balance.monthlyRemaining, 2);
+  assert.equal(balance.available, 4);
+});
+
+test("credits: cloud questions and raffle spins charge once and validate before charging", async () => {
+  const user = await soloUser("credit-modules");
+  let room = await creditRoom(user, "cloud");
+  const guest = await call("join", { pin: room.pin, name: "Misafir" });
+  assert.equal(guest.status, 200);
+  assert.equal(
+    (
+      await call(
+        "words",
+        { pin: room.pin, promptVersion: 1, words: ["mutlu"] },
+        { token: guest.data.token },
+      )
+    ).status,
+    409,
+  );
+  assert.equal(
+    (await call("cloud_start", { pin: room.pin }, user)).status,
+    200,
+  );
+  assert.equal((await creditBalance(user)).available, 9);
+  assert.equal(
+    (
+      await call(
+        "words",
+        { pin: room.pin, promptVersion: 1, words: ["mutlu"] },
+        { token: guest.data.token },
+      )
+    ).status,
+    200,
+  );
+  assert.equal(
+    (
+      await call(
+        "prompt",
+        { pin: room.pin, promptVersion: 1, prompt: "x" },
+        user,
+      )
+    ).status,
+    400,
+  );
+  const next = {
+    pin: room.pin,
+    promptVersion: 1,
+    prompt: "En sevdiğin şehir?",
+    requestId: randomUUID(),
+  };
+  assert.equal((await call("prompt", next, user)).status, 200);
+  assert.equal((await call("prompt", next, user)).status, 409);
+  assert.equal((await creditBalance(user)).available, 8);
+  await call("close", { pin: room.pin }, user);
+  room = await creditRoom(user, "raffle");
+  assert.equal((await call("draw", { pin: room.pin }, user)).status, 409);
+  const names = Array.from({ length: 50 }, (_, i) => "Çekiliş " + i);
+  assert.equal(
+    (await call("entries", { pin: room.pin, names: [...names, "Fazla"] }, user))
+      .status,
+    400,
+  );
+  assert.equal(
+    (await call("entries", { pin: room.pin, names }, user)).status,
+    200,
+  );
+  assert.equal(
+    (await call("entries", { pin: room.pin, names: ["Fazla"] }, user)).status,
+    400,
+  );
+  assert.equal((await creditBalance(user)).available, 8);
+  const spin = { pin: room.pin, expectedDrawId: null, requestId: randomUUID() };
+  assert.equal((await call("draw", spin, user)).status, 200);
+  mutateDB(
+    room.pin,
+    "$s['draw']['settleAt']=microtime(true)-1;$s['draw']['revealAt']=microtime(true)-2",
+  );
+  assert.equal((await call("draw", spin, user)).status, 409);
+  const current = (await call("room", { pin: room.pin }, user)).data;
+  assert.equal(
+    (
+      await call(
+        "draw",
+        {
+          pin: room.pin,
+          expectedDrawId: current.draw.id,
+          requestId: spin.requestId,
+        },
+        user,
+      )
+    ).status,
+    409,
+    "same request cannot pay for another spin",
+  );
+  assert.equal((await creditBalance(user)).available, 7);
+  await call("close", { pin: room.pin }, user);
+  room = await creditRoom(user, "family");
+  assert.equal(room.participantLimit, 10);
+  assert.equal(
+    (await call("family_start", { pin: room.pin }, user)).status,
+    409,
+  );
+  for (const [name, role] of [
+    ["Anne", "anne"],
+    ["Baba", "baba"],
+  ]) {
+    const guest = await call("join", { pin: room.pin, name, role });
+    assert.equal(guest.status, 200);
+    const answers = Object.fromEntries(
+      room.prompts.map((p, i) => [p.id, "Örnek cevap " + i]),
+    );
+    assert.equal(
+      (
+        await call(
+          "family_profile",
+          { pin: room.pin, answers },
+          { token: guest.data.token },
+        )
+      ).status,
+      200,
+    );
+  }
+  assert.equal(
+    (await call("family_start", { pin: room.pin }, user)).status,
+    200,
+  );
+  assert.equal(
+    (await call("family_start", { pin: room.pin }, user)).status,
+    409,
+  );
+  assert.equal((await creditBalance(user)).available, 6);
+});
+
+async function creditTournament(user) {
+  const room = await creditRoom(user, "tournament");
+  for (const [i, category] of ["cografya", "futbol", "cografya"].entries()) {
+    const p = await call("join", { pin: room.pin, name: "Turnuvacı " + i });
+    assert.equal(p.status, 200);
+    assert.equal(
+      (
+        await call(
+          "tournament_choices",
+          { pin: room.pin, categories: [category] },
+          { token: p.data.token },
+        )
+      ).status,
+      200,
+    );
+  }
+  return room;
+}
+test("credits: tournament reserves unique rounds, settles unattended progress and refunds only unstarted rounds", async () => {
+  const user = await soloUser("credit-tournament");
+  await setCreditLimits(user, { dailyLimit: 1 });
+  let room = await creditTournament(user);
+  assert.equal(
+    (await call("tournament_start", { pin: room.pin }, user)).status,
+    409,
+  );
+  assert.equal((await creditBalance(user)).available, 1);
+  assert.equal((await creditBalance(user)).reserved, 0);
+  await setCreditLimits(user, { dailyLimit: 3 });
+  assert.equal(
+    (await call("tournament_start", { pin: room.pin }, user)).status,
+    200,
+  );
+  let b = await creditBalance(user);
+  assert.equal(b.available, 1);
+  assert.equal(b.reserved, 2);
+  assert.equal(
+    (await call("tournament_start", { pin: room.pin }, user)).status,
+    409,
+  );
+  assert.equal(
+    (
+      await call(
+        "credit_refund",
+        { userId: user.id, eventId: b.history[0].id, note: "Rezerve tur" },
+        { admin: true },
+      )
+    ).status,
+    409,
+  );
+  // Trigger the first round without waiting for the voting clock.
+  mutateDB(room.pin, "$s['voteUntil']=microtime(true)-4");
+  b = await creditBalance(user);
+  assert.equal(b.reserved, 1);
+  assert.equal(b.available, 1);
+  assert.equal((await call("close", { pin: room.pin }, user)).status, 200);
+  b = await creditBalance(user);
+  assert.equal(b.available, 2);
+  assert.equal(b.reserved, 0);
+  assert.equal(b.history.filter((e) => e.state === "spent").length, 1);
+  assert.equal(b.history.filter((e) => e.state === "refunded").length, 1);
+  // An abandoned browser still accrues already-started rounds by server time.
+  room = await creditTournament(user);
+  assert.equal(
+    (await call("tournament_start", { pin: room.pin }, user)).status,
+    200,
+  );
+  assert.equal((await creditBalance(user)).available, 0);
+  mutateDB(room.pin, "$s['voteUntil']=microtime(true)-1000");
+  b = await creditBalance(user);
+  assert.equal(b.reserved, 0);
+  assert.equal(b.available, 0);
+  assert.equal(
+    (await call("room", { pin: room.pin }, user)).data.phase,
+    "finished",
+  );
+  assert.equal(b.history.filter((e) => e.state === "spent").length, 3);
+});
+
+test("credits: expired reservations, late refunds, owner preview and transaction rollback", async () => {
+  const user = await soloUser("credit-refunds");
+  let room = await creditTournament(user);
+  await call("tournament_start", { pin: room.pin }, user);
+  // Expire before the vote could start: nothing was played, so release both.
+  mutateDB(
+    room.pin,
+    "$s['expiresAt']=time()-1;$s['voteUntil']=microtime(true)+30",
+  );
+  let b = await creditBalance(user);
+  assert.equal(b.available, 10);
+  assert.equal(b.reserved, 0);
+  room = await creditRoom(user);
+  await startCreditQuiz(user, room);
+  await call("close", { pin: room.pin }, user);
+  b = await creditBalance(user);
+  const event = b.history.find((e) => e.state === "spent");
+  sql(
+    `$db->exec("UPDATE arena_credit_events SET period_day='2000-01-01' WHERE user_id=${user.id} AND state='spent'");`,
+  );
+  const before = await creditBalance(user);
+  await call(
+    "credit_refund",
+    {
+      userId: user.id,
+      eventId: event.id,
+      note: "Ertesi gün teknik hata iadesi",
+    },
+    { admin: true },
+  );
+  b = await creditBalance(user);
+  assert.equal(b.bonus, 1);
+  assert.equal(b.monthlyRemaining, before.monthlyRemaining);
+  assert.equal(b.available, before.available + 1);
+  await call(
+    "credit_refund",
+    { userId: user.id, eventId: event.id, note: "Tekrarlanan iade" },
+    { admin: true },
+  );
+  assert.equal((await creditBalance(user)).bonus, 1);
+  room = await creditRoom(user);
+  // Fail the room write after its debit: both writes must roll back together.
+  sql(
+    `$db->exec("CREATE TRIGGER reject_credit_room BEFORE UPDATE ON arena_rooms WHEN NEW.pin='${room.pin}' BEGIN SELECT RAISE(ABORT,'test failure'); END");`,
+  );
+  b = await creditBalance(user);
+  const req = randomUUID();
+  assert.equal(
+    (await startCreditQuiz(user, room, { requestId: req })).status,
+    500,
+  );
+  sql("$db->exec('DROP TRIGGER reject_credit_room');");
+  assert.equal((await creditBalance(user)).available, b.available);
+  assert.equal(
+    (await startCreditQuiz(user, room, { requestId: req })).status,
+    200,
+  );
+  await call("close", { pin: room.pin }, user);
+  const actorLogin = await call("login", {
+    username: "admin",
+    password: "local-test-password",
+  });
+  assert.equal(actorLogin.status, 200);
+  const actor = { cookie: sessionCookie(actorLogin) };
+  assert.equal(
+    (await call("preview_start", { userId: user.id }, actor)).status,
+    200,
+  );
+  b = await creditBalance(user);
+  const solo = await call("solo_start", { category: "cografya" }, actor);
+  assert.equal(solo.status, 200);
+  assert.equal((await creditBalance(user)).available, b.available);
+  assert.equal((await call("credits", {}, actor)).data.preview, true);
+  await call("preview_stop", {}, actor);
+  assert.equal((await creditBalance({ admin: true })).unlimited, true);
+});
+
+test("credit periods reset at Istanbul midnight including month and year boundaries", () => {
+  const periods = JSON.parse(
+    execFileSync(
+      "php",
+      [
+        "-r",
+        `require 'api/credits.php';echo json_encode(array_map(fn($s)=>creditPeriod(new DateTimeImmutable($s)),['2026-10-31T20:59:59Z','2026-10-31T21:00:00Z','2026-12-31T21:00:00Z']));`,
+      ],
+      { cwd: root, encoding: "utf8" },
+    ),
+  );
+  assert.equal(periods[0].day, "2026-10-31");
+  assert.equal(periods[1].day, "2026-11-01");
+  assert.equal(periods[1].month, "2026-11");
+  assert.equal(periods[2].month, "2027-01");
+  assert.equal(
+    periods[0].dailyResetAt,
+    Date.parse("2026-10-31T21:00:00Z") / 1000,
+  );
+  assert.equal(periods[0].dailyResetAt, periods[0].monthlyResetAt);
 });

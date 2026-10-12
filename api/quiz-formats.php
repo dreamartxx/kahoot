@@ -2,10 +2,10 @@
 declare(strict_types=1);
 function specialQuiz(string $category): bool {return in_array($category,['estimate','binary','mixed'],true);}
 function specialQuizBank(string $type): array {return json_decode(file_get_contents(__DIR__.'/../data/quiz-'.$type.'.json'),true,512,JSON_THROW_ON_ERROR);}
+function specialQuizSchema(): void {db()->exec('CREATE TABLE IF NOT EXISTS arena_quiz_rotation (scope VARCHAR(100) PRIMARY KEY, state TEXT NOT NULL)');}
 function specialQuizDeck(string $type,int $count=10): array {
     $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
-    $db->exec('CREATE TABLE IF NOT EXISTS arena_quiz_rotation (scope VARCHAR(100) PRIMARY KEY, state TEXT NOT NULL)');
-    $db->beginTransaction();$db->prepare('UPDATE arena_users SET active=active WHERE id=?')->execute([currentUser()['id']]);
+    if(!$db->inTransaction())throw new LogicException('Quiz selection needs room transaction');$db->prepare('UPDATE arena_users SET active=active WHERE id=?')->execute([currentUser()['id']]);
     $scope=currentUser()['id'].':'.$type.(isPreview()?':test':'');
     $q=$db->prepare('SELECT state FROM arena_quiz_rotation WHERE scope=?'.($mysql?' FOR UPDATE':''));$q->execute([$scope]);$raw=$q->fetchColumn();$rotation=$raw?json_decode($raw,true):['previous'=>[],'used'=>[],'round'=>0,'extras'=>[]];
     $pool=array_values(array_filter(specialQuizBank($type),fn($q)=>!in_array($q['id'],$rotation['previous'],true)));
