@@ -90,6 +90,7 @@ function familyAction(array &$s,string $action,array $in,string $token): void {
             $options=array_merge([$correct],$candidates);shuffle($options);
             $deck[]=['id'=>'family-'.bin2hex(random_bytes(8)),'subjectKey'=>$key,'promptId'=>$prompt['id'],'text'=>familyLabel($p).': '.$prompt['ask'],'options'=>$options,'correct'=>array_search($correct,$options,true)];
         }
+        creditRoomCharge($s,'family',$in);
         shuffle($deck);$s['questions']=$deck;$s['index']=0;$s['phase']='question';$s['deadline']=microtime(true)+$s['seconds'];
         return;
     }

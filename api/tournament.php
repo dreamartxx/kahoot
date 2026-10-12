@@ -61,6 +61,7 @@ function tournamentAction(array &$s,string $action,array $in,string $token): voi
         $mysql=db()->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
         $sql=$mysql?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';
         $record=db()->prepare($sql);foreach($s['tournamentDecks'] as $deck)foreach($deck as $q)$record->execute([$q['id'],time()]);
+        creditReserveTournament($s);
         $s['phase']='voting';$s['voteUntil']=microtime(true)+30;
     } elseif($action==='tournament_vote'){
         $key=playerKey($s,$token);
