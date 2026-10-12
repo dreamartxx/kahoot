@@ -1,6 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap");
 :root {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans Variable", sans-serif;
   color: #292638;
   background: #f8f9fc;
   font-synthesis: none;
@@ -92,7 +91,7 @@ button svg {
 }
 .brand small {
   display: block;
-  font: 700 8px "DM Sans";
+  font: 700 8px "DM Sans Variable";
   letter-spacing: 2px;
   margin-top: 5px;
   color: #97929f;

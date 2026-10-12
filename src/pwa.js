@@ -1,9 +1,12 @@
+import { nativeApp } from "./native.js";
 let installPrompt = null;
 export const getInstallPrompt = () => installPrompt;
 export const isStandalone = () =>
+  nativeApp ||
   window.matchMedia("(display-mode: standalone)").matches ||
   navigator.standalone === true;
 export function setupPwa() {
+  if (nativeApp) return;
   window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault();
     installPrompt = event;

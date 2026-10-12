@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ShieldCheck, RefreshCw } from "lucide-react";
 import { getBrowserVerification, onBrowserVerification } from "./api";
+import { nativeApp, publicOrigin } from "./native";
 
 export default function BrowserVerification() {
   const [error, setError] = useState(getBrowserVerification);
@@ -23,12 +24,29 @@ export default function BrowserVerification() {
         </h2>
       </div>
       <p>
-        Oyuna devam etmek için sayfayı yenile. Tarayıcı kontrolü tamamlandığında
-        aynı oyun ekranı yeniden açılacak.
+        {nativeApp ? (
+          "Sunucu bağlantı koruması uygulamadan gelen isteği durdurdu. Bir süre sonra yeniden deneyebilir veya web sitesinden devam edebilirsin."
+        ) : (
+          <>
+            Oyuna devam etmek için sayfayı yenile. Tarayıcı kontrolü
+            tamamlandığında aynı oyun ekranı yeniden açılacak.
+          </>
+        )}
       </p>
       <button className="btn full" onClick={() => location.reload()}>
         <RefreshCw size={18} aria-hidden="true" /> Sayfayı yenile
       </button>
+      {nativeApp && (
+        <button
+          className="btn secondary full"
+          onClick={async () => {
+            const { Browser } = await import("@capacitor/browser");
+            await Browser.open({ url: publicOrigin });
+          }}
+        >
+          Web sitesini aç
+        </button>
+      )}
     </dialog>
   );
 }

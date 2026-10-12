@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import "@fontsource-variable/dm-sans";
+import "@fontsource-variable/manrope";
 import { createRoot } from "react-dom/client";
 import {
   LayoutGrid,
@@ -86,6 +88,9 @@ import Solo from "./Solo";
 import GameCreditNotice, { gameCreditMoment } from "./GameCreditNotice";
 import IdleEvents from "./IdleEvents";
 import "./mobile-shell.css";
+import MobileHome from "./MobileHome";
+import { setupNative, joinUrl, publicOrigin } from "./native";
+import "./android-design.css";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
   tournament: { name: "Turnuva", icon: Crown, color: "purple" },
@@ -413,10 +418,8 @@ function App() {
             onClick={() => nav("home")}
             aria-label="Ana sayfaya dön"
           >
-            <span>
-              ?<i>✦</i>
-            </span>
-            bilgi<b>arena</b>
+            <img src="/icons/icon-192.png" alt="" />
+            ailecek<b>eğlen.</b>
           </button>
           <button
             className="mobile-profile-button"
@@ -521,6 +524,11 @@ function App() {
               <Library admin={status.admin} notify={notify} refresh={refresh} />
             ) : tab === "home" ? (
               <>
+                <MobileHome
+                  username={status.user?.username}
+                  onChoose={nav}
+                  onJoin={(pin) => go("join/" + pin)}
+                />
                 <section className="mobile-home-intro">
                   <span>MERHABA, {status.user?.username}</span>
                   <h1>
@@ -536,7 +544,9 @@ function App() {
                     <ArrowRight size={22} />
                   </button>
                 </section>
-                <Overview onChoose={nav} />
+                <div className="desktop-overview">
+                  <Overview onChoose={nav} />
+                </div>
               </>
             ) : (
               <>
@@ -1402,7 +1412,7 @@ function Create({
 }
 function QR({ pin }) {
   const [src, setSrc] = useState("");
-  const url = location.origin + "/#join/" + pin;
+  const url = joinUrl(pin);
   useEffect(() => {
     QRCode.toDataURL(url, {
       width: 240,
@@ -1967,13 +1977,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
                     secondary
                     onClick={() => {
                       navigator.clipboard
-                        .writeText(location.origin + "/#join/" + pin)
+                        .writeText(joinUrl(pin))
                         .then(() => notify("Katılım bağlantısı kopyalandı."))
-                        .catch(() =>
-                          notify(
-                            "Bağlantı: " + location.origin + "/#join/" + pin,
-                          ),
-                        );
+                        .catch(() => notify("Bağlantı: " + joinUrl(pin)));
                     }}
                   >
                     <Copy size={16} /> Bağlantıyı kopyala
@@ -2202,12 +2208,12 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           <div className="qr-dialog">
             <QR pin={pin} />
             <h2>{pin}</h2>
-            <p>{location.origin}</p>
+            <p>{publicOrigin}</p>
             <Button
               secondary
               onClick={() =>
                 navigator.clipboard
-                  .writeText(location.origin + "/#join/" + pin)
+                  .writeText(joinUrl(pin))
                   .then(() => notify("Bağlantı kopyalandı."))
                   .catch(() =>
                     notify("Kopyalanamadı; adresi elle paylaşabilirsiniz."),
@@ -3424,6 +3430,7 @@ function Setup({ notify, onDone }) {
   );
 }
 setupPwa();
+setupNative().catch(() => console.warn("Mobil gezinme başlatılamadı."));
 createRoot(document.getElementById("root")).render(
   <>
     <App />

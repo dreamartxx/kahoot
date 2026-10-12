@@ -49,6 +49,8 @@ async function call(action, data = {}, options = {}) {
       ...(options.cookie ? { Cookie: options.cookie } : {}),
       ...(options.token ? { "X-Player-Token": options.token } : {}),
       ...(options.origin ? { Origin: options.origin } : {}),
+      ...(options.native ? {"X-Arena-Client":"android",Origin:options.origin||"https://localhost"} : {}),
+      ...(options.bearer ? {Authorization:"Bearer "+options.bearer} : {}),
     },
     ...(read ? {} : { body: JSON.stringify(data) }),
   });
@@ -63,6 +65,7 @@ async function call(action, data = {}, options = {}) {
     status: r.status,
     data: parsed,
     cookie: r.headers.get("set-cookie"),
+    session: r.headers.get("x-arena-session"),
   };
 }
 const create = async (mode, extra = {}) => {
@@ -4203,4 +4206,20 @@ test("room credit balances belong to the host and stay private from participants
     9,
     "completion does not charge again",
   );
+});
+
+test('native bearer login is revocable, never inherits browser cookies, and rejects foreign origins', async () => {
+  const denied = await call('login', {password:'local-test-password'}, {native:true,origin:'https://evil.example'});
+  assert.equal(denied.status,403);
+  assert.equal((await call('rooms',{}, {native:true,admin:true})).status,401);
+  const login = await call('login',{password:'local-test-password'},{native:true});
+  assert.equal(login.status,200);
+  assert.match(login.session,/^[a-f0-9]{64}$/);
+  assert.equal(login.cookie,null);
+  assert.equal((await call('rooms',{}, {native:true,bearer:login.session})).status,200);
+  assert.equal((await call('status',{}, {native:true,bearer:login.session})).data.user.role,'owner');
+  assert.equal((await call('rooms',{}, {bearer:login.session})).status,401);
+  assert.equal((await call('login',{password:'local-test-password'}, {origin:'https://localhost'})).status,403);
+  assert.equal((await call('logout',{}, {native:true,bearer:login.session})).session,'cleared');
+  assert.equal((await call('rooms',{}, {native:true,bearer:login.session})).status,401);
 });

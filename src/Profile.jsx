@@ -14,6 +14,8 @@ import {
 import Credits from "./Credits";
 import { api } from "./api";
 import { PwaInstall } from "./PwaInstall";
+import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
+import { characterById } from "./characters";
 
 export default function Profile({
   user,
@@ -30,6 +32,10 @@ export default function Profile({
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [avatar, setAvatar] = useState(
+    () => characterById(localStorage.getItem("arena:character")).id,
+  );
+  const [chooseAvatar, setChooseAvatar] = useState(false);
   const owner = user.role === "owner";
   const open = rooms.filter(
     (r) => !["closed", "finished"].includes(r.phase),
@@ -60,10 +66,16 @@ export default function Profile({
         <p>Hesabın, tercihlerin ve ihtiyacın olan her şey burada.</p>
       </div>
       <section className="profile-identity" aria-label="Hesabım">
-        <div className="profile-monogram">
-          {user.username.slice(0, 1).toLocaleUpperCase("tr")}
+        <button
+          type="button"
+          className="profile-avatar-choice"
+          aria-label="Oyun karakterini değiştir"
+          aria-expanded={chooseAvatar}
+          onClick={() => setChooseAvatar(!chooseAvatar)}
+        >
+          <CharacterAvatar id={avatar} />
           <span>✦</span>
-        </div>
+        </button>
         <div>
           <span className="profile-role">
             <ShieldCheck size={14} />
@@ -77,6 +89,21 @@ export default function Profile({
           <span>{owner ? "Açık etkinlik" : "Açık etkinliğin"}</span>
         </div>
       </section>
+      {chooseAvatar && (
+        <section className="profile-card">
+          <CharacterPicker
+            value={avatar}
+            onChange={(value) => {
+              setAvatar(value);
+              localStorage.setItem("arena:character", value);
+            }}
+          />
+          <p>Seçimin bu cihazda sonraki oyunlarında kullanılır.</p>
+          <button className="btn full" onClick={() => setChooseAvatar(false)}>
+            Tamam
+          </button>
+        </section>
+      )}
       {preview && (
         <p className="notice">
           Admin test görünümünde kullanıcı adı ve şifre değiştirilemez.

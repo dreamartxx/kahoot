@@ -2,6 +2,7 @@ Options -Indexes
 DirectoryIndex app.html index.html
 <IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteRule ^(?:src|scripts|tests|data|node_modules|\.git|\.github)(?:/|$) - [F,L]
 RewriteRule ^(?:package.*\.json|vite\.config\.js|README\.md)$ - [F,L]
 </IfModule>

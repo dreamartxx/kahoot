@@ -1,3 +1,4 @@
+import { nativeApp, nativeResponse } from "./native.js";
 const creditActions = new Set([
   "advance",
   "family_start",
@@ -97,8 +98,9 @@ export async function api(action, data, token, { signal } = {}) {
     cache: "no-store",
     credentials: "same-origin",
   };
-  const { res, raw } =
-    action === "room"
+  const { res, raw } = nativeApp
+    ? await nativeResponse(url, options)
+    : action === "room"
       ? await roomResponse(url, options)
       : await fetch(url, options).then(async (res) => ({
           res,

@@ -14,6 +14,11 @@ function authSchema(): void {
 }
 function publicUser(array $u): array {return ['id'=>(int)$u['id'],'username'=>$u['username'],'role'=>$u['role'],'active'=>(bool)$u['active']];}
 function authCookie(string $token,int $expires): void {
+    if(function_exists('mobileClient') && mobileClient()) {
+        header('X-Arena-Session: '.($token===''?'cleared':$token));
+        $_COOKIE['arena_session']=$token;
+        return;
+    }
     setcookie('arena_session',$token,['expires'=>$expires,'path'=>'/','secure'=>(!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'),'httponly'=>true,'samesite'=>'Strict']);
     $_COOKIE['arena_session']=$token;
 }

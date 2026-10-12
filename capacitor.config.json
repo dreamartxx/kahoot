@@ -1,0 +1,12 @@
+{
+  "appId": "com.ailecekeglen.app",
+  "appName": "Ailecek Eğlen",
+  "webDir": "mobile-build",
+  "server": { "androidScheme": "https", "hostname": "localhost" },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#f8f7fb",
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": { "SplashScreen": { "launchAutoHide": true } }
+}
