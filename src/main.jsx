@@ -89,6 +89,8 @@ import GameCreditNotice, { gameCreditMoment } from "./GameCreditNotice";
 import IdleEvents from "./IdleEvents";
 import "./mobile-shell.css";
 import MobileHome from "./MobileHome";
+import CloudViewport from "./CloudViewport";
+import CompactRoomPanel from "./CompactRoomPanel";
 import MobileModuleLanding from "./MobileModuleLanding";
 import useCompactLayout from "./useCompactLayout";
 import ScreenPages from "./ScreenPages";
@@ -99,6 +101,7 @@ import "./app-theme.css";
 import "./mobile-navigation.css";
 import "./screen-pages.css";
 import "./mobile-module-screen.css";
+import "./compact-room.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -1522,6 +1525,7 @@ function QR({ pin }) {
   );
 }
 function Room({ kind, pin, admin, onLogin, onBack, notify }) {
+  const compact = useCompactLayout();
   const [room, setRoom] = useState(null),
     [error, setError] = useState(""),
     [token, setToken] = useState(
@@ -1803,6 +1807,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
   return (
     <div
       className={"event-page " + (host || screen ? "presenter" : "participant")}
+      data-compact-room={compact && ["raffle", "cloud"].includes(room.mode)}
       data-screen-key={`${room.phase}:${room.question?.id || room.index}`}
       data-playing={["question", "countdown", "reveal"].includes(room.phase)}
     >
@@ -1814,6 +1819,9 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           ✦ bilgi arena
         </a>
         <div className="event-tools">
+          {compact && ["raffle", "cloud"].includes(room.mode) && (
+            <ModuleGuide mode={room.mode} compact />
+          )}
           <span className="pin-chip">
             KOD <b>{pin}</b>
           </span>
@@ -1891,13 +1899,15 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           {room.mode === "raffle" ? ` · ${room.raffleLimit || 50} isim` : ""}.
         </p>
       )}
-      {!screen && ["lobby", "open"].includes(room.phase) && (
-        <div className="room-module-guide">
-          <ModuleGuide
-            mode={quizFormat(room.quizType) ? room.quizType : room.mode}
-          />
-        </div>
-      )}
+      {!screen &&
+        !(compact && ["raffle", "cloud"].includes(room.mode)) &&
+        ["lobby", "open"].includes(room.phase) && (
+          <div className="room-module-guide">
+            <ModuleGuide
+              mode={quizFormat(room.quizType) ? room.quizType : room.mode}
+            />
+          </div>
+        )}
       {room.mode === "tournament" && <TournamentBanner room={room} />}
       {host &&
         room.phase === "lobby" &&
@@ -2276,28 +2286,33 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         />
       )}
       {host && room.phase !== "closed" && (
-        <div className="host-bottom">
-          <a
-            className="text-btn"
-            href={"#screen/" + pin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <ExternalLink size={15} /> Seyirci ekranını aç
-          </a>
-          <Button secondary onClick={() => setQr(true)}>
-            QR ile davet et
-          </Button>
-          <button
-            className="text-btn muted"
-            onClick={() => {
-              if (confirm("Etkinlik kapatılsın mı? Yeni cevap alınamayacak."))
-                action("close");
-            }}
-          >
-            Etkinliği kapat
-          </button>
-        </div>
+        <CompactRoomPanel
+          enabled={compact && ["raffle", "cloud"].includes(room.mode)}
+          title="Oda seçenekleri"
+        >
+          <div className="host-bottom">
+            <a
+              className="text-btn"
+              href={"#screen/" + pin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ExternalLink size={15} /> Seyirci ekranını aç
+            </a>
+            <Button secondary onClick={() => setQr(true)}>
+              QR ile davet et
+            </Button>
+            <button
+              className="text-btn muted"
+              onClick={() => {
+                if (confirm("Etkinlik kapatılsın mı? Yeni cevap alınamayacak."))
+                  action("close");
+              }}
+            >
+              Etkinliği kapat
+            </button>
+          </div>
+        </CompactRoomPanel>
       )}
       {qr && (
         <Modal title="Herkes oyuna dahil!" onClose={() => setQr(false)}>
@@ -2581,6 +2596,7 @@ function CloudAtmosphere() {
   );
 }
 function CloudRoom({ room, host, screen, action, busy, notify }) {
+  const compact = useCompactLayout();
   const [words, setWords] = useState(""),
     [prompt, setPrompt] = useState(room.prompt);
   useEffect(() => {
@@ -2675,7 +2691,9 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
           <i /> FİKİRLER CANLANIYOR
         </div>
         {room.words.length ? (
-          <WordCloud words={room.words} />
+          <CloudViewport enabled={compact}>
+            <WordCloud words={room.words} />
+          </CloudViewport>
         ) : (
           <div className="empty-cloud">
             <Cloud size={64} />
@@ -2697,48 +2715,54 @@ function CloudRoom({ room, host, screen, action, busy, notify }) {
         </p>
       )}
       {host && (
-        <div className="cloud-controls">
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              if (
-                confirm(
-                  "Yeni soru önceki kelime bulutunu temizleyecek. Devam edilsin mi?",
+        <CompactRoomPanel
+          enabled={compact}
+          title="Soru ve cevaplar"
+          trigger="Yeni soru / Cevapları indir"
+        >
+          <div className="cloud-controls">
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (
+                  confirm(
+                    "Yeni soru önceki kelime bulutunu temizleyecek. Devam edilsin mi?",
+                  )
                 )
-              )
-                await action("prompt", {
-                  prompt,
-                  promptVersion: room.promptVersion,
-                });
-            }}
-          >
-            <Field label="Yeni bir soru sor">
-              <input
-                value={prompt}
-                minLength={3}
-                maxLength={200}
-                required
-                onChange={(e) => setPrompt(e.target.value)}
-              />
-            </Field>
-            <Button secondary disabled={busy}>
-              Yeni soruya geç
+                  await action("prompt", {
+                    prompt,
+                    promptVersion: room.promptVersion,
+                  });
+              }}
+            >
+              <Field label="Yeni bir soru sor">
+                <input
+                  value={prompt}
+                  minLength={3}
+                  maxLength={200}
+                  required
+                  onChange={(e) => setPrompt(e.target.value)}
+                />
+              </Field>
+              <Button secondary disabled={busy}>
+                Yeni soruya geç
+              </Button>
+            </form>
+            <Button
+              secondary
+              disabled={!room.words.length}
+              onClick={() =>
+                downloadCSV(
+                  room.words.map((w) => [w.text, w.count]),
+                  ["Kelime", "Kişi sayısı"],
+                  "kelime-bulutu.csv",
+                )
+              }
+            >
+              <Download size={16} /> Cevapları indir
             </Button>
-          </form>
-          <Button
-            secondary
-            disabled={!room.words.length}
-            onClick={() =>
-              downloadCSV(
-                room.words.map((w) => [w.text, w.count]),
-                ["Kelime", "Kişi sayısı"],
-                "kelime-bulutu.csv",
-              )
-            }
-          >
-            <Download size={16} /> Cevapları indir
-          </Button>
-        </div>
+          </div>
+        </CompactRoomPanel>
       )}
     </div>
   );
@@ -3022,6 +3046,7 @@ async function readNames(file) {
   throw new Error(".xlsx veya .csv dosyası seçin.");
 }
 function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
+  const compact = useCompactLayout();
   const [name, setName] = useState(""),
     [imported, setImported] = useState(null),
     [uploading, setUploading] = useState(false);
@@ -3070,104 +3095,110 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
             }}
           >
             <Sparkles size={20} />
-            {drawing ? "Heyecan devam ediyor…" : "Çarkı çevir"}
+            {drawing ? "Çark dönüyor…" : "Çarkı çevir"}
           </Button>
         )}
       </section>
       {host ? (
-        <aside className="raffle-panel">
-          <h3>Şans havuzu</h3>
-          <p>
-            Bir isim ekle, şansa bir yer aç!
-            <br />
-            Aynı isimler bir kez eklenir.
-          </p>
-          <form
-            className="raffle-name-form"
-            onSubmit={async (e) => {
-              e.preventDefault();
-              if (!name.trim() || busy || drawing) return;
-              if (await action("entries", { names: [name.trim()] })) {
-                setName("");
-                nameInput.current?.focus();
-              }
-            }}
-          >
-            <Field label="İsim yaz">
-              <div className="raffle-name-input">
-                <Users size={20} aria-hidden="true" />
-                <input
-                  ref={nameInput}
-                  type="text"
-                  placeholder="Örn. Ayşe Yılmaz"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  maxLength={80}
-                  readOnly={busy || !!drawing}
-                  required
-                />
-              </div>
-            </Field>
-            <Button
-              className="full raffle-name-add"
-              disabled={busy || drawing || !name.trim()}
+        <CompactRoomPanel
+          enabled={compact}
+          title="Şans havuzu"
+          trigger="İsim ekle / Excel"
+        >
+          <aside className="raffle-panel">
+            <h3>Şans havuzu</h3>
+            <p>
+              Bir isim ekle, şansa bir yer aç!
+              <br />
+              Aynı isimler bir kez eklenir.
+            </p>
+            <form
+              className="raffle-name-form"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (!name.trim() || busy || drawing) return;
+                if (await action("entries", { names: [name.trim()] })) {
+                  setName("");
+                  nameInput.current?.focus();
+                }
+              }}
             >
-              <Plus size={20} /> İsim ekle
-            </Button>
-          </form>
-          <div className="or-divider">veya</div>
-          <input
-            ref={input}
-            className="sr-only"
-            aria-label="Katılımcı Excel dosyası"
-            type="file"
-            accept=".xlsx,.csv"
-            onChange={async (e) => {
-              const file = e.target.files[0];
-              if (!file) return;
-              setUploading(true);
-              try {
-                setImported(await readNames(file));
-              } catch (err) {
-                notify(err.message);
-              } finally {
-                setUploading(false);
-                e.target.value = "";
+              <Field label="İsim yaz">
+                <div className="raffle-name-input">
+                  <Users size={20} aria-hidden="true" />
+                  <input
+                    ref={nameInput}
+                    type="text"
+                    placeholder="Örn. Ayşe Yılmaz"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    maxLength={80}
+                    readOnly={busy || !!drawing}
+                    required
+                  />
+                </div>
+              </Field>
+              <Button
+                className="full raffle-name-add"
+                disabled={busy || drawing || !name.trim()}
+              >
+                <Plus size={20} /> İsim ekle
+              </Button>
+            </form>
+            <div className="or-divider">veya</div>
+            <input
+              ref={input}
+              className="sr-only"
+              aria-label="Katılımcı Excel dosyası"
+              type="file"
+              accept=".xlsx,.csv"
+              onChange={async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                setUploading(true);
+                try {
+                  setImported(await readNames(file));
+                } catch (err) {
+                  notify(err.message);
+                } finally {
+                  setUploading(false);
+                  e.target.value = "";
+                }
+              }}
+            />
+            <button
+              className="upload-box"
+              disabled={uploading || drawing}
+              onClick={() => input.current.click()}
+            >
+              <Upload size={26} />
+              <b>{uploading ? "Liste okunuyor…" : "Excel listesini yükle"}</b>
+              <span>.xlsx veya .csv · İlk sütun isimler · En fazla 5 MB</span>
+            </button>
+            <button
+              className="text-btn template-btn"
+              onClick={() =>
+                downloadCSV(
+                  [["Örnek Katılımcı"]],
+                  ["İsim"],
+                  "katılımcı-şablonu.csv",
+                )
               }
-            }}
-          />
-          <button
-            className="upload-box"
-            disabled={uploading || drawing}
-            onClick={() => input.current.click()}
-          >
-            <Upload size={26} />
-            <b>{uploading ? "Liste okunuyor…" : "Excel listesini yükle"}</b>
-            <span>.xlsx veya .csv · İlk sütun isimler · En fazla 5 MB</span>
-          </button>
-          <button
-            className="text-btn template-btn"
-            onClick={() =>
-              downloadCSV(
-                [["Örnek Katılımcı"]],
-                ["İsim"],
-                "katılımcı-şablonu.csv",
-              )
-            }
-          >
-            <Download size={14} /> Örnek şablonu indir
-          </button>
-          <div className="entries-list">
-            {room.entries?.map((e) => (
-              <div key={e.id}>
-                <span>{e.name}</span>
-                {room.winners.some((w) => w.winner.id === e.id) && (
-                  <span>🏆</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </aside>
+            >
+              <Download size={14} /> Örnek şablonu indir
+            </button>
+            <div className="entries-list">
+              {room.entries?.map((e) => (
+                <div key={e.id}>
+                  <span>{e.name}</span>
+                  {room.winners.some((w) => w.winner.id === e.id) && (
+                    <span>🏆</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </aside>
+        </CompactRoomPanel>
       ) : (
         <div className="raffle-audience">
           <Ticket size={24} />
@@ -3182,32 +3213,38 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
         </div>
       )}
       {room.winners.length > 0 && (
-        <div className="winners-history">
-          <h3>Şanslı isimler</h3>
-          {room.winners
-            .filter((w) => w.id !== room.draw?.id || !drawing)
-            .map((w, i) => (
-              <div key={w.id}>
-                <span>{i + 1}.</span>
-                <b>{w.winner.name}</b>
-                <Ticket size={18} />
-              </div>
-            ))}
-          {host && (
-            <Button
-              secondary
-              onClick={() =>
-                downloadCSV(
-                  room.winners.map((w, i) => [i + 1, w.winner.name]),
-                  ["Sıra", "Kazanan"],
-                  "çekiliş-sonuçları.csv",
-                )
-              }
-            >
-              <Download size={15} /> Kazananları indir
-            </Button>
-          )}
-        </div>
+        <CompactRoomPanel
+          enabled={compact}
+          title="Şanslı isimler"
+          trigger="Kazananlar"
+        >
+          <div className="winners-history">
+            <h3>Şanslı isimler</h3>
+            {room.winners
+              .filter((w) => w.id !== room.draw?.id || !drawing)
+              .map((w, i) => (
+                <div key={w.id}>
+                  <span>{i + 1}.</span>
+                  <b>{w.winner.name}</b>
+                  <Ticket size={18} />
+                </div>
+              ))}
+            {host && (
+              <Button
+                secondary
+                onClick={() =>
+                  downloadCSV(
+                    room.winners.map((w, i) => [i + 1, w.winner.name]),
+                    ["Sıra", "Kazanan"],
+                    "çekiliş-sonuçları.csv",
+                  )
+                }
+              >
+                <Download size={15} /> Kazananları indir
+              </Button>
+            )}
+          </div>
+        </CompactRoomPanel>
       )}
       {imported && (
         <Modal

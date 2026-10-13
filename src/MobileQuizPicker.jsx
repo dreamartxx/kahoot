@@ -1,13 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useLayoutEffect } from "react";
 import {
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Search,
   X,
 } from "lucide-react";
 import { categories } from "./api";
 import { quizFormats } from "./QuizFormats";
+import TopicChooser from "./TopicChooser";
 import ModuleGuide from "./ModuleGuide";
 import GameArt from "./GameArt";
 import "./mobile-quiz-picker.css";
@@ -37,6 +39,8 @@ export default function MobileQuizPicker({
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const rail = useRef(null);
+  const [chooser, setChooser] = useState(false);
+  const [pendingTopic, setPendingTopic] = useState(null);
   const games = collection === "topics" ? categories : concepts;
   const items = searchQuizzes(games, query);
   const search = useRef(null);
@@ -45,6 +49,19 @@ export default function MobileQuizPicker({
     setIndex(0);
     if (rail.current) rail.current.scrollLeft = 0;
   }
+  useLayoutEffect(() => {
+    if (!pendingTopic) return;
+    const i = items.findIndex((g) => g.id === pendingTopic);
+    const el = rail.current;
+    if (i >= 0 && el?.children[i]) {
+      el.scrollTo({
+        left: el.children[i].offsetLeft - el.children[0].offsetLeft,
+        behavior: "instant",
+      });
+      setIndex(i);
+    }
+    setPendingTopic(null);
+  }, [pendingTopic, items]);
   function move(next) {
     const i = Math.max(0, Math.min(items.length - 1, next));
     const el = rail.current;
@@ -103,27 +120,37 @@ export default function MobileQuizPicker({
               </button>
             )}
           </div>
-          <label className="quiz-quick-select">
+          <div className="quiz-quick-select">
             <span aria-live="polite">
               {query.trim() ? `${items.length} konu bulundu` : "Doğrudan seç"}
             </span>
-            <select
-              aria-label="Konuya git"
-              value={items[index]?.id || ""}
-              disabled={!items.length}
-              onChange={(e) =>
-                move(items.findIndex((g) => g.id === e.target.value))
-              }
+            <button
+              type="button"
+              className="quiz-topic-trigger"
+              aria-label="Konu seç"
+              aria-haspopup="dialog"
+              aria-expanded={chooser}
+              onClick={() => setChooser(true)}
             >
-              {!items.length && <option value="">Sonuç yok</option>}
-              {items.map((g) => (
-                <option key={g.id} value={g.id}>
-                  {g.name}
-                </option>
-              ))}
-            </select>
-          </label>
+              <span>
+                {items[index]?.emoji}{" "}
+                {items[index]?.name || "Tüm konuları keşfet"}
+              </span>
+              <ChevronDown size={18} />
+            </button>
+          </div>
         </form>
+      )}
+      {chooser && (
+        <TopicChooser
+          selected={items[index]?.id}
+          onClose={() => setChooser(false)}
+          onSelect={(id) => {
+            updateQuery("");
+            setPendingTopic(id);
+            setChooser(false);
+          }}
+        />
       )}
       {items.length ? (
         <>
