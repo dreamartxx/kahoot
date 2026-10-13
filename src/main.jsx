@@ -1,3 +1,4 @@
+import ThemedSelect from "./ThemedSelect";
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/manrope";
@@ -103,6 +104,9 @@ import "./screen-pages.css";
 import "./mobile-module-screen.css";
 import "./compact-room.css";
 import "./solo-compact.css";
+import "./choice-surfaces.css";
+import "./countdown-scene.css";
+import CountdownScene from "./CountdownScene";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -1268,7 +1272,10 @@ function Create({
           <>
             <div className="form-grid">
               <Field label="Oyun / konu">
-                <select value={cat} onChange={(e) => setCat(e.target.value)}>
+                <ThemedSelect
+                  value={cat}
+                  onChange={(e) => setCat(e.target.value)}
+                >
                   {quizFormats.map((f) => (
                     <option value={f.id} key={f.id}>
                       {f.emoji} {f.name}
@@ -1279,10 +1286,10 @@ function Create({
                       {c.emoji} {c.name}
                     </option>
                   ))}
-                </select>
+                </ThemedSelect>
               </Field>
               <Field label="Soru başına süre">
-                <select
+                <ThemedSelect
                   value={seconds}
                   onChange={(e) => setSeconds(e.target.value)}
                 >
@@ -1291,11 +1298,11 @@ function Create({
                       {n} saniye
                     </option>
                   ))}
-                </select>
+                </ThemedSelect>
               </Field>
             </div>
             <Field label="Soru sayısı">
-              <select
+              <ThemedSelect
                 value={questionCount}
                 onChange={(e) => {
                   setQuestionCount(Number(e.target.value));
@@ -1307,7 +1314,7 @@ function Create({
                     {n} soru
                   </option>
                 ))}
-              </select>
+              </ThemedSelect>
             </Field>
             {canManageLibrary && !format && (
               <label className="check-row">
@@ -1384,7 +1391,7 @@ function Create({
               />
             </Field>
             <Field label="Soru başına süre">
-              <select
+              <ThemedSelect
                 value={seconds}
                 onChange={(e) => setSeconds(e.target.value)}
               >
@@ -1393,7 +1400,7 @@ function Create({
                     {n} saniye
                   </option>
                 ))}
-              </select>
+              </ThemedSelect>
             </Field>
             <div className="info-box">
               <Crown size={24} />
@@ -1417,7 +1424,7 @@ function Create({
               </span>
             </div>
             <Field label="Soru başına süre">
-              <select
+              <ThemedSelect
                 value={seconds}
                 onChange={(e) => setSeconds(e.target.value)}
               >
@@ -1426,16 +1433,16 @@ function Create({
                     {n} saniye
                   </option>
                 ))}
-              </select>
+              </ThemedSelect>
             </Field>
             <Field label="Hazır sorular nasıl seçilsin?">
-              <select
+              <ThemedSelect
                 value={manualFamily ? "manual" : "random"}
                 onChange={(e) => setManualFamily(e.target.value === "manual")}
               >
                 <option value="random">Rastgele seçilsin</option>
                 <option value="manual">Soruları ben seçeyim</option>
-              </select>
+              </ThemedSelect>
             </Field>
             <label className="check-row">
               <input
@@ -1958,39 +1965,12 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           </p>
         </div>
       ) : transition ? (
-        <section
-          className="question-countdown fullscreen-countdown"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          <div className="countdown-orbit orbit-one" aria-hidden="true" />
-          <div className="countdown-orbit orbit-two" aria-hidden="true" />
-          <span className="countdown-spark spark-one" aria-hidden="true">
-            ✦
-          </span>
-          <span className="countdown-spark spark-two" aria-hidden="true">
-            ✧
-          </span>
-          <p>SIRADAKİ SORU GELİYOR</p>
-          {transition.number > 0 ? (
-            <strong key={transition.number}>{transition.number}</strong>
-          ) : (
-            <strong
-              className="countdown-loading"
-              aria-label="Yeni soru yükleniyor"
-            >
-              ✦
-            </strong>
-          )}
-          <span>
-            Soru {transition.next} / {room.total}
-          </span>
-          <small>
-            {transition.number
-              ? "Hazır ol, yeni soruya otomatik geçiyoruz."
-              : "Yeni soru yükleniyor…"}
-          </small>
-        </section>
+        <CountdownScene
+          number={transition.number}
+          next={transition.next}
+          total={room.total}
+          mode={room.mode}
+        />
       ) : room.mode === "tournament" &&
         ["lobby", "voting"].includes(room.phase) ? (
         <TournamentLobby
@@ -3313,7 +3293,7 @@ function Library({ admin, notify, refresh }) {
         <p>Hazır soruları incele veya kendi sorularını havuza ekle.</p>
       </section>
       <div className="library-toolbar">
-        <select
+        <ThemedSelect
           aria-label="Soru kategorisi"
           value={cat}
           onChange={(e) => setCat(e.target.value)}
@@ -3323,7 +3303,7 @@ function Library({ admin, notify, refresh }) {
               {c.emoji} {c.name}
             </option>
           ))}
-        </select>
+        </ThemedSelect>
         <div className="search">
           <Search size={17} />
           <input
@@ -3455,7 +3435,7 @@ function Library({ admin, notify, refresh }) {
               </Field>
             ))}
             <Field label="Doğru cevap">
-              <select
+              <ThemedSelect
                 value={form.correct}
                 onChange={(e) =>
                   setForm({ ...form, correct: Number(e.target.value) })
@@ -3466,10 +3446,10 @@ function Library({ admin, notify, refresh }) {
                     {String.fromCharCode(65 + i)}
                   </option>
                 ))}
-              </select>
+              </ThemedSelect>
             </Field>
             <Field label="Soru düzeyi">
-              <select
+              <ThemedSelect
                 value={form.difficulty}
                 onChange={(e) =>
                   setForm({ ...form, difficulty: e.target.value })
@@ -3479,7 +3459,7 @@ function Library({ admin, notify, refresh }) {
                 <option value="expert">
                   Detay / uzmanlık · 10 soruda en fazla 1
                 </option>
-              </select>
+              </ThemedSelect>
             </Field>
             <Field label="Cevap açıklaması (isteğe bağlı)">
               <textarea

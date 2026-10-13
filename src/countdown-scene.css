@@ -1,0 +1,220 @@
+.countdown-scene {
+  --scene-hue: 264;
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  height: 100dvh;
+  width: 100%;
+  padding: max(24px, env(safe-area-inset-top)) 20px
+    max(24px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3vh, 28px);
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(
+    ellipse at 50% 35%,
+    hsl(var(--scene-hue) 74% 90%),
+    #faf8ff 75%
+  );
+  color: #34224f;
+}
+.countdown-theme-family {
+  --scene-hue: 326;
+}
+.countdown-theme-tournament {
+  --scene-hue: 238;
+}
+[data-theme="dark"] .countdown-scene {
+  color: #fff;
+  background: radial-gradient(
+    ellipse at 50% 35%,
+    hsl(var(--scene-hue) 54% 25%),
+    #0e0a1b 75%
+  );
+}
+.countdown-aura {
+  position: absolute;
+  z-index: -1;
+  width: 100vmax;
+  height: 100vmax;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg 25deg,
+    hsl(var(--scene-hue) 80% 65% / 0.06) 25deg 30deg
+  );
+  animation: scene-revolve 40s linear infinite;
+}
+.countdown-topline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(9px, 2.7vw, 12px);
+  letter-spacing: 1.7px;
+  font-weight: 850;
+  text-align: center;
+}
+.countdown-core {
+  position: relative;
+  width: clamp(170px, 48vmin, 320px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+.countdown-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--scene-hue) 70% 60% / 0.3);
+  border-top: 3px solid #ffce63;
+  border-right: 3px solid hsl(var(--scene-hue) 80% 65%);
+  transform: rotate(-35deg);
+  animation: scene-revolve 5s linear infinite;
+}
+.countdown-track.second {
+  inset: -14px;
+  border: 1px dashed hsl(var(--scene-hue) 80% 65% / 0.4);
+  animation-direction: reverse;
+  animation-duration: 18s;
+}
+.countdown-sphere {
+  width: 82%;
+  height: 82%;
+  border-radius: 35%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    circle at 30% 20%,
+    hsl(var(--scene-hue) 95% 83%),
+    hsl(var(--scene-hue) 70% 53%) 52%,
+    hsl(var(--scene-hue) 74% 28%)
+  );
+  box-shadow:
+    inset 4px 5px 8px #ffffff80,
+    inset -7px -10px 18px #13052f80,
+    0 20px 45px hsl(var(--scene-hue) 70% 40% / 0.32);
+  transform: rotate(-8deg);
+}
+.countdown-sphere strong {
+  display: block;
+  color: #fff8de;
+  font-size: clamp(90px, 27vmin, 180px);
+  line-height: 1;
+  font-weight: 950;
+  text-shadow:
+    0 3px #dbc789,
+    0 7px #b59a56,
+    0 13px 20px #2f105580;
+  transform: rotate(8deg);
+  animation: scene-beat 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.countdown-copy {
+  text-align: center;
+}
+.countdown-copy h2 {
+  font-size: clamp(27px, 6vw, 42px);
+  margin: 0 0 10px;
+  letter-spacing: -1px;
+  color: inherit;
+}
+.countdown-copy p {
+  margin: 0;
+  font-size: 16px;
+}
+.countdown-copy p span {
+  opacity: 0.6;
+}
+.countdown-announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+.countdown-beats {
+  display: flex;
+  gap: 9px;
+}
+.countdown-beats i {
+  width: 35px;
+  height: 6px;
+  background: hsl(var(--scene-hue) 30% 50% / 0.2);
+  border-radius: 20px;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.countdown-beats i.lit {
+  background: #efbc4e;
+  box-shadow: 0 0 15px #ffd97e77;
+}
+.countdown-scene > small {
+  font-size: 12px;
+  opacity: 0.7;
+  text-align: center;
+}
+.countdown-stars span {
+  position: absolute;
+  left: calc(8% + var(--i) * 16%);
+  top: var(--star-top);
+  font-size: calc(15px + var(--i) * 3px);
+  color: #e4b34c;
+  animation: scene-twinkle 2.6s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * -0.4s);
+}
+@keyframes scene-revolve {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scene-beat {
+  0% {
+    opacity: 0;
+    transform: rotate(8deg) scale(0.55);
+    filter: blur(5px);
+  }
+  45% {
+    opacity: 1;
+    transform: rotate(8deg) scale(1.12);
+    filter: blur(0);
+  }
+  100% {
+    transform: rotate(8deg) scale(1);
+  }
+}
+@keyframes scene-twinkle {
+  to {
+    opacity: 0.25;
+    transform: translateY(-14px) rotate(20deg);
+  }
+}
+@media (max-height: 450px) {
+  .countdown-scene {
+    gap: 9px;
+  }
+  .countdown-core {
+    width: 120px;
+  }
+  .countdown-sphere strong {
+    font-size: 75px;
+  }
+  .countdown-copy h2 {
+    font-size: 23px;
+    margin-bottom: 4px;
+  }
+  .countdown-topline {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .countdown-scene *,
+  .choice-dialog,
+  .choice-card {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,3 +1,5 @@
+import CountdownScene from "./CountdownScene";
+import ThemedSelect from "./ThemedSelect";
 import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
@@ -183,11 +185,12 @@ export default function Solo({ onBack }) {
             <i style={{ width: `${game.index * 10}%` }} />
           </div>
           {countdown ? (
-            <div className="solo-countdown" role="status">
-              <p>Yeni soruya hazır mısın?</p>
-              <strong key={remaining}>{remaining || "…"}</strong>
-              <span>Sıradaki doğru senin olsun!</span>
-            </div>
+            <CountdownScene
+              number={remaining}
+              next={Math.min(10, game.index + 2)}
+              total={10}
+              mode="solo"
+            />
           ) : (
             <>
               <div className="solo-clock">
@@ -371,7 +374,7 @@ export default function Solo({ onBack }) {
               <p>Kimseyi bekleme. Konunu seç, 10 soruda kendine meydan oku.</p>
               <label className="field">
                 <span>Hangi alanda kendini denemek istersin?</span>
-                <select
+                <ThemedSelect
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
@@ -381,7 +384,7 @@ export default function Solo({ onBack }) {
                       {c.emoji} {c.name}
                     </option>
                   ))}
-                </select>
+                </ThemedSelect>
               </label>
               <button
                 className="btn full"

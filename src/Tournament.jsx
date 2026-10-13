@@ -1,3 +1,4 @@
+import ThemedSelect from "./ThemedSelect";
 import React, { useEffect, useState } from "react";
 import {
   Crown,
@@ -200,7 +201,7 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
                     <span aria-hidden="true">
                       {selectedCategory?.emoji || "✨"}
                     </span>
-                    <select
+                    <ThemedSelect
                       id="tournament-area"
                       value={chosen}
                       required
@@ -218,7 +219,7 @@ export function TournamentLobby({ room, host, screen, action, busy, now, QR }) {
                             : ""}
                         </option>
                       ))}
-                    </select>
+                    </ThemedSelect>
                     <ChevronDown size={20} aria-hidden="true" />
                   </div>
                   <p className="tournament-choice-hint">

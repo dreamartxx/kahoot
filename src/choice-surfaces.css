@@ -1,0 +1,284 @@
+.themed-select {
+  display: block;
+  position: relative;
+  min-width: 0;
+  width: 100%;
+}
+.themed-select .choice-native {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  margin: 0 !important;
+  opacity: 0;
+  clip-path: inset(50%);
+  pointer-events: none;
+}
+.themed-select .choice-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid var(--app-line, #ded2ed);
+  border-radius: 15px;
+  background: linear-gradient(
+    125deg,
+    var(--app-surface, #fff),
+    var(--app-soft, #f3edfc)
+  );
+  color: var(--app-text, #34234f);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 750;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--app-line, #e8dff4);
+}
+.choice-trigger > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.choice-trigger > svg {
+  flex-shrink: 0;
+  color: var(--app-accent, #7951bd);
+}
+.choice-trigger:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.choice-trigger:focus-visible,
+.choice-dialog button:focus-visible {
+  outline: 3px solid var(--app-accent, #7951bd);
+  outline-offset: 3px;
+}
+.tournament-select-wrap:has(.themed-select) > :is(span, svg) {
+  display: none;
+}
+.choice-dialog {
+  width: min(480px, calc(100vw - 24px));
+  max-height: calc(
+    100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+  );
+  margin: auto;
+  padding: 22px;
+  border: 1px solid var(--app-line, #e6ddf2);
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at top right, #9b70f329, transparent 70%),
+    var(--app-surface, #fff);
+  color: var(--app-text, #34234f);
+  box-shadow: 0 25px 90px #18093166;
+  overflow: auto;
+  animation: choice-appear 0.22s ease-out;
+}
+.choice-dialog::backdrop {
+  background: #140c2a99;
+  backdrop-filter: blur(12px);
+}
+.choice-dialog > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.choice-dialog h2 {
+  font-size: 23px;
+  line-height: 1.15;
+  margin: 7px 0 0;
+  color: inherit;
+  letter-spacing: -0.5px;
+}
+.choice-eyebrow {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  font-weight: 850;
+  color: var(--app-accent, #7951bd);
+}
+.choice-dialog :is(.choice-close, .choice-search button, footer button) {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--app-line, #e6ddf2);
+  border-radius: 13px;
+  background: var(--app-soft, #f3edfc);
+  color: inherit;
+  cursor: pointer;
+}
+.choice-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid var(--app-line, #e6ddf2);
+  border-radius: 15px;
+  min-height: 47px;
+  background: var(--app-surface, #fff);
+  margin-bottom: 14px;
+}
+.choice-search input {
+  min-width: 0;
+  flex: 1;
+  width: 100%;
+  border: 0;
+  padding: 10px 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+}
+.choice-search input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.choice-search:focus-within {
+  outline: 2px solid var(--app-accent, #7951bd);
+}
+.choice-dialog .choice-search button {
+  width: 28px;
+  height: 28px;
+  border: 0;
+}
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+.choice-dialog .choice-card {
+  min-height: 80px;
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  border: 1px solid var(--app-line, #e6ddf2);
+  border-radius: 17px;
+  background: var(--app-surface, #fff);
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.16s,
+    border-color 0.16s,
+    background 0.16s;
+}
+.choice-card b {
+  font-size: 14px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.choice-gem {
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #c4a5ff, #7547c6);
+  color: white;
+  box-shadow:
+    inset 1px 1px 2px #fff8,
+    0 3px 7px #8350c533;
+}
+.choice-card:nth-child(3n + 2) .choice-gem {
+  background: linear-gradient(135deg, #ffd883, #d48a29);
+}
+.choice-card:nth-child(3n) .choice-gem {
+  background: linear-gradient(135deg, #77dec7, #248976);
+}
+.choice-dialog .choice-card[aria-pressed="true"] {
+  border-color: var(--app-accent, #7951bd);
+  background: var(--app-soft, #f3edfc);
+  box-shadow: inset 0 0 0 1px var(--app-accent, #7951bd);
+}
+.choice-card:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+@media (hover: hover) {
+  .choice-card:hover:not(:disabled) {
+    transform: translateY(-2px);
+    border-color: var(--app-accent, #7951bd);
+  }
+}
+.choice-dialog footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  margin-top: 15px;
+  color: var(--app-muted, #8b7c9c);
+}
+.choice-dialog footer nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.choice-dialog footer button:disabled {
+  opacity: 0.35;
+}
+.choice-dialog footer small {
+  white-space: nowrap;
+}
+.choice-empty {
+  grid-column: 1/-1;
+  padding: 20px 4px;
+  text-align: center;
+  font-size: 14px;
+}
+@media (max-height: 650px) {
+  .choice-dialog {
+    padding: 16px;
+    border-radius: 22px;
+  }
+  .choice-dialog h2 {
+    font-size: 20px;
+  }
+  .choice-dialog > header {
+    margin-bottom: 10px;
+  }
+  .choice-dialog .choice-card {
+    min-height: 65px;
+    gap: 5px;
+    padding: 8px;
+    flex-direction: row;
+    align-items: center;
+  }
+  .choice-gem {
+    flex-shrink: 0;
+    width: 22px;
+    height: 25px;
+  }
+  .choice-card b {
+    font-size: 12px;
+  }
+  .choice-dialog footer {
+    margin-top: 10px;
+  }
+}
+@keyframes choice-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.choice-dialog > footer {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  min-height: 40px;
+}

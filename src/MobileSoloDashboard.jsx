@@ -1,3 +1,4 @@
+import ThemedSelect from "./ThemedSelect";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowRight, Trophy, X } from "lucide-react";
@@ -65,7 +66,7 @@ function Records({ stats, onClose }) {
         <>
           <label className="module-topic">
             <span>{view === "topics" ? "Konu seç" : "Deneme seç"}</span>
-            <select
+            <ThemedSelect
               value={view === "topics" ? record.category : record.id}
               onChange={(e) => setSelected(e.target.value)}
             >
@@ -80,7 +81,7 @@ function Records({ stats, onClose }) {
                     : ""}
                 </option>
               ))}
-            </select>
+            </ThemedSelect>
           </label>
           <div className="mobile-record-detail">
             <b>
@@ -127,14 +128,17 @@ export default function MobileSoloDashboard({
         </div>
         <label className="module-topic">
           <span>Hangi alanda yarışıyoruz?</span>
-          <select value={category} onChange={(e) => onCategory(e.target.value)}>
+          <ThemedSelect
+            value={category}
+            onChange={(e) => onCategory(e.target.value)}
+          >
             <option value="mixed">✨ Karışık konular</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.emoji} {c.name}
               </option>
             ))}
-          </select>
+          </ThemedSelect>
         </label>
         <button className="module-primary" disabled={busy} onClick={onStart}>
           {busy ? "Hazırlanıyor…" : "Hemen başla"}
