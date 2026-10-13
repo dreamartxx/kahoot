@@ -16,6 +16,8 @@ import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
 import "./solo.css";
 import MobileSoloDashboard from "./MobileSoloDashboard";
+import CompactRoomPanel from "./CompactRoomPanel";
+import SoloReview from "./SoloReview";
 import useCompactLayout from "./useCompactLayout";
 const names = Object.fromEntries(flagCountries.map((c) => [c.code, c.name]));
 const topic = (id) =>
@@ -124,6 +126,8 @@ export default function Solo({ onBack }) {
     <section
       className="solo-page"
       data-playing={playing}
+      data-compact-solo={compact}
+      data-finished={finished}
       data-mobile-start={compact && !playing && !finished}
       data-screen-key={`${game?.phase}:${game?.question?.id || game?.index}`}
     >
@@ -228,9 +232,18 @@ export default function Solo({ onBack }) {
                         ? "Süre doldu. Bir sonrakinde yakala!"
                         : "Yanlış cevap. Öğrenmeye devam!"}
                   </strong>
-                  {game.question.explanation && (
-                    <p>{game.question.explanation}</p>
-                  )}
+                  {game.question.explanation &&
+                    (compact ? (
+                      <CompactRoomPanel
+                        enabled
+                        title="Cevabın hikâyesi"
+                        trigger="Neden? Açıklamayı gör"
+                      >
+                        <p>{game.question.explanation}</p>
+                      </CompactRoomPanel>
+                    ) : (
+                      <p>{game.question.explanation}</p>
+                    ))}
                 </div>
               )}
             </>
@@ -285,40 +298,53 @@ export default function Solo({ onBack }) {
               className="btn secondary"
               onClick={() => setDismissed(game.id)}
             >
-              Konu seç ve rekorları gör
+              {compact ? "Konu seç" : "Konu seç ve rekorları gör"}
             </button>
           </div>
-          <details className="solo-review">
-            <summary>Cevaplarımı incele</summary>
-            {game.review.map((q, i) => (
-              <article key={i}>
-                <h3>
-                  {i + 1}. {q.text}
-                </h3>
-                <p
-                  className={
-                    q.choice === q.correct ? "review-good" : "review-bad"
-                  }
-                >
-                  {q.choice === q.correct ? (
-                    <Check size={18} />
-                  ) : (
-                    <X size={18} />
-                  )}{" "}
-                  Senin cevabın:{" "}
-                  {q.choice === null ? (
-                    "Boş"
-                  ) : (
-                    <Option value={q.options[q.choice]} />
-                  )}
-                </p>
-                <p>
-                  Doğru cevap: <Option value={q.options[q.correct]} />
-                </p>
-                {q.explanation && <small>{q.explanation}</small>}
-              </article>
-            ))}
-          </details>
+          {compact ? (
+            <CompactRoomPanel
+              enabled
+              title="Cevaplarım"
+              trigger="Cevaplarımı incele"
+            >
+              <SoloReview
+                questions={game.review}
+                renderOption={(value) => <Option value={value} />}
+              />
+            </CompactRoomPanel>
+          ) : (
+            <details className="solo-review">
+              <summary>Cevaplarımı incele</summary>
+              {game.review.map((q, i) => (
+                <article key={i}>
+                  <h3>
+                    {i + 1}. {q.text}
+                  </h3>
+                  <p
+                    className={
+                      q.choice === q.correct ? "review-good" : "review-bad"
+                    }
+                  >
+                    {q.choice === q.correct ? (
+                      <Check size={18} />
+                    ) : (
+                      <X size={18} />
+                    )}{" "}
+                    Senin cevabın:{" "}
+                    {q.choice === null ? (
+                      "Boş"
+                    ) : (
+                      <Option value={q.options[q.choice]} />
+                    )}
+                  </p>
+                  <p>
+                    Doğru cevap: <Option value={q.options[q.correct]} />
+                  </p>
+                  {q.explanation && <small>{q.explanation}</small>}
+                </article>
+              ))}
+            </details>
+          )}
         </section>
       ) : compact ? (
         <MobileSoloDashboard

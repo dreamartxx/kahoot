@@ -1,0 +1,279 @@
+/* A fixed-height scene for every solo phase, including reveal and results. */
+.shell:has(.solo-page[data-compact-solo="true"]) {
+  height: calc(
+    100dvh - 70px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+  );
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.shell:has(.solo-page[data-compact-solo="true"]) > .main {
+  flex: 1;
+  min-height: 0;
+}
+.shell:has(.solo-page[data-compact-solo="true"]) .topbar {
+  display: none;
+}
+.shell:has(.solo-page[data-compact-solo="true"]) .content {
+  height: 100%;
+  min-height: 0;
+  padding: 10px 12px;
+}
+.solo-page[data-compact-solo="true"] {
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+  gap: 7px;
+  align-content: stretch;
+}
+.solo-page[data-compact-solo="true"][data-mobile-start="true"] {
+  display: flex;
+  flex-direction: column;
+}
+.solo-page[data-compact-solo="true"] > .solo-heading {
+  margin: 0;
+  align-self: center;
+}
+.solo-page[data-compact-solo="true"] > .solo-heading .eyebrow,
+.solo-page[data-compact-solo="true"] > .solo-heading p,
+.solo-page[data-compact-solo="true"] > .solo-heading h1 span {
+  display: none;
+}
+.solo-page[data-compact-solo="true"] > .solo-heading h1 {
+  font-size: 20px;
+  letter-spacing: -0.6px;
+  margin: 0;
+}
+.solo-page[data-compact-solo="true"] > .module-guide {
+  margin: 0;
+}
+.solo-page[data-compact-solo="true"] > .module-guide .guide-trigger {
+  min-height: 36px;
+  padding: 7px;
+  font-size: 11px;
+}
+.solo-page[data-compact-solo="true"]
+  > .module-guide
+  .guide-trigger
+  svg:last-child {
+  display: none;
+}
+.solo-page[data-compact-solo="true"]
+  > :is(
+    .notice,
+    .account-error,
+    .game-credit-notice,
+    .solo-stage,
+    .solo-result,
+    .empty
+  ) {
+  grid-column: 1/-1;
+}
+.solo-page[data-compact-solo="true"] > :is(.notice, .account-error) {
+  margin: 0;
+  padding: 5px 8px;
+  font-size: 11px;
+}
+.solo-page[data-compact-solo="true"] .game-credit-notice {
+  margin: 0;
+  padding: 5px 10px;
+  gap: 7px;
+  border-radius: 12px;
+}
+.solo-page[data-compact-solo="true"] .game-credit-notice > span {
+  font-size: 18px;
+}
+.solo-page[data-compact-solo="true"] .game-credit-notice small {
+  display: none;
+}
+.solo-page[data-compact-solo="true"] .game-credit-notice strong {
+  font-size: 12px;
+}
+.solo-page[data-compact-solo="true"] .game-credit-notice p {
+  font-size: 10px;
+  margin: 0;
+}
+.solo-page[data-compact-solo="true"] .solo-stage {
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  border-radius: 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.solo-page[data-compact-solo="true"] .solo-game-top {
+  font-size: 11px;
+  gap: 6px;
+}
+.solo-page[data-compact-solo="true"] .solo-game-top span {
+  gap: 4px;
+}
+.solo-page[data-compact-solo="true"] .solo-progress {
+  height: 4px;
+  margin: 0;
+  flex-shrink: 0;
+}
+.solo-page[data-compact-solo="true"] .solo-clock {
+  font-size: 11px;
+}
+.solo-page[data-compact-solo="true"] .solo-stage h2 {
+  font-size: clamp(17px, 2.8vh, 24px);
+  line-height: 1.25;
+  margin: auto 0;
+  padding: 4px 0;
+  overflow-wrap: anywhere;
+}
+.solo-page[data-compact-solo="true"] .solo-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+.solo-page[data-compact-solo="true"] .solo-option {
+  min-height: 65px;
+  padding: 8px;
+  gap: 5px;
+  font-size: 14px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  border-radius: 14px;
+}
+.solo-page[data-compact-solo="true"] .solo-letter {
+  min-width: 22px;
+  width: 22px;
+  height: 26px;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.solo-page[data-compact-solo="true"] .solo-option > svg {
+  width: 16px;
+  flex-shrink: 0;
+}
+.solo-page[data-compact-solo="true"] .solo-flag {
+  width: min(65px, 60%);
+  max-height: 45px;
+}
+.solo-page[data-compact-solo="true"] .solo-feedback {
+  margin: 0;
+  padding: 7px;
+  font-size: 12px;
+  line-height: 1.3;
+  border-radius: 12px;
+}
+.solo-page[data-compact-solo="true"] .solo-feedback .compact-room-trigger {
+  min-height: 26px;
+  margin-top: 3px;
+  padding: 3px 6px;
+  font-size: 11px;
+  background: transparent;
+  border: 0;
+}
+.solo-page[data-compact-solo="true"] .solo-end {
+  min-height: 30px;
+  margin: 0 auto;
+  font-size: 11px !important;
+  padding: 4px;
+}
+.solo-page[data-compact-solo="true"] .solo-countdown {
+  flex: 1;
+  min-height: 0;
+}
+.solo-page[data-compact-solo="true"] .solo-countdown strong {
+  font-size: clamp(72px, 20vh, 120px);
+}
+.solo-page[data-compact-solo="true"] .solo-result {
+  min-height: 0;
+  margin: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 6px;
+}
+.solo-page[data-compact-solo="true"] .solo-medal {
+  font-size: clamp(32px, 7vh, 60px);
+}
+.solo-page[data-compact-solo="true"] .solo-result h2 {
+  font-size: 23px;
+  margin: 0;
+}
+.solo-page[data-compact-solo="true"] .solo-result-score {
+  font-size: 42px;
+  line-height: 1.1;
+}
+.solo-page[data-compact-solo="true"] .solo-result-score small {
+  font-size: 13px;
+}
+.solo-page[data-compact-solo="true"] .solo-result > p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.3;
+}
+.solo-page[data-compact-solo="true"] .solo-result .solo-context {
+  font-size: 11px;
+}
+.solo-page[data-compact-solo="true"] .solo-record {
+  padding: 5px 9px;
+  font-size: 11px;
+}
+.solo-page[data-compact-solo="true"] .solo-result-actions {
+  display: grid;
+  width: 100%;
+  gap: 5px;
+}
+.solo-page[data-compact-solo="true"] .solo-result-actions .btn {
+  min-height: 38px;
+  padding: 8px;
+  font-size: 13px;
+}
+.solo-page[data-compact-solo="true"] .solo-result > .compact-room-trigger {
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 10px;
+  font-size: 12px;
+}
+.solo-review-card h3 {
+  font-size: 18px;
+  line-height: 1.35;
+}
+.solo-review-card p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.solo-review-card nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.solo-review-card .solo-flag {
+  vertical-align: middle;
+  max-height: 42px;
+}
+.solo-review-position {
+  color: var(--app-accent);
+  font-weight: 800;
+}
+.solo-page[data-compact-solo="true"] .solo-feedback .compact-room-trigger {
+  color: inherit;
+}
+.solo-page[data-compact-solo="true"] .solo-result > .eyebrow,
+.solo-page[data-compact-solo="true"] .solo-result .solo-context {
+  display: none;
+}
+.solo-page[data-compact-solo="true"] .solo-medal {
+  font-size: 32px;
+}
+.solo-page[data-compact-solo="true"] .solo-result-actions {
+  grid-template-columns: 1fr 1fr;
+}
+.solo-page[data-compact-solo="true"] .solo-result-actions .btn {
+  min-height: 42px;
+  font-size: 12px;
+  gap: 5px;
+}

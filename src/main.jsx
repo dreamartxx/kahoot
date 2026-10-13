@@ -102,6 +102,7 @@ import "./mobile-navigation.css";
 import "./screen-pages.css";
 import "./mobile-module-screen.css";
 import "./compact-room.css";
+import "./solo-compact.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
