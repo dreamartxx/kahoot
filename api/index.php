@@ -155,7 +155,10 @@ try {
         if(array_key_exists('expectedDrawId',$in)&&$in['expectedDrawId']!==($s['draw']['id']??null))fail('Çekiliş zaten değişti. Ekranı yenileyin.',409);creditRoomCharge($s,'raffle',$in);
         $winner=$pool[random_int(0,count($pool)-1)];$s['draw']=['id'=>bin2hex(random_bytes(8)),'startedAt'=>$now,'revealAt'=>$now+11,'settleAt'=>$now+17,'winner'=>$winner];$s['winnerIds'][]=$winner['id'];$s['winners'][]=$s['draw'];$s['draw']['wheelEntries']=$pool;
     }
-    if($action==='close')$s['phase']='closed';
+    if($action==='close'){
+        if(!in_array($s['phase'],['closed','finished'],true))$s['closeReason']='cancelled';
+        $s['phase']='closed';$s['closedAt']??=time();
+    }
     saveRoom($s);echo json_encode(snapshot($s,$token,canManageRoom($s)),JSON_UNESCAPED_UNICODE);
 } catch(JsonException $e){if(isset($db)&&$db->inTransaction())$db->rollBack();fail('Geçersiz JSON.',400);}
 catch(Throwable $e){if(isset($db)&&$db->inTransaction())$db->rollBack();error_log('Arena: '.$e->getMessage());fail('Sunucu işlemi tamamlayamadı. Lütfen tekrar deneyin.',500);}
