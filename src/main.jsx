@@ -89,11 +89,13 @@ import GameCreditNotice, { gameCreditMoment } from "./GameCreditNotice";
 import IdleEvents from "./IdleEvents";
 import "./mobile-shell.css";
 import MobileHome from "./MobileHome";
+import ScreenPages from "./ScreenPages";
 import MobileQuizPicker from "./MobileQuizPicker";
 import { setupNative, joinUrl, publicOrigin } from "./native";
 import "./android-design.css";
 import "./app-theme.css";
 import "./mobile-navigation.css";
+import "./screen-pages.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -158,7 +160,7 @@ function Modal({ title, onClose, children, wide = false }) {
           <X />
         </button>
       </div>
-      {children}
+      <ScreenPages dialog>{children}</ScreenPages>
     </dialog>
   );
 }
@@ -871,7 +873,9 @@ function App() {
           </button>
         </div>
       )}
-      {body}
+      <ScreenPages resetKey={`${route}:${tab}:${!!status.admin}`}>
+        {body}
+      </ScreenPages>
       <PwaNotices />
       {status.admin && (
         <IdleEvents
@@ -1740,6 +1744,8 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
   return (
     <div
       className={"event-page " + (host || screen ? "presenter" : "participant")}
+      data-screen-key={`${room.phase}:${room.question?.id || room.index}`}
+      data-playing={["question", "countdown", "reveal"].includes(room.phase)}
     >
       <header className="event-header">
         <button className="text-btn" onClick={onBack}>
@@ -2348,47 +2354,49 @@ function AnswerResultPopup({ correct, points, correctAnswer, room }) {
       >
         <X size={22} />
       </button>
-      <div className="result-symbol" aria-hidden="true">
-        {correct ? (
-          <Check size={60} strokeWidth={3} />
+      <ScreenPages dialog>
+        <div className="result-symbol" aria-hidden="true">
+          {correct ? (
+            <Check size={60} strokeWidth={3} />
+          ) : (
+            <X size={60} strokeWidth={3} />
+          )}
+        </div>
+        <span className="result-eyebrow">
+          {correct ? "HARİKA CEVAP!" : "BU KEZ OLMADI"}
+        </span>
+        <h2 id="answer-result-title">
+          {correct ? "Tebrikler, doğru bildiniz!" : "Yanlış bildiniz"}
+        </h2>
+        <p id="answer-result-description">
+          {correct
+            ? "Bilgine sağlık! Böyle devam et."
+            : "Bir sonraki soruda tekrar dene!"}
+        </p>
+        {compare ? (
+          <AnswerComparison
+            room={room}
+            compact
+            renderOption={(value) => <OptionContent value={value} showName />}
+          />
+        ) : correct ? (
+          <div className="result-points">
+            +{points} <span>puan</span>
+          </div>
         ) : (
-          <X size={60} strokeWidth={3} />
+          <div className="result-answer">
+            <span>Doğru cevap</span>
+            <strong>{correctAnswer}</strong>
+          </div>
         )}
-      </div>
-      <span className="result-eyebrow">
-        {correct ? "HARİKA CEVAP!" : "BU KEZ OLMADI"}
-      </span>
-      <h2 id="answer-result-title">
-        {correct ? "Tebrikler, doğru bildiniz!" : "Yanlış bildiniz"}
-      </h2>
-      <p id="answer-result-description">
-        {correct
-          ? "Bilgine sağlık! Böyle devam et."
-          : "Bir sonraki soruda tekrar dene!"}
-      </p>
-      {compare ? (
-        <AnswerComparison
-          room={room}
-          compact
-          renderOption={(value) => <OptionContent value={value} showName />}
-        />
-      ) : correct ? (
-        <div className="result-points">
-          +{points} <span>puan</span>
-        </div>
-      ) : (
-        <div className="result-answer">
-          <span>Doğru cevap</span>
-          <strong>{correctAnswer}</strong>
-        </div>
-      )}
-      <button
-        autoFocus
-        className="result-confirm"
-        onClick={() => setOpen(false)}
-      >
-        Tamam <ArrowRight size={19} />
-      </button>
+        <button
+          autoFocus
+          className="result-confirm"
+          onClick={() => setOpen(false)}
+        >
+          Tamam <ArrowRight size={19} />
+        </button>
+      </ScreenPages>
     </dialog>
   );
 }

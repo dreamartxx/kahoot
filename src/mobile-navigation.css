@@ -348,3 +348,22 @@
     padding: 10px 12px;
   }
 }
+
+.quiz-heart-open {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.quiz-heart-open:focus-visible {
+  outline: 3px solid #ffdf83;
+  outline-offset: -5px;
+}
+.quiz-heart-top .module-guide,
+.quiz-heart-choices {
+  position: relative;
+  z-index: 3;
+}

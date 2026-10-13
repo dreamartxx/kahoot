@@ -1,3 +1,4 @@
+import ScreenPages from "./ScreenPages";
 import React, { useEffect, useRef, useState } from "react";
 import { ShieldCheck, RefreshCw } from "lucide-react";
 import { getBrowserVerification, onBrowserVerification } from "./api";
@@ -23,30 +24,32 @@ export default function BrowserVerification() {
           <ShieldCheck aria-hidden="true" /> Kısa bir doğrulama gerekiyor
         </h2>
       </div>
-      <p>
-        {nativeApp ? (
-          "Sunucu bağlantı koruması uygulamadan gelen isteği durdurdu. Bir süre sonra yeniden deneyebilir veya web sitesinden devam edebilirsin."
-        ) : (
-          <>
-            Oyuna devam etmek için sayfayı yenile. Tarayıcı kontrolü
-            tamamlandığında aynı oyun ekranı yeniden açılacak.
-          </>
-        )}
-      </p>
-      <button className="btn full" onClick={() => location.reload()}>
-        <RefreshCw size={18} aria-hidden="true" /> Sayfayı yenile
-      </button>
-      {nativeApp && (
-        <button
-          className="btn secondary full"
-          onClick={async () => {
-            const { Browser } = await import("@capacitor/browser");
-            await Browser.open({ url: publicOrigin });
-          }}
-        >
-          Web sitesini aç
+      <ScreenPages dialog>
+        <p>
+          {nativeApp ? (
+            "Sunucu bağlantı koruması uygulamadan gelen isteği durdurdu. Bir süre sonra yeniden deneyebilir veya web sitesinden devam edebilirsin."
+          ) : (
+            <>
+              Oyuna devam etmek için sayfayı yenile. Tarayıcı kontrolü
+              tamamlandığında aynı oyun ekranı yeniden açılacak.
+            </>
+          )}
+        </p>
+        <button className="btn full" onClick={() => location.reload()}>
+          <RefreshCw size={18} aria-hidden="true" /> Sayfayı yenile
         </button>
-      )}
+        {nativeApp && (
+          <button
+            className="btn secondary full"
+            onClick={async () => {
+              const { Browser } = await import("@capacitor/browser");
+              await Browser.open({ url: publicOrigin });
+            }}
+          >
+            Web sitesini aç
+          </button>
+        )}
+      </ScreenPages>
     </dialog>
   );
 }

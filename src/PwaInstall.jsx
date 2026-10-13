@@ -1,3 +1,4 @@
+import ScreenPages from "./ScreenPages";
 import { createPortal } from "react-dom";
 import React, { useEffect, useRef, useState } from "react";
 import { Download, X, WifiOff, RefreshCw, Share } from "lucide-react";
@@ -66,85 +67,87 @@ export function PwaInstall({ className = "" }) {
                 <X />
               </button>
             </div>
-            <div className="pwa-install-intro">
-              <img
-                src="/icons/icon-192.png?v=pearl-gold-3d"
-                alt="Bilgi Arena uygulama simgesi"
-                width="76"
-                height="76"
-              />
-              <p>
-                Ana ekranına ekle; aile oyunları ve yarışmalar bir dokunuş
-                uzağında olsun.
-              </p>
-            </div>
-            {available ? (
-              <button
-                className="btn full"
-                disabled={busy}
-                onClick={async () => {
-                  setBusy(true);
-                  try {
-                    if (await promptInstall()) {
-                      setInstalled(true);
-                      setOpen(false);
+            <ScreenPages dialog>
+              <div className="pwa-install-intro">
+                <img
+                  src="/icons/icon-192.png?v=pearl-gold-3d"
+                  alt="Bilgi Arena uygulama simgesi"
+                  width="76"
+                  height="76"
+                />
+                <p>
+                  Ana ekranına ekle; aile oyunları ve yarışmalar bir dokunuş
+                  uzağında olsun.
+                </p>
+              </div>
+              {available ? (
+                <button
+                  className="btn full"
+                  disabled={busy}
+                  onClick={async () => {
+                    setBusy(true);
+                    try {
+                      if (await promptInstall()) {
+                        setInstalled(true);
+                        setOpen(false);
+                      }
+                    } catch {
+                    } finally {
+                      setAvailable(!!getInstallPrompt());
+                      setBusy(false);
                     }
-                  } catch {
-                  } finally {
-                    setAvailable(!!getInstallPrompt());
-                    setBusy(false);
-                  }
-                }}
-              >
-                <Download size={18} />
-                {busy ? "Yükleme açılıyor…" : "Bilgi Arena’yı yükle"}
-              </button>
-            ) : (
-              <ol className="pwa-install-steps">
-                {ios ? (
-                  <>
-                    <li>
-                      Safari’de <b>Paylaş</b> <Share size={15} /> menüsünü aç.
-                    </li>
-                    <li>
-                      <b>Ana Ekrana Ekle</b> seçeneğine dokun.
-                    </li>
-                    <li>
-                      Varsa <b>Web Uygulaması Olarak Aç</b> seçeneğini açık
-                      bırak ve <b>Ekle</b> de.
-                    </li>
-                  </>
-                ) : android ? (
-                  <>
-                    <li>
-                      Chrome’da sağ üstteki <b>⋮</b> menüsünü aç.
-                    </li>
-                    <li>
-                      <b>Uygulamayı yükle</b> veya <b>Ana ekrana ekle</b>{" "}
-                      seçeneğini seç.
-                    </li>
-                    <li>
-                      <b>Yükle</b> diyerek tamamla.
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      Chrome veya Edge’de adres çubuğundaki{" "}
-                      <b>yükleme simgesini</b> ya da tarayıcı menüsündeki
-                      uygulama yükleme seçeneğini aç.
-                    </li>
-                    <li>
-                      Safari’de <b>Dosya → Dock’a Ekle</b> seçeneğini
-                      kullanabilirsin.
-                    </li>
-                  </>
-                )}
-              </ol>
-            )}
-            <p className="pwa-install-note">
-              Ücretsizdir. Canlı oyunlar için internet bağlantısı gerekir.
-            </p>
+                  }}
+                >
+                  <Download size={18} />
+                  {busy ? "Yükleme açılıyor…" : "Bilgi Arena’yı yükle"}
+                </button>
+              ) : (
+                <ol className="pwa-install-steps">
+                  {ios ? (
+                    <>
+                      <li>
+                        Safari’de <b>Paylaş</b> <Share size={15} /> menüsünü aç.
+                      </li>
+                      <li>
+                        <b>Ana Ekrana Ekle</b> seçeneğine dokun.
+                      </li>
+                      <li>
+                        Varsa <b>Web Uygulaması Olarak Aç</b> seçeneğini açık
+                        bırak ve <b>Ekle</b> de.
+                      </li>
+                    </>
+                  ) : android ? (
+                    <>
+                      <li>
+                        Chrome’da sağ üstteki <b>⋮</b> menüsünü aç.
+                      </li>
+                      <li>
+                        <b>Uygulamayı yükle</b> veya <b>Ana ekrana ekle</b>{" "}
+                        seçeneğini seç.
+                      </li>
+                      <li>
+                        <b>Yükle</b> diyerek tamamla.
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        Chrome veya Edge’de adres çubuğundaki{" "}
+                        <b>yükleme simgesini</b> ya da tarayıcı menüsündeki
+                        uygulama yükleme seçeneğini aç.
+                      </li>
+                      <li>
+                        Safari’de <b>Dosya → Dock’a Ekle</b> seçeneğini
+                        kullanabilirsin.
+                      </li>
+                    </>
+                  )}
+                </ol>
+              )}
+              <p className="pwa-install-note">
+                Ücretsizdir. Canlı oyunlar için internet bağlantısı gerekir.
+              </p>
+            </ScreenPages>
           </dialog>,
           document.body,
         )}

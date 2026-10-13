@@ -129,6 +129,12 @@ export default function MobileHome({
         {group === 0 ? (
           <>
             <article className="quiz-heart-card">
+              <button
+                type="button"
+                className="quiz-heart-open"
+                aria-label="Bilgi Yarışmasını aç"
+                onClick={() => browse("topics")}
+              />
               <div className="quiz-heart-top">
                 <span>BİLGİNİ KONUŞTUR</span>
                 <ModuleGuide mode="quiz" compact />

@@ -1,3 +1,4 @@
+import ScreenPages from "./ScreenPages";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { BookOpen, Sparkles, X } from "lucide-react";
@@ -249,27 +250,29 @@ function GuidePopup({ guide, onClose }) {
           <X size={21} />
         </button>
       </div>
-      <p className="guide-intro">{guide.intro}</p>
-      <div className="guide-content">
-        <ol>
-          {guide.steps.map(([title, text], i) => (
-            <li key={title}>
-              <span className="guide-step-number">0{i + 1}</span>
-              <div>
-                <strong>{title}</strong>
-                <p>{text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-        <p className="guide-note">
-          <Sparkles size={18} />
-          <span>{guide.note}</span>
-        </p>
-      </div>
-      <button type="button" className="guide-done" onClick={onClose}>
-        Anladım, hazırım!
-      </button>
+      <ScreenPages dialog>
+        <p className="guide-intro">{guide.intro}</p>
+        <div className="guide-content">
+          <ol>
+            {guide.steps.map(([title, text], i) => (
+              <li key={title}>
+                <span className="guide-step-number">0{i + 1}</span>
+                <div>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p className="guide-note">
+            <Sparkles size={18} />
+            <span>{guide.note}</span>
+          </p>
+        </div>
+        <button type="button" className="guide-done" onClick={onClose}>
+          Anladım, hazırım!
+        </button>
+      </ScreenPages>
     </dialog>,
     document.body,
   );

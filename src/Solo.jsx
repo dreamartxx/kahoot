@@ -118,7 +118,11 @@ export default function Solo() {
     ),
   );
   return (
-    <section className="solo-page">
+    <section
+      className="solo-page"
+      data-playing={playing}
+      data-screen-key={`${game?.phase}:${game?.question?.id || game?.index}`}
+    >
       <div className="solo-heading">
         <span className="eyebrow">KENDİNLE YARIŞ</span>
         <h1>

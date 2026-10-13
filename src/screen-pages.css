@@ -1,0 +1,179 @@
+.screen-pages:not(.is-paged),
+.screen-pages:not(.is-paged) > .screen-page-viewport,
+.screen-pages:not(.is-paged) > .screen-page-viewport > .screen-page-content {
+  display: contents;
+}
+.screen-pages.is-paged > .screen-page-viewport {
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: pan-x pinch-zoom;
+  overflow-anchor: none;
+}
+.screen-pages.is-paged > .screen-page-viewport > .screen-page-content {
+  display: flow-root;
+}
+.screen-page-controls {
+  margin: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 12px;
+  background: var(--app-surface, #fff);
+  color: var(--app-text, #30253f);
+  border-top: 1px solid var(--app-line, #e8dfef);
+}
+.screen-page-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  background: var(--app-soft, #f2ebff);
+  color: var(--app-accent, #7043bb);
+}
+.screen-page-controls button:disabled {
+  opacity: 0.4;
+}
+.screen-page-controls span {
+  font-size: 12px;
+  font-weight: 700;
+}
+.screen-pages.is-paged .question-pick,
+.screen-pages.is-paged .entries-list,
+.screen-pages.is-paged .import-preview,
+.screen-pages.is-paged .character-options,
+.screen-pages.is-paged .family-picker-list,
+.screen-pages.is-paged .tournament-participants,
+.screen-pages.is-paged .solo-topic-records {
+  max-height: none;
+  overflow: visible;
+}
+@media (max-width: 800px) {
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  .screen-pages.is-paged.app-pages .shell {
+    padding-bottom: 0;
+    min-height: 0;
+  }
+  dialog:has(.dialog-pages) {
+    max-height: calc(100dvh - 16px);
+    overflow: hidden;
+  }
+  .screen-pages.is-paged.app-pages .content > footer {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .shell:has(.solo-page[data-playing="true"]) .topbar,
+  .solo-page[data-playing="true"] > .solo-heading,
+  .solo-page[data-playing="true"] > .module-guide,
+  .event-page[data-playing="true"] .room-module-guide,
+  .event-page[data-playing="true"] .host-player-banner {
+    display: none;
+  }
+  .solo-page[data-playing="true"] .solo-stage {
+    margin: 0;
+    padding: 14px;
+  }
+  .solo-page[data-playing="true"] .solo-stage h2 {
+    font-size: 19px;
+    margin: 14px 0;
+  }
+  .solo-page[data-playing="true"] .solo-progress {
+    margin: 10px 0;
+  }
+  .solo-page[data-playing="true"] .solo-options {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .solo-page[data-playing="true"] .solo-option {
+    min-height: 64px;
+    font-size: 14px;
+    padding: 10px;
+    gap: 7px;
+  }
+  .solo-page[data-playing="true"] .solo-letter {
+    min-width: 24px;
+    height: 26px;
+  }
+  .solo-page[data-playing="true"] .solo-end {
+    margin: 12px auto 0;
+  }
+  .solo-heading {
+    margin-bottom: 12px;
+  }
+  .solo-heading h1 {
+    font-size: 27px;
+  }
+  .solo-heading p {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .solo-dashboard {
+    margin-top: 12px;
+  }
+  .solo-launch {
+    padding: 18px;
+  }
+  .solo-launch h2 {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  .solo-launch p {
+    font-size: 13px;
+  }
+  .solo-launch .field {
+    margin: 14px 0;
+  }
+}
+@media (max-width: 800px) {
+  .shell:has(.solo-page[data-playing="true"]) .content {
+    padding: 10px 12px;
+  }
+  .event-page[data-playing="true"] .event-title {
+    margin: 8px 12px;
+    padding: 0;
+  }
+  .event-page[data-playing="true"] .event-title h1 {
+    font-size: 18px;
+    margin: 4px 0;
+  }
+  .event-page[data-playing="true"] .quiz-stage {
+    margin: 8px 12px;
+    padding: 12px;
+  }
+  .event-page[data-playing="true"] .quiz-stage h2 {
+    font-size: 20px;
+    margin: 14px 0;
+  }
+  .event-page[data-playing="true"] .answer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .event-page[data-playing="true"] .answer {
+    min-height: 66px;
+    padding: 10px;
+    gap: 8px;
+    font-size: 15px;
+  }
+  .event-page[data-playing="true"] .answer-shape {
+    font-size: 20px;
+  }
+  .event-page[data-playing="true"] .game-credit-notice {
+    margin: 8px 12px;
+    padding: 8px 12px;
+  }
+}

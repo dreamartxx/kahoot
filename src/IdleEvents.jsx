@@ -1,3 +1,4 @@
+import ScreenPages from "./ScreenPages";
 import React, { useEffect, useRef, useState } from "react";
 import { Clock3, X, ArrowRight } from "lucide-react";
 import { api } from "./api";
@@ -68,42 +69,44 @@ export default function IdleEvents({ onRooms }) {
       aria-labelledby="idle-event-title"
       onCancel={(e) => e.preventDefault()}
     >
-      <div className="idle-event-symbol">
-        <Clock3 size={38} />
-      </div>
-      <span className="idle-event-eyebrow">OYUN SENİ BEKLİYOR</span>
-      <h2 id="idle-event-title">İptal mi, devam mı?</h2>
-      <p>
-        <strong>{room.title}</strong> henüz başlamadı.
-      </p>
-      <p className="idle-event-note">
-        Etkinlik oluşturulduktan sonra 3 dakika içinde başlatılmazsa otomatik
-        iptal edilir. Devam etmek süreyi sıfırlamaz.
-      </p>
-      <div className="idle-event-time" role="timer">
-        Başlatmak için {Math.floor(remaining / 60)}:
-        {String(remaining % 60).padStart(2, "0")} kaldı
-      </div>
-      {error && <p role="alert">{error}</p>}
-      <div className="idle-event-actions">
-        <button
-          className="btn secondary"
-          disabled={busy}
-          onClick={() => choose("idle_cancel")}
-        >
-          <X size={18} /> İptal et
-        </button>
-        <button
-          className="btn"
-          disabled={busy}
-          onClick={async () => {
-            const pin = room.pin;
-            if (await choose("idle_continue")) location.hash = "host/" + pin;
-          }}
-        >
-          Devam et <ArrowRight size={18} />
-        </button>
-      </div>
+      <ScreenPages dialog>
+        <div className="idle-event-symbol">
+          <Clock3 size={38} />
+        </div>
+        <span className="idle-event-eyebrow">OYUN SENİ BEKLİYOR</span>
+        <h2 id="idle-event-title">İptal mi, devam mı?</h2>
+        <p>
+          <strong>{room.title}</strong> henüz başlamadı.
+        </p>
+        <p className="idle-event-note">
+          Etkinlik oluşturulduktan sonra 3 dakika içinde başlatılmazsa otomatik
+          iptal edilir. Devam etmek süreyi sıfırlamaz.
+        </p>
+        <div className="idle-event-time" role="timer">
+          Başlatmak için {Math.floor(remaining / 60)}:
+          {String(remaining % 60).padStart(2, "0")} kaldı
+        </div>
+        {error && <p role="alert">{error}</p>}
+        <div className="idle-event-actions">
+          <button
+            className="btn secondary"
+            disabled={busy}
+            onClick={() => choose("idle_cancel")}
+          >
+            <X size={18} /> İptal et
+          </button>
+          <button
+            className="btn"
+            disabled={busy}
+            onClick={async () => {
+              const pin = room.pin;
+              if (await choose("idle_continue")) location.hash = "host/" + pin;
+            }}
+          >
+            Devam et <ArrowRight size={18} />
+          </button>
+        </div>
+      </ScreenPages>
     </dialog>
   );
 }
