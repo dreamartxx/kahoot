@@ -89,6 +89,8 @@ import GameCreditNotice, { gameCreditMoment } from "./GameCreditNotice";
 import IdleEvents from "./IdleEvents";
 import "./mobile-shell.css";
 import MobileHome from "./MobileHome";
+import MobileModuleLanding from "./MobileModuleLanding";
+import useCompactLayout from "./useCompactLayout";
 import ScreenPages from "./ScreenPages";
 import MobileQuizPicker from "./MobileQuizPicker";
 import { setupNative, joinUrl, publicOrigin } from "./native";
@@ -96,6 +98,7 @@ import "./android-design.css";
 import "./app-theme.css";
 import "./mobile-navigation.css";
 import "./screen-pages.css";
+import "./mobile-module-screen.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -165,6 +168,7 @@ function Modal({ title, onClose, children, wide = false }) {
   );
 }
 function App() {
+  const compact = useCompactLayout();
   const [route, setRoute] = useState(location.hash.slice(1));
   const [tab, setTab] = useState("home");
   const [status, setStatus] = useState({ configured: true, admin: false });
@@ -173,6 +177,7 @@ function App() {
   const [counts, setCounts] = useState({});
   const [rooms, setRooms] = useState([]);
   const [quizCollection, setQuizCollection] = useState("topics");
+  const [homeGroup, setHomeGroup] = useState(0);
   const [showCompleted, setShowCompleted] = useState(false);
   const [modal, setModal] = useState(null);
   const [toast, setToast] = useState("");
@@ -512,7 +517,10 @@ function App() {
                 onUpdate={(user) => setStatus((s) => ({ ...s, user }))}
               />
             ) : tab === "solo" ? (
-              <Solo key={`${status.user.id}-${Boolean(status.preview)}`} />
+              <Solo
+                key={`${status.user.id}-${Boolean(status.preview)}`}
+                onBack={() => nav("home")}
+              />
             ) : tab === "events" ? (
               <section className="my-events-intro">
                 <span className="eyebrow">SENİN OYUN ALANIN</span>
@@ -533,6 +541,7 @@ function App() {
             ) : tab === "home" ? (
               <>
                 <MobileHome
+                  initialGroup={homeGroup}
                   username={status.user?.username}
                   onBrowse={(collection) => {
                     setQuizCollection(collection);
@@ -542,7 +551,16 @@ function App() {
                     (r) => !["closed", "finished"].includes(r.phase),
                   )}
                   onResume={(pin) => go("host/" + pin)}
-                  onChoose={nav}
+                  onChoose={(id) => {
+                    setHomeGroup(
+                      ["tournament", "solo"].includes(id)
+                        ? 1
+                        : ["raffle", "cloud"].includes(id)
+                          ? 2
+                          : 0,
+                    );
+                    nav(id);
+                  }}
                   onJoin={(pin) => go("join/" + pin)}
                 />
                 <section className="mobile-home-intro">
@@ -564,6 +582,19 @@ function App() {
                   <Overview onChoose={nav} />
                 </div>
               </>
+            ) : compact &&
+              ["tournament", "raffle", "cloud", "family"].includes(tab) ? (
+              <MobileModuleLanding
+                mode={tab}
+                onCreate={() => create(tab)}
+                onBack={() => nav("home")}
+                activeRoom={rooms.find(
+                  (r) =>
+                    r.mode === tab && !["closed", "finished"].includes(r.phase),
+                )}
+                onResume={(pin) => go("host/" + pin)}
+                onEvents={() => nav("events")}
+              />
             ) : (
               <>
                 <section className="page-heading">
@@ -756,6 +787,7 @@ function App() {
               </>
             )}
             {tab !== "solo" &&
+              (!compact || tab === "events") &&
               ["events", ...Object.keys(modes)].includes(tab) && (
                 <section className="recent">
                   <div className="section-heading recent-heading">
@@ -1109,6 +1141,7 @@ function Create({
   notify,
   canManageLibrary = false,
 }) {
+  const compact = useCompactLayout();
   const [cat, setCat] = useState(initialCat),
     [title, setTitle] = useState(
       mode === "quiz"
@@ -1160,6 +1193,11 @@ function Create({
       wide={manual || customFamily || manualFamily}
     >
       <form
+        className={
+          compact && ["tournament", "raffle", "cloud"].includes(mode)
+            ? "module-create-form"
+            : undefined
+        }
         onSubmit={async (e) => {
           e.preventDefault();
           setBusy(true);
@@ -1333,11 +1371,9 @@ function Create({
             <div className="info-box">
               <Crown size={24} />
               <span>
-                Her katılımcı yalnızca bir alan seçer ve onaylanan seçim
-                değişmez. Aynı alan tekrar seçilirse ek hak verilmez; tek tur
-                oynanır. Herkes tüm alanlarda yarışır. Başlangıçta her alan için
-                5 veya 10 soruya oy verilir. Sorular otomatik hazırlanır,
-                puanlar turnuva boyunca toplanır.
+                {compact
+                  ? "Herkes tek alan seçer. Ortak alanlar tek turda birleşir. Katılımcılar 5 veya 10 soruya oy verir; puanlar finalde toplanır."
+                  : "Her katılımcı yalnızca bir alan seçer ve onaylanan seçim değişmez. Aynı alan tekrar seçilirse ek hak verilmez; tek tur oynanır. Herkes tüm alanlarda yarışır. Başlangıçta her alan için 5 veya 10 soruya oy verilir. Sorular otomatik hazırlanır, puanlar turnuva boyunca toplanır."}
               </span>
             </div>
           </>

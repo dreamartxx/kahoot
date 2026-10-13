@@ -15,6 +15,8 @@ import GameCreditNotice, { gameCreditMoment } from "./GameCreditNotice";
 import { flagAssets } from "./flag-assets";
 import flagCountries from "../data/flag-countries.json";
 import "./solo.css";
+import MobileSoloDashboard from "./MobileSoloDashboard";
+import useCompactLayout from "./useCompactLayout";
 const names = Object.fromEntries(flagCountries.map((c) => [c.code, c.name]));
 const topic = (id) =>
   id === "mixed" ? { name: "Karışık konular", emoji: "✨" } : catById(id);
@@ -30,7 +32,8 @@ function Option({ value }) {
     value
   );
 }
-export default function Solo() {
+export default function Solo({ onBack }) {
+  const compact = useCompactLayout();
   const [data, setData] = useState(null),
     [category, setCategory] = useState("mixed"),
     [busy, setBusy] = useState(false),
@@ -121,6 +124,7 @@ export default function Solo() {
     <section
       className="solo-page"
       data-playing={playing}
+      data-mobile-start={compact && !playing && !finished}
       data-screen-key={`${game?.phase}:${game?.question?.id || game?.index}`}
     >
       <div className="solo-heading">
@@ -316,6 +320,15 @@ export default function Solo() {
             ))}
           </details>
         </section>
+      ) : compact ? (
+        <MobileSoloDashboard
+          category={category}
+          onCategory={setCategory}
+          onStart={() => action("solo_start", { category })}
+          busy={busy}
+          stats={stats}
+          onBack={onBack}
+        />
       ) : (
         <>
           <div className="solo-dashboard">

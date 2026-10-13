@@ -12,6 +12,7 @@ const cards = [
 ];
 export default function MobileHome({
   username,
+  initialGroup = 0,
   onChoose,
   onJoin,
   onBrowse,
@@ -19,7 +20,7 @@ export default function MobileHome({
   onResume,
 }) {
   const [pin, setPin] = useState("");
-  const [group, setGroup] = useState(0);
+  const [group, setGroup] = useState(initialGroup);
   const [animated, setAnimated] = useState(null);
   const panelId = useId();
   const browse = (collection) =>
