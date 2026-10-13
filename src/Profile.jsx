@@ -112,6 +112,13 @@ export default function Profile({
         </p>
       )}
       <Preferences />
+      <section className="profile-card profile-legal">
+        <h2>
+          <ShieldCheck size={21} /> Gizlilik ve destek
+        </h2>
+        <p>Politikalar, hesap silme ve iletişim.</p>
+        <PrivacyLinks />
+      </section>
       <Credits />
       <div className="profile-grid">
         <form className="profile-card" onSubmit={save}>
@@ -232,7 +239,6 @@ export default function Profile({
           </button>
         </section>
       </div>
-      <PrivacyLinks />
       {!owner && (
         <p className="profile-privacy">
           <ShieldCheck size={17} /> Bu alanda yalnızca kendi hesap bilgilerini

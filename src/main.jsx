@@ -89,6 +89,7 @@ import GameCreditNotice, { gameCreditMoment } from "./GameCreditNotice";
 import IdleEvents from "./IdleEvents";
 import "./mobile-shell.css";
 import MobileHome from "./MobileHome";
+import MobileQuizPicker from "./MobileQuizPicker";
 import { setupNative, joinUrl, publicOrigin } from "./native";
 import "./android-design.css";
 import "./app-theme.css";
@@ -485,7 +486,7 @@ function App() {
             </header>
           )}
           <div
-            className={`content ${tab === "home" ? "overview-content" : ""}`}
+            className={`content ${tab === "home" ? "overview-content" : ""} ${tab === "quiz" ? "quiz-content" : ""}`}
           >
             {!status.configured && (
               <div className="notice">
@@ -599,6 +600,12 @@ function App() {
                   )}
                 </section>
                 <ModuleGuide mode={tab} />
+                {tab === "quiz" && (
+                  <MobileQuizPicker
+                    counts={counts}
+                    onChoose={(id) => create("quiz", id)}
+                  />
+                )}
                 {tab === "tournament" && (
                   <TournamentIntro onCreate={() => create("tournament")} />
                 )}

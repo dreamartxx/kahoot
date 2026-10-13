@@ -1,0 +1,275 @@
+.mobile-quiz-picker {
+  display: none;
+}
+@media (max-width: 800px) {
+  .quiz-content > .page-heading,
+  .quiz-content > .module-guide,
+  .quiz-content > .quiz-formats,
+  .quiz-content > .quiz-picker,
+  .quiz-content > footer {
+    display: none;
+  }
+  .mobile-quiz-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: calc(
+      100svh - 150px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+    min-height: 480px;
+    color: var(--app-text);
+  }
+  .mobile-quiz-picker header > span {
+    color: var(--app-accent);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+  .mobile-quiz-picker header h1 {
+    font-size: 27px;
+    letter-spacing: -1px;
+    margin: 5px 0;
+  }
+  .mobile-quiz-picker header p {
+    margin: 0;
+    color: var(--app-muted);
+    font-size: 14px;
+  }
+  .mobile-quiz-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 46px;
+    background: var(--app-surface);
+    border: 1px solid var(--app-line);
+    border-radius: 16px;
+    padding: 0 14px;
+  }
+  .mobile-quiz-search input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: var(--app-text);
+    font: inherit;
+    font-size: 16px;
+    padding: 10px 0;
+  }
+  .mobile-quiz-search:focus-within {
+    outline: 2px solid var(--app-accent);
+  }
+  .mobile-quiz-search input:focus {
+    outline: none;
+  }
+  .mobile-quiz-rail {
+    position: relative;
+    display: flex;
+    gap: 14px;
+    flex: 1;
+    min-height: 310px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding: 0 18px 8px 2px;
+  }
+  .mobile-quiz-rail::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-quiz-card {
+    flex: 0 0 calc(100% - 18px);
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 26px;
+    border: 1px solid hsl(var(--game-hue) 50% 80%);
+    background:
+      radial-gradient(ellipse at 80% 0%, #ffffffc0, transparent 70%),
+      hsl(var(--game-hue) 62% 92%);
+    color: #30243f;
+    box-shadow: 0 5px 0 -2px hsl(var(--game-hue) 38% 74%);
+  }
+  .mobile-quiz-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .mobile-quiz-card-top > span {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .mobile-quiz-card .guide-trigger {
+    padding: 8px 10px;
+    min-height: 44px;
+    font-size: 12px;
+    gap: 5px;
+    box-shadow: none;
+  }
+  .mobile-quiz-card .guide-trigger svg:last-child {
+    display: none;
+  }
+  .mobile-quiz-art {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex: 1;
+    min-height: 64px;
+  }
+  .mobile-quiz-art > span {
+    font-size: clamp(56px, 10svh, 90px);
+    filter: drop-shadow(0 10px 8px #33205030);
+    transform: rotate(-8deg);
+  }
+  .mobile-quiz-art i {
+    font-style: normal;
+    font-size: 25px;
+    color: hsl(var(--game-hue) 45% 48%);
+  }
+  .mobile-quiz-copy h2 {
+    font-size: 24px;
+    line-height: 1.15;
+    margin: 8px 0;
+  }
+  .mobile-quiz-copy p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0 0 12px;
+  }
+  .mobile-quiz-facts {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 12px;
+    margin: 0 0 14px;
+  }
+  .mobile-quiz-start {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 48px;
+    border-radius: 15px;
+    border: 0;
+    padding: 12px 16px;
+    background: #6a3fc6;
+    color: #fff;
+    font: inherit;
+    font-weight: 800;
+  }
+  .mobile-quiz-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .mobile-quiz-controls button {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid var(--app-line);
+    border-radius: 15px;
+    background: var(--app-surface);
+    color: var(--app-text);
+    flex-shrink: 0;
+  }
+  .mobile-quiz-controls button:disabled {
+    opacity: 0.35;
+  }
+  .mobile-quiz-controls > div {
+    text-align: center;
+    min-width: 0;
+  }
+  .mobile-quiz-controls b {
+    font-size: 14px;
+  }
+  .mobile-quiz-controls span {
+    display: block;
+    color: var(--app-muted);
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  [data-theme="dark"] .mobile-quiz-card {
+    background:
+      radial-gradient(
+        ellipse at top right,
+        hsl(var(--game-hue) 38% 33%),
+        transparent 85%
+      ),
+      #242033;
+    color: #f5efff;
+    border-color: hsl(var(--game-hue) 28% 40%);
+    box-shadow: 0 5px 0 -2px hsl(var(--game-hue) 25% 30%);
+  }
+  [data-theme="dark"] .mobile-quiz-art i {
+    color: #e5c482;
+  }
+}
+@media (max-width: 800px) {
+  .main:has(.quiz-content) > .topbar {
+    display: none;
+  }
+  .quiz-content > .module-teasers,
+  .quiz-content > .recent,
+  .quiz-content > .empty {
+    display: none;
+  }
+  .mobile-quiz-picker {
+    height: calc(
+      100svh - 174px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+  }
+}
+@media (max-width: 800px) {
+  .shell:has(.quiz-content) {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+  }
+  .shell .quiz-content {
+    padding: 12px 18px;
+  }
+  .mobile-quiz-picker {
+    height: calc(
+      100svh - 158px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+    min-height: 450px;
+  }
+}
+@media (max-width: 800px) and (max-height: 720px) {
+  .mobile-quiz-picker {
+    gap: 8px;
+  }
+  .mobile-quiz-picker header p {
+    display: none;
+  }
+  .mobile-quiz-picker header h1 {
+    font-size: 23px;
+    margin: 3px 0;
+  }
+  .mobile-quiz-card {
+    padding: 12px;
+  }
+  .mobile-quiz-art {
+    min-height: 44px;
+  }
+  .mobile-quiz-art > span {
+    font-size: 48px;
+  }
+  .mobile-quiz-copy h2 {
+    font-size: 21px;
+    margin: 5px 0;
+  }
+  .mobile-quiz-copy p {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .mobile-quiz-facts {
+    margin-bottom: 8px;
+  }
+}

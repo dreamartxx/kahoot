@@ -716,3 +716,93 @@ body,
 [data-theme="dark"] :is(.pin-chip b, .raffle-name-form label) {
   color: var(--app-text);
 }
+
+/* Keep help anchored to its card; policies live with account settings. */
+.profile-legal {
+  margin: 16px 0;
+}
+.profile-legal .privacy-links {
+  text-align: left;
+  margin: 10px 0 0;
+  color: var(--app-text);
+}
+.profile-legal .privacy-links nav {
+  justify-content: flex-start;
+  gap: 8px;
+}
+.profile-legal .privacy-links nav > span {
+  display: none;
+}
+.profile-legal .privacy-links a {
+  padding: 12px 14px;
+  border: 1px solid var(--app-line);
+  border-radius: 12px;
+  background: var(--app-soft);
+  text-decoration: none;
+  font-size: 14px;
+}
+.mobile-legal-menu {
+  position: relative;
+  text-align: center;
+  color: var(--app-muted);
+  font-size: 12px;
+}
+.mobile-legal-menu summary {
+  cursor: pointer;
+  padding: 12px;
+}
+.mobile-legal-menu[open] > .privacy-links {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: var(--app-surface);
+  border: 1px solid var(--app-line);
+  border-radius: 16px;
+  padding: 12px;
+  z-index: 8;
+  box-shadow: 0 10px 30px #0002;
+}
+@media (max-width: 800px) {
+  .mobile-game-tile .module-guide {
+    inset: 10px 8px auto auto;
+    width: auto;
+  }
+  .mobile-game-tile .guide-trigger {
+    width: auto;
+    min-height: 44px;
+    padding: 8px;
+    gap: 5px;
+    border: 1px solid #ffffff90;
+    background: #ffffffa8;
+    color: #513666;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 11px;
+  }
+  .mobile-game-tile .guide-trigger svg:last-child {
+    display: none;
+  }
+  .mobile-game-tile .mobile-tile-action {
+    padding-top: 66px;
+  }
+  [data-theme="dark"] .mobile-game-tile .guide-trigger {
+    background: #211d32d9;
+    color: #f5efff;
+    border-color: #ffffff24;
+  }
+  .profile-legal .privacy-links nav {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .profile-legal .privacy-links a {
+    display: block;
+  }
+}
+@media (max-width: 800px) {
+  .mobile-game-tile .guide-trigger {
+    position: relative;
+    inset: auto;
+    white-space: nowrap;
+  }
+}

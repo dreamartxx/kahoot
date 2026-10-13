@@ -163,7 +163,12 @@ export default function MobileHome({ username, onChoose, onJoin }) {
           ))}
       </div>
       <p className="mobile-home-foot">En güzel anılar, birlikte oynarken. ♥</p>
-      <PrivacyLinks />
+      {!username && (
+        <details className="mobile-legal-menu">
+          <summary>Bilgi ve destek</summary>
+          <PrivacyLinks />
+        </details>
+      )}
     </section>
   );
 }
