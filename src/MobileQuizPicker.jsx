@@ -1,10 +1,17 @@
 import React, { useRef, useState } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Search } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  Search,
+  X,
+} from "lucide-react";
 import { categories } from "./api";
 import { quizFormats } from "./QuizFormats";
 import ModuleGuide from "./ModuleGuide";
 import GameArt from "./GameArt";
 import "./mobile-quiz-picker.css";
+import { searchQuizzes } from "./quiz-search";
 
 const concepts = [
   {
@@ -25,18 +32,19 @@ export default function MobileQuizPicker({
   counts,
   onChoose,
   onFamily,
-  initialCollection = "topics",
+  collection = "topics",
 }) {
-  const [collection, setCollection] = useState(initialCollection);
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const rail = useRef(null);
   const games = collection === "topics" ? categories : concepts;
-  const items = games.filter((g) =>
-    g.name
-      .toLocaleLowerCase("tr")
-      .includes(query.trim().toLocaleLowerCase("tr")),
-  );
+  const items = searchQuizzes(games, query);
+  const search = useRef(null);
+  function updateQuery(value) {
+    setQuery(value);
+    setIndex(0);
+    if (rail.current) rail.current.scrollLeft = 0;
+  }
   function move(next) {
     const i = Math.max(0, Math.min(items.length - 1, next));
     const el = rail.current;
@@ -51,49 +59,72 @@ export default function MobileQuizPicker({
   return (
     <section className="mobile-quiz-picker" aria-label="Yarışma seç">
       <header>
-        <span>BİLGİ YARIŞMASI</span>
+        <span>
+          {collection === "topics" ? "BİLGİ YARIŞMASI" : "KONSEPTLER"}
+        </span>
         <h1>
-          {collection === "topics"
-            ? "Konunu seç."
-            : "Bildiğin oyuna yeni bir tat."}
+          {collection === "topics" ? "Konunu seç." : "Oyuna farklı bir tat."}
         </h1>
       </header>
-      <div
-        className="quiz-collection-switch"
-        role="group"
-        aria-label="Yarışma türü"
-      >
-        {[
-          ["topics", "Konulara göre"],
-          ["concepts", "Konseptler"],
-        ].map(([id, label]) => (
-          <button
-            key={id}
-            aria-pressed={collection === id}
-            onClick={() => {
-              setCollection(id);
-              setQuery("");
-              setIndex(0);
-              if (rail.current) rail.current.scrollLeft = 0;
-            }}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-      <label className="mobile-quiz-search">
-        <Search size={18} />
-        <input
-          aria-label="Yarışma ara"
-          placeholder="Konu veya oyun ara…"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setIndex(0);
-            if (rail.current) rail.current.scrollLeft = 0;
+      {collection === "topics" && (
+        <form
+          className="quiz-search-tools"
+          role="search"
+          onSubmit={(e) => {
+            e.preventDefault();
+            search.current?.blur();
           }}
-        />
-      </label>
+        >
+          <div className="mobile-quiz-search">
+            <Search size={20} aria-hidden="true" />
+            <input
+              ref={search}
+              type="search"
+              aria-label="Konu ara"
+              placeholder="Konu ara: futbol, Türkiye…"
+              autoComplete="off"
+              enterKeyHint="search"
+              value={query}
+              onChange={(e) => updateQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") updateQuery("");
+              }}
+            />
+            {query && (
+              <button
+                type="button"
+                aria-label="Aramayı temizle"
+                onClick={() => {
+                  updateQuery("");
+                  search.current?.focus();
+                }}
+              >
+                <X size={19} />
+              </button>
+            )}
+          </div>
+          <label className="quiz-quick-select">
+            <span aria-live="polite">
+              {query.trim() ? `${items.length} konu bulundu` : "Doğrudan seç"}
+            </span>
+            <select
+              aria-label="Konuya git"
+              value={items[index]?.id || ""}
+              disabled={!items.length}
+              onChange={(e) =>
+                move(items.findIndex((g) => g.id === e.target.value))
+              }
+            >
+              {!items.length && <option value="">Sonuç yok</option>}
+              {items.map((g) => (
+                <option key={g.id} value={g.id}>
+                  {g.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </form>
+      )}
       {items.length ? (
         <>
           <div
@@ -205,9 +236,12 @@ export default function MobileQuizPicker({
           </div>
         </>
       ) : (
-        <p className="mobile-quiz-empty">
-          Bu aramayla eşleşen yarışma yok. Başka bir kelime dene.
-        </p>
+        <div className="mobile-quiz-empty" role="status">
+          <Search size={32} />
+          <h2>Bu konuyu bulamadık.</h2>
+          <p>Daha kısa bir kelime dene veya tüm konulara dön.</p>
+          <button onClick={() => updateQuery("")}>Tüm konuları göster</button>
+        </div>
       )}
     </section>
   );

@@ -147,10 +147,7 @@ export default function MobileHome({
               </div>
               <div className="quiz-heart-choices">
                 <button onClick={() => browse("topics")}>
-                  Konulara göre <ArrowUpRight size={17} />
-                </button>
-                <button onClick={() => browse("concepts")}>
-                  Konseptler <ArrowUpRight size={17} />
+                  Konuları keşfet <ArrowUpRight size={17} />
                 </button>
               </div>
             </article>

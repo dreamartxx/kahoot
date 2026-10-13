@@ -440,7 +440,7 @@
     scale: 0.65;
   }
   .module-solo .module-screen-art {
-    display: none;
+    min-height: 32px;
   }
   .module-screen-header h1 {
     font-size: 17px;
@@ -453,5 +453,176 @@
   .module-solo .module-screen-card {
     padding: 12px;
     gap: 6px;
+  }
+}
+
+/* Search and direct topic selection share one compact, fixed-height toolbar. */
+@media (max-width: 800px) {
+  .mobile-quiz-picker {
+    min-height: 0;
+    gap: 9px;
+  }
+  .mobile-quiz-picker > header,
+  .quiz-search-tools,
+  .mobile-quiz-controls {
+    flex-shrink: 0;
+  }
+  .quiz-search-tools {
+    display: grid;
+    gap: 7px;
+    margin: 0;
+  }
+  .mobile-quiz-picker .mobile-quiz-search {
+    min-height: 46px;
+    padding: 0 10px 0 13px;
+    gap: 8px;
+  }
+  .mobile-quiz-search > svg {
+    flex-shrink: 0;
+    color: var(--app-accent);
+  }
+  .mobile-quiz-search input::-webkit-search-cancel-button {
+    display: none;
+  }
+  .mobile-quiz-search button {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 12px;
+    background: var(--app-soft);
+    color: var(--app-text);
+  }
+  .quiz-quick-select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--app-muted);
+    font-size: 12px;
+  }
+  .quiz-quick-select > span {
+    flex-shrink: 0;
+  }
+  .quiz-quick-select select {
+    min-width: 0;
+    flex: 1;
+    min-height: 42px;
+    border: 1px solid var(--app-line);
+    border-radius: 12px;
+    padding: 7px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    background: var(--app-surface);
+    color: var(--app-text);
+  }
+  .mobile-quiz-picker .mobile-quiz-rail {
+    min-height: 0;
+  }
+  .mobile-quiz-picker .mobile-quiz-art {
+    min-height: 0;
+    overflow: hidden;
+  }
+  .mobile-quiz-card > :not(.mobile-quiz-art) {
+    flex-shrink: 0;
+  }
+  .mobile-quiz-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 18px;
+    border-radius: 24px;
+    background: var(--app-soft);
+    color: var(--app-text);
+  }
+  .mobile-quiz-empty h2 {
+    font-size: 21px;
+    margin: 14px 0 6px;
+  }
+  .mobile-quiz-empty p {
+    font-size: 14px;
+    margin: 0 0 18px;
+  }
+  .mobile-quiz-empty button {
+    min-height: 44px;
+    border: 0;
+    border-radius: 12px;
+    padding: 10px 16px;
+    background: var(--app-accent);
+    color: var(--app-surface);
+    font: inherit;
+    font-weight: 700;
+  }
+}
+@media (max-width: 800px) and (max-height: 600px) {
+  .mobile-quiz-picker {
+    gap: 6px;
+  }
+  .mobile-quiz-picker .mobile-quiz-art {
+    display: none;
+  }
+  .mobile-quiz-picker .mobile-quiz-card {
+    justify-content: space-between;
+  }
+  .mobile-quiz-picker .mobile-quiz-copy p {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .mobile-quiz-picker .mobile-quiz-facts {
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 800px) {
+  .shell .mobile-design-home {
+    min-height: 0;
+  }
+  .mobile-design-home .mobile-game-grid {
+    min-height: 0;
+  }
+  .mobile-game-tile .mobile-tile-action {
+    min-height: 0;
+  }
+}
+@media (max-width: 800px) and (max-height: 650px) {
+  .mobile-game-tile .mobile-tile-action {
+    padding: 58px 10px 12px;
+  }
+  .mobile-game-tile .mobile-tile-action > .game-art {
+    flex: 1;
+    min-height: 0;
+    height: 60px;
+    width: 110px;
+    margin: 0 auto 4px;
+    scale: 0.6;
+    transform-origin: center;
+  }
+  .mobile-game-tile .mobile-tile-action h3 {
+    min-height: 0;
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+  .mobile-game-tile .mobile-tile-action p {
+    min-height: 0;
+    font-size: 13px;
+  }
+  .mobile-design-home .quiz-heart-card {
+    min-height: 150px;
+  }
+  .mobile-design-home .quiz-heart-copy p {
+    display: none;
+  }
+  .mobile-design-home .quiz-heart-copy h2 {
+    margin: 6px 0 9px;
+  }
+  .mobile-design-home .quiz-heart-card > .game-art {
+    scale: 0.5;
+    top: 37px;
+    right: 10px;
   }
 }

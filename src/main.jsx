@@ -176,7 +176,6 @@ function App() {
   const [authError, setAuthError] = useState("");
   const [counts, setCounts] = useState({});
   const [rooms, setRooms] = useState([]);
-  const [quizCollection, setQuizCollection] = useState("topics");
   const [homeGroup, setHomeGroup] = useState(0);
   const [showCompleted, setShowCompleted] = useState(false);
   const [modal, setModal] = useState(null);
@@ -264,6 +263,7 @@ function App() {
     const allowed = [
       "home",
       "events",
+      "concepts",
       "profile",
       "users",
       "library",
@@ -376,6 +376,7 @@ function App() {
               ["events", "Etkinliklerim", CalendarDays],
               ["solo", "Kendini Dene", Sparkles],
               ["quiz", "Bilgi yarışması", Trophy],
+              ["concepts", "Konseptler", Sparkles],
               ["tournament", "Turnuva", Crown],
               ["family", "Beni Tanıyor musun?", Heart],
               ["raffle", "Çekiliş", Ticket],
@@ -457,7 +458,9 @@ function App() {
                           ? "Kullanıcı yönetimi"
                           : tab === "library"
                             ? "Soru kütüphanesi"
-                            : modes[tab]?.name}
+                            : tab === "concepts"
+                              ? "Konseptler"
+                              : modes[tab]?.name}
                 </b>
               </div>
               <form
@@ -495,7 +498,7 @@ function App() {
             </header>
           )}
           <div
-            className={`content ${tab === "home" ? "overview-content" : ""} ${tab === "quiz" ? "quiz-content" : ""}`}
+            className={`content ${tab === "home" ? "overview-content" : ""} ${["quiz", "concepts"].includes(tab) ? "quiz-content" : ""}`}
           >
             {!status.configured && (
               <div className="notice">
@@ -544,8 +547,7 @@ function App() {
                   initialGroup={homeGroup}
                   username={status.user?.username}
                   onBrowse={(collection) => {
-                    setQuizCollection(collection);
-                    nav("quiz");
+                    nav(collection === "concepts" ? "concepts" : "quiz");
                   }}
                   activeRoom={rooms.find(
                     (r) => !["closed", "finished"].includes(r.phase),
@@ -608,26 +610,30 @@ function App() {
                         ? "Sıradaki güzel anı başlat."
                         : tab === "tournament"
                           ? "Alanını seç. Şampiyonluğa oyna."
-                          : tab === "quiz"
-                            ? "Bilgiyi heyecana dönüştür."
-                            : tab === "raffle"
-                              ? "Biraz şans, bolca heyecan."
-                              : tab === "family"
-                                ? "Aynı ev, kaç küçük sır?"
-                                : "Herkesin fikri burada büyür."}
+                          : tab === "concepts"
+                            ? "Bildiğin oyuna yeni bir tat."
+                            : tab === "quiz"
+                              ? "Bilgiyi heyecana dönüştür."
+                              : tab === "raffle"
+                                ? "Biraz şans, bolca heyecan."
+                                : tab === "family"
+                                  ? "Aynı ev, kaç küçük sır?"
+                                  : "Herkesin fikri burada büyür."}
                     </h1>
                     <p>
                       {tab === "home"
                         ? "Yarış, şansını dene, fikrini paylaş. Bugün ne oynuyoruz?"
                         : tab === "tournament"
                           ? "Ortak alanlar, ortak heyecan. Büyük ödül için birlikte yarışın."
-                          : tab === "quiz"
-                            ? "Bir konu seç, QR kodunu paylaş. Geri sayım başlasın."
-                            : tab === "raffle"
-                              ? "İsimleri ekle, çarkı döndür. Sürpriz kimin için?"
-                              : tab === "family"
-                                ? "Aileni ne kadar tanıyorsun? Birlikte keşfedin, birlikte gülün."
-                                : "Sorunu sor. Aynı kelimeler buluştukça balonlar büyüsün."}
+                          : tab === "concepts"
+                            ? "Tahmin et, şaşır, birbirini yeniden keşfet."
+                            : tab === "quiz"
+                              ? "Bir konu seç, QR kodunu paylaş. Geri sayım başlasın."
+                              : tab === "raffle"
+                                ? "İsimleri ekle, çarkı döndür. Sürpriz kimin için?"
+                                : tab === "family"
+                                  ? "Aileni ne kadar tanıyorsun? Birlikte keşfedin, birlikte gülün."
+                                  : "Sorunu sor. Aynı kelimeler buluştukça balonlar büyüsün."}
                     </p>
                   </div>
                   {tab === "quiz" ? (
@@ -644,10 +650,10 @@ function App() {
                   )}
                 </section>
                 <ModuleGuide mode={tab} />
-                {tab === "quiz" && (
+                {["quiz", "concepts"].includes(tab) && (
                   <MobileQuizPicker
-                    key={quizCollection}
-                    initialCollection={quizCollection}
+                    key={tab}
+                    collection={tab === "concepts" ? "concepts" : "topics"}
                     onFamily={() => nav("family")}
                     counts={counts}
                     onChoose={(id) => create("quiz", id)}
@@ -656,7 +662,7 @@ function App() {
                 {tab === "tournament" && (
                   <TournamentIntro onCreate={() => create("tournament")} />
                 )}
-                {tab === "quiz" && (
+                {["quiz", "concepts"].includes(tab) && (
                   <QuizFormats onChoose={(id) => create("quiz", id)} />
                 )}
                 {tab === "quiz" && (
@@ -861,13 +867,22 @@ function App() {
         <nav className="mobile-bottom-nav" aria-label="Mobil gezinme">
           {[
             ["home", "Oyna", LayoutGrid],
+            ["concepts", "Konseptler", Sparkles],
             ["profile", "Profil", UserRound],
           ].map(([id, label, Icon]) => (
             <button
               key={id}
               className={
                 (id === "home" &&
-                  !["profile", "users", "events", "library"].includes(tab)) ||
+                  ![
+                    "profile",
+                    "users",
+                    "events",
+                    "library",
+                    "concepts",
+                    "family",
+                  ].includes(tab)) ||
+                (id === "concepts" && ["concepts", "family"].includes(tab)) ||
                 (id === "profile" &&
                   ["profile", "users", "events", "library"].includes(tab))
                   ? "active"
@@ -875,7 +890,15 @@ function App() {
               }
               aria-current={
                 (id === "home" &&
-                  !["profile", "users", "events", "library"].includes(tab)) ||
+                  ![
+                    "profile",
+                    "users",
+                    "events",
+                    "library",
+                    "concepts",
+                    "family",
+                  ].includes(tab)) ||
+                (id === "concepts" && ["concepts", "family"].includes(tab)) ||
                 (id === "profile" &&
                   ["profile", "users", "events", "library"].includes(tab))
                   ? "page"
