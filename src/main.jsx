@@ -107,6 +107,8 @@ import "./solo-compact.css";
 import "./choice-surfaces.css";
 import "./countdown-scene.css";
 import CountdownScene from "./CountdownScene";
+import CancelGameButton from "./CancelGameButton";
+import "./question-stage.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -1819,7 +1821,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       data-screen-key={`${room.phase}:${room.question?.id || room.index}`}
       data-playing={["question", "countdown", "reveal"].includes(room.phase)}
     >
-      <header className="event-header">
+      <header className="event-header" data-cancellable={host && !closed}>
         <button className="text-btn" onClick={onBack}>
           <ChevronLeft size={19} /> Stüdyo
         </button>
@@ -1829,6 +1831,13 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         <div className="event-tools">
           {compact && ["raffle", "cloud"].includes(room.mode) && (
             <ModuleGuide mode={room.mode} compact />
+          )}
+          {host && !closed && (
+            <CancelGameButton
+              compact
+              disabled={busy}
+              onConfirm={() => action("close")}
+            />
           )}
           <span className="pin-chip">
             KOD <b>{pin}</b>
@@ -2283,15 +2292,11 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
             <Button secondary onClick={() => setQr(true)}>
               QR ile davet et
             </Button>
-            <button
-              className="text-btn muted"
-              onClick={() => {
-                if (confirm("Etkinlik kapatılsın mı? Yeni cevap alınamayacak."))
-                  action("close");
-              }}
-            >
-              Etkinliği kapat
-            </button>
+            <CancelGameButton
+              disabled={busy}
+              completed={room.phase === "finished"}
+              onConfirm={() => action("close")}
+            />
           </div>
         </CompactRoomPanel>
       )}

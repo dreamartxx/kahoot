@@ -1,3 +1,4 @@
+import CancelGameButton from "./CancelGameButton";
 import CountdownScene from "./CountdownScene";
 import ThemedSelect from "./ThemedSelect";
 import React, { useEffect, useRef, useState } from "react";
@@ -99,8 +100,10 @@ export default function Solo({ onBack }) {
     try {
       receive(await api(name, { gameId: game?.id, ...extra }));
       if (name === "solo_start") setDismissed(null);
+      return true;
     } catch (e) {
       setError(e.message);
+      return false;
     } finally {
       pending.current = false;
       if (alive.current) setBusy(false);
@@ -251,13 +254,12 @@ export default function Solo({ onBack }) {
               )}
             </>
           )}
-          <button
-            className="text-btn solo-end"
+          <CancelGameButton
+            solo
+            className="solo-end"
             disabled={busy}
-            onClick={() => action("solo_abandon")}
-          >
-            Testi bitir · skor kaydedilmez
-          </button>
+            onConfirm={() => action("solo_abandon")}
+          />
         </section>
       ) : finished ? (
         <section className="solo-result">

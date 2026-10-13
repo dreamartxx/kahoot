@@ -4223,3 +4223,24 @@ test('native bearer login is revocable, never inherits browser cookies, and reje
   assert.equal((await call('logout',{}, {native:true,bearer:login.session})).session,'cleared');
   assert.equal((await call('rooms',{}, {native:true,bearer:login.session})).status,401);
 });
+
+test("manual cancellation reaches players and rejects further answers", async () => {
+  const room = await create("quiz");
+  const player = await join(room.pin, "İptal kontrolü");
+  await call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, { admin: true });
+  const active = (await call("room", { pin: room.pin }, { token: player.token })).data;
+  const forbidden = await call("close", { pin: room.pin }, { token: player.token });
+  assert.equal(forbidden.status, 401);
+  const cancelled = await call("close", { pin: room.pin }, { admin: true });
+  assert.equal(cancelled.status, 200);
+  assert.equal(cancelled.data.phase, "closed");
+  assert.equal(cancelled.data.closeReason, "cancelled");
+  const seen = (await call("room", { pin: room.pin }, { token: player.token })).data;
+  assert.equal(seen.phase, "closed");
+  assert.equal(seen.closeReason, "cancelled");
+  const answer = await call("answer", { pin: room.pin, questionId: active.question.id, choice: 0 }, { token: player.token });
+  assert.equal(answer.status, 409);
+  const repeated = await call("close", { pin: room.pin }, { admin: true });
+  assert.equal(repeated.status, 200);
+  assert.equal(repeated.data.closeReason, "cancelled");
+});
