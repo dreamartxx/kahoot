@@ -28,6 +28,7 @@ export default function Profile({
   onUsers,
   onLibrary,
   onHelp,
+  onEvents,
   onUpdate,
 }) {
   const [username, setUsername] = useState(user.username);
@@ -186,6 +187,16 @@ export default function Profile({
             <span>
               <strong>Şifremi değiştir</strong>
               <small>Hesabının giriş şifresini güncelle</small>
+            </span>
+            <ChevronRight size={18} />
+          </button>
+          <button className="profile-setting-row" onClick={onEvents}>
+            <span className="setting-icon">
+              <LibraryBig size={21} />
+            </span>
+            <span>
+              <strong>Oyunlarım ve geçmişim</strong>
+              <small>Açık odaların ve tamamlanan etkinliklerin</small>
             </span>
             <ChevronRight size={18} />
           </button>

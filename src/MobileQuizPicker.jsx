@@ -3,21 +3,35 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { categories } from "./api";
 import { quizFormats } from "./QuizFormats";
 import ModuleGuide from "./ModuleGuide";
+import GameArt from "./GameArt";
 import "./mobile-quiz-picker.css";
 
-const games = [
+const concepts = [
+  {
+    id: "family",
+    name: "Beni Tanıyor musun?",
+    desc: "Aynı aile, bir sürü küçük sır. Birbirinizi yeniden keşfedin.",
+    count: 50,
+    special: true,
+  },
   ...quizFormats.map((f) => ({
     ...f,
     desc: f.description,
     count: f.pool,
     special: true,
   })),
-  ...categories,
 ];
-export default function MobileQuizPicker({ counts, onChoose }) {
+export default function MobileQuizPicker({
+  counts,
+  onChoose,
+  onFamily,
+  initialCollection = "topics",
+}) {
+  const [collection, setCollection] = useState(initialCollection);
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const rail = useRef(null);
+  const games = collection === "topics" ? categories : concepts;
   const items = games.filter((g) =>
     g.name
       .toLocaleLowerCase("tr")
@@ -37,10 +51,36 @@ export default function MobileQuizPicker({ counts, onChoose }) {
   return (
     <section className="mobile-quiz-picker" aria-label="Yarışma seç">
       <header>
-        <span>OYUNUNU SEÇ</span>
-        <h1>Merakını takip et.</h1>
-        <p>Bir kart seç, birlikte heyecanı başlat.</p>
+        <span>BİLGİ YARIŞMASI</span>
+        <h1>
+          {collection === "topics"
+            ? "Konunu seç."
+            : "Bildiğin oyuna yeni bir tat."}
+        </h1>
       </header>
+      <div
+        className="quiz-collection-switch"
+        role="group"
+        aria-label="Yarışma türü"
+      >
+        {[
+          ["topics", "Konulara göre"],
+          ["concepts", "Konseptler"],
+        ].map(([id, label]) => (
+          <button
+            key={id}
+            aria-pressed={collection === id}
+            onClick={() => {
+              setCollection(id);
+              setQuery("");
+              setIndex(0);
+              if (rail.current) rail.current.scrollLeft = 0;
+            }}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
       <label className="mobile-quiz-search">
         <Search size={18} />
         <input
@@ -88,19 +128,32 @@ export default function MobileQuizPicker({ counts, onChoose }) {
           >
             {items.map((g, i) => (
               <article
-                className="mobile-quiz-card"
+                className={`mobile-quiz-card ${g.id === "family" ? "family-concept-card" : ""}`}
                 key={g.id}
-                style={{ "--game-hue": (i * 37 + 265) % 360 }}
+                style={{
+                  "--game-hue":
+                    g.id === "family"
+                      ? 335
+                      : (games.indexOf(g) * 37 + 265) % 360,
+                }}
                 aria-label={`${g.name}, ${i + 1} / ${items.length}`}
               >
                 <div className="mobile-quiz-card-top">
-                  <span>{g.special ? "SÜRPRİZ OYUN" : "BİLGİ YARIŞMASI"}</span>
+                  <span>
+                    {g.id === "family"
+                      ? "BİZE ÖZEL"
+                      : g.special
+                        ? "KONSEPT YARIŞMA"
+                        : "KONU YARIŞMASI"}
+                  </span>
                   <ModuleGuide mode={g.special ? g.id : "quiz"} compact />
                 </div>
                 <div className="mobile-quiz-art" aria-hidden="true">
-                  <i>✦</i>
-                  <span>{g.emoji}</span>
-                  <i>✧</i>
+                  <GameArt
+                    mode={g.special ? g.id : "quiz"}
+                    glyph={g.special ? undefined : g.emoji}
+                    active={i === index}
+                  />
                 </div>
                 <div className="mobile-quiz-copy">
                   <h2>{g.name}</h2>
@@ -110,11 +163,17 @@ export default function MobileQuizPicker({ counts, onChoose }) {
                   <span>
                     <b>{counts[g.id] ?? g.count}</b> soru havuzu
                   </span>
-                  <span>10 · 15 · 20 soru</span>
+                  <span>
+                    {g.id === "family"
+                      ? "Sana özel cevaplar"
+                      : "10 · 15 · 20 soru"}
+                  </span>
                 </div>
                 <button
                   className="mobile-quiz-start"
-                  onClick={() => onChoose(g.id)}
+                  onClick={() =>
+                    g.id === "family" ? onFamily() : onChoose(g.id)
+                  }
                   aria-label={`${g.name} yarışması oluştur`}
                 >
                   Bu oyunu seç <ArrowUpRight size={20} />

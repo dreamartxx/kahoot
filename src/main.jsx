@@ -93,6 +93,7 @@ import MobileQuizPicker from "./MobileQuizPicker";
 import { setupNative, joinUrl, publicOrigin } from "./native";
 import "./android-design.css";
 import "./app-theme.css";
+import "./mobile-navigation.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -169,6 +170,7 @@ function App() {
   const [authError, setAuthError] = useState("");
   const [counts, setCounts] = useState({});
   const [rooms, setRooms] = useState([]);
+  const [quizCollection, setQuizCollection] = useState("topics");
   const [showCompleted, setShowCompleted] = useState(false);
   const [modal, setModal] = useState(null);
   const [toast, setToast] = useState("");
@@ -504,6 +506,7 @@ function App() {
                 onUsers={() => nav("users")}
                 onLibrary={() => nav("library")}
                 onHelp={() => setModal({ type: "how" })}
+                onEvents={() => nav("events")}
                 onUpdate={(user) => setStatus((s) => ({ ...s, user }))}
               />
             ) : tab === "solo" ? (
@@ -529,6 +532,14 @@ function App() {
               <>
                 <MobileHome
                   username={status.user?.username}
+                  onBrowse={(collection) => {
+                    setQuizCollection(collection);
+                    nav("quiz");
+                  }}
+                  activeRoom={rooms.find(
+                    (r) => !["closed", "finished"].includes(r.phase),
+                  )}
+                  onResume={(pin) => go("host/" + pin)}
                   onChoose={nav}
                   onJoin={(pin) => go("join/" + pin)}
                 />
@@ -602,6 +613,9 @@ function App() {
                 <ModuleGuide mode={tab} />
                 {tab === "quiz" && (
                   <MobileQuizPicker
+                    key={quizCollection}
+                    initialCollection={quizCollection}
+                    onFamily={() => nav("family")}
                     counts={counts}
                     onChoose={(id) => create("quiz", id)}
                   />
@@ -812,19 +826,27 @@ function App() {
         </main>
         <nav className="mobile-bottom-nav" aria-label="Mobil gezinme">
           {[
-            ["home", "Ana sayfa", LayoutGrid],
-            ["events", "Etkinliklerim", CalendarDays],
-            ["join", "Katıl", KeyRound],
+            ["home", "Oyna", LayoutGrid],
             ["profile", "Profil", UserRound],
           ].map(([id, label, Icon]) => (
             <button
               key={id}
               className={
-                tab === id || (id === "profile" && tab === "users")
+                (id === "home" &&
+                  !["profile", "users", "events", "library"].includes(tab)) ||
+                (id === "profile" &&
+                  ["profile", "users", "events", "library"].includes(tab))
                   ? "active"
                   : ""
               }
-              aria-current={tab === id ? "page" : undefined}
+              aria-current={
+                (id === "home" &&
+                  !["profile", "users", "events", "library"].includes(tab)) ||
+                (id === "profile" &&
+                  ["profile", "users", "events", "library"].includes(tab))
+                  ? "page"
+                  : undefined
+              }
               onClick={() =>
                 id === "join" ? setModal({ type: "join" }) : nav(id)
               }

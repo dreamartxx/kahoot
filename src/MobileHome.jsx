@@ -1,24 +1,32 @@
 import React, { useId, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import ModuleGuide from "./ModuleGuide";
-import { characterById } from "./characters";
+import GameArt from "./GameArt";
 import PrivacyLinks from "./PrivacyLinks";
 import { ThemePicker } from "./Preferences";
 const cards = [
-  ["quiz", "Bilgi Yarışması", "Bilgini konuştur."],
-  ["family", "Beni Tanıyor musun?", "Birbirinizi yeniden keşfedin."],
-  ["raffle", "Çarkıfelek", "Şans bu kez kimden yana?"],
-  ["cloud", "Kelime Bulutu", "Bir kelime, bin fikir."],
   ["tournament", "Turnuva", "Bu evin şampiyonu kim?"],
   ["solo", "Kendini Dene", "Kendi rekorunu geç."],
+  ["raffle", "Çarkıfelek", "Şans bu kez kimden yana?"],
+  ["cloud", "Kelime Bulutu", "Bir kelime, bin fikir."],
 ];
-export default function MobileHome({ username, onChoose, onJoin }) {
+export default function MobileHome({
+  username,
+  onChoose,
+  onJoin,
+  onBrowse,
+  activeRoom,
+  onResume,
+}) {
   const [pin, setPin] = useState("");
   const [group, setGroup] = useState(0);
+  const [animated, setAnimated] = useState(null);
   const panelId = useId();
-  const groups = ["Birlikte", "Eğlence", "Meydan oku"];
+  const browse = (collection) =>
+    onBrowse ? onBrowse(collection) : onChoose("quiz");
+  const groups = ["Yarışmalar", "Meydan Oku", "Çark & Kelimeler"];
   return (
-    <section className="mobile-design-home">
+    <section className={`mobile-design-home ${activeRoom ? "has-resume" : ""}`}>
       <div className="mobile-home-heading">
         <div>
           <p className="mobile-hello">
@@ -33,6 +41,18 @@ export default function MobileHome({ username, onChoose, onJoin }) {
         </div>
         <ThemePicker compact />
       </div>
+      {activeRoom && (
+        <button
+          className="mobile-resume"
+          onClick={() => onResume(activeRoom.pin)}
+        >
+          <span>
+            <b>Oyununa devam et</b>
+            <small>{activeRoom.title}</small>
+          </span>
+          <ArrowUpRight size={20} />
+        </button>
+      )}
       <section className="mobile-code-card">
         <span aria-hidden="true">✦</span>
         <h2>Herkes hazır mı?</h2>
@@ -73,7 +93,10 @@ export default function MobileHome({ username, onChoose, onJoin }) {
             aria-selected={group === i}
             aria-controls={panelId}
             tabIndex={group === i ? 0 : -1}
-            onClick={() => setGroup(i)}
+            onClick={() => {
+              setGroup(i);
+              setAnimated(null);
+            }}
             onKeyDown={(e) => {
               const next =
                 e.key === "ArrowRight"
@@ -88,6 +111,7 @@ export default function MobileHome({ username, onChoose, onJoin }) {
               if (next !== null) {
                 e.preventDefault();
                 setGroup(next);
+                setAnimated(null);
                 document.getElementById(`${panelId}-tab-${next}`)?.focus();
               }
             }}
@@ -97,70 +121,74 @@ export default function MobileHome({ username, onChoose, onJoin }) {
         ))}
       </div>
       <div
-        className="mobile-game-grid"
+        className={`mobile-game-grid ${group === 0 ? "quiz-heart-panel" : ""}`}
         role="tabpanel"
         id={panelId}
         aria-labelledby={`${panelId}-tab-${group}`}
       >
-        {cards
-          .slice(group * 2, group * 2 + 2)
-          .map(([id, title, description]) => (
-            <article key={id} className={`mobile-game-tile mobile-tile-${id}`}>
-              <ModuleGuide mode={id} compact />
-              <button
-                className="mobile-tile-action"
-                onClick={() => onChoose(id)}
-              >
-                <span className="mobile-tile-art" aria-hidden="true">
-                  {id === "quiz" && (
-                    <>
-                      <b className="mini-question">?</b>
-                      <img src={characterById("wizard").image} alt="" />
-                    </>
-                  )}
-                  {id === "family" && (
-                    <>
-                      <img src={characterById("cat").image} alt="" />
-                      <img src={characterById("fox").image} alt="" />
-                      <b className="mini-heart">♥</b>
-                    </>
-                  )}
-                  {id === "raffle" && <span className="mini-wheel">★</span>}
-                  {id === "tournament" && (
-                    <>
-                      <img src={characterById("knight").image} alt="" />
-                      <span className="game-trophy">
-                        <i>★</i>
-                      </span>
-                      <b className="game-spark">✦</b>
-                    </>
-                  )}
-                  {id === "solo" && (
-                    <>
-                      <span className="game-target">
-                        <i>↗</i>
-                      </span>
-                      <img src={characterById("astronaut").image} alt="" />
-                      <b className="game-spark">✦</b>
-                    </>
-                  )}
-                  {id === "cloud" && (
-                    <>
-                      <span className="mini-bubble">
-                        neşe<small>12</small>
-                      </span>
-                      <span className="mini-bubble">
-                        aile<small>8</small>
-                      </span>
-                    </>
-                  )}
-                </span>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <ArrowUpRight className="mobile-tile-arrow" size={17} />
-              </button>
+        {group === 0 ? (
+          <>
+            <article className="quiz-heart-card">
+              <div className="quiz-heart-top">
+                <span>BİLGİNİ KONUŞTUR</span>
+                <ModuleGuide mode="quiz" compact />
+              </div>
+              <GameArt mode="quiz" />
+              <div className="quiz-heart-copy">
+                <h2>Bilgi Yarışması</h2>
+                <p>Her konu yeni bir heyecan.</p>
+              </div>
+              <div className="quiz-heart-choices">
+                <button onClick={() => browse("topics")}>
+                  Konulara göre <ArrowUpRight size={17} />
+                </button>
+                <button onClick={() => browse("concepts")}>
+                  Konseptler <ArrowUpRight size={17} />
+                </button>
+              </div>
             </article>
-          ))}
+            <button
+              className="family-spotlight"
+              onClick={() => onChoose("family")}
+            >
+              <GameArt mode="family" active={false} />
+              <span>
+                <small>BİRBİRİNİ YENİDEN KEŞFET</small>
+                <b>Beni Tanıyor musun?</b>
+              </span>
+              <ArrowUpRight size={18} />
+            </button>
+          </>
+        ) : (
+          cards
+            .slice((group - 1) * 2, group * 2)
+            .map(([id, title, description]) => (
+              <article
+                key={id}
+                className={`mobile-game-tile mobile-tile-${id}`}
+                onPointerEnter={() => setAnimated(id)}
+                onFocus={() => setAnimated(id)}
+              >
+                <ModuleGuide mode={id} compact />
+                <button
+                  className="mobile-tile-action"
+                  onClick={() => onChoose(id)}
+                >
+                  <GameArt
+                    mode={id}
+                    active={
+                      animated
+                        ? animated === id
+                        : id === cards[(group - 1) * 2][0]
+                    }
+                  />
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  <ArrowUpRight className="mobile-tile-arrow" size={17} />
+                </button>
+              </article>
+            ))
+        )}
       </div>
       <p className="mobile-home-foot">En güzel anılar, birlikte oynarken. ♥</p>
       {!username && (
