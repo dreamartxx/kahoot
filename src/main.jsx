@@ -110,6 +110,7 @@ import CountdownScene from "./CountdownScene";
 import CancelGameButton from "./CancelGameButton";
 import "./question-stage.css";
 import "./premium-cards.css";
+import "./desktop-studio.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -376,7 +377,7 @@ function App() {
               ?<span>✦</span>
             </span>
             <span>
-              bilgi<span className="brand-light">arena</span>
+              ailecek<span className="brand-light">eğlen.</span>
               <small>HERKES OYUNA DAHİL.</small>
             </span>
           </a>
@@ -385,12 +386,12 @@ function App() {
             {[
               ["home", "Genel bakış", LayoutGrid],
               ["events", "Etkinliklerim", CalendarDays],
-              ["solo", "Kendini Dene", Sparkles],
               ["quiz", "Bilgi yarışması", Trophy],
+              ["solo", "Kendini Dene", Sparkles],
               ["concepts", "Konseptler", Sparkles],
               ["tournament", "Turnuva", Crown],
               ["family", "Beni Tanıyor musun?", Heart],
-              ["raffle", "Çekiliş", Ticket],
+              ["raffle", "Çarkıfelek", Ticket],
               ["cloud", "Kelime bulutu", Cloud],
               ...(status.user?.role === "owner"
                 ? [["library", "Soru kütüphanesi", LibraryBig]]
@@ -592,7 +593,15 @@ function App() {
                   </button>
                 </section>
                 <div className="desktop-overview">
-                  <Overview onChoose={nav} />
+                  <Overview
+                    onChoose={nav}
+                    onJoin={(pin) => go("join/" + pin)}
+                    username={status.user?.username}
+                    activeRoom={rooms.find(
+                      (r) => !["closed", "finished"].includes(r.phase),
+                    )}
+                    onResume={(pin) => go("host/" + pin)}
+                  />
                 </div>
               </>
             ) : compact &&

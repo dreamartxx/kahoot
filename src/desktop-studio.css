@@ -1,0 +1,107 @@
+/* Keep navigation and profile reachable on a laptop without the oversized promo. */
+@media (min-width: 801px) {
+  .shell .sidebar {
+    width: 224px;
+    padding: 26px 16px 16px;
+    background: var(--app-surface);
+    border-color: var(--app-line);
+  }
+  .shell .main {
+    margin-left: 224px;
+    width: calc(100% - 224px);
+  }
+  .shell .sidebar .brand {
+    font-size: 23px;
+    gap: 9px;
+    padding: 0 5px;
+    flex-shrink: 0;
+    color: var(--app-text);
+  }
+  .shell .sidebar .brand-icon {
+    width: 38px;
+    height: 41px;
+    font-size: 32px;
+    background: #8056df;
+  }
+  .shell .sidebar .brand-light {
+    color: var(--app-accent);
+    font-weight: 800;
+  }
+  .shell .sidebar .brand small {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+    color: var(--app-muted);
+  }
+  .shell .sidebar .nav-label {
+    margin: 28px 12px 12px;
+    font-size: 9px;
+    color: var(--app-muted);
+  }
+  .shell .sidebar nav {
+    gap: 4px;
+    min-height: 80px;
+    padding: 2px;
+    scrollbar-width: thin;
+  }
+  .shell .sidebar nav button {
+    min-height: 39px;
+    padding: 10px;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--app-muted);
+    border-radius: 10px;
+  }
+  .shell .sidebar nav button svg {
+    width: 18px;
+    height: 18px;
+  }
+  .shell .sidebar nav button.active {
+    background: var(--app-soft);
+    color: var(--app-accent);
+  }
+  .shell .sidebar nav button:hover {
+    background: var(--app-soft);
+    color: var(--app-text);
+  }
+  .shell .sidebar nav button:focus-visible {
+    outline: 2px solid var(--app-accent);
+    outline-offset: -2px;
+  }
+  .shell .sidebar nav button:nth-child(3),
+  .shell .sidebar nav button:nth-child(8) {
+    margin-top: 10px;
+  }
+  .shell .sidebar .sidebar-tip {
+    margin: auto 0 12px;
+    padding: 14px 10px 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    flex-shrink: 0;
+  }
+  .shell .sidebar .sidebar-tip :is(.tip-icon, strong, p) {
+    display: none;
+  }
+  .shell .sidebar .sidebar-tip button {
+    min-height: 32px;
+    color: var(--app-muted);
+  }
+  .shell .sidebar .sidebar-bottom {
+    flex-shrink: 0;
+    margin-top: 0;
+    padding: 15px 4px 0;
+    border-color: var(--app-line);
+  }
+  .shell .sidebar-bottom b {
+    font-size: 12px;
+    color: var(--app-text);
+  }
+  .shell .sidebar-bottom small {
+    font-size: 9px;
+    color: var(--app-muted);
+  }
+  .shell .sidebar .avatar {
+    width: 34px;
+    height: 34px;
+  }
+}
