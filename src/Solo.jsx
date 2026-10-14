@@ -1,3 +1,4 @@
+import GameArt from "./GameArt";
 import CancelGameButton from "./CancelGameButton";
 import CountdownScene from "./CountdownScene";
 import ThemedSelect from "./ThemedSelect";
@@ -364,8 +365,8 @@ export default function Solo({ onBack }) {
         <>
           <div className="solo-dashboard">
             <section className="solo-launch">
-              <div className="solo-orb" aria-hidden="true">
-                ?<span>✦</span>
+              <div className="solo-render">
+                <GameArt mode="solo" />
               </div>
               <span className="eyebrow">SAHNE SADECE SENİN</span>
               <h2>

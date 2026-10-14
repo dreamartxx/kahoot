@@ -1,0 +1,231 @@
+/* Shared photography-grade object scenes, on web and the native app. */
+.studio-family {
+  background: #1b102c;
+}
+.studio-family-art {
+  top: -12px;
+  right: -20px;
+  width: 72%;
+  height: 190px;
+  opacity: 1;
+}
+.studio-family-art .game-art > img {
+  mask-image: linear-gradient(180deg, #000 45%, transparent 100%);
+}
+.studio-game {
+  background: #171023;
+}
+.studio-game-art {
+  height: 126px;
+  margin-top: 0;
+}
+.studio-game-art .game-art > img {
+  object-fit: cover;
+  mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  border-radius: 0;
+}
+.studio-game-action {
+  padding-top: 28px;
+}
+.studio-game-art {
+  margin-left: -18px;
+  width: calc(100% + 36px);
+}
+.format-art .game-art {
+  width: 100%;
+  height: 100%;
+}
+.topic-glyph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.format-card .format-art {
+  font-size: initial;
+  display: block;
+  overflow: hidden;
+}
+.format-card .game-art > img {
+  mask-image: radial-gradient(ellipse 66% 70%, #000 40%, transparent 95%);
+}
+@media (min-width: 1151px) and (max-height: 900px) {
+  .studio-game-art {
+    height: 108px;
+  }
+}
+@media (min-width: 801px) and (max-width: 1150px) {
+  .studio-game-art {
+    width: 145px;
+    height: 112px;
+    top: 30px;
+    right: -5px;
+    margin: 0;
+  }
+  .studio-game-art .game-art > img {
+    mask-image: radial-gradient(ellipse 65% 65%, #000 30%, transparent 93%);
+  }
+}
+@media (max-width: 800px) {
+  .mobile-quiz-art .game-art {
+    width: 100%;
+    height: 100%;
+    max-width: 420px;
+  }
+  .mobile-quiz-art .game-art > img {
+    object-fit: cover;
+    mask-image: radial-gradient(ellipse 64% 65%, #000 35%, transparent 95%);
+  }
+  .mobile-game-grid .mobile-game-tile {
+    background: linear-gradient(165deg, #281b3d, #120d20) !important;
+  }
+  .quiz-heart-card {
+    background: #1a102e !important;
+  }
+  .quiz-heart-card > .game-art {
+    width: min(320px, 100%);
+  }
+  .quiz-heart-card > .game-art > img {
+    object-position: 75% 50%;
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+  }
+  .mobile-game-grid .mobile-game-tile .mobile-tile-action > .game-art {
+    width: calc(100% + 28px);
+    margin-left: -14px;
+  }
+  .family-spotlight .game-art {
+    width: 76px;
+    height: 60px;
+  }
+  .module-screen-art > .game-art {
+    width: min(380px, 100%);
+    aspect-ratio: 3/2;
+  }
+  .module-screen-art .game-art > img {
+    mask-image: radial-gradient(ellipse 68% 65%, #000 35%, transparent 95%);
+  }
+  .mobile-quiz-card .mobile-quiz-art {
+    overflow: hidden;
+  }
+}
+.studio-family-art .game-art > img {
+  mask-image: radial-gradient(
+    ellipse 65% 64% at 55% 43%,
+    #000 30%,
+    transparent 95%
+  );
+}
+.studio-game-art .game-art > img {
+  object-fit: contain;
+  mask-image: radial-gradient(ellipse 60% 70%, #000 35%, transparent 95%);
+}
+.studio-game-art {
+  height: 125px;
+}
+.desktop-module-art .game-art,
+.family-intro-art > .game-art,
+.tournament-cup > .game-art {
+  width: 100%;
+  height: 300px;
+}
+.solo-render .game-art {
+  width: 240px;
+  height: 150px;
+}
+.desktop-module-art {
+  min-width: 0;
+}
+.family-intro-art > .game-art {
+  position: relative;
+  z-index: 1;
+}
+.tournament-cup > .game-art {
+  margin: -10px 0;
+}
+@media (min-width: 801px) and (max-width: 1150px) {
+  .studio-game-art {
+    height: 112px;
+  }
+}
+@media (min-width: 801px) {
+  .main:is([data-view="quiz"], [data-view="library"]) > .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 32px;
+    background: var(--app-bg);
+  }
+  .main:is([data-view="quiz"], [data-view="library"]) .breadcrumb {
+    margin: 0;
+    white-space: nowrap;
+  }
+  .main:is([data-view="quiz"], [data-view="library"]) .join-inline {
+    display: flex;
+    padding: 0;
+    gap: 8px;
+    background: none;
+    box-shadow: none;
+  }
+  .main:is([data-view="quiz"], [data-view="library"]) .join-label {
+    display: none;
+  }
+  .main:is([data-view="quiz"], [data-view="library"]) .join-inline input {
+    width: 160px;
+    height: 40px;
+    font-size: 17px;
+    letter-spacing: 2px;
+    border: 1px solid var(--app-line);
+    border-radius: 10px;
+    background: var(--app-surface);
+    box-shadow: none;
+  }
+  .main:is([data-view="quiz"], [data-view="library"])
+    .join-inline
+    input::placeholder {
+    font-size: 12px;
+  }
+  .main:is([data-view="quiz"], [data-view="library"]) .join-inline button {
+    height: 40px;
+    padding: 0 15px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+  .main[data-view="quiz"] > .content {
+    padding: 24px 32px;
+  }
+  .main[data-view="quiz"] .content > .page-heading,
+  .main[data-view="quiz"] .content > .module-guide,
+  .main[data-view="quiz"] .content > footer {
+    display: none;
+  }
+  .gallery-heading {
+    margin: 0 0 18px;
+  }
+  .gallery-heading .module-guide {
+    margin: 7px 0 0;
+  }
+  .gallery-heading .guide-trigger {
+    font-size: 10px;
+    padding: 6px 9px;
+    min-height: 28px;
+  }
+  .gallery-heading .guide-trigger svg {
+    width: 13px;
+  }
+  .gallery-heading .guide-trigger svg:last-child {
+    display: none;
+  }
+  .gallery-art {
+    height: 135px;
+  }
+  .gallery-card-copy {
+    padding: 12px 14px;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowUpRight, Send, Trophy, Check, Target } from "lucide-react";
 import { CharacterAvatar } from "./CharacterAvatar";
+import GameArt from "./GameArt";
 import ModuleGuide from "./ModuleGuide";
 import "./quiz-formats.css";
 export const quizFormats = [
@@ -67,8 +68,7 @@ export function QuizFormats({ onChoose }) {
             >
               <span className="format-kicker">{f.kicker}</span>
               <span className="format-art" aria-hidden="true">
-                {f.emoji}
-                <i>✦</i>
+                <GameArt mode={f.id} />
               </span>
               <h3>{f.name}</h3>
               <strong className="format-tag">{f.tag}</strong>

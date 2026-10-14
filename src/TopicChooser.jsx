@@ -4,6 +4,7 @@ import { Check, Search, Sparkles, X } from "lucide-react";
 import { categories } from "./api";
 import { searchQuizzes } from "./quiz-search";
 import "./topic-chooser.css";
+import { artFor } from "./art-assets";
 
 const groups = [
   {
@@ -185,7 +186,13 @@ export default function TopicChooser({ selected, onSelect, onClose }) {
             aria-pressed={g.id === selected}
           >
             <span className="topic-glyph" aria-hidden="true">
-              {g.emoji}
+              <img
+                src={artFor(g.id)}
+                alt=""
+                loading="lazy"
+                width="80"
+                height="60"
+              />
             </span>
             <b>{g.name}</b>
             {g.id === selected && <Check className="topic-check" size={14} />}

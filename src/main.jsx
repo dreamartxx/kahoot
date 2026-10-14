@@ -1,3 +1,5 @@
+import GameArt from "./GameArt";
+import LibraryBrowser from "./LibraryBrowser";
 import ThemedSelect from "./ThemedSelect";
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import "@fontsource-variable/dm-sans";
@@ -111,6 +113,7 @@ import CancelGameButton from "./CancelGameButton";
 import "./question-stage.css";
 import "./premium-cards.css";
 import "./desktop-studio.css";
+import "./premium-renders.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -454,7 +457,10 @@ function App() {
             {status.user?.username?.slice(0, 1).toLocaleUpperCase("tr")}
           </button>
         </header>
-        <main className={`main ${tab === "home" ? "overview-main" : ""}`}>
+        <main
+          data-view={tab}
+          className={`main ${tab === "home" ? "overview-main" : ""}`}
+        >
           {tab !== "home" && (
             <header className="topbar">
               <div className="breadcrumb">
@@ -682,7 +688,7 @@ function App() {
                 {tab === "tournament" && (
                   <TournamentIntro onCreate={() => create("tournament")} />
                 )}
-                {["quiz", "concepts"].includes(tab) && (
+                {tab === "concepts" && (
                   <QuizFormats onChoose={(id) => create("quiz", id)} />
                 )}
                 {tab === "quiz" && (
@@ -726,12 +732,7 @@ function App() {
                       </div>
                     </div>
                     <div className="family-intro-art">
-                      <span className="family-art-heart" aria-hidden="true">
-                        ♥
-                      </span>
-                      <div className="family-art-house" aria-hidden="true">
-                        🏡
-                      </div>
+                      <GameArt mode="family" />
                       <ModuleTeasers mode="family" board />
                     </div>
                   </section>
@@ -759,14 +760,9 @@ function App() {
                         Tekrarsız kazananlar · QR ile katılım · .xlsx ve .csv
                       </small>
                     </div>
-                    <RaffleWheel
-                      room={{
-                        entryCount: 32,
-                        draw: null,
-                        serverTime: Date.now() / 1000,
-                      }}
-                      preview
-                    />
+                    <div className="desktop-module-art">
+                      <GameArt mode="raffle" />
+                    </div>
                   </section>
                 )}
                 {tab === "cloud" && (
@@ -792,27 +788,17 @@ function App() {
                         Kişi başına 3 kelime · Canlı sayaç · Türkçe uyumlu
                       </small>
                     </div>
-                    <div className="cloud-preview">
-                      <WordCloud
-                        words={[
-                          { text: "heyecan", count: 24 },
-                          { text: "birlikte", count: 18 },
-                          { text: "keşif", count: 12 },
-                          { text: "eğlence", count: 20 },
-                          { text: "merak", count: 9 },
-                          { text: "ilham", count: 6 },
-                        ]}
-                      />
-                      <small>Örnek görünüm</small>
+                    <div className="desktop-module-art">
+                      <GameArt mode="cloud" />
                     </div>
                   </section>
                 )}
-                {["quiz", "raffle", "cloud"].includes(tab) && (
+                {["raffle", "cloud"].includes(tab) && (
                   <ModuleTeasers mode={tab} />
                 )}
               </>
             )}
-            {tab !== "solo" &&
+            {!["solo", "quiz"].includes(tab) &&
               (!compact || tab === "events") &&
               ["events", ...Object.keys(modes)].includes(tab) && (
                 <section className="recent">
@@ -3282,7 +3268,9 @@ function RaffleRoom({ room, host, screen, now, action, busy, notify }) {
 function Library({ admin, notify, refresh }) {
   const [cat, setCat] = useState("cografya"),
     [qs, setQs] = useState([]),
-    [query, setQuery] = useState(""),
+    [loading, setLoading] = useState(true),
+    [error, setError] = useState(""),
+    [revision, setRevision] = useState(0),
     [add, setAdd] = useState(false),
     [form, setForm] = useState({
       text: "",
@@ -3292,114 +3280,53 @@ function Library({ admin, notify, refresh }) {
       difficulty: "general",
     }),
     [busy, setBusy] = useState(false);
-  const load = () =>
-    api("questions", { category: cat })
-      .then(setQs)
-      .catch((e) => notify(e.message));
+  const load = () => setRevision((value) => value + 1);
   useEffect(() => {
-    if (admin) load();
-  }, [cat, admin]);
+    if (!admin) return;
+    let cancelled = false;
+    setLoading(true);
+    setError("");
+    setQs([]);
+    api("questions", { category: cat })
+      .then((data) => {
+        if (!cancelled) setQs(data);
+      })
+      .catch((e) => {
+        if (!cancelled) setError(e.message);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [cat, admin, revision]);
   if (!admin)
     return (
       <div className="empty">Soru kütüphanesi için yönetici girişi yapın.</div>
     );
   return (
     <>
-      <section className="page-heading">
-        <div className="eyebrow">MERAKIN KÜTÜPHANESİ</div>
-        <h1>Her soru, yeni bir keşif.</h1>
-        <p>Hazır soruları incele veya kendi sorularını havuza ekle.</p>
-      </section>
-      <div className="library-toolbar">
-        <ThemedSelect
-          aria-label="Soru kategorisi"
-          value={cat}
-          onChange={(e) => setCat(e.target.value)}
-        >
-          {categories.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.emoji} {c.name}
-            </option>
-          ))}
-        </ThemedSelect>
-        <div className="search">
-          <Search size={17} />
-          <input
-            placeholder="Sorularda ara..."
-            aria-label="Sorularda ara"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </div>
-        <Button onClick={() => setAdd(true)}>
-          <Plus size={18} /> Soru ekle
-        </Button>
-      </div>
-      <p className="muted">
-        Bu konuda {qs.length} soru ·{" "}
-        {qs.filter((q) => q.difficulty === "general").length} genel bilgi ·{" "}
-        {qs.filter((q) => q.difficulty !== "general").length} detay / uzmanlık.
-        Her 10 soruda en fazla 1 detay sorusu gelir.
-      </p>
-      <div className="library-list">
-        {qs
-          .filter((q) =>
-            q.text
-              .toLocaleLowerCase("tr")
-              .includes(query.toLocaleLowerCase("tr")),
-          )
-          .map((q, i) => (
-            <details key={q.id}>
-              <summary>
-                <span>{i + 1}</span>
-                {q.text}
-                <small>
-                  {q.id.startsWith("custom-") ? "Kendi sorun" : "Hazır soru"}
-                </small>
-              </summary>
-              <div className="library-options">
-                {q.options.map((o, j) => (
-                  <div
-                    key={j}
-                    className={j === q.correct ? "right-option" : ""}
-                  >
-                    {String.fromCharCode(65 + j)}.{" "}
-                    <OptionContent value={o} showName />{" "}
-                    {j === q.correct && <Check size={16} />}
-                  </div>
-                ))}
-              </div>
-              <p>{q.explanation}</p>
-              <p>
-                <span
-                  className={`question-level ${q.difficulty === "general" ? "general" : "expert"}`}
-                >
-                  {q.difficulty === "general"
-                    ? "Genel bilgi"
-                    : "Detay / uzmanlık"}
-                </span>
-              </p>
-              {q.id.startsWith("custom-") && (
-                <button
-                  className="text-btn"
-                  onClick={async () => {
-                    if (confirm("Bu özel soru silinsin mi?")) {
-                      try {
-                        await api("question_delete", { id: q.id });
-                        load();
-                        refresh();
-                      } catch (e) {
-                        notify(e.message);
-                      }
-                    }
-                  }}
-                >
-                  Soruyu sil
-                </button>
-              )}
-            </details>
-          ))}
-      </div>
+      <LibraryBrowser
+        cat={cat}
+        onCategory={setCat}
+        questions={qs}
+        loading={loading}
+        error={error}
+        onRetry={load}
+        onAdd={() => setAdd(true)}
+        renderOption={(value) => <OptionContent value={value} showName />}
+        onDelete={async (q) => {
+          if (!confirm("Bu özel soru silinsin mi?")) return;
+          try {
+            await api("question_delete", { id: q.id });
+            load();
+            refresh();
+          } catch (e) {
+            notify(e.message);
+          }
+        }}
+      />
       {add && (
         <Modal title="Kendi sorunu ekle" onClose={() => setAdd(false)}>
           <form

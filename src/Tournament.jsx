@@ -1,3 +1,4 @@
+import GameArt from "./GameArt";
 import ThemedSelect from "./ThemedSelect";
 import React, { useEffect, useState } from "react";
 import {
@@ -40,7 +41,7 @@ export function TournamentIntro({ onCreate }) {
       </div>
       <div className="tournament-cup" aria-hidden="true">
         <span>✦ BÜYÜK FİNAL ✦</span>
-        <b>🏆</b>
+        <GameArt mode="tournament" />
         <small>Birçok alan. Tek şampiyonluk.</small>
         <i>“Bu alan benim!”</i>
       </div>

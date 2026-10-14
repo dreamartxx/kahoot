@@ -209,7 +209,7 @@ export default function MobileQuizPicker({
                 <div className="mobile-quiz-art" aria-hidden="true">
                   <GameArt
                     mode={g.special ? g.id : "quiz"}
-                    glyph={g.special ? undefined : g.emoji}
+                    category={g.special ? undefined : g.id}
                     active={i === index}
                   />
                 </div>
