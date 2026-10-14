@@ -8,6 +8,7 @@ export default function ScreenPages({
   children,
   dialog = false,
   resetKey = "",
+  manualScroll = false,
 }) {
   const box = useRef(null),
     content = useRef(null);
@@ -36,7 +37,7 @@ export default function ScreenPages({
   }, []);
   useEffect(() => setPage(0), [resetKey]);
   useLayoutEffect(() => {
-    if (!enabled) return;
+    if (!enabled || manualScroll) return;
     let frame, scene;
     const measure = () => {
       const el = box.current,
@@ -109,14 +110,21 @@ export default function ScreenPages({
       window.removeEventListener("resize", schedule);
       window.visualViewport?.removeEventListener("resize", schedule);
     };
-  }, [enabled, dialog, resetKey]);
+  }, [enabled, dialog, resetKey, manualScroll]);
   useLayoutEffect(() => {
     if (box.current)
-      box.current.scrollTop = enabled ? layout.offsets[current] : 0;
-  }, [enabled, layout, current]);
+      box.current.scrollTop =
+        enabled && !manualScroll ? layout.offsets[current] : 0;
+  }, [enabled, layout, current, manualScroll]);
 
   const reveal = (event) => {
-    if (!enabled || !paging || !content.current?.contains(event.target)) return;
+    if (
+      manualScroll ||
+      !enabled ||
+      !paging ||
+      !content.current?.contains(event.target)
+    )
+      return;
     const bounds = event.target.getBoundingClientRect();
     const origin = content.current.getBoundingClientRect().top;
     const top = bounds.top - origin,
@@ -136,13 +144,13 @@ export default function ScreenPages({
   };
   return (
     <div
-      className={`screen-pages ${enabled ? "is-paged" : ""} ${dialog ? "dialog-pages" : "app-pages"} ${layout.nav ? "has-bottom-nav" : ""}`}
+      className={`screen-pages ${enabled ? (manualScroll ? "manual-scroll" : "is-paged") : ""} ${dialog ? "dialog-pages" : "app-pages"} ${layout.nav ? "has-bottom-nav" : ""}`}
     >
       <div
         ref={box}
         className="screen-page-viewport"
         style={
-          enabled && layout.height
+          enabled && !manualScroll && layout.height
             ? {
                 height: visibleHeight,
                 marginBottom: layout.height - visibleHeight,
@@ -155,11 +163,11 @@ export default function ScreenPages({
         <div ref={content} className="screen-page-content">
           {children}
         </div>
-        {enabled && layout.tail > 0 && (
+        {enabled && !manualScroll && layout.tail > 0 && (
           <div aria-hidden="true" style={{ height: layout.tail }} />
         )}
       </div>
-      {enabled && paging && (
+      {enabled && !manualScroll && paging && (
         <nav className="screen-page-controls" aria-label="Ekran sayfaları">
           <button
             type="button"

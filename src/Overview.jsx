@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import "./overview.css";
+import GameArt from "./GameArt";
 import ModuleGuide from "./ModuleGuide";
 import { moduleTeasers } from "./ModuleTeasers";
 
@@ -54,86 +55,6 @@ const modules = [
     action: "Kelimeleri buluştur",
   },
 ];
-function ModuleArt({ type }) {
-  return (
-    <span className={`overview-art art-${type}`} aria-hidden="true">
-      <span className="overview-art-orbit" />
-      <span className="overview-art-glow" />
-      <span className="overview-spark overview-spark-one">✦</span>
-      <span className="overview-spark overview-spark-two">✧</span>
-      {type === "quiz" && (
-        <>
-          <span className="overview-answer answer-a">▲</span>
-          <span className="overview-answer answer-b">◆</span>
-          <span className="overview-answer answer-c">●</span>
-          <span className="overview-trophy">🏆</span>
-          <span className="overview-score">✦ +1.000</span>
-        </>
-      )}
-      {type === "solo" && (
-        <>
-          <span className="overview-target">
-            <span>★</span>
-          </span>
-          <span className="overview-target-arrow">➶</span>
-          <span className="overview-solo-bolt">⚡</span>
-          <span className="overview-record">✦ YENİ REKOR</span>
-        </>
-      )}
-      {type === "tournament" && (
-        <>
-          <span className="overview-podium">
-            <span>2</span>
-            <span>1</span>
-            <span>3</span>
-          </span>
-          <span className="overview-champion">🏆</span>
-          <span className="overview-prize">🎁</span>
-          <span className="overview-final">★ BÜYÜK FİNAL</span>
-        </>
-      )}
-      {type === "family" && (
-        <>
-          <span className="overview-family-ring" />
-          <span className="overview-heart">💖</span>
-          <span className="overview-avatar avatar-mom">👩🏻</span>
-          <span className="overview-avatar avatar-dad">👨🏽</span>
-          <span className="overview-avatar avatar-kid">🧒🏼</span>
-          <span className="overview-family-note">Beni en iyi kim tanır?</span>
-        </>
-      )}
-      {type === "raffle" && (
-        <>
-          <span className="overview-wheel">
-            <span className="overview-wheel-colors" />
-            <span className="overview-wheel-center">★</span>
-          </span>
-          <span className="overview-wheel-pointer" />
-          <span className="overview-wheel-confetti confetti-a" />
-          <span className="overview-wheel-confetti confetti-b" />
-          <span className="overview-wheel-confetti confetti-c" />
-        </>
-      )}
-      {type === "cloud" && (
-        <>
-          <span className="overview-bubble bubble-joy">
-            neşe<small>24</small>
-          </span>
-          <span className="overview-bubble bubble-together">
-            birlikte<small>18</small>
-          </span>
-          <span className="overview-bubble bubble-dream">
-            hayal<small>12</small>
-          </span>
-          <span className="overview-bubble bubble-play">
-            oyun<small>8</small>
-          </span>
-          <span className="overview-bubble bubble-tiny" />
-        </>
-      )}
-    </span>
-  );
-}
 export default function Overview({ onChoose }) {
   return (
     <section className="overview-grid" aria-label="Etkinlik modülleri">
@@ -157,7 +78,9 @@ export default function Overview({ onChoose }) {
                 ✦
               </span>
             </span>
-            <ModuleArt type={m.id} />
+            <span className="overview-premium-art">
+              <GameArt mode={m.id} />
+            </span>
             <span className="overview-card-copy">
               <span className="overview-module-detail">{m.detail}</span>
               <h2>{m.title}</h2>

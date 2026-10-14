@@ -1,0 +1,173 @@
+.overview-premium-art {
+  display: grid;
+  place-items: center;
+  height: 225px;
+  width: 100%;
+}
+.overview-premium-art .game-art {
+  width: min(300px, 90%);
+  height: 225px;
+}
+@media (max-width: 800px) {
+  .mobile-game-tile {
+    --premium-top: #7253ba;
+    --premium-base: #2c2050;
+    --premium-glow: #bda1ff;
+  }
+  .mobile-game-tile.mobile-tile-tournament {
+    --premium-top: #876236;
+    --premium-base: #35251b;
+    --premium-glow: #ffe2a7;
+  }
+  .mobile-game-tile.mobile-tile-solo {
+    --premium-top: #4e629e;
+    --premium-base: #202b55;
+    --premium-glow: #9bbfff;
+  }
+  .mobile-game-tile.mobile-tile-raffle {
+    --premium-top: #7a498c;
+    --premium-base: #38204a;
+    --premium-glow: #ecc0ff;
+  }
+  .mobile-game-tile.mobile-tile-cloud {
+    --premium-top: #327b77;
+    --premium-base: #183b43;
+    --premium-glow: #96ffe2;
+  }
+  .mobile-game-grid .mobile-game-tile,
+  [data-theme="dark"] .mobile-game-grid .mobile-game-tile {
+    background:
+      radial-gradient(
+        ellipse at 70% 0,
+        color-mix(in srgb, var(--premium-glow) 30%, transparent),
+        transparent 65%
+      ),
+      linear-gradient(155deg, var(--premium-top), var(--premium-base));
+    border: 1px solid color-mix(in srgb, var(--premium-glow) 55%, transparent);
+    box-shadow:
+      inset 0 1px 0 #ffffff50,
+      inset 0 -1px 0 #ffffff14,
+      0 10px 25px #24103825;
+    border-radius: 26px;
+    overflow: hidden;
+    transform: none;
+  }
+  .mobile-game-grid .mobile-game-tile .mobile-tile-action {
+    color: #fff;
+    padding: 49px 14px 20px;
+    position: relative;
+  }
+  .mobile-game-grid .mobile-game-tile .mobile-tile-action h3 {
+    color: #fff;
+    font-size: 19px;
+    letter-spacing: -0.5px;
+    min-height: 0;
+    margin: 0 0 8px;
+  }
+  .mobile-game-grid .mobile-game-tile .mobile-tile-action p {
+    color: #eee9f6;
+    font-size: 13px;
+    line-height: 1.4;
+    min-height: 36px;
+  }
+  .mobile-game-grid .mobile-game-tile .guide-trigger {
+    color: #fff2e0;
+    background: #ffffff0c;
+    border: 1px solid #ffffff24;
+    border-radius: 10px;
+  }
+  .mobile-game-grid .mobile-game-tile .module-guide {
+    top: 9px;
+    left: 9px;
+    right: 9px;
+  }
+  .mobile-game-grid .mobile-game-tile .mobile-tile-action > .game-art {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    min-height: 90px;
+    max-height: 180px;
+    scale: 1;
+    margin: auto 0;
+    flex: 1;
+  }
+  .quiz-heart-card {
+    background:
+      radial-gradient(ellipse at 85% 5%, #bc8cff70, transparent 65%),
+      linear-gradient(145deg, #6742a7, #291747);
+    border-color: #b99ce2;
+    box-shadow:
+      inset 0 1px 0 #ffffff4d,
+      0 10px 25px #2b164528;
+  }
+  .quiz-heart-card > .game-art {
+    width: min(230px, 85%);
+    min-height: 70px;
+    height: 140px;
+    max-height: 180px;
+  }
+  .family-spotlight,
+  [data-theme="dark"] .family-spotlight {
+    background:
+      radial-gradient(ellipse at 0 0, #db97bb55, transparent 70%),
+      linear-gradient(125deg, #70405e, #35243f);
+    border-color: #bc85a5;
+    color: #fff0f7;
+    box-shadow: inset 0 1px 0 #ffffff25;
+  }
+  .family-spotlight .game-art {
+    width: 70px;
+    height: 56px;
+  }
+  .module-screen-art > .game-art {
+    width: min(270px, 85%);
+    height: auto;
+    aspect-ratio: 4/3;
+    max-height: 100%;
+  }
+  .module-screen-card {
+    box-shadow:
+      inset 0 1px 0 #ffffff40,
+      0 12px 28px #34205016;
+  }
+  /* Profile is the deliberate exception to the app's single-screen game views. */
+  .screen-pages.manual-scroll > .screen-page-viewport {
+    display: block;
+    height: 100dvh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--app-accent) transparent;
+  }
+  .screen-pages.manual-scroll > .screen-page-viewport > .screen-page-content {
+    display: flow-root;
+  }
+  .screen-pages.manual-scroll .shell {
+    height: auto;
+    min-height: 100%;
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+  .screen-pages.manual-scroll .content {
+    height: auto;
+    overflow: visible;
+  }
+  .screen-pages.manual-scroll .mobile-app-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--app-bg);
+  }
+  .screen-pages.manual-scroll .profile-page {
+    padding-bottom: 20px;
+  }
+  .screen-pages.manual-scroll .profile-page input {
+    scroll-margin-block: 90px;
+  }
+  .screen-pages.manual-scroll .profile-page .character-options {
+    max-height: none;
+    overflow: visible;
+  }
+}

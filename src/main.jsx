@@ -109,6 +109,7 @@ import "./countdown-scene.css";
 import CountdownScene from "./CountdownScene";
 import CancelGameButton from "./CancelGameButton";
 import "./question-stage.css";
+import "./premium-cards.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -938,7 +939,10 @@ function App() {
           </button>
         </div>
       )}
-      <ScreenPages resetKey={`${route}:${tab}:${!!status.admin}`}>
+      <ScreenPages
+        manualScroll={tab === "profile" && !/^(host|join|screen)\//.test(route)}
+        resetKey={`${route}:${tab}:${!!status.admin}`}
+      >
         {body}
       </ScreenPages>
       <PwaNotices />
