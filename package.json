@@ -20,6 +20,7 @@
     "@capacitor/core": "8.5.3",
     "@capacitor/local-notifications": "8.3.0",
     "@capacitor/share": "8.0.3",
+    "@capgo/capacitor-social-login": "8.5.17",
     "@fontsource-variable/dm-sans": "5.3.0",
     "@fontsource-variable/manrope": "5.3.0",
     "flag-icons": "^7.5.0",

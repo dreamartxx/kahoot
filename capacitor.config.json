@@ -2,11 +2,26 @@
   "appId": "com.ailecekeglen.app",
   "appName": "Ailecek Eğlen",
   "webDir": "mobile-build",
-  "server": { "androidScheme": "https", "hostname": "localhost" },
+  "server": {
+    "androidScheme": "https",
+    "hostname": "localhost"
+  },
   "android": {
     "allowMixedContent": false,
     "backgroundColor": "#f8f7fb",
     "webContentsDebuggingEnabled": false
   },
-  "plugins": { "SplashScreen": { "launchAutoHide": true } }
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true
+    },
+    "SocialLogin": {
+      "providers": {
+        "google": true,
+        "apple": false,
+        "facebook": false,
+        "twitter": false
+      }
+    }
+  }
 }

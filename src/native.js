@@ -40,7 +40,7 @@ export async function nativeResponse(path, options) {
   // background poll must not restore a session after logout or a new login.
   if (
     next !== null &&
-    /[?&]action=(login|logout|password_change)(?:&|$)/.test(path) &&
+    /[?&]action=(login|google_login|logout|password_change)(?:&|$)/.test(path) &&
     response.status === 200
   ) {
     if (next === "cleared") {

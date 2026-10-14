@@ -3,8 +3,8 @@ DirectoryIndex app.html index.html
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteRule ^(?:src|scripts|tests|data|node_modules|\.git|\.github)(?:/|$) - [F,L]
-RewriteRule ^(?:package.*\.json|vite\.config\.js|README\.md)$ - [F,L]
+RewriteRule ^(?:src|scripts|tests|data|vendor|node_modules|\.git|\.github)(?:/|$) - [F,L]
+RewriteRule ^(?:composer\.(?:json|lock)|package.*\.json|vite\.config\.js|README\.md)$ - [F,L]
 </IfModule>
 <IfModule mod_headers.c>
 Header always set X-Content-Type-Options "nosniff"

@@ -9,6 +9,8 @@ cp assets-build/manifest.webmanifest assets-build/offline.html "$ARENA_RELEASE_D
 cp assets-build/privacy.html assets-build/delete-account.html assets-build/legal.css "$ARENA_RELEASE_DIR/"
 cp -R assets-build/icons "$ARENA_RELEASE_DIR/icons"
 cp api/.htaccess api/core.php api/credits.php api/auth.php api/family.php api/tournament.php api/solo.php api/quiz-formats.php api/index.php api/setup.php "$ARENA_RELEASE_DIR/api/"
+cp -R vendor "$ARENA_RELEASE_DIR/vendor"
+cp api/google.php api/google-config.php "$ARENA_RELEASE_DIR/api/"
 cp api/mobile.php "$ARENA_RELEASE_DIR/api/"
 cp data/quiz-estimate.json data/quiz-binary.json data/quiz-mixed.json data/questions.json data/question-levels.json data/family-prompts.json "$ARENA_RELEASE_DIR/data/"
 cp -R assets-build/assets "$ARENA_RELEASE_DIR/assets-build/"

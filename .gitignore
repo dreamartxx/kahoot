@@ -26,3 +26,5 @@ android/capacitor-cordova-android-plugins/
 *.keystore
 release-artifacts/
 .android-signing*
+
+/vendor/

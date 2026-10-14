@@ -4,7 +4,7 @@ declare(strict_types=1);
 function creditSchema(): void {
     ensureSchema('credits',1,static function():void{
     $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
-    $db->exec('CREATE TABLE IF NOT EXISTS arena_credit_accounts (user_id INT PRIMARY KEY, daily_limit INT NOT NULL DEFAULT 10, monthly_limit INT NOT NULL DEFAULT 150, participant_limit INT NOT NULL DEFAULT 10, room_limit INT NOT NULL DEFAULT 1, raffle_limit INT NOT NULL DEFAULT 50, bonus INT NOT NULL DEFAULT 0)');
+    $db->exec('CREATE TABLE IF NOT EXISTS arena_credit_accounts (user_id INT PRIMARY KEY, daily_limit INT NOT NULL DEFAULT 5, monthly_limit INT NOT NULL DEFAULT 150, participant_limit INT NOT NULL DEFAULT 10, room_limit INT NOT NULL DEFAULT 1, raffle_limit INT NOT NULL DEFAULT 50, bonus INT NOT NULL DEFAULT 0)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_credit_events (event_key VARCHAR(160) PRIMARY KEY, user_id INT NOT NULL, kind VARCHAR(32) NOT NULL, title VARCHAR(100) NOT NULL, amount INT NOT NULL, bonus_used INT NOT NULL DEFAULT 0, period_day VARCHAR(10) NOT NULL, period_month VARCHAR(7) NOT NULL, state VARCHAR(16) NOT NULL, created_at BIGINT NOT NULL, note VARCHAR(300) NOT NULL DEFAULT \'\''.($mysql?', INDEX credit_user_state (user_id,state)':'').')');
     if(!$mysql)$db->exec('CREATE INDEX IF NOT EXISTS credit_user_state ON arena_credit_events (user_id,state)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_credit_changes (request_key VARCHAR(100) PRIMARY KEY, user_id INT NOT NULL, actor_id INT NOT NULL, kind VARCHAR(20) NOT NULL, amount INT NOT NULL, note VARCHAR(300) NOT NULL, created_at BIGINT NOT NULL)');
@@ -25,9 +25,9 @@ function creditSummary(int $id): array {
     // Locking reads see committed balances even after waiting for another request
     // under MySQL's default REPEATABLE READ isolation.
     $q=$db->prepare("SELECT amount,bonus_used,period_day,period_month,state FROM arena_credit_events WHERE user_id=? AND state IN ('spent','reserved','compensated') AND (period_month=? OR state='reserved')".($db->inTransaction()&&$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?' FOR UPDATE':''));$q->execute([$id,$p['month']]);
-    $u=['day_used'=>0,'month_used'=>0,'reserved'=>0];foreach($q as $e){$base=(int)$e['amount']-(int)$e['bonus_used'];if($e['period_day']===$p['day'])$u['day_used']+=$base;if($e['period_month']===$p['month'])$u['month_used']+=$base;if($e['state']==='reserved')$u['reserved']+=(int)$e['amount'];}
-    $day=max(0,(int)$a['daily_limit']-(int)$u['day_used']);$month=max(0,(int)$a['monthly_limit']-(int)$u['month_used']);$owner=$a['role']==='owner';
-    return ['unlimited'=>$owner,'dailyLimit'=>(int)$a['daily_limit'],'monthlyLimit'=>(int)$a['monthly_limit'],'dailyRemaining'=>$day,'monthlyRemaining'=>$month,'bonus'=>(int)$a['bonus'],'available'=>min($day,$month)+(int)$a['bonus'],'reserved'=>(int)$u['reserved'],'participantLimit'=>$owner?300:(int)$a['participant_limit'],'roomLimit'=>$owner?null:(int)$a['room_limit'],'raffleLimit'=>$owner?2000:(int)$a['raffle_limit']]+$p;
+    $u=['day_used'=>0,'month_used'=>0,'reserved'=>0];foreach($q as $e){$base=(int)$e['amount']-(int)$e['bonus_used'];if($e['period_day']===$p['day'])$u['day_used']+=(int)$e['amount'];if($e['period_month']===$p['month'])$u['month_used']+=$base;if($e['state']==='reserved')$u['reserved']+=(int)$e['amount'];}
+    $dailyLimit=min(5,(int)$a['daily_limit']);$day=max(0,$dailyLimit-(int)$u['day_used']);$month=max(0,(int)$a['monthly_limit']-(int)$u['month_used']);$owner=$a['role']==='owner';
+    return ['unlimited'=>$owner,'dailyLimit'=>$dailyLimit,'monthlyLimit'=>(int)$a['monthly_limit'],'dailyRemaining'=>$day,'monthlyRemaining'=>$month,'bonus'=>(int)$a['bonus'],'available'=>min($day,$month+(int)$a['bonus']),'reserved'=>(int)$u['reserved'],'participantLimit'=>$owner?300:(int)$a['participant_limit'],'roomLimit'=>$owner?null:(int)$a['room_limit'],'raffleLimit'=>$owner?2000:(int)$a['raffle_limit']]+$p;
 }
 function creditRequest(array $in): string {
     $id=$in['requestId']??'';if(!is_string($id)||!preg_match('/^[a-zA-Z0-9_-]{16,80}$/D',$id))fail('İşlem kimliği eksik. Sayfayı yenileyip tekrar deneyin.',400);return $id;
@@ -35,7 +35,7 @@ function creditRequest(array $in): string {
 function creditSpend(int $id,string $key,string $kind,string $title,int $amount=1,string $state='spent'): void {
     $a=creditAccount($id,true);if($a['role']==='owner')return;
     $q=db()->prepare('SELECT event_key FROM arena_credit_events WHERE event_key=?'.(db()->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?' FOR UPDATE':''));$q->execute([$key]);if($q->fetchColumn())fail('Bu işlem zaten işlendi. Ekranı yenileyin.',409);
-    $summary=creditSummary($id);if($summary['available']<$amount)fail('Kredin yetersiz. Günlük ve aylık haklarını profilinden görebilirsin.',409);
+    $summary=creditSummary($id);if($summary['available']<$amount)fail('Oyun hakkın doldu. Günlük en fazla 5 oyun başlatabilirsin; kalan haklarını profilinden görebilirsin.',409);
     $bonus=max(0,$amount-min($summary['dailyRemaining'],$summary['monthlyRemaining']));$p=creditPeriod();
     db()->prepare('UPDATE arena_credit_accounts SET bonus=bonus-? WHERE user_id=?')->execute([$bonus,$id]);
     db()->prepare('INSERT INTO arena_credit_events (event_key,user_id,kind,title,amount,bonus_used,period_day,period_month,state,created_at) VALUES (?,?,?,?,?,?,?,?,?,?)')->execute([$key,$id,$kind,mb_substr($title,0,100),$amount,$bonus,$p['day'],$p['month'],$state,time()]);
@@ -50,16 +50,18 @@ function creditRefund(string $key,string $note,bool $reservedOnly=false): bool {
     if(!$q->rowCount())return false;db()->prepare('UPDATE arena_credit_accounts SET bonus=bonus+? WHERE user_id=?')->execute([$late?$e['amount']:$e['bonus_used'],$e['user_id']]);return true;
 }
 function creditRoomCharge(array &$s,string $kind,array $in): void {
-    if(isPreview())return;
+    if(isPreview()||!empty($s['creditCharged']))return;
+    // Already-running rooms from before this deployment were charged by the old rules.
+    if(!array_key_exists('creditCharged',$s)&&(($s['mode']==='cloud'&&$s['phase']==='open')||($s['mode']==='raffle'&&!empty($s['draw'])))){ $s['creditCharged']=true;return; }
     $id=(int)($s['ownerId']??1);$a=creditAccount($id,true);if($a['role']==='owner')return;
-    $request=creditRequest($in);creditSpend($id,'action:'.$id.':'.$request,$kind,$s['title']);
+    creditRequest($in);creditSpend($id,'game:'.$s['pin'].':'.$s['createdAt'],$kind,$s['title']);
+    $s['creditCharged']=true;
 }
 function creditReserveTournament(array &$s): void {
-    if(isPreview())return;
+    if(isPreview()||!empty($s['creditCharged']))return;
     $id=(int)($s['ownerId']??1);$a=creditAccount($id,true);if($a['role']==='owner')return;
-    $count=count($s['tournamentRounds']);if(creditSummary($id)['available']<$count)fail('Turnuva için '.$count.' kredi gerekli. Başlamayan turların ayrılan kredileri iptalde geri döner.',409);
-    $s['creditTournament']=bin2hex(random_bytes(12));
-    for($i=0;$i<$count;$i++)creditSpend($id,'round:'.$s['creditTournament'].':'.$i,'tournament',$s['title'].' · '.$s['tournamentRounds'][$i],1,'reserved');
+    creditSpend($id,'game:'.$s['pin'].':'.$s['createdAt'],'tournament',$s['title']);
+    $s['creditCharged']=true;
 }
 function creditNeedsSettlement(array $s): bool {
     if(empty($s['creditTournament'])||!empty($s['creditSettled']))return false;
@@ -111,7 +113,7 @@ function creditActions(string $action,array $in): void {
     $q=$db->prepare('SELECT user_id FROM arena_credit_changes WHERE request_key=?');$q->execute([$req]);if($q->fetchColumn()){$db->rollBack();fail('Bu yönetim işlemi zaten kaydedildi.',409);}
     $note=inputText($in['note']??'',3,300,'Açıklama');$amount=0;
     if($action==='credit_update'){
-        $fields=['dailyLimit'=>['daily_limit',0,10000],'monthlyLimit'=>['monthly_limit',0,100000],'participantLimit'=>['participant_limit',1,300],'roomLimit'=>['room_limit',1,20],'raffleLimit'=>['raffle_limit',1,2000]];$values=[];$sets=[];
+        $fields=['dailyLimit'=>['daily_limit',0,5],'monthlyLimit'=>['monthly_limit',0,100000],'participantLimit'=>['participant_limit',1,300],'roomLimit'=>['room_limit',1,20],'raffleLimit'=>['raffle_limit',1,2000]];$values=[];$sets=[];
         foreach($fields as $key=>[$column,$min,$max]){$v=$in[$key]??null;if(!is_int($v)||$v<$min||$v>$max)fail('Limit değeri geçersiz.');$sets[]=$column.'=?';$values[]=$v;}$values[]=$id;$db->prepare('UPDATE arena_credit_accounts SET '.implode(',',$sets).' WHERE user_id=?')->execute($values);
     }elseif($action==='credit_bonus'){$amount=$in['amount']??null;if(!is_int($amount)||$amount<1||$amount>10000)fail('Bonus 1–10000 arasında olmalı.');$db->prepare('UPDATE arena_credit_accounts SET bonus=bonus+? WHERE user_id=?')->execute([$amount,$id]);}
     else{$key=$in['eventId']??'';$q=$db->prepare('SELECT user_id,state,amount FROM arena_credit_events WHERE event_key=?');$q->execute([$key]);$e=$q->fetch();if(!$e||(int)$e['user_id']!==$id)fail('Kredi hareketi bulunamadı.',404);if($e['state']==='reserved')fail('Ayrılan turnuva kredisi, etkinlik iptal edildiğinde otomatik iade edilir.',409);$amount=creditRefund($key,$note)?(int)$e['amount']:0;}

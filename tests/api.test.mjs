@@ -1641,6 +1641,7 @@ test("durable accounts, owner-only management, room isolation and session revoca
   assert.equal(self.data.user.id, host.id);
   assert.deepEqual(Object.keys(self.data.user).sort(), [
     "active",
+    "authProvider",
     "id",
     "role",
     "username",
@@ -3644,7 +3645,7 @@ const setCreditLimits = async (user, extra = {}) => {
     "credit_update",
     {
       userId: user.id,
-      dailyLimit: 10,
+      dailyLimit: 5,
       monthlyLimit: 150,
       participantLimit: 10,
       roomLimit: 1,
@@ -3666,9 +3667,9 @@ const startCreditQuiz = (user, room, extra = {}) =>
 test("credits: private balances, free creation/cancellation, one open event and participant caps", async () => {
   const user = await soloUser("credit-capacity");
   const fresh = await creditBalance(user);
-  assert.equal(fresh.dailyRemaining, 10);
+  assert.equal(fresh.dailyRemaining, 5);
   assert.equal(fresh.monthlyRemaining, 150);
-  assert.equal(fresh.available, 10);
+  assert.equal(fresh.available, 5);
   assert.equal(fresh.participantLimit, 10);
   assert.equal((await call("credits")).status, 401);
   assert.equal((await call("credits", { userId: 1 }, user)).status, 403);
@@ -3687,7 +3688,7 @@ test("credits: private balances, free creation/cancellation, one open event and 
     403,
   );
   const room = await creditRoom(user);
-  assert.equal((await creditBalance(user)).available, 10);
+  assert.equal((await creditBalance(user)).available, 5);
   assert.equal(
     (await call("create", { mode: "raffle", title: "İkinci oda" }, user))
       .status,
@@ -3713,7 +3714,7 @@ test("credits: private balances, free creation/cancellation, one open event and 
     (await call("join", { pin: room.pin, name: "On birinci" })).status,
     409,
   );
-  assert.equal((await creditBalance(user)).available, 10);
+  assert.equal((await creditBalance(user)).available, 5);
   assert.equal((await call("close", { pin: room.pin }, user)).status, 200);
   const unused = await creditRoom(user, "cloud");
   assert.equal(unused.phase, "lobby");
@@ -3722,10 +3723,10 @@ test("credits: private balances, free creation/cancellation, one open event and 
     (await call("room", { pin: unused.pin }, user)).data.phase,
     "closed",
   );
-  assert.equal((await creditBalance(user)).available, 10);
+  assert.equal((await creditBalance(user)).available, 5);
   const solo = await call("solo_start", { category: "cografya" }, user);
   assert.equal(solo.status, 200);
-  assert.equal((await creditBalance(user)).available, 9);
+  assert.equal((await creditBalance(user)).available, 4);
   assert.equal(
     (
       await call(
@@ -3742,7 +3743,7 @@ test("credits: private balances, free creation/cancellation, one open event and 
   );
   assert.equal(
     (await creditBalance(user)).available,
-    9,
+    4,
     "voluntary abandonment is not refundable",
   );
 });
@@ -3823,7 +3824,7 @@ test("credits: daily/monthly caps, bonus fallback, retries, refunds and ongoing 
   room = await creditRoom(user);
   assert.equal((await startCreditQuiz(user, room)).status, 200);
   await call("close", { pin: room.pin }, user);
-  await setCreditLimits(user, { dailyLimit: 10, monthlyLimit: 2 });
+  await setCreditLimits(user, { dailyLimit: 5, monthlyLimit: 2 });
   assert.equal(
     (await creditBalance(user)).available,
     0,
@@ -3861,7 +3862,7 @@ test("credits: daily/monthly caps, bonus fallback, retries, refunds and ongoing 
     `$db->exec("UPDATE arena_credit_events SET period_day='2000-01-01',period_month='2000-01' WHERE user_id=${user.id}");`,
   );
   balance = await creditBalance(user);
-  assert.equal(balance.dailyRemaining, 10);
+  assert.equal(balance.dailyRemaining, 5);
   assert.equal(balance.monthlyRemaining, 2);
   assert.equal(balance.available, 4);
 });
@@ -3885,7 +3886,7 @@ test("credits: cloud questions and raffle spins charge once and validate before 
     (await call("cloud_start", { pin: room.pin }, user)).status,
     200,
   );
-  assert.equal((await creditBalance(user)).available, 9);
+  assert.equal((await creditBalance(user)).available, 4);
   assert.equal(
     (
       await call(
@@ -3914,7 +3915,7 @@ test("credits: cloud questions and raffle spins charge once and validate before 
   };
   assert.equal((await call("prompt", next, user)).status, 200);
   assert.equal((await call("prompt", next, user)).status, 409);
-  assert.equal((await creditBalance(user)).available, 8);
+  assert.equal((await creditBalance(user)).available, 4);
   await call("close", { pin: room.pin }, user);
   room = await creditRoom(user, "raffle");
   assert.equal((await call("draw", { pin: room.pin }, user)).status, 409);
@@ -3932,7 +3933,7 @@ test("credits: cloud questions and raffle spins charge once and validate before 
     (await call("entries", { pin: room.pin, names: ["Fazla"] }, user)).status,
     400,
   );
-  assert.equal((await creditBalance(user)).available, 8);
+  assert.equal((await creditBalance(user)).available, 4);
   const spin = { pin: room.pin, expectedDrawId: null, requestId: randomUUID() };
   assert.equal((await call("draw", spin, user)).status, 200);
   mutateDB(
@@ -3953,10 +3954,10 @@ test("credits: cloud questions and raffle spins charge once and validate before 
         user,
       )
     ).status,
-    409,
-    "same request cannot pay for another spin",
+    200,
+    "later spins in the same event do not charge another game",
   );
-  assert.equal((await creditBalance(user)).available, 7);
+  assert.equal((await creditBalance(user)).available, 3);
   await call("close", { pin: room.pin }, user);
   room = await creditRoom(user, "family");
   assert.equal(room.participantLimit, 10);
@@ -3992,7 +3993,7 @@ test("credits: cloud questions and raffle spins charge once and validate before 
     (await call("family_start", { pin: room.pin }, user)).status,
     409,
   );
-  assert.equal((await creditBalance(user)).available, 6);
+  assert.equal((await creditBalance(user)).available, 2);
 });
 
 async function creditTournament(user) {
@@ -4013,78 +4014,36 @@ async function creditTournament(user) {
   }
   return room;
 }
-test("credits: tournament reserves unique rounds, settles unattended progress and refunds only unstarted rounds", async () => {
+test("credits: a full tournament costs one game, regardless of selected rounds", async () => {
   const user = await soloUser("credit-tournament");
   await setCreditLimits(user, { dailyLimit: 1 });
-  let room = await creditTournament(user);
-  assert.equal(
-    (await call("tournament_start", { pin: room.pin }, user)).status,
-    409,
-  );
-  assert.equal((await creditBalance(user)).available, 1);
-  assert.equal((await creditBalance(user)).reserved, 0);
-  await setCreditLimits(user, { dailyLimit: 3 });
-  assert.equal(
-    (await call("tournament_start", { pin: room.pin }, user)).status,
-    200,
-  );
-  let b = await creditBalance(user);
-  assert.equal(b.available, 1);
-  assert.equal(b.reserved, 2);
-  assert.equal(
-    (await call("tournament_start", { pin: room.pin }, user)).status,
-    409,
-  );
-  assert.equal(
-    (
-      await call(
-        "credit_refund",
-        { userId: user.id, eventId: b.history[0].id, note: "Rezerve tur" },
-        { admin: true },
-      )
-    ).status,
-    409,
-  );
-  // Trigger the first round without waiting for the voting clock.
-  mutateDB(room.pin, "$s['voteUntil']=microtime(true)-4");
-  b = await creditBalance(user);
-  assert.equal(b.reserved, 1);
-  assert.equal(b.available, 1);
-  assert.equal((await call("close", { pin: room.pin }, user)).status, 200);
-  b = await creditBalance(user);
-  assert.equal(b.available, 2);
-  assert.equal(b.reserved, 0);
-  assert.equal(b.history.filter((e) => e.state === "spent").length, 1);
-  assert.equal(b.history.filter((e) => e.state === "refunded").length, 1);
-  // An abandoned browser still accrues already-started rounds by server time.
-  room = await creditTournament(user);
-  assert.equal(
-    (await call("tournament_start", { pin: room.pin }, user)).status,
-    200,
-  );
-  assert.equal((await creditBalance(user)).available, 0);
-  mutateDB(room.pin, "$s['voteUntil']=microtime(true)-1000");
-  b = await creditBalance(user);
-  assert.equal(b.reserved, 0);
-  assert.equal(b.available, 0);
-  assert.equal(
-    (await call("room", { pin: room.pin }, user)).data.phase,
-    "finished",
-  );
-  assert.equal(b.history.filter((e) => e.state === "spent").length, 3);
+  const room = await creditTournament(user);
+  assert.equal((await call("tournament_start", {pin:room.pin}, user)).status,200);
+  let balance=await creditBalance(user);
+  assert.equal(balance.available,0);
+  assert.equal(balance.reserved,0);
+  assert.equal(balance.history.length,1);
+  assert.equal((await call("tournament_start", {pin:room.pin}, user)).status,409);
+  mutateDB(room.pin,"$s['voteUntil']=microtime(true)-1000");
+  assert.equal((await call("room",{pin:room.pin},user)).data.phase,"finished");
+  balance=await creditBalance(user);
+  assert.equal(balance.available,0);
+  assert.equal(balance.history.length,1);
+  const next=await creditTournament(user);
+  assert.equal((await call("tournament_start",{pin:next.pin},user)).status,409);
 });
 
-test("credits: expired reservations, late refunds, owner preview and transaction rollback", async () => {
+test("credits: started tournament expiry, late refunds, owner preview and transaction rollback", async () => {
   const user = await soloUser("credit-refunds");
   let room = await creditTournament(user);
   await call("tournament_start", { pin: room.pin }, user);
-  // Expire before the vote could start: nothing was played, so release both.
+  // Starting a tournament spends one game, even if the host leaves during voting.
   mutateDB(
     room.pin,
     "$s['expiresAt']=time()-1;$s['voteUntil']=microtime(true)+30",
   );
   let b = await creditBalance(user);
-  assert.equal(b.available, 10);
+  assert.equal(b.available, 4);
   assert.equal(b.reserved, 0);
   room = await creditRoom(user);
   await startCreditQuiz(user, room);
@@ -4107,7 +4066,7 @@ test("credits: expired reservations, late refunds, owner preview and transaction
   b = await creditBalance(user);
   assert.equal(b.bonus, 1);
   assert.equal(b.monthlyRemaining, before.monthlyRemaining);
-  assert.equal(b.available, before.available + 1);
+  assert.equal(b.available, before.available, "a refund bonus cannot exceed the daily cap");
   await call(
     "credit_refund",
     { userId: user.id, eventId: event.id, note: "Tekrarlanan iade" },
@@ -4187,13 +4146,13 @@ test("room credit balances belong to the host and stay private from participants
   assert.equal((await call("credits", { pin: "000000" }, user)).status, 404);
   assert.equal((await startCreditQuiz(user, room)).status, 200);
   const own = (await call("credits", { pin: room.pin }, user)).data;
-  assert.equal(own.available, 9);
+  assert.equal(own.available, 4);
   const adminView = (await call("credits", { pin: room.pin }, { admin: true }))
     .data;
   assert.equal(adminView.unlimited, false);
   assert.equal(
     adminView.available,
-    9,
+    4,
     "admin sees the room owner's balance, not their unlimited balance",
   );
   mutateDB(room.pin, "$s['deadline']=microtime(true)-1000");
@@ -4203,7 +4162,7 @@ test("room credit balances belong to the host and stay private from participants
   );
   assert.equal(
     (await call("credits", { pin: room.pin }, user)).data.available,
-    9,
+    4,
     "completion does not charge again",
   );
 });
@@ -4243,4 +4202,25 @@ test("manual cancellation reaches players and rejects further answers", async ()
   const repeated = await call("close", { pin: room.pin }, { admin: true });
   assert.equal(repeated.status, 200);
   assert.equal(repeated.data.closeReason, "cancelled");
+});
+
+
+test("five games are shared across web and native, including bonus and legacy accounts", async()=>{
+  const user=await soloUser("five-shared");
+  await creditBalance(user);
+  sql(`$db->exec("UPDATE arena_credit_accounts SET daily_limit=10,bonus=100 WHERE user_id=${user.id}");`);
+  assert.equal((await creditBalance(user)).dailyLimit,5);
+  for(let i=0;i<5;i++){
+    const room=await creditRoom(user);
+    assert.equal((await startCreditQuiz(user,room)).status,200);
+    await call("close",{pin:room.pin},user);
+    assert.equal((await creditBalance(user)).available,4-i);
+  }
+  const auth=await call("login",{username:"five-shared",password:"test"},{native:true});
+  assert.equal(auth.status,200);
+  const native={native:true,bearer:auth.session};
+  assert.equal((await call("solo_start",{category:"cografya"},native)).status,409);
+  assert.equal((await creditBalance(native)).available,0);
+  assert.equal((await creditBalance(native)).bonus,100);
+  assert.equal((await call("credit_update",{userId:user.id,dailyLimit:6,monthlyLimit:150,participantLimit:10,roomLimit:1,raffleLimit:50,note:"Invalid higher daily limit"},{admin:true})).status,400);
 });

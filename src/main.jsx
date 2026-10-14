@@ -1,3 +1,4 @@
+import GoogleSignIn from "./GoogleSignIn";
 import GameArt from "./GameArt";
 import LibraryBrowser from "./LibraryBrowser";
 import ThemedSelect from "./ThemedSelect";
@@ -1048,7 +1049,7 @@ function App() {
   );
 }
 function Login({ onClose, onDone }) {
-  const [username, setUsername] = useState("admin"),
+  const [username, setUsername] = useState(""),
     [pass, setPass] = useState(""),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
@@ -1059,6 +1060,8 @@ function Login({ onClose, onDone }) {
         yaptığında önceki cihazdaki oturumun kapanır. Yönetici hesabı bu
         sınırdan muaftır.
       </p>
+      <GoogleSignIn onDone={onDone} />
+      <details className="login-existing" open><summary>Mevcut kullanıcı adı ve şifremle giriş</summary>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -1075,7 +1078,6 @@ function Login({ onClose, onDone }) {
       >
         <Field label="Kullanıcı adı">
           <input
-            autoFocus
             autoComplete="username"
             name="username"
             required
@@ -1106,7 +1108,7 @@ function Login({ onClose, onDone }) {
           <ShieldCheck size={16} /> Bu cihazda oturumun açık kalır. Her oyunda
           tekrar giriş yapman gerekmez.
         </p>
-      </form>
+      </form></details>
     </Modal>
   );
 }

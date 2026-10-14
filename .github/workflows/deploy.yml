@@ -32,11 +32,12 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: "8.3"
-          extensions: pdo_sqlite, pdo_mysql, mbstring, intl
+          extensions: pdo_sqlite, pdo_mysql, mbstring, intl, curl, openssl
           coverage: none
+      - run: composer install --no-dev --prefer-dist --no-interaction --no-progress
       - run: npm ci
       - run: npm run check:bank
-      - run: php -l api/mobile.php && php -l api/credits.php && php -l api/quiz-formats.php && php -l api/solo.php && php -l api/auth.php && php -l api/core.php && php -l api/family.php && php -l api/tournament.php && php -l api/index.php && php -l api/setup.php
+      - run: php -l api/google.php && php -l api/mobile.php && php -l api/credits.php && php -l api/quiz-formats.php && php -l api/solo.php && php -l api/auth.php && php -l api/core.php && php -l api/family.php && php -l api/tournament.php && php -l api/index.php && php -l api/setup.php
       - run: npm run build
       - run: npm test
         env:

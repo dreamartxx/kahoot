@@ -178,15 +178,15 @@ export default function Profile({
           </h2>
           <button
             className="profile-setting-row"
-            disabled={preview}
+            disabled={preview || user.authProvider === 'google'}
             onClick={onPassword}
           >
             <span className="setting-icon">
               <KeyRound size={21} />
             </span>
             <span>
-              <strong>Şifremi değiştir</strong>
-              <small>Hesabının giriş şifresini güncelle</small>
+              <strong>{user.authProvider === 'google' ? 'Google ile bağlı' : 'Şifremi değiştir'}</strong>
+              <small>{user.authProvider === 'google' ? 'Giriş güvenliğini Google hesabından yönet' : 'Hesabının giriş şifresini güncelle'}</small>
             </span>
             <ChevronRight size={18} />
           </button>

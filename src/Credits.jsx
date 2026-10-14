@@ -133,22 +133,15 @@ export default function Credits({ userId, manage = false }) {
           <details className="credit-rules">
             <summary>Krediler nasıl çalışır?</summary>
             <p>
-              Günlük kullanım aylık kotadan da düşer. Günlük haklar birikmez;
+              Günlük en fazla 5 oyun başlatabilirsin. Web ve uygulama aynı hakları kullanır. Günlük kullanım aylık kotadan da düşer. Günlük haklar birikmez;
               kotalar Türkiye saatiyle gece yarısı ve ayın ilk günü yenilenir.
-              Bonus, günlük veya aylık hakkın bittiğinde kullanılır.
+              Bonus yalnızca aylık haklarını tamamlar; günlük 5 oyun sınırını artırmaz.
             </p>
             <p>
-              Bilgi yarışması, aile oyunu ve kişisel test 1 kredi. Her çark
-              çevirme ve her kelime bulutu sorusu 1 kredi. Oda kurmak ve
-              katılmak ücretsiz.
+              Bilgi yarışması, aile oyunu, kendini dene, turnuva, çark etkinliği ve kelime bulutu etkinliği 1 kredi. Aynı etkinlikte sonraki çark çevirmeleri veya kelime soruları ek kredi harcamaz. Oda kurmak ve kodla katılmak ücretsiz.
             </p>
             <p>
-              Turnuvada her kategori turu 1 kredi. Tüm turların kredisi başta
-              ayrılır; başlamayan turlar iptalde geri döner. Ayrılan haklar
-              turnuvanın başladığı günlük/aylık döneme aittir. Oyun başladıktan
-              sonra kendi isteğinle bırakmak kredi iadesi sağlamaz. Doğrulanan
-              sistem hatalarını yönetici iade edebilir. Önceki güne ait
-              kullanımın iadesi bonus kredi olarak eklenir.
+              Turnuvanın tamamı, kategori sayısından bağımsız olarak 1 oyun hakkıdır. Oyun başlamadan iptal etmek hak harcamaz. Başlayan oyundan ayrılmak hakkı geri vermez. Doğrulanan sistem hatalarını yönetici iade edebilir.
             </p>
             <p>Ödeme veya abonelik yok.</p>
           </details>
@@ -163,7 +156,7 @@ export default function Credits({ userId, manage = false }) {
               >
                 <div className="credit-fields">
                   {[
-                    ["dailyLimit", "Günlük kredi", 0, 10000],
+                    ["dailyLimit", "Günlük oyun hakkı", 0, 5],
                     ["monthlyLimit", "Aylık kredi", 0, 100000],
                     ["participantLimit", "Katılımcı sınırı", 1, 300],
                     ["roomLimit", "Açık etkinlik sınırı", 1, 20],

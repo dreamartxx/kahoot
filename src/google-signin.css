@@ -1,0 +1,63 @@
+.google-signin {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+  text-align: center;
+}
+.google-button-slot {
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+.google-native-button {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #747775;
+  background: #fff;
+  color: #1f1f1f;
+  border-radius: 28px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.google-native-button span {
+  font: bold 24px Arial;
+  color: #4285f4;
+}
+.google-native-button:disabled {
+  opacity: 0.6;
+}
+.google-signin-note {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted, #747080);
+  margin: 0;
+}
+.google-signin > a {
+  font-size: 13px;
+  text-underline-offset: 3px;
+}
+.login-existing {
+  border-top: 1px solid #a6a0b43d;
+  padding-top: 14px;
+  margin-top: 16px;
+}
+.login-existing > summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 8px 0;
+}
+.login-existing form {
+  margin-top: 12px;
+}
+.google-signin a:focus-visible,
+.google-native-button:focus-visible {
+  outline: 3px solid #9a72ff;
+  outline-offset: 3px;
+}
