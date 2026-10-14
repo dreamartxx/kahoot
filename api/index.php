@@ -3,11 +3,12 @@ declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');header('Cache-Control: no-store');header('X-Content-Type-Options: nosniff');
 require __DIR__.'/core.php';
 require __DIR__.'/mobile.php';
+require __DIR__.'/google.php';
 $action=$_GET['action']??'status';$method=$_SERVER['REQUEST_METHOD'];
 try {
     prepareMobileSession();
     if(configured())creditSchema();
-    if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured()]+authStatus());exit;}
+    if($action==='status') {prepareInstaller();echo json_encode(['configured'=>configured(),'googleClientId'=>googleClientId(),'googleNativeEnabled'=>!empty((require __DIR__.'/google-config.php')['android_client_ids'])]+authStatus());exit;}
     if($method==='POST') {
         if(!str_contains($_SERVER['CONTENT_TYPE']??'','application/json')) fail('JSON gerekli.',415);
         $origin=$_SERVER['HTTP_ORIGIN']??'';
@@ -19,9 +20,10 @@ try {
         $raw=file_get_contents('php://input');if(strlen($raw)>1048576) fail('İstek çok büyük.',413);
         $in=json_decode($raw,true,64,JSON_THROW_ON_ERROR);if(!is_array($in)) fail('Geçersiz istek.');
     } else $in=$_GET;
-    $writes=['cloud_start','credit_update','credit_bonus','credit_refund','idle_continue','idle_cancel','solo_start','solo_answer','solo_abandon','preview_start','preview_stop','login','logout','password_change','profile_update','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance','tournament_choices','tournament_prize','tournament_start','tournament_vote','tournament_vote_close'];
+    $writes=['google_challenge','google_login','cloud_start','credit_update','credit_bonus','credit_refund','idle_continue','idle_cancel','solo_start','solo_answer','solo_abandon','preview_start','preview_stop','login','logout','password_change','profile_update','user_create','user_update','create','join','answer','advance','words','prompt','entries','draw','close','question_save','question_delete','family_profile','family_start','family_answer','family_advance','tournament_choices','tournament_prize','tournament_start','tournament_vote','tournament_vote_close'];
     if(in_array($action,$writes,true) && $method!=='POST') fail('POST gerekli.',405);
     creditActions($action,$in);
+    googleActions($action,$in);
     authActions($action,$in);
     if(str_starts_with($action,'solo_')){require_once __DIR__.'/solo.php';soloActions($action,$in);}
     if($action==='categories') { $counts=[];foreach(bank() as $q)$counts[$q['category']]=($counts[$q['category']]??0)+1;echo json_encode($counts);exit; }
@@ -41,7 +43,7 @@ try {
     if($action==='rooms'){needAdmin();$q=db()->query('SELECT state FROM arena_rooms ORDER BY created_at DESC');$out=[];foreach($q as $row){$s=expireStoredRoom($row['state']);if($s['expiresAt']>time()&&canManageRoom($s))$out[]=snapshot($s,null,true);if(count($out)>=50)break;}echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;}
     if($action==='create'){
         needAdmin();soloSchema();specialQuizSchema();creditReconcile((int)currentUser()['id']);$mode=$in['mode']??'';if(!in_array($mode,['quiz','cloud','raffle','family','tournament']))fail('Modül geçersiz.');
-        $s=['ownerId'=>(int)currentUser()['id'],'pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
+        $s=['creditCharged'=>false,'ownerId'=>(int)currentUser()['id'],'pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
         $db=db();if(!$db->inTransaction())$db->beginTransaction();creditCapacity((int)$s['ownerId']);$limits=creditSummary((int)$s['ownerId']);$s['participantLimit']=$limits['participantLimit'];$s['raffleLimit']=$limits['raffleLimit'];
         if($mode==='quiz'){
             $s['category']=$in['category']??'cografya';

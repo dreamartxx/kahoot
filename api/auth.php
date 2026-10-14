@@ -12,7 +12,7 @@ function authSchema(): void {
     $db->prepare($sql)->execute(['admin','admin',adminHash()]);
     });
 }
-function publicUser(array $u): array {return ['id'=>(int)$u['id'],'username'=>$u['username'],'role'=>$u['role'],'active'=>(bool)$u['active']];}
+function publicUser(array $u): array {return ['id'=>(int)$u['id'],'username'=>$u['username'],'role'=>$u['role'],'active'=>(bool)$u['active'],'authProvider'=>function_exists('googleAccount')&&googleAccount((int)$u['id'])?'google':'local'];}
 function authCookie(string $token,int $expires): void {
     if(function_exists('mobileClient') && mobileClient()) {
         header('X-Arena-Session: '.($token===''?'cleared':$token));
@@ -119,7 +119,7 @@ function authActions(string $action,array $in): void {
         authSchema();db()->prepare('DELETE FROM arena_sessions WHERE token_hash=?')->execute([hash('sha256',$_COOKIE['arena_session']??'')]);authCookie('',time()-3600);clearLegacySession();echo '{}';exit;
     }
     if($action==='password_change'){
-        needAdmin();rateLimit('password_change',10);$u=currentUser();
+        needAdmin();rateLimit('password_change',10);$u=currentUser();if(function_exists('googleAccount')&&googleAccount((int)$u['id']))fail('Bu hesaba Google ile giriş yapılıyor. Şifreni Google hesabından yönetebilirsin.',409);
         if(!verifyAdminPassword((string)($in['currentPassword']??''),$u['password_hash']))fail('Mevcut şifreniz hatalı.',401);
         $pass=$in['newPassword']??'';if(!is_string($pass)||$pass==='')fail('Yeni şifre boş bırakılamaz.');
         $hash=makeAdminHash($pass);$db=db();$db->beginTransaction();$q=$db->prepare('UPDATE arena_users SET password_hash=? WHERE id=? AND password_hash=?');$q->execute([$hash,$u['id'],$u['password_hash']]);
