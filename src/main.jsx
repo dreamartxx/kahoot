@@ -1,4 +1,5 @@
 import GoogleSignIn from "./GoogleSignIn";
+import QuizLobby from "./QuizLobby";
 import GameArt from "./GameArt";
 import LibraryBrowser from "./LibraryBrowser";
 import ThemedSelect from "./ThemedSelect";
@@ -115,6 +116,7 @@ import "./question-stage.css";
 import "./premium-cards.css";
 import "./desktop-studio.css";
 import "./premium-renders.css";
+import "./quiz-lobby.css";
 import { setupAppearance } from "./appearance";
 const modes = {
   solo: { name: "Kendini Dene", icon: Sparkles, color: "purple" },
@@ -1667,6 +1669,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     }
   }
   const closed = room && ["finished", "closed"].includes(room.phase);
+  const quizLobby = room?.mode === "quiz" && room.phase === "lobby";
   const join = async (e) => {
     e.preventDefault();
     setBusy(true);
@@ -1819,6 +1822,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     <div
       className={"event-page " + (host || screen ? "presenter" : "participant")}
       data-compact-room={compact && ["raffle", "cloud"].includes(room.mode)}
+      data-quiz-lobby={quizLobby}
       data-screen-key={`${room.phase}:${room.question?.id || room.index}`}
       data-playing={["question", "countdown", "reveal"].includes(room.phase)}
     >
@@ -1892,25 +1896,27 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
             moment={gameCreditMoment(room)}
           />
         )}
-      <div className="event-title">
-        <span className="eyebrow">
-          <Radio size={15} /> {modes[room.mode].name}
-        </span>
-        <h1>{room.title}</h1>
-        <span>
-          <Users size={16} />{" "}
-          {room.mode === "raffle" ? room.entryCount : room.playerCount}{" "}
-          katılımcı{" "}
-          {room.me && (
-            <>
-              {" "}
-              · <CharacterAvatar id={room.me.avatar} /> Merhaba,{" "}
-              <b>{room.me.name}</b>
-            </>
-          )}
-        </span>
-      </div>
-      {host && ["lobby", "open"].includes(room.phase) && (
+      {!quizLobby && (
+        <div className="event-title">
+          <span className="eyebrow">
+            <Radio size={15} /> {modes[room.mode].name}
+          </span>
+          <h1>{room.title}</h1>
+          <span>
+            <Users size={16} />{" "}
+            {room.mode === "raffle" ? room.entryCount : room.playerCount}{" "}
+            katılımcı{" "}
+            {room.me && (
+              <>
+                {" "}
+                · <CharacterAvatar id={room.me.avatar} /> Merhaba,{" "}
+                <b>{room.me.name}</b>
+              </>
+            )}
+          </span>
+        </div>
+      )}
+      {host && !quizLobby && ["lobby", "open"].includes(room.phase) && (
         <p className="credit-capacity-note">
           Katılım ücretsiz · En fazla {room.participantLimit || 10} canlı
           katılımcı
@@ -1918,6 +1924,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         </p>
       )}
       {!screen &&
+        !quizLobby &&
         !(compact && ["raffle", "cloud"].includes(room.mode)) &&
         ["lobby", "open"].includes(room.phase) && (
           <div className="room-module-guide">
@@ -1928,6 +1935,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
         )}
       {room.mode === "tournament" && <TournamentBanner room={room} />}
       {host &&
+        !quizLobby &&
         room.phase === "lobby" &&
         ["quiz", "family", "tournament"].includes(room.mode) && (
           <section
@@ -2005,85 +2013,28 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       ) : ["quiz", "tournament"].includes(room.mode) ? (
         <>
           {room.phase === "lobby" ? (
-            <div className="lobby-layout">
-              <section className="lobby-main">
-                <div className="big-emoji">
-                  {quizFormat(room.quizType)?.emoji ||
-                    catById(room.category).emoji}
-                </div>
-                <h2>
-                  {host || screen
-                    ? "Herkes burada mı?"
-                    : "Yerini aldın. Hazır ol!"}
-                </h2>
-                <p>
-                  {host || screen
-                    ? "QR’ı okut, ismini yaz, heyecana katıl."
-                    : "Sunucu yarışmayı başlattığında ilk soru burada belirecek."}
-                </p>
-                <div className="lobby-meta">
-                  <span>
-                    <LibraryBig size={18} /> {room.total} soru
-                  </span>
-                  <span>
-                    <Clock size={18} /> {room.seconds} saniye
-                  </span>
-                </div>
-                {(host || screen) && (
-                  <div className="lobby-pin">
-                    {pin.split("").map((c, i) => (
-                      <span key={i}>{c}</span>
-                    ))}
-                  </div>
-                )}
-                {host && (
-                  <Button
-                    disabled={busy || !room.playerCount}
-                    onClick={() =>
-                      action("advance", {
-                        expectedIndex: room.index,
-                        expectedPhase: room.phase,
-                      })
-                    }
-                  >
-                    <Play size={18} /> Yarışmayı başlat
-                  </Button>
-                )}
-                <div className="player-chips">
-                  {room.players.map((p, i) => (
-                    <span key={p.name}>
-                      <CharacterAvatar id={p.avatar} />
-                      {p.name}
-                    </span>
-                  ))}
-                </div>
-                {!room.playerCount && (
-                  <span className="muted">İlk katılımcını bekliyorsun…</span>
-                )}
-              </section>
-              {(host || screen) && (
-                <section className="lobby-qr">
-                  <QR pin={pin} />
-                  <h3>Birlikte daha eğlenceli.</h3>
-                  <p>
-                    QR koduyla veya ana sayfada
-                    <br />
-                    oyun kodunu yazarak katıl.
-                  </p>
-                  <Button
-                    secondary
-                    onClick={() => {
-                      navigator.clipboard
-                        .writeText(joinUrl(pin))
-                        .then(() => notify("Katılım bağlantısı kopyalandı."))
-                        .catch(() => notify("Bağlantı: " + joinUrl(pin)));
-                    }}
-                  >
-                    <Copy size={16} /> Bağlantıyı kopyala
-                  </Button>
-                </section>
-              )}
-            </div>
+            <QuizLobby
+              room={room}
+              pin={pin}
+              host={host}
+              screen={screen}
+              busy={busy}
+              QR={QR}
+              guideMode={quizFormat(room.quizType) ? room.quizType : "quiz"}
+              onJoin={() => setHostJoining(true)}
+              onStart={() =>
+                action("advance", {
+                  expectedIndex: room.index,
+                  expectedPhase: room.phase,
+                })
+              }
+              onCopy={() =>
+                navigator.clipboard
+                  .writeText(joinUrl(pin))
+                  .then(() => notify("Katılım bağlantısı kopyalandı."))
+                  .catch(() => notify("Bağlantı: " + joinUrl(pin)))
+              }
+            />
           ) : room.phase === "finished" ? (
             <Results room={room} host={host} />
           ) : (
@@ -2276,7 +2227,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
           notify={notify}
         />
       )}
-      {host && room.phase !== "closed" && (
+      {host && !quizLobby && room.phase !== "closed" && (
         <CompactRoomPanel
           enabled={compact && ["raffle", "cloud"].includes(room.mode)}
           title="Oda seçenekleri"
