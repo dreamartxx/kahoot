@@ -1553,6 +1553,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     [tick, setTick] = useState(Date.now()),
     [qr, setQr] = useState(false),
     [hostJoining, setHostJoining] = useState(false),
+    [needsPlayers, setNeedsPlayers] = useState(false),
     [sound, setSound] = useState(false);
   const host = kind === "host" && admin,
     screen = kind === "screen",
@@ -1654,6 +1655,15 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     }
   }, [left, sound, room?.phase]);
   async function action(a, data = {}) {
+    if (
+      a === "advance" &&
+      room?.mode === "quiz" &&
+      room.phase === "lobby" &&
+      room.playerCount < 2
+    ) {
+      setNeedsPlayers(true);
+      return false;
+    }
     setBusy(true);
     try {
       const r = await api(a, { pin, ...data }, token);
@@ -1661,7 +1671,12 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       offset.current = r.serverTime - Date.now() / 1000;
       return true;
     } catch (e) {
-      notify(e.message);
+      if (
+        a === "advance" &&
+        e.message.startsWith("Bilgi yarışması için en az 2")
+      )
+        setNeedsPlayers(true);
+      else notify(e.message);
       await load();
       return false;
     } finally {
@@ -1691,6 +1706,23 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
       setBusy(false);
     }
   };
+  async function joinWithProfile() {
+    if (busy) return;
+    setBusy(true);
+    try {
+      const profileAvatar = characterById(
+        localStorage.getItem("arena:character"),
+      ).id;
+      const r = await api("join", { pin, asHost: true, avatar: profileAvatar });
+      localStorage.setItem("arena:" + pin, r.token);
+      setToken(r.token);
+      setRoom(r.room);
+    } catch (e) {
+      notify(e.message);
+    } finally {
+      setBusy(false);
+    }
+  }
   if (!room)
     return (
       <div className="center-page">
@@ -2021,7 +2053,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
               busy={busy}
               QR={QR}
               guideMode={quizFormat(room.quizType) ? room.quizType : "quiz"}
-              onJoin={() => setHostJoining(true)}
+              onJoin={joinWithProfile}
               onStart={() =>
                 action("advance", {
                   expectedIndex: room.index,
@@ -2270,6 +2302,34 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
               }
             >
               <Copy size={16} /> Katılım bağlantısını kopyala
+            </Button>
+          </div>
+        </Modal>
+      )}
+      {needsPlayers && (
+        <Modal
+          title="Birlikte yarışmak daha eğlenceli!"
+          onClose={() => setNeedsPlayers(false)}
+        >
+          <div className="qr-dialog">
+            <Users size={44} aria-hidden="true" />
+            <p>
+              Bilgi yarışması için en az <strong>2 yarışmacı</strong> gerekli.
+              Birini davet et; tek başına oynamak istersen{" "}
+              <strong>Kendini Dene</strong> seni bekliyor.
+            </p>
+            <Button className="full" onClick={() => setNeedsPlayers(false)}>
+              Katılımcı bekle
+            </Button>
+            <Button
+              secondary
+              className="full"
+              disabled={busy}
+              onClick={async () => {
+                if (await action("close")) location.hash = "studio/solo";
+              }}
+            >
+              Bu odayı kapat, Kendini Dene’ye geç
             </Button>
           </div>
         </Modal>

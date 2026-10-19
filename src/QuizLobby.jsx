@@ -152,7 +152,7 @@ export default function QuizLobby({
                   <Check size={16} /> Sen de yarışmacısın
                 </span>
               ) : (
-                <button onClick={onJoin}>
+                <button onClick={onJoin} disabled={busy}>
                   <Plus size={16} /> Ben de yarışacağım
                 </button>
               )}
@@ -174,13 +174,13 @@ export default function QuizLobby({
         {host ? (
           <>
             <span>
-              {room.playerCount
+              {room.playerCount >= 2
                 ? "Herkes hazırsa sahne sizin!"
-                : "Başlatmak için en az 1 kişi katılmalı."}
+                : "Birlikte başlamak için en az 2 yarışmacı gerekli."}
             </span>
             <button
               className="quiz-lobby-start"
-              disabled={busy || !room.playerCount}
+              disabled={busy}
               onClick={onStart}
             >
               <Play size={19} fill="currentColor" />{" "}

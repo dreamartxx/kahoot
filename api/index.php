@@ -98,12 +98,17 @@ try {
         familyAction($s,$action,$in,$token);saveRoom($s);echo json_encode(snapshot($s,$token,canManageRoom($s)),JSON_UNESCAPED_UNICODE);exit;
     }
     if($action==='join'){
-        $name=inputText($in['name']??'',2,32,'İsim');$limits=creditSummary((int)($s['ownerId']??1));$s['participantLimit']=$limits['participantLimit'];$s['raffleLimit']=$limits['raffleLimit'];if(count($s['players'])>=$s['participantLimit'])fail('Bu etkinlik '.$s['participantLimit'].' kişilik kapasiteye ulaştı.',409);
+        $asHost=($in['asHost']??false)===true;
+        if($asHost&&!canManageRoom($s))fail('Bu etkinliği yönetme yetkiniz yok.',403);
+        $hostUser=canManageRoom($s)?currentUser():null;
+        if($s['mode']==='quiz'&&$hostUser)foreach($s['players'] as $p)if(($p['hostUserId']??null)===(int)$hostUser['id'])fail('Bu hesaptan zaten yarışmaya katıldın.',409);
+        $name=$asHost?currentUser()['username']:inputText($in['name']??'',2,32,'İsim');$limits=creditSummary((int)($s['ownerId']??1));$s['participantLimit']=$limits['participantLimit'];$s['raffleLimit']=$limits['raffleLimit'];if(count($s['players'])>=$s['participantLimit'])fail('Bu etkinlik '.$s['participantLimit'].' kişilik kapasiteye ulaştı.',409);
         foreach($s['players'] as $p)if(normalize($p['name'])===normalize($name))fail('Bu isim kullanılıyor. İsminize bir ek yapın.',409);
         if(in_array($s['mode'],['quiz','family','tournament'],true) && $s['phase']!=='lobby')fail('Yarışma başladı. Bir sonraki turda katılabilirsiniz.',409);
         $avatar=$in['avatar']??'astronaut';
         if(!is_string($avatar)||!in_array($avatar,['astronaut','robot','alien','wizard','dragon','unicorn','knight','ninja','fox','panda','cat','dinosaur','penguin','footballer','goalkeeper','racer','chef','scientist','pirate','diver'],true))fail('Geçerli bir karakter seçin.');
         $token=bin2hex(random_bytes(24));$key=hash('sha256',$token);$s['players'][$key]=['name'=>$name,'score'=>0,'avatar'=>$avatar];
+        if($hostUser)$s['players'][$key]['hostUserId']=(int)$hostUser['id'];
         if($s['mode']==='family'){$s['players'][$key]['role']=inputText($in['role']??'',1,24,'Ailedeki rolün');$s['players'][$key]['id']=bin2hex(random_bytes(8));}
         if($s['mode']==='raffle'){
             $existing=array_filter($s['entries'],fn($e)=>normalize($e['name'])===normalize($name));
@@ -128,7 +133,10 @@ try {
         if($s['mode']==='tournament'&&!in_array($s['phase'],['question','reveal'],true))fail('Turnuvanın hazırlığı tamamlanmalı.',409);
         if($s['phase']==='countdown')fail('Yeni soru hazırlanıyor.',409);
         if(($in['expectedIndex']??null)!==$s['index']||($in['expectedPhase']??null)!==$s['phase'])fail('Ekran güncellendi; tekrar deneyin.',409);
-        if($s['phase']==='lobby')creditRoomCharge($s,'quiz',$in);
+        if($s['phase']==='lobby'){
+            if(count($s['players'])<2)fail('Bilgi yarışması için en az 2 yarışmacı gerekli. Tek başına oynamak için Kendini Dene modülünü kullan.',409);
+            creditRoomCharge($s,'quiz',$in);
+        }
         if($s['phase']==='question'){scoreEstimates($s);$s['phase']='reveal';$s['revealUntil']=microtime(true)+5;}
         elseif($s['index']===count($s['questions'])-1)$s['phase']='finished';
         else{$s['index']++;$s['phase']='question';$s['deadline']=microtime(true)+$s['seconds'];unset($s['revealUntil'],$s['countdownUntil']);}

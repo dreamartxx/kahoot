@@ -1,4 +1,4 @@
-import { test, before, after } from "node:test";
+import { test, before, beforeEach, after } from "node:test";
 import assert from "node:assert/strict";
 import { spawn, execFileSync } from "node:child_process";
 import { mkdtempSync, rmSync } from "node:fs";
@@ -145,6 +145,9 @@ before(async () => {
   assert.equal(login.status, 200);
   cookie = login.cookie.split(";")[0];
 });
+// Each scenario gets its own rate-limit window; requests within a scenario
+// still exercise the production limiter, including failed attempts.
+beforeEach(() => clearLoginLimits());
 after(() => {
   server?.kill();
   rmSync(dir, { recursive: true, force: true });
@@ -323,6 +326,7 @@ test("all categories expose 250 questions, support manual additions and rotate t
         assert.equal(q.options[q.correct], original.options[original.correct]);
       }
       const player = await join(room.pin, "Tarih oyuncusu");
+      await join(room.pin, "İkinci tarih oyuncusu");
       assert.equal(player.room.questions, undefined);
       await call(
         "advance",
@@ -395,6 +399,7 @@ test("quiz: levels rotate independently without early answer/score leaks; idempo
   );
   let r = await create("quiz");
   const p = await join(r.pin, "Deniz");
+  await join(r.pin, "Ece");
   assert(!p.room.questions);
   assert.equal((await call("join", { pin: r.pin, name: "DENİZ" })).status, 409);
   assert.equal(
@@ -653,6 +658,8 @@ test("new categories create ten-question rounds and reveal details only after an
   ]) {
     const room = await create("quiz", { category });
     assert.equal(room.total, 10);
+    await join(room.pin, "Birinci yarışmacı");
+    await join(room.pin, "İkinci yarışmacı");
     const started = await call(
       "advance",
       { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" },
@@ -3146,6 +3153,7 @@ test("estimate quiz conceals guesses, handles decimal ties, and awards only the 
 test("estimate deadlines award closest guesses on reads and preserve them on later writes", async () => {
   const { pin } = await create("quiz", { category: "estimate" }),
     player = await join(pin, "Tahminci");
+  await join(pin, "Diğer tahminci");
   await call(
     "advance",
     { pin, expectedIndex: -1, expectedPhase: "lobby" },
@@ -3177,6 +3185,7 @@ test("estimate deadlines award closest guesses on reads and preserve them on lat
 test("binary games show exactly Evet/Hayır, score normally, and reject nonexistent choices", async () => {
   const { pin } = await create("quiz", { category: "binary" }),
     player = await join(pin, "Meraklı");
+  await join(pin, "Diğer meraklı");
   const start = await call(
     "advance",
     { pin, expectedIndex: -1, expectedPhase: "lobby" },
@@ -3361,6 +3370,7 @@ test("idle expiry covers family, tournament and undrawn raffles, including list 
 test("started games and live clouds are not cancelled; stale warning actions cannot close started games", async () => {
   const room = await create("quiz", { seconds: 20 });
   const player = await join(room.pin, "Oyuncu");
+  await join(room.pin, "İkinci oyuncu");
   await call(
     "advance",
     { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 },
@@ -3435,6 +3445,8 @@ test("quiz setup defaults to ten seconds and accepts selectable lengths across a
           deck.filter((q) => q.difficulty === "expert").length,
           Math.floor(questionCount / 10),
         );
+      await join(room.pin, "Birinci yarışmacı");
+      await join(room.pin, "İkinci yarışmacı");
       const started = await call(
         "advance",
         { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" },
@@ -3631,13 +3643,17 @@ const creditBalance = async (user) => {
   assert.equal(r.status, 200, JSON.stringify(r));
   return r.data;
 };
-const creditRoom = async (user, mode = "quiz") => {
+const creditRoom = async (user, mode = "quiz", withPlayers = true) => {
   const r = await call(
     "create",
     { mode, title: "Kredi testi", category: "cografya", prize: "Aile kupası" },
     user,
   );
   assert.equal(r.status, 200, JSON.stringify(r));
+  if (mode === "quiz" && withPlayers) {
+    await join(r.data.pin, "Kredi oyuncusu bir");
+    await join(r.data.pin, "Kredi oyuncusu iki");
+  }
   return r.data;
 };
 const setCreditLimits = async (user, extra = {}) => {
@@ -3687,7 +3703,7 @@ test("credits: private balances, free creation/cancellation, one open event and 
     (await call("credit_update", { userId: user.id }, user)).status,
     403,
   );
-  const room = await creditRoom(user);
+  const room = await creditRoom(user, "quiz", false);
   assert.equal((await creditBalance(user)).available, 5);
   assert.equal(
     (await call("create", { mode: "raffle", title: "İkinci oda" }, user))
@@ -4186,6 +4202,7 @@ test('native bearer login is revocable, never inherits browser cookies, and reje
 test("manual cancellation reaches players and rejects further answers", async () => {
   const room = await create("quiz");
   const player = await join(room.pin, "İptal kontrolü");
+  await join(room.pin, "Diğer oyuncu");
   await call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, { admin: true });
   const active = (await call("room", { pin: room.pin }, { token: player.token })).data;
   const forbidden = await call("close", { pin: room.pin }, { token: player.token });
@@ -4223,4 +4240,51 @@ test("five games are shared across web and native, including bonus and legacy ac
   assert.equal((await creditBalance(native)).available,0);
   assert.equal((await creditBalance(native)).bonus,100);
   assert.equal((await call("credit_update",{userId:user.id,dailyLimit:6,monthlyLimit:150,participantLimit:10,roomLimit:1,raffleLimit:50,note:"Invalid higher daily limit"},{admin:true})).status,400);
+});
+
+
+test("quiz host uses profile identity, needs a second player, and failed starts never charge credits", async () => {
+  const user = await soloUser("profile-host");
+  const other = await soloUser("profile-other");
+  const room = await creditRoom(user, "quiz", false);
+  const start = () => call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, user);
+  assert.equal((await start()).status, 409, "Empty rooms cannot start through the API");
+  assert.equal((await creditBalance(user)).available, 5);
+  assert.equal((await call("join", { pin: room.pin, asHost: true, avatar: "fox" })).status, 403);
+  assert.equal((await call("join", { pin: room.pin, asHost: true, avatar: "fox" }, other)).status, 403);
+  const host = await call("join", { pin: room.pin, asHost: true, name: "Spoofed name", avatar: "fox" }, user);
+  assert.equal(host.status, 200);
+  assert.equal(host.data.room.me.name, "profile-host");
+  assert.equal(host.data.room.me.avatar, "fox");
+  assert.equal(host.data.room.canManage, true);
+  const reload = await call("room", { pin: room.pin }, { ...user, token: host.data.token });
+  assert.equal(reload.data.me.name, "profile-host");
+  assert.equal(reload.data.me.avatar, "fox");
+  assert.equal((await call("join", { pin: room.pin, asHost: true, avatar: "robot" }, user)).status, 409);
+  assert.equal((await call("join", { pin: room.pin, name: "İkinci kurucu" }, user)).status, 409);
+  const blocked = await start();
+  assert.equal(blocked.status, 409);
+  assert.match(blocked.data.error, /Kendini Dene/);
+  const waiting = (await call("room", { pin: room.pin }, user)).data;
+  assert.equal(waiting.phase, "lobby");
+  assert.equal(waiting.index, -1);
+  assert.equal(waiting.playerCount, 1);
+  const balance = await creditBalance(user);
+  assert.equal(balance.available, 5);
+  assert.equal(balance.history.length, 0);
+  await join(room.pin, "Arkadaş");
+  assert.equal((await start()).status, 200);
+  assert.equal((await creditBalance(user)).available, 4);
+  await call("close", { pin: room.pin }, user);
+  const solo = await call("solo_start", { category: "cografya" }, user);
+  assert.equal(solo.status, 200, "Solo mode remains available with no other players");
+  await call("solo_abandon", { gameId: solo.data.game.id }, user);
+});
+
+test("a lone guest cannot start a quiz while the host only presents", async () => {
+  const room = await create("quiz");
+  await join(room.pin, "Tek misafir");
+  const result = await call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, { admin: true });
+  assert.equal(result.status, 409);
+  assert.match(result.data.error, /Kendini Dene/);
 });
