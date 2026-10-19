@@ -83,6 +83,7 @@ try {
     if(in_array($action,['cloud_start','idle_continue','idle_cancel','advance','prompt','entries','draw','close','family_start','family_advance','tournament_prize','tournament_start','tournament_vote_close']))needAdmin();
     if(in_array($action,['join','words','answer','family_profile','family_answer','tournament_choices','tournament_vote']))rateLimit($action,$action==='join'?100:500);
     currentUser(); // Resolve lazy auth migration before opening the room transaction.
+    if($action==='join'&&(!empty($in['useProfile'])||!empty($in['asHost'])))googleSchema();
     $s=lockRoom(inputText($in['pin']??'',6,6,'Etkinlik kodu'));
     if(in_array($action,['cloud_start','idle_continue','idle_cancel','advance','prompt','entries','draw','close','family_start','family_advance','tournament_prize','tournament_start','tournament_vote_close'],true)&&!canManageRoom($s)){db()->rollBack();fail('Bu etkinliği yönetme yetkiniz yok.',403);}
     if(in_array($s['phase'],['closed','finished']) && $action!=='close'){saveRoom($s);fail(($s['closeReason']??'')==='not_started'?'Etkinlik 3 dakika içinde başlatılmadığı için otomatik iptal edildi.':'Etkinlik sona erdi.',409);}
@@ -100,14 +101,29 @@ try {
     if($action==='join'){
         $asHost=($in['asHost']??false)===true;
         if($asHost&&!canManageRoom($s))fail('Bu etkinliği yönetme yetkiniz yok.',403);
+        $useProfile=$asHost||($in['useProfile']??false)===true;
+        $profileUser=$useProfile?currentUser():null;
+        if($useProfile&&!$profileUser)fail('Profilinle katılmak için giriş yap.',401);
+        if($useProfile&&publicUser($profileUser)['needsProfileSetup'])fail('Önce profil ayarlarından adını ve karakterini kaydet.',409);
+        // Retrying a profile join after a lost response must not create a second player.
+        // Only the authenticated account can recover its own waiting-room seat.
+        if(($in['useProfile']??false)===true && $profileUser && $s['phase']==='lobby') {
+            foreach($s['players'] as $oldKey=>$existing) {
+                if(($existing['profileUserId']??null)!==(int)$profileUser['id'])continue;
+                $token=bin2hex(random_bytes(24));unset($s['players'][$oldKey]);$s['players'][hash('sha256',$token)]=$existing;
+                saveRoom($s);echo json_encode(['token'=>$token,'room'=>snapshot($s,$token,canManageRoom($s))],JSON_UNESCAPED_UNICODE);exit;
+            }
+        }
         $hostUser=canManageRoom($s)?currentUser():null;
         if($s['mode']==='quiz'&&$hostUser)foreach($s['players'] as $p)if(($p['hostUserId']??null)===(int)$hostUser['id'])fail('Bu hesaptan zaten yarışmaya katıldın.',409);
-        $name=$asHost?currentUser()['username']:inputText($in['name']??'',2,32,'İsim');$limits=creditSummary((int)($s['ownerId']??1));$s['participantLimit']=$limits['participantLimit'];$s['raffleLimit']=$limits['raffleLimit'];if(count($s['players'])>=$s['participantLimit'])fail('Bu etkinlik '.$s['participantLimit'].' kişilik kapasiteye ulaştı.',409);
+        $name=$useProfile?$profileUser['username']:inputText($in['name']??'',2,32,'İsim');$limits=creditSummary((int)($s['ownerId']??1));$s['participantLimit']=$limits['participantLimit'];$s['raffleLimit']=$limits['raffleLimit'];if(count($s['players'])>=$s['participantLimit'])fail('Bu etkinlik '.$s['participantLimit'].' kişilik kapasiteye ulaştı.',409);
         foreach($s['players'] as $p)if(normalize($p['name'])===normalize($name))fail('Bu isim kullanılıyor. İsminize bir ek yapın.',409);
         if(in_array($s['mode'],['quiz','family','tournament'],true) && $s['phase']!=='lobby')fail('Yarışma başladı. Bir sonraki turda katılabilirsiniz.',409);
-        $avatar=$asHost?(accountProfile((int)$hostUser['id'])['avatar']??$in['avatar']??'astronaut'):($in['avatar']??'astronaut');
+        $guestCharacters=['astronaut','robot','alien','wizard','dragon','unicorn','knight','ninja','fox','panda','cat','dinosaur','penguin','footballer','goalkeeper','racer','chef','scientist','pirate','diver'];
+        $avatar=$useProfile?(accountProfile((int)$profileUser['id'])['avatar']??($asHost?($in['avatar']??'astronaut'):'astronaut')):(($in['autoAvatar']??false)===true?$guestCharacters[random_int(0,count($guestCharacters)-1)]:($in['avatar']??'astronaut'));
         if(!is_string($avatar)||!in_array($avatar,['astronaut','robot','alien','wizard','dragon','unicorn','knight','ninja','fox','panda','cat','dinosaur','penguin','footballer','goalkeeper','racer','chef','scientist','pirate','diver'],true))fail('Geçerli bir karakter seçin.');
         $token=bin2hex(random_bytes(24));$key=hash('sha256',$token);$s['players'][$key]=['name'=>$name,'score'=>0,'avatar'=>$avatar];
+        if($profileUser)$s['players'][$key]['profileUserId']=(int)$profileUser['id'];
         if($hostUser)$s['players'][$key]['hostUserId']=(int)$hostUser['id'];
         if($s['mode']==='family'){$s['players'][$key]['role']=inputText($in['role']??'',1,24,'Ailedeki rolün');$s['players'][$key]['id']=bin2hex(random_bytes(8));}
         if($s['mode']==='raffle'){
