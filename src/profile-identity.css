@@ -205,3 +205,55 @@
     min-height: 46px;
   }
 }
+
+.profile-setup-dialog {
+  width: min(440px, calc(100vw - 32px));
+  border: 1px solid var(--app-line);
+  border-radius: 28px;
+  padding: 28px;
+  color: var(--app-text);
+  background: var(--app-surface);
+  box-shadow: 0 25px 100px #1e0d4944;
+  text-align: center;
+}
+.profile-setup-dialog::backdrop {
+  background: #22133499;
+  backdrop-filter: blur(8px);
+}
+.profile-setup-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 22px;
+  background: var(--app-soft);
+  color: var(--app-accent);
+}
+.profile-setup-dialog h1 {
+  font-size: 25px;
+  margin: 18px 0 12px;
+}
+.profile-setup-dialog p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--app-muted);
+}
+.profile-setup-dialog .btn {
+  margin: 20px 0 12px;
+}
+.profile-setup-dialog small {
+  display: block;
+  color: var(--app-muted);
+  font-size: 11px;
+}
+.profile-setup-dialog > .text-btn {
+  margin: 14px auto 0;
+}
+.profile-setup-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--app-muted);
+}

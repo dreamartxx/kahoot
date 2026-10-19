@@ -151,17 +151,6 @@ export default function MobileHome({
                 </button>
               </div>
             </article>
-            <button
-              className="family-spotlight"
-              onClick={() => onChoose("family")}
-            >
-              <GameArt mode="family" active={false} />
-              <span>
-                <small>BİRBİRİNİ YENİDEN KEŞFET</small>
-                <b>Beni Tanıyor musun?</b>
-              </span>
-              <ArrowUpRight size={18} />
-            </button>
           </>
         ) : (
           cards

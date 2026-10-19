@@ -154,7 +154,7 @@ export function PwaInstall({ className = "" }) {
     </>
   );
 }
-export function PwaNotices() {
+export function PwaNotices({ allowUpdate = true }) {
   const [offline, setOffline] = useState(!navigator.onLine);
   const [update, setUpdate] = useState(false);
   useEffect(() => {
@@ -179,7 +179,7 @@ export function PwaNotices() {
         </span>
       </div>
     );
-  if (update)
+  if (update && allowUpdate)
     return (
       <div className="pwa-notice" role="status">
         <RefreshCw size={18} />

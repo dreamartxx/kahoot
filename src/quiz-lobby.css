@@ -1,6 +1,6 @@
 /* One real lobby viewport: no duplicated title, QR panel or management footer. */
 .event-page[data-quiz-lobby="true"] {
-  height: 100dvh;
+  height: var(--screen-height, 100dvh);
   min-height: 0;
   padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
   display: flex;

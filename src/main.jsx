@@ -1,5 +1,7 @@
 import GoogleSignIn from "./GoogleSignIn";
 import QuizLobby from "./QuizLobby";
+import JoinGame from "./JoinGame";
+import { roomHostControls } from "./room-access";
 import GameArt from "./GameArt";
 import LibraryBrowser from "./LibraryBrowser";
 import ThemedSelect from "./ThemedSelect";
@@ -82,9 +84,9 @@ import {
   quizFormat,
 } from "./QuizFormats";
 import AnswerComparison from "./AnswerComparison";
-import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
+import { CharacterAvatar } from "./CharacterAvatar";
 import { characterById } from "./characters";
-import ProfileIdentity from "./ProfileIdentity";
+import ProfileOnboarding from "./ProfileOnboarding";
 import Podium from "./Podium";
 import { rankPlayers } from "./ranking";
 const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
@@ -354,10 +356,12 @@ function App() {
     );
   else if (status.user?.needsProfileSetup && !status.preview)
     body = (
-      <main className="profile-onboarding">
-        <ProfileIdentity key={status.user.id} user={status.user} onboarding onUpdate={(user) => setStatus(s => ({ ...s, user }))} />
-        <button className="identity-exit" onClick={logout}>Çıkış yap</button>
-      </main>
+      <ProfileOnboarding
+        key={status.user.id}
+        user={status.user}
+        onUpdate={(user) => setStatus((s) => ({ ...s, user }))}
+        onLogout={logout}
+      />
     );
   else if (/^(host|join|screen)\//.test(route)) {
     let [kind, pin] = route.split("/");
@@ -950,7 +954,7 @@ function App() {
       >
         {body}
       </ScreenPages>
-      <PwaNotices />
+      <PwaNotices allowUpdate={!/^(host|join|screen)\//.test(route)} />
       {status.admin && (
         <IdleEvents
           key={`${status.user?.id}:${!!status.preview}`}
@@ -1070,54 +1074,56 @@ function Login({ onClose, onDone }) {
         sınırdan muaftır.
       </p>
       <GoogleSignIn onDone={onDone} />
-      <details className="login-existing" open><summary>Mevcut kullanıcı adı ve şifremle giriş</summary>
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          setBusy(true);
-          setError("");
-          try {
-            onDone(await api("login", { username, password: pass }));
-          } catch (e) {
-            setError(e.message);
-          } finally {
-            setBusy(false);
-          }
-        }}
-      >
-        <Field label="Kullanıcı adı">
-          <input
-            autoComplete="username"
-            name="username"
-            required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </Field>
-        <Field label="Şifre">
-          <input
-            type="password"
-            autoComplete="current-password"
-            name="password"
-            required
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
-          />
-        </Field>
-        {error && (
-          <p className="account-error" role="alert">
-            {error}
+      <details className="login-existing" open>
+        <summary>Mevcut kullanıcı adı ve şifremle giriş</summary>
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            setBusy(true);
+            setError("");
+            try {
+              onDone(await api("login", { username, password: pass }));
+            } catch (e) {
+              setError(e.message);
+            } finally {
+              setBusy(false);
+            }
+          }}
+        >
+          <Field label="Kullanıcı adı">
+            <input
+              autoComplete="username"
+              name="username"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </Field>
+          <Field label="Şifre">
+            <input
+              type="password"
+              autoComplete="current-password"
+              name="password"
+              required
+              value={pass}
+              onChange={(e) => setPass(e.target.value)}
+            />
+          </Field>
+          {error && (
+            <p className="account-error" role="alert">
+              {error}
+            </p>
+          )}
+          <Button disabled={busy} className="full">
+            {busy ? "Giriş yapılıyor…" : "Stüdyoya gir"}
+            <ArrowRight size={18} />
+          </Button>
+          <p className="login-note">
+            <ShieldCheck size={16} /> Bu cihazda oturumun açık kalır. Her oyunda
+            tekrar giriş yapman gerekmez.
           </p>
-        )}
-        <Button disabled={busy} className="full">
-          {busy ? "Giriş yapılıyor…" : "Stüdyoya gir"}
-          <ArrowRight size={18} />
-        </Button>
-        <p className="login-note">
-          <ShieldCheck size={16} /> Bu cihazda oturumun açık kalır. Her oyunda
-          tekrar giriş yapman gerekmez.
-        </p>
-      </form></details>
+        </form>
+      </details>
     </Modal>
   );
 }
@@ -1553,16 +1559,20 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
     ),
     [name, setName] = useState(profile?.username || ""),
     [role, setRole] = useState(""),
-    [avatar, setAvatar] = useState(
-      () => characterById(profile?.avatar || localStorage.getItem("arena:character")).id,
+    [avatar] = useState(
+      () =>
+        characterById(
+          profile?.avatar || localStorage.getItem("arena:character"),
+        ).id,
     ),
     [busy, setBusy] = useState(false),
     [tick, setTick] = useState(Date.now()),
     [qr, setQr] = useState(false),
     [hostJoining, setHostJoining] = useState(false),
+    [joinError, setJoinError] = useState(""),
     [needsPlayers, setNeedsPlayers] = useState(false),
     [sound, setSound] = useState(false);
-  const host = kind === "host" && admin,
+  const host = roomHostControls(kind, admin, room),
     screen = kind === "screen",
     offset = useRef(0),
     lastTick = useRef(null),
@@ -1693,21 +1703,23 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
   const closed = room && ["finished", "closed"].includes(room.phase);
   const quizLobby = room?.mode === "quiz" && room.phase === "lobby";
   const join = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     setBusy(true);
+    setJoinError("");
     try {
       const r = await api("join", {
         pin,
         name,
-        avatar,
+        ...(profile ? { useProfile: true } : { autoAvatar: true }),
         ...(room.mode === "family" ? { role } : {}),
       });
       localStorage.setItem("arena:" + pin, r.token);
-      localStorage.setItem("arena:character", avatar);
+      localStorage.setItem("arena:character", r.room.me.avatar);
       setToken(r.token);
       setRoom(r.room);
       setHostJoining(false);
     } catch (e) {
+      setJoinError(e.message);
       notify(e.message);
     } finally {
       setBusy(false);
@@ -1783,85 +1795,26 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
     );
   if (kind === "join" && !room.me && !closed)
     return (
-      <div className="join-page">
-        <a href="#" className="join-brand">
-          ✦ bilgi arena
-        </a>
-        <div className="join-card">
-          <div className={"big-mode " + modes[room.mode].color}>
-            {React.createElement(modes[room.mode].icon, { size: 35 })}
-          </div>
-          <span className="eyebrow">
-            {modes[room.mode].name.toLocaleUpperCase("tr")}
-          </span>
-          <h1>{room.title}</h1>
-          <p>Sen de oyuna dahil ol!</p>
-          <div className="pin-chip">
-            Oyun kodu <b>{pin}</b>
-          </div>
-          <form onSubmit={join}>
-            <Field label="Oyunda görünecek ismin">
-              <input
-                autoFocus
-                required
-                minLength={2}
-                maxLength={32}
-                placeholder="Bir isim ya da takma ad"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Field>
-            {room.mode === "family" && (
-              <Field label="Ailedeki rolün">
-                <input
-                  required
-                  maxLength={24}
-                  list="family-roles"
-                  placeholder="Anne, baba, çocuk, teyze…"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                />
-                <datalist id="family-roles">
-                  {[
-                    "Anne",
-                    "Baba",
-                    "Çocuk",
-                    "Hala",
-                    "Teyze",
-                    "Dede",
-                    "Nine",
-                    "Amca",
-                    "Dayı",
-                    "Kuzen",
-                    "Kardeş",
-                  ].map((r) => (
-                    <option key={r} value={r} />
-                  ))}
-                </datalist>
-              </Field>
-            )}
-            <CharacterPicker value={avatar} onChange={setAvatar} />
-            <Button className="full" disabled={busy}>
-              {busy ? "Katılıyorsun…" : "Ben de varım!"}{" "}
-              <ArrowRight size={18} />
-            </Button>
-          </form>
-          <small>
-            İsmin etkinlik ekranında görünür. Takma ad kullanabilirsin.
-          </small>
-          {error && <p role="alert">{error}</p>}
-        </div>
-        <span className="join-footer">
-          Uygulama indirmeden de oyuna katılabilirsin.
-        </span>
-        <PwaInstall className="pwa-join-install" />
-      </div>
+      <JoinGame
+        room={room}
+        pin={pin}
+        modeName={modes[room.mode].name}
+        name={name}
+        onName={setName}
+        profile={profile}
+        role={role}
+        onRole={setRole}
+        busy={busy}
+        error={joinError || error}
+        onSubmit={join}
+      />
     );
   return (
     <div
       className={"event-page " + (host || screen ? "presenter" : "participant")}
       data-compact-room={compact && ["raffle", "cloud"].includes(room.mode)}
       data-quiz-lobby={quizLobby}
+      data-screen-fit={quizLobby || undefined}
       data-screen-key={`${room.phase}:${room.question?.id || room.index}`}
       data-playing={["question", "countdown", "reveal"].includes(room.phase)}
     >
@@ -1999,7 +1952,13 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
               </p>
             </div>
             {!room.me && (
-              <Button onClick={() => setHostJoining(true)}>
+              <Button
+                onClick={() =>
+                  room.mode === "family"
+                    ? setHostJoining(true)
+                    : joinWithProfile()
+                }
+              >
                 <Plus size={18} /> Ben de yarışacağım
               </Button>
             )}
@@ -2350,17 +2309,6 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
             Katıldıktan sonra oyunu aynı ekrandan yönetmeye devam edebilirsin.
           </p>
           <form onSubmit={join}>
-            <Field label="Oyunda görünecek ismin">
-              <input
-                autoFocus
-                required
-                minLength={2}
-                maxLength={32}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Bir isim ya da takma ad"
-              />
-            </Field>
             {room.mode === "family" && (
               <Field label="Ailedeki rolün">
                 <input
@@ -2372,7 +2320,10 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
                 />
               </Field>
             )}
-            <CharacterPicker value={avatar} onChange={setAvatar} />
+            <div className="join-game-identity">
+              <CharacterAvatar id={profile?.avatar || avatar} />
+              <strong>{profile?.username}</strong>
+            </div>
             <Button className="full" disabled={busy}>
               {busy ? "Katılıyorsun…" : "Yarışmacı olarak katıl"}
               <ArrowRight size={18} />

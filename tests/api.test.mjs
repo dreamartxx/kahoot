@@ -4249,6 +4249,12 @@ test("quiz host uses profile identity, needs a second player, and failed starts 
   const user = await soloUser("profile-host");
   const other = await soloUser("profile-other");
   const room = await creditRoom(user, "quiz", false);
+  assert.equal(room.isCreator, true);
+  assert.equal((await call("room", {pin: room.pin})).data.isCreator, false);
+  assert.equal((await call("room", {pin: room.pin}, other)).data.isCreator, false);
+  const adminView = (await call("room", {pin: room.pin}, {admin: true})).data;
+  assert.equal(adminView.canManage, true);
+  assert.equal(adminView.isCreator, false, "Admin joining another user's room stays a player");
   const start = () => call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, user);
   assert.equal((await start()).status, 409, "Empty rooms cannot start through the API");
   assert.equal((await creditBalance(user)).available, 5);
@@ -4260,6 +4266,7 @@ test("quiz host uses profile identity, needs a second player, and failed starts 
   assert.equal(host.data.room.me.avatar, "fox");
   assert.equal(host.data.room.canManage, true);
   const reload = await call("room", { pin: room.pin }, { ...user, token: host.data.token });
+  assert.equal(reload.data.isCreator, true);
   assert.equal(reload.data.me.name, "profile-host");
   assert.equal(reload.data.me.avatar, "fox");
   assert.equal((await call("join", { pin: room.pin, asHost: true, avatar: "robot" }, user)).status, 409);
@@ -4289,4 +4296,31 @@ test("a lone guest cannot start a quiz while the host only presents", async () =
   const result = await call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, { admin: true });
   assert.equal(result.status, 409);
   assert.match(result.data.error, /Kendini Dene/);
+});
+
+test("signed-in participants join with saved identity; anonymous guests receive a valid automatic avatar", async () => {
+  const creator = await soloUser("auto-creator");
+  const player = await soloUser("auto-participant");
+  const saved = await call("profile_update", {username:"DenizProfil", avatar:"panda"}, player);
+  assert.equal(saved.status, 200);
+  const room = await creditRoom(creator, "quiz", false);
+  assert.equal((await call("join", {pin:room.pin, useProfile:true})).status, 401);
+  const joined = await call("join", {pin:room.pin, useProfile:true, name:"Fake", avatar:"robot"}, player);
+  assert.equal(joined.status, 200);
+  assert.equal(joined.data.room.me.name, "DenizProfil");
+  assert.equal(joined.data.room.me.avatar, "panda");
+  assert.equal(joined.data.room.canManage, false);
+  assert.equal(joined.data.room.isCreator, false);
+  const retry = await call("join", {pin:room.pin, useProfile:true}, player);
+  assert.equal(retry.status, 200);
+  assert.equal(retry.data.room.playerCount, 1);
+  assert.equal(retry.data.room.me.name, "DenizProfil");
+  assert.equal(retry.data.room.me.avatar, "panda");
+  assert.notEqual(retry.data.token, joined.data.token);
+  assert.equal((await call("room", {pin:room.pin}, {token:joined.data.token})).data.me, undefined);
+  const guest = await call("join", {pin:room.pin, name:"Misafir", autoAvatar:true});
+  assert.equal(guest.status, 200);
+  assert.ok(['astronaut','robot','alien','wizard','dragon','unicorn','knight','ninja','fox','panda','cat','dinosaur','penguin','footballer','goalkeeper','racer','chef','scientist','pirate','diver'].includes(guest.data.room.me.avatar));
+  assert.equal(guest.data.room.me.name, "Misafir");
+  assert.equal((await call("advance", {pin:room.pin,expectedIndex:-1,expectedPhase:"lobby"}, creator)).status, 200);
 });

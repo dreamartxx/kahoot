@@ -24,6 +24,7 @@ export default function ScreenPages({
   const [page, setPage] = useState(0);
   const current = Math.min(page, layout.offsets.length - 1);
   const paging = layout.offsets.length > 1;
+  const fixed = enabled && !manualScroll && layout.fit;
   const visibleHeight = Math.min(
     layout.height,
     (layout.offsets[current + 1] ?? Infinity) - layout.offsets[current],
@@ -50,6 +51,18 @@ export default function ScreenPages({
         setPage(0);
       }
       const visualHeight = window.visualViewport?.height || innerHeight;
+      if (inner.querySelector('[data-screen-fit="true"]')) {
+        const height = Math.max(
+          120,
+          visualHeight - el.getBoundingClientRect().top,
+        );
+        setLayout((old) =>
+          old.fit && old.height === height
+            ? old
+            : { height, offsets: [0], nav: false, tail: 0, fit: true },
+        );
+        return;
+      }
       const nav = dialog ? null : inner.querySelector(".mobile-bottom-nav");
       const navHeight = nav?.getBoundingClientRect().height || 0;
       // Dialog title remains outside this viewport; leave room for its padding.
@@ -79,6 +92,7 @@ export default function ScreenPages({
       const offsets = screenPageOffsets(total, height, blocks);
       const tail = Math.max(0, offsets.at(-1) + height - total);
       setLayout((old) =>
+        !old.fit &&
         old.height === height &&
         old.tail === tail &&
         old.nav === !!nav &&
@@ -98,7 +112,13 @@ export default function ScreenPages({
       childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: ["open", "class", "hidden", "data-screen-key"],
+      attributeFilter: [
+        "open",
+        "class",
+        "hidden",
+        "data-screen-key",
+        "data-screen-fit",
+      ],
     });
     window.addEventListener("resize", schedule);
     window.visualViewport?.addEventListener("resize", schedule);
@@ -114,11 +134,12 @@ export default function ScreenPages({
   useLayoutEffect(() => {
     if (box.current)
       box.current.scrollTop =
-        enabled && !manualScroll ? layout.offsets[current] : 0;
+        enabled && !manualScroll && !layout.fit ? layout.offsets[current] : 0;
   }, [enabled, layout, current, manualScroll]);
 
   const reveal = (event) => {
     if (
+      layout.fit ||
       manualScroll ||
       !enabled ||
       !paging ||
@@ -144,13 +165,14 @@ export default function ScreenPages({
   };
   return (
     <div
-      className={`screen-pages ${enabled ? (manualScroll ? "manual-scroll" : "is-paged") : ""} ${dialog ? "dialog-pages" : "app-pages"} ${layout.nav ? "has-bottom-nav" : ""}`}
+      style={fixed ? { "--screen-height": `${layout.height}px` } : undefined}
+      className={`screen-pages ${enabled && !fixed ? (manualScroll ? "manual-scroll" : "is-paged") : ""} ${dialog ? "dialog-pages" : "app-pages"} ${layout.nav ? "has-bottom-nav" : ""}`}
     >
       <div
         ref={box}
         className="screen-page-viewport"
         style={
-          enabled && !manualScroll && layout.height
+          enabled && !manualScroll && !layout.fit && layout.height
             ? {
                 height: visibleHeight,
                 marginBottom: layout.height - visibleHeight,
@@ -163,11 +185,11 @@ export default function ScreenPages({
         <div ref={content} className="screen-page-content">
           {children}
         </div>
-        {enabled && !manualScroll && layout.tail > 0 && (
+        {enabled && !manualScroll && !layout.fit && layout.tail > 0 && (
           <div aria-hidden="true" style={{ height: layout.tail }} />
         )}
       </div>
-      {enabled && !manualScroll && paging && (
+      {enabled && !manualScroll && !layout.fit && paging && (
         <nav className="screen-page-controls" aria-label="Ekran sayfaları">
           <button
             type="button"
