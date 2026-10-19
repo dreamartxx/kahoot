@@ -1649,7 +1649,9 @@ test("durable accounts, owner-only management, room isolation and session revoca
   assert.deepEqual(Object.keys(self.data.user).sort(), [
     "active",
     "authProvider",
+    "avatar",
     "id",
+    "needsProfileSetup",
     "role",
     "username",
   ]);

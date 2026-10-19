@@ -84,6 +84,7 @@ import {
 import AnswerComparison from "./AnswerComparison";
 import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
 import { characterById } from "./characters";
+import ProfileIdentity from "./ProfileIdentity";
 import Podium from "./Podium";
 import { rankPlayers } from "./ranking";
 const QuizCategoryPicker = lazy(() => import("./QuizCategoryPicker"));
@@ -351,6 +352,13 @@ function App() {
         }}
       />
     );
+  else if (status.user?.needsProfileSetup && !status.preview)
+    body = (
+      <main className="profile-onboarding">
+        <ProfileIdentity key={status.user.id} user={status.user} onboarding onUpdate={(user) => setStatus(s => ({ ...s, user }))} />
+        <button className="identity-exit" onClick={logout}>Çıkış yap</button>
+      </main>
+    );
   else if (/^(host|join|screen)\//.test(route)) {
     let [kind, pin] = route.split("/");
     body = (
@@ -359,6 +367,7 @@ function App() {
         kind={kind}
         pin={pin}
         admin={status.admin}
+        profile={status.user}
         notify={notify}
         onLogin={() => setModal({ type: "login" })}
         onBack={() => {
@@ -433,9 +442,7 @@ function App() {
             className="sidebar-bottom profile-shortcut"
             onClick={() => nav("profile")}
           >
-            <span className="avatar">
-              {status.user?.username?.slice(0, 1).toLocaleUpperCase("tr")}
-            </span>
+            <CharacterAvatar id={status.user?.avatar} />
             <div>
               <b>{status.user?.username}</b>
               <small>Profil ve kullanıcı ayarları</small>
@@ -457,7 +464,7 @@ function App() {
             onClick={() => nav("profile")}
             aria-label="Profil ve ayarlar"
           >
-            {status.user?.username?.slice(0, 1).toLocaleUpperCase("tr")}
+            <CharacterAvatar id={status.user?.avatar} />
           </button>
         </header>
         <main
@@ -1003,7 +1010,7 @@ function App() {
       {modal?.type === "password" && (
         <ChangePassword onClose={() => setModal(null)} notify={notify} />
       )}
-      {modal?.type === "create" && (
+      {modal?.type === "create" && !status.user?.needsProfileSetup && (
         <Create
           mode={modal.mode}
           initialCat={modal.cat}
@@ -1537,17 +1544,17 @@ function QR({ pin }) {
     </div>
   );
 }
-function Room({ kind, pin, admin, onLogin, onBack, notify }) {
+function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
   const compact = useCompactLayout();
   const [room, setRoom] = useState(null),
     [error, setError] = useState(""),
     [token, setToken] = useState(
       () => localStorage.getItem("arena:" + pin) || "",
     ),
-    [name, setName] = useState(""),
+    [name, setName] = useState(profile?.username || ""),
     [role, setRole] = useState(""),
     [avatar, setAvatar] = useState(
-      () => characterById(localStorage.getItem("arena:character")).id,
+      () => characterById(profile?.avatar || localStorage.getItem("arena:character")).id,
     ),
     [busy, setBusy] = useState(false),
     [tick, setTick] = useState(Date.now()),
@@ -1711,7 +1718,7 @@ function Room({ kind, pin, admin, onLogin, onBack, notify }) {
     setBusy(true);
     try {
       const profileAvatar = characterById(
-        localStorage.getItem("arena:character"),
+        profile?.avatar || localStorage.getItem("arena:character"),
       ).id;
       const r = await api("join", { pin, asHost: true, avatar: profileAvatar });
       localStorage.setItem("arena:" + pin, r.token);

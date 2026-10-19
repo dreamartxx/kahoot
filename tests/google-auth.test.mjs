@@ -185,6 +185,23 @@ test("Google creates a least-privilege account once, rejects replay and rotates 
   assert.equal(first.data.user.role, "host");
   assert.equal(first.data.user.authProvider, "google");
   assert.ok(first.cookie);
+  assert.equal(first.data.user.needsProfileSetup, true);
+  assert.equal(first.data.user.avatar, null);
+  const web = { Cookie: first.cookie };
+  for (const avatar of ["../secret", "unknown", ["fox"], null]) {
+    assert.equal((await call("profile_update", { username: "Deniz", avatar }, web)).status, 400);
+  }
+  assert.equal((await call("profile_update", { username: "Deniz", avatar: "fox", role: "owner" }, web)).status, 400);
+  const personalized = await call("profile_update", { username: "Deniz", avatar: "fox" }, web);
+  assert.equal(personalized.status, 200, JSON.stringify(personalized));
+  assert.equal(personalized.data.user.needsProfileSetup, false);
+  assert.equal(personalized.data.user.username, "Deniz");
+  assert.equal(personalized.data.user.avatar, "fox");
+  assert.equal(personalized.data.user.authProvider, "google");
+  assert.equal((await call("profile_update", { username: "admin", avatar: "robot" }, web)).status, 409);
+  const unchanged = await (await fetch(base + "/api/index.php?action=status", { headers: web })).json();
+  assert.equal(unchanged.user.username, "Deniz");
+  assert.equal(unchanged.user.avatar, "fox");
   assert.equal((await login(c)).status, 401);
   const second = await login(
     await challenge(),
@@ -194,6 +211,18 @@ test("Google creates a least-privilege account once, rejects replay and rotates 
   assert.equal(second.status, 200, JSON.stringify(second));
   assert.ok(second.session);
   assert.equal(second.data.user.id, first.data.user.id);
+  assert.equal(second.data.user.username, "Deniz");
+  assert.equal(second.data.user.avatar, "fox");
+  assert.equal(second.data.user.needsProfileSetup, false);
+  // Re-login on native keeps the chosen identity, credits, and the same Google account.
+  const native = { "X-Arena-Client": "android", Origin: "https://localhost", Authorization: "Bearer " + second.session };
+  const room = await call("create", { mode: "quiz", title: "Profil testi", category: "cografya" }, native);
+  assert.equal(room.status, 200, JSON.stringify(room));
+  const joined = await call("join", { pin: room.data.pin, asHost: true, name: "Injected", avatar: "robot" }, native);
+  assert.equal(joined.status, 200, JSON.stringify(joined));
+  assert.equal(joined.data.room.me.name, "Deniz");
+  assert.equal(joined.data.room.me.avatar, "fox");
+  await call("close", { pin: room.data.pin }, native);
   const status = await fetch(base + "/api/index.php?action=status", {
     headers: { Cookie: first.cookie },
   });

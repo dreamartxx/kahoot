@@ -105,7 +105,7 @@ try {
         $name=$asHost?currentUser()['username']:inputText($in['name']??'',2,32,'İsim');$limits=creditSummary((int)($s['ownerId']??1));$s['participantLimit']=$limits['participantLimit'];$s['raffleLimit']=$limits['raffleLimit'];if(count($s['players'])>=$s['participantLimit'])fail('Bu etkinlik '.$s['participantLimit'].' kişilik kapasiteye ulaştı.',409);
         foreach($s['players'] as $p)if(normalize($p['name'])===normalize($name))fail('Bu isim kullanılıyor. İsminize bir ek yapın.',409);
         if(in_array($s['mode'],['quiz','family','tournament'],true) && $s['phase']!=='lobby')fail('Yarışma başladı. Bir sonraki turda katılabilirsiniz.',409);
-        $avatar=$in['avatar']??'astronaut';
+        $avatar=$asHost?(accountProfile((int)$hostUser['id'])['avatar']??$in['avatar']??'astronaut'):($in['avatar']??'astronaut');
         if(!is_string($avatar)||!in_array($avatar,['astronaut','robot','alien','wizard','dragon','unicorn','knight','ninja','fox','panda','cat','dinosaur','penguin','footballer','goalkeeper','racer','chef','scientist','pirate','diver'],true))fail('Geçerli bir karakter seçin.');
         $token=bin2hex(random_bytes(24));$key=hash('sha256',$token);$s['players'][$key]=['name'=>$name,'score'=>0,'avatar'=>$avatar];
         if($hostUser)$s['players'][$key]['hostUserId']=(int)$hostUser['id'];

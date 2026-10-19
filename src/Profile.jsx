@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   LibraryBig,
-  UserRound,
   ShieldCheck,
   KeyRound,
   Users,
   ChevronRight,
   LogOut,
   CircleHelp,
-  Check,
   Settings,
 } from "lucide-react";
 import Credits from "./Credits";
-import { api } from "./api";
 import { PwaInstall } from "./PwaInstall";
-import { CharacterAvatar, CharacterPicker } from "./CharacterAvatar";
-import { characterById } from "./characters";
+import { CharacterAvatar } from "./CharacterAvatar";
+import ProfileIdentity from "./ProfileIdentity";
 import PrivacyLinks from "./PrivacyLinks";
 import Preferences from "./Preferences";
 
@@ -31,36 +28,10 @@ export default function Profile({
   onEvents,
   onUpdate,
 }) {
-  const [username, setUsername] = useState(user.username);
-  const [busy, setBusy] = useState(false);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
-  const [avatar, setAvatar] = useState(
-    () => characterById(localStorage.getItem("arena:character")).id,
-  );
-  const [chooseAvatar, setChooseAvatar] = useState(false);
   const owner = user.role === "owner";
   const open = rooms.filter(
     (r) => !["closed", "finished"].includes(r.phase),
   ).length;
-  async function save(e) {
-    e.preventDefault();
-    setBusy(true);
-    setError("");
-    setMessage("");
-    try {
-      const result = await api("profile_update", { username });
-      onUpdate(result.user);
-      setUsername(result.user.username);
-      setMessage(
-        "Kullanıcı adın güncellendi. Sonraki girişinde bu adı kullan.",
-      );
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setBusy(false);
-    }
-  }
   return (
     <section className="profile-page">
       <div className="profile-heading">
@@ -69,16 +40,7 @@ export default function Profile({
         <p>Hesabın, tercihlerin ve ihtiyacın olan her şey burada.</p>
       </div>
       <section className="profile-identity" aria-label="Hesabım">
-        <button
-          type="button"
-          className="profile-avatar-choice"
-          aria-label="Oyun karakterini değiştir"
-          aria-expanded={chooseAvatar}
-          onClick={() => setChooseAvatar(!chooseAvatar)}
-        >
-          <CharacterAvatar id={avatar} />
-          <span>✦</span>
-        </button>
+        <CharacterAvatar id={user.avatar} />
         <div>
           <span className="profile-role">
             <ShieldCheck size={14} />
@@ -92,26 +54,17 @@ export default function Profile({
           <span>{owner ? "Açık etkinlik" : "Açık etkinliğin"}</span>
         </div>
       </section>
-      {chooseAvatar && (
-        <section className="profile-card">
-          <CharacterPicker
-            value={avatar}
-            onChange={(value) => {
-              setAvatar(value);
-              localStorage.setItem("arena:character", value);
-            }}
-          />
-          <p>Seçimin bu cihazda sonraki oyunlarında kullanılır.</p>
-          <button className="btn full" onClick={() => setChooseAvatar(false)}>
-            Tamam
-          </button>
-        </section>
-      )}
       {preview && (
         <p className="notice">
-          Admin test görünümünde kullanıcı adı ve şifre değiştirilemez.
+          Admin test görünümünde hesap bilgileri değiştirilemez.
         </p>
       )}
+      <ProfileIdentity
+        key={user.id}
+        user={user}
+        preview={preview}
+        onUpdate={onUpdate}
+      />
       <Preferences />
       <section className="profile-card profile-legal">
         <h2>
@@ -121,54 +74,7 @@ export default function Profile({
         <PrivacyLinks />
       </section>
       <Credits />
-      <div className="profile-grid">
-        <form className="profile-card" onSubmit={save}>
-          <h2>
-            <UserRound size={21} /> Hesap bilgilerin
-          </h2>
-          <p>
-            Giriş yaparken kullandığın kullanıcı adını buradan
-            değiştirebilirsin.
-          </p>
-          <label className="field">
-            <span>Kullanıcı adı</span>
-            <input
-              disabled={preview}
-              autoComplete="username"
-              name="username"
-              required
-              maxLength={64}
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-                setMessage("");
-              }}
-              autoCapitalize="none"
-              spellCheck={false}
-            />
-          </label>
-          <small>
-            Harf, rakam, nokta, tire veya alt çizgi kullanabilirsin.
-          </small>
-          {error && (
-            <p role="alert" className="account-error">
-              {error}
-            </p>
-          )}
-          {message && (
-            <p role="status" className="account-success">
-              <Check size={18} />
-              {message}
-            </p>
-          )}
-          <button
-            className="btn full"
-            disabled={preview || busy || username.trim() === user.username}
-          >
-            {busy ? "Kaydediliyor…" : "Değişiklikleri kaydet"}
-            <Check size={18} />
-          </button>
-        </form>
+      <div className="profile-sections">
         <section
           className="profile-card profile-settings"
           aria-label="Kullanıcı ayarları"
@@ -178,15 +84,23 @@ export default function Profile({
           </h2>
           <button
             className="profile-setting-row"
-            disabled={preview || user.authProvider === 'google'}
+            disabled={preview || user.authProvider === "google"}
             onClick={onPassword}
           >
             <span className="setting-icon">
               <KeyRound size={21} />
             </span>
             <span>
-              <strong>{user.authProvider === 'google' ? 'Google ile bağlı' : 'Şifremi değiştir'}</strong>
-              <small>{user.authProvider === 'google' ? 'Giriş güvenliğini Google hesabından yönet' : 'Hesabının giriş şifresini güncelle'}</small>
+              <strong>
+                {user.authProvider === "google"
+                  ? "Google ile bağlı"
+                  : "Şifremi değiştir"}
+              </strong>
+              <small>
+                {user.authProvider === "google"
+                  ? "Giriş güvenliğini Google hesabından yönet"
+                  : "Hesabının giriş şifresini güncelle"}
+              </small>
             </span>
             <ChevronRight size={18} />
           </button>

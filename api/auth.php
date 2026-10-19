@@ -2,9 +2,10 @@
 declare(strict_types=1);
 // Durable, revocable browser sessions. Only a digest of the cookie is stored.
 function authSchema(): void {
-    ensureSchema('auth',1,static function():void{
+    ensureSchema('auth',2,static function():void{
     $db=db();$mysql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql';
     $db->exec('CREATE TABLE IF NOT EXISTS arena_users (id '.($mysql?'INT AUTO_INCREMENT PRIMARY KEY':'INTEGER PRIMARY KEY AUTOINCREMENT').', username VARCHAR(64) NOT NULL, username_key VARCHAR(64) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL, role VARCHAR(16) NOT NULL, active INT NOT NULL DEFAULT 1)');
+    $db->exec('CREATE TABLE IF NOT EXISTS arena_profiles (user_id INT PRIMARY KEY, avatar VARCHAR(32) NOT NULL, setup_complete INT NOT NULL DEFAULT 0)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_sessions (token_hash VARCHAR(64) PRIMARY KEY, user_id INT NOT NULL, auth_version VARCHAR(64) NOT NULL, expires_at BIGINT NOT NULL)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_active_sessions (user_id INT PRIMARY KEY, token_hash VARCHAR(64) NOT NULL)');
     $db->exec('CREATE TABLE IF NOT EXISTS arena_previews (token_hash VARCHAR(64) PRIMARY KEY, target_id INT NOT NULL, started_at BIGINT NOT NULL)');
@@ -12,7 +13,17 @@ function authSchema(): void {
     $db->prepare($sql)->execute(['admin','admin',adminHash()]);
     });
 }
-function publicUser(array $u): array {return ['id'=>(int)$u['id'],'username'=>$u['username'],'role'=>$u['role'],'active'=>(bool)$u['active'],'authProvider'=>function_exists('googleAccount')&&googleAccount((int)$u['id'])?'google':'local'];}
+function accountProfile(int $id): ?array {
+    $q=db()->prepare('SELECT avatar,setup_complete FROM arena_profiles WHERE user_id=?');$q->execute([$id]);return $q->fetch()?:null;
+}
+function profileAvatar(mixed $value): string {
+    if(!is_string($value)||!in_array($value,['astronaut','robot','alien','wizard','dragon','unicorn','knight','ninja','fox','panda','cat','dinosaur','penguin','footballer','goalkeeper','racer','chef','scientist','pirate','diver'],true))fail('Geçerli bir karakter seçin.');
+    return $value;
+}
+function publicUser(array $u): array {
+    $google=function_exists('googleAccount')&&googleAccount((int)$u['id']);$profile=accountProfile((int)$u['id']);
+    return ['id'=>(int)$u['id'],'username'=>$u['username'],'role'=>$u['role'],'active'=>(bool)$u['active'],'authProvider'=>$google?'google':'local','avatar'=>$profile['avatar']??null,'needsProfileSetup'=>$google&&!(bool)($profile['setup_complete']??false)];
+}
 function authCookie(string $token,int $expires): void {
     if(function_exists('mobileClient') && mobileClient()) {
         header('X-Arena-Session: '.($token===''?'cleared':$token));
@@ -129,9 +140,19 @@ function authActions(string $action,array $in): void {
     }
     if($action==='profile_update'){
         needAdmin();rateLimit('profile_update',30);$u=currentUser();
-        foreach(array_keys($in) as $key)if($key!=='username')fail('Yalnızca kendi kullanıcı adınızı güncelleyebilirsiniz.');
-        $name=usernameValue($in['username']??'');
-        try{db()->prepare('UPDATE arena_users SET username=?,username_key=? WHERE id=?')->execute([$name,usernameKey($name),$u['id']]);}catch(PDOException $e){if(in_array((string)$e->getCode(),['23000','23505']))fail('Bu kullanıcı adı zaten kullanılıyor.',409);throw $e;}
+        foreach(array_keys($in) as $key)if(!in_array($key,['username','avatar'],true))fail('Yalnızca kendi kullanıcı adınızı ve karakterinizi güncelleyebilirsiniz.');
+        $name=usernameValue($in['username']??$u['username']);
+        $db=db();$db->beginTransaction();
+        try{
+            // Lock the account before updating its name and avatar together.
+            $q=$db->prepare('SELECT id FROM arena_users WHERE id=?'.($db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?' FOR UPDATE':''));$q->execute([$u['id']]);
+            $existing=accountProfile((int)$u['id']);
+            $avatar=profileAvatar(array_key_exists('avatar',$in)?$in['avatar']:($existing['avatar']??'astronaut'));
+            $db->prepare('UPDATE arena_users SET username=?,username_key=? WHERE id=?')->execute([$name,usernameKey($name),$u['id']]);
+            $db->prepare('DELETE FROM arena_profiles WHERE user_id=?')->execute([$u['id']]);
+            $db->prepare('INSERT INTO arena_profiles (user_id,avatar,setup_complete) VALUES (?,?,1)')->execute([$u['id'],$avatar]);
+            $db->commit();
+        }catch(PDOException $e){if($db->inTransaction())$db->rollBack();if(in_array((string)$e->getCode(),['23000','23505']))fail('Bu kullanıcı adı zaten kullanılıyor.',409);throw $e;}
         $u['username']=$name;echo json_encode(['user'=>publicUser($u)],JSON_UNESCAPED_UNICODE);exit;
     }
     if($action==='users'){needOwner();echo json_encode(array_map('publicUser',db()->query('SELECT * FROM arena_users ORDER BY id')->fetchAll()),JSON_UNESCAPED_UNICODE);exit;}
