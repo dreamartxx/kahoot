@@ -1,7 +1,7 @@
 /* Only the offline notice and app icons are cached. Games, auth, HTML, and
    application bundles always use the network, so deploys cannot serve stale rounds. */
 const CACHE_PREFIX = "bilgi-arena-offline-";
-const CACHE_NAME = CACHE_PREFIX + "383800a25ac28b64";
+const CACHE_NAME = CACHE_PREFIX + "48fa89c8ffa456da";
 const OFFLINE_URL = "/offline.html";
 const OFFLINE_FILES = [
   OFFLINE_URL,
@@ -74,7 +74,7 @@ self.addEventListener("fetch", (event) => {
       }
       return (
         (await caches.match(OFFLINE_URL)) ||
-        new Response("İnternet bağlantını kontrol edip sayfayı yenile.", {
+        new Response("Oyun sunucusuna ulaşılamadı. Biraz sonra yeniden dene.", {
           status: 503,
           headers: { "Content-Type": "text/plain; charset=utf-8" },
         })
