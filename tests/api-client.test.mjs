@@ -1,6 +1,22 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 const client = () => import("../src/api.js?test=" + crypto.randomUUID());
+test("DNS and transport failures give a retryable server message without claiming the device is offline", async (t) => {
+  const c = await client();
+  let calls = 0;
+  t.mock.method(globalThis, "fetch", async () => {
+    if (++calls === 1) throw new TypeError("Failed to fetch");
+    return new Response('{"configured":true}');
+  });
+  await assert.rejects(c.api("status"), (error) => {
+    assert.equal(error.code, "CONNECTION_FAILED");
+    assert.match(error.message, /sunucusuna ulaşılamadı/);
+    assert.doesNotMatch(error.message, /internet yok/i);
+    return true;
+  });
+  assert.equal((await c.api("status")).configured, true);
+  assert.equal(calls, 2);
+});
 test("CDN HTML challenge pauses all API requests until normal page reload", async (t) => {
   const c = await client();
   let calls = 0,

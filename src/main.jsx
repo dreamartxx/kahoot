@@ -1,5 +1,6 @@
 import GoogleSignIn from "./GoogleSignIn";
 import QuizLobby from "./QuizLobby";
+import TournamentCompactLobby from "./TournamentCompactLobby";
 import JoinGame from "./JoinGame";
 import { roomHostControls } from "./room-access";
 import GameArt from "./GameArt";
@@ -72,6 +73,7 @@ import { quizTransition } from "./quiz-transition";
 import { PwaInstall, PwaNotices } from "./PwaInstall";
 import { setupPwa } from "./pwa";
 import "./style.css";
+import "./tournament-create.css";
 import "./host-player.css";
 import Welcome from "./Welcome";
 import Overview from "./Overview";
@@ -165,7 +167,13 @@ function Field({ label, children }) {
     </label>
   );
 }
-function Modal({ title, onClose, children, wide = false }) {
+function Modal({
+  title,
+  onClose,
+  children,
+  wide = false,
+  singleScreen = false,
+}) {
   const ref = useRef();
   useEffect(() => {
     const el = ref.current;
@@ -177,14 +185,18 @@ function Modal({ title, onClose, children, wide = false }) {
     return () => el.removeEventListener("keydown", close);
   }, []);
   return (
-    <dialog ref={ref} className={wide ? "wide" : ""} onCancel={onClose}>
+    <dialog
+      ref={ref}
+      className={singleScreen ? "tournament-create-dialog" : wide ? "wide" : ""}
+      onCancel={onClose}
+    >
       <div className="modal-head">
         <h2>{title}</h2>
         <button className="icon-btn" onClick={onClose} aria-label="Kapat">
           <X />
         </button>
       </div>
-      <ScreenPages dialog>{children}</ScreenPages>
+      {singleScreen ? children : <ScreenPages dialog>{children}</ScreenPages>}
     </dialog>
   );
 }
@@ -1205,7 +1217,7 @@ function Create({
               : "Fikirler Buluşuyor",
     ),
     [seconds, setSeconds] = useState(
-      mode === "family" ? 45 : mode === "quiz" ? 10 : 20,
+      mode === "family" ? 45 : ["quiz", "tournament"].includes(mode) ? 10 : 20,
     ),
     [questionCount, setQuestionCount] = useState(
       initialCat === "mixed" ? 20 : 10,
@@ -1240,12 +1252,15 @@ function Create({
       title={modes[mode].name + " oluştur"}
       onClose={onClose}
       wide={manual || customFamily || manualFamily}
+      singleScreen={mode === "tournament"}
     >
       <form
         className={
-          compact && ["tournament", "raffle", "cloud"].includes(mode)
-            ? "module-create-form"
-            : undefined
+          mode === "tournament"
+            ? "module-create-form tournament-create-form"
+            : compact && ["raffle", "cloud"].includes(mode)
+              ? "module-create-form"
+              : undefined
         }
         onSubmit={async (e) => {
           e.preventDefault();
@@ -1277,9 +1292,20 @@ function Create({
           }
         }}
       >
+        {mode === "tournament" && (
+          <div className="tournament-create-intro">
+            <span className="tournament-create-emblem">
+              <Crown size={30} />
+            </span>
+            <div>
+              <strong>Büyük final burada başlar.</strong>
+              <p>Ödülü belirle, sevdiklerini davet et.</p>
+            </div>
+          </div>
+        )}
         <Field label="Etkinlik adı">
           <input
-            autoFocus
+            autoFocus={mode !== "tournament"}
             required
             maxLength={100}
             value={title}
@@ -1408,25 +1434,33 @@ function Create({
                 placeholder="Örn. Şampiyona kitap hediyesi"
               />
             </Field>
-            <Field label="Soru başına süre">
-              <ThemedSelect
-                value={seconds}
-                onChange={(e) => setSeconds(e.target.value)}
-              >
-                {[10, 15, 20, 30, 45, 60, 90].map((n) => (
-                  <option key={n} value={n}>
-                    {n} saniye
-                  </option>
+            <fieldset className="tournament-time">
+              <legend>Soru başına süre</legend>
+              <div>
+                {[10, 15, 20].map((n) => (
+                  <label
+                    key={n}
+                    className={Number(seconds) === n ? "selected" : ""}
+                  >
+                    <input
+                      type="radio"
+                      name="tournament-seconds"
+                      value={n}
+                      checked={Number(seconds) === n}
+                      onChange={() => setSeconds(n)}
+                    />
+                    <Clock size={16} />
+                    <span>{n} sn</span>
+                  </label>
                 ))}
-              </ThemedSelect>
-            </Field>
-            <div className="info-box">
-              <Crown size={24} />
-              <span>
-                {compact
-                  ? "Herkes tek alan seçer. Ortak alanlar tek turda birleşir. Katılımcılar 5 veya 10 soruya oy verir; puanlar finalde toplanır."
-                  : "Her katılımcı yalnızca bir alan seçer ve onaylanan seçim değişmez. Aynı alan tekrar seçilirse ek hak verilmez; tek tur oynanır. Herkes tüm alanlarda yarışır. Başlangıçta her alan için 5 veya 10 soruya oy verilir. Sorular otomatik hazırlanır, puanlar turnuva boyunca toplanır."}
-              </span>
+              </div>
+            </fieldset>
+            <div className="tournament-create-rules">
+              <Users size={18} />
+              <p>
+                Herkes bir alan seçer; ortak alanlar tek turda birleşir. Oda
+                açılınca 5 veya 10 soruya oy verilir.
+              </p>
             </div>
           </>
         )}
@@ -1526,7 +1560,11 @@ function Create({
                 10)
           }
         >
-          {busy ? "Hazırlanıyor…" : "Etkinliği oluştur · ücretsiz"}{" "}
+          {busy
+            ? "Hazırlanıyor…"
+            : mode === "tournament"
+              ? "Turnuva odasını oluştur"
+              : "Etkinliği oluştur · ücretsiz"}{" "}
           <ArrowRight size={18} />
         </Button>
       </form>
@@ -1702,6 +1740,10 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
   }
   const closed = room && ["finished", "closed"].includes(room.phase);
   const quizLobby = room?.mode === "quiz" && room.phase === "lobby";
+  const tournamentLobby =
+    compact &&
+    room?.mode === "tournament" &&
+    ["lobby", "voting"].includes(room.phase);
   const join = async (e) => {
     e?.preventDefault();
     setBusy(true);
@@ -1814,7 +1856,8 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
       className={"event-page " + (host || screen ? "presenter" : "participant")}
       data-compact-room={compact && ["raffle", "cloud"].includes(room.mode)}
       data-quiz-lobby={quizLobby}
-      data-screen-fit={quizLobby || undefined}
+      data-screen-fit={quizLobby || tournamentLobby || undefined}
+      data-tournament-lobby={tournamentLobby || undefined}
       data-screen-key={`${room.phase}:${room.question?.id || room.index}`}
       data-playing={["question", "countdown", "reveal"].includes(room.phase)}
     >
@@ -1888,7 +1931,7 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
             moment={gameCreditMoment(room)}
           />
         )}
-      {!quizLobby && (
+      {!quizLobby && !tournamentLobby && (
         <div className="event-title">
           <span className="eyebrow">
             <Radio size={15} /> {modes[room.mode].name}
@@ -1908,15 +1951,19 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
           </span>
         </div>
       )}
-      {host && !quizLobby && ["lobby", "open"].includes(room.phase) && (
-        <p className="credit-capacity-note">
-          Katılım ücretsiz · En fazla {room.participantLimit || 10} canlı
-          katılımcı
-          {room.mode === "raffle" ? ` · ${room.raffleLimit || 50} isim` : ""}.
-        </p>
-      )}
+      {host &&
+        !quizLobby &&
+        !tournamentLobby &&
+        ["lobby", "open"].includes(room.phase) && (
+          <p className="credit-capacity-note">
+            Katılım ücretsiz · En fazla {room.participantLimit || 10} canlı
+            katılımcı
+            {room.mode === "raffle" ? ` · ${room.raffleLimit || 50} isim` : ""}.
+          </p>
+        )}
       {!screen &&
         !quizLobby &&
+        !tournamentLobby &&
         !(compact && ["raffle", "cloud"].includes(room.mode)) &&
         ["lobby", "open"].includes(room.phase) && (
           <div className="room-module-guide">
@@ -1925,9 +1972,12 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
             />
           </div>
         )}
-      {room.mode === "tournament" && <TournamentBanner room={room} />}
+      {room.mode === "tournament" && !tournamentLobby && (
+        <TournamentBanner room={room} />
+      )}
       {host &&
         !quizLobby &&
+        !tournamentLobby &&
         room.phase === "lobby" &&
         ["quiz", "family", "tournament"].includes(room.mode) && (
           <section
@@ -1989,15 +2039,28 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
         />
       ) : room.mode === "tournament" &&
         ["lobby", "voting"].includes(room.phase) ? (
-        <TournamentLobby
-          room={room}
-          host={host}
-          screen={screen}
-          action={action}
-          busy={busy}
-          now={now}
-          QR={QR}
-        />
+        tournamentLobby ? (
+          <TournamentCompactLobby
+            room={room}
+            host={host}
+            screen={screen}
+            busy={busy}
+            now={now}
+            action={action}
+            onJoin={joinWithProfile}
+            onQr={() => setQr(true)}
+          />
+        ) : (
+          <TournamentLobby
+            room={room}
+            host={host}
+            screen={screen}
+            action={action}
+            busy={busy}
+            now={now}
+            QR={QR}
+          />
+        )
       ) : room.mode === "family" ? (
         <FamilyRoom
           room={room}
@@ -2225,7 +2288,7 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
           notify={notify}
         />
       )}
-      {host && !quizLobby && room.phase !== "closed" && (
+      {host && !quizLobby && !tournamentLobby && room.phase !== "closed" && (
         <CompactRoomPanel
           enabled={compact && ["raffle", "cloud"].includes(room.mode)}
           title="Oda seçenekleri"

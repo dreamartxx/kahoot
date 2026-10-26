@@ -98,14 +98,30 @@ export async function api(action, data, token, { signal } = {}) {
     cache: "no-store",
     credentials: "same-origin",
   };
-  const { res, raw } = nativeApp
-    ? await nativeResponse(url, options)
-    : action === "room"
-      ? await roomResponse(url, options)
-      : await fetch(url, options).then(async (res) => ({
-          res,
-          raw: await res.text(),
-        }));
+  let res, raw;
+  try {
+    ({ res, raw } = nativeApp
+      ? await nativeResponse(url, options)
+      : action === "room"
+        ? await roomResponse(url, options)
+        : await fetch(url, options).then(async (res) => ({
+            res,
+            raw: await res.text(),
+          })));
+  } catch (error) {
+    if (
+      signal?.aborted ||
+      error?.name === "AbortError" ||
+      error?.code === "ROOM_TIMEOUT"
+    )
+      throw error;
+    throw Object.assign(
+      new Error(
+        "Oyun sunucusuna ulaşılamadı. İnternetin açık olsa da ağ veya sunucu kaynaklı geçici bir sorun olabilir. Tekrar dene.",
+      ),
+      { code: "CONNECTION_FAILED", cause: error },
+    );
+  }
   let json;
   try {
     json = JSON.parse(raw);
@@ -125,7 +141,9 @@ export async function api(action, data, token, { signal } = {}) {
         listener(browserVerification);
       throw browserVerification;
     }
-    throw new Error("Sunucuya ulaşılamadı. Lütfen bağlantınızı kontrol edin.");
+    throw new Error(
+      "Sunucuya ulaşılamadı. Geçici bir sunucu hatası olabilir; biraz sonra tekrar dene.",
+    );
   }
   if (fingerprint && res.status < 500)
     pendingCreditRequests.delete(fingerprint);

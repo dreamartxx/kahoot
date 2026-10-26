@@ -1,0 +1,153 @@
+dialog.tournament-create-dialog {
+  width: 480px;
+  padding: 22px;
+  max-height: calc(100dvh - 24px);
+  background: var(--app-surface, #fefdff);
+  color: var(--app-text, #302342);
+  border-color: var(--app-line, #e7ddf4);
+  border-radius: 26px;
+}
+.tournament-create-dialog .modal-head {
+  margin-bottom: 16px;
+}
+.tournament-create-dialog .modal-head h2 {
+  margin: 0;
+  font-size: 21px;
+}
+.tournament-create-form {
+  display: grid;
+  gap: 14px;
+}
+.tournament-create-form .field {
+  margin: 0;
+  gap: 6px;
+}
+.tournament-create-form .field > span,
+.tournament-time legend {
+  font-size: 13px;
+  font-weight: 700;
+  color: inherit;
+}
+.tournament-create-form .field input {
+  min-height: 46px;
+  font-size: 16px;
+}
+.tournament-create-intro {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 16px;
+  border-radius: 18px;
+  color: #fff5dc;
+  background:
+    radial-gradient(ellipse at top right, #9162bd, transparent 75%),
+    linear-gradient(125deg, #302047, #4e2a7b);
+  box-shadow:
+    inset 0 1px #ffffff38,
+    0 7px 20px #45226518;
+}
+.tournament-create-emblem {
+  flex: 0 0 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffe7a6;
+  transform: rotate(-8deg);
+  background: linear-gradient(145deg, #e9bc664d, #7544a980);
+  border: 1px solid #ffe2a65c;
+  box-shadow: 3px 4px 0 #20132950;
+}
+.tournament-create-intro strong {
+  font-size: 15px;
+}
+.tournament-create-intro p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #e8daf9;
+}
+.tournament-time {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
+.tournament-time legend {
+  padding: 0;
+  margin-bottom: 8px;
+}
+.tournament-time > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.tournament-time label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: var(--app-soft, #f3eefb);
+  border: 1px solid var(--app-line, #e7ddf4);
+  font-size: 15px;
+  font-weight: 700;
+}
+.tournament-time label.selected {
+  background: #6948c7;
+  border-color: #8c69e0;
+  color: white;
+  box-shadow: 0 4px 12px #6948c730;
+}
+.tournament-time input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.tournament-time label:focus-within {
+  outline: 3px solid #b999f7;
+  outline-offset: 2px;
+}
+.tournament-create-rules {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  color: var(--app-muted, #706281);
+}
+.tournament-create-rules svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.tournament-create-rules p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.tournament-create-form > button {
+  min-height: 48px;
+  border-radius: 14px;
+  margin: 0;
+}
+@media (max-height: 700px) {
+  dialog.tournament-create-dialog {
+    padding: 18px;
+  }
+  .tournament-create-form {
+    gap: 11px;
+  }
+  .tournament-create-intro {
+    padding: 12px;
+  }
+  .tournament-create-dialog .modal-head {
+    margin-bottom: 12px;
+  }
+}
+@media (max-height: 540px) {
+  .tournament-create-intro {
+    display: none;
+  }
+}

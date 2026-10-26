@@ -1,0 +1,392 @@
+.event-page[data-tournament-lobby="true"] {
+  height: var(--screen-height, 100dvh);
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--app-text);
+  background:
+    radial-gradient(ellipse at 90% 10%, #c29aff21, transparent 65%),
+    var(--app-bg);
+}
+[data-tournament-lobby="true"] > .event-header {
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding: 5px 14px;
+  background: transparent;
+  border-color: var(--app-line);
+}
+[data-tournament-lobby="true"]
+  .event-header
+  :is(
+    .pin-chip,
+    .event-brand,
+    [aria-label="QR kodunu göster"],
+    [aria-label="Tam ekran"],
+    [aria-label="Sesi aç"],
+    [aria-label="Sesi kapat"]
+  ) {
+  display: none;
+}
+[data-tournament-lobby="true"] > .notice {
+  margin: 3px 14px;
+  padding: 5px;
+  font-size: 12px;
+}
+.tournament-compact {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+}
+.tournament-compact button {
+  cursor: pointer;
+  font-family: inherit;
+}
+.tournament-compact button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.tc-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+.tc-heading > div {
+  min-width: 0;
+}
+.tc-heading span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--app-muted);
+}
+.tc-heading h1 {
+  font-size: 19px;
+  margin: 3px 0 0;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tc-heading .guide-trigger {
+  flex-shrink: 0;
+  font-size: 11px;
+  padding: 7px;
+}
+.tc-invite {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 15px;
+  border-radius: 17px;
+  background: linear-gradient(120deg, #342143, #704aab);
+  color: white;
+  box-shadow:
+    inset 0 1px #ffffff30,
+    0 5px 15px #40255520;
+}
+.tc-invite small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  color: #e7d5ff;
+}
+.tc-invite strong {
+  display: block;
+  font-size: 28px;
+  letter-spacing: 4px;
+  line-height: 1.2;
+}
+.tc-invite button {
+  border: 1px solid #fff6;
+  border-radius: 10px;
+  padding: 9px;
+  background: #ffffff18;
+  color: white;
+  font-size: 12px;
+  min-height: 40px;
+}
+.tc-prize {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: var(--app-soft);
+  border: 1px solid var(--app-line);
+}
+.tc-prize > svg {
+  color: #c18b28;
+  flex-shrink: 0;
+}
+.tc-prize span {
+  min-width: 0;
+}
+.tc-prize small {
+  display: block;
+  font-size: 9px;
+  color: var(--app-muted);
+  letter-spacing: 1px;
+}
+.tc-prize strong {
+  font-size: 14px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tc-choice label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.tc-select {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.tc-select > .themed-select {
+  flex: 1;
+  min-width: 0;
+}
+.tc-select .btn {
+  min-height: 44px;
+  padding: 8px 13px;
+}
+.tc-choice p {
+  margin: 5px 0 0;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--app-muted);
+}
+.tc-join {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  width: 100%;
+  min-height: 60px;
+  border-radius: 13px;
+  border: 1px solid var(--app-line);
+  background: var(--app-surface);
+  color: var(--app-text);
+  text-align: left;
+}
+.tc-join span {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 700;
+}
+.tc-join small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 4px;
+  color: var(--app-muted);
+}
+.tc-locked {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #67b98a18;
+  border: 1px solid #67b98a50;
+  border-radius: 13px;
+}
+.tc-locked strong {
+  font-size: 14px;
+}
+.tc-roster {
+  flex: 1;
+  min-height: 95px;
+}
+.tc-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+.tc-section-title strong {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.tc-section-title span {
+  color: var(--app-muted);
+  font-size: 11px;
+}
+.tc-players {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+.tc-players > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 0;
+  gap: 3px;
+}
+.tc-players .character-avatar {
+  width: 40px;
+  height: 40px;
+}
+.tc-players strong,
+.tc-players small {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+.tc-players small {
+  font-size: 10px;
+  color: var(--app-muted);
+}
+.tc-empty {
+  margin: 0;
+  padding: 20px 10px;
+  text-align: center;
+  border: 1px dashed var(--app-line);
+  border-radius: 13px;
+  font-size: 13px;
+  color: var(--app-muted);
+}
+.tc-roster nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+  font-size: 11px;
+}
+.tc-roster nav button {
+  width: 30px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--app-line);
+  border-radius: 8px;
+  color: var(--app-text);
+  background: var(--app-soft);
+}
+.tc-start {
+  flex-shrink: 0;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+.tc-start .btn {
+  min-height: 45px;
+  border-radius: 13px;
+}
+.tc-start p {
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 6px 0 0;
+  color: var(--app-muted);
+}
+.tc-votes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.tc-votes button {
+  border: 1px solid var(--app-line);
+  background: var(--app-surface);
+  color: var(--app-text);
+  border-radius: 14px;
+  padding: 8px;
+}
+.tc-votes button[aria-pressed="true"] {
+  background: #6948c7;
+  color: white;
+  border-color: #a583f1;
+}
+.tc-votes b {
+  font-size: 28px;
+}
+.tc-votes small {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+}
+@media (max-height: 700px) {
+  .tournament-compact {
+    gap: 7px;
+    padding: 8px 14px;
+  }
+  .tc-invite {
+    padding: 8px 12px;
+  }
+  .tc-prize {
+    padding: 5px 10px;
+  }
+  .tc-roster {
+    min-height: 85px;
+  }
+}
+.tc-prize > span {
+  flex: 1;
+}
+.tc-prize .text-btn {
+  font-size: 11px;
+  flex-shrink: 0;
+  padding: 5px;
+}
+.tc-prize-edit {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.tc-prize-edit input {
+  min-width: 0;
+  width: 100%;
+  font-size: 16px;
+}
+.tc-prize-edit .btn {
+  padding: 8px;
+  min-height: 44px;
+}
+.tc-prize-edit .text-btn {
+  font-size: 11px;
+}
+.tc-heading .guide-trigger {
+  white-space: nowrap;
+  letter-spacing: 0;
+  min-height: 36px;
+}
+.tc-heading .guide-trigger > svg:last-child {
+  display: none;
+}
+.tc-start > .btn {
+  width: 100%;
+}
+[data-tournament-lobby="true"] > .game-credit-notice {
+  flex: 0 0 auto;
+  margin: 2px 14px;
+  padding: 5px 9px;
+  border-radius: 10px;
+}
+[data-tournament-lobby="true"] > .game-credit-notice > span,
+[data-tournament-lobby="true"] > .game-credit-notice small,
+[data-tournament-lobby="true"] > .game-credit-notice p {
+  display: none;
+}
+[data-tournament-lobby="true"] > .game-credit-notice strong {
+  font-size: 12px;
+}

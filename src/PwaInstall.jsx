@@ -175,7 +175,7 @@ export function PwaNotices({ allowUpdate = true }) {
       <div className="pwa-notice" role="status">
         <WifiOff size={18} />
         <span>
-          Bağlantı yok. Canlı oyun için internet bağlantısı gerekiyor.
+          Cihaz bağlantıyı kesilmiş gösteriyor. Yeniden bağlanmayı bekliyoruz.
         </span>
       </div>
     );

@@ -74,7 +74,7 @@ self.addEventListener("fetch", (event) => {
       }
       return (
         (await caches.match(OFFLINE_URL)) ||
-        new Response("İnternet bağlantını kontrol edip sayfayı yenile.", {
+        new Response("Oyun sunucusuna ulaşılamadı. Biraz sonra yeniden dene.", {
           status: 503,
           headers: { "Content-Type": "text/plain; charset=utf-8" },
         })
