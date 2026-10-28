@@ -1,4 +1,5 @@
 import GoogleSignIn from "./GoogleSignIn";
+import LaunchScreen from "./LaunchScreen";
 import QuizLobby from "./QuizLobby";
 import TournamentCompactLobby from "./TournamentCompactLobby";
 import JoinGame from "./JoinGame";
@@ -386,13 +387,7 @@ function App() {
   );
   let body;
   if (!authReady && route !== "setup")
-    body = (
-      <div className="center-page">
-        <ShieldCheck size={40} />
-        <h2>{authError || "Oyun sunucusuna bağlanılıyor…"}</h2>
-        {authError && <Button onClick={refresh}>Tekrar dene</Button>}
-      </div>
-    );
+    body = <LaunchScreen error={authError} onRetry={refresh} />;
   else if (route === "setup")
     body = (
       <Setup
@@ -1005,7 +1000,9 @@ function App() {
       >
         {body}
       </ScreenPages>
-      <PwaNotices allowUpdate={!/^(host|join|screen)\//.test(route)} />
+      {authReady && (
+        <PwaNotices allowUpdate={!/^(host|join|screen)\//.test(route)} />
+      )}
       {status.admin && (
         <IdleEvents
           key={`${status.user?.id}:${!!status.preview}`}
