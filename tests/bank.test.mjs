@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from "node:fs";
 const bank = JSON.parse(
   readFileSync(new URL("../data/questions.json", import.meta.url)),
 );
-test("20 categories contain 5000 unique four-choice questions", () => {
+test("20 categories contain 4831 unique four-choice questions; plates stay at 81", () => {
   const counts = {};
   const ids = new Set(),
     texts = new Set();
@@ -21,8 +21,9 @@ test("20 categories contain 5000 unique four-choice questions", () => {
     assert(q.text.length > 10);
   }
   assert.equal(Object.keys(counts).length, 20);
-  assert(Object.values(counts).every((count) => count === 250));
-  assert.equal(bank.length, 5000);
+  for (const [category, count] of Object.entries(counts))
+    assert.equal(count, category === "plakalar" ? 81 : 250);
+  assert.equal(bank.length, 4831);
 });
 
 test("Türkiye retains only 20 metropolitan plates; local specialties cover all 81 provinces", () => {
@@ -39,6 +40,8 @@ test("Türkiye retains only 20 metropolitan plates; local specialties cover all 
   const dedicated = bank.filter(
     (q) => q.category === "plakalar" && q.text.includes(" ilinin trafik"),
   );
+  assert.equal(dedicated.length, 81);
+  assert.equal(new Set(dedicated.map((q) => q.text)).size, 81);
   assert.deepEqual(
     new Set(dedicated.map((q) => q.options[q.correct])),
     new Set(

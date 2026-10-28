@@ -113,20 +113,20 @@ test("selection never fills a missing general slot with another expert and permi
   assert(result.automatic.every((q) => q.difficulty === "general"));
 });
 
-test("each category replaces fifty records with easier content while retaining 250 questions", () => {
+test("expanded categories retain easier content; plates use only the 81 canonical general questions", () => {
   const replaced = JSON.parse(
     readFileSync(new URL("../data/easy-replacements.json", import.meta.url)),
   );
   const allIds = new Set(bank.map((q) => q.id));
   assert.equal(Object.keys(replaced).length, 18);
-  assert.equal(bank.filter((q) => q.difficulty === "general" && !["dunya-kupasi", "film"].includes(q.category)).length, 900);
+  assert.equal(bank.filter((q) => q.difficulty === "general" && !["dunya-kupasi", "film"].includes(q.category)).length, 850);
   for (const [category, ids] of Object.entries(replaced)) {
     assert.equal(ids.length, 50);
     assert.equal(new Set(ids).size, 50);
     assert(ids.every((id) => !allIds.has(id)));
     const pool = bank.filter((q) => q.category === category);
-    assert.equal(pool.length, 250);
-    assert.equal(pool.filter((q) => q.difficulty === "general").length, 50);
-    assert(pool.filter((q) => general.has(q.id)).length >= 90);
+    assert.equal(pool.length, category === "plakalar" ? 81 : 250);
+    assert.equal(pool.filter((q) => q.difficulty === "general").length, category === "plakalar" ? 0 : 50);
+    assert(pool.filter((q) => general.has(q.id)).length >= (category === "plakalar" ? 81 : 90));
   }
 });

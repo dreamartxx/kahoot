@@ -1820,20 +1820,6 @@
     "difficulty": "general"
   },
   {
-    "id": "plakalar-9e50f676167a2a",
-    "category": "plakalar",
-    "text": "Sinop'ta kayıtlı bir otomobil için hangi plaka kodunu seçmelisin?",
-    "options": [
-      "43",
-      "26",
-      "57",
-      "41"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: 57.",
-    "difficulty": "general"
-  },
-  {
     "id": "plakalar-e65d3ce62fa24a",
     "category": "plakalar",
     "text": "Kocaeli ilinin trafik plaka kodu hangisidir?",
@@ -1904,62 +1890,6 @@
     "difficulty": "general"
   },
   {
-    "id": "plakalar-06b3b5a62c691a",
-    "category": "plakalar",
-    "text": "Muğla'da kayıtlı bir otomobil için hangi plaka kodunu seçmelisin?",
-    "options": [
-      "47",
-      "33",
-      "44",
-      "48"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: 48.",
-    "difficulty": "general"
-  },
-  {
-    "id": "plakalar-dcf5ca901ccf3c",
-    "category": "plakalar",
-    "text": "Malatya'da kayıtlı bir otomobil için hangi plaka kodunu seçmelisin?",
-    "options": [
-      "44",
-      "47",
-      "07",
-      "50"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: 44.",
-    "difficulty": "general"
-  },
-  {
-    "id": "plakalar-ed063bf2bbef62",
-    "category": "plakalar",
-    "text": "31 ile başlayan bir Türk araç plakası hangi ili gösterir?",
-    "options": [
-      "Artvin",
-      "Bartın",
-      "Siirt",
-      "Hatay"
-    ],
-    "correct": 3,
-    "explanation": "31, Hatay iline tahsis edilmiş plaka kodudur.",
-    "difficulty": "general"
-  },
-  {
-    "id": "plakalar-fdc1d8589929cc",
-    "category": "plakalar",
-    "text": "69 ile başlayan bir Türk araç plakası hangi ili gösterir?",
-    "options": [
-      "Bayburt",
-      "Rize",
-      "Bilecik",
-      "Kırşehir"
-    ],
-    "correct": 0,
-    "explanation": "69, Bayburt iline tahsis edilmiş plaka kodudur.",
-    "difficulty": "general"
-  },
-  {
     "id": "plakalar-b071db11e73b29",
     "category": "plakalar",
     "text": "Afyonkarahisar ilinin trafik plaka kodu hangisidir?",
@@ -1974,17 +1904,87 @@
     "difficulty": "general"
   },
   {
-    "id": "plakalar-dbbb019a3ea5e7",
+    "id": "plakalar-4aa79073a7ab0c",
     "category": "plakalar",
-    "text": "Gaziantep'te kayıtlı bir otomobil için hangi plaka kodunu seçmelisin?",
+    "text": "Ağrı ilinin trafik plaka kodu hangisidir?",
     "options": [
-      "27",
-      "54",
-      "41",
-      "38"
+      "05",
+      "47",
+      "28",
+      "04"
+    ],
+    "correct": 3,
+    "explanation": "Ağrı: 04.",
+    "difficulty": "general"
+  },
+  {
+    "id": "plakalar-82af67422ae321",
+    "category": "plakalar",
+    "text": "Nevşehir ilinin trafik plaka kodu hangisidir?",
+    "options": [
+      "07",
+      "50",
+      "23",
+      "55"
+    ],
+    "correct": 1,
+    "explanation": "Nevşehir: 50.",
+    "difficulty": "general"
+  },
+  {
+    "id": "plakalar-fb66f8f07edcf3",
+    "category": "plakalar",
+    "text": "Çankırı ilinin trafik plaka kodu hangisidir?",
+    "options": [
+      "58",
+      "50",
+      "18",
+      "45"
+    ],
+    "correct": 2,
+    "explanation": "Çankırı: 18.",
+    "difficulty": "general"
+  },
+  {
+    "id": "plakalar-66bf96c1508cf6",
+    "category": "plakalar",
+    "text": "Antalya ilinin trafik plaka kodu hangisidir?",
+    "options": [
+      "24",
+      "07",
+      "04",
+      "22"
+    ],
+    "correct": 1,
+    "explanation": "Antalya: 07.",
+    "difficulty": "general"
+  },
+  {
+    "id": "plakalar-36a49b8d9531f5",
+    "category": "plakalar",
+    "text": "Hakkâri ilinin trafik plaka kodu hangisidir?",
+    "options": [
+      "56",
+      "30",
+      "80",
+      "57"
+    ],
+    "correct": 1,
+    "explanation": "Hakkâri: 30.",
+    "difficulty": "general"
+  },
+  {
+    "id": "plakalar-bd39c123fadb7e",
+    "category": "plakalar",
+    "text": "Samsun ilinin trafik plaka kodu hangisidir?",
+    "options": [
+      "55",
+      "34",
+      "81",
+      "29"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: 27.",
+    "explanation": "Samsun: 55.",
     "difficulty": "general"
   },
   {

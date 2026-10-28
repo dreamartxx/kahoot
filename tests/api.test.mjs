@@ -289,12 +289,13 @@ test("domain migration accepts exact site origins and rejects lookalikes", async
     assert.equal((await call("create", {}, { origin })).status, 403);
   }
 });
-test("all categories expose 250 questions, support manual additions and rotate ten-question games", async () => {
+test("categories expose their correct pool sizes, support manual additions and rotate ten-question games", async () => {
   const counts = (await call("categories")).data;
   for (const category of Object.keys(counts)) {
-    assert.equal(counts[category], 250);
+    const expectedCount = category === "plakalar" ? 81 : 250;
+    assert.equal(counts[category], expectedCount);
     const pool = (await call("questions", { category }, { admin: true })).data;
-    assert.equal(pool.length, 250);
+    assert.equal(pool.length, expectedCount);
     const poolIds = new Set(pool.map((q) => q.id));
     const seen = new Set();
     for (let game = 0; game < 2; game++) {
@@ -310,11 +311,11 @@ test("all categories expose 250 questions, support manual additions and rotate t
       assert.equal(state.questions.length, 10);
       assert.equal(
         state.questions.filter((q) => q.difficulty === "general").length,
-        9,
+        category === "plakalar" ? 10 : 9,
       );
       assert.equal(
         state.questions.filter((q) => q.difficulty === "expert").length,
-        1,
+        category === "plakalar" ? 0 : 1,
       );
       for (const q of state.questions) {
         assert.equal(q.category, category);
@@ -353,9 +354,9 @@ test("all categories expose 250 questions, support manual additions and rotate t
     );
     assert.equal(saved.status, 200);
     assert.equal(saved.data.category, category);
-    assert.equal((await call("categories")).data[category], 251);
+    assert.equal((await call("categories")).data[category], expectedCount + 1);
     await call("question_delete", { id: saved.data.id }, { admin: true });
-    assert.equal((await call("categories")).data[category], 250);
+    assert.equal((await call("categories")).data[category], expectedCount);
   }
 });
 test("quiz: levels rotate independently without early answer/score leaks; idempotency and deadlines", async () => {

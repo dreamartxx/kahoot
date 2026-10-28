@@ -781,11 +781,20 @@ from world_cup_bank import world_cup_questions
 questions.extend(world_cup_questions())
 from film_bank import film_questions
 questions.extend(film_questions())
+# Keep one canonical question per province. Filter after generation so seeded
+# choice ordering and IDs in all other categories remain unchanged.
+plate_texts={f'{province} ilinin trafik plaka kodu hangisidir?' for province in provinces}
+questions[:]=[q for q in questions if q['category']!='plakalar' or q['text'] in plate_texts]
+plates=[q for q in questions if q['category']=='plakalar']
+assert {q['text']:q['options'][q['correct']] for q in plates} == {
+    f'{province} ilinin trafik plaka kodu hangisidir?':f'{i:02d}'
+    for i,province in enumerate(provinces,1)
+}
 from collections import Counter
 counts=Counter(q['category'] for q in questions)
-expected={category:250 for category in (*CATEGORY_IDS,'dunya-kupasi','film')}
+expected={category:(81 if category=='plakalar' else 250) for category in (*CATEGORY_IDS,'dunya-kupasi','film')}
 assert dict(counts)==expected,(dict(counts),expected)
-assert len(questions)==5000
+assert len(questions)==4831
 assert len({q['id'] for q in questions})==len(questions)
 assert len({q['text'] for q in questions})==len(questions)
 assert sum(q['category']=='turkiye' and 'plaka kodu' in q['text'] for q in questions)==20

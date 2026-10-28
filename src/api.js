@@ -214,7 +214,7 @@ export const categories = [
   desc,
   emoji,
   color,
-  count: 250,
+  count: id === "plakalar" ? 81 : 250,
 }));
 export const catById = (id) =>
   categories.find((c) => c.id === id) || categories[0];
