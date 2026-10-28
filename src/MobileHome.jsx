@@ -1,9 +1,16 @@
-import React, { useId, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import React, { useId, useState, useRef, useEffect } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import ModuleGuide from "./ModuleGuide";
 import GameArt from "./GameArt";
 import PrivacyLinks from "./PrivacyLinks";
 import { ThemePicker } from "./Preferences";
+const challenges = [
+  ["tournament", "Turnuva", "Bu evin şampiyonu kim?"],
+  ["solo", "Kendini Dene", "Tek başına veya birlikte keşfet."],
+  ["estimate", "En Yakın Tahmin", "Bilmesen de yaklaş. Puanı kap."],
+  ["binary", "Sence Hangisi?", "Evet mi, hayır mı? Şaşırmaya hazır ol."],
+  ["family", "Beni Tanıyor musun?", "Sevdiklerini yeniden keşfet."],
+];
 const cards = [
   ["tournament", "Turnuva", "Bu evin şampiyonu kim?"],
   ["solo", "Kendini Dene", "Kendi rekorunu geç."],
@@ -23,6 +30,21 @@ export default function MobileHome({
   const [group, setGroup] = useState(initialGroup);
   const [animated, setAnimated] = useState(null);
   const panelId = useId();
+  const rail = useRef(null);
+  const [slide, setSlide] = useState(0);
+  const turn = (next) => {
+    const node = rail.current;
+    if (node?.firstElementChild)
+      node.scrollTo({
+        left:
+          next * (node.firstElementChild.getBoundingClientRect().width + 12),
+        behavior: "smooth",
+      });
+  };
+  useEffect(() => {
+    setSlide(0);
+    rail.current?.scrollTo({ left: 0 });
+  }, [group]);
   const browse = (collection) =>
     onBrowse ? onBrowse(collection) : onChoose("quiz");
   const groups = ["Yarışmalar", "Meydan Oku", "Çark & Kelimeler"];
@@ -122,7 +144,19 @@ export default function MobileHome({
         ))}
       </div>
       <div
-        className={`mobile-game-grid ${group === 0 ? "quiz-heart-panel" : ""}`}
+        ref={rail}
+        onScroll={() => {
+          if (group === 1 && rail.current) {
+            const first = rail.current.firstElementChild;
+            setSlide(
+              Math.round(
+                rail.current.scrollLeft /
+                  (first.getBoundingClientRect().width + 12),
+              ),
+            );
+          }
+        }}
+        className={`mobile-game-grid ${group === 0 ? "quiz-heart-panel" : group === 1 ? "challenge-carousel" : ""}`}
         role="tabpanel"
         id={panelId}
         aria-labelledby={`${panelId}-tab-${group}`}
@@ -153,9 +187,8 @@ export default function MobileHome({
             </article>
           </>
         ) : (
-          cards
-            .slice((group - 1) * 2, group * 2)
-            .map(([id, title, description]) => (
+          (group === 1 ? challenges : cards.slice(2)).map(
+            ([id, title, description]) => (
               <article
                 key={id}
                 className={`mobile-game-tile mobile-tile-${id}`}
@@ -172,7 +205,8 @@ export default function MobileHome({
                     active={
                       animated
                         ? animated === id
-                        : id === cards[(group - 1) * 2][0]
+                        : id ===
+                          (group === 1 ? challenges[slide]?.[0] : "raffle")
                     }
                   />
                   <h3>{title}</h3>
@@ -180,9 +214,31 @@ export default function MobileHome({
                   <ArrowUpRight className="mobile-tile-arrow" size={17} />
                 </button>
               </article>
-            ))
+            ),
+          )
         )}
       </div>
+      {group === 1 && (
+        <nav className="challenge-pager" aria-label="Meydan Oku oyunları">
+          <button
+            disabled={slide === 0}
+            onClick={() => turn(slide - 1)}
+            aria-label="Önceki oyun"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <span>
+            {slide + 1} / {challenges.length} · Yana kaydır, oyununu seç
+          </span>
+          <button
+            disabled={slide >= challenges.length - 1}
+            onClick={() => turn(slide + 1)}
+            aria-label="Sonraki oyun"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </nav>
+      )}
       <p className="mobile-home-foot">En güzel anılar, birlikte oynarken. ♥</p>
       {!username && (
         <details className="mobile-legal-menu">

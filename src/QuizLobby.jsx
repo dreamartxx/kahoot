@@ -31,6 +31,7 @@ export default function QuizLobby({
   const [page, setPage] = useState(0);
   const pageCount = Math.max(1, Math.ceil(room.players.length / 10));
   const current = Math.min(page, pageCount - 1);
+  const solo = room.playMode === "solo";
   const inviting = host || screen;
   return (
     <main
@@ -51,7 +52,10 @@ export default function QuizLobby({
               <Clock size={14} /> {room.seconds} sn
             </span>
             <span>
-              <Users size={14} /> En fazla {room.participantLimit || 10} kişi
+              <Users size={14} />{" "}
+              {solo
+                ? "Tek kişilik"
+                : `En fazla ${room.participantLimit || 10} kişi`}
             </span>
           </div>
         </div>
@@ -59,7 +63,18 @@ export default function QuizLobby({
       </header>
 
       <div className="quiz-lobby-body">
-        {inviting ? (
+        {solo ? (
+          <section className="quiz-lobby-ready">
+            <span className="quiz-lobby-ready-icon">
+              <Play size={32} />
+            </span>
+            <h2>Sahne senin, {room.me?.name}!</h2>
+            <p>Hazır olduğunda başla. Sorular otomatik ilerler.</p>
+            {room.quizType === "estimate" && (
+              <p>Cevaba yakınlığına göre 0–1.000 puan kazan.</p>
+            )}
+          </section>
+        ) : inviting ? (
           <section className="quiz-lobby-invite" aria-label="Oyuna davet et">
             <div className="quiz-lobby-code">
               <span>OYUN KODU</span>
@@ -156,15 +171,17 @@ export default function QuizLobby({
                   <Plus size={16} /> Ben de yarışacağım
                 </button>
               )}
-              <a
-                href={`#screen/${pin}`}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Seyirci ekranını aç"
-              >
-                <ArrowUpRight size={16} />
-                <span>Seyirci ekranı</span>
-              </a>
+              {!solo && (
+                <a
+                  href={`#screen/${pin}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Seyirci ekranını aç"
+                >
+                  <ArrowUpRight size={16} />
+                  <span>Seyirci ekranı</span>
+                </a>
+              )}
             </div>
           )}
         </section>
@@ -174,9 +191,11 @@ export default function QuizLobby({
         {host ? (
           <>
             <span>
-              {room.playerCount >= 2
-                ? "Herkes hazırsa sahne sizin!"
-                : "Birlikte başlamak için en az 2 yarışmacı gerekli."}
+              {solo
+                ? "Hazırsan kendi bilgini keşfet!"
+                : room.playerCount >= 2
+                  ? "Herkes hazırsa sahne sizin!"
+                  : "Birlikte başlamak için en az 2 yarışmacı gerekli."}
             </span>
             <button
               className="quiz-lobby-start"

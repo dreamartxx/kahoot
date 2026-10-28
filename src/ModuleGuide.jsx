@@ -21,7 +21,7 @@ const guides = {
       ],
       [
         "En yakın kazanır",
-        "Gerçek cevaba en yakın olan 1.000 puan alır. Eşit yakınlık varsa hepsi puan kazanır.",
+        "Birlikte oynarken en yakın olan 1.000 puan alır. Tek başına oynarken tam isabet 1.000 puandır; farkın doğru cevabın büyüklüğüne oranı kadar puan azalır (sıfır cevapta 1 birim esas alınır).",
       ],
     ],
     note: "Hesaplama sorusu yok. Önceki oyunun soruları sonraki oyuna gelmez.",
@@ -97,7 +97,7 @@ const guides = {
     steps: [
       [
         "Oyunu kur",
-        "Konu ve soru sayısını (10, 15, 20) seç. Süre 10 saniyeden başlar; 15 veya 20 de seçebilirsin. Kodu veya QR’ı paylaş.",
+        "Konu ve soru sayısını (10, 15, 20) seç. Süre 10 saniyeden başlar; 15 veya 20 de seçebilirsin. Tek başıma seçerek hemen oyna veya Birlikte seçip kodu paylaş.",
       ],
       [
         "Doğru şıkkı bul",

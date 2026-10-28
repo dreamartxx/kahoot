@@ -44,6 +44,15 @@ try {
     if($action==='create'){
         needAdmin();soloSchema();specialQuizSchema();creditReconcile((int)currentUser()['id']);$mode=$in['mode']??'';if(!in_array($mode,['quiz','cloud','raffle','family','tournament']))fail('Modül geçersiz.');
         $s=['creditCharged'=>false,'ownerId'=>(int)currentUser()['id'],'pin'=>(string)random_int(100000,999999),'mode'=>$mode,'title'=>inputText($in['title']??'',2,100,'Başlık'),'phase'=>'lobby','players'=>[],'createdAt'=>time(),'expiresAt'=>time()+604800];
+        $playMode=$in['playMode']??'multi';
+        if(!in_array($playMode,['solo','multi'],true))fail('Oyun biçimi geçersiz.');
+        if($playMode==='solo'&&$mode!=='quiz')fail('Bu modül tek kişilik yarışmayı desteklemiyor.');
+        $s['playMode']=$playMode;$soloToken=null;
+        if($playMode==='solo'){
+            $user=currentUser();if(publicUser($user)['needsProfileSetup'])fail('Önce profil ayarlarından adını ve karakterini kaydet.',409);
+            $soloToken=bin2hex(random_bytes(24));$key=hash('sha256',$soloToken);
+            $s['players'][$key]=['name'=>$user['username'],'score'=>0,'avatar'=>accountProfile((int)$user['id'])['avatar']??'astronaut','hostUserId'=>(int)$user['id'],'profileUserId'=>(int)$user['id']];
+        }
         $db=db();if(!$db->inTransaction())$db->beginTransaction();creditCapacity((int)$s['ownerId']);$limits=creditSummary((int)$s['ownerId']);$s['participantLimit']=$limits['participantLimit'];$s['raffleLimit']=$limits['raffleLimit'];
         if($mode==='quiz'){
             $s['category']=$in['category']??'cografya';
@@ -73,7 +82,7 @@ try {
         if($mode==='family'){$s['familyPrompts']=array_merge($customFamily,selectFamilyPrompts($db,10-count($customFamily),array_map(fn($p)=>normalize($p['self']),$customFamily),$chosenFamily));shuffle($s['familyPrompts']);}
         for($attempt=0;$attempt<5;$attempt++){try{$db->prepare('INSERT INTO arena_rooms (pin,state,created_at) VALUES (?,?,?)')->execute([$s['pin'],json_encode($s,JSON_UNESCAPED_UNICODE),time()]);break;}catch(PDOException $e){if(!in_array((string)$e->getCode(),['23000','23505']))throw $e;$s['pin']=(string)random_int(100000,999999);if($attempt===4)throw $e;}}
         foreach($s['questions']??[] as $q){$sql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';$db->prepare($sql)->execute([$q['id'],time()]);}
-        $db->commit();echo json_encode(snapshot($s,null,true),JSON_UNESCAPED_UNICODE);exit;
+        $db->commit();$out=snapshot($s,$soloToken,true);if($soloToken)$out['playerToken']=$soloToken;echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;
     }
     if($action==='room'){
         $q=db()->prepare('SELECT state FROM arena_rooms WHERE pin=?');$q->execute([$in['pin']??'']);$raw=$q->fetchColumn();if(!$raw)fail('Etkinlik bulunamadı.',404);$s=expireStoredRoom($raw);if($s['expiresAt']>=time()&&creditNeedsSettlement($s)){$s=lockRoom($s['pin']);saveRoom($s);}if($s['expiresAt']<time())fail('Etkinlik süresi doldu.',410);
@@ -105,6 +114,18 @@ try {
         $profileUser=$useProfile?currentUser():null;
         if($useProfile&&!$profileUser)fail('Profilinle katılmak için giriş yap.',401);
         if($useProfile&&publicUser($profileUser)['needsProfileSetup'])fail('Önce profil ayarlarından adını ve karakterini kaydet.',409);
+        if(($s['playMode']??'multi')==='solo'){
+            if(!$useProfile||!$profileUser||(int)$profileUser['id']!==(int)$s['ownerId'])fail('Bu oyun tek kişilik. Kendi yarışmanı oluşturabilirsin.',409);
+            foreach($s['players'] as $oldKey=>$existing){
+                if(($existing['profileUserId']??null)!==(int)$profileUser['id'])continue;
+                // Recover a lost local token without losing previously submitted answers.
+                $token=bin2hex(random_bytes(24));$newKey=hash('sha256',$token);
+                unset($s['players'][$oldKey]);$s['players'][$newKey]=$existing;
+                foreach($s['answers'] as &$answers){if(isset($answers[$oldKey])){$answers[$newKey]=$answers[$oldKey];unset($answers[$oldKey]);}}unset($answers);
+                saveRoom($s);echo json_encode(['token'=>$token,'room'=>snapshot($s,$token,true)],JSON_UNESCAPED_UNICODE);exit;
+            }
+            fail('Tek kişilik oyuncu bulunamadı.',409);
+        }
         // Retrying a profile join after a lost response must not create a second player.
         // Only the authenticated account can recover its own waiting-room seat.
         if(($in['useProfile']??false)===true && $profileUser && $s['phase']==='lobby') {
@@ -150,7 +171,7 @@ try {
         if($s['phase']==='countdown')fail('Yeni soru hazırlanıyor.',409);
         if(($in['expectedIndex']??null)!==$s['index']||($in['expectedPhase']??null)!==$s['phase'])fail('Ekran güncellendi; tekrar deneyin.',409);
         if($s['phase']==='lobby'){
-            if(count($s['players'])<2)fail('Bilgi yarışması için en az 2 yarışmacı gerekli. Tek başına oynamak için Kendini Dene modülünü kullan.',409);
+            if(count($s['players'])<(($s['playMode']??'multi')==='solo'?1:2))fail('Bilgi yarışması için en az 2 yarışmacı gerekli. Yeni oyun kurarken Tek başıma seçebilirsin.',409);
             creditRoomCharge($s,'quiz',$in);
         }
         if($s['phase']==='question'){scoreEstimates($s);$s['phase']='reveal';$s['revealUntil']=microtime(true)+5;}

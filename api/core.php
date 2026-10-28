@@ -200,7 +200,7 @@ function snapshot(array $s,?string $token=null,bool $host=false): array {
     $now=microtime(true);$phase=$s['phase'];
     $visiblePlayers=$s['players'];
     if(in_array($s['mode'],['quiz','tournament'],true) && $phase==='question') foreach($s['answers'][(string)$s['index']]??[] as $k=>$a) $visiblePlayers[$k]['score']-=$a['points'];
-    $out=['quizType'=>$s['quizType']??'classic','canManage'=>$host,'isCreator'=>$isCreator,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'participantLimit'=>$s['participantLimit']??10,'raffleLimit'=>$s['raffleLimit']??50,'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score'],'avatar'=>$p['avatar']??'astronaut'],$visiblePlayers))];
+    $out=['playMode'=>$s['playMode']??'multi','quizType'=>$s['quizType']??'classic','canManage'=>$host,'isCreator'=>$isCreator,'pin'=>$s['pin'],'mode'=>$s['mode'],'title'=>$s['title'],'category'=>$s['category']??null,'phase'=>$phase,'createdAt'=>$s['createdAt'],'serverTime'=>$now,'expiresAt'=>$s['expiresAt'],'participantLimit'=>$s['participantLimit']??10,'raffleLimit'=>$s['raffleLimit']??50,'playerCount'=>count($s['players']),'players'=>array_values(array_map(fn($p)=>['name'=>$p['name'],'score'=>$p['score'],'avatar'=>$p['avatar']??'astronaut'],$visiblePlayers))];
     usort($out['players'],fn($a,$b)=>$b['score']<=>$a['score']);
     $key=$token?hash('sha256',$token):null;$me=$key?($s['players'][$key]??null):null;
     if($me) $out['me']=['name'=>$me['name'],'score'=>$visiblePlayers[$key]['score'],'avatar'=>$me['avatar']??'astronaut'];

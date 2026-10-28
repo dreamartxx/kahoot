@@ -546,3 +546,26 @@
   width: 125px;
   height: 94px;
 }
+
+.studio-games.studio-challenges {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+.studio-challenges .studio-game {
+  flex: 0 0 clamp(210px, 23%, 300px);
+  scroll-snap-align: start;
+}
+.studio-game-estimate {
+  --game-light: #7559a9;
+  --game-dark: #2d2043;
+}
+.studio-game-binary {
+  --game-light: #367e76;
+  --game-dark: #163f3b;
+}
+.studio-game-family {
+  --game-light: #91516f;
+  --game-dark: #3f203b;
+}

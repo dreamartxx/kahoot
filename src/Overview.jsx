@@ -19,8 +19,23 @@ const games = [
     title: "Kendini Dene",
     tag: "KENDİ REKORUNU GEÇ",
     description: "Kimseyi bekleme. Bilgini keşfet.",
-    action: "Tek başına oyna",
+    action: "Nasıl oynayacağını seç",
   },
+  ...[
+    [
+      "estimate",
+      "En Yakın Tahmin",
+      "Bilmesen de yaklaş. İçinden geleni söyle.",
+    ],
+    ["binary", "Sence Hangisi?", "Bir evet, bir hayır. Bir sürü sürpriz."],
+    ["family", "Beni Tanıyor musun?", "Sevdiklerini yeniden keşfet."],
+  ].map(([id, title, description]) => ({
+    id,
+    title,
+    description,
+    tag: "MEYDAN OKU",
+    action: "Oyununu seç",
+  })),
   {
     id: "raffle",
     title: "Çarkıfelek",
@@ -150,40 +165,78 @@ export default function Overview({
       </div>
       <div className="studio-section-title">
         <div>
-          <h2>Oyun senin, seçim senin.</h2>
+          <h2>Meydan Oku</h2>
           <p>İster kendine meydan oku, ister herkesi oyuna dahil et.</p>
         </div>
-        <span>4 farklı deneyim</span>
+        <span>5 farklı meydan okuma</span>
+      </div>
+      <div className="studio-games studio-challenges">
+        {games
+          .filter((game) => !["raffle", "cloud"].includes(game.id))
+          .map((game) => (
+            <article
+              className={`studio-game studio-game-${game.id}`}
+              key={game.id}
+            >
+              <ModuleGuide mode={game.id} compact />
+              <button
+                className="studio-game-action"
+                onClick={() => onChoose(game.id)}
+                aria-label={game.title}
+              >
+                <span className="studio-game-art">
+                  <GameArt mode={game.id} />
+                </span>
+                <span className="studio-game-copy">
+                  <span className="studio-kicker">{game.tag}</span>
+                  <h3>{game.title}</h3>
+                  <span className="studio-game-description">
+                    {game.description}
+                  </span>
+                </span>
+                <span className="studio-game-cta">
+                  {game.action}
+                  <ArrowRight size={17} />
+                </span>
+              </button>
+            </article>
+          ))}
+      </div>
+      <div className="studio-section-title">
+        <div>
+          <h2>Çark &amp; Kelimeler</h2>
+          <p>Şansı döndür, fikirleri buluştur.</p>
+        </div>
       </div>
       <div className="studio-games">
-        {games.map((game) => (
-          <article
-            className={`studio-game studio-game-${game.id}`}
-            key={game.id}
-          >
-            <ModuleGuide mode={game.id} compact />
-            <button
-              className="studio-game-action"
-              onClick={() => onChoose(game.id)}
-              aria-label={game.title}
+        {games
+          .filter((game) => ["raffle", "cloud"].includes(game.id))
+          .map((game) => (
+            <article
+              className={`studio-game studio-game-${game.id}`}
+              key={game.id}
             >
-              <span className="studio-game-art">
-                <GameArt mode={game.id} />
-              </span>
-              <span className="studio-game-copy">
-                <span className="studio-kicker">{game.tag}</span>
-                <h3>{game.title}</h3>
-                <span className="studio-game-description">
-                  {game.description}
+              <ModuleGuide mode={game.id} compact />
+              <button
+                className="studio-game-action"
+                onClick={() => onChoose(game.id)}
+              >
+                <span className="studio-game-art">
+                  <GameArt mode={game.id} />
                 </span>
-              </span>
-              <span className="studio-game-cta">
-                {game.action}
-                <ArrowRight size={17} />
-              </span>
-            </button>
-          </article>
-        ))}
+                <span className="studio-game-copy">
+                  <h3>{game.title}</h3>
+                  <span className="studio-game-description">
+                    {game.description}
+                  </span>
+                </span>
+                <span className="studio-game-cta">
+                  {game.action}
+                  <ArrowRight size={17} />
+                </span>
+              </button>
+            </article>
+          ))}
       </div>
       <footer className="studio-foot">
         <span>

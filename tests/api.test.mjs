@@ -4274,7 +4274,7 @@ test("quiz host uses profile identity, needs a second player, and failed starts 
   assert.equal((await call("join", { pin: room.pin, name: "İkinci kurucu" }, user)).status, 409);
   const blocked = await start();
   assert.equal(blocked.status, 409);
-  assert.match(blocked.data.error, /Kendini Dene/);
+  assert.match(blocked.data.error, /Tek başıma/);
   const waiting = (await call("room", { pin: room.pin }, user)).data;
   assert.equal(waiting.phase, "lobby");
   assert.equal(waiting.index, -1);
@@ -4296,7 +4296,7 @@ test("a lone guest cannot start a quiz while the host only presents", async () =
   await join(room.pin, "Tek misafir");
   const result = await call("advance", { pin: room.pin, expectedIndex: -1, expectedPhase: "lobby" }, { admin: true });
   assert.equal(result.status, 409);
-  assert.match(result.data.error, /Kendini Dene/);
+  assert.match(result.data.error, /Tek başıma/);
 });
 
 test("signed-in participants join with saved identity; anonymous guests receive a valid automatic avatar", async () => {
@@ -4324,4 +4324,53 @@ test("signed-in participants join with saved identity; anonymous guests receive 
   assert.ok(['astronaut','robot','alien','wizard','dragon','unicorn','knight','ninja','fox','panda','cat','dinosaur','penguin','footballer','goalkeeper','racer','chef','scientist','pirate','diver'].includes(guest.data.room.me.avatar));
   assert.equal(guest.data.room.me.name, "Misafir");
   assert.equal((await call("advance", {pin:room.pin,expectedIndex:-1,expectedPhase:"lobby"}, creator)).status, 200);
+});
+
+
+test("solo quiz rooms use the account profile, reject guests and charge only on start", async () => {
+  const user = await soloUser("solo-room-player");
+  const created = await call("create", {mode:"quiz", title:"Kendi yarışmam", category:"binary", seconds:10, questionCount:10, playMode:"solo"}, user);
+  assert.equal(created.status,200,JSON.stringify(created.data));
+  const room=created.data, actor={...user,token:room.playerToken};
+  assert.equal(room.playMode,"solo");
+  assert.equal(room.playerCount,1);
+  assert.equal(room.me.name,"solo-room-player");
+  assert.equal((await creditBalance(user)).available,5);
+  const publicView=(await call("room",{pin:room.pin})).data;
+  assert.equal(publicView.playerToken,undefined);
+  assert.equal(publicView.me,undefined);
+  assert.equal((await call("join",{pin:room.pin,name:"Misafir"})).status,409);
+  const start={pin:room.pin,expectedIndex:-1,expectedPhase:"lobby"};
+  const started=await call("advance",start,actor);
+  assert.equal(started.status,200);
+  assert.equal(started.data.question.options.length,2);
+  assert.equal(started.data.question.correct,undefined);
+  assert.equal((await creditBalance(user)).available,4);
+  assert.equal((await call("advance",start,actor)).status,409);
+  assert.equal((await creditBalance(user)).available,4);
+  assert.equal((await call("answer",{pin:room.pin,questionId:started.data.question.id,choice:0},actor)).status,200);
+  await call("close",{pin:room.pin},user);
+  assert.equal((await call("create",{mode:"tournament",title:"Turnuva",prize:"Ödül",playMode:"solo"},user)).status,400);
+});
+
+test("solo estimates award closeness points, never automatic maximum points", async () => {
+  const user=await soloUser("solo-estimate-player");
+  const created=await call("create",{mode:"quiz",title:"Tahmin et",category:"estimate",seconds:10,playMode:"solo"},user);
+  assert.equal(created.status,200);
+  const room=created.data,actor={...user,token:room.playerToken};
+  mutateDB(room.pin,"$s['questions'][0]['answer']=100");
+  const started=await call("advance",{pin:room.pin,expectedIndex:-1,expectedPhase:"lobby"},actor);
+  assert.equal(started.data.question.answer,undefined);
+  await call("answer",{pin:room.pin,questionId:started.data.question.id,guess:"125"},actor);
+  const reveal=await call("advance",{pin:room.pin,expectedIndex:0,expectedPhase:"question"},actor);
+  assert.equal(reveal.data.estimateResults[0].points,750);
+  assert.equal(reveal.data.me.score,750);
+  const repeat=(await call("room",{pin:room.pin},actor)).data;
+  assert.equal(repeat.me.score,750,"Polling cannot award twice");
+  const recovered=await call("join",{pin:room.pin,useProfile:true},user);
+  assert.equal(recovered.status,200);
+  assert.equal(recovered.data.room.me.score,750);
+  assert.equal(recovered.data.room.myAnswer.guess,125);
+  assert.equal((await call("room",{pin:room.pin},actor)).data.me,undefined,"Previous token no longer owns the seat");
+  await call("close",{pin:room.pin},user);
 });

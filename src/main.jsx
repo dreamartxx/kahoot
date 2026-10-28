@@ -1,3 +1,4 @@
+import PlayModePicker from "./PlayModePicker";
 import GoogleSignIn from "./GoogleSignIn";
 import LaunchScreen from "./LaunchScreen";
 import QuizLobby from "./QuizLobby";
@@ -175,6 +176,7 @@ function Modal({
   children,
   wide = false,
   singleScreen = false,
+  className = "",
 }) {
   const ref = useRef();
   useEffect(() => {
@@ -189,7 +191,7 @@ function Modal({
   return (
     <dialog
       ref={ref}
-      className={singleScreen ? "tournament-create-dialog" : wide ? "wide" : ""}
+      className={`${singleScreen ? "tournament-create-dialog" : wide ? "wide" : ""} ${className}`}
       onCancel={onClose}
     >
       <div className="modal-head">
@@ -361,6 +363,10 @@ function App() {
     );
   };
   const nav = (id) => {
+    if (["estimate", "binary"].includes(id)) {
+      create("quiz", id);
+      return;
+    }
     if (["users", "library"].includes(id) && status.user?.role !== "owner")
       id = "profile";
     setTab(id);
@@ -601,6 +607,7 @@ function App() {
               <Solo
                 key={`${status.user.id}-${Boolean(status.preview)}`}
                 onBack={() => nav("home")}
+                onMultiplayer={(category) => create("quiz", category)}
               />
             ) : tab === "events" ? (
               <section className="my-events-intro">
@@ -633,7 +640,13 @@ function App() {
                   onResume={(pin) => go("host/" + pin)}
                   onChoose={(id) => {
                     setHomeGroup(
-                      ["tournament", "solo"].includes(id)
+                      [
+                        "tournament",
+                        "solo",
+                        "estimate",
+                        "binary",
+                        "family",
+                      ].includes(id)
                         ? 1
                         : ["raffle", "cloud"].includes(id)
                           ? 2
@@ -1069,6 +1082,8 @@ function App() {
           canManageLibrary={status.user?.role === "owner"}
           onClose={() => setModal(null)}
           onDone={(r) => {
+            if (r.playerToken)
+              localStorage.setItem("arena:" + r.pin, r.playerToken);
             setModal(null);
             go("host/" + r.pin);
           }}
@@ -1239,6 +1254,7 @@ function Create({
   canManageLibrary = false,
 }) {
   const compact = useCompactLayout();
+  const [playMode, setPlayMode] = useState("multi");
   const [cat, setCat] = useState(initialCat),
     [title, setTitle] = useState(
       mode === "quiz"
@@ -1288,15 +1304,18 @@ function Create({
       title={modes[mode].name + " oluştur"}
       onClose={onClose}
       wide={manual || customFamily || manualFamily}
-      singleScreen={mode === "tournament"}
+      singleScreen={mode === "tournament" || (mode === "quiz" && !manual)}
+      className={mode === "quiz" && !manual ? "quiz-create-dialog" : ""}
     >
       <form
         className={
           mode === "tournament"
             ? "module-create-form tournament-create-form"
-            : compact && ["raffle", "cloud"].includes(mode)
-              ? "module-create-form"
-              : undefined
+            : mode === "quiz" && !manual
+              ? "quiz-create-form"
+              : compact && ["raffle", "cloud"].includes(mode)
+                ? "module-create-form"
+                : undefined
         }
         onSubmit={async (e) => {
           e.preventDefault();
@@ -1305,6 +1324,7 @@ function Create({
             onDone(
               await api("create", {
                 mode,
+                ...(mode === "quiz" ? { playMode } : {}),
                 title,
                 category: cat,
                 seconds: Number(seconds),
@@ -1339,9 +1359,14 @@ function Create({
             </div>
           </div>
         )}
+        {mode === "quiz" && (
+          <>
+            <PlayModePicker value={playMode} onChange={setPlayMode} />
+          </>
+        )}
         <Field label="Etkinlik adı">
           <input
-            autoFocus={mode !== "tournament"}
+            autoFocus={!["quiz", "tournament"].includes(mode)}
             required
             maxLength={100}
             value={title}
@@ -1451,9 +1476,13 @@ function Create({
               <div className="info-box">
                 <Sparkles size={20} />
                 <span>
-                  {format
-                    ? `${questionCount} soruluk oyun · ${seconds} saniye/soru. ${format.rules}`
-                    : `${questionCount - expertLimit} genel bilgi + en fazla ${expertLimit} detay / uzmanlık sorusu. Her düzeyde kullanılmamış sorulara öncelik verilir; o grup tamamlanınca en eski sorular yeniden gelir. Sorular karışık sırada gelir.`}
+                  {cat === "estimate"
+                    ? playMode === "solo"
+                      ? "Tam isabet 1.000 puan. Doğru cevaba yaklaştıkça puanın artar."
+                      : "En yakın tahmin 1.000 puan alır. Eşit yakınlıktaki tahminler birlikte kazanır."
+                    : format
+                      ? `${format.pool} soruluk havuzdan ${questionCount} farklı soru. Doğru ve hızlı cevapla puan kazan.`
+                      : `${questionCount - expertLimit} genel bilgi + en fazla ${expertLimit} detay sorusu. Her oyunda farklı sorular öncelikli.`}
                 </span>
               </div>
             )}
@@ -1750,6 +1779,7 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
       a === "advance" &&
       room?.mode === "quiz" &&
       room.phase === "lobby" &&
+      room.playMode !== "solo" &&
       room.playerCount < 2
     ) {
       setNeedsPlayers(true);
@@ -1895,6 +1925,7 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
     <div
       className={"event-page " + (host || screen ? "presenter" : "participant")}
       data-compact-room={compact && ["raffle", "cloud"].includes(room.mode)}
+      data-play-mode={room.playMode || "multi"}
       data-quiz-lobby={quizLobby}
       data-screen-fit={quizLobby || tournamentLobby || undefined}
       data-tournament-lobby={tournamentLobby || undefined}
@@ -1920,17 +1951,25 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
             />
           )}
           <span className="pin-chip">
-            KOD <b>{pin}</b>
+            {room.playMode === "solo" ? (
+              "TEK KİŞİLİK"
+            ) : (
+              <>
+                KOD <b>{pin}</b>
+              </>
+            )}
           </span>
           {(host || screen) && (
             <>
-              <button
-                className="icon-btn"
-                aria-label="QR kodunu göster"
-                onClick={() => setQr(true)}
-              >
-                <Users size={20} />
-              </button>
+              {room.playMode !== "solo" && (
+                <button
+                  className="icon-btn"
+                  aria-label="QR kodunu göster"
+                  onClick={() => setQr(true)}
+                >
+                  <Users size={20} />
+                </button>
+              )}
               <button
                 className="icon-btn"
                 aria-label="Tam ekran"
@@ -2286,25 +2325,27 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
                     : "Doğru cevap gösteriliyor. Ardından 3–2–1 ile sıradaki soru!"
                   : "Süre bitince cevaplar gösterilecek ve yeni soruya otomatik geçilecek."}
               </p>
-              {host && room.phase === "question" && (
-                <Button
-                  className="next-btn"
-                  disabled={busy}
-                  onClick={() =>
-                    action("advance", {
-                      expectedIndex: room.index,
-                      expectedPhase: room.phase,
-                    })
-                  }
-                >
-                  {room.phase === "question"
-                    ? "Cevapları göster"
-                    : room.index === 9
-                      ? "Sonuçları göster"
-                      : "Sıradaki soru"}{" "}
-                  <ArrowRight size={18} />
-                </Button>
-              )}
+              {host &&
+                room.playMode !== "solo" &&
+                room.phase === "question" && (
+                  <Button
+                    className="next-btn"
+                    disabled={busy}
+                    onClick={() =>
+                      action("advance", {
+                        expectedIndex: room.index,
+                        expectedPhase: room.phase,
+                      })
+                    }
+                  >
+                    {room.phase === "question"
+                      ? "Cevapları göster"
+                      : room.index === 9
+                        ? "Sonuçları göster"
+                        : "Sıradaki soru"}{" "}
+                    <ArrowRight size={18} />
+                  </Button>
+                )}
             </div>
           )}
         </>
@@ -2384,8 +2425,8 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
             <Users size={44} aria-hidden="true" />
             <p>
               Bilgi yarışması için en az <strong>2 yarışmacı</strong> gerekli.
-              Birini davet et; tek başına oynamak istersen{" "}
-              <strong>Kendini Dene</strong> seni bekliyor.
+              Birini davet et veya yeni yarışma oluştururken{" "}
+              <strong>Tek başıma</strong> seç.
             </p>
             <Button className="full" onClick={() => setNeedsPlayers(false)}>
               Katılımcı bekle

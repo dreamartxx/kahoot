@@ -104,9 +104,11 @@ export function EstimateRound({ room, screen, busy, left, action }) {
             {fmt(room.question.answer)} <small>{room.question.unit}</small>
           </strong>
           <p>
-            {room.estimateResults?.some((r) => r.points > 0)
-              ? "En yakın tahmin sahnede! Eşit uzaklıktaki tahminler birlikte kazanır."
-              : "Bu soruya tahmin gelmedi. Sıradakinde şansını dene!"}
+            {room.playMode === "solo"
+              ? "Puanın, doğru cevaba ne kadar yaklaştığını gösterir."
+              : room.estimateResults?.some((r) => r.points > 0)
+                ? "En yakın tahmin sahnede! Eşit uzaklıktaki tahminler birlikte kazanır."
+                : "Bu soruya tahmin gelmedi. Sıradakinde şansını dene!"}
           </p>
         </div>
         <div className="estimate-rankings">
@@ -156,7 +158,11 @@ export function EstimateRound({ room, screen, busy, left, action }) {
         <strong>
           {fmt(room.myAnswer.guess)} <small>{room.question.unit}</small>
         </strong>
-        <p>Diğer tahminler süre bitince açılacak.</p>
+        <p>
+          {room.playMode === "solo"
+            ? "Süre bitince doğru cevabı ve yakınlık puanını göreceksin."
+            : "Diğer tahminler süre bitince açılacak."}
+        </p>
       </div>
     );
   return (

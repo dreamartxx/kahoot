@@ -1,0 +1,231 @@
+.play-mode-picker {
+  border: 0;
+  padding: 0;
+  margin: 0 0 16px;
+  min-width: 0;
+}
+.play-mode-picker legend {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.play-mode-picker > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.play-mode-picker button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #a387c755;
+  border-radius: 16px;
+  background: #a387c710;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.play-mode-picker button[aria-pressed="true"] {
+  background: linear-gradient(125deg, #7151c7, #493084);
+  color: #fff;
+  border-color: #b29ae8;
+  box-shadow: 0 4px 16px #57368f30;
+}
+.play-mode-picker strong,
+.play-mode-picker small {
+  display: block;
+}
+.play-mode-picker strong {
+  font-size: 14px;
+}
+.play-mode-picker small {
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 3px;
+  opacity: 0.85;
+}
+.play-mode-note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: inherit;
+  opacity: 0.8;
+}
+.challenge-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.challenge-pager button {
+  border: 1px solid #a387c755;
+  background: #a387c718;
+  color: inherit;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.challenge-pager span {
+  font-size: 12px;
+  font-weight: 700;
+}
+@media (max-width: 800px) {
+  .mobile-design-home {
+    width: 100%;
+    min-width: 0;
+  }
+  .mobile-design-home .mobile-game-grid.challenge-carousel {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .challenge-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-design-home .challenge-carousel .mobile-game-tile {
+    flex: 0 0 82%;
+    min-width: 0;
+    height: 100%;
+    scroll-snap-align: center;
+  }
+  .challenge-carousel .mobile-tile-family {
+    --premium-top: #944c77;
+    --premium-base: #361e43;
+  }
+  .challenge-carousel .mobile-tile-binary {
+    --premium-top: #327b77;
+    --premium-base: #183b43;
+  }
+  .challenge-carousel .mobile-tile-estimate {
+    --premium-top: #7754b5;
+    --premium-base: #30204b;
+  }
+  .mobile-design-home .challenge-pager {
+    margin: 3px 0;
+  }
+  .play-mode-picker button {
+    padding: 9px;
+    gap: 6px;
+  }
+}
+
+.module-solo .play-mode-picker {
+  flex-shrink: 0;
+  margin: 0;
+}
+.module-solo .play-mode-picker legend {
+  margin-bottom: 5px;
+}
+@media (max-height: 650px) and (max-width: 800px) {
+  .module-solo .play-mode-picker small {
+    display: none;
+  }
+  .module-solo .play-mode-picker button {
+    padding: 8px;
+  }
+  .module-solo .module-screen-art {
+    min-height: 0;
+  }
+  .module-solo .module-screen-art .game-art {
+    height: 70px;
+    width: 105px;
+  }
+}
+
+.challenge-pager button:hover:not(:disabled),
+.challenge-pager button:focus-visible {
+  background: #e9ddff;
+  color: #33224d;
+}
+
+.quiz-create-form {
+  display: grid;
+  gap: 12px;
+}
+.quiz-create-form .field,
+.quiz-create-form .form-grid,
+.quiz-create-form .play-mode-picker,
+.quiz-create-form .info-box {
+  margin: 0;
+}
+.quiz-create-form .field {
+  gap: 5px;
+}
+.quiz-create-form .info-box {
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.quiz-create-form .check-row {
+  margin: 0;
+  font-size: 12px;
+}
+.quiz-create-form .field input {
+  min-height: 42px;
+  padding: 10px;
+}
+@media (max-width: 800px) and (max-height: 650px) {
+  dialog.quiz-create-dialog {
+    padding: 14px;
+  }
+  .quiz-create-dialog .modal-head {
+    margin-bottom: 10px;
+  }
+  .quiz-create-dialog .modal-head h2 {
+    font-size: 18px;
+  }
+  .quiz-create-form {
+    gap: 8px;
+  }
+  .quiz-create-form .play-mode-picker small {
+    display: none;
+  }
+  .quiz-create-form .themed-select-trigger {
+    min-height: 40px;
+    padding: 8px;
+  }
+  .quiz-create-form .info-box {
+    font-size: 11px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 800px) {
+  .event-page[data-play-mode="solo"][data-playing="true"] .event-title {
+    display: none;
+  }
+  .event-page[data-play-mode="solo"] .estimate-form {
+    padding: 12px;
+    margin: 12px auto;
+  }
+  .event-page[data-play-mode="solo"] .estimate-form label {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .event-page[data-play-mode="solo"] .estimate-input input {
+    padding: 8px 0;
+    font-size: 26px;
+  }
+  .event-page[data-play-mode="solo"] .estimate-form > small {
+    margin: 8px 0;
+  }
+  .event-page[data-play-mode="solo"] .estimate-form > p {
+    display: none;
+  }
+  .event-page[data-play-mode="solo"] .estimate-form > .btn {
+    margin-top: 5px;
+    padding: 10px;
+  }
+  .event-page[data-play-mode="solo"] .quiz-stage {
+    padding: 12px;
+  }
+}

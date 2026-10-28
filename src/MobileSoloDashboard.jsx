@@ -1,3 +1,4 @@
+import PlayModePicker from "./PlayModePicker";
 import ThemedSelect from "./ThemedSelect";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -110,6 +111,8 @@ function Records({ stats, onClose }) {
 export default function MobileSoloDashboard({
   category,
   onCategory,
+  playMode,
+  onPlayMode,
   onStart,
   busy,
   stats,
@@ -126,6 +129,7 @@ export default function MobileSoloDashboard({
           <h2>Kendi rekorunu geç.</h2>
           <p>Konunu seç. 10 soruda kendini keşfet.</p>
         </div>
+        <PlayModePicker value={playMode} onChange={onPlayMode} />
         <label className="module-topic">
           <span>Hangi alanda yarışıyoruz?</span>
           <ThemedSelect
@@ -141,7 +145,11 @@ export default function MobileSoloDashboard({
           </ThemedSelect>
         </label>
         <button className="module-primary" disabled={busy} onClick={onStart}>
-          {busy ? "Hazırlanıyor…" : "Hemen başla"}
+          {busy
+            ? "Hazırlanıyor…"
+            : playMode === "solo"
+              ? "Hemen başla"
+              : "Birlikte yarışma kur"}
           <ArrowRight size={21} />
         </button>
         <button className="module-best" onClick={() => setRecords(true)}>
@@ -155,7 +163,9 @@ export default function MobileSoloDashboard({
           <ArrowRight size={18} />
         </button>
         <p className="module-solo-rules">
-          10 soru · 30 saniye · Doğruya 100 puan
+          {playMode === "solo"
+            ? "10 soru · 30 saniye · Doğruya 100 puan"
+            : "Soru sayısı ve süreyi birlikte oyun kurarken seç."}
         </p>
       </MobileStage>
       {records && <Records stats={stats} onClose={() => setRecords(false)} />}

@@ -1,3 +1,4 @@
+import PlayModePicker from "./PlayModePicker";
 import GameArt from "./GameArt";
 import CancelGameButton from "./CancelGameButton";
 import CountdownScene from "./CountdownScene";
@@ -38,8 +39,9 @@ function Option({ value }) {
     value
   );
 }
-export default function Solo({ onBack }) {
+export default function Solo({ onBack, onMultiplayer }) {
   const compact = useCompactLayout();
+  const [playMode, setPlayMode] = useState("solo");
   const [data, setData] = useState(null),
     [category, setCategory] = useState("mixed"),
     [busy, setBusy] = useState(false),
@@ -356,7 +358,13 @@ export default function Solo({ onBack }) {
         <MobileSoloDashboard
           category={category}
           onCategory={setCategory}
-          onStart={() => action("solo_start", { category })}
+          onStart={() =>
+            playMode === "solo"
+              ? action("solo_start", { category })
+              : onMultiplayer(category)
+          }
+          playMode={playMode}
+          onPlayMode={setPlayMode}
           busy={busy}
           stats={stats}
           onBack={onBack}
@@ -375,6 +383,7 @@ export default function Solo({ onBack }) {
                 biliyorum?
               </h2>
               <p>Kimseyi bekleme. Konunu seç, 10 soruda kendine meydan oku.</p>
+              <PlayModePicker value={playMode} onChange={setPlayMode} />
               <label className="field">
                 <span>Hangi alanda kendini denemek istersin?</span>
                 <ThemedSelect
@@ -392,9 +401,14 @@ export default function Solo({ onBack }) {
               <button
                 className="btn full"
                 disabled={busy}
-                onClick={() => action("solo_start", { category })}
+                onClick={() =>
+                  playMode === "solo"
+                    ? action("solo_start", { category })
+                    : onMultiplayer(category)
+                }
               >
-                Hemen başla <ArrowRight size={20} />
+                {playMode === "solo" ? "Hemen başla" : "Birlikte yarışma kur"}{" "}
+                <ArrowRight size={20} />
               </button>
               <div className="solo-rules">
                 <span>10 soru</span>
