@@ -16,8 +16,8 @@ export default function Welcome({ onLogin, onJoin }) {
       <div className="mobile-guest-shell">
         <header className="mobile-app-header">
           <div className="mobile-brand">
-            <img src="/icons/icon-192.png" alt="" />
-            ailecek<b>eğlen.</b>
+            <img src="/icons/icon-192.png?v=varmisin-v1" alt="" />
+            Var<b>mısın</b>
           </div>
           <button className="mobile-guest-login" onClick={onLogin}>
             Giriş yap
@@ -30,7 +30,7 @@ export default function Welcome({ onLogin, onJoin }) {
         <div className="welcome-orbit orbit-two" aria-hidden="true" />
         <header className="welcome-header">
           <a href="#" className="welcome-brand">
-            bilgi<span>arena</span>
+            Var<span>mısın</span>
             <i>✦</i>
           </a>
           <button className="welcome-login" onClick={onLogin}>
@@ -39,10 +39,7 @@ export default function Welcome({ onLogin, onJoin }) {
         </header>
         <section className="welcome-center">
           <div className="welcome-emblem" aria-hidden="true">
-            <span>✦</span>
-            <b>?</b>
-            <i>★</i>
-            <small>✦</small>
+            <img src="/icons/icon-192.png?v=varmisin-v1" alt="" />
           </div>
           <p className="welcome-eyebrow">HERKES OYUNA DAHİL.</p>
           <h1>

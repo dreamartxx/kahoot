@@ -42,7 +42,7 @@ export function PwaInstall({ className = "" }) {
       >
         <img
           className="pwa-install-mark"
-          src="/icons/icon-192.png?v=pearl-gold-3d"
+          src="/icons/icon-192.png?v=varmisin-v1"
           width="36"
           height="36"
           alt=""
@@ -58,7 +58,7 @@ export function PwaInstall({ className = "" }) {
             onCancel={() => setOpen(false)}
           >
             <div className="modal-head">
-              <h2 id="pwa-title">Bilgi Arena hep yanında.</h2>
+              <h2 id="pwa-title">Varmısın hep yanında.</h2>
               <button
                 className="icon-btn"
                 aria-label="Kapat"
@@ -70,8 +70,8 @@ export function PwaInstall({ className = "" }) {
             <ScreenPages dialog>
               <div className="pwa-install-intro">
                 <img
-                  src="/icons/icon-192.png?v=pearl-gold-3d"
-                  alt="Bilgi Arena uygulama simgesi"
+                  src="/icons/icon-192.png?v=varmisin-v1"
+                  alt="Varmısın uygulama simgesi"
                   width="76"
                   height="76"
                 />
@@ -99,7 +99,7 @@ export function PwaInstall({ className = "" }) {
                   }}
                 >
                   <Download size={18} />
-                  {busy ? "Yükleme açılıyor…" : "Bilgi Arena’yı yükle"}
+                  {busy ? "Yükleme açılıyor…" : "Varmısın’yı yükle"}
                 </button>
               ) : (
                 <ol className="pwa-install-steps">

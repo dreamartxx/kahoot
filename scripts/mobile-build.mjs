@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, rmSync } from "node:fs";
 const file = "mobile-build/index.html";
 let html = readFileSync(file, "utf8");
 html = html
-  .replace(/<title>.*?<\/title>/, "<title>Ailecek Eğlen</title>")
+  .replace(/<title>.*?<\/title>/, "<title>Varmısın</title>")
   .replace(/<link rel="manifest"[^>]*>/g, "")
   .replace(
     "</head>",

@@ -1,6 +1,6 @@
 {
   "appId": "com.ailecekeglen.app",
-  "appName": "Ailecek Eğlen",
+  "appName": "Varmısın",
   "webDir": "mobile-build",
   "server": {
     "androidScheme": "https",

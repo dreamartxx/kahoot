@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "Bilgi Arena",
-  "short_name": "Bilgi Arena",
+  "name": "Varmısın",
+  "short_name": "Varmısın",
   "description": "Ailenle ve arkadaşlarınla bilgi yarışması, çekiliş ve kelime oyunları.",
   "lang": "tr",
   "dir": "ltr",
@@ -14,19 +14,19 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/icons/icon-192.png?v=pearl-gold-3d",
+      "src": "/icons/icon-192.png?v=varmisin-v1",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/icon-512.png?v=pearl-gold-3d",
+      "src": "/icons/icon-512.png?v=varmisin-v1",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/maskable-512.png?v=pearl-gold-3d",
+      "src": "/icons/maskable-512.png?v=varmisin-v1",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

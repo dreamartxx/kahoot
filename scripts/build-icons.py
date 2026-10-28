@@ -18,3 +18,12 @@ for image in (source, maskable):
 for name, size in [('icon-192.png',192),('icon-512.png',512),('apple-touch-icon.png',180)]:
     source.resize((size,size), Image.Resampling.LANCZOS).save(icons / name, optimize=True)
 maskable.resize((512,512), Image.Resampling.LANCZOS).save(icons / 'maskable-512.png', optimize=True)
+
+# Android launcher sizes use the same approved artwork, without repainting it.
+res = root / 'android/app/src/main/res'
+for density, size, foreground in [('mdpi',48,108), ('hdpi',72,162), ('xhdpi',96,216), ('xxhdpi',144,324), ('xxxhdpi',192,432)]:
+    folder = res / f'mipmap-{density}'
+    for name in ('ic_launcher.png', 'ic_launcher_round.png'):
+        source.resize((size,size), Image.Resampling.LANCZOS).save(folder / name, optimize=True)
+    maskable.resize((foreground,foreground), Image.Resampling.LANCZOS).save(folder / 'ic_launcher_foreground.png', optimize=True)
+maskable.resize((288,288), Image.Resampling.LANCZOS).save(res / 'drawable-nodpi/brand_mark.png', optimize=True)

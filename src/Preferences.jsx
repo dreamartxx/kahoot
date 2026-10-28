@@ -133,7 +133,7 @@ export default function Preferences() {
       {enabled && permission === "denied" && (
         <p role="status">
           Telefonunda bildirim izni kapalı. Android Ayarlar → Uygulamalar →
-          Ailecek Eğlen → Bildirimler yolundan açabilirsin.
+          Varmısın → Bildirimler yolundan açabilirsin.
         </p>
       )}
       {message && (

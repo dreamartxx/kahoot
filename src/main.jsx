@@ -404,11 +404,13 @@ function App() {
       <div className="shell">
         <aside className="sidebar">
           <a className="brand" href="#">
-            <span className="brand-icon">
-              ?<span>✦</span>
-            </span>
+            <img
+              className="brand-icon"
+              src="/icons/icon-192.png?v=varmisin-v1"
+              alt=""
+            />
             <span>
-              ailecek<span className="brand-light">eğlen.</span>
+              Var<span className="brand-light">mısın</span>
               <small>HERKES OYUNA DAHİL.</small>
             </span>
           </a>
@@ -472,8 +474,8 @@ function App() {
             onClick={() => nav("home")}
             aria-label="Ana sayfaya dön"
           >
-            <img src="/icons/icon-192.png" alt="" />
-            ailecek<b>eğlen.</b>
+            <img src="/icons/icon-192.png?v=varmisin-v1" alt="" />
+            Var<b>mısın</b>
           </button>
           <button
             className="mobile-profile-button"
@@ -885,7 +887,7 @@ function App() {
             {tab !== "home" && (
               <footer>
                 <span>
-                  bilgi arena <span className="footer-dot">✦</span> Güzel anlar
+                  Varmısın <span className="footer-dot">✦</span> Güzel anlar
                   birlikte başlar.
                 </span>
                 <span>
@@ -1787,7 +1789,11 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
   if (!room)
     return (
       <div className="center-page">
-        <span className="brand-icon">b✦</span>
+        <img
+          className="brand-icon"
+          src="/icons/icon-192.png?v=varmisin-v1"
+          alt="Varmısın"
+        />
         <h2>{error || "Etkinlik hazırlanıyor…"}</h2>
         <Button secondary onClick={onBack}>
           Stüdyoya dön
@@ -1866,7 +1872,7 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
           <ChevronLeft size={19} /> Stüdyo
         </button>
         <a href="#" className="event-brand">
-          ✦ bilgi arena
+          ✦ Varmısın
         </a>
         <div className="event-tools">
           {compact && ["raffle", "cloud"].includes(room.mode) && (
@@ -3470,7 +3476,11 @@ function Setup({ notify, onDone }) {
   return (
     <div className="setup-page">
       <div className="setup-card">
-        <span className="brand-icon">b✦</span>
+        <img
+          className="brand-icon"
+          src="/icons/icon-192.png?v=varmisin-v1"
+          alt="Varmısın"
+        />
         <h1>Stüdyonu bağlayalım.</h1>
         <p>
           Hostinger MySQL bilgilerini ve yönetici şifreni yalnızca bu güvenli
