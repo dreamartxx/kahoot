@@ -31,7 +31,7 @@ function scoreEstimates(array &$s): void {
     $i=(string)$s['index'];$target=(int)round($s['questions'][$s['index']]['answer']*1000);$distances=[];
     foreach($s['answers'][$i]??[] as $key=>$answer)$distances[$key]=abs((int)round($answer['guess']*1000)-$target);
     $nearest=$distances?min($distances):null;
-    foreach($distances as $key=>$distance){$points=$distance===$nearest?1000:0;$s['answers'][$i][$key]+=['distance'=>$distance/1000];$s['answers'][$i][$key]['points']=$points;$s['players'][$key]['score']+=$points;}
+    foreach($distances as $key=>$distance){$points=($s['playMode']??'multi')==='solo'?max(0,(int)round(1000*(1-$distance/max(abs($target),1000)))):($distance===$nearest?1000:0);$s['answers'][$i][$key]+=['distance'=>$distance/1000];$s['answers'][$i][$key]['points']=$points;$s['players'][$key]['score']+=$points;}
     $s['estimateScored'][$i]=true;
 }
 function estimateValue(mixed $value): float {
