@@ -19,7 +19,7 @@ export function onBrowserVerification(listener) {
   listener(browserVerification);
   return () => verificationListeners.delete(listener);
 }
-async function roomResponse(url, options) {
+async function timedResponse(url, options, action) {
   const controller = new AbortController();
   const cancel = () => controller.abort(options.signal?.reason);
   let timedOut = false;
@@ -37,7 +37,7 @@ async function roomResponse(url, options) {
     if (timedOut)
       throw Object.assign(
         new Error("Bağlantı gecikti. Otomatik olarak yeniden bağlanılıyor."),
-        { code: "ROOM_TIMEOUT" },
+        { code: action === "room" ? "ROOM_TIMEOUT" : "CONNECTION_TIMEOUT" },
       );
     throw error;
   } finally {
@@ -102,8 +102,8 @@ export async function api(action, data, token, { signal } = {}) {
   try {
     ({ res, raw } = nativeApp
       ? await nativeResponse(url, options)
-      : action === "room"
-        ? await roomResponse(url, options)
+      : ["room", "status", "categories", "rooms"].includes(action)
+        ? await timedResponse(url, options, action)
         : await fetch(url, options).then(async (res) => ({
             res,
             raw: await res.text(),
@@ -112,7 +112,8 @@ export async function api(action, data, token, { signal } = {}) {
     if (
       signal?.aborted ||
       error?.name === "AbortError" ||
-      error?.code === "ROOM_TIMEOUT"
+      error?.code === "ROOM_TIMEOUT" ||
+      error?.code === "CONNECTION_TIMEOUT"
     )
       throw error;
     throw Object.assign(
@@ -141,13 +142,19 @@ export async function api(action, data, token, { signal } = {}) {
         listener(browserVerification);
       throw browserVerification;
     }
-    throw new Error(
-      "Sunucuya ulaşılamadı. Geçici bir sunucu hatası olabilir; biraz sonra tekrar dene.",
+    throw Object.assign(
+      new Error(
+        "Sunucuya ulaşılamadı. Geçici bir sunucu hatası olabilir; biraz sonra tekrar dene.",
+      ),
+      { status: res.status },
     );
   }
   if (fingerprint && res.status < 500)
     pendingCreditRequests.delete(fingerprint);
-  if (!res.ok) throw new Error(json.error || "İşlem tamamlanamadı.");
+  if (!res.ok)
+    throw Object.assign(new Error(json.error || "İşlem tamamlanamadı."), {
+      status: res.status,
+    });
   if (fingerprint) dispatchEvent(new Event("arena-credits-changed"));
   return json;
 }

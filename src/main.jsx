@@ -50,6 +50,7 @@ import {
 import QRCode from "qrcode";
 import { api, categories, catById } from "./api";
 import { roomPollDelay } from "./room-polling";
+import { startupRead } from "./startup.js";
 import BrowserVerification from "./BrowserVerification";
 import { stripHeader } from "./import-utils";
 import { bubbleMetrics } from "./cloud-utils";
@@ -218,31 +219,65 @@ function App() {
     setToast(m);
     setTimeout(() => setToast(""), 5000);
   };
+  const refreshController = useRef(null);
+  const bootReady = useRef(false);
   async function refresh() {
+    refreshController.current?.abort();
+    const controller = new AbortController();
+    refreshController.current = controller;
+    const { signal } = controller;
+    setAuthError("");
     try {
-      let s = await api("status");
+      const s = await startupRead("status", signal);
+      signal.throwIfAborted();
       setStatus(s);
+      bootReady.current = true;
       setAuthReady(true);
-      setAuthError("");
+      // Library/event loading must not turn a successful login into an auth error.
       if (s.configured) {
-        setCounts(await api("categories"));
-        if (s.admin) setRooms(await api("rooms"));
-        else setRooms([]);
+        const results = await Promise.allSettled([
+          startupRead("categories", signal),
+          s.admin ? startupRead("rooms", signal) : Promise.resolve([]),
+        ]);
+        signal.throwIfAborted();
+        if (results[0].status === "fulfilled") setCounts(results[0].value);
+        if (results[1].status === "fulfilled") setRooms(results[1].value);
+        for (const result of results)
+          if (result.status === "rejected") notify(result.reason.message);
       }
     } catch (e) {
-      setAuthError(e.message);
-      notify(e.message);
+      if (signal.aborted) return;
+      if (!bootReady.current) setAuthError(e.message);
+      else notify(e.message);
+    } finally {
+      if (refreshController.current === controller)
+        refreshController.current = null;
     }
   }
   useEffect(() => {
     refresh();
     const fn = () => setRoute(location.hash.slice(1));
+    const reconnect = () => {
+      if (!document.hidden && !bootReady.current && !refreshController.current)
+        refresh();
+    };
     addEventListener("hashchange", fn);
-    return () => removeEventListener("hashchange", fn);
+    addEventListener("online", reconnect);
+    addEventListener("focus", reconnect);
+    return () => {
+      refreshController.current?.abort();
+      removeEventListener("hashchange", fn);
+      removeEventListener("online", reconnect);
+      removeEventListener("focus", reconnect);
+    };
   }, []);
   useEffect(() => {
+    if (!authReady) return;
     let stopped = false;
+    let checking = false;
     async function checkSession() {
+      if (checking || refreshController.current) return;
+      checking = true;
       try {
         const next = await api("status");
         if (stopped) return;
@@ -262,6 +297,8 @@ function App() {
         });
       } catch {
         /* A temporary network loss must not sign the user out. */
+      } finally {
+        checking = false;
       }
     }
     const timer = setInterval(checkSession, 15000);
@@ -276,7 +313,7 @@ function App() {
       removeEventListener("focus", focus);
       document.removeEventListener("visibilitychange", focus);
     };
-  }, []);
+  }, [authReady]);
   async function changePreview(action, userId) {
     try {
       const next = await api(action, { userId });
@@ -352,7 +389,7 @@ function App() {
     body = (
       <div className="center-page">
         <ShieldCheck size={40} />
-        <h2>{authError || "Oturumun hazırlanıyor…"}</h2>
+        <h2>{authError || "Oyun sunucusuna bağlanılıyor…"}</h2>
         {authError && <Button onClick={refresh}>Tekrar dene</Button>}
       </div>
     );
