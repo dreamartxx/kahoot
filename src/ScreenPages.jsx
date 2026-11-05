@@ -166,7 +166,7 @@ export default function ScreenPages({
   return (
     <div
       style={fixed ? { "--screen-height": `${layout.height}px` } : undefined}
-      className={`screen-pages ${enabled && !fixed ? (manualScroll ? "manual-scroll" : "is-paged") : ""} ${dialog ? "dialog-pages" : "app-pages"} ${layout.nav ? "has-bottom-nav" : ""}`}
+      className={`screen-pages ${fixed ? "is-fitted" : ""} ${enabled && !fixed ? (manualScroll ? "manual-scroll" : "is-paged") : ""} ${dialog ? "dialog-pages" : "app-pages"} ${layout.nav ? "has-bottom-nav" : ""}`}
     >
       <div
         ref={box}

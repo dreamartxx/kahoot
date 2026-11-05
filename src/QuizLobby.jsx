@@ -13,6 +13,7 @@ import {
   Users,
 } from "lucide-react";
 import { CharacterAvatar } from "./CharacterAvatar";
+import { artFor } from "./art-assets";
 import ModuleGuide from "./ModuleGuide";
 
 /** The pre-game room shares one viewport on mobile, desktop and Android. */
@@ -27,12 +28,71 @@ export default function QuizLobby({
   onStart,
   onCopy,
   guideMode = "quiz",
+  compact = false,
 }) {
   const [page, setPage] = useState(0);
   const pageCount = Math.max(1, Math.ceil(room.players.length / 10));
   const current = Math.min(page, pageCount - 1);
   const solo = room.playMode === "solo";
   const inviting = host || screen;
+  if (solo && compact && host) {
+    const player = room.me || room.players[0];
+    return (
+      <main className="solo-room-lobby" aria-label="Yarışma paneli">
+        <section className="solo-room-intro">
+          <div className="quiz-lobby-meta">
+            <span>
+              <LibraryBig size={15} /> {room.total} soru
+            </span>
+            <span>
+              <Clock size={15} /> Soru başına {room.seconds} sn
+            </span>
+          </div>
+          <h1>{room.title}</h1>
+          <p>
+            {room.quizType === "binary"
+              ? "Her soru için Evet ya da Hayır’a dokun."
+              : room.quizType === "estimate"
+                ? "Tahminini gir. Gerçek sayıya yaklaştıkça daha çok puan kazanırsın."
+                : "Her soruda dört şıktan birini seç."}
+          </p>
+        </section>
+        <div className="solo-room-cover">
+          <img
+            src={artFor(
+              room.quizType === "classic"
+                ? room.category
+                : room.quizType || room.category,
+            )}
+            alt=""
+          />
+          <ModuleGuide mode={guideMode} compact />
+        </div>
+        <footer className="solo-room-launch">
+          {player && (
+            <div className="solo-room-player">
+              <CharacterAvatar id={player.avatar} />
+              <strong>{player.name}</strong>
+              <span>Tek kişilik</span>
+            </div>
+          )}
+          {!room.me && (
+            <button className="text-btn" disabled={busy} onClick={onJoin}>
+              Oyuna katıl
+            </button>
+          )}
+          <button
+            className="quiz-lobby-start"
+            disabled={busy}
+            onClick={onStart}
+          >
+            <Play size={20} fill="currentColor" />{" "}
+            {busy ? "Hazırlanıyor…" : "Yarışmayı başlat"}
+          </button>
+        </footer>
+      </main>
+    );
+  }
   return (
     <main
       className={`quiz-lobby ${inviting ? "is-presenting" : "is-waiting"}`}

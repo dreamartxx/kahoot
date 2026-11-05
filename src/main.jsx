@@ -1806,6 +1806,7 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
   }
   const closed = room && ["finished", "closed"].includes(room.phase);
   const quizLobby = room?.mode === "quiz" && room.phase === "lobby";
+  const soloBinary = compact && room?.playMode === "solo" && room.quizType === "binary" && ["question", "reveal"].includes(room.phase);
   const tournamentLobby =
     compact &&
     room?.mode === "tournament" &&
@@ -1927,7 +1928,9 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
       data-compact-room={compact && ["raffle", "cloud"].includes(room.mode)}
       data-play-mode={room.playMode || "multi"}
       data-quiz-lobby={quizLobby}
-      data-screen-fit={quizLobby || tournamentLobby || undefined}
+      data-solo-mobile={compact && room.playMode === "solo" && (quizLobby || soloBinary) || undefined}
+      data-solo-binary={soloBinary || undefined}
+      data-screen-fit={quizLobby || tournamentLobby || soloBinary || undefined}
       data-tournament-lobby={tournamentLobby || undefined}
       data-screen-key={`${room.phase}:${room.question?.id || room.index}`}
       data-playing={["question", "countdown", "reveal"].includes(room.phase)}
@@ -2154,6 +2157,7 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
         <>
           {room.phase === "lobby" ? (
             <QuizLobby
+              compact={compact}
               room={room}
               pin={pin}
               host={host}
@@ -2186,9 +2190,7 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
                 <div className={"timer " + (left < 6 ? "urgent" : "")}>
                   {room.phase === "question" ? left : <Check size={27} />}
                 </div>
-                <span>
-                  {room.answeredCount} / {room.playerCount} cevap
-                </span>
+                <span>{soloBinary ? "Sence Hangisi?" : `${room.answeredCount} / ${room.playerCount} cevap`}</span>
               </div>
               <div className="time-track">
                 <i
@@ -2217,14 +2219,14 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
                   action={action}
                 />
               )}
-              <AnswerComparison
+              {!soloBinary && <AnswerComparison
                 room={room}
                 renderOption={(value) => (
                   <OptionContent value={value} showName />
                 )}
-              />
+              />}
               {room.quizType !== "estimate" &&
-                (room.phase !== "reveal" || !room.answerCards?.length) && (
+                (soloBinary || room.phase !== "reveal" || !room.answerCards?.length) && (
                   <div
                     className={`answer-grid ${room.question?.options.every((option) => option.startsWith("flag:")) ? "flag-answers" : ""}`}
                   >
@@ -2308,23 +2310,23 @@ function Room({ kind, pin, admin, profile, onLogin, onBack, notify }) {
                       Bilginin kaynağını gör ↗
                     </a>
                   )}
-                  <div className="mini-ranking">
+                  {!soloBinary && <div className="mini-ranking">
                     {room.players.slice(0, 3).map((p, i) => (
                       <span key={p.name}>
                         <CharacterAvatar id={p.avatar} />{" "}
                         {["🥇", "🥈", "🥉"][i]} {p.name} <b>{p.score}</b>
                       </span>
                     ))}
-                  </div>
+                  </div>}
                 </div>
               )}
-              <p className="auto-question-note" role="status">
+              {(!soloBinary || room.phase === "reveal") && <p className="auto-question-note" role="status">
                 {room.phase === "reveal"
                   ? room.index === room.total - 1
                     ? "Sonuçlar birazdan otomatik açılacak."
                     : "Doğru cevap gösteriliyor. Ardından 3–2–1 ile sıradaki soru!"
                   : "Süre bitince cevaplar gösterilecek ve yeni soruya otomatik geçilecek."}
-              </p>
+              </p>}
               {host &&
                 room.playMode !== "solo" &&
                 room.phase === "question" && (

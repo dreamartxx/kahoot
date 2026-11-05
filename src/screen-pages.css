@@ -177,3 +177,9 @@
     padding: 8px 12px;
   }
 }
+
+/* The measured viewport needs a layout box even when pagination is off. */
+.screen-pages.is-fitted,
+.screen-pages.is-fitted > .screen-page-viewport {
+  display: block;
+}
