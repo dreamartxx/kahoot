@@ -1,3 +1,4 @@
+import questionCounts from "../data/question-counts.json" with { type: "json" };
 import { nativeApp, nativeResponse } from "./native.js";
 const creditActions = new Set([
   "advance",
@@ -221,7 +222,7 @@ export const categories = [
   desc,
   emoji,
   color,
-  count: id === "plakalar" ? 81 : 250,
+  count: questionCounts[id],
 }));
 export const catById = (id) =>
   categories.find((c) => c.id === id) || categories[0];

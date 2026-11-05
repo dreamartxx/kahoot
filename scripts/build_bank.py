@@ -791,10 +791,27 @@ assert {q['text']:q['options'][q['correct']] for q in plates} == {
     for i,province in enumerate(provinces,1)
 }
 from collections import Counter
+# Only explicitly reviewed IDs enter games, regardless of the size of the source archive.
+levels=json.loads((ROOT/'data/question-levels.json').read_text())
+edits=json.loads((ROOT/'data/question-edits.json').read_text())
+approved={}
+for key, difficulty in [('generalQuestionIds', 'general'), ('detailQuestionIds', 'expert')]:
+    for category, ids in levels[key].items():
+        for question_id in ids:
+            assert question_id not in approved, question_id
+            approved[question_id]=(category, difficulty)
+questions[:]=[q for q in questions if q['id'] in approved]
+assert {q['id'] for q in questions} == set(approved)
+assert set(edits) <= set(approved)
+for q in questions:
+    category, difficulty=approved[q['id']]
+    assert category == q['category']
+    if category != 'plakalar':
+        q.update(edits.get(q['id'], {}))
+        q['difficulty']=difficulty
+assert len(plates)==sum(q['category']=='plakalar' for q in questions)
 counts=Counter(q['category'] for q in questions)
-expected={category:(81 if category=='plakalar' else 250) for category in (*CATEGORY_IDS,'dunya-kupasi','film')}
-assert dict(counts)==expected,(dict(counts),expected)
-assert len(questions)==4831
+assert set(counts)==set((*CATEGORY_IDS,'dunya-kupasi','film'))
 assert len({q['id'] for q in questions})==len(questions)
 assert len({q['text'] for q in questions})==len(questions)
 assert sum(q['category']=='turkiye' and 'plaka kodu' in q['text'] for q in questions)==20

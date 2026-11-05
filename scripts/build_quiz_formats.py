@@ -425,8 +425,21 @@ for i,cat in enumerate(cats):
     pool.sort(key=lambda q:hashlib.sha256(('mixed-v1:'+q['id']).encode()).hexdigest())
     for q in pool[:250//len(cats)+(1 if i<250%len(cats) else 0)]:
         mixed.append(dict(q,difficulty='general'))
-assert len(estimate)==200,len(estimate)
-assert len(binary)==200,len(binary)
+def reviewed_format(name, candidates):
+    ids=levels['formatQuestionIds'][name]
+    approved=set(ids)
+    pool=[q for q in candidates if q['id'] in approved]
+    assert len(ids)==len(approved)==len(pool)
+    assert len(pool)>=40  # two non-overlapping full games
+    return pool
+
+estimate=reviewed_format('estimate',estimate)
+binary=reviewed_format('binary',binary)
+counts=dict(Counter(q['category'] for q in bank), estimate=len(estimate), binary=len(binary), mixed=len(mixed))
+content=json.dumps(counts,indent=2)+'\n'
+path=ROOT/'data/question-counts.json'
+if '--check' in sys.argv: assert path.read_text()==content, 'Pool counts differ from generator'
+else: path.write_text(content)
 assert len(mixed)==250,len(mixed)
 for name,pool in [('estimate',estimate),('binary',binary),('mixed',mixed)]:
     assert len({q['id'] for q in pool})==len(pool)

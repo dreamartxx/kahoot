@@ -5,12 +5,17 @@ const read = (name) =>
   JSON.parse(
     readFileSync(new URL(`../data/quiz-${name}.json`, import.meta.url)),
   );
-test("special pools contain 200 estimates, 200 binary claims and 250 balanced mixed questions", () => {
+test("special pools contain reviewed estimates, binary claims and 250 balanced mixed questions", () => {
   const estimate = read("estimate"),
     binary = read("binary"),
     mixed = read("mixed");
-  assert.equal(estimate.length, 200);
-  assert.equal(binary.length, 200);
+  const levels = JSON.parse(readFileSync(new URL("../data/question-levels.json", import.meta.url)));
+  for (const [name, pool] of Object.entries({estimate,binary})) {
+    assert(pool.length >= 40);
+    assert.deepEqual(new Set(pool.map(q => q.id)), new Set(levels.formatQuestionIds[name]));
+  }
+  const approved = new Set(Object.values(levels.generalQuestionIds).flat());
+  assert(mixed.every(q => approved.has(q.id)));
   assert.equal(mixed.length, 250);
   for (const pool of [estimate, binary, mixed]) {
     assert.equal(new Set(pool.map((q) => q.id)).size, pool.length);
@@ -36,7 +41,7 @@ test("special pools contain 200 estimates, 200 binary claims and 250 balanced mi
     ),
   );
   const yes = binary.filter((q) => q.correct === 0).length;
-  assert.ok(yes >= 90 && yes <= 110);
+  assert.ok(yes / binary.length >= 0.45 && yes / binary.length <= 0.55);
   const counts = {};
   for (const q of mixed) {
     counts[q.category] = (counts[q.category] || 0) + 1;

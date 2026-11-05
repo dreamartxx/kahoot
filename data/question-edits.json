@@ -1,0 +1,549 @@
+{
+  "dinozor-0afc4b35d0a856": {
+    "text": "Triceratops’un dişleri en çok hangi besini parçalamaya uygundu?",
+    "options": [
+      "Balık pulları",
+      "Yumuşakça kabukları",
+      "Lifli bitkiler",
+      "İri kemikler"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Lifli bitkiler."
+  },
+  "dinozor-4485bf1bf26f52": {
+    "text": "Stegosaurus’un sırt levhaları neden kazılarda bazen iskeletten ayrı bulunur?",
+    "options": [
+      "Omurgaya kaynaşmayıp deriye gömülü oldukları için",
+      "Yalnızca yavrularda bulundukları için",
+      "Kemik yerine boynuzdan oluştukları için",
+      "Hayvan her yıl bütün levhalarını attığı için"
+    ],
+    "correct": 0,
+    "explanation": "Levhalar derinin içinde gelişiyordu. Hayvan öldüğünde omurgadan ayrılabiliyorlardı.",
+    "source": "https://www.nhm.ac.uk/discover/dino-directory/stegosaurus.html"
+  },
+  "dinozor-c510b6b668058a": {
+    "text": "Uzun boyunlu Brachiosaurus ile Triceratops’un ortak özelliği hangisidir?",
+    "options": [
+      "Kuyruklarında kemik topuz bulunması",
+      "Ön ayaklarında iki parmak bulunması",
+      "Bitkilerle beslenmeleri",
+      "Başlarında üç boynuz bulunması"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Bitkilerle beslenmeleri."
+  },
+  "dinozor-0f865f2d63e42d": {
+    "text": "Velociraptor’un kıvrık pençeleri hangi beslenme biçimiyle uyumludur?",
+    "options": [
+      "Otları öğüterek beslenmek",
+      "Yüksek dallardan yaprak toplamak",
+      "Avını yakalayıp etle beslenmek",
+      "Sudaki planktonları süzmek"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Avını yakalayıp etle beslenmek."
+  },
+  "dinozor-edce9ee703a1a9": {
+    "text": "Hangi otçul dinozor, yırtıcılara karşı kuyruğunun ucundaki kemik topuzu kullanabilirdi?",
+    "options": [
+      "Ankylosaurus",
+      "Triceratops",
+      "Diplodocus",
+      "Brachiosaurus"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Ankylosaurus."
+  },
+  "dinozor-9e521aaae3e051": {
+    "text": "Uzun ve dar çenesiyle balık da avlayan dinozor hangisidir?",
+    "options": [
+      "Triceratops",
+      "Stegosaurus",
+      "Diplodocus",
+      "Spinosaurus"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Spinosaurus.",
+    "source": "https://www.nhm.ac.uk/discover/dino-directory/spinosaurus.html"
+  },
+  "dinozor-3b170199b0163d": {
+    "text": "Bir dinozorun fosilleşmiş kemiklerini incelemek hangi bilim dalının alanına girer?",
+    "options": [
+      "Arkeoloji",
+      "Antropoloji",
+      "Paleontoloji",
+      "Mineraloji"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Paleontoloji."
+  },
+  "dinozor-c31cf8b5b4e76f": {
+    "text": "Bir müzede sauropod iskeletini hangi özelliğinden tanıyabilirsin?",
+    "options": [
+      "Boyun yakası ve yüzündeki üç boynuzdan",
+      "Kafasının üzerindeki kemiksi kubbeden",
+      "Sırtındaki iki sıra büyük levhadan",
+      "Uzun boynu ve sütun gibi dört bacağından"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Uzun boynu ve sütun gibi dört bacağından."
+  },
+  "dinozor-7877b193e2d352": {
+    "text": "Dinozorların nasıl çoğaldığını gösteren en doğrudan bulgu hangisidir?",
+    "options": [
+      "Bir arada bulunan farklı boyda ayak izleri",
+      "İçinde embriyo korunmuş fosil yumurta",
+      "Aynı katmanda bulunan yetişkin iskeletleri",
+      "Bir yuvanın yakınındaki bitki kalıntıları"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: İçinde embriyo korunmuş fosil yumurta."
+  },
+  "dinozor-6979c92a264903": {
+    "text": "Bir dinozorun bitki mi et mi yediğini araştırırken hangi kemiğe öncelik verirsin?",
+    "options": [
+      "Kalça kemiği",
+      "Kuyruk omuru",
+      "Dişleri korunmuş çene",
+      "Kürek kemiği"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Dişleri korunmuş çene."
+  },
+  "dinozor-55b52daca78e38": {
+    "text": "Bir yırtıcıya karşı kuyruğundaki uzun sivri dikenlerden yararlanabilen dinozor hangisidir?",
+    "options": [
+      "Stegosaurus",
+      "Brachiosaurus",
+      "Triceratops",
+      "Tyrannosaurus rex"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Stegosaurus."
+  },
+  "dinozor-cd6df888a1c8ba": {
+    "text": "Plesiosaurların suda hareket etmesini sağlayan belirgin özellik hangisidir?",
+    "options": [
+      "Yelpaze biçiminde iki kanat",
+      "Perdeli iki arka ayak",
+      "Kürek biçiminde dört uzuv",
+      "Uzun ve eklemli parmaklar"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Kürek biçiminde dört uzuv."
+  },
+  "dinozor-fb84b4fa9c0d03": {
+    "text": "Mosasaurus, balinalara dış görünüşüyle benzese de hangi gruba aittir?",
+    "options": [
+      "Kıkırdaklı balıklar",
+      "Deniz memelileri",
+      "Amfibiler",
+      "Deniz sürüngenleri"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Deniz sürüngenleri."
+  },
+  "dinozor-489bd398f6e6fa": {
+    "text": "Bir fosilin gömüldüğü dönemi belirlemek için hangi bilgiyi kaydetmek özellikle önemlidir?",
+    "options": [
+      "Kemiğin yüzey rengi",
+      "İskeletin toplam boyu",
+      "Bulunduğu kaya katmanı",
+      "Kafatasındaki diş sayısı"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Bulunduğu kaya katmanı."
+  },
+  "dinozor-e8ed8a874b78fb": {
+    "text": "Tek bir ayak izinden farklı olarak art arda korunmuş izler hangi bilgiyi verir?",
+    "options": [
+      "Adımlar arasındaki mesafeyi",
+      "Dişlerin biçimini",
+      "Yumurtaların büyüklüğünü",
+      "Besinlerin türünü"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Adımlar arasındaki mesafeyi."
+  },
+  "dinozor-df13e18be9d448": {
+    "text": "Bir fosilde hangi bulgu dinozorun dış görünüşünü çizerken doğrudan yol gösterir?",
+    "options": [
+      "Kazı sırasındaki hava sıcaklığı",
+      "Kayanın deniz seviyesinden bugünkü yüksekliği",
+      "Kemiklerin çevresinde korunmuş tüy izleri",
+      "Katmandaki taşların ortalama büyüklüğü"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Kemiklerin çevresinde korunmuş tüy izleri."
+  },
+  "meshur-cf1adf03fd10ae": {
+    "text": "Fıstıklı baklavası ve beyranıyla tanınan ilimiz hangisidir?"
+  },
+  "meshur-9854968c081bb2": {
+    "text": "Cizre ilçesi ve şal şapik dokumasıyla tanınan ilimiz hangisidir?"
+  },
+  "dinozor-4c9437542c2dfe": {
+    "text": "Bir dinozorun fosilleşmiş dışkısında balık pulları bulunmuş. Hangi sonuç bu bulguya dayanır?",
+    "options": [
+      "Yalnızca denizde yaşıyordu",
+      "Balık da yiyordu",
+      "Sürüler hâlinde dolaşıyordu",
+      "Avını gece yakalıyordu"
+    ],
+    "correct": 1,
+    "explanation": "Sindirimden kalan pullar, yediği hayvanlar arasında balık bulunduğunu gösterir."
+  },
+  "hayvanlar-9c76d376ac9007": {
+    "options": [
+      "Oluklu balina",
+      "İspermeçet balinası",
+      "Balina köpekbalığı",
+      "Mavi balina"
+    ]
+  },
+  "hayvanlar-fd59de3ba7d8d6": {
+    "options": [
+      "Afrika fili",
+      "Asya fili",
+      "Beyaz gergedan",
+      "Su aygırı"
+    ]
+  },
+  "hayvanlar-cac73615e70070": {
+    "options": [
+      "Antilop",
+      "Çita",
+      "Leopar",
+      "Aslan"
+    ]
+  },
+  "hayvanlar-5a6adb7f1cb978": {
+    "options": [
+      "Dev panda",
+      "Koala",
+      "Kızıl geyik",
+      "Tembel hayvan"
+    ]
+  },
+  "hayvanlar-7ecae7abb8dff1": {
+    "options": [
+      "Koala",
+      "Vombat",
+      "Kanguru",
+      "Tazmanya canavarı"
+    ]
+  },
+  "hayvanlar-95440a5bafbd6d": {
+    "options": [
+      "Su samuru",
+      "Kunduz",
+      "Ornitorenk",
+      "Misk sıçanı"
+    ]
+  },
+  "hayvanlar-e9483e864fa0d2": {
+    "options": [
+      "Uçan sincap",
+      "Yarasa",
+      "Şeker planörü",
+      "Uçan lemur"
+    ]
+  },
+  "hayvanlar-ecbf3a62cecdea": {
+    "options": [
+      "Yunus",
+      "Deniz samuru",
+      "Mors",
+      "Manati"
+    ]
+  },
+  "hayvanlar-75d8b2646699eb": {
+    "options": [
+      "Su samuru",
+      "Kapibara",
+      "Kunduz",
+      "Misk sıçanı"
+    ]
+  },
+  "hayvanlar-8efefd557e4fdf": {
+    "options": [
+      "Koala",
+      "Lemur",
+      "Tembel hayvan",
+      "Gibon"
+    ]
+  },
+  "hayvanlar-cda9c43b0cd9e1": {
+    "options": [
+      "Gazel",
+      "Gnu",
+      "İmpala",
+      "Okapi"
+    ]
+  },
+  "hayvanlar-e4f93010e17b14": {
+    "options": [
+      "Pangolin",
+      "Armadillo",
+      "Kirpi",
+      "Oklu kirpi"
+    ]
+  },
+  "hayvanlar-400fb3761460f5": {
+    "options": [
+      "Afrika yaban köpeği",
+      "Mirket",
+      "Fenek tilkisi",
+      "Serval"
+    ]
+  },
+  "hayvanlar-ddf284373fa199": {
+    "options": [
+      "Kunduz",
+      "Oklu kirpi",
+      "Marmot",
+      "Kapibara"
+    ]
+  },
+  "hayvanlar-8f2f8035ba2981": {
+    "options": [
+      "Beyaz balina",
+      "Narval",
+      "Grönland balinası",
+      "Kambur balina"
+    ]
+  },
+  "hayvanlar-70fc34c4b825dc": {
+    "options": [
+      "Deniz samuru",
+      "Mors",
+      "Fok",
+      "Denizaslanı"
+    ]
+  },
+  "hayvanlar-3d9f473d3db8a5": {
+    "options": [
+      "Macellan pengueni",
+      "Afrika pengueni",
+      "İmparator penguen",
+      "Adélie pengueni"
+    ]
+  },
+  "hayvanlar-8ef29debc73af2": {
+    "options": [
+      "Emu",
+      "Tepeli devekuşu",
+      "Devekuşu",
+      "Nandu"
+    ]
+  },
+  "hayvanlar-e9975bc05f2736": {
+    "options": [
+      "Yalıçapkını",
+      "Kolibri",
+      "Kırlangıç",
+      "Ebabil"
+    ]
+  },
+  "hayvanlar-8d022c0fcc9e2d": {
+    "options": [
+      "Flamingo",
+      "Turna",
+      "Balıkçıl",
+      "Leylek"
+    ]
+  },
+  "hayvanlar-8ee16e9e5a6cb5": {
+    "options": [
+      "Emu",
+      "Kakapo",
+      "Kivi",
+      "Nandu"
+    ]
+  },
+  "hayvanlar-968ff3254e48b7": {
+    "options": [
+      "Martı",
+      "Karabatak",
+      "Sumru",
+      "Albatros"
+    ]
+  },
+  "hayvanlar-5973df0010d507": {
+    "options": [
+      "Pelikan",
+      "Ara papağanı",
+      "İbibik",
+      "Tukan"
+    ]
+  },
+  "hayvanlar-df8f61fc50cb15": {
+    "options": [
+      "Leylek",
+      "Turna",
+      "Pelikan",
+      "Balıkçıl"
+    ]
+  },
+  "hayvanlar-706b74d62e3d49": {
+    "options": [
+      "Komodo ejderi",
+      "Yeşil iguana",
+      "Nil varanı",
+      "Gila canavarı"
+    ]
+  },
+  "hayvanlar-0600ecb5e32677": {
+    "options": [
+      "Kara mamba",
+      "Engerek",
+      "Mercan yılanı",
+      "Kral kobra"
+    ]
+  },
+  "hayvanlar-12803df4090cc0": {
+    "options": [
+      "Nil timsahı",
+      "Komodo ejderi",
+      "Tuzlu su timsahı",
+      "Yeşil anakonda"
+    ]
+  },
+  "hayvanlar-c1fe1b37e4f212": {
+    "options": [
+      "İguana",
+      "Aksolotl",
+      "Su kaplumbağası",
+      "Ağaç kurbağası"
+    ]
+  },
+  "hayvanlar-aa90e4c4682dcc": {
+    "options": [
+      "Büyük beyaz köpekbalığı",
+      "Dev manta",
+      "Dev orkinos",
+      "Balina köpekbalığı"
+    ]
+  },
+  "hayvanlar-c43b3ff35df6d1": {
+    "options": [
+      "Palyaço balığı",
+      "Denizatı",
+      "Kalkan balığı",
+      "Denizyıldızı"
+    ]
+  },
+  "hayvanlar-ed07a78706fef1": {
+    "options": [
+      "Pirana",
+      "Elektrikli yılan balığı",
+      "Arapaima",
+      "Yayın balığı"
+    ]
+  },
+  "hayvanlar-e823d65c0b6473": {
+    "options": [
+      "Kelebek balığı",
+      "Palyaço balığı",
+      "Papağan balığı",
+      "Cerrah balığı"
+    ]
+  },
+  "hayvanlar-768782d86c0136": {
+    "options": [
+      "Ahtapot",
+      "Kalamar",
+      "Denizyıldızı",
+      "Mürekkep balığı"
+    ]
+  },
+  "hayvanlar-d9b97e737490d9": {
+    "options": [
+      "Kalamar",
+      "Nautilus",
+      "Mürekkep balığı",
+      "Ahtapot"
+    ]
+  },
+  "hayvanlar-e633a3844426f9": {
+    "options": [
+      "Çekirge",
+      "Cırcır böceği",
+      "Peygamberdevesi",
+      "Kulağakaçan"
+    ]
+  },
+  "cografya-7453444bf5b9bf": {
+    "options": [
+      "Mevsimsel rüzgâr ve yağış değişimi",
+      "Yıl boyunca düzenli ve bol yağış",
+      "Yaz kuraklığı ve kış yağışları",
+      "Yıl boyunca çok düşük nem"
+    ]
+  },
+  "cografya-b81f42c8f9e53a": {
+    "options": [
+      "Volkanik arazi",
+      "Buzul arazisi",
+      "Alüvyal ova",
+      "Karst"
+    ]
+  },
+  "futbol-9788a1864b7056": {
+    "options": [
+      "Almanya",
+      "Danimarka",
+      "Hollanda",
+      "İsveç"
+    ]
+  },
+  "futbol-676d279a043dbd": {
+    "options": [
+      "Fransa",
+      "İtalya",
+      "Hollanda",
+      "Portekiz"
+    ]
+  },
+  "futbol-3aecec3a1e513a": {
+    "options": [
+      "Yunanistan",
+      "Portekiz",
+      "Çekya",
+      "Hollanda"
+    ]
+  },
+  "futbol-4d307f5cb6fd85": {
+    "options": [
+      "İspanya",
+      "Almanya",
+      "Türkiye",
+      "Rusya"
+    ]
+  },
+  "futbol-dca70ac7f64f3e": {
+    "options": [
+      "Fransa",
+      "Portekiz",
+      "Almanya",
+      "Galler"
+    ]
+  },
+  "futbol-6cd420c2f983fb": {
+    "options": [
+      "İngiltere",
+      "İspanya",
+      "İtalya",
+      "Danimarka"
+    ]
+  },
+  "futbol-90dc6ec36fc068": {
+    "options": [
+      "İngiltere",
+      "İspanya",
+      "Fransa",
+      "Hollanda"
+    ]
+  }
+}

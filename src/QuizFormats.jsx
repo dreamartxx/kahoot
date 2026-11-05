@@ -1,3 +1,4 @@
+import questionCounts from "../data/question-counts.json" with { type: "json" };
 import React, { useState } from "react";
 import { ArrowUpRight, Send, Trophy, Check, Target } from "lucide-react";
 import { CharacterAvatar } from "./CharacterAvatar";
@@ -9,33 +10,33 @@ export const quizFormats = [
     id: "estimate",
     name: "En Yakın Tahmin",
     emoji: "🎯",
-    pool: 200,
+    pool: questionCounts.estimate,
     total: 10,
     kicker: "BİLMESEN DE YAKLAŞ",
     tag: "Sayıyı yaz · En yakın kazanır",
     description:
-      "Bir ahtapotun kaç kalbi var? Eyfel'de kaç perçin? Hesap yapma, içinden geçeni söyle.",
+      "Bir ahtapotun kaç kalbi var? Bir zürafanın boynunda kaç omur var? Hesap yapma, içinden geçeni söyle.",
     rules:
-      "200 soruluk havuzdan seçtiğin sayıda soru. Sayısal tahminini gizli gönder. Süre sonunda en yakın tahmin 1.000 puan alır; eşit yakınlıktakilerin hepsi kazanır. Bir önceki oyunun soruları tekrar gelmez.",
+      "Sayısal tahminini gizli gönder. Süre sonunda en yakın tahmin 1.000 puan alır; eşit yakınlıktakilerin hepsi kazanır. Bir önceki oyunun soruları tekrar gelmez.",
   },
   {
     id: "binary",
     name: "Sence Hangisi?",
     emoji: "🤔",
-    pool: 200,
+    pool: questionCounts.binary,
     total: 10,
     kicker: "BİR EVET, BİR SÜRPRİZ",
     tag: "Evet mi, hayır mı?",
     description:
       "Yarasalar gerçekten kör mü? Bildiğini sandığın şeyler seni şaşırtabilir.",
     rules:
-      "200 ilginç sorudan seçtiğin sayıda soru gelir. Evet veya Hayır seç; doğru ve hızlı cevapla puan kazan. Soru kapanınca açıklamasını gör. Bir önceki oyunun soruları tekrar gelmez.",
+      "Evet veya Hayır seç; doğru ve hızlı cevapla puan kazan. Soru kapanınca açıklamasını gör. Bir önceki oyunun soruları tekrar gelmez.",
   },
   {
     id: "mixed",
     name: "Ortaya Karışık",
     emoji: "🎲",
-    pool: 250,
+    pool: questionCounts.mixed,
     total: 20,
     kicker: "HER KONUDAN BİR TUTAM",
     tag: "20 kategori · Senin seçimin",

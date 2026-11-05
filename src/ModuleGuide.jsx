@@ -13,7 +13,7 @@ const guides = {
     steps: [
       [
         "Oyunu kur",
-        "200 soruluk havuzdan 10, 15 veya 20 soru seç. Soru süresi 10 saniye; istersen 15 veya 20 yap. QR veya oyun kodunu paylaş.",
+        "Havuzdan 10, 15 veya 20 soru seç. Soru süresi 10 saniye; istersen 15 veya 20 yap. QR veya oyun kodunu paylaş.",
       ],
       [
         "Tahminini yaz",
@@ -34,7 +34,7 @@ const guides = {
     steps: [
       [
         "Bir araya gelin",
-        "200 ilginç sorudan 10, 15 veya 20 soru hazırlanır. Süreyi 10, 15 veya 20 saniye seç. Kodu veya QR'ı paylaş.",
+        "Havuzdan 10, 15 veya 20 soru hazırlanır. Süreyi 10, 15 veya 20 saniye seç. Kodu veya QR'ı paylaş.",
       ],
       [
         "Tarafını seç",

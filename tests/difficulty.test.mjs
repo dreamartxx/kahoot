@@ -14,8 +14,8 @@ const general = new Set([
   ...bank.filter((q) => q.difficulty === "general").map((q) => q.id),
 ]);
 
-test("legacy editorial general pools cover their 18 categories with stable IDs and room to rotate", () => {
-  assert.equal(Object.keys(levels.generalQuestionIds).length, 18);
+test("editorial general pools cover all 20 categories with stable IDs and room to rotate", () => {
+  assert.equal(Object.keys(levels.generalQuestionIds).length, 20);
   assert.equal(
     new Set(Object.values(levels.generalQuestionIds).flat()).size,
     Object.values(levels.generalQuestionIds).flat().length,
@@ -23,9 +23,9 @@ test("legacy editorial general pools cover their 18 categories with stable IDs a
   for (const [category, ids] of Object.entries(levels.generalQuestionIds)) {
     assert(
       ids.length >= 36,
-      `${category}: at least four general rounds before reuse`,
+      `${category}: enough general questions for two full games`,
     );
-    assert(ids.length < 250);
+
     for (const id of ids)
       assert(
         bank.some((q) => q.id === id && q.category === category),
@@ -43,16 +43,18 @@ test("specialist detail stays out of general slots while familiar facts stay eli
     "finalinde Real Madrid adına",
     "Perihel ne demektir",
     "Köçekçe",
+    "Direksiyon ne işe yarar",
+    "ayakları ve bacakları öncelikle",
+    "Po hangi hayvandır",
   ]) {
     const matches = bank.filter((q) => q.text.includes(pattern));
-    assert(matches.length, pattern);
-    for (const q of matches) assert(!general.has(q.id), q.text);
+    assert.equal(matches.length, 0, pattern);
   }
   for (const pattern of [
     "Kızıl Gezegen",
     "Dünya'nın en yüksek zirvesi",
     "Türkiye'nin en yüksek dağı",
-    "Dinozorlar yavrularını",
+    "Dinozorların nasıl çoğaldığını",
     "İstanbul'un Osmanlılar tarafından fethi",
   ]) {
     const q = bank.find((q) => q.text.includes(pattern));
@@ -113,20 +115,18 @@ test("selection never fills a missing general slot with another expert and permi
   assert(result.automatic.every((q) => q.difficulty === "general"));
 });
 
-test("expanded categories retain easier content; plates use only the 81 canonical general questions", () => {
-  const replaced = JSON.parse(
-    readFileSync(new URL("../data/easy-replacements.json", import.meta.url)),
-  );
-  const allIds = new Set(bank.map((q) => q.id));
-  assert.equal(Object.keys(replaced).length, 18);
-  assert.equal(bank.filter((q) => q.difficulty === "general" && !["dunya-kupasi", "film"].includes(q.category)).length, 850);
-  for (const [category, ids] of Object.entries(replaced)) {
-    assert.equal(ids.length, 50);
-    assert.equal(new Set(ids).size, 50);
-    assert(ids.every((id) => !allIds.has(id)));
-    const pool = bank.filter((q) => q.category === category);
-    assert.equal(pool.length, category === "plakalar" ? 81 : 250);
-    assert.equal(pool.filter((q) => q.difficulty === "general").length, category === "plakalar" ? 0 : 50);
-    assert(pool.filter((q) => general.has(q.id)).length >= (category === "plakalar" ? 81 : 90));
+test("every shipped question has an explicit editorial decision for its category", () => {
+  const expected = new Map();
+  for (const [key, difficulty] of [["generalQuestionIds", "general"], ["detailQuestionIds", "expert"]]) {
+    for (const [category, ids] of Object.entries(levels[key])) {
+      for (const id of ids) {
+        assert(!expected.has(id), id);
+        expected.set(id, {category, difficulty});
+      }
+    }
+  }
+  assert.equal(expected.size, bank.length);
+  for (const q of bank) {
+    assert.deepEqual(expected.get(q.id), {category: q.category, difficulty: q.difficulty ?? "general"});
   }
 });

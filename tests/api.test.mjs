@@ -1,12 +1,13 @@
 import { test, before, beforeEach, after } from "node:test";
 import assert from "node:assert/strict";
 import { spawn, execFileSync } from "node:child_process";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 const dir = mkdtempSync(path.join(tmpdir(), "arena-test-")),
   root = path.resolve(import.meta.dirname, "..");
+const poolSizes = JSON.parse(readFileSync(path.join(root, "data/question-counts.json")));
 const port = 18191,
   base = `http://127.0.0.1:${port}/api/index.php`,
   db = path.join(dir, "test.sqlite");
@@ -292,7 +293,7 @@ test("domain migration accepts exact site origins and rejects lookalikes", async
 test("categories expose their correct pool sizes, support manual additions and rotate ten-question games", async () => {
   const counts = (await call("categories")).data;
   for (const category of Object.keys(counts)) {
-    const expectedCount = category === "plakalar" ? 81 : 250;
+    const expectedCount = poolSizes[category];
     assert.equal(counts[category], expectedCount);
     const pool = (await call("questions", { category }, { admin: true })).data;
     assert.equal(pool.length, expectedCount);
@@ -396,7 +397,7 @@ test("quiz: levels rotate independently without early answer/score leaks; idempo
   }
   assert.equal(
     seen.size,
-    pool.filter((q) => q.difficulty === "general").length + 25,
+    pool.length,
   );
   let r = await create("quiz");
   const p = await join(r.pin, "Deniz");
@@ -505,7 +506,7 @@ test("manual questions persist, validate four options, can be selected explicitl
   const qs = (
     await call("questions", { category: "cografya" }, { admin: true })
   ).data;
-  assert.equal(qs.length, 251);
+  assert.equal(qs.length, poolSizes.cografya + 1);
   const selected = [
     good.data.id,
     ...qs
@@ -523,7 +524,7 @@ test("manual questions persist, validate four options, can be selected explicitl
   assert.equal(
     (await call("questions", { category: "cografya" }, { admin: true })).data
       .length,
-    250,
+    poolSizes.cografya,
   );
 });
 test("cloud: Turkish case normalization, one vote per person per word, editing and prompt reset", async () => {
@@ -3541,13 +3542,13 @@ test("quiz setup rejects unsupported options and matches manual selection to the
 
 test("World Cup category supports 10/15/20 questions, manual library access and tournament/solo selection", async () => {
   const counts = await call("categories");
-  assert.equal(counts.data["dunya-kupasi"], 250);
+  assert.equal(counts.data["dunya-kupasi"], poolSizes["dunya-kupasi"]);
   const library = await call(
     "questions",
     { category: "dunya-kupasi" },
     { admin: true },
   );
-  assert.equal(library.data.length, 250);
+  assert.equal(library.data.length, poolSizes["dunya-kupasi"]);
   for (const questionCount of [10, 15, 20]) {
     const room = await create("quiz", {
       category: "dunya-kupasi",
@@ -3589,13 +3590,13 @@ test("World Cup category supports 10/15/20 questions, manual library access and 
 });
 
 test("film category supports rotating 10/15/20 decks, manual selection, solo and tournament", async () => {
-  assert.equal((await call("categories")).data.film, 250);
+  assert.equal((await call("categories")).data.film, poolSizes.film);
   const library = await call(
     "questions",
     { category: "film" },
     { admin: true },
   );
-  assert.equal(library.data.length, 250);
+  assert.equal(library.data.length, poolSizes.film);
   let previous = [];
   for (const questionCount of [10, 15, 20]) {
     const room = await create("quiz", { category: "film", questionCount });
