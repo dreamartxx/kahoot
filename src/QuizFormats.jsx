@@ -1,9 +1,17 @@
 import questionCounts from "../data/question-counts.json" with { type: "json" };
 import React, { useState } from "react";
-import { ArrowUpRight, Send, Trophy, Check, Target } from "lucide-react";
+import {
+  ArrowUpRight,
+  Send,
+  Trophy,
+  Check,
+  Target,
+  Delete,
+} from "lucide-react";
 import { CharacterAvatar } from "./CharacterAvatar";
 import GameArt from "./GameArt";
 import ModuleGuide from "./ModuleGuide";
+import useCompactLayout from "./useCompactLayout";
 import "./quiz-formats.css";
 export const quizFormats = [
   {
@@ -94,6 +102,7 @@ export function QuizFormats({ onChoose }) {
 }
 export function EstimateRound({ room, screen, busy, left, action }) {
   const [guess, setGuess] = useState("");
+  const compact = useCompactLayout();
   const fmt = (n) =>
     Number(n).toLocaleString("tr-TR", { maximumFractionDigits: 3 });
   if (room.phase === "reveal")
@@ -166,14 +175,88 @@ export function EstimateRound({ room, screen, busy, left, action }) {
         </p>
       </div>
     );
+  const locked = busy || left <= 0 || room.phase !== "question";
+  const canSend =
+    !locked &&
+    /^-?\d{1,13}([.,]\d{1,3})?$/.test(guess) &&
+    Math.abs(Number(guess.replace(",", "."))) <= 1e12;
+  const submit = (event) => {
+    event.preventDefault();
+    if (canSend) action("answer", { questionId: room.question.id, guess });
+  };
+  if (compact) {
+    const keys = [
+      "1",
+      "2",
+      "3",
+      "sil",
+      "4",
+      "5",
+      "6",
+      "±",
+      "7",
+      "8",
+      "9",
+      ",",
+      "0",
+    ];
+    function enter(key) {
+      setGuess((value) => {
+        if (key === "sil") return value.slice(0, -1);
+        if (key === "±")
+          return value.startsWith("-") ? value.slice(1) : "-" + value;
+        const next =
+          key === "," && (value === "" || value === "-")
+            ? value + "0,"
+            : (value + key).replace(/^(-?)0(?=\d)/, "$1");
+        return /^-?\d{1,13}(,\d{0,3})?$/.test(next) &&
+          Math.abs(Number(next.replace(",", "."))) <= 1e12
+          ? next
+          : value;
+      });
+    }
+    return (
+      <form
+        className="estimate-pad"
+        aria-label="Sayısal tahmin"
+        onSubmit={submit}
+      >
+        <div className="estimate-pad-display">
+          <span>Tahminin</span>
+          <output aria-label="Tahminin">{guess || "—"}</output>
+          <small>{room.question.unit}</small>
+        </div>
+        <div className="estimate-pad-keys">
+          {keys.map((key) => (
+            <button
+              key={key}
+              type="button"
+              disabled={locked || (key === "sil" && !guess)}
+              aria-label={
+                {
+                  sil: "Son rakamı sil",
+                  "±": "İşareti değiştir",
+                  ",": "Ondalık virgül",
+                }[key]
+              }
+              onClick={() => enter(key)}
+            >
+              {key === "sil" ? <Delete size={20} aria-hidden="true" /> : key}
+            </button>
+          ))}
+          <button
+            className="estimate-pad-send"
+            type="submit"
+            disabled={!canSend}
+          >
+            <Send size={17} aria-hidden="true" /> Tahminimi gönder
+          </button>
+        </div>
+      </form>
+    );
+  }
   return (
-    <form
-      className="estimate-form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        action("answer", { questionId: room.question.id, guess });
-      }}
-    >
+    <form className="estimate-form" onSubmit={submit}>
       <label htmlFor="numeric-guess">
         Sence cevap kaç <b>{room.question.unit}</b>?
       </label>
@@ -194,7 +277,7 @@ export function EstimateRound({ room, screen, busy, left, action }) {
       <small>
         Binlik ayırıcı kullanma. Ondalık için virgül veya nokta yazabilirsin.
       </small>
-      <button className="btn" disabled={busy || left === 0 || !guess.trim()}>
+      <button className="btn" disabled={!canSend}>
         <Send size={18} /> Tahminimi gönder
       </button>
       <p>Hesap makinesi yok. İçinden geçen sayı var. ✦</p>

@@ -368,3 +368,72 @@
     transition: none;
   }
 }
+
+.estimate-pad {
+  width: min(100%, 390px);
+  margin: 8px auto;
+  padding: 8px;
+  border: 1px solid var(--app-line);
+  border-radius: 18px;
+  background: var(--app-surface);
+  color: var(--app-text);
+}
+.estimate-pad-display {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  min-height: 36px;
+  padding: 2px 5px 6px;
+}
+.estimate-pad-display span,
+.estimate-pad-display small {
+  color: var(--app-muted);
+  font-size: 12px;
+}
+.estimate-pad-display output {
+  flex: 1;
+  text-align: right;
+  font-size: clamp(16px, 5vw, 24px);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.estimate-pad-keys {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+}
+.estimate-pad-keys button {
+  display: grid;
+  place-content: center;
+  min-height: 44px;
+  padding: 2px 5px;
+  border: 1px solid var(--app-line);
+  border-radius: 10px;
+  background: var(--app-soft);
+  color: var(--app-text);
+  font: inherit;
+  font-size: 19px;
+  font-weight: 700;
+  touch-action: manipulation;
+}
+.estimate-pad-keys button:active:not(:disabled) {
+  background: var(--app-line);
+}
+.estimate-pad-keys button:focus-visible {
+  outline: 2px solid var(--app-accent);
+  outline-offset: -3px;
+}
+.estimate-pad-keys .estimate-pad-send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  grid-column: span 3;
+  background: #6034ab;
+  color: white;
+  font-size: 15px;
+}
+.estimate-pad-keys button:disabled {
+  opacity: 0.55;
+}
