@@ -1,19 +1,5 @@
 [
   {
-    "id": "ulkeler-a41e75871f41d6",
-    "category": "ulkeler",
-    "text": "Umman riyali hangi ülkenin para birimidir?",
-    "options": [
-      "Umman",
-      "Birleşik Krallık",
-      "Romanya",
-      "Peru"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Umman.",
-    "difficulty": "general"
-  },
-  {
     "id": "ulkeler-2d12c8175ea407",
     "category": "ulkeler",
     "text": "Belçika ülkesinin başkenti hangisidir?",
@@ -42,31 +28,17 @@
     "difficulty": "general"
   },
   {
-    "id": "ulkeler-66b1e0efb00210",
+    "id": "ulkeler-8af8e099442d86",
     "category": "ulkeler",
-    "text": "Şili pesosu hangi ülkenin para birimidir?",
+    "text": "Ermenistan ülkesinin başkenti hangisidir?",
     "options": [
-      "Tunus",
-      "Bahreyn",
-      "Şili",
-      "Ürdün"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Şili.",
-    "difficulty": "general"
-  },
-  {
-    "id": "ulkeler-acbc9fe11fd904",
-    "category": "ulkeler",
-    "text": "Arjantin hangi kıtada yer alır?",
-    "options": [
-      "Asya",
-      "Avrupa",
-      "Afrika",
-      "Güney Amerika"
+      "Sofya",
+      "Singapur",
+      "Paris",
+      "Erivan"
     ],
     "correct": 3,
-    "explanation": "Doğru cevap: Güney Amerika.",
+    "explanation": "Doğru cevap: Erivan.",
     "difficulty": "general"
   },
   {
@@ -98,20 +70,6 @@
     "difficulty": "general"
   },
   {
-    "id": "ulkeler-cf735b52104072",
-    "category": "ulkeler",
-    "text": "Fransa ülkesinin başkenti hangisidir?",
-    "options": [
-      "Dakka",
-      "Dodoma",
-      "Astana",
-      "Paris"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Paris.",
-    "difficulty": "general"
-  },
-  {
     "id": "ulkeler-5f923ea4eef547",
     "category": "ulkeler",
     "text": "Gürcistan ülkesinin başkenti hangisidir?",
@@ -140,87 +98,87 @@
     "difficulty": "general"
   },
   {
-    "id": "ulkeler-db53792dadc60e",
+    "id": "ulkeler-9a26e4afbbdc57",
     "category": "ulkeler",
-    "text": "Bahreyn dinarı hangi ülkenin para birimidir?",
+    "text": "Nepal ülkesinin başkenti hangisidir?",
     "options": [
-      "Etiyopya",
-      "Şili",
-      "Bangladeş",
-      "Bahreyn"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Bahreyn.",
-    "difficulty": "general"
-  },
-  {
-    "id": "ulkeler-be0eb2a927d19f",
-    "category": "ulkeler",
-    "text": "Pakistan ülkesinin başkenti hangisidir?",
-    "options": [
-      "Thimphu",
-      "İslamabad",
-      "Kampala",
-      "Podgorica"
+      "Lima",
+      "Katmandu",
+      "Tiflis",
+      "Ljubljana"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: İslamabad.",
+    "explanation": "Doğru cevap: Katmandu.",
     "difficulty": "general"
   },
   {
-    "id": "ulkeler-a30403200cc99c",
+    "id": "ulkeler-3f8ccec6fc2dad",
     "category": "ulkeler",
-    "text": "Pakistan hangi kıtada yer alır?",
+    "text": "Danimarka ülkesinin başkenti hangisidir?",
     "options": [
-      "Asya",
-      "Güney Amerika",
-      "Avrupa",
-      "Afrika"
+      "Kopenhag",
+      "Dakar",
+      "Bangkok",
+      "Bağdat"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: Asya.",
+    "explanation": "Doğru cevap: Kopenhag.",
     "difficulty": "general"
   },
   {
-    "id": "turkiye-ecc7d19dbe7020",
-    "category": "turkiye",
-    "text": "Kırşehir hangi coğrafi bölgemizdeki illerdendir?",
+    "id": "ulkeler-dbb04f67c5de23",
+    "category": "ulkeler",
+    "text": "Kolezyum hangi ülkede yer alır?",
     "options": [
-      "Doğu Anadolu",
-      "İç Anadolu",
-      "Güneydoğu Anadolu",
-      "Ege"
+      "İtalya",
+      "Brezilya",
+      "Birleşik Krallık",
+      "Almanya"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: İtalya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "ulkeler-9689b05c033e9f",
+    "category": "ulkeler",
+    "text": "Stonehenge hangi ülkede yer alır?",
+    "options": [
+      "Bosna-Hersek",
+      "Birleşik Krallık",
+      "Hırvatistan",
+      "Sri Lanka"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: İç Anadolu.",
+    "explanation": "Doğru cevap: Birleşik Krallık.",
     "difficulty": "general"
   },
   {
-    "id": "turkiye-403118dc1dd110",
-    "category": "turkiye",
-    "text": "Millî Mücadele'de Erzurum Kongresi hangi yılda toplandı?",
+    "id": "ulkeler-abbd43573649c7",
+    "category": "ulkeler",
+    "text": "Machu Picchu hangi ülkede yer alır?",
     "options": [
-      "1921",
-      "1923",
-      "1920",
-      "1919"
+      "Zimbabve",
+      "Endonezya",
+      "Senegal",
+      "Peru"
     ],
     "correct": 3,
-    "explanation": "Doğru cevap: 1919.",
+    "explanation": "Doğru cevap: Peru.",
     "difficulty": "general"
   },
   {
-    "id": "turkiye-2dd830e8a7b7fc",
-    "category": "turkiye",
-    "text": "Bursa hangi coğrafi bölgemizdeki illerdendir?",
+    "id": "ulkeler-719303b53438d8",
+    "category": "ulkeler",
+    "text": "Lübnan ülkesinin başkenti hangisidir?",
     "options": [
-      "İç Anadolu",
-      "Akdeniz",
-      "Marmara",
-      "Doğu Anadolu"
+      "Meksiko",
+      "Bakü",
+      "Prag",
+      "Beyrut"
     ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Marmara.",
+    "correct": 3,
+    "explanation": "Doğru cevap: Beyrut.",
     "difficulty": "general"
   },
   {
@@ -238,76 +196,6 @@
     "difficulty": "general"
   },
   {
-    "id": "turkiye-cc7eb145a6eb15",
-    "category": "turkiye",
-    "text": "Yalova hangi coğrafi bölgemizdeki illerdendir?",
-    "options": [
-      "Marmara",
-      "Karadeniz",
-      "Güneydoğu Anadolu",
-      "Doğu Anadolu"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Marmara.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-77225e20b9b022",
-    "category": "turkiye",
-    "text": "Bodrum mandalinası ve Milas halısıyla tanınan şehrimiz hangisidir?",
-    "options": [
-      "Ardahan",
-      "Burdur",
-      "Hatay",
-      "Muğla"
-    ],
-    "correct": 3,
-    "explanation": "Bodrum mandalinası, Muğla ilinin tanınmış değerlerindendir.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-69c6b8d0ca4d4b",
-    "category": "turkiye",
-    "text": "Tantunisi ve cezeryesiyle tanınan şehrimiz hangisidir?",
-    "options": [
-      "Samsun",
-      "Niğde",
-      "Giresun",
-      "Mersin"
-    ],
-    "correct": 3,
-    "explanation": "Tantuni, Mersin ilinin tanınmış değerlerindendir.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-63cb7fe2eb0bf7",
-    "category": "turkiye",
-    "text": "Edirne hangi coğrafi bölgemizdeki illerdendir?",
-    "options": [
-      "Marmara",
-      "Akdeniz",
-      "Karadeniz",
-      "Doğu Anadolu"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Marmara.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-b21880f4a4e285",
-    "category": "turkiye",
-    "text": "Atatürk'ün babasının adı nedir?",
-    "options": [
-      "Ziya Bey",
-      "Hüseyin Avni Paşa",
-      "Ahmet Muhtar Paşa",
-      "Ali Rıza Efendi"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Ali Rıza Efendi.",
-    "difficulty": "general"
-  },
-  {
     "id": "turkiye-4e2c31d0f8ff0b",
     "category": "turkiye",
     "text": "35 plaka kodu hangi ilimize aittir?",
@@ -322,45 +210,157 @@
     "difficulty": "general"
   },
   {
-    "id": "turkiye-09aec3127b7aff",
+    "id": "turkiye-d4ac79b44433a8",
     "category": "turkiye",
-    "text": "Antep fıstıklı baklavası ve beyranıyla tanınan şehrimiz hangisidir?",
+    "text": "Dalyan'daki İztuzu Plajı hangi ilimizdedir?",
     "options": [
-      "Afyonkarahisar",
-      "Yalova",
-      "Zonguldak",
-      "Gaziantep"
-    ],
-    "correct": 3,
-    "explanation": "Antep baklavası, Gaziantep ilinin tanınmış değerlerindendir.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-b6092edf618d94",
-    "category": "turkiye",
-    "text": "Sıra geceleri ve Balıklıgöl'üyle tanınan şehrimiz hangisidir?",
-    "options": [
-      "Ankara",
-      "Diyarbakır",
-      "Şanlıurfa",
-      "Burdur"
+      "İzmir",
+      "Antalya",
+      "Muğla",
+      "Aydın"
     ],
     "correct": 2,
-    "explanation": "Sıra gecesi geleneği, Şanlıurfa ilinin tanınmış değerlerindendir.",
+    "explanation": "Doğru cevap: Muğla.",
     "difficulty": "general"
   },
   {
-    "id": "turkiye-803addb0174ac2",
+    "id": "turkiye-ea67bf991e42fa",
     "category": "turkiye",
-    "text": "Giresun hangi coğrafi bölgemizdeki illerdendir?",
+    "text": "Topkapı Sarayı hangi ilimizdedir?",
     "options": [
-      "Karadeniz",
-      "Güneydoğu Anadolu",
-      "Marmara",
-      "Doğu Anadolu"
+      "İstanbul",
+      "Edirne",
+      "Ankara",
+      "Bursa"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: Karadeniz.",
+    "explanation": "Doğru cevap: İstanbul.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-f39910fb1d2bd0",
+    "category": "turkiye",
+    "text": "Türkiye Cumhuriyeti hangi tarihte ilan edildi?",
+    "options": [
+      "19 Mayıs 1919",
+      "30 Ağustos 1922",
+      "23 Nisan 1920",
+      "29 Ekim 1923"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: 29 Ekim 1923.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-242a0b60f48129",
+    "category": "turkiye",
+    "text": "33 plaka kodu hangi ilimize aittir?",
+    "options": [
+      "Mersin",
+      "Bayburt",
+      "Bolu",
+      "Şanlıurfa"
+    ],
+    "correct": 0,
+    "explanation": "Mersin ilinin plaka kodu 33 olarak belirlenmiştir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-4cc24bceb439b9",
+    "category": "turkiye",
+    "text": "Tamamı Türkiye sınırları içinde kalan deniz hangisidir?",
+    "options": [
+      "Karadeniz",
+      "Akdeniz",
+      "Ege Denizi",
+      "Marmara Denizi"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Marmara Denizi.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-e06019b9ac910e",
+    "category": "turkiye",
+    "text": "Urartuların başkenti Tuşpa hangi günümüz şehrindedir?",
+    "options": [
+      "Van",
+      "Bitlis",
+      "Erzurum",
+      "Kars"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Van.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-8778a3ebdc1fca",
+    "category": "turkiye",
+    "text": "Aspendos Antik Tiyatrosu hangi ilimizdedir?",
+    "options": [
+      "Aydın",
+      "Antalya",
+      "Muğla",
+      "İzmir"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Antalya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-64e578f31d35f5",
+    "category": "turkiye",
+    "text": "Zeugma Mozaik Müzesi hangi ilimizdedir?",
+    "options": [
+      "Adana",
+      "Gaziantep",
+      "Hatay",
+      "Şanlıurfa"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Gaziantep.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-54296bb04b009b",
+    "category": "turkiye",
+    "text": "Mevlânâ Müzesi hangi ilimizdedir?",
+    "options": [
+      "Konya",
+      "Sivas",
+      "Kayseri",
+      "Aksaray"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Konya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-57479279f78636",
+    "category": "turkiye",
+    "text": "Erciyes Dağı hangi ilimizle özdeşleşmiştir?",
+    "options": [
+      "Kayseri",
+      "Konya",
+      "Nevşehir",
+      "Niğde"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Kayseri.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-a87cf8bf0ac826",
+    "category": "turkiye",
+    "text": "Hattuşa antik kentinin kalıntıları hangi ilimizdedir?",
+    "options": [
+      "Ankara",
+      "Amasya",
+      "Yozgat",
+      "Çorum"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Çorum.",
     "difficulty": "general"
   },
   {
@@ -375,20 +375,6 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Asya ve Kuzey Amerika.",
-    "difficulty": "general"
-  },
-  {
-    "id": "cografya-f9f43b6911b9e8",
-    "category": "cografya",
-    "text": "Buz ısınarak eridiğinde neye dönüşür?",
-    "options": [
-      "Taş",
-      "Tuz",
-      "Sıvı su",
-      "Toprak"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Sıvı su.",
     "difficulty": "general"
   },
   {
@@ -434,6 +420,20 @@
     "difficulty": "general"
   },
   {
+    "id": "cografya-cc2a8260b1474a",
+    "category": "cografya",
+    "text": "Volkanın zirvesindeki çukur hangi coğrafi kavramın açıklamasıdır?",
+    "options": [
+      "Troposfer",
+      "Obruk",
+      "Krater",
+      "Konveksiyon"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Krater.",
+    "difficulty": "general"
+  },
+  {
     "id": "cografya-2f408fe3958311",
     "category": "cografya",
     "text": "Dünya'nın en geniş yüzölçümlü kıtası hangisidir?",
@@ -445,6 +445,20 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Asya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-ba9156793133ea",
+    "category": "cografya",
+    "text": "Tayga biyomunda hangi ağaçlar yaygındır?",
+    "options": [
+      "Palmiyeler",
+      "Mangrovlar",
+      "Zeytin ağaçları",
+      "İğne yapraklılar"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: İğne yapraklılar.",
     "difficulty": "general"
   },
   {
@@ -476,17 +490,17 @@
     "difficulty": "general"
   },
   {
-    "id": "cografya-e0d31ca803edfb",
+    "id": "cografya-02dd254b3ff496",
     "category": "cografya",
-    "text": "Karalar arasında kalan dar deniz geçidine ne denir?",
+    "text": "Patagonya hangi iki ülkede uzanır?",
     "options": [
-      "Dağ",
-      "Yayla",
-      "Boğaz",
-      "Çöl"
+      "Peru ve Ekvador",
+      "Brezilya ve Uruguay",
+      "Venezuela ve Kolombiya",
+      "Arjantin ve Şili"
     ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Boğaz.",
+    "correct": 3,
+    "explanation": "Doğru cevap: Arjantin ve Şili.",
     "difficulty": "general"
   },
   {
@@ -504,6 +518,20 @@
     "difficulty": "general"
   },
   {
+    "id": "cografya-57a3c21d2a63ab",
+    "category": "cografya",
+    "text": "Buharın basıncıyla aralıklı sıcak su fışkırtan kaynak hangi coğrafi kavramın açıklamasıdır?",
+    "options": [
+      "Esker",
+      "Orografik yağış",
+      "Gayzer",
+      "Magmatik kayaçlar"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Gayzer.",
+    "difficulty": "general"
+  },
+  {
     "id": "cografya-39b545aec9d409",
     "category": "cografya",
     "text": "Dünyanın en derin gölü hangisidir?",
@@ -518,73 +546,17 @@
     "difficulty": "general"
   },
   {
-    "id": "cografya-3452e7d2c8ce8a",
-    "category": "cografya",
-    "text": "Kıştan sonra hangi mevsim gelir?",
-    "options": [
-      "Yaz",
-      "Tekrar kış",
-      "İlkbahar",
-      "Sonbahar"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: İlkbahar.",
-    "difficulty": "general"
-  },
-  {
-    "id": "cografya-40a7e0b4958f5e",
-    "category": "cografya",
-    "text": "Pusulanın renkli ucu genellikle hangi ana yönü gösterir?",
-    "options": [
-      "Doğu",
-      "Güney",
-      "Kuzey",
-      "Batı"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Kuzey.",
-    "difficulty": "general"
-  },
-  {
     "id": "dinozor-edce9ee703a1a9",
     "category": "dinozor",
-    "text": "Ankylosaurus temel olarak nasıl beslenirdi?",
+    "text": "Hangi otçul dinozor, yırtıcılara karşı kuyruğunun ucundaki kemik topuzu kullanabilirdi?",
     "options": [
-      "Otçul",
-      "Etçil",
-      "Hepçil",
-      "Yalnızca planktonla beslenen"
+      "Ankylosaurus",
+      "Triceratops",
+      "Diplodocus",
+      "Brachiosaurus"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: Otçul.",
-    "difficulty": "general"
-  },
-  {
-    "id": "dinozor-4d391bd99fd28b",
-    "category": "dinozor",
-    "text": "Dilophosaurus hangi özelliğiyle tanınır?",
-    "options": [
-      "Başında iki ince kemiksi ibik",
-      "Ön bacakların arka bacaklardan uzun olması",
-      "Sırtında yelken oluşturan uzun omur çıkıntıları",
-      "Ördek gagasına benzeyen geniş ağız"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Başında iki ince kemiksi ibik.",
-    "difficulty": "general"
-  },
-  {
-    "id": "dinozor-24f033dc559456",
-    "category": "dinozor",
-    "text": "Allosaurus temel olarak nasıl beslenirdi?",
-    "options": [
-      "Yalnızca planktonla beslenen",
-      "Etçil",
-      "Otçul",
-      "Hepçil"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Etçil.",
+    "explanation": "Doğru cevap: Ankylosaurus.",
     "difficulty": "general"
   },
   {
@@ -602,129 +574,157 @@
     "difficulty": "general"
   },
   {
-    "id": "dinozor-d1cb5e1ca7efc5",
+    "id": "dinozor-7877b193e2d352",
     "category": "dinozor",
-    "text": "Dinozorlar hakkında bir bilim müzesinde hangisini görmek beklenir?",
+    "text": "Dinozorların nasıl çoğaldığını gösteren en doğrudan bulgu hangisidir?",
     "options": [
-      "Dinozorların kullandığı arabalar",
-      "Canlı T. rex kafesi",
-      "Dinozorların yazdığı kitaplar",
-      "İskelet modeli"
+      "Bir arada bulunan farklı boyda ayak izleri",
+      "İçinde embriyo korunmuş fosil yumurta",
+      "Aynı katmanda bulunan yetişkin iskeletleri",
+      "Bir yuvanın yakınındaki bitki kalıntıları"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: İçinde embriyo korunmuş fosil yumurta.",
+    "difficulty": "general"
+  },
+  {
+    "id": "dinozor-6979c92a264903",
+    "category": "dinozor",
+    "text": "Bir dinozorun bitki mi et mi yediğini araştırırken hangi kemiğe öncelik verirsin?",
+    "options": [
+      "Kalça kemiği",
+      "Kuyruk omuru",
+      "Dişleri korunmuş çene",
+      "Kürek kemiği"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Dişleri korunmuş çene.",
+    "difficulty": "general"
+  },
+  {
+    "id": "dinozor-0f865f2d63e42d",
+    "category": "dinozor",
+    "text": "Velociraptor’un kıvrık pençeleri hangi beslenme biçimiyle uyumludur?",
+    "options": [
+      "Otları öğüterek beslenmek",
+      "Yüksek dallardan yaprak toplamak",
+      "Avını yakalayıp etle beslenmek",
+      "Sudaki planktonları süzmek"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Avını yakalayıp etle beslenmek.",
+    "difficulty": "general"
+  },
+  {
+    "id": "dinozor-e62d03c4da5026",
+    "category": "dinozor",
+    "text": "Carnotaurus hangi özelliğiyle tanınır?",
+    "options": [
+      "Sivri başparmak dikeni",
+      "Ön bacakların arka bacaklardan uzun olması",
+      "Gözlerinin üzerinde iki belirgin boynuz",
+      "Erken uzun boyunlu dinozor yapısı"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Gözlerinin üzerinde iki belirgin boynuz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "dinozor-5d1c01d4827244",
+    "category": "dinozor",
+    "text": "Dinozorların ilk ortaya çıktığı jeolojik dönem hangisidir?",
+    "options": [
+      "Kretase",
+      "Devoniyen",
+      "Permiyen",
+      "Triyas"
     ],
     "correct": 3,
-    "explanation": "Doğru cevap: İskelet modeli.",
+    "explanation": "Doğru cevap: Triyas.",
     "difficulty": "general"
   },
   {
-    "id": "dinozor-ce74a11b70f842",
+    "id": "dinozor-660fbd70cde90f",
     "category": "dinozor",
-    "text": "Dinozor fosilinin fotoğrafını ve bulunduğu yeri kaydetmek hangi çalışmanın parçasıdır?",
+    "text": "Taşlaşmış ayak izleri hangi fosil türüne örnektir?",
     "options": [
-      "Bilimsel araştırma",
-      "Yemek pişirme",
-      "Hava tahmini",
-      "Trafik denetimi"
+      "Polen fosili",
+      "İz fosili",
+      "Vücut fosili",
+      "Kehribar"
     ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Bilimsel araştırma.",
+    "correct": 1,
+    "explanation": "Doğru cevap: İz fosili.",
     "difficulty": "general"
   },
   {
-    "id": "dinozor-29fc374e43dc64",
+    "id": "dinozor-c93a214faf42b7",
     "category": "dinozor",
-    "text": "Bir dinozorun ayakları ve bacakları öncelikle hangi işe yarar?",
+    "text": "Jura döneminden sonra hangi dönem gelir?",
     "options": [
-      "Fotosenteze",
-      "Yağmur üretmeye",
-      "Hareket etmeye",
-      "Yumurta kabuğu oluşturmaya"
+      "Karbonifer",
+      "Kretase",
+      "Triyas",
+      "Permiyen"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Kretase.",
+    "difficulty": "general"
+  },
+  {
+    "id": "dinozor-c510b6b668058a",
+    "category": "dinozor",
+    "text": "Uzun boyunlu Brachiosaurus ile Triceratops’un ortak özelliği hangisidir?",
+    "options": [
+      "Kuyruklarında kemik topuz bulunması",
+      "Ön ayaklarında iki parmak bulunması",
+      "Bitkilerle beslenmeleri",
+      "Başlarında üç boynuz bulunması"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: Hareket etmeye.",
+    "explanation": "Doğru cevap: Bitkilerle beslenmeleri.",
     "difficulty": "general"
   },
   {
-    "id": "dinozor-d801734844bee0",
+    "id": "dinozor-cd6df888a1c8ba",
     "category": "dinozor",
-    "text": "Sırtındaki büyük kemik levhalarla çizilen dinozor hangisidir?",
+    "text": "Plesiosaurların suda hareket etmesini sağlayan belirgin özellik hangisidir?",
     "options": [
-      "Stegosaurus",
-      "Velociraptor",
-      "Diplodocus",
-      "Tyrannosaurus rex"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Stegosaurus.",
-    "difficulty": "general"
-  },
-  {
-    "id": "dinozor-b972eae826e67e",
-    "category": "dinozor",
-    "text": "Dinozorların yaşadığı çağlarda henüz hangisi yoktu?",
-    "options": [
-      "Bitkiler",
-      "İnsanların kurduğu şehirler",
-      "Dağlar",
-      "Nehirler"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: İnsanların kurduğu şehirler.",
-    "difficulty": "general"
-  },
-  {
-    "id": "dinozor-652f29f5ce1a9e",
-    "category": "dinozor",
-    "text": "Dinozorların beslenmesi için hangisi doğrudur?",
-    "options": [
-      "Hiçbiri beslenmezdi",
-      "Farklı türler farklı besinlerle beslenirdi",
-      "Hepsi sadece et yerdi",
-      "Hepsi sadece taş yerdi"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Farklı türler farklı besinlerle beslenirdi.",
-    "difficulty": "general"
-  },
-  {
-    "id": "dinozor-7f8cb39a585d8d",
-    "category": "dinozor",
-    "text": "Bir dinozorun sert dişleri en çok ne hakkında ipucu verir?",
-    "options": [
-      "Tam renginin ne olduğu",
-      "Ne yediği",
-      "Adının nasıl yazıldığı",
-      "Hangi sesi çıkardığı"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Ne yediği.",
-    "difficulty": "general"
-  },
-  {
-    "id": "dinozor-62e854f7fd91c4",
-    "category": "dinozor",
-    "text": "Bir müzede dinozor iskeleti sergilenmesinin temel amacı nedir?",
-    "options": [
-      "Canlı dinozor beslemek",
-      "Bitki yetiştirmek",
-      "Geçmiş canlıları tanıtmak",
-      "Hava sıcaklığını ölçmek"
+      "Yelpaze biçiminde iki kanat",
+      "Perdeli iki arka ayak",
+      "Kürek biçiminde dört uzuv",
+      "Uzun ve eklemli parmaklar"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: Geçmiş canlıları tanıtmak.",
+    "explanation": "Doğru cevap: Kürek biçiminde dört uzuv.",
     "difficulty": "general"
   },
   {
-    "id": "dinozor-3c6b6c2c5c093e",
+    "id": "dinozor-46fb9d0a9241ff",
     "category": "dinozor",
-    "text": "Dinozor iskeletini oluşturan sert parçalar nelerdir?",
+    "text": "Stegosaurus hangi özelliğiyle tanınır?",
     "options": [
-      "Bulutlar",
-      "Kemikler",
-      "Yapraklar",
-      "Kum taneleri"
+      "İçi boş kemikleri olan ince ve hafif gövde",
+      "Ön bacakların arka bacaklardan uzun olması",
+      "Sırtında iki sıra büyük kemiksi plaka",
+      "Sırtın arkasında ve kuyrukta uzun dikenler"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Sırtında iki sıra büyük kemiksi plaka.",
+    "difficulty": "general"
+  },
+  {
+    "id": "dinozor-4d7c947884425d",
+    "category": "dinozor",
+    "text": "Pterosaurlar hangi gruba aittir?",
+    "options": [
+      "Kuş olmayan dinozorlar",
+      "Uçan sürüngenler",
+      "Uçan memeliler",
+      "Böcekler"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Kemikler.",
+    "explanation": "Doğru cevap: Uçan sürüngenler.",
     "difficulty": "general"
   },
   {
@@ -732,83 +732,27 @@
     "category": "hayvanlar",
     "text": "Yeni Zelanda'nın uçamayan, uzun gagalı kuşu hangisidir?",
     "options": [
-      "Devekuşu",
-      "Balina köpekbalığı",
+      "Emu",
+      "Kakapo",
       "Kivi",
-      "Denizatı"
+      "Nandu"
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Kivi.",
     "difficulty": "general"
   },
   {
-    "id": "hayvanlar-64fd4b921d61d0",
+    "id": "hayvanlar-dfdb704413223d",
     "category": "hayvanlar",
-    "text": "Sazan hangi yaşam ortamıyla en çok ilişkilidir?",
+    "text": "Echidna hangi özelliğiyle tanınır?",
     "options": [
-      "Deniz",
-      "Kutup bölgesi",
-      "Orman",
-      "Tatlı su"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Tatlı su.",
-    "difficulty": "general"
-  },
-  {
-    "id": "hayvanlar-fd4c5dbdeb9091",
-    "category": "hayvanlar",
-    "text": "Goril hangi yaşam ortamıyla en çok ilişkilidir?",
-    "options": [
-      "Çöl",
-      "Kutup bölgesi",
-      "Orman",
-      "Deniz"
+      "Günümüzdeki tek yaşayan gaga başlı sürüngen soyunu temsil etmesi",
+      "Yelpaze gibi açılabilen baş tüyleri",
+      "Dikenli gövdesine rağmen yumurtlayan bir memeli olması",
+      "Tutunmaya yarayan kavrayıcı kuyruk"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: Orman.",
-    "difficulty": "general"
-  },
-  {
-    "id": "hayvanlar-8a0ab297d3f328",
-    "category": "hayvanlar",
-    "text": "Mavi balina hangi hayvan grubuna aittir?",
-    "options": [
-      "Memeli",
-      "Yumuşakça",
-      "İki yaşamlı",
-      "Kuş"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Memeli.",
-    "difficulty": "general"
-  },
-  {
-    "id": "hayvanlar-f3602814d17234",
-    "category": "hayvanlar",
-    "text": "Yunus hangi yaşam ortamıyla en çok ilişkilidir?",
-    "options": [
-      "Deniz",
-      "Kutup bölgesi",
-      "Orman",
-      "Tatlı su"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Deniz.",
-    "difficulty": "general"
-  },
-  {
-    "id": "hayvanlar-ff4a03a9fc3e36",
-    "category": "hayvanlar",
-    "text": "Uğur böceği hangi hayvan grubuna aittir?",
-    "options": [
-      "Yumuşakça",
-      "Böcek",
-      "İki yaşamlı",
-      "Memeli"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Böcek.",
+    "explanation": "Doğru cevap: Dikenli gövdesine rağmen yumurtlayan bir memeli olması.",
     "difficulty": "general"
   },
   {
@@ -817,26 +761,12 @@
     "text": "Beslenmesinin büyük kısmını bambunun oluşturduğu hayvan hangisidir?",
     "options": [
       "Dev panda",
-      "Ahtapot",
-      "Balina köpekbalığı",
-      "Bal arısı"
+      "Koala",
+      "Kızıl geyik",
+      "Tembel hayvan"
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Dev panda.",
-    "difficulty": "general"
-  },
-  {
-    "id": "hayvanlar-3852350a702e6f",
-    "category": "hayvanlar",
-    "text": "Kuşların vücudunu kaplayan örtü hangisidir?",
-    "options": [
-      "Tüy",
-      "Dikenli tel",
-      "Pul",
-      "Kabuk"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Tüy.",
     "difficulty": "general"
   },
   {
@@ -845,68 +775,138 @@
     "text": "Günümüzde yaşayan en büyük kertenkele hangisidir?",
     "options": [
       "Komodo ejderi",
-      "Elektrikli yılan balığı",
-      "Çita",
-      "Deniz samuru"
+      "Yeşil iguana",
+      "Nil varanı",
+      "Gila canavarı"
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Komodo ejderi.",
     "difficulty": "general"
   },
   {
-    "id": "hayvanlar-c602e60dd9862d",
+    "id": "hayvanlar-e4f93010e17b14",
     "category": "hayvanlar",
-    "text": "Balıklar suda ilerlemek için en çok hangi yapılarından yararlanır?",
+    "text": "Vücudu keratinden pullarla kaplı memeli hangisidir?",
     "options": [
-      "Boynuzlar",
-      "Kanatlar",
-      "Toynaklar",
-      "Yüzgeçler"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Yüzgeçler.",
-    "difficulty": "general"
-  },
-  {
-    "id": "hayvanlar-49c45f90cbe901",
-    "category": "hayvanlar",
-    "text": "Denizanası hangi yaşam ortamıyla en çok ilişkilidir?",
-    "options": [
-      "Tatlı su",
-      "Deniz",
-      "Çöl",
-      "Orman"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Deniz.",
-    "difficulty": "general"
-  },
-  {
-    "id": "hayvanlar-db28886a7303f3",
-    "category": "hayvanlar",
-    "text": "Dev panda hangi hayvan grubuna aittir?",
-    "options": [
-      "Memeli",
-      "Kuş",
-      "Sürüngen",
-      "Böcek"
+      "Pangolin",
+      "Armadillo",
+      "Kirpi",
+      "Oklu kirpi"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: Memeli.",
+    "explanation": "Doğru cevap: Pangolin.",
     "difficulty": "general"
   },
   {
-    "id": "hayvanlar-4b0fa1effec421",
+    "id": "hayvanlar-e9975bc05f2736",
     "category": "hayvanlar",
-    "text": "Ağaçkakan hangi hayvan grubuna aittir?",
+    "text": "Havada asılı kalıp geri geri uçabilen küçük kuş grubu hangisidir?",
     "options": [
-      "İki yaşamlı",
-      "Sürüngen",
-      "Kuş",
-      "Yumuşakça"
+      "Yalıçapkını",
+      "Kolibri",
+      "Kırlangıç",
+      "Ebabil"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Kolibri.",
+    "difficulty": "general"
+  },
+  {
+    "id": "hayvanlar-3e864484c6adc2",
+    "category": "hayvanlar",
+    "text": "Fenek tilkisi hangi özelliğiyle tanınır?",
+    "options": [
+      "Güçlü çeneli etçil bir keseli olması",
+      "Çöl yaşamına uyum sağlayan çok büyük kulaklar",
+      "Gece etkin olan uçamayan bir papağan olması",
+      "Balık yakalamaya uygun çok ince ve uzun çene"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Çöl yaşamına uyum sağlayan çok büyük kulaklar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "hayvanlar-36144555432548",
+    "category": "hayvanlar",
+    "text": "Emu hangi özelliğiyle tanınır?",
+    "options": [
+      "Yelpaze gibi açılabilen baş tüyleri",
+      "Yaprağa benzeyen kuyruğuyla kamufle olması",
+      "Uzun bacaklarla yerde yürüyerek avlanması",
+      "Avustralya'ya özgü iri ve uçamayan bir kuş olması"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Avustralya'ya özgü iri ve uçamayan bir kuş olması.",
+    "difficulty": "general"
+  },
+  {
+    "id": "hayvanlar-68769910ae61d4",
+    "category": "hayvanlar",
+    "text": "Denizkestanesi hangi özelliğiyle tanınır?",
+    "options": [
+      "Uçarken yakaladığı böceklerle beslenmesi",
+      "Su püskürterek su üstündeki böcekleri düşürmesi",
+      "Aşağı sarkan büyük ve şişkin burun",
+      "Dikenlerle kaplı küresel dış iskelet"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Dikenlerle kaplı küresel dış iskelet.",
+    "difficulty": "general"
+  },
+  {
+    "id": "hayvanlar-fd59de3ba7d8d6",
+    "category": "hayvanlar",
+    "text": "Günümüzde yaşayan en büyük kara hayvanı hangisidir?",
+    "options": [
+      "Afrika fili",
+      "Asya fili",
+      "Beyaz gergedan",
+      "Su aygırı"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Afrika fili.",
+    "difficulty": "general"
+  },
+  {
+    "id": "hayvanlar-12803df4090cc0",
+    "category": "hayvanlar",
+    "text": "Günümüzde yaşayan en büyük sürüngen türü hangisidir?",
+    "options": [
+      "Nil timsahı",
+      "Komodo ejderi",
+      "Tuzlu su timsahı",
+      "Yeşil anakonda"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: Kuş.",
+    "explanation": "Doğru cevap: Tuzlu su timsahı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "hayvanlar-70fc34c4b825dc",
+    "category": "hayvanlar",
+    "text": "Kabuklu avlarını açarken taş kullanabilen deniz memelisi hangisidir?",
+    "options": [
+      "Deniz samuru",
+      "Mors",
+      "Fok",
+      "Denizaslanı"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Deniz samuru.",
+    "difficulty": "general"
+  },
+  {
+    "id": "hayvanlar-7d05b773fa4179",
+    "category": "hayvanlar",
+    "text": "İbibik hangi özelliğiyle tanınır?",
+    "options": [
+      "Yelpaze gibi açılabilen baş tüyleri",
+      "Karanlık mağara sularına uyum sağlamış soluk vücut",
+      "Andlar'da yaşayan küçük ve ince yünlü bir devegil olması",
+      "Kulaklarının ucundaki uzun siyah püsküller"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Yelpaze gibi açılabilen baş tüyleri.",
     "difficulty": "general"
   },
   {
@@ -924,48 +924,6 @@
     "difficulty": "general"
   },
   {
-    "id": "arabalar-9381433235800d",
-    "category": "arabalar",
-    "text": "Dodge markasının kökeni hangi ülkeye dayanır?",
-    "options": [
-      "Çekya",
-      "ABD",
-      "Japonya",
-      "İtalya"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: ABD.",
-    "difficulty": "general"
-  },
-  {
-    "id": "arabalar-da950707535921",
-    "category": "arabalar",
-    "text": "Dörtlü ikaz lambası ne işe yarar?",
-    "options": [
-      "Egzoz gazını temizlemeye",
-      "Diğer sürücüleri uyarmaya",
-      "Yakıtı püskürtmeye",
-      "Motoru soğutmaya"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Diğer sürücüleri uyarmaya.",
-    "difficulty": "general"
-  },
-  {
-    "id": "arabalar-a7d421ede135d3",
-    "category": "arabalar",
-    "text": "Yakıt göstergesi ne işe yarar?",
-    "options": [
-      "Egzoz gazını temizlemeye",
-      "Yakıt seviyesini göstermeye",
-      "Yakıtı püskürtmeye",
-      "Motoru soğutmaya"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Yakıt seviyesini göstermeye.",
-    "difficulty": "general"
-  },
-  {
     "id": "arabalar-5e27f47d5442b9",
     "category": "arabalar",
     "text": "308 modeli hangi otomobil markasına aittir?",
@@ -977,20 +935,6 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Peugeot.",
-    "difficulty": "general"
-  },
-  {
-    "id": "arabalar-1f99ee8db27d40",
-    "category": "arabalar",
-    "text": "Mercedes-Benz markasının kökeni hangi ülkeye dayanır?",
-    "options": [
-      "Birleşik Krallık",
-      "Japonya",
-      "Almanya",
-      "Çekya"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Almanya.",
     "difficulty": "general"
   },
   {
@@ -1008,17 +952,17 @@
     "difficulty": "general"
   },
   {
-    "id": "arabalar-f8859f0dd05f31",
+    "id": "arabalar-fc547c90a298a9",
     "category": "arabalar",
-    "text": "Opel markasının kökeni hangi ülkeye dayanır?",
+    "text": "Megane otomobilini üreten marka hangisidir?",
     "options": [
-      "Almanya",
-      "ABD",
-      "Birleşik Krallık",
-      "Güney Kore"
+      "Chrysler",
+      "Renault",
+      "Subaru",
+      "Infiniti"
     ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Almanya.",
+    "correct": 1,
+    "explanation": "Megane, Renault markasının model ailesinde yer alan bir otomobildir; soru modelin marka kimliğini sorar.",
     "difficulty": "general"
   },
   {
@@ -1033,34 +977,6 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Tesla.",
-    "difficulty": "general"
-  },
-  {
-    "id": "arabalar-adb896d0b9c667",
-    "category": "arabalar",
-    "text": "Bagaj ne işe yarar?",
-    "options": [
-      "Egzoz gazını temizlemeye",
-      "Yakıtı püskürtmeye",
-      "Eşya taşımaya",
-      "Motoru soğutmaya"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Eşya taşımaya.",
-    "difficulty": "general"
-  },
-  {
-    "id": "arabalar-b256b90a1d3952",
-    "category": "arabalar",
-    "text": "Chevrolet markasının kökeni hangi ülkeye dayanır?",
-    "options": [
-      "Japonya",
-      "Almanya",
-      "İtalya",
-      "ABD"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: ABD.",
     "difficulty": "general"
   },
   {
@@ -1092,59 +1008,87 @@
     "difficulty": "general"
   },
   {
-    "id": "futbol-d1d520b22fb533",
-    "category": "futbol",
-    "text": "1998 FIFA Erkekler Dünya Kupası'nın ev sahibi ülke veya ülkeleri hangisiydi?",
+    "id": "arabalar-c104f36eec5607",
+    "category": "arabalar",
+    "text": "“Elektrik enerjisini kimyasal olarak depolar” tanımı hangi otomobil parçasına veya sistemine aittir?",
     "options": [
-      "Fransa",
-      "İtalya",
-      "İngiltere",
-      "Uruguay"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Fransa.",
-    "difficulty": "general"
-  },
-  {
-    "id": "futbol-b43f9a86db041b",
-    "category": "futbol",
-    "text": "Genoa kulübünün merkezinin bulunduğu şehir hangisidir?",
-    "options": [
-      "Manchester",
-      "Cenova",
-      "Paris",
-      "Nottingham"
+      "Kızdırma bujisi",
+      "Akü",
+      "Rejeneratif frenleme",
+      "Hava filtresi"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Cenova.",
+    "explanation": "Doğru cevap: Akü.",
     "difficulty": "general"
   },
   {
-    "id": "futbol-847980313b3342",
-    "category": "futbol",
-    "text": "EURO 2016 finallerinin ev sahibi ülke veya ülkeleri hangisiydi?",
+    "id": "arabalar-07b1d02f9785f4",
+    "category": "arabalar",
+    "text": "Aventador modeli hangi otomobil markasına aittir?",
     "options": [
-      "Almanya",
-      "Fransa",
-      "11 farklı Avrupa ülkesi",
-      "Belçika"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Fransa.",
-    "difficulty": "general"
-  },
-  {
-    "id": "futbol-9042eaf6b5f94d",
-    "category": "futbol",
-    "text": "Hakemin oyuncuya gösterdiği sarı kart ne anlama gelir?",
-    "options": [
-      "Oyuncunun kaptan olduğu",
-      "Doğrudan gol",
-      "İhtar",
-      "Maçın bittiği"
+      "Volkswagen",
+      "SEAT",
+      "Lamborghini",
+      "Bentley"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: İhtar.",
+    "explanation": "Doğru cevap: Lamborghini.",
+    "difficulty": "general"
+  },
+  {
+    "id": "arabalar-63ae7596d9bfa1",
+    "category": "arabalar",
+    "text": "Swift modeli hangi otomobil markasına aittir?",
+    "options": [
+      "Suzuki",
+      "Chevrolet",
+      "Bentley",
+      "Lamborghini"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Suzuki.",
+    "difficulty": "general"
+  },
+  {
+    "id": "arabalar-4d84293008575d",
+    "category": "arabalar",
+    "text": "RX modeli hangi otomobil markasına aittir?",
+    "options": [
+      "Hyundai",
+      "Lexus",
+      "Alfa Romeo",
+      "Opel"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Lexus.",
+    "difficulty": "general"
+  },
+  {
+    "id": "arabalar-f242162d3a29d0",
+    "category": "arabalar",
+    "text": "9-3 modeli hangi otomobil markasına aittir?",
+    "options": [
+      "Infiniti",
+      "Honda",
+      "Audi",
+      "Saab"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Saab.",
+    "difficulty": "general"
+  },
+  {
+    "id": "arabalar-fccc36f8940441",
+    "category": "arabalar",
+    "text": "“Aracı elektrikle ilk kez döndürerek çalıştırır” tanımı hangi otomobil parçasına veya sistemine aittir?",
+    "options": [
+      "Marş motoru",
+      "Akü",
+      "Klima kompresörü",
+      "Dizel partikül filtresi"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Marş motoru.",
     "difficulty": "general"
   },
   {
@@ -1162,45 +1106,17 @@
     "difficulty": "general"
   },
   {
-    "id": "futbol-51ae1b639ea93a",
+    "id": "futbol-86b21eab7b9850",
     "category": "futbol",
-    "text": "Futbolda iki komşu veya ezeli rakip takımın maçına sıkça ne denir?",
+    "text": "1994 FIFA Erkekler Dünya Kupası'nın ev sahibi ülke veya ülkeleri hangisiydi?",
     "options": [
-      "Derbi",
-      "Set",
-      "Ralli",
-      "Sprint"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Derbi.",
-    "difficulty": "general"
-  },
-  {
-    "id": "futbol-b49cbe03a6ca52",
-    "category": "futbol",
-    "text": "Maç başlamadan önce yapılan hareketler ve kısa koşuların amacı nedir?",
-    "options": [
-      "Rakibe gol yazmak",
-      "Skoru değiştirmek",
-      "Maçı bitirmek",
-      "Isınmak"
+      "Meksika",
+      "Fransa",
+      "Almanya",
+      "ABD"
     ],
     "correct": 3,
-    "explanation": "Doğru cevap: Isınmak.",
-    "difficulty": "general"
-  },
-  {
-    "id": "futbol-3abb26e0a56a79",
-    "category": "futbol",
-    "text": "Topu rakip kaleye gönderip sayı kazanmaya ne denir?",
-    "options": [
-      "Korner",
-      "Taç",
-      "Ofsayt",
-      "Gol"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Gol.",
+    "explanation": "Doğru cevap: ABD.",
     "difficulty": "general"
   },
   {
@@ -1208,111 +1124,153 @@
     "category": "futbol",
     "text": "EURO 2024 Erkekler Avrupa Futbol Şampiyonası'nı kim kazandı?",
     "options": [
-      "Çekoslovakya",
+      "İngiltere",
       "İspanya",
-      "İtalya",
-      "Sovyetler Birliği"
+      "Fransa",
+      "Hollanda"
     ],
     "correct": 1,
     "explanation": "Doğru cevap: İspanya.",
     "difficulty": "general"
   },
   {
-    "id": "futbol-fb5934fc4f2824",
+    "id": "futbol-4d307f5cb6fd85",
     "category": "futbol",
-    "text": "Takımları çalıştıran ve oyun planını hazırlayan kişinin görevi hangisidir?",
+    "text": "EURO 2008 Erkekler Avrupa Futbol Şampiyonası'nı kim kazandı?",
     "options": [
-      "Teknik direktör",
-      "Hakem",
-      "Spiker",
-      "Seyirci"
+      "İspanya",
+      "Almanya",
+      "Türkiye",
+      "Rusya"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: Teknik direktör.",
+    "explanation": "Doğru cevap: İspanya.",
     "difficulty": "general"
   },
   {
-    "id": "futbol-1230bc75d4af1b",
+    "id": "futbol-93a2e7c1d3603f",
     "category": "futbol",
-    "text": "Real Madrid kulübünün merkezinin bulunduğu şehir hangisidir?",
+    "text": "Celtic kulübünün merkezinin bulunduğu şehir hangisidir?",
     "options": [
-      "Leeds",
-      "Madrid",
-      "Valensiya",
-      "Nottingham"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Madrid.",
-    "difficulty": "general"
-  },
-  {
-    "id": "futbol-c47482b1971e69",
-    "category": "futbol",
-    "text": "Maçı televizyonda anlatan kişiye ne denir?",
-    "options": [
-      "Kaleci",
-      "Kaptan",
-      "Stoper",
-      "Spiker"
+      "Berlin",
+      "Udine",
+      "Bochum",
+      "Glasgow"
     ],
     "correct": 3,
-    "explanation": "Doğru cevap: Spiker.",
+    "explanation": "Doğru cevap: Glasgow.",
     "difficulty": "general"
   },
   {
-    "id": "futbol-e3b529b4125fd2",
+    "id": "futbol-93aabe425c0e82",
     "category": "futbol",
-    "text": "Arsenal, aşağıdaki statlardan hangisini tarihinde iç saha maçları için kullanmıştır?",
+    "text": "Bir oyuncunun aynı maçta üç gol atmasına ne denir?",
     "options": [
-      "Stade Vélodrome",
-      "Anoeta",
-      "Highbury",
-      "City Ground"
-    ],
-    "correct": 2,
-    "explanation": "Highbury, Arsenal kulübünün tarihindeki iç saha statlarından biridir; soru güncel sponsorluk adını sormaz.",
-    "difficulty": "general"
-  },
-  {
-    "id": "kaleciler-7928162052db22",
-    "category": "kaleciler",
-    "text": "Kaleci için karşıdan gelen topun hızını fark etmek neyi etkiler?",
-    "options": [
-      "Müdahale zamanını",
-      "Saha uzunluğunu",
-      "Oyuncu sayısını",
-      "Maçın tarihini"
+      "Hat-trick",
+      "Korner",
+      "Taç",
+      "Ofsayt"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: Müdahale zamanını.",
+    "explanation": "Doğru cevap: Hat-trick.",
     "difficulty": "general"
   },
   {
-    "id": "kaleciler-c91ace563c0882",
-    "category": "kaleciler",
-    "text": "Kalecinin yerde yuvarlanan topu alçalarak tutması neyi amaçlar?",
+    "id": "futbol-2358d7f0d719d5",
+    "category": "futbol",
+    "text": "Top en son savunmacıya değip kendi kale çizgisinden gol olmadan çıkarsa ne verilir?",
     "options": [
-      "Topun altından geçmesini önlemek",
-      "Kaleyi küçültmek",
-      "Topa daha az bakmak",
-      "Rakibe gol vermek"
+      "Santra",
+      "Köşe vuruşu",
+      "Taç atışı",
+      "Gol"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Köşe vuruşu.",
+    "difficulty": "general"
+  },
+  {
+    "id": "futbol-c86eb0e04b4b9c",
+    "category": "futbol",
+    "text": "Chelsea, aşağıdaki statlardan hangisini tarihinde iç saha maçları için kullanmıştır?",
+    "options": [
+      "Stamford Bridge",
+      "De Kuip",
+      "Camp Nou",
+      "Ruhrstadion"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: Topun altından geçmesini önlemek.",
+    "explanation": "Stamford Bridge, Chelsea kulübünün tarihindeki iç saha statlarından biridir; soru güncel sponsorluk adını sormaz.",
     "difficulty": "general"
   },
   {
-    "id": "kaleciler-d0f730e57c31fb",
-    "category": "kaleciler",
-    "text": "Penaltı sırasında kalecinin karşısındaki oyuncunun amacı nedir?",
+    "id": "futbol-140ef1c1adf135",
+    "category": "futbol",
+    "text": "Fiorentina kulübünün merkezinin bulunduğu şehir hangisidir?",
     "options": [
-      "Köşe bayrağını taşımak",
-      "Taç kullanmak",
-      "Gol atmak",
-      "Oyuncu değiştirmek"
+      "Parma",
+      "Eindhoven",
+      "Torino",
+      "Floransa"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Floransa.",
+    "difficulty": "general"
+  },
+  {
+    "id": "futbol-a259691d840bdb",
+    "category": "futbol",
+    "text": "Real Madrid, aşağıdaki statlardan hangisini tarihinde iç saha maçları için kullanmıştır?",
+    "options": [
+      "Santiago Bernabéu",
+      "Ruhrstadion",
+      "Goodison Park",
+      "Philips Stadion"
+    ],
+    "correct": 0,
+    "explanation": "Santiago Bernabéu, Real Madrid kulübünün tarihindeki iç saha statlarından biridir; soru güncel sponsorluk adını sormaz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "futbol-6cd420c2f983fb",
+    "category": "futbol",
+    "text": "EURO 2020 Erkekler Avrupa Futbol Şampiyonası'nı kim kazandı?",
+    "options": [
+      "İngiltere",
+      "İspanya",
+      "İtalya",
+      "Danimarka"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: Gol atmak.",
+    "explanation": "EURO 2020, pandemi nedeniyle 2021 yılında oynandı. Şampiyon İtalya oldu.",
+    "difficulty": "general"
+  },
+  {
+    "id": "futbol-bd969916d42abb",
+    "category": "futbol",
+    "text": "1994 FIFA Erkekler Dünya Kupası'nı hangi takım kazandı?",
+    "options": [
+      "Brezilya",
+      "İspanya",
+      "Arjantin",
+      "İtalya"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Brezilya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "futbol-ce4110e67c83f6",
+    "category": "futbol",
+    "text": "Savunmanın ortasında oynayan oyuncu için kullanılan terim hangisidir?",
+    "options": [
+      "Santrfor",
+      "Spiker",
+      "Stoper",
+      "Kanat forvet"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Stoper.",
     "difficulty": "general"
   },
   {
@@ -1330,118 +1288,6 @@
     "difficulty": "general"
   },
   {
-    "id": "kaleciler-32c55b1ab20b0a",
-    "category": "kaleciler",
-    "text": "Kalecinin takım arkadaşına seslenerek boşta kalan rakibi göstermesi neye örnektir?",
-    "options": [
-      "Gol kararı",
-      "Savunmayı yönlendirme",
-      "Kart kararı",
-      "Taç kararı"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Savunmayı yönlendirme.",
-    "difficulty": "general"
-  },
-  {
-    "id": "kaleciler-2ab1146ea8e683",
-    "category": "kaleciler",
-    "text": "Kaleci Rüştü Reçber hangi ülkenin A millî takımında forma giymiştir?",
-    "options": [
-      "Slovenya",
-      "Türkiye",
-      "Belçika",
-      "Fransa"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Türkiye.",
-    "difficulty": "general"
-  },
-  {
-    "id": "kaleciler-3e402097b7ea13",
-    "category": "kaleciler",
-    "text": "Kalecinin hatadan sonra dikkatini yeniden oyuna vermesi neye yardımcı olur?",
-    "options": [
-      "Önceki golü silmeye",
-      "Sonraki pozisyona hazır olmaya",
-      "Rakibin puanını düşürmeye",
-      "Sahayı değiştirmeye"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Sonraki pozisyona hazır olmaya.",
-    "difficulty": "general"
-  },
-  {
-    "id": "kaleciler-ff299b50d127ae",
-    "category": "kaleciler",
-    "text": "Bir kalecinin aynı maçta pek çok şutu durdurması nasıl değerlendirilir?",
-    "options": [
-      "Hakemlik başarısı",
-      "Oyuncu değişikliği",
-      "Gol atma serisi",
-      "Başarılı kurtarış performansı"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Başarılı kurtarış performansı.",
-    "difficulty": "general"
-  },
-  {
-    "id": "kaleciler-394c868582cef0",
-    "category": "kaleciler",
-    "text": "Bir kaleci neden maçtan önce ısınma yapar?",
-    "options": [
-      "Sahayı boyamak için",
-      "Vücudunu oyuna hazırlamak için",
-      "Hakemi değiştirmek için",
-      "Skoru artırmak için"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Vücudunu oyuna hazırlamak için.",
-    "difficulty": "general"
-  },
-  {
-    "id": "kaleciler-822c6a72dd570d",
-    "category": "kaleciler",
-    "text": "Bir kalecinin maçtaki ana görevi hangisidir?",
-    "options": [
-      "Hakemin yerine karar vermek",
-      "Rakibin gol atmasını önlemek",
-      "Köşe bayraklarını taşımak",
-      "Maçı anlatmak"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Rakibin gol atmasını önlemek.",
-    "difficulty": "general"
-  },
-  {
-    "id": "kaleciler-65e7bc1a1bc7a7",
-    "category": "kaleciler",
-    "text": "Kaleci antrenmanında farklı yönlerden top gönderilmesi neyi çalıştırır?",
-    "options": [
-      "Saha çizimini",
-      "Bilet kontrolünü",
-      "Farklı şutlara tepkiyi",
-      "Lig takvimini"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Farklı şutlara tepkiyi.",
-    "difficulty": "general"
-  },
-  {
-    "id": "kaleciler-ee792c8350d3b0",
-    "category": "kaleciler",
-    "text": "Kaleci, sahanın diğer ucunda oyun varken ne yapmalıdır?",
-    "options": [
-      "Oyunu takip etmelidir",
-      "Sahadan ayrılmalıdır",
-      "Maçı izlemeyi bırakmalıdır",
-      "Kaleyi boşaltıp oturmalıdır"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Oyunu takip etmelidir.",
-    "difficulty": "general"
-  },
-  {
     "id": "kaleciler-bf6c7624d02079",
     "category": "kaleciler",
     "text": "2002 Dünya Kupası'nda Türkiye'nin birinci kalecisi kimdi?",
@@ -1453,6 +1299,160 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Rüştü Reçber.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-e7704f8371764e",
+    "category": "kaleciler",
+    "text": "Kalecinin sağ ve sol yana uzanarak topa müdahale etmesi hangisidir?",
+    "options": [
+      "Santra",
+      "Plonjon",
+      "Taç",
+      "Röveşata"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Plonjon.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-346b4868698bfa",
+    "category": "kaleciler",
+    "text": "Kaleci Petr Čech hangi ülkenin A millî takımında forma giymiştir?",
+    "options": [
+      "İngiltere",
+      "Meksika",
+      "Uruguay",
+      "Çekya"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Çekya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-70d2c0d9ee9e1f",
+    "category": "kaleciler",
+    "text": "2014 Dünya Kupası'nda Altın Eldiven ödülünü kim kazandı?",
+    "options": [
+      "Sergio Romero",
+      "Hugo Lloris",
+      "Keylor Navas",
+      "Manuel Neuer"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Manuel Neuer.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-0cbf1771de1f8c",
+    "category": "kaleciler",
+    "text": "Frikik golleriyle tanınan Paraguaylı kaleci kimdir?",
+    "options": [
+      "Jorge Campos",
+      "Rogério Ceni",
+      "José Luis Chilavert",
+      "René Higuita"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: José Luis Chilavert.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-b994197971a4a7",
+    "category": "kaleciler",
+    "text": "Kaleci Alisson Becker hangi ülkenin A millî takımında forma giymiştir?",
+    "options": [
+      "Paraguay",
+      "İngiltere",
+      "Türkiye",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Brezilya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-347eaad06eb504",
+    "category": "kaleciler",
+    "text": "Kaleci Emiliano Martínez hangi ülkenin A millî takımında forma giymiştir?",
+    "options": [
+      "Belçika",
+      "İngiltere",
+      "Danimarka",
+      "Arjantin"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Arjantin.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-875a83a36e8a2e",
+    "category": "kaleciler",
+    "text": "2011 yılında Lazio'dan Galatasaray'a transfer olan kaleci kimdir?",
+    "options": [
+      "Cláudio Taffarel",
+      "Morgan De Sanctis",
+      "Faryd Mondragón",
+      "Fernando Muslera"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Fernando Muslera.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-a7ec1973910edb",
+    "category": "kaleciler",
+    "text": "Kaleci Edwin van der Sar hangi ülkenin A millî takımında forma giymiştir?",
+    "options": [
+      "İspanya",
+      "Türkiye",
+      "Hollanda",
+      "Slovenya"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Hollanda.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-cc2f1b77653b39",
+    "category": "kaleciler",
+    "text": "Renkli formaları ve kısa boyuyla tanınan Meksikalı kaleci kimdir?",
+    "options": [
+      "René Higuita",
+      "Keylor Navas",
+      "Guillermo Ochoa",
+      "Jorge Campos"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Jorge Campos.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-cfc5384fc4529e",
+    "category": "kaleciler",
+    "text": "Kaleci Ederson hangi ülkenin A millî takımında forma giymiştir?",
+    "options": [
+      "Brezilya",
+      "Kolombiya",
+      "Meksika",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Brezilya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "kaleciler-fbbab0d16f9f29",
+    "category": "kaleciler",
+    "text": "Kaleci Fabien Barthez hangi ülkenin A millî takımında forma giymiştir?",
+    "options": [
+      "Fransa",
+      "Hollanda",
+      "İtalya",
+      "Brezilya"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Fransa.",
     "difficulty": "general"
   },
   {
@@ -1484,73 +1484,17 @@
     "difficulty": "general"
   },
   {
-    "id": "gezegenler-4e1ca47603feb8",
+    "id": "gezegenler-b4dd9df98f0feb",
     "category": "gezegenler",
-    "text": "Dünya'nın kendi çevresinde dönmesi yaklaşık ne kadar sürer?",
+    "text": "Ay'ın yüzeyindeki koyu düzlüklerin tarihsel adı nedir?",
     "options": [
-      "24 saat",
-      "30 gün",
-      "7 gün",
-      "1 saat"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: 24 saat.",
-    "difficulty": "general"
-  },
-  {
-    "id": "gezegenler-7964f14315e198",
-    "category": "gezegenler",
-    "text": "Dünya'nın Kuzey Kutbu ile Güney Kutbu hangi hayalî çizginin uçlarıdır?",
-    "options": [
-      "Yörünge",
-      "Ufuk çizgisi",
-      "Ekvator",
-      "Dönme ekseni"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Dönme ekseni.",
-    "difficulty": "general"
-  },
-  {
-    "id": "gezegenler-c39a43501d08c1",
-    "category": "gezegenler",
-    "text": "Satürn ile Neptün arasında hangi gezegen bulunur?",
-    "options": [
-      "Mars",
-      "Merkür",
-      "Uranüs",
-      "Venüs"
+      "Ormanlar",
+      "Bulutlar",
+      "Denizler",
+      "Çöller"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: Uranüs.",
-    "difficulty": "general"
-  },
-  {
-    "id": "gezegenler-dfba44aee96258",
-    "category": "gezegenler",
-    "text": "Mars yüzeyinde hareket ederek araştırma yapan araca ne denir?",
-    "options": [
-      "Gezgin robot",
-      "Yelkenli",
-      "Planör",
-      "Denizaltı"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Gezgin robot.",
-    "difficulty": "general"
-  },
-  {
-    "id": "gezegenler-61f7214f945c1a",
-    "category": "gezegenler",
-    "text": "Uzaya yolculuk yapan kişiye genel olarak ne denir?",
-    "options": [
-      "Dalgıç",
-      "Astronot",
-      "Arkeolog",
-      "Meteorolog"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Astronot.",
+    "explanation": "Doğru cevap: Denizler.",
     "difficulty": "general"
   },
   {
@@ -1568,34 +1512,6 @@
     "difficulty": "general"
   },
   {
-    "id": "gezegenler-6897a75c0cbc23",
-    "category": "gezegenler",
-    "text": "Dünya'nın Güneş'e göre bir iç komşusu ve bir dış komşusu hangileridir?",
-    "options": [
-      "Uranüs ve Neptün",
-      "Venüs ve Mars",
-      "Jüpiter ve Satürn",
-      "Merkür ve Jüpiter"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Venüs ve Mars.",
-    "difficulty": "general"
-  },
-  {
-    "id": "gezegenler-964365e5618a9d",
-    "category": "gezegenler",
-    "text": "Güneş'in çevresinde gezegenlerle birlikte bulunan sistemin adı nedir?",
-    "options": [
-      "Güneş Sistemi",
-      "Samanyolu'nun tamamı",
-      "Dünya atmosferi",
-      "Bütün evren"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Güneş Sistemi.",
-    "difficulty": "general"
-  },
-  {
     "id": "gezegenler-4ceed1fe7973d7",
     "category": "gezegenler",
     "text": "Bir gök cisminin yere ulaşan parçasına ne denir?",
@@ -1610,17 +1526,17 @@
     "difficulty": "general"
   },
   {
-    "id": "gezegenler-f067481b01c2bb",
+    "id": "gezegenler-cd888c753e0561",
     "category": "gezegenler",
-    "text": "Dünya'nın kutupları kaç tanedir?",
+    "text": "Europa hangi gezegenin uydusudur?",
     "options": [
-      "Dört",
-      "Altı",
-      "Üç",
-      "İki"
+      "Jüpiter",
+      "Mars",
+      "Neptün",
+      "Dünya"
     ],
-    "correct": 3,
-    "explanation": "Doğru cevap: İki.",
+    "correct": 0,
+    "explanation": "Doğru cevap: Jüpiter.",
     "difficulty": "general"
   },
   {
@@ -1638,31 +1554,87 @@
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-945844cb43473b",
-    "category": "genel-kultur",
-    "text": "İnsan vücudunda kanı pompalayan organ hangisidir?",
+    "id": "gezegenler-c75b2a58837137",
+    "category": "gezegenler",
+    "text": "Jüpiter'in dört büyük uydusunu 1610'da gözlemleyen bilim insanı kimdir?",
     "options": [
-      "Mide",
-      "Akciğer",
-      "Böbrek",
-      "Kalp"
+      "Edwin Hubble",
+      "Galileo Galilei",
+      "Stephen Hawking",
+      "Albert Einstein"
     ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Kalp.",
+    "correct": 1,
+    "explanation": "Doğru cevap: Galileo Galilei.",
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-782409b0fc97c1",
-    "category": "genel-kultur",
-    "text": "Bir üçgenin iç açılarının toplamı düzlemde kaç derecedir?",
+    "id": "gezegenler-d622bf40d84732",
+    "category": "gezegenler",
+    "text": "Ana asteroit kuşağı hangi iki gezegen arasındadır?",
     "options": [
-      "360",
-      "270",
-      "180",
-      "90"
+      "Mars ve Jüpiter",
+      "Jüpiter ve Satürn",
+      "Venüs ve Dünya",
+      "Dünya ve Mars"
     ],
-    "correct": 2,
-    "explanation": "Doğru cevap: 180.",
+    "correct": 0,
+    "explanation": "Doğru cevap: Mars ve Jüpiter.",
+    "difficulty": "general"
+  },
+  {
+    "id": "gezegenler-9e4e0a7b7c0973",
+    "category": "gezegenler",
+    "text": "Gezegenler görünür ışıkta neden parlar?",
+    "options": [
+      "İçlerinde ampul olduğu için",
+      "Yıldız ışığını yansıttıkları için",
+      "Hepsi yıldız olduğu için",
+      "Hepsi nükleer füzyon yaptığı için"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Yıldız ışığını yansıttıkları için.",
+    "difficulty": "general"
+  },
+  {
+    "id": "gezegenler-a62f5f2bfc243d",
+    "category": "gezegenler",
+    "text": "Dünya'nın Güneş çevresindeki yörüngesi hangi şekle yakındır?",
+    "options": [
+      "Spiral merdiven",
+      "Kare",
+      "Üçgen",
+      "Elips"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Elips.",
+    "difficulty": "general"
+  },
+  {
+    "id": "gezegenler-358e335a473e4d",
+    "category": "gezegenler",
+    "text": "Ay'ın Dünya'ya hep yaklaşık aynı yüzünü göstermesinin nedeni nedir?",
+    "options": [
+      "Kendi ışığını üretmesi",
+      "Dönme ve dolanma sürelerinin eşit olması",
+      "Dünya'dan büyük olması",
+      "Hiç dönmemesi"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Dönme ve dolanma sürelerinin eşit olması.",
+    "difficulty": "general"
+  },
+  {
+    "id": "gezegenler-443c891989e1fb",
+    "category": "gezegenler",
+    "text": "Buz kabuğunun altında okyanus bulunduğuna güçlü kanıtlar olan Jüpiter uydusu hangisidir?",
+    "options": [
+      "Europa",
+      "Triton",
+      "Phobos",
+      "Titan"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Europa.",
     "difficulty": "general"
   },
   {
@@ -1694,6 +1666,34 @@
     "difficulty": "general"
   },
   {
+    "id": "genel-kultur-339c8f90bb3c90",
+    "category": "genel-kultur",
+    "text": "“Gülün Adı” eserinin yazarı kimdir?",
+    "options": [
+      "Mihail Bulgakov",
+      "Umberto Eco",
+      "Harper Lee",
+      "Peyami Safa"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Umberto Eco.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-fa5967f43d44b0",
+    "category": "genel-kultur",
+    "text": "“Goriot Baba” eserinin yazarı kimdir?",
+    "options": [
+      "İvan Gonçarov",
+      "Honoré de Balzac",
+      "Ahmet Hamdi Tanpınar",
+      "Aldous Huxley"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Honoré de Balzac.",
+    "difficulty": "general"
+  },
+  {
     "id": "genel-kultur-e731cf293c10ae",
     "category": "genel-kultur",
     "text": "“Küçük Prens” adlı eserin yaratıcısı kimdir?",
@@ -1708,20 +1708,6 @@
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-d79c361d21ba8e",
-    "category": "genel-kultur",
-    "text": "Bir kilometre kaç metredir?",
-    "options": [
-      "10000",
-      "10",
-      "100",
-      "1000"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: 1000.",
-    "difficulty": "general"
-  },
-  {
     "id": "genel-kultur-5f237ac2235186",
     "category": "genel-kultur",
     "text": "Görelilik kuramıyla tanınan bilim insanı kimdir?",
@@ -1733,20 +1719,6 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Albert Einstein.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-4fd2adf110c196",
-    "category": "genel-kultur",
-    "text": "Karbonun kimyasal sembolü hangisidir?",
-    "options": [
-      "Ca",
-      "C",
-      "Cu",
-      "Co"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: C.",
     "difficulty": "general"
   },
   {
@@ -1778,20 +1750,6 @@
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-b69ae3b3e66d17",
-    "category": "genel-kultur",
-    "text": "Üflenerek çalınan çalgı hangisidir?",
-    "options": [
-      "Piyano",
-      "Davul",
-      "Gitar",
-      "Flüt"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Flüt.",
-    "difficulty": "general"
-  },
-  {
     "id": "genel-kultur-2d17652c1ccf2a",
     "category": "genel-kultur",
     "text": "“Romeo ve Juliet” adlı eserin yaratıcısı kimdir?",
@@ -1806,6 +1764,20 @@
     "difficulty": "general"
   },
   {
+    "id": "genel-kultur-58314055e97200",
+    "category": "genel-kultur",
+    "text": "Teniste sıfır puan için kullanılan terim hangisidir?",
+    "options": [
+      "Deuce",
+      "Love",
+      "Ace",
+      "Let"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Love.",
+    "difficulty": "general"
+  },
+  {
     "id": "genel-kultur-e9b89a8fc9d269",
     "category": "genel-kultur",
     "text": "“1984 romanı” adlı eserin yaratıcısı kimdir?",
@@ -1817,6 +1789,34 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: George Orwell.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-d79fe635d08750",
+    "category": "genel-kultur",
+    "text": "Elektrik akımının SI birimi hangisidir?",
+    "options": [
+      "Amper",
+      "Ohm",
+      "Watt",
+      "Volt"
+    ],
+    "correct": 0,
+    "explanation": "Doğru cevap: Amper.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-c4c3144e680f84",
+    "category": "genel-kultur",
+    "text": "Bitkilere yeşil rengini veren pigment hangisidir?",
+    "options": [
+      "Melanin",
+      "Keratin",
+      "Hemoglobin",
+      "Klorofil"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Klorofil.",
     "difficulty": "general"
   },
   {
@@ -1988,17 +1988,17 @@
     "difficulty": "general"
   },
   {
-    "id": "meshur-dd16dd26364e1d",
+    "id": "meshur-89d55fb6836d43",
     "category": "meshur",
-    "text": "Karpuz ve surlar hangi ilimizi hatırlatır?",
+    "text": "Pazaryeri bozası ve Söğüt ilçesiyle tanınan ilimiz hangisidir?",
     "options": [
-      "Kocaeli",
-      "Aksaray",
-      "Kahramanmaraş",
-      "Diyarbakır"
+      "Bilecik",
+      "Karaman",
+      "Kars",
+      "Uşak"
     ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Diyarbakır.",
+    "correct": 0,
+    "explanation": "Pazaryeri bozası, Bilecik ilinin tanınmış değerlerindendir.",
     "difficulty": "general"
   },
   {
@@ -2018,7 +2018,7 @@
   {
     "id": "meshur-cf1adf03fd10ae",
     "category": "meshur",
-    "text": "Antep fıstıklı baklavası ve beyranıyla tanınan ilimiz hangisidir?",
+    "text": "Fıstıklı baklavası ve beyranıyla tanınan ilimiz hangisidir?",
     "options": [
       "Kırklareli",
       "Gaziantep",
@@ -2058,59 +2058,17 @@
     "difficulty": "general"
   },
   {
-    "id": "meshur-644970b1e7fcf4",
+    "id": "meshur-d93fa9c863ae06",
     "category": "meshur",
-    "text": "Balıklıgöl ve sıra geceleri hangi ilimizi hatırlatır?",
-    "options": [
-      "Zonguldak",
-      "Şanlıurfa",
-      "Kars",
-      "Kocaeli"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Şanlıurfa.",
-    "difficulty": "general"
-  },
-  {
-    "id": "meshur-1b7ee2e3b7c517",
-    "category": "meshur",
-    "text": "Uzun ötüşlü horoz ve Pamukkale hangi ilimizi hatırlatır?",
+    "text": "Yer altındaki büyük kaya tuzu mağarasıyla tanınan ilimiz hangisidir?",
     "options": [
       "Trabzon",
-      "Kahramanmaraş",
-      "Denizli",
-      "Isparta"
+      "Uşak",
+      "Artvin",
+      "Çankırı"
     ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Denizli.",
-    "difficulty": "general"
-  },
-  {
-    "id": "meshur-e07cd3c39cb85e",
-    "category": "meshur",
-    "text": "Kumru sandviçi ve Bergama tulum peyniri hangi ilimizle özdeşleşmiştir?",
-    "options": [
-      "İzmir",
-      "Eskişehir",
-      "Yalova",
-      "Samsun"
-    ],
-    "correct": 0,
-    "explanation": "Kumru, İzmir ilinin tanınmış değerlerindendir.",
-    "difficulty": "general"
-  },
-  {
-    "id": "meshur-d0bac67cd822ec",
-    "category": "meshur",
-    "text": "Baklava ve Antep fıstığı hangi ilimizi hatırlatır?",
-    "options": [
-      "Aydın",
-      "Eskişehir",
-      "Gaziantep",
-      "Kütahya"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Gaziantep.",
+    "correct": 3,
+    "explanation": "Kaya tuzu mağarası, Çankırı ilinin tanınmış değerlerindendir.",
     "difficulty": "general"
   },
   {
@@ -2142,31 +2100,59 @@
     "difficulty": "general"
   },
   {
-    "id": "meshur-6cb4738c3d68d6",
+    "id": "meshur-d268d0c1f33f71",
     "category": "meshur",
-    "text": "Bafra pidesi ve Bandırma Vapuru Müzesi hangi ilimizi hatırlatır?",
+    "text": "Tiftik keçisi ve Beypazarı kurusuyla tanınan ilimiz hangisidir?",
     "options": [
-      "Hatay",
-      "Samsun",
-      "Gaziantep",
-      "Amasya"
+      "Adana",
+      "Kırıkkale",
+      "Karaman",
+      "Ankara"
     ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Samsun.",
+    "correct": 3,
+    "explanation": "Tiftik keçisi, Ankara ilinin tanınmış değerlerindendir.",
     "difficulty": "general"
   },
   {
-    "id": "enler-97ad31858853ae",
-    "category": "enler",
-    "text": "Güneş çevresindeki bir turunu en kısa sürede tamamlayan gezegen hangisidir?",
+    "id": "meshur-07aa571683ccc2",
+    "category": "meshur",
+    "text": "Zırh kıymasıyla hazırlanan acılı kebabı ve şalgamıyla tanınan ilimiz hangisidir?",
     "options": [
-      "Venüs",
-      "Mars",
-      "Merkür",
-      "Dünya"
+      "Aydın",
+      "Bitlis",
+      "Nevşehir",
+      "Adana"
+    ],
+    "correct": 3,
+    "explanation": "Adana kebabı, Adana ilinin tanınmış değerlerindendir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "meshur-719f46814c49ef",
+    "category": "meshur",
+    "text": "Tarhanası ve tarihî halıcılık geleneğiyle tanınan ilimiz hangisidir?",
+    "options": [
+      "Yalova",
+      "Kırklareli",
+      "Uşak",
+      "Hatay"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: Merkür. Merkür bir Güneş turunu yaklaşık 88 Dünya gününde tamamlar.",
+    "explanation": "Uşak tarhanası, Uşak ilinin tanınmış değerlerindendir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "meshur-e13814deff1afb",
+    "category": "meshur",
+    "text": "Çayı ve Anzer balıyla tanınan ilimiz hangisidir?",
+    "options": [
+      "Elazığ",
+      "Bingöl",
+      "Rize",
+      "Tokat"
+    ],
+    "correct": 2,
+    "explanation": "Rize çayı, Rize ilinin tanınmış değerlerindendir.",
     "difficulty": "general"
   },
   {
@@ -2240,6 +2226,20 @@
     "difficulty": "general"
   },
   {
+    "id": "enler-34c29df357cd44",
+    "category": "enler",
+    "text": "Güney Amerika'nın deniz seviyesine göre en yüksek zirvesi hangisidir?",
+    "options": [
+      "Chimborazo",
+      "Aconcagua",
+      "Huascarán",
+      "Illimani"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Aconcagua. Aconcagua, Arjantin'deki And Dağları'nda bulunur; yüksekliği yaklaşık 6.961 metredir.",
+    "difficulty": "general"
+  },
+  {
     "id": "enler-f498ee5b6195af",
     "category": "enler",
     "text": "Türkiye'deki illeri yüzölçümüne göre sıralarsak en geniş olan hangisidir?",
@@ -2251,20 +2251,6 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Konya. Konya'nın yüzölçümü yaklaşık 41 bin kilometrekaredir; sıralama il sınırlarının kapladığı alana göre yapılır.",
-    "difficulty": "general"
-  },
-  {
-    "id": "enler-18a88b16338120",
-    "category": "enler",
-    "text": "Bu ülkelerden hangisinin yüzölçümü en küçüktür: Türkiye ve üç komşusu?",
-    "options": [
-      "Ermenistan",
-      "İran",
-      "Türkiye",
-      "Irak"
-    ],
-    "correct": 0,
-    "explanation": "Bu ülkelerden hangisinin yüzölçümü en küçüktür: Türkiye ve üç komşusu? Bu karşılaştırmada doğru seçenek Ermenistan. Değerlendirme yalnızca soruda verilen dört seçenek ve belirtilen ölçüt içindir.",
     "difficulty": "general"
   },
   {
@@ -2282,45 +2268,59 @@
     "difficulty": "general"
   },
   {
-    "id": "enler-df9abea1f04fa3",
+    "id": "enler-0cb11119f3cd0d",
     "category": "enler",
-    "text": "Bu alfabetik kelimelerden hangisi Türk alfabesine göre en sonra gelir?",
+    "text": "Yaşayan sürüngenler arasında en iri tür hangisidir?",
     "options": [
-      "Zeytin",
-      "Armut",
-      "Kiraz",
-      "Elma"
+      "Tuzlu su timsahı",
+      "Nil timsahı",
+      "Komodo ejderi",
+      "Yeşil anakonda"
     ],
     "correct": 0,
-    "explanation": "Bu alfabetik kelimelerden hangisi Türk alfabesine göre en sonra gelir? Bu karşılaştırmada doğru seçenek Zeytin. Değerlendirme yalnızca soruda verilen dört seçenek ve belirtilen ölçüt içindir.",
+    "explanation": "Doğru cevap: Tuzlu su timsahı. Tuzlu su timsahının iri erkekleri 6 metreyi aşabilir. Hem tatlı hem tuzlu suda görülebilir.",
     "difficulty": "general"
   },
   {
-    "id": "enler-58bbdb73ac8d6e",
+    "id": "enler-c1e79738da9d76",
     "category": "enler",
-    "text": "Bu ülkelerden hangisinin yüzölçümü en büyüktür: Brezilya ve üç Güney Amerika ülkesi?",
+    "text": "İnsan vücudundaki en küçük kemik hangisidir?",
     "options": [
-      "Paraguay",
-      "Ekvador",
-      "Brezilya",
-      "Uruguay"
+      "Üzengi kemiği",
+      "Çekiç kemiği",
+      "Örs kemiği",
+      "Burun kemiği"
     ],
-    "correct": 2,
-    "explanation": "Bu ülkelerden hangisinin yüzölçümü en büyüktür: Brezilya ve üç Güney Amerika ülkesi? Bu karşılaştırmada doğru seçenek Brezilya. Değerlendirme yalnızca soruda verilen dört seçenek ve belirtilen ölçüt içindir.",
+    "correct": 0,
+    "explanation": "Doğru cevap: Üzengi kemiği. Üzengi kemiği orta kulaktadır ve yalnızca birkaç milimetre uzunluğundadır; ses titreşimlerinin iletilmesine katılır.",
     "difficulty": "general"
   },
   {
-    "id": "enler-2689388717f628",
+    "id": "enler-28b518568b1ea6",
     "category": "enler",
-    "text": "Bu alfabetik kelimelerden hangisi Türk alfabesine göre en önce gelir?",
+    "text": "Türkiye'nin en kuzeydeki kara noktası hangi burundur?",
     "options": [
-      "Elma",
-      "Muz",
-      "Armut",
-      "Kiraz"
+      "Anamur Burnu",
+      "Baba Burnu",
+      "İnceburun",
+      "Hopa Burnu"
     ],
     "correct": 2,
-    "explanation": "Bu alfabetik kelimelerden hangisi Türk alfabesine göre en önce gelir? Bu karşılaştırmada doğru seçenek Armut. Değerlendirme yalnızca soruda verilen dört seçenek ve belirtilen ölçüt içindir.",
+    "explanation": "Doğru cevap: İnceburun. İnceburun, Sinop ilindedir. Türkiye'nin Karadeniz'e en çok uzanan kuzey kara noktasıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "enler-1dc09d975dc576",
+    "category": "enler",
+    "text": "Dünyanın en uzun ağaçlarını barındıran tür hangisidir?",
+    "options": [
+      "Baobab",
+      "Sahil sekoyası",
+      "Sarıçam",
+      "Dev sekoya"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Sahil sekoyası. Sahil sekoyaları 100 metreyi aşabilir. Hacim rekorunu taşıyan dev sekoya ile aynı tür değildir.",
     "difficulty": "general"
   },
   {
@@ -2338,34 +2338,6 @@
     "difficulty": "general"
   },
   {
-    "id": "bayraklar-098058d70083a6",
-    "category": "bayraklar",
-    "text": "Hollanda: yatay kırmızı, beyaz ve mavi şeritler. Bu tarife uyan bayrak hangisidir?",
-    "options": [
-      "flag:gt",
-      "flag:hr",
-      "flag:nl",
-      "flag:hn"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: flag:nl.",
-    "difficulty": "general"
-  },
-  {
-    "id": "bayraklar-4cc0359061b4d6",
-    "category": "bayraklar",
-    "text": "Nepal: üst üste iki üçgen biçimindeki bayrak. Bu tarife uyan bayrak hangisidir?",
-    "options": [
-      "flag:np",
-      "flag:id",
-      "flag:et",
-      "flag:sk"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: flag:np.",
-    "difficulty": "general"
-  },
-  {
     "id": "bayraklar-3051523a28ff10",
     "category": "bayraklar",
     "text": "Libya ülkesinin bayrağı hangisidir?",
@@ -2377,20 +2349,6 @@
     ],
     "correct": 0,
     "explanation": "Doğru bayrak: Libya.",
-    "difficulty": "general"
-  },
-  {
-    "id": "bayraklar-19e382742fef5e",
-    "category": "bayraklar",
-    "text": "Bahreyn: beyaz ile kırmızı alanları ayıran dişli çizgi. Bu tarife uyan bayrak hangisidir?",
-    "options": [
-      "flag:lv",
-      "flag:bh",
-      "flag:fm",
-      "flag:bw"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: flag:bh.",
     "difficulty": "general"
   },
   {
@@ -2422,20 +2380,6 @@
     "difficulty": "general"
   },
   {
-    "id": "bayraklar-55675b65f5a353",
-    "category": "bayraklar",
-    "text": "Danimarka: kırmızı zemin üzerinde beyaz İskandinav haçı. Bu tarife uyan bayrak hangisidir?",
-    "options": [
-      "flag:et",
-      "flag:ne",
-      "flag:dk",
-      "flag:no"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: flag:dk.",
-    "difficulty": "general"
-  },
-  {
     "id": "bayraklar-cafb4f4d7ee719",
     "category": "bayraklar",
     "text": "Etiyopya ülkesinin bayrağı hangisidir?",
@@ -2447,20 +2391,6 @@
     ],
     "correct": 1,
     "explanation": "Doğru bayrak: Etiyopya.",
-    "difficulty": "general"
-  },
-  {
-    "id": "bayraklar-f514a817813079",
-    "category": "bayraklar",
-    "text": "Bangladeş ülkesinin bayrağı hangisidir?",
-    "options": [
-      "flag:nl",
-      "flag:tm",
-      "flag:kg",
-      "flag:bd"
-    ],
-    "correct": 3,
-    "explanation": "Doğru bayrak: Bangladeş.",
     "difficulty": "general"
   },
   {
@@ -2478,17 +2408,87 @@
     "difficulty": "general"
   },
   {
-    "id": "bayraklar-d3125125cac40c",
+    "id": "bayraklar-c148dc058c4b99",
     "category": "bayraklar",
-    "text": "Nepal ülkesinin bayrağı hangisidir?",
+    "text": "Macaristan ülkesinin bayrağı hangisidir?",
     "options": [
-      "flag:ug",
-      "flag:kr",
-      "flag:np",
-      "flag:bd"
+      "flag:tr",
+      "flag:sa",
+      "flag:hu",
+      "flag:lu"
     ],
     "correct": 2,
-    "explanation": "Doğru bayrak: Nepal.",
+    "explanation": "Doğru bayrak: Macaristan.",
+    "difficulty": "general"
+  },
+  {
+    "id": "bayraklar-caa2f3132b7706",
+    "category": "bayraklar",
+    "text": "Portekiz ülkesinin bayrağı hangisidir?",
+    "options": [
+      "flag:kr",
+      "flag:ir",
+      "flag:kg",
+      "flag:pt"
+    ],
+    "correct": 3,
+    "explanation": "Doğru bayrak: Portekiz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "bayraklar-c287eed89c88f0",
+    "category": "bayraklar",
+    "text": "Azerbaycan ülkesinin bayrağı hangisidir?",
+    "options": [
+      "flag:ru",
+      "flag:tm",
+      "flag:az",
+      "flag:ma"
+    ],
+    "correct": 2,
+    "explanation": "Doğru bayrak: Azerbaycan.",
+    "difficulty": "general"
+  },
+  {
+    "id": "bayraklar-4a1b6a191a0301",
+    "category": "bayraklar",
+    "text": "Şili ülkesinin bayrağı hangisidir?",
+    "options": [
+      "flag:ba",
+      "flag:sn",
+      "flag:cl",
+      "flag:uz"
+    ],
+    "correct": 2,
+    "explanation": "Doğru bayrak: Şili.",
+    "difficulty": "general"
+  },
+  {
+    "id": "bayraklar-56d9e9f5ae23ee",
+    "category": "bayraklar",
+    "text": "İtalya ülkesinin bayrağı hangisidir?",
+    "options": [
+      "flag:ge",
+      "flag:it",
+      "flag:ie",
+      "flag:np"
+    ],
+    "correct": 1,
+    "explanation": "Doğru bayrak: İtalya.",
+    "difficulty": "general"
+  },
+  {
+    "id": "bayraklar-cca200f49f5d24",
+    "category": "bayraklar",
+    "text": "Fas ülkesinin bayrağı hangisidir?",
+    "options": [
+      "flag:fr",
+      "flag:ph",
+      "flag:in",
+      "flag:ma"
+    ],
+    "correct": 3,
+    "explanation": "Doğru bayrak: Fas.",
     "difficulty": "general"
   },
   {
@@ -2520,34 +2520,6 @@
     "difficulty": "general"
   },
   {
-    "id": "turkiye-tarihi-ae02869bb54820",
-    "category": "turkiye-tarihi",
-    "text": "Gençlere armağan edilen, 19 Mayıs'ta kutlanan bayram hangisidir?",
-    "options": [
-      "Ulusal Egemenlik ve Çocuk Bayramı",
-      "Atatürk'ü Anma, Gençlik ve Spor Bayramı",
-      "Zafer Bayramı",
-      "Cumhuriyet Bayramı"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Atatürk'ü Anma, Gençlik ve Spor Bayramı.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-tarihi-fcac7bb8dd649d",
-    "category": "turkiye-tarihi",
-    "text": "Bir savaşı durdurmak için yapılan ateş kesme anlaşmasına ne denir?",
-    "options": [
-      "Arşiv",
-      "Demokrasi",
-      "Restorasyon",
-      "Ateşkes"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Ateşkes.",
-    "difficulty": "general"
-  },
-  {
     "id": "turkiye-tarihi-934913c49815a5",
     "category": "turkiye-tarihi",
     "text": "Lozan Konferansı'nda Türk heyetine başkanlık eden kişi kimdir?",
@@ -2562,20 +2534,6 @@
     "difficulty": "general"
   },
   {
-    "id": "turkiye-tarihi-9c302f728dabcf",
-    "category": "turkiye-tarihi",
-    "text": "Saltanatın kaldırılması hangi yılda gerçekleşti?",
-    "options": [
-      "1922",
-      "1071",
-      "1934",
-      "1939"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: 1922.",
-    "difficulty": "general"
-  },
-  {
     "id": "turkiye-tarihi-ed2419464abf6b",
     "category": "turkiye-tarihi",
     "text": "Devlet yönetiminin seçimle oluşan organlara dayandığı yönetim biçimi hangisidir?",
@@ -2587,20 +2545,6 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Cumhuriyet.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-tarihi-d20c8f7da71986",
-    "category": "turkiye-tarihi",
-    "text": "Tevhid-i Tedrisat Kanunu hangi yılda kabul edildi?",
-    "options": [
-      "1925",
-      "1924",
-      "1939",
-      "1930"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: 1924.",
     "difficulty": "general"
   },
   {
@@ -2632,45 +2576,101 @@
     "difficulty": "general"
   },
   {
-    "id": "turkiye-tarihi-f06b1c59b3aa35",
+    "id": "turkiye-tarihi-944dcc2220d798",
     "category": "turkiye-tarihi",
-    "text": "İskender'den önce Anadolu'nun büyük bölümünü satraplıklarla yöneten imparatorluk hangisidir?",
+    "text": "Başkomutanlık Meydan Muharebesi'nin yapıldığı Dumlupınar hangi ilimizdedir?",
     "options": [
-      "Asurlular",
-      "Eski Mısırlılar",
-      "Lidyalılar",
-      "Persler"
+      "Kütahya",
+      "Eskişehir",
+      "Ankara",
+      "Kayseri"
     ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Persler.",
+    "correct": 0,
+    "explanation": "Doğru cevap: Kütahya.",
     "difficulty": "general"
   },
   {
-    "id": "turkiye-tarihi-cccc3ee6d8c6da",
+    "id": "turkiye-tarihi-44553b995eecf3",
     "category": "turkiye-tarihi",
-    "text": "Türk diliyle ilgili sözlük çalışmaları yapan kurum hangisidir?",
+    "text": "Lidya ekonomisinde değiş tokuşun yerini kolaylaştıran ödeme aracı hangisidir?",
     "options": [
-      "Anadolu Ajansı",
-      "Türk Tarih Kurumu",
-      "Türkiye Büyük Millet Meclisi",
-      "Türk Dil Kurumu"
+      "Millet Mektepleri",
+      "Pankuş",
+      "Sikke",
+      "Kuvâ-yi Milliye"
     ],
-    "correct": 3,
+    "correct": 2,
+    "explanation": "Doğru cevap: Sikke.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-tarihi-52e739bc8314f7",
+    "category": "turkiye-tarihi",
+    "text": "Dil araştırmaları için 1932'de kurulan kurumun bugünkü adı hangisidir?",
+    "options": [
+      "Türk Tarih Kurumu",
+      "Anadolu Ajansı",
+      "Türk Dil Kurumu",
+      "Sümerbank"
+    ],
+    "correct": 2,
     "explanation": "Doğru cevap: Türk Dil Kurumu.",
     "difficulty": "general"
   },
   {
-    "id": "osmanli-tarihi-dabbb75685bc5c",
-    "category": "osmanli-tarihi",
-    "text": "Topkapı Sarayı'nı görmek isteyen biri hangi şehre gitmelidir?",
+    "id": "turkiye-tarihi-af958d83bcc27f",
+    "category": "turkiye-tarihi",
+    "text": "Lozan Barış Antlaşması hangi yılda imzalandı?",
     "options": [
-      "İstanbul",
-      "Bursa",
-      "Bilecik",
-      "Edirne"
+      "1176",
+      "1930",
+      "1922",
+      "1923"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: 1923.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-tarihi-87c5887140bf0b",
+    "category": "turkiye-tarihi",
+    "text": "Kral Midas hangi Anadolu uygarlığıyla ilişkilidir?",
+    "options": [
+      "Frigler",
+      "Bizans İmparatorluğu",
+      "Hattiler",
+      "Persler"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: İstanbul.",
+    "explanation": "Doğru cevap: Frigler.",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-tarihi-3b19546b46f240",
+    "category": "turkiye-tarihi",
+    "text": "Eğitim kurumlarını tek yönetim altında birleştiren kanun hangisidir?",
+    "options": [
+      "Kars Antlaşması",
+      "Moskova Antlaşması",
+      "Tevhid-i Tedrisat Kanunu",
+      "Ankara Antlaşması"
+    ],
+    "correct": 2,
+    "explanation": "Doğru cevap: Tevhid-i Tedrisat Kanunu.",
+    "difficulty": "general"
+  },
+  {
+    "id": "osmanli-tarihi-f63d85f71829d6",
+    "category": "osmanli-tarihi",
+    "text": "Birinci Kosova Savaşı sırasında Osmanlı tahtında kim vardı?",
+    "options": [
+      "Kemal Reis",
+      "I. Murad",
+      "Evliya Çelebi",
+      "Mustafa Reşid Paşa"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: I. Murad.",
     "difficulty": "general"
   },
   {
@@ -2702,17 +2702,17 @@
     "difficulty": "general"
   },
   {
-    "id": "osmanli-tarihi-7eecc991c6c012",
+    "id": "osmanli-tarihi-2bb17735e8dc85",
     "category": "osmanli-tarihi",
-    "text": "Yavuz unvanıyla tanınan Osmanlı padişahının adı nedir?",
+    "text": "Niğbolu Savaşı'nı kazanan Osmanlı padişahı kimdir?",
     "options": [
-      "II. Mehmed",
-      "Selim",
-      "Pîrî Reis",
-      "Osman Bey"
+      "Levni",
+      "Yavuz Sultan Selim",
+      "Sultan Abdülmecid",
+      "Yıldırım Bayezid"
     ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Selim.",
+    "correct": 3,
+    "explanation": "Doğru cevap: Yıldırım Bayezid.",
     "difficulty": "general"
   },
   {
@@ -2730,34 +2730,6 @@
     "difficulty": "general"
   },
   {
-    "id": "osmanli-tarihi-530678a1fec4f7",
-    "category": "osmanli-tarihi",
-    "text": "Osmanlı Devleti adını kurucusu olan hangi beyden alır?",
-    "options": [
-      "Selim",
-      "Osman Bey",
-      "Evliya Çelebi",
-      "Pîrî Reis"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Osman Bey.",
-    "difficulty": "general"
-  },
-  {
-    "id": "osmanli-tarihi-dd404b0e44d7c2",
-    "category": "osmanli-tarihi",
-    "text": "Osmanlı'da gemileri kullanan ve denizde görev yapan kişilerin mesleği hangisidir?",
-    "options": [
-      "Tüccarlık",
-      "Hat sanatı",
-      "Mimarlık",
-      "Denizcilik"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Denizcilik.",
-    "difficulty": "general"
-  },
-  {
     "id": "osmanli-tarihi-152db92bab1a27",
     "category": "osmanli-tarihi",
     "text": "Tımar gelirleri karşılığında askerî hizmet yapan atlı askere ne denirdi?",
@@ -2769,34 +2741,6 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Tımarlı sipahi.",
-    "difficulty": "general"
-  },
-  {
-    "id": "osmanli-tarihi-699bd32ee148d6",
-    "category": "osmanli-tarihi",
-    "text": "Tarihî Osmanlı evleriyle tanınan Safranbolu hangi ilimizdedir?",
-    "options": [
-      "Karabük",
-      "Edirne",
-      "Bursa",
-      "Bilecik"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Karabük.",
-    "difficulty": "general"
-  },
-  {
-    "id": "osmanli-tarihi-1a2d0cb135bc44",
-    "category": "osmanli-tarihi",
-    "text": "Ramazan akşamlarında iftar sofralarının kurulması neyle ilgilidir?",
-    "options": [
-      "Oruç geleneği",
-      "Misafirperverlik",
-      "Ticaret yolculuğu",
-      "Denizcilik"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Oruç geleneği.",
     "difficulty": "general"
   },
   {
@@ -2828,45 +2772,59 @@
     "difficulty": "general"
   },
   {
-    "id": "islam-tarihi-d13eff7df0ce69",
-    "category": "islam-tarihi",
-    "text": "İlk Müslümanların Mekke'de buluştuğu evin sahibi kimdir?",
+    "id": "osmanli-tarihi-1bc5e91061e2f3",
+    "category": "osmanli-tarihi",
+    "text": "Mimar Sinan'ın Selimiye Camii hangi şehirde bulunur?",
     "options": [
-      "I. Velîd",
-      "Sa‘d b. Ebû Vakkās",
-      "Ebû Ca‘fer el-Mansûr",
-      "Erkam b. Ebü'l-Erkam"
+      "Bursa",
+      "Zigetvar",
+      "Edirne",
+      "Plevne"
     ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Erkam b. Ebü'l-Erkam.",
+    "correct": 2,
+    "explanation": "Doğru cevap: Edirne.",
     "difficulty": "general"
   },
   {
-    "id": "islam-tarihi-db55b8203e2cae",
-    "category": "islam-tarihi",
-    "text": "Mevlânâ Müzesi'ni ve semazenleri görmek için gidilen Anadolu şehri hangisidir?",
+    "id": "osmanli-tarihi-c44a07f07c1117",
+    "category": "osmanli-tarihi",
+    "text": "Padişahın tahta çıkışında askere dağıtılan ödeme hangisidir?",
     "options": [
-      "İstanbul",
-      "Konya",
-      "Şam",
-      "Medine"
+      "Tımar sistemi",
+      "Cülûs bahşişi",
+      "Şehzade",
+      "Tahrir"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Konya.",
+    "explanation": "Doğru cevap: Cülûs bahşişi.",
     "difficulty": "general"
   },
   {
-    "id": "islam-tarihi-82bcb491e7923c",
-    "category": "islam-tarihi",
-    "text": "Hz. Muhammed'in son haccı hangi adla anılır?",
+    "id": "osmanli-tarihi-58971faa6e2bf9",
+    "category": "osmanli-tarihi",
+    "text": "Sarayın iç bölümünde eğitim veren okul hangi adla bilinir?",
     "options": [
-      "Hendek Savaşı",
-      "Barış antlaşması",
-      "Mekke'nin Fethi",
-      "Veda Haccı"
+      "Mekteb-i Mülkiye",
+      "Tersâne-i Âmire",
+      "Enderun",
+      "Asâkir-i Mansûre-i Muhammediyye"
     ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Veda Haccı.",
+    "correct": 2,
+    "explanation": "Doğru cevap: Enderun.",
+    "difficulty": "general"
+  },
+  {
+    "id": "osmanli-tarihi-b68c7e81ee77ec",
+    "category": "osmanli-tarihi",
+    "text": "Çelebi Mehmed için inşa edilen Yeşil Türbe hangi şehirdedir?",
+    "options": [
+      "Budin",
+      "Bursa",
+      "Kahire",
+      "Kandiye"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Bursa.",
     "difficulty": "general"
   },
   {
@@ -2940,34 +2898,6 @@
     "difficulty": "general"
   },
   {
-    "id": "islam-tarihi-5b05ba999d6f62",
-    "category": "islam-tarihi",
-    "text": "Ezher Camii ve eğitim merkezi hangi şehirdedir?",
-    "options": [
-      "Kahire",
-      "Fustat",
-      "Basra",
-      "Kudüs"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Kahire.",
-    "difficulty": "general"
-  },
-  {
-    "id": "islam-tarihi-d34036c34587bc",
-    "category": "islam-tarihi",
-    "text": "Geleneksel İslâm eğitim kurumuna ne denir?",
-    "options": [
-      "Vakıf",
-      "Medrese",
-      "Ensar",
-      "Dört Halife Dönemi"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Medrese.",
-    "difficulty": "general"
-  },
-  {
     "id": "islam-tarihi-4ceddf9f9bc399",
     "category": "islam-tarihi",
     "text": "Abbâsî döneminde tercüme ve kitap faaliyetleriyle tanınan kurum hangisidir?",
@@ -2982,45 +2912,101 @@
     "difficulty": "general"
   },
   {
-    "id": "islam-tarihi-4664f2fe9843e6",
+    "id": "islam-tarihi-4709442e462e71",
     "category": "islam-tarihi",
-    "text": "Müslümanlarla Mekkeliler arasındaki Hudeybiye barışının türü nedir?",
+    "text": "Kutadgu Bilig'in yazıldığı Türk-İslâm hanedanı hangisidir?",
     "options": [
-      "Barış antlaşması",
-      "Mekke'nin Fethi",
-      "Hendek Savaşı",
-      "Veda Haccı"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Barış antlaşması.",
-    "difficulty": "general"
-  },
-  {
-    "id": "peygamberler-tarihi-a194f72d27c1a6",
-    "category": "peygamberler-tarihi",
-    "text": "Hz. Muhammed'in hicret ettiği şehrin adı nedir?",
-    "options": [
-      "Mekke",
-      "Siyer",
-      "Sünnet",
-      "Medine"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Medine.",
-    "difficulty": "general"
-  },
-  {
-    "id": "peygamberler-tarihi-9a4bfe6e8a1774",
-    "category": "peygamberler-tarihi",
-    "text": "Kur'an'da Medyen halkına dürüst ölçü ve tartıyı öğütleyen peygamber kimdir?",
-    "options": [
-      "Hz. Sâlih",
-      "Hz. Şuayb",
-      "Ebû Tâlib",
-      "Hz. İsmâil"
+      "Nasrîler",
+      "Karahanlılar",
+      "Safevîler",
+      "Bâbürlüler"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Hz. Şuayb.",
+    "explanation": "Doğru cevap: Karahanlılar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "islam-tarihi-e89dbf601b6bae",
+    "category": "islam-tarihi",
+    "text": "Hz. Muhammed'in hayatını konu alan ilim dalı hangisidir?",
+    "options": [
+      "Beytülmâl",
+      "Suffe",
+      "Hisbe",
+      "Siyer"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Siyer.",
+    "difficulty": "general"
+  },
+  {
+    "id": "islam-tarihi-f73d692343efe5",
+    "category": "islam-tarihi",
+    "text": "Bir yöneticiye bağlılık bildiren sözleşmeye İslâm tarihinde ne denir?",
+    "options": [
+      "Medrese",
+      "Biat",
+      "Muhacir",
+      "Câhiliye"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Biat.",
+    "difficulty": "general"
+  },
+  {
+    "id": "islam-tarihi-be521f30fa8a8d",
+    "category": "islam-tarihi",
+    "text": "Hicrî takvimi devlet işlerinde uygulamaya koyan halife kimdir?",
+    "options": [
+      "Hz. Hatice",
+      "Sa‘d b. Ebû Vakkās",
+      "Üsâme b. Zeyd",
+      "Hz. Ömer"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Hz. Ömer.",
+    "difficulty": "general"
+  },
+  {
+    "id": "islam-tarihi-072a7a3156554a",
+    "category": "islam-tarihi",
+    "text": "İlk İslâm devletlerinde kamu hazinesine ne denirdi?",
+    "options": [
+      "Beytülhikme",
+      "Gazve",
+      "Siyer",
+      "Beytülmâl"
+    ],
+    "correct": 3,
+    "explanation": "Doğru cevap: Beytülmâl.",
+    "difficulty": "general"
+  },
+  {
+    "id": "islam-tarihi-2a22897353167d",
+    "category": "islam-tarihi",
+    "text": "Hicret yolculuğunda Hz. Muhammed'e eşlik eden sahâbî kimdir?",
+    "options": [
+      "Hz. Âişe",
+      "Hz. Ebû Bekir",
+      "Hârûnürreşîd",
+      "Hz. Ömer"
+    ],
+    "correct": 1,
+    "explanation": "Doğru cevap: Hz. Ebû Bekir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "peygamberler-tarihi-f72bbc38775d54",
+    "category": "peygamberler-tarihi",
+    "text": "Kur'an'da Dâvûd'a yapımı öğretilen koruyucu savaş giysisi hangisidir?",
+    "options": [
+      "Gömlek",
+      "Asâ",
+      "Zırh",
+      "Sandık"
+    ],
+    "correct": 2,
+    "explanation": "Enbiyâ 21/80'de zırh yapımı anılır.",
     "difficulty": "general"
   },
   {
@@ -3035,20 +3021,6 @@
     ],
     "correct": 1,
     "explanation": "Sâffât 37/139–148'de Yûnus kıssası anlatılır.",
-    "difficulty": "general"
-  },
-  {
-    "id": "peygamberler-tarihi-3f5ae4e8b1307b",
-    "category": "peygamberler-tarihi",
-    "text": "Kur'an'a göre Âdem'e secde emrine karşı çıkan kimdir?",
-    "options": [
-      "Kārûn",
-      "Tâlût",
-      "Firavun",
-      "İblîs"
-    ],
-    "correct": 3,
-    "explanation": "Bakara 2/34'te İblîs'in emre karşı çıkışı anlatılır.",
     "difficulty": "general"
   },
   {
@@ -3080,17 +3052,17 @@
     "difficulty": "general"
   },
   {
-    "id": "peygamberler-tarihi-e39db27bac9549",
+    "id": "peygamberler-tarihi-9fa4a4463d1e8a",
     "category": "peygamberler-tarihi",
-    "text": "Siyer kaynaklarına göre Hz. Muhammed'i Medine'de evinde ağırlayan kişi kimdir?",
+    "text": "Kur'an'da hüdhüdün güneşe secde ettiğini haber verdiği topluluk hangisidir?",
     "options": [
-      "İbrâhim",
-      "Ebû Eyyûb el-Ensârî",
-      "Varaka b. Nevfel",
-      "Hz. Ali"
+      "Kureyş",
+      "Sebe halkı",
+      "Semûd",
+      "İsrâiloğulları"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Ebû Eyyûb el-Ensârî.",
+    "explanation": "Neml 27/22–24'te Sebe halkından söz edilir.",
     "difficulty": "general"
   },
   {
@@ -3105,34 +3077,6 @@
     ],
     "correct": 2,
     "explanation": "Yûsuf 12/18'de gömleğe sahte kan sürüldüğü anlatılır.",
-    "difficulty": "general"
-  },
-  {
-    "id": "peygamberler-tarihi-516067a7df5dd4",
-    "category": "peygamberler-tarihi",
-    "text": "İslâm inancında balığın karnında duasıyla anılan peygamber kimdir?",
-    "options": [
-      "Hz. Yûnus",
-      "Hz. Hûd",
-      "Hz. İsmâil",
-      "Ebû Tâlib"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Hz. Yûnus.",
-    "difficulty": "general"
-  },
-  {
-    "id": "peygamberler-tarihi-2282245ff9fb27",
-    "category": "peygamberler-tarihi",
-    "text": "İslâm inancında Hz. Îsâ'ya verilen kitabın adı nedir?",
-    "options": [
-      "İncil",
-      "Zebur",
-      "Tevrat",
-      "Kur'an-ı Kerîm"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: İncil.",
     "difficulty": "general"
   },
   {
@@ -3164,20 +3108,60 @@
     "difficulty": "general"
   },
   {
-    "id": "dunya-kupasi-222920c9ef594e",
-    "category": "dunya-kupasi",
-    "text": "1970 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "id": "peygamberler-tarihi-60270665e1844e",
+    "category": "peygamberler-tarihi",
+    "text": "Kur'an'da Meryem'in bakımını üstlenen kişi kimdir?",
     "options": [
-      "Arjantin",
-      "İsveç",
-      "Macaristan",
-      "Brezilya"
+      "Hz. Nûh",
+      "Hz. Mûsâ",
+      "Hz. Âdem",
+      "Hz. Zekeriyyâ"
     ],
     "correct": 3,
-    "explanation": "1970 şampiyonu Brezilya oldu.",
-    "difficulty": "general",
-    "topic": "sampiyonlar",
-    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+    "explanation": "Âl-i İmrân 3/37'de Zekeriyyâ'nın Meryem'in bakımını üstlendiği bildirilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "peygamberler-tarihi-1767cc3572e668",
+    "category": "peygamberler-tarihi",
+    "text": "Kur'an'a göre dağların ve kuşların tesbihine katıldığı, zırh yapımı öğretilen peygamber kimdir?",
+    "options": [
+      "Hz. Eyyûb",
+      "Hz. Süleyman",
+      "Hz. Dâvûd",
+      "Hz. İshak"
+    ],
+    "correct": 2,
+    "explanation": "Enbiyâ 21/79–80'de Dâvûd ve zırh yapımı anlatılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "peygamberler-tarihi-19af8ccae32ba0",
+    "category": "peygamberler-tarihi",
+    "text": "Kur'an'da Mûsâ'nın Firavun'dan kendisiyle göndermesini istediği topluluk hangisidir?",
+    "options": [
+      "Cumartesi halkı",
+      "Âd",
+      "Semûd",
+      "İsrâiloğulları"
+    ],
+    "correct": 3,
+    "explanation": "A‘râf 7/105'te Mûsâ'nın isteği aktarılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "peygamberler-tarihi-1c98000343e3c2",
+    "category": "peygamberler-tarihi",
+    "text": "Kur'an'a göre tufandan önce kavmini uyarıp gemi yapan peygamber kimdir?",
+    "options": [
+      "Hz. Nûh",
+      "Hz. İlyâs",
+      "Hz. Eyyûb",
+      "Hz. İsmâil"
+    ],
+    "correct": 0,
+    "explanation": "Hûd 11/25–48, Nûh'un kavmi ve gemi kıssasını anlatır.",
+    "difficulty": "general"
   },
   {
     "id": "dunya-kupasi-0a6d9f7a8b697d",
@@ -3193,22 +3177,6 @@
     "explanation": "Güney Afrika’daki tribünlerde vuvuzelalar çok yaygındı.",
     "difficulty": "general",
     "topic": "kupa-kulturu",
-    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
-  },
-  {
-    "id": "dunya-kupasi-ec43d8d80aaea9",
-    "category": "dunya-kupasi",
-    "text": "2010 Dünya Kupası’nda Samuel Eto'o hangi millî takımın formasını giydi?",
-    "options": [
-      "Kamerun",
-      "Almanya",
-      "Brezilya",
-      "Kolombiya"
-    ],
-    "correct": 0,
-    "explanation": "Samuel Eto'o, 2010 turnuvasına Kamerun millî takımıyla katıldı.",
-    "difficulty": "general",
-    "topic": "yildizlar",
     "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
   },
   {
@@ -3228,38 +3196,6 @@
     "source": "https://www.tff.org/default.aspx?pageID=314"
   },
   {
-    "id": "dunya-kupasi-9888390b0d9ae5",
-    "category": "dunya-kupasi",
-    "text": "Dünya Kupası’nda çeyrek finale kaç takım kalır?",
-    "options": [
-      "8",
-      "4",
-      "6",
-      "16"
-    ],
-    "correct": 0,
-    "explanation": "Dört çeyrek final maçında sekiz takım oynar.",
-    "difficulty": "general",
-    "topic": "temel-bilgiler",
-    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
-  },
-  {
-    "id": "dunya-kupasi-1402d5bb80f8c6",
-    "category": "dunya-kupasi",
-    "text": "1994 Dünya Kupası’nda Gheorghe Hagi hangi millî takımın formasını giydi?",
-    "options": [
-      "Senegal",
-      "Romanya",
-      "Brezilya",
-      "Japonya"
-    ],
-    "correct": 1,
-    "explanation": "Gheorghe Hagi, 1994 turnuvasına Romanya millî takımıyla katıldı.",
-    "difficulty": "general",
-    "topic": "yildizlar",
-    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
-  },
-  {
     "id": "dunya-kupasi-43627cd9d32c75",
     "category": "dunya-kupasi",
     "text": "1998 Dünya Kupası maskotu Footix hangi hayvandı?",
@@ -3274,54 +3210,6 @@
     "difficulty": "general",
     "topic": "kupa-kulturu",
     "source": "https://www.fifa.com/en/articles/world-cup-mascots-in-history"
-  },
-  {
-    "id": "dunya-kupasi-e2c920302f5be5",
-    "category": "dunya-kupasi",
-    "text": "2014 Dünya Kupası’nda Clint Dempsey hangi millî takımın formasını giydi?",
-    "options": [
-      "ABD",
-      "Hollanda",
-      "Güney Kore",
-      "Brezilya"
-    ],
-    "correct": 0,
-    "explanation": "Clint Dempsey, 2014 turnuvasına ABD millî takımıyla katıldı.",
-    "difficulty": "general",
-    "topic": "yildizlar",
-    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
-  },
-  {
-    "id": "dunya-kupasi-5e5050425ef770",
-    "category": "dunya-kupasi",
-    "text": "Dünya Kupası grup aşamasında beraberlik yapan takım kaç puan alır?",
-    "options": [
-      "2",
-      "1",
-      "3",
-      "0"
-    ],
-    "correct": 1,
-    "explanation": "Beraberlikte iki takım da birer puan alır.",
-    "difficulty": "general",
-    "topic": "temel-bilgiler",
-    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
-  },
-  {
-    "id": "dunya-kupasi-4cbfc0c57a2010",
-    "category": "dunya-kupasi",
-    "text": "Dünya Kupası’ndaki Altın Ayakkabı ödülü hangi başarıyla ilişkilidir?",
-    "options": [
-      "Gol krallığı",
-      "En az faul",
-      "En çok korner",
-      "En çok taç atışı"
-    ],
-    "correct": 0,
-    "explanation": "Gol sayısı ve gerektiğinde eşitlik kriterleriyle belirlenir.",
-    "difficulty": "general",
-    "topic": "temel-bilgiler",
-    "source": "https://inside.fifa.com/en/tournaments/mens/worldcup/2018russia/news/157-awards-piece-2986294"
   },
   {
     "id": "dunya-kupasi-c310bc7eca138c",
@@ -3340,19 +3228,131 @@
     "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
   },
   {
-    "id": "dunya-kupasi-d98609377b670b",
+    "id": "dunya-kupasi-37400649f2da82",
     "category": "dunya-kupasi",
-    "text": "Dünya Kupası’nda “son 16” turuna kaç takım katılır?",
+    "text": "1938 FIFA Dünya Kupası hangi ülkede veya ülkelerde düzenlendi?",
     "options": [
-      "16",
-      "32",
-      "12",
-      "8"
+      "Batı Almanya",
+      "Fransa",
+      "Meksika",
+      "İngiltere"
     ],
-    "correct": 0,
-    "explanation": "Bu turda on altı takım sekiz eşleşmede oynar.",
+    "correct": 1,
+    "explanation": "1938 turnuvasının ev sahibi: Fransa.",
     "difficulty": "general",
-    "topic": "temel-bilgiler",
+    "topic": "ev-sahipleri",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-1549c0090869a5",
+    "category": "dunya-kupasi",
+    "text": "1986 Dünya Kupası’nda Diego Maradona hangi millî takımın formasını giydi?",
+    "options": [
+      "Avustralya",
+      "Arjantin",
+      "Kosta Rika",
+      "Danimarka"
+    ],
+    "correct": 1,
+    "explanation": "Diego Maradona, 1986 turnuvasına Arjantin millî takımıyla katıldı.",
+    "difficulty": "general",
+    "topic": "yildizlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-3de7eaae1d5187",
+    "category": "dunya-kupasi",
+    "text": "2022 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "Güney Afrika",
+      "Katar",
+      "Arjantin",
+      "Rusya"
+    ],
+    "correct": 2,
+    "explanation": "2022 şampiyonu Arjantin oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-8924bd0af15c50",
+    "category": "dunya-kupasi",
+    "text": "Türkiye, 2002 Dünya Kupası üçüncülük maçında kimi yendi?",
+    "options": [
+      "Senegal",
+      "Japonya",
+      "Güney Kore",
+      "İngiltere"
+    ],
+    "correct": 2,
+    "explanation": "Türkiye ev sahibi Güney Kore’yi 3-2 yendi.",
+    "difficulty": "general",
+    "topic": "turkiye",
+    "source": "https://www.tff.org/default.aspx?pageID=314"
+  },
+  {
+    "id": "dunya-kupasi-c2bd2821fd0fb6",
+    "category": "dunya-kupasi",
+    "text": "2002 Dünya Kupası açılışında son şampiyon Fransa’yı yenen Afrika takımı hangisiydi?",
+    "options": [
+      "Nijerya",
+      "Tunus",
+      "Senegal",
+      "Güney Afrika"
+    ],
+    "correct": 2,
+    "explanation": "Senegal açılış maçını 1-0 kazandı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
+  },
+  {
+    "id": "dunya-kupasi-ce3d04cf71a02a",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası finali hangi stadyumda oynandı?",
+    "options": [
+      "Wembley",
+      "Maracanã",
+      "Lusail",
+      "Azteca"
+    ],
+    "correct": 2,
+    "explanation": "Final Katar’daki Lusail Stadyumu’ndaydı.",
+    "difficulty": "general",
+    "topic": "kupa-kulturu",
+    "source": "https://www.fifa.com/es/tournaments/mens/worldcup/articles/todas-las-finales-de-la-copa-mundial-de-la-fifa"
+  },
+  {
+    "id": "dunya-kupasi-33cccd03a3d1fc",
+    "category": "dunya-kupasi",
+    "text": "1962 FIFA Dünya Kupası şampiyonluğunu hangi millî takım kazandı?",
+    "options": [
+      "İspanya",
+      "İsviçre",
+      "İsveç",
+      "Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "1962 şampiyonu Brezilya oldu.",
+    "difficulty": "general",
+    "topic": "sampiyonlar",
+    "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina"
+  },
+  {
+    "id": "dunya-kupasi-441d41d5e4b38b",
+    "category": "dunya-kupasi",
+    "text": "2022 Dünya Kupası finalinde üç gol atan Fransız yıldız kimdi?",
+    "options": [
+      "Olivier Giroud",
+      "Antoine Griezmann",
+      "Kylian Mbappé",
+      "Karim Benzema"
+    ],
+    "correct": 2,
+    "explanation": "Mbappé finalde hat-trick yaptı.",
+    "difficulty": "general",
+    "topic": "unutulmaz-anlar",
     "source": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1982-2026-italy-argentina-germany-brazil-france-spain"
   },
   {
@@ -3397,51 +3397,6 @@
     ],
     "correct": 3,
     "explanation": "Groot, ağaç benzeri bir canlıdır.",
-    "topic": "filmler-ve-karakterler",
-    "difficulty": "general"
-  },
-  {
-    "id": "film-9643a81cccc8c7",
-    "category": "film",
-    "text": "Film konuşmalarının ekranda yazıyla gösterilen çevirisine ne denir?",
-    "options": [
-      "Senaryo",
-      "Altyazı",
-      "Afiş",
-      "Jenerik"
-    ],
-    "correct": 1,
-    "explanation": "Altyazı, diyalogların yazılı biçimde izlenmesini sağlar.",
-    "topic": "sinema-dili",
-    "difficulty": "general"
-  },
-  {
-    "id": "film-0511c313e30655",
-    "category": "film",
-    "text": "Arabalar / Cars filmlerinin kırmızı yarış arabası kimdir?",
-    "options": [
-      "Şimşek McQueen",
-      "Doc Hudson",
-      "Luigi",
-      "Mater"
-    ],
-    "correct": 0,
-    "explanation": "Şimşek McQueen serinin yarışçı kahramanıdır.",
-    "topic": "animasyon",
-    "difficulty": "general"
-  },
-  {
-    "id": "film-8a463cbdf40533",
-    "category": "film",
-    "text": "La La Land'de Sebastian'ın tutkusu hangi müzik türüdür?",
-    "options": [
-      "Rap",
-      "Country",
-      "Opera",
-      "Caz"
-    ],
-    "correct": 3,
-    "explanation": "Sebastian, caz piyanisti olarak kendi yolunu arar.",
     "topic": "filmler-ve-karakterler",
     "difficulty": "general"
   },
@@ -3491,6 +3446,21 @@
     "difficulty": "general"
   },
   {
+    "id": "film-c0918f2b5d515a",
+    "category": "film",
+    "text": "Gladyatör / Gladiator (2000) filmini kim yönetti?",
+    "options": [
+      "Ridley Scott",
+      "Robert Zemeckis",
+      "Akira Kurosawa",
+      "Bong Joon-ho"
+    ],
+    "correct": 0,
+    "explanation": "Gladyatör / Gladiator (2000) filminin yönetmeni Ridley Scott.",
+    "topic": "yonetmenler",
+    "difficulty": "general"
+  },
+  {
     "id": "film-bc5509906de8de",
     "category": "film",
     "text": "Baba / The Godfather (1972) filmini kim yönetti?",
@@ -3521,18 +3491,48 @@
     "difficulty": "general"
   },
   {
-    "id": "film-2875ef21855797",
+    "id": "film-bc50b6df309c47",
     "category": "film",
-    "text": "Çizim veya modelleri hareket ediyormuş gibi gösteren sinema tekniği nedir?",
+    "text": "Yukarı Bak / Up filminde Carl'ın evi nasıl havalanır?",
     "options": [
-      "Kostüm",
-      "Altyazı",
-      "Dublaj",
-      "Animasyon"
+      "Roket motoruyla",
+      "Dev kanatlarla",
+      "Sihirli halıyla",
+      "Balonlarla"
     ],
     "correct": 3,
-    "explanation": "Animasyon, art arda gösterilen görüntülerle hareket izlenimi oluşturur.",
-    "topic": "sinema-dili",
+    "explanation": "Carl evine çok sayıda helyum balonu bağlar.",
+    "topic": "animasyon",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-69934fb5d655ab",
+    "category": "film",
+    "text": "Harry Potter'ın alnındaki yara izi hangi biçimdedir?",
+    "options": [
+      "Ay",
+      "Yıldız",
+      "Kalp",
+      "Şimşek"
+    ],
+    "correct": 3,
+    "explanation": "Harry'nin alnında şimşek biçiminde bir iz vardır.",
+    "topic": "filmler-ve-karakterler",
+    "difficulty": "general"
+  },
+  {
+    "id": "film-b439b68957b170",
+    "category": "film",
+    "text": "Geleceğe Dönüş'te zaman makinesi hangi otomobil modeliyle yapılmıştır?",
+    "options": [
+      "Ford Mustang",
+      "Volkswagen Beetle",
+      "DeLorean",
+      "Mini Cooper"
+    ],
+    "correct": 2,
+    "explanation": "Doc Brown zaman makinesini bir DeLorean'a kurar.",
+    "topic": "filmler-ve-karakterler",
     "difficulty": "general"
   }
 ]
