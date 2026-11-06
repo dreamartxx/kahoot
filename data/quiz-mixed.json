@@ -1651,129 +1651,87 @@
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-2da2b7bc417657",
+    "id": "genel-kultur-2974a6fa89eb8e",
     "category": "genel-kultur",
-    "text": "“Don Kişot” adlı eserin yaratıcısı kimdir?",
+    "text": "Avrupa'da gece treninde “kuşetli” bir bilet alan yolcu ne bekler?",
     "options": [
-      "Jane Austen",
-      "Miguel de Cervantes",
-      "Lev Tolstoy",
-      "Pablo Picasso"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Miguel de Cervantes.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-5f91cdc2cbf261",
-    "category": "genel-kultur",
-    "text": "“Moby Dick” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Oğuz Atay",
-      "Herman Melville",
-      "Mehmet Rauf",
-      "J. K. Rowling"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Herman Melville.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-339c8f90bb3c90",
-    "category": "genel-kultur",
-    "text": "“Gülün Adı” eserinin yazarı kimdir?",
-    "options": [
-      "Mihail Bulgakov",
-      "Umberto Eco",
-      "Harper Lee",
-      "Peyami Safa"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Umberto Eco.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-fa5967f43d44b0",
-    "category": "genel-kultur",
-    "text": "“Goriot Baba” eserinin yazarı kimdir?",
-    "options": [
-      "İvan Gonçarov",
-      "Honoré de Balzac",
-      "Ahmet Hamdi Tanpınar",
-      "Aldous Huxley"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Honoré de Balzac.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-e731cf293c10ae",
-    "category": "genel-kultur",
-    "text": "“Küçük Prens” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Emily Brontë",
-      "Antoine de Saint-Exupéry",
-      "Halide Edib Adıvar",
-      "Charlotte Brontë"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Antoine de Saint-Exupéry.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-5f237ac2235186",
-    "category": "genel-kultur",
-    "text": "Görelilik kuramıyla tanınan bilim insanı kimdir?",
-    "options": [
-      "Nikola Tesla",
-      "Albert Einstein",
-      "Michael Faraday",
-      "Isaac Newton"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Albert Einstein.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-0e447ca0254d24",
-    "category": "genel-kultur",
-    "text": "“Define Adası” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Yaşar Kemal",
-      "Franz Kafka",
-      "Recaizade Mahmut Ekrem",
-      "Robert Louis Stevenson"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Robert Louis Stevenson.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-0ff243e6c54608",
-    "category": "genel-kultur",
-    "text": "“Hamlet” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "C. S. Lewis",
-      "Osman Hamdi Bey",
-      "William Shakespeare",
-      "Fyodor Dostoyevski"
+      "Özel bir seyir terası",
+      "Otomobilini taşıyan bir vagon",
+      "Yatmaya uygun ranzalı bir bölüm",
+      "Yalnızca yemek servisi yapılan bir bölüm"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: William Shakespeare.",
+    "explanation": "Kuşetli kompartımanlarda yolcular için yatma yerleri bulunur.",
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-2d17652c1ccf2a",
+    "id": "genel-kultur-01341eb59afbae",
     "category": "genel-kultur",
-    "text": "“Romeo ve Juliet” adlı eserin yaratıcısı kimdir?",
+    "text": "İmparator pengueninde yumurtayı Antarktika kışında ayaklarının üstünde sıcak tutan kimdir?",
     "options": [
-      "Ernest Hemingway",
-      "José Mauro de Vasconcelos",
-      "Pablo Picasso",
-      "William Shakespeare"
+      "Anne penguen",
+      "Bir önceki yılın yavrusu",
+      "Baba penguen",
+      "Sürüdeki en yaşlı dişi"
+    ],
+    "correct": 2,
+    "explanation": "Dişi beslenmek için denize döndüğünde baba yumurtayı ayaklarının üzerinde bir deri kıvrımının altında taşır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-4c39289fbf4daa",
+    "category": "genel-kultur",
+    "text": "Japonya'da “hanami” için parklarda toplanan insanlar geleneksel olarak neyi seyreder?",
+    "options": [
+      "Açan kiraz çiçeklerini",
+      "Yaz havai fişeklerini",
+      "Göç eden turnaları",
+      "İlk karın yağışını"
+    ],
+    "correct": 0,
+    "explanation": "Hanami, özellikle ilkbaharda sakura ağaçlarının çiçeklerini seyretme geleneğidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-8ab087285aca76",
+    "category": "genel-kultur",
+    "text": "Somon balıklarının yaşam döngüsüyle özdeşleşen yolculuk hangisidir?",
+    "options": [
+      "Kışı geçirmek için okyanus tabanına gömülmek",
+      "Yumurtlamak için denizden karaya çıkmak",
+      "Yavruyken nehirden çöl göllerine geçmek",
+      "Üremek için denizden akarsulara dönmek"
     ],
     "correct": 3,
-    "explanation": "Doğru cevap: William Shakespeare.",
+    "explanation": "Göç eden somon türleri büyüdükten sonra yumurtlamak üzere tatlı sulara geri döner.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-f8016f5ba31c8b",
+    "category": "genel-kultur",
+    "text": "Bir orkestrada konser öncesi müzisyenlerin aynı referans notasını dinlemesinin amacı nedir?",
+    "options": [
+      "Solistin sesini yükseltmek",
+      "İlk eserin temposunu seçmek",
+      "Salonun yankısını azaltmak",
+      "Çalgıları birbirine göre akort etmek"
+    ],
+    "correct": 3,
+    "explanation": "Ortak referans, farklı çalgıların aynı notayı uyum içinde çalmasını sağlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-eda405f8afec3a",
+    "category": "genel-kultur",
+    "text": "Başkahramanın kırmızı ve mavi hap arasında seçim yaptığı film hangisidir?",
+    "options": [
+      "Başlangıç",
+      "Azınlık Raporu",
+      "Yıldızlararası",
+      "Matrix"
+    ],
+    "correct": 3,
+    "explanation": "Morpheus bu seçimi Neo'ya sunar.",
     "difficulty": "general"
   },
   {
@@ -1787,49 +1745,91 @@
       "Let"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Love.",
+    "explanation": "Tenis puanları İngilizce anons edilirken sıfır için love sözcüğü kullanılır.",
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-e9b89a8fc9d269",
+    "id": "genel-kultur-151270fc3f6d22",
     "category": "genel-kultur",
-    "text": "“1984 romanı” adlı eserin yaratıcısı kimdir?",
+    "text": "Floransa'da doğup Avrupa'ya yayılan, adının anlamı “yeniden doğuş” olan dönem hangisidir?",
     "options": [
-      "George Orwell",
-      "Leonardo da Vinci",
-      "Ahmet Hamdi Tanpınar",
-      "Mehmet Rauf"
+      "Sanayi Devrimi",
+      "Rönesans",
+      "Reform",
+      "Aydınlanma"
+    ],
+    "correct": 1,
+    "explanation": "Rönesans'ta Antik Çağ'ın sanatına ve düşüncesine ilgi yeniden canlandı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-851b73af0e0730",
+    "category": "genel-kultur",
+    "text": "Geleceğe Dönüş'te zaman makinesi hangi günlük aracın içine kurulmuştur?",
+    "options": [
+      "Bir motosikletin",
+      "Bir spor otomobilin",
+      "Bir minibüsün",
+      "Bir karavanın"
+    ],
+    "correct": 1,
+    "explanation": "Doc Brown zaman makinesini martı kanat kapılı bir DeLorean'a kurar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-e67c8eba00aa0b",
+    "category": "genel-kultur",
+    "text": "Antoni Gaudí'nin tasarladığı Sagrada Família'yı görmek için hangi şehre gidilir?",
+    "options": [
+      "Barselona",
+      "Madrid",
+      "Lizbon",
+      "Sevilla"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap: George Orwell.",
+    "explanation": "Gaudí'nin kuleleriyle tanınan bazilikası Barselona'dadır.",
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-d79fe635d08750",
+    "id": "genel-kultur-6746d29e1f5fb3",
     "category": "genel-kultur",
-    "text": "Elektrik akımının SI birimi hangisidir?",
+    "text": "İskoçya ile özdeşleşen ekose desenli geleneksel giysinin adı nedir?",
     "options": [
-      "Amper",
-      "Ohm",
-      "Watt",
-      "Volt"
+      "Panço",
+      "Kilt",
+      "Sari",
+      "Kimono"
     ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Amper.",
+    "correct": 1,
+    "explanation": "Kilt genellikle tartan denen ekose kumaştan yapılan pileli bir giysidir.",
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-c4c3144e680f84",
+    "id": "genel-kultur-2a271d152cfcef",
     "category": "genel-kultur",
-    "text": "Bitkilere yeşil rengini veren pigment hangisidir?",
+    "text": "New York'taki Özgürlük Heykeli'ni ABD'ye hangi ülkenin halkı armağan etti?",
     "options": [
-      "Melanin",
-      "Keratin",
-      "Hemoglobin",
-      "Klorofil"
+      "Birleşik Krallık",
+      "İtalya",
+      "Fransa",
+      "İspanya"
     ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Klorofil.",
+    "correct": 2,
+    "explanation": "Heykel Fransa'da yapıldı ve parçalar hâlinde New York'a taşındı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-6ea5b8e1bf6b96",
+    "category": "genel-kultur",
+    "text": "Patlamış mısır yaparken tanenin içindeki hangi değişim kabuğu çatlatır?",
+    "options": [
+      "Çekirdeğin oksijen üretmesi",
+      "Isınan suyun buhara dönüşmesi",
+      "Nişastanın tuza dönüşmesi",
+      "Kabuğun dışarıdan yağ emmesi"
+    ],
+    "correct": 1,
+    "explanation": "Kabuk içinde sıkışan su buharının basıncı taneyi patlatır.",
     "difficulty": "general"
   },
   {

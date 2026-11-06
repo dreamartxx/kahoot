@@ -782,6 +782,7 @@ questions.extend(world_cup_questions())
 from film_bank import film_questions
 questions.extend(film_questions())
 direct('cografya',(ROOT/'data/world-geography.txt').read_text())
+direct('genel-kultur',(ROOT/'data/general-culture.txt').read_text())
 # Keep one canonical question per province. Filter after generation so seeded
 # choice ordering and IDs in all other categories remain unchanged.
 plate_texts={f'{province} ilinin trafik plaka kodu hangisidir?' for province in provinces}
