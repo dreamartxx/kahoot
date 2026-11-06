@@ -84,6 +84,35 @@ function normalize(string $word): string {
     $word=str_replace(['İ','I'],['i','ı'],$word);
     return trim(preg_replace('/[^\p{L}\p{N}\s]/u','',mb_strtolower(preg_replace('/\s+/u',' ',trim($word)))) ?? '');
 }
+// Authored questions belong to this room and never enter the shared question bank.
+function personalQuizDeck(mixed $rows): array {
+    if (!is_array($rows) || !array_is_list($rows) || count($rows) < 1 || count($rows) > 20) {
+        fail('Yarışmana 1 ile 20 arasında soru ekle.');
+    }
+    $deck = [];
+    $seen = [];
+    foreach ($rows as $row) {
+        if (!is_array($row)) fail('Soru geçersiz.');
+        $text = inputText($row['text'] ?? '', 5, 500, 'Soru');
+        $key = mb_strtolower(strtr($text, ['İ'=>'i','I'=>'ı']));
+        if (isset($seen[$key])) fail('Aynı soruyu iki kez ekleyemezsin.');
+        $seen[$key] = true;
+        $options = $row['options'] ?? null;
+        $correct = $row['correct'] ?? null;
+        if (!is_array($options) || !array_is_list($options) || count($options) !== 4 ||
+            !is_int($correct) || $correct < 0 || $correct > 3) {
+            fail('Her soruya dört şık yaz ve doğru olanı işaretle.');
+        }
+        $options = array_map(fn($opt) => inputText($opt, 1, 180, 'Şık'), $options);
+        $keys = array_map(fn($opt) => mb_strtolower(strtr($opt, ['İ'=>'i','I'=>'ı'])), $options);
+        if (count(array_unique($keys)) !== 4) fail('Bir sorunun dört şıkkı birbirinden farklı olmalı.');
+        $deck[] = [
+            'id'=>'personal-'.bin2hex(random_bytes(12)), 'category'=>'personal',
+            'text'=>$text, 'options'=>$options, 'correct'=>$correct, 'explanation'=>'',
+        ];
+    }
+    return $deck;
+}
 function bank(): array {
     $bank=json_decode(file_get_contents(__DIR__.'/../data/questions.json'),true,512,JSON_THROW_ON_ERROR);
     $levels=json_decode(file_get_contents(__DIR__.'/../data/question-levels.json'),true,512,JSON_THROW_ON_ERROR);

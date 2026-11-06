@@ -58,9 +58,12 @@ try {
             $s['category']=$in['category']??'cografya';
             $count=$in['questionCount']??($s['category']==='mixed'?20:10);
             $seconds=$in['seconds']??10;
-            if(!is_int($count)||!in_array($count,[10,15,20],true))fail('Soru sayısı 10, 15 veya 20 olmalı.');
+            if($s['category']!=='personal' && (!is_int($count)||!in_array($count,[10,15,20],true)))fail('Soru sayısı 10, 15 veya 20 olmalı.');
             if(!is_int($seconds)||!in_array($seconds,[10,15,20],true))fail('Soru süresi 10, 15 veya 20 saniye olmalı.');
-            if(is_string($s['category'])&&specialQuiz($s['category'])){
+            if($s['category']==='personal'){
+                if(!empty($in['questionIds']))fail('Kendi yarışmana yalnızca yazdığın soruları ekleyebilirsin.');
+                $s['questions']=personalQuizDeck($in['personalQuestions']??null);
+            }elseif(is_string($s['category'])&&specialQuiz($s['category'])){
                 if(!empty($in['questionIds']))fail('Bu yarışmada sorular otomatik seçilir.');
                 $s['quizType']=$s['category'];$s['questions']=specialQuizDeck($s['quizType'],$count);
             }else{
@@ -81,7 +84,7 @@ try {
         if($mode==='raffle'){$s['entries']=[];$s['winnerIds']=[];$s['winners']=[];$s['draw']=null;$s['phase']='open';}
         if($mode==='family'){$s['familyPrompts']=array_merge($customFamily,selectFamilyPrompts($db,10-count($customFamily),array_map(fn($p)=>normalize($p['self']),$customFamily),$chosenFamily));shuffle($s['familyPrompts']);}
         for($attempt=0;$attempt<5;$attempt++){try{$db->prepare('INSERT INTO arena_rooms (pin,state,created_at) VALUES (?,?,?)')->execute([$s['pin'],json_encode($s,JSON_UNESCAPED_UNICODE),time()]);break;}catch(PDOException $e){if(!in_array((string)$e->getCode(),['23000','23505']))throw $e;$s['pin']=(string)random_int(100000,999999);if($attempt===4)throw $e;}}
-        foreach($s['questions']??[] as $q){$sql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';$db->prepare($sql)->execute([$q['id'],time()]);}
+        foreach($s['questions']??[] as $q){if(($q['category']??null)==='personal')continue;$sql=$db->getAttribute(PDO::ATTR_DRIVER_NAME)==='mysql'?'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON DUPLICATE KEY UPDATE used_at=VALUES(used_at)':'INSERT INTO arena_history (id,used_at) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET used_at=excluded.used_at';$db->prepare($sql)->execute([$q['id'],time()]);}
         $db->commit();$out=snapshot($s,$soloToken,true);if($soloToken)$out['playerToken']=$soloToken;echo json_encode($out,JSON_UNESCAPED_UNICODE);exit;
     }
     if($action==='room'){
