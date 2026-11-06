@@ -6313,972 +6313,6 @@
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-dbcda00f25102a",
-    "category": "genel-kultur",
-    "text": "“Mona Lisa tablosu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Herman Melville",
-      "J. K. Rowling",
-      "Leonardo da Vinci",
-      "Sabahattin Ali"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Leonardo da Vinci.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-1e241a8b3da3ff",
-    "category": "genel-kultur",
-    "text": "“Yıldızlı Gece tablosu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Ahmet Hamdi Tanpınar",
-      "Vincent van Gogh",
-      "Halit Ziya Uşaklıgil",
-      "Emily Brontë"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Vincent van Gogh.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-28d72253f133c8",
-    "category": "genel-kultur",
-    "text": "“Guernica tablosu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Pablo Picasso",
-      "Miguel de Cervantes",
-      "Paulo Coelho",
-      "J. M. Barrie"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Pablo Picasso.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-1bff4b082f1e92",
-    "category": "genel-kultur",
-    "text": "“Çığlık tablosu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Victor Hugo",
-      "Edvard Munch",
-      "Robert Louis Stevenson",
-      "Auguste Rodin"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Edvard Munch.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-a5c7bc13dabf06",
-    "category": "genel-kultur",
-    "text": "“Belleğin Azmi tablosu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "J. K. Rowling",
-      "Auguste Rodin",
-      "Leonardo da Vinci",
-      "Salvador Dalí"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Salvador Dalí.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-443788bd79c64f",
-    "category": "genel-kultur",
-    "text": "“İnci Küpeli Kız tablosu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "William Shakespeare",
-      "Franz Kafka",
-      "Leonardo da Vinci",
-      "Johannes Vermeer"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Johannes Vermeer.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-1ca26149322500",
-    "category": "genel-kultur",
-    "text": "“Âdem'in Yaratılışı freski” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Antoine de Saint-Exupéry",
-      "Auguste Rodin",
-      "Claude Monet",
-      "Michelangelo"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Michelangelo.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-0e1c30b041a387",
-    "category": "genel-kultur",
-    "text": "“Düşünen Adam heykeli” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Michelangelo",
-      "Recaizade Mahmut Ekrem",
-      "Ahmet Hamdi Tanpınar",
-      "Auguste Rodin"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Auguste Rodin.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-175a2ff7ccf0cf",
-    "category": "genel-kultur",
-    "text": "“Kaplumbağa Terbiyecisi tablosu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Osman Hamdi Bey",
-      "Michelangelo",
-      "Ahmet Hamdi Tanpınar",
-      "Leonardo da Vinci"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Osman Hamdi Bey.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-841433202d1506",
-    "category": "genel-kultur",
-    "text": "“Nilüferler resim serisi” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Herman Melville",
-      "C. S. Lewis",
-      "Claude Monet",
-      "José Mauro de Vasconcelos"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Claude Monet.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-e731cf293c10ae",
-    "category": "genel-kultur",
-    "text": "“Küçük Prens” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Emily Brontë",
-      "Antoine de Saint-Exupéry",
-      "Halide Edib Adıvar",
-      "Charlotte Brontë"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Antoine de Saint-Exupéry.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-2da2b7bc417657",
-    "category": "genel-kultur",
-    "text": "“Don Kişot” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Jane Austen",
-      "Miguel de Cervantes",
-      "Lev Tolstoy",
-      "Pablo Picasso"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Miguel de Cervantes.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-0abb442999847c",
-    "category": "genel-kultur",
-    "text": "“Sefiller” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Victor Hugo",
-      "Daniel Defoe",
-      "José Mauro de Vasconcelos",
-      "J. M. Barrie"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Victor Hugo.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-03c18156e76434",
-    "category": "genel-kultur",
-    "text": "“Savaş ve Barış” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Fyodor Dostoyevski",
-      "Miguel de Cervantes",
-      "Emily Brontë",
-      "Lev Tolstoy"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Lev Tolstoy.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-2a2a0896862fd4",
-    "category": "genel-kultur",
-    "text": "“Anna Karenina” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "J. M. Barrie",
-      "Paulo Coelho",
-      "Sabahattin Ali",
-      "Lev Tolstoy"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Lev Tolstoy.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-2d17652c1ccf2a",
-    "category": "genel-kultur",
-    "text": "“Romeo ve Juliet” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Ernest Hemingway",
-      "José Mauro de Vasconcelos",
-      "Pablo Picasso",
-      "William Shakespeare"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: William Shakespeare.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-0ff243e6c54608",
-    "category": "genel-kultur",
-    "text": "“Hamlet” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "C. S. Lewis",
-      "Osman Hamdi Bey",
-      "William Shakespeare",
-      "Fyodor Dostoyevski"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: William Shakespeare.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-4515746095577f",
-    "category": "genel-kultur",
-    "text": "“Dönüşüm” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Franz Kafka",
-      "Lewis Carroll",
-      "Auguste Rodin",
-      "Gabriel García Márquez"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Franz Kafka.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-e9b89a8fc9d269",
-    "category": "genel-kultur",
-    "text": "“1984 romanı” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "George Orwell",
-      "Leonardo da Vinci",
-      "Ahmet Hamdi Tanpınar",
-      "Mehmet Rauf"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: George Orwell.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-99007e4ccbb102",
-    "category": "genel-kultur",
-    "text": "“Hayvan Çiftliği” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Salvador Dalí",
-      "Halide Edib Adıvar",
-      "J. R. R. Tolkien",
-      "George Orwell"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: George Orwell.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-f18e7c84142181",
-    "category": "genel-kultur",
-    "text": "“Gurur ve Önyargı” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Johannes Vermeer",
-      "Fyodor Dostoyevski",
-      "Jane Austen",
-      "J. K. Rowling"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Jane Austen.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-a25da46d8fbb55",
-    "category": "genel-kultur",
-    "text": "“Uğultulu Tepeler” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Mehmet Rauf",
-      "Emily Brontë",
-      "Jules Verne",
-      "Halide Edib Adıvar"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Emily Brontë.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-ddc95b1615fe59",
-    "category": "genel-kultur",
-    "text": "“Jane Eyre” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Carlo Collodi",
-      "Victor Hugo",
-      "Charlotte Brontë",
-      "Leonardo da Vinci"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Charlotte Brontë.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-5f91cdc2cbf261",
-    "category": "genel-kultur",
-    "text": "“Moby Dick” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Oğuz Atay",
-      "Herman Melville",
-      "Mehmet Rauf",
-      "J. K. Rowling"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Herman Melville.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-0e447ca0254d24",
-    "category": "genel-kultur",
-    "text": "“Define Adası” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Yaşar Kemal",
-      "Franz Kafka",
-      "Recaizade Mahmut Ekrem",
-      "Robert Louis Stevenson"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Robert Louis Stevenson.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-304f97131d6810",
-    "category": "genel-kultur",
-    "text": "“Robinson Crusoe” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Emily Brontë",
-      "Charlotte Brontë",
-      "Franz Kafka",
-      "Daniel Defoe"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Daniel Defoe.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-1aa83ae8182624",
-    "category": "genel-kultur",
-    "text": "“Seksen Günde Devriâlem” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Jules Verne",
-      "Pablo Picasso",
-      "William Shakespeare",
-      "Lewis Carroll"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Jules Verne.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-e560b4ea145550",
-    "category": "genel-kultur",
-    "text": "“Denizler Altında Yirmi Bin Fersah” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Jules Verne",
-      "Johannes Vermeer",
-      "Ahmet Hamdi Tanpınar",
-      "Salvador Dalí"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Jules Verne.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-cea063f5d726ce",
-    "category": "genel-kultur",
-    "text": "“Alice Harikalar Diyarında” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Lev Tolstoy",
-      "Lewis Carroll",
-      "J. K. Rowling",
-      "Robert Louis Stevenson"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Lewis Carroll.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-89eb4ed7a77b6b",
-    "category": "genel-kultur",
-    "text": "“Pinokyo” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Jules Verne",
-      "Fyodor Dostoyevski",
-      "Carlo Collodi",
-      "Sabahattin Ali"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Carlo Collodi.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-42202bf14287ba",
-    "category": "genel-kultur",
-    "text": "“Hobbit” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Antoine de Saint-Exupéry",
-      "Carlo Collodi",
-      "J. R. R. Tolkien",
-      "Sabahattin Ali"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: J. R. R. Tolkien.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-d8e60ca26e51b2",
-    "category": "genel-kultur",
-    "text": "“Yüzüklerin Efendisi” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "J. R. R. Tolkien",
-      "Michelangelo",
-      "Ernest Hemingway",
-      "Osman Hamdi Bey"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: J. R. R. Tolkien.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-cc9f4afd6f17f2",
-    "category": "genel-kultur",
-    "text": "“Harry Potter serisi” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Paulo Coelho",
-      "Reşat Nuri Güntekin",
-      "Salvador Dalí",
-      "J. K. Rowling"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: J. K. Rowling.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-ea3c6bc0c50cd0",
-    "category": "genel-kultur",
-    "text": "“Narnia Günlükleri” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Reşat Nuri Güntekin",
-      "Oğuz Atay",
-      "C. S. Lewis",
-      "Michelangelo"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: C. S. Lewis.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-d4df480f40b09d",
-    "category": "genel-kultur",
-    "text": "“Şeker Portakalı” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Michelangelo",
-      "Leonardo da Vinci",
-      "Franz Kafka",
-      "José Mauro de Vasconcelos"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: José Mauro de Vasconcelos.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-60856b4418a9f5",
-    "category": "genel-kultur",
-    "text": "“Simyacı” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Leonardo da Vinci",
-      "Gabriel García Márquez",
-      "J. M. Barrie",
-      "Paulo Coelho"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Paulo Coelho.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-f030af0553f62b",
-    "category": "genel-kultur",
-    "text": "“Yaşlı Adam ve Deniz” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Osman Hamdi Bey",
-      "Emily Brontë",
-      "Pablo Picasso",
-      "Ernest Hemingway"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Ernest Hemingway.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-e2c7732d5a8d24",
-    "category": "genel-kultur",
-    "text": "“İnce Memed” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Pablo Picasso",
-      "Ahmet Hamdi Tanpınar",
-      "Yaşar Kemal",
-      "Reşat Nuri Güntekin"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Yaşar Kemal.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-3ef04ad2ef05fc",
-    "category": "genel-kultur",
-    "text": "“Çalıkuşu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Charlotte Brontë",
-      "William Shakespeare",
-      "J. M. Barrie",
-      "Reşat Nuri Güntekin"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Reşat Nuri Güntekin.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-5eac7686aed66b",
-    "category": "genel-kultur",
-    "text": "“Kürk Mantolu Madonna” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Halit Ziya Uşaklıgil",
-      "Sabahattin Ali",
-      "Miguel de Cervantes",
-      "Charlotte Brontë"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Sabahattin Ali.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-3877143c98b640",
-    "category": "genel-kultur",
-    "text": "“Saatleri Ayarlama Enstitüsü” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Johannes Vermeer",
-      "Ahmet Hamdi Tanpınar",
-      "Robert Louis Stevenson",
-      "Lev Tolstoy"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Ahmet Hamdi Tanpınar.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-72b2ffe214ad8c",
-    "category": "genel-kultur",
-    "text": "“Tutunamayanlar” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "William Shakespeare",
-      "Oğuz Atay",
-      "Jules Verne",
-      "Osman Hamdi Bey"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Oğuz Atay.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-9f0e6fc869e1cd",
-    "category": "genel-kultur",
-    "text": "“Aşk-ı Memnu” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "C. S. Lewis",
-      "Halit Ziya Uşaklıgil",
-      "Yaşar Kemal",
-      "Jules Verne"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Halit Ziya Uşaklıgil.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-a14d3fdae26484",
-    "category": "genel-kultur",
-    "text": "“Mai ve Siyah” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "J. M. Barrie",
-      "Halit Ziya Uşaklıgil",
-      "George Orwell",
-      "Michelangelo"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Halit Ziya Uşaklıgil.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-69e0d41d7acd47",
-    "category": "genel-kultur",
-    "text": "“Eylül romanı” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Jules Verne",
-      "Charlotte Brontë",
-      "Mehmet Rauf",
-      "Halit Ziya Uşaklıgil"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Mehmet Rauf.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-e7bdd798e7d129",
-    "category": "genel-kultur",
-    "text": "“Araba Sevdası” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Jane Austen",
-      "Salvador Dalí",
-      "Lev Tolstoy",
-      "Recaizade Mahmut Ekrem"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Recaizade Mahmut Ekrem.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-3581633e447b9d",
-    "category": "genel-kultur",
-    "text": "“Sinekli Bakkal” adlı eserin yaratıcısı kimdir?",
-    "options": [
-      "Gabriel García Márquez",
-      "Victor Hugo",
-      "José Mauro de Vasconcelos",
-      "Halide Edib Adıvar"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Halide Edib Adıvar.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-6b687161d1b3b9",
-    "category": "genel-kultur",
-    "text": "Altının kimyasal sembolü hangisidir?",
-    "options": [
-      "Cu",
-      "Au",
-      "Fe",
-      "Ag"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Au.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-41325730160a6f",
-    "category": "genel-kultur",
-    "text": "Gümüşün kimyasal sembolü hangisidir?",
-    "options": [
-      "Ar",
-      "Ag",
-      "Al",
-      "Au"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Ag.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-3d368c77f63679",
-    "category": "genel-kultur",
-    "text": "Demirin kimyasal sembolü hangisidir?",
-    "options": [
-      "Fm",
-      "F",
-      "Fr",
-      "Fe"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Fe.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-dfe52434b54cec",
-    "category": "genel-kultur",
-    "text": "Sofra tuzunun kimyasal formülü hangisidir?",
-    "options": [
-      "NaCl",
-      "NH₃",
-      "CO₂",
-      "H₂O"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: NaCl.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-27c5db95488ec6",
-    "category": "genel-kultur",
-    "text": "İnsanın en büyük iç organı hangisidir?",
-    "options": [
-      "Dalak",
-      "Böbrek",
-      "Kalp",
-      "Karaciğer"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Karaciğer.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-9f4be5f37002e2",
-    "category": "genel-kultur",
-    "text": "Erişkin bir insanda genellikle kaç kemik bulunur?",
-    "options": [
-      "306",
-      "106",
-      "206",
-      "406"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: 206.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-37a92287573e94",
-    "category": "genel-kultur",
-    "text": "Bitkilerin ışık enerjisiyle besin üretme sürecine ne denir?",
-    "options": [
-      "Yoğuşma",
-      "Fotosentez",
-      "Buharlaşma",
-      "Fermantasyon"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Fotosentez.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-c4c3144e680f84",
-    "category": "genel-kultur",
-    "text": "Bitkilere yeşil rengini veren pigment hangisidir?",
-    "options": [
-      "Melanin",
-      "Keratin",
-      "Hemoglobin",
-      "Klorofil"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Klorofil.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-df27ece7b29bf5",
-    "category": "genel-kultur",
-    "text": "Kalıtsal bilgiyi taşıyan temel molekül hangisidir?",
-    "options": [
-      "DNA",
-      "Tuz",
-      "Glikoz",
-      "Su"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: DNA.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-7b183dc8757888",
-    "category": "genel-kultur",
-    "text": "Hücrenin enerji üretimiyle ilişkilendirilen organeli hangisidir?",
-    "options": [
-      "Ribozom",
-      "Lizozom",
-      "Mitokondri",
-      "Golgi aygıtı"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Mitokondri.",
-    "difficulty": "expert"
-  },
-  {
-    "id": "genel-kultur-d79fe635d08750",
-    "category": "genel-kultur",
-    "text": "Elektrik akımının SI birimi hangisidir?",
-    "options": [
-      "Amper",
-      "Ohm",
-      "Watt",
-      "Volt"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Amper.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-a7dba2acde0730",
-    "category": "genel-kultur",
-    "text": "Elektrik direncinin SI birimi hangisidir?",
-    "options": [
-      "Ohm",
-      "Joule",
-      "Amper",
-      "Volt"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Ohm.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-f709065307863c",
-    "category": "genel-kultur",
-    "text": "Kuvvetin SI birimi hangisidir?",
-    "options": [
-      "Pascal",
-      "Watt",
-      "Newton",
-      "Kelvin"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Newton.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-64c4943d279efa",
-    "category": "genel-kultur",
-    "text": "Enerjinin SI birimi hangisidir?",
-    "options": [
-      "Amper",
-      "Newton",
-      "Metre",
-      "Joule"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Joule.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-3753642435ea00",
-    "category": "genel-kultur",
-    "text": "Satranç tahtasında kaç kare vardır?",
-    "options": [
-      "64",
-      "36",
-      "81",
-      "49"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: 64.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-ab88c515aa3137",
-    "category": "genel-kultur",
-    "text": "Satrançta L biçiminde hareket eden taş hangisidir?",
-    "options": [
-      "Fil",
-      "At",
-      "Vezir",
-      "Kale"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: At.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-8cb9eda87c8872",
-    "category": "genel-kultur",
-    "text": "Satrançta yalnızca çapraz hareket eden taş hangisidir?",
-    "options": [
-      "Fil",
-      "Kale",
-      "At",
-      "Şah"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Fil.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-bc3250bf7ba70f",
-    "category": "genel-kultur",
-    "text": "Standart bir piyanoda kaç tuş bulunur?",
-    "options": [
-      "72",
-      "66",
-      "88",
-      "100"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: 88.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-6681b0434dcad6",
-    "category": "genel-kultur",
-    "text": "Kemanın standart olarak kaç teli vardır?",
-    "options": [
-      "8",
-      "6",
-      "5",
-      "4"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: 4.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-b53d3422763b72",
-    "category": "genel-kultur",
-    "text": "Basketbolda bir takım sahada kaç oyuncuyla yer alır?",
-    "options": [
-      "11",
-      "5",
-      "6",
-      "7"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: 5.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-983c6940eab580",
-    "category": "genel-kultur",
-    "text": "Voleybolda bir takım sahada kaç oyuncuyla yer alır?",
-    "options": [
-      "7",
-      "9",
-      "5",
-      "6"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: 6.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-1ff49dc7ae1a49",
-    "category": "genel-kultur",
-    "text": "Olimpiyat sembolünde kaç halka vardır?",
-    "options": [
-      "7",
-      "6",
-      "5",
-      "4"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: 5.",
-    "difficulty": "general"
-  },
-  {
     "id": "genel-kultur-24f25d263a6e25",
     "category": "genel-kultur",
     "text": "Maratonun resmî mesafesi kaç kilometredir?",
@@ -7289,7 +6323,7 @@
       "50"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: 42,195.",
+    "explanation": "Maratonun standart mesafesi 42 kilometre 195 metredir.",
     "difficulty": "general"
   },
   {
@@ -7303,21 +6337,7 @@
       "Let"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Love.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-2f527ebf001540",
-    "category": "genel-kultur",
-    "text": "Modern matbaacılığın gelişiminde hareketli metal harflerle anılan isim kimdir?",
-    "options": [
-      "Galileo Galilei",
-      "Johannes Gutenberg",
-      "Isaac Newton",
-      "James Watt"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Johannes Gutenberg.",
+    "explanation": "Tenis puanları İngilizce anons edilirken sıfır için love sözcüğü kullanılır.",
     "difficulty": "general"
   },
   {
@@ -7331,8 +6351,8 @@
       "Alexander Fleming"
     ],
     "correct": 3,
-    "explanation": "Doğru cevap: Alexander Fleming.",
-    "difficulty": "expert"
+    "explanation": "Fleming, bir küfün çevresinde bakterilerin çoğalamadığını gözlemledi.",
+    "difficulty": "general"
   },
   {
     "id": "genel-kultur-a9a4ede660ded1",
@@ -7345,105 +6365,7 @@
       "Ada Lovelace"
     ],
     "correct": 2,
-    "explanation": "Doğru cevap: Marie Curie.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-da3dbffe73e7d1",
-    "category": "genel-kultur",
-    "text": "Bezelyelerle yaptığı deneylerle kalıtımın temellerini atan kişi kimdir?",
-    "options": [
-      "Gregor Mendel",
-      "Louis Pasteur",
-      "Robert Koch",
-      "Charles Darwin"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Gregor Mendel.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-5f237ac2235186",
-    "category": "genel-kultur",
-    "text": "Görelilik kuramıyla tanınan bilim insanı kimdir?",
-    "options": [
-      "Nikola Tesla",
-      "Albert Einstein",
-      "Michael Faraday",
-      "Isaac Newton"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Albert Einstein.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-df7c3420d7f936",
-    "category": "genel-kultur",
-    "text": "Yerçekimi ve hareket yasalarıyla tanınan bilim insanı kimdir?",
-    "options": [
-      "Dmitri Mendeleyev",
-      "Alexander Fleming",
-      "Gregor Mendel",
-      "Isaac Newton"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Isaac Newton.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-d0504b3821ec45",
-    "category": "genel-kultur",
-    "text": "Elementlerin periyodik tablosuyla özdeşleşen bilim insanı kimdir?",
-    "options": [
-      "James Watt",
-      "Dmitri Mendeleyev",
-      "Louis Pasteur",
-      "Charles Darwin"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Dmitri Mendeleyev.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-555d3b0ea6ed3b",
-    "category": "genel-kultur",
-    "text": "İlk insanlı Ay inişi hangi Apollo göreviyle gerçekleşti?",
-    "options": [
-      "Apollo 13",
-      "Apollo 17",
-      "Apollo 8",
-      "Apollo 11"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Apollo 11.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-2fdc11aba2bbd7",
-    "category": "genel-kultur",
-    "text": "Ay'a ilk ayak basan insan kimdir?",
-    "options": [
-      "Alan Shepard",
-      "John Glenn",
-      "Yuri Gagarin",
-      "Neil Armstrong"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Neil Armstrong.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-79f782126a501d",
-    "category": "genel-kultur",
-    "text": "Uzaya çıkan ilk insan kimdir?",
-    "options": [
-      "Neil Armstrong",
-      "Buzz Aldrin",
-      "Yuri Gagarin",
-      "Michael Collins"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Yuri Gagarin.",
+    "explanation": "Marie Curie fizik ve kimya alanlarında Nobel Ödülü kazandı.",
     "difficulty": "general"
   },
   {
@@ -18522,328 +17444,6 @@
     "difficulty": "general"
   },
   {
-    "id": "genel-kultur-346a371e61d1cf",
-    "category": "genel-kultur",
-    "text": "“Beyaz Diş” eserinin yazarı kimdir?",
-    "options": [
-      "Albert Camus",
-      "Charles Dickens",
-      "Stendhal",
-      "Jack London"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Jack London.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-79bb3c81b8091c",
-    "category": "genel-kultur",
-    "text": "“Vahşetin Çağrısı” eserinin yazarı kimdir?",
-    "options": [
-      "Stendhal",
-      "Honoré de Balzac",
-      "Margaret Mitchell",
-      "Jack London"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Jack London.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-2b087fc2ece3ec",
-    "category": "genel-kultur",
-    "text": "“İki Şehrin Hikâyesi” eserinin yazarı kimdir?",
-    "options": [
-      "İvan Turgenyev",
-      "Charles Dickens",
-      "Gustave Flaubert",
-      "José Saramago"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Charles Dickens.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-c22c22052f4829",
-    "category": "genel-kultur",
-    "text": "“Oliver Twist” eserinin yazarı kimdir?",
-    "options": [
-      "Albert Camus",
-      "Charles Dickens",
-      "Molière",
-      "William Golding"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Charles Dickens.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-a8bd3fef3c8307",
-    "category": "genel-kultur",
-    "text": "“David Copperfield” eserinin yazarı kimdir?",
-    "options": [
-      "Harper Lee",
-      "Charles Dickens",
-      "Nikolay Gogol",
-      "Sabahattin Ali"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Charles Dickens.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-3837d8b45d8265",
-    "category": "genel-kultur",
-    "text": "“Büyük Umutlar” eserinin yazarı kimdir?",
-    "options": [
-      "Fyodor Dostoyevski",
-      "Charles Dickens",
-      "Stefan Zweig",
-      "Hermann Hesse"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Charles Dickens.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-0c771241902ec8",
-    "category": "genel-kultur",
-    "text": "“Karamazov Kardeşler” eserinin yazarı kimdir?",
-    "options": [
-      "Yakup Kadri Karaosmanoğlu",
-      "Fyodor Dostoyevski",
-      "José Saramago",
-      "İvan Turgenyev"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Fyodor Dostoyevski.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-9f4da1d4c3e78e",
-    "category": "genel-kultur",
-    "text": "“Budala” eserinin yazarı kimdir?",
-    "options": [
-      "Nikolay Gogol",
-      "Orhan Kemal",
-      "Fyodor Dostoyevski",
-      "Stefan Zweig"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Fyodor Dostoyevski.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-60659229caa90f",
-    "category": "genel-kultur",
-    "text": "“Ölü Canlar” eserinin yazarı kimdir?",
-    "options": [
-      "Nikolay Gogol",
-      "Orhan Kemal",
-      "F. Scott Fitzgerald",
-      "Molière"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Nikolay Gogol.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-0bf1519dfa0d34",
-    "category": "genel-kultur",
-    "text": "“Babalar ve Oğullar” eserinin yazarı kimdir?",
-    "options": [
-      "İvan Turgenyev",
-      "John Steinbeck",
-      "José Saramago",
-      "Nikolay Gogol"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: İvan Turgenyev.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-9a6bbc3031305f",
-    "category": "genel-kultur",
-    "text": "“Oblomov” eserinin yazarı kimdir?",
-    "options": [
-      "Yusuf Atılgan",
-      "Hermann Hesse",
-      "Mihail Bulgakov",
-      "İvan Gonçarov"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: İvan Gonçarov.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-f05f26739b278d",
-    "category": "genel-kultur",
-    "text": "“Usta ile Margarita” eserinin yazarı kimdir?",
-    "options": [
-      "Peyami Safa",
-      "Charles Dickens",
-      "Mihail Bulgakov",
-      "J. D. Salinger"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Mihail Bulgakov.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-339c8f90bb3c90",
-    "category": "genel-kultur",
-    "text": "“Gülün Adı” eserinin yazarı kimdir?",
-    "options": [
-      "Mihail Bulgakov",
-      "Umberto Eco",
-      "Harper Lee",
-      "Peyami Safa"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Umberto Eco.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-1198682aaf280f",
-    "category": "genel-kultur",
-    "text": "“Fahrenheit 451” eserinin yazarı kimdir?",
-    "options": [
-      "Yusuf Atılgan",
-      "Charles Dickens",
-      "Ray Bradbury",
-      "Honoré de Balzac"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Ray Bradbury.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-54fb700a4a6ad4",
-    "category": "genel-kultur",
-    "text": "“Sineklerin Tanrısı” eserinin yazarı kimdir?",
-    "options": [
-      "Albert Camus",
-      "Jack London",
-      "William Golding",
-      "Yakup Kadri Karaosmanoğlu"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: William Golding.",
-    "difficulty": "expert"
-  },
-  {
-    "id": "genel-kultur-fa5967f43d44b0",
-    "category": "genel-kultur",
-    "text": "“Goriot Baba” eserinin yazarı kimdir?",
-    "options": [
-      "İvan Gonçarov",
-      "Honoré de Balzac",
-      "Ahmet Hamdi Tanpınar",
-      "Aldous Huxley"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Honoré de Balzac.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-fe2128ea1f792f",
-    "category": "genel-kultur",
-    "text": "“Kiralık Konak” eserinin yazarı kimdir?",
-    "options": [
-      "Gustave Flaubert",
-      "Yakup Kadri Karaosmanoğlu",
-      "Orhan Kemal",
-      "Umberto Eco"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Yakup Kadri Karaosmanoğlu.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-26f9e2350f2e9d",
-    "category": "genel-kultur",
-    "text": "“Dört Mevsim” adlı müzik eserinin bestecisi kimdir?",
-    "options": [
-      "Giacomo Puccini",
-      "Ludwig van Beethoven",
-      "George Gershwin",
-      "Antonio Vivaldi"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Antonio Vivaldi.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-aa2086a69fdd41",
-    "category": "genel-kultur",
-    "text": "“Sihirli Flüt” adlı müzik eserinin bestecisi kimdir?",
-    "options": [
-      "Johann Strauss II",
-      "Gioachino Rossini",
-      "Wolfgang Amadeus Mozart",
-      "Johannes Brahms"
-    ],
-    "correct": 2,
-    "explanation": "Doğru cevap: Wolfgang Amadeus Mozart.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-62b344ff641505",
-    "category": "genel-kultur",
-    "text": "“Figaro'nun Düğünü” adlı müzik eserinin bestecisi kimdir?",
-    "options": [
-      "Wolfgang Amadeus Mozart",
-      "Cemal Reşit Rey",
-      "Modest Musorgski",
-      "Georg Friedrich Händel"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Wolfgang Amadeus Mozart.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-b23d34017090cf",
-    "category": "genel-kultur",
-    "text": "“Don Giovanni” adlı müzik eserinin bestecisi kimdir?",
-    "options": [
-      "Wolfgang Amadeus Mozart",
-      "Maurice Ravel",
-      "Claude Debussy",
-      "Georg Friedrich Händel"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Wolfgang Amadeus Mozart.",
-    "difficulty": "general"
-  },
-  {
-    "id": "genel-kultur-4b0a6cfbd7fc24",
-    "category": "genel-kultur",
-    "text": "“Küçük Bir Gece Müziği” adlı müzik eserinin bestecisi kimdir?",
-    "options": [
-      "Gustav Holst",
-      "Igor Stravinski",
-      "Giuseppe Verdi",
-      "Wolfgang Amadeus Mozart"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Wolfgang Amadeus Mozart.",
-    "difficulty": "expert"
-  },
-  {
-    "id": "genel-kultur-ad3b18d0c27005",
-    "category": "genel-kultur",
-    "text": "“Goldberg Varyasyonları” adlı müzik eserinin bestecisi kimdir?",
-    "options": [
-      "Bedřich Smetana",
-      "Johann Sebastian Bach",
-      "Gioachino Rossini",
-      "Johannes Brahms"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Johann Sebastian Bach.",
-    "difficulty": "general"
-  },
-  {
     "id": "dinozor-e8ed8a874b78fb",
     "category": "dinozor",
     "text": "Tek bir ayak izinden farklı olarak art arda korunmuş izler hangi bilgiyi verir?",
@@ -23990,5 +22590,1405 @@
     "correct": 3,
     "explanation": "Diğer dört Büyük Göl, Kanada ile ABD arasındaki sınır üzerinde yer alır.",
     "difficulty": "expert"
+  },
+  {
+    "id": "genel-kultur-ae361c7aa4bd21",
+    "category": "genel-kultur",
+    "text": "Don Kişot, uzaktan bakınca dev sandığı hangi yapılara saldırır?",
+    "options": [
+      "Asma köprülere",
+      "Saat kulelerine",
+      "Deniz fenerlerine",
+      "Yel değirmenlerine"
+    ],
+    "correct": 3,
+    "explanation": "Sancho Panza değirmenleri görürken Don Kişot onların dev olduğuna inanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-f6a6b9f5ab733d",
+    "category": "genel-kultur",
+    "text": "Küçük Prens, yolculuğunda hangi hayvanla dostluk kurup onu evcilleştirmeyi öğrenir?",
+    "options": [
+      "Kurt",
+      "Tilki",
+      "Baykuş",
+      "Tavşan"
+    ],
+    "correct": 1,
+    "explanation": "Küçük Prens ile tilkinin karşılaşması, dostluğa emek vermek üzerinedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-cbe16e2d628d4f",
+    "category": "genel-kultur",
+    "text": "Sherlock Holmes'un maceralarını çoğu zaman hangi arkadaşı anlatır?",
+    "options": [
+      "Dr. Watson",
+      "Arsène Lupin",
+      "Hercule Poirot",
+      "Profesör Moriarty"
+    ],
+    "correct": 0,
+    "explanation": "Doktor Watson, Holmes'un hem ev arkadaşı hem de pek çok öykünün anlatıcısıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-2a271d152cfcef",
+    "category": "genel-kultur",
+    "text": "New York'taki Özgürlük Heykeli'ni ABD'ye hangi ülkenin halkı armağan etti?",
+    "options": [
+      "Birleşik Krallık",
+      "İtalya",
+      "Fransa",
+      "İspanya"
+    ],
+    "correct": 2,
+    "explanation": "Heykel Fransa'da yapıldı ve parçalar hâlinde New York'a taşındı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-057226a7b52138",
+    "category": "genel-kultur",
+    "text": "Moai adı verilen, iri başlı taş heykeller hangi adayla özdeşleşir?",
+    "options": [
+      "Madagaskar",
+      "Sicilya",
+      "Paskalya Adası",
+      "Girit"
+    ],
+    "correct": 2,
+    "explanation": "Rapa Nui olarak da bilinen Paskalya Adası, moai heykelleriyle tanınır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-0cb16dea7335d2",
+    "category": "genel-kultur",
+    "text": "Eriyen saatlerin bir ağaç dalından ve masa kenarından sarktığı ünlü tablo hangi ressamındır?",
+    "options": [
+      "Claude Monet",
+      "Vincent van Gogh",
+      "Salvador Dalí",
+      "Pablo Picasso"
+    ],
+    "correct": 2,
+    "explanation": "Dalí, Belleğin Azmi tablosunda cep saatlerini bükülüp sarkarken resmetti.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-27df08409576fd",
+    "category": "genel-kultur",
+    "text": "Çorbaya ait konserve kutularını bir resim serisine dönüştüren Andy Warhol hangi sanat akımıyla tanınır?",
+    "options": [
+      "Kübizm",
+      "İzlenimcilik",
+      "Pop art",
+      "Romantizm"
+    ],
+    "correct": 2,
+    "explanation": "Pop art, reklam ve tüketim kültüründen tanıdık imgeleri sanatın konusu yaptı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-eda405f8afec3a",
+    "category": "genel-kultur",
+    "text": "Başkahramanın kırmızı ve mavi hap arasında seçim yaptığı film hangisidir?",
+    "options": [
+      "Başlangıç",
+      "Azınlık Raporu",
+      "Yıldızlararası",
+      "Matrix"
+    ],
+    "correct": 3,
+    "explanation": "Morpheus bu seçimi Neo'ya sunar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-851b73af0e0730",
+    "category": "genel-kultur",
+    "text": "Geleceğe Dönüş'te zaman makinesi hangi günlük aracın içine kurulmuştur?",
+    "options": [
+      "Bir motosikletin",
+      "Bir spor otomobilin",
+      "Bir minibüsün",
+      "Bir karavanın"
+    ],
+    "correct": 1,
+    "explanation": "Doc Brown zaman makinesini martı kanat kapılı bir DeLorean'a kurar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-c4920f31f6f494",
+    "category": "genel-kultur",
+    "text": "Bir kasabanın dev bir televizyon stüdyosu olduğunu başkahramanından gizleyen film hangisidir?",
+    "options": [
+      "Bugün Aslında Dündü",
+      "Truman Show",
+      "Yeni Hayat",
+      "Terminal"
+    ],
+    "correct": 1,
+    "explanation": "Truman'ın sıradan sandığı hayatı izleyicilere canlı yayımlanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-367e4af854ad60",
+    "category": "genel-kultur",
+    "text": "Ratatuy filmindeki Remy, hangi şehirde bir restoran mutfağına girer?",
+    "options": [
+      "Paris",
+      "Viyana",
+      "Roma",
+      "Barselona"
+    ],
+    "correct": 0,
+    "explanation": "Remy'nin yemek tutkusu onu Paris'teki Gusteau'nun restoranına götürür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-d1df8a8add0b8b",
+    "category": "genel-kultur",
+    "text": "Konuşmaların henüz duyulmadığı sessiz sinemada diyaloglar seyirciye genellikle nasıl aktarılırdı?",
+    "options": [
+      "Araya giren yazı kartlarıyla",
+      "Perdenin yanındaki işaret bayraklarıyla",
+      "Ekranın altında akan haber şeridiyle",
+      "Renk değiştiren sahne ışıklarıyla"
+    ],
+    "correct": 0,
+    "explanation": "Ara yazılar, konuşmaları veya sahneler arasındaki olayları seyirciye aktarıyordu.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-aa1f79eff56aff",
+    "category": "genel-kultur",
+    "text": "Sinema setinde çekimin başında klaketin kapanış sesi sonradan ne işe yarar?",
+    "options": [
+      "Sahnenin ışığını ölçmeye",
+      "Oyuncuların sesini yükseltmeye",
+      "Kameranın odağını ayarlamaya",
+      "Ses ile görüntüyü eşleştirmeye"
+    ],
+    "correct": 3,
+    "explanation": "Klaketin kapandığı kare ile çıkardığı ses, kurguda aynı ana hizalanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-121ff6f95689c2",
+    "category": "genel-kultur",
+    "text": "Star Wars'ta Han Solo'nun Chewbacca ile kullandığı uzay gemisinin adı nedir?",
+    "options": [
+      "Nostromo",
+      "Millennium Falcon",
+      "Enterprise",
+      "Discovery One"
+    ],
+    "correct": 1,
+    "explanation": "Millennium Falcon, Han Solo ve Chewbacca'nın birlikte uçurduğu gemidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-af7dab7d33c6d6",
+    "category": "genel-kultur",
+    "text": "Filmin bazı sahnelerinin yeşil perde önünde çekilmesinin temel nedeni nedir?",
+    "options": [
+      "Arka planı sonradan değiştirmek",
+      "Kameranın hareketini sabitlemek",
+      "Dekordaki gölgeleri tamamen yok etmek",
+      "Oyuncunun sesini temizlemek"
+    ],
+    "correct": 0,
+    "explanation": "Kurgu sırasında belirli bir renk seçilip başka bir görüntüyle değiştirilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-7057b7ab159133",
+    "category": "genel-kultur",
+    "text": "Harry Potter filmlerinde oyuncuları süpürge üzerinde altın bir topun peşine düşüren spor hangisidir?",
+    "options": [
+      "Polo",
+      "Kriket",
+      "Quidditch",
+      "Lakros"
+    ],
+    "correct": 2,
+    "explanation": "Quidditch'te arayıcıların hedefi Altın Snitch'i yakalamaktır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-2d75374f090240",
+    "category": "genel-kultur",
+    "text": "Beatles üyelerinin bir yaya geçidinden geçtiği ünlü albüm kapağı hangi şehirde çekildi?",
+    "options": [
+      "Liverpool",
+      "Londra",
+      "Manchester",
+      "New York"
+    ],
+    "correct": 1,
+    "explanation": "Fotoğraf Londra'da, Abbey Road stüdyolarının yakınında çekildi.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-2534882bd35a3a",
+    "category": "genel-kultur",
+    "text": "Freddie Mercury'nin solistliğinde Bohemian Rhapsody'yi kaydeden grup hangisidir?",
+    "options": [
+      "Queen",
+      "The Rolling Stones",
+      "Pink Floyd",
+      "Led Zeppelin"
+    ],
+    "correct": 0,
+    "explanation": "Şarkı, opera bölümü ve çok sesli vokalleriyle tanınır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-0dffe12a6dc1d3",
+    "category": "genel-kultur",
+    "text": "Bir şarkıyı “a cappella” söyleyen bir toplulukta ne duyarsınız?",
+    "options": [
+      "Yaylı çalgılar eşliğinde koroyu",
+      "Yalnızca vurmalı çalgıları",
+      "Yalnızca insan seslerini",
+      "Bir solist ve piyanoyu"
+    ],
+    "correct": 2,
+    "explanation": "A cappella icrada ritim ve eşlik dâhil müzik insan sesiyle yapılır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-b59d77a859f741",
+    "category": "genel-kultur",
+    "text": "Reggae müziğini dünyaya tanıtan Bob Marley hangi ada ülkesindendi?",
+    "options": [
+      "Küba",
+      "Barbados",
+      "Jamaika",
+      "Haiti"
+    ],
+    "correct": 2,
+    "explanation": "Marley'nin müziği Jamaika'da gelişen reggae geleneğinden doğdu.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-ebabdd58887e35",
+    "category": "genel-kultur",
+    "text": "Bir DJ, eski bir kayıttan kısa bir ses parçası alıp yeni şarkıda kullandığında buna ne denir?",
+    "options": [
+      "Sample kullanmak",
+      "Düet yapmak",
+      "Akor basmak",
+      "Doğaçlama yapmak"
+    ],
+    "correct": 0,
+    "explanation": "Sample, var olan bir kayıttan alınan ses örneğidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-a4256b750445c6",
+    "category": "genel-kultur",
+    "text": "Müzisyenin prova sırasında kullandığı metronom neyi sabit tutmasına yardım eder?",
+    "options": [
+      "Çalgının akordunu",
+      "Tempoyu",
+      "Ses yüksekliğini",
+      "Melodinin tonunu"
+    ],
+    "correct": 1,
+    "explanation": "Metronom, eşit aralıklarla vuruş vererek müziğin hızını takip etmeyi sağlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-a9831cb662e604",
+    "category": "genel-kultur",
+    "text": "Tango dansının doğuşuyla birlikte anılan iki komşu ülke hangileridir?",
+    "options": [
+      "Arjantin ve Uruguay",
+      "Meksika ve Guatemala",
+      "Brezilya ve Kolombiya",
+      "İspanya ve Portekiz"
+    ],
+    "correct": 0,
+    "explanation": "Tango, Río de la Plata'nın iki kıyısında, özellikle Buenos Aires ve Montevideo'da gelişti.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "genel-kultur-701b2f6baee3c1",
+    "category": "genel-kultur",
+    "text": "Plakçalarda iğne, müziği plağın hangi özelliğini izleyerek okur?",
+    "options": [
+      "Ortadaki etiketin desenini",
+      "Kenardaki renk şeridini",
+      "Yüzeyindeki spiral oluğu",
+      "Alt yüzeydeki manyetik bandı"
+    ],
+    "correct": 2,
+    "explanation": "Oluktaki küçük değişimler iğneyi titreştirir ve sese dönüştürülür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-20290c0c868615",
+    "category": "genel-kultur",
+    "text": "Wimbledon'ı diğer üç Grand Slam tenis turnuvasından ayıran kort yüzeyi hangisidir?",
+    "options": [
+      "Çim",
+      "Sert zemin",
+      "Toprak",
+      "Parke"
+    ],
+    "correct": 0,
+    "explanation": "Dört Grand Slam içinde çimde oynanan turnuva Wimbledon'dır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-5667d1fe1e8001",
+    "category": "genel-kultur",
+    "text": "Fransa Bisiklet Turu'nda sarı mayo hangi bisikletçiye verilir?",
+    "options": [
+      "En genç yarışmacıya",
+      "Dağ puanlarında lider olana",
+      "Son etabı kazanana",
+      "Toplam sürede lider olana"
+    ],
+    "correct": 3,
+    "explanation": "Genel klasman, etaplarda biriken toplam süreye göre belirlenir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-7c255208ed7188",
+    "category": "genel-kultur",
+    "text": "Olimpiyatlarda kros kayağı ile tüfek atışını bir araya getiren branş hangisidir?",
+    "options": [
+      "Modern pentatlon",
+      "Nordik kombine",
+      "Biatlon",
+      "Triatlon"
+    ],
+    "correct": 2,
+    "explanation": "Biatloncular kayak parkurunda ilerlerken belirli noktalarda hedeflere ateş eder.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-2b217925de8937",
+    "category": "genel-kultur",
+    "text": "Curling oyuncuları, kayan taşın önündeki buzu neden süpürür?",
+    "options": [
+      "Taşın hız kaybını ve izlediği yolu etkilemek için",
+      "Taşın puanını ikiye katlamak için",
+      "Rakibin taşını yerinden kaldırmak için",
+      "Atış çizgisini yeniden çizmek için"
+    ],
+    "correct": 0,
+    "explanation": "Süpürme sayesinde takım, taşın ne kadar uzağa ve hangi çizgide gideceğini etkiler.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-7374c0a0d25e7a",
+    "category": "genel-kultur",
+    "text": "Bir Formula 1 yarışçısı yağmur başlayınca kuru zemin lastiği yerine neden oluklu lastik ister?",
+    "options": [
+      "Virajlarda direksiyonu kilitlemek için",
+      "Fren disklerini sıcak tutmak için",
+      "Aracın ağırlığını azaltmak için",
+      "Suyu lastiğin altından uzaklaştırmak için"
+    ],
+    "correct": 3,
+    "explanation": "Oluklar suyun tahliyesine yardım eder ve lastiğin yolla temasını artırır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-e01a1d04d515d3",
+    "category": "genel-kultur",
+    "text": "Boksta antrenörün ringe havlu atması ne anlama gelir?",
+    "options": [
+      "Sporcusu adına maçı bırakması",
+      "Hakem değişikliği istemesi",
+      "Puanların açıklanmasını istemesi",
+      "Raunt süresine itiraz etmesi"
+    ],
+    "correct": 0,
+    "explanation": "Havlu atmak, sporcunun köşesinin maçı sürdürmek istemediğini bildirir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-0ad8eda0794d2d",
+    "category": "genel-kultur",
+    "text": "Golfte bir çukuru belirlenen vuruş sayısından bir eksikle bitirmeye ne denir?",
+    "options": [
+      "Eagle",
+      "Par",
+      "Bogey",
+      "Birdie"
+    ],
+    "correct": 3,
+    "explanation": "Örneğin parı dört olan bir çukuru üç vuruşta bitiren golfçü birdie yapar.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "genel-kultur-5e9171254999fb",
+    "category": "genel-kultur",
+    "text": "Basketbolda “triple-double” yapan oyuncu ne başarmıştır?",
+    "options": [
+      "İki maçta da otuz sayı atmıştır",
+      "Arka arkaya üç üçlük atmıştır",
+      "Üç periyotta da sayı kralı olmuştur",
+      "Üç istatistikte çift haneye ulaşmıştır"
+    ],
+    "correct": 3,
+    "explanation": "Örneğin on sayı, on ribaund ve on asist bir triple-double'dır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-b52a3693f8166a",
+    "category": "genel-kultur",
+    "text": "Atletizmdeki dekatlonun şampiyonu nasıl belirlenir?",
+    "options": [
+      "En çok branş birinciliğiyle",
+      "On branştaki performansların toplam puanıyla",
+      "En iyi tek derecenin dünya sıralamasıyla",
+      "Son koşuyu ilk bitiren sporcuya göre"
+    ],
+    "correct": 1,
+    "explanation": "Dekatlonda koşu, atlama ve atma dereceleri puana çevrilip toplanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-76c32d214db3df",
+    "category": "genel-kultur",
+    "text": "Mutfakta “benmari” usulüyle çikolata eritmek için ne yapılır?",
+    "options": [
+      "Çikolata doğrudan tavada kavrulur",
+      "Çikolata tuzla birlikte çırpılır",
+      "Çikolatanın içine kaynar su dökülür",
+      "Kap sıcak suyun üzerinde dolaylı olarak ısıtılır"
+    ],
+    "correct": 3,
+    "explanation": "Dolaylı ısı çikolatanın sıcak yüzeye temas ederek yanma riskini azaltır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-b74670ebd13792",
+    "category": "genel-kultur",
+    "text": "Humusun temelindeki baklagil hangisidir?",
+    "options": [
+      "Bakla",
+      "Nohut",
+      "Kırmızı mercimek",
+      "Kuru fasulye"
+    ],
+    "correct": 1,
+    "explanation": "Haşlanmış nohut, tahin ve limonla ezilerek humus hazırlanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-67290b95bc2157",
+    "category": "genel-kultur",
+    "text": "Geleneksel Japon mutfağında suşiyi tanımlayan ortak özellik nedir?",
+    "options": [
+      "Mutlaka çiğ balık içermesi",
+      "Tamamının kızartılması",
+      "Her parçanın yosuna sarılması",
+      "Sirkeli pirinç kullanılması"
+    ],
+    "correct": 3,
+    "explanation": "Suşinin temeli çeşnilendirilmiş pirinçtir ve üstündeki malzeme değişebilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-ae5513247ce4a0",
+    "category": "genel-kultur",
+    "text": "Tiramisuda kedidili bisküvilerine geleneksel tadını hangi içecek verir?",
+    "options": [
+      "Sıcak çikolata",
+      "Kahve",
+      "Portakal suyu",
+      "Siyah çay"
+    ],
+    "correct": 1,
+    "explanation": "Bisküviler kahveyle ıslatılır ve mascarponeli kremayla kat kat dizilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-0da72e9028344d",
+    "category": "genel-kultur",
+    "text": "Pesto sosuna klasik yeşil rengini veren taze ot hangisidir?",
+    "options": [
+      "Dereotu",
+      "Kişniş",
+      "Nane",
+      "Fesleğen"
+    ],
+    "correct": 3,
+    "explanation": "Cenova usulü pestoda fesleğen yaprakları zeytinyağı ve diğer malzemelerle ezilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-6ea5b8e1bf6b96",
+    "category": "genel-kultur",
+    "text": "Patlamış mısır yaparken tanenin içindeki hangi değişim kabuğu çatlatır?",
+    "options": [
+      "Çekirdeğin oksijen üretmesi",
+      "Isınan suyun buhara dönüşmesi",
+      "Nişastanın tuza dönüşmesi",
+      "Kabuğun dışarıdan yağ emmesi"
+    ],
+    "correct": 1,
+    "explanation": "Kabuk içinde sıkışan su buharının basıncı taneyi patlatır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-994a710b00ffa0",
+    "category": "genel-kultur",
+    "text": "“Al dente” sipariş edilen bir makarnanın kıvamı nasıl olmalıdır?",
+    "options": [
+      "Sosu çekip kurumuş",
+      "Dışı çıtır kızarmış",
+      "Tamamen yumuşak",
+      "Isırınca hafif diri"
+    ],
+    "correct": 3,
+    "explanation": "İtalyanca ifade, pişmiş makarnanın dişe hafifçe direnmesini anlatır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-88706e63094635",
+    "category": "genel-kultur",
+    "text": "İtalyan mutfağında risottoya karakteristik kıvamını hangi malzeme verir?",
+    "options": [
+      "Püre hâline gelen patates",
+      "Unla koyulaştırılmış süt",
+      "İnce çekilmiş mısır unu",
+      "Nişastasını bırakan pirinç"
+    ],
+    "correct": 3,
+    "explanation": "Risotto pirinci pişerken nişasta salar ve yemeğe kremamsı bir kıvam kazandırır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-4f2a571cd74541",
+    "category": "genel-kultur",
+    "text": "Bir yiyeceğin tadı “umami” diye tarif edildiğinde hangi örnek bu tada en yakındır?",
+    "options": [
+      "Toz şeker",
+      "Parmesan peyniri",
+      "Limon suyu",
+      "Greyfurt kabuğu"
+    ],
+    "correct": 1,
+    "explanation": "Olgun peynirdeki glutamat, umami adı verilen yoğun lezzete katkıda bulunur.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "genel-kultur-128e8fa5c66404",
+    "category": "genel-kultur",
+    "text": "Düdüklü tencerede yemek neden açık tencereye göre daha hızlı pişebilir?",
+    "options": [
+      "Basınç arttıkça su daha düşük sıcaklıkta kaynar",
+      "Buhar oluşmadığı için su hiç ısı kaybetmez",
+      "Basınç arttıkça su daha yüksek sıcaklıkta kaynar",
+      "Kapak tencerenin içindeki suyu dondurur"
+    ],
+    "correct": 2,
+    "explanation": "Artan basınç suyun kaynama sıcaklığını yükseltir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-03fb0227b457e1",
+    "category": "genel-kultur",
+    "text": "Şimşeği gördükten bir süre sonra gök gürültüsünü duymamızın nedeni nedir?",
+    "options": [
+      "Işık sesten daha hızlı ilerler",
+      "Gök gürültüsü yere çarpınca oluşur",
+      "Ses yalnızca yağmur başlayınca yayılır",
+      "Işık bulutlardan geçerken yavaşlar"
+    ],
+    "correct": 0,
+    "explanation": "Işık neredeyse anında ulaşırken sesin aynı mesafeyi alması daha uzun sürer.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-a405df9ad820f9",
+    "category": "genel-kultur",
+    "text": "Suyun altındaki bir kaşık, su yüzeyinde neden kırılmış gibi görünür?",
+    "options": [
+      "Metal ışığı tamamen emer",
+      "Sudaki kabarcıklar görüntüyü ters çevirir",
+      "Su kaşığı mıknatıs gibi çeker",
+      "Işık sudan havaya geçerken yön değiştirir"
+    ],
+    "correct": 3,
+    "explanation": "Farklı ortamlardan geçen ışığın yön değiştirmesine kırılma denir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-a4174a83747e71",
+    "category": "genel-kultur",
+    "text": "Termostaki çift duvarın arasından havanın alınması neyi zorlaştırır?",
+    "options": [
+      "Isının duvarlar arasında taşınmasını",
+      "Işığın kapaktan geçmesini",
+      "Suyun dipte birikmesini",
+      "Sıvının donarken genleşmesini"
+    ],
+    "correct": 0,
+    "explanation": "Vakum, duvarlar arasında iletim ve taşınım yoluyla ısı geçişini azaltır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-4923391d43f8b3",
+    "category": "genel-kultur",
+    "text": "Karanlık bir salondan gün ışığına çıktığınızda göz bebeğiniz neden küçülür?",
+    "options": [
+      "Gözyaşını daha hızlı dağıtmak için",
+      "Yakındaki seslere odaklanmak için",
+      "Göz rengini koyulaştırmak için",
+      "Göze giren ışığı azaltmak için"
+    ],
+    "correct": 3,
+    "explanation": "İris, parlak ortamda göz bebeği açıklığını daraltır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-7772086f385974",
+    "category": "genel-kultur",
+    "text": "Ay tutulması sırasında Ay'ın üzerine kimin gölgesi düşer?",
+    "options": [
+      "Venüs'ün",
+      "Güneş'in",
+      "Dünya'nın",
+      "Mars'ın"
+    ],
+    "correct": 2,
+    "explanation": "Dünya, Güneş ile Ay arasına girince gölgesi Ay'ın üzerine düşebilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-1cc491ae97b46f",
+    "category": "genel-kultur",
+    "text": "Kışın donan bir gölde balıkların buzun altında yaşayabilmesini hangi özellik açıklar?",
+    "options": [
+      "Buzun sıvı sudan daha az yoğun olması",
+      "Buzun sıvı sudan daha yoğun olması",
+      "Suyun önce gölün dibinde donması",
+      "Göldeki tüm suyun aynı anda donması"
+    ],
+    "correct": 0,
+    "explanation": "Buz yüzeyde yüzer ve altında sıvı su kalabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-ca68ffd1a92472",
+    "category": "genel-kultur",
+    "text": "Yazın aynı odada metal bir kaşık tahta kaşıktan daha soğuk hissedilir. Neden?",
+    "options": [
+      "Metal oda sıcaklığına hiç ulaşmaz",
+      "Tahta sürekli ısı üretir",
+      "Metal elden ısıyı daha hızlı iletir",
+      "Tahta havanın sıcaklığını yükseltir"
+    ],
+    "correct": 2,
+    "explanation": "İki kaşığın sıcaklığı aynı olsa bile elinizden ısı çekme hızları farklıdır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-33070ae454b99c",
+    "category": "genel-kultur",
+    "text": "Bir fotoğraf makinesinde diyafram açıldığında sensöre ulaşan ne artar?",
+    "options": [
+      "Işık miktarı",
+      "Objektifin odak uzaklığı",
+      "Ses şiddeti",
+      "Piksel sayısı"
+    ],
+    "correct": 0,
+    "explanation": "Diyafram, ışığın geçtiği açıklığı büyütür veya küçültür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-c2d0ae9f0035ac",
+    "category": "genel-kultur",
+    "text": "Telefonda bir haritayı çevrimdışı indirdiğinizde, açık havada konumunuz internet olmadan nasıl belirlenebilir?",
+    "options": [
+      "Kayıtlı sokak adlarının sırasıyla",
+      "Navigasyon uydularının sinyalleriyle",
+      "Ekranın baktığı yönle",
+      "Harita dosyasının indirilme saatiyle"
+    ],
+    "correct": 1,
+    "explanation": "Telefonun uydu alıcısı konumu hesaplar ve indirilen harita bu noktayı gösterir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-ee09ccdf93b527",
+    "category": "genel-kultur",
+    "text": "Bir bankadan gelmiş gibi görünen sahte bir mesajla şifrenizi isteyen saldırı hangi adla bilinir?",
+    "options": [
+      "Sıkıştırma",
+      "Yedekleme",
+      "Şifreleme",
+      "Oltalama"
+    ],
+    "correct": 3,
+    "explanation": "Oltalama, güvenilir bir kaynağı taklit ederek kişiyi bilgi vermeye yönlendirir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-2c72911b269a88",
+    "category": "genel-kultur",
+    "text": "İki aşamalı doğrulamada şifreye ek olarak hangisi farklı türde bir kanıt sağlayabilir?",
+    "options": [
+      "Aynı şifrenin ikinci kez girilmesi",
+      "Telefondaki doğrulama uygulamasının kodu",
+      "Kullanıcı adının tekrar yazılması",
+      "Şifrenin son harfinin söylenmesi"
+    ],
+    "correct": 1,
+    "explanation": "Doğrulama uygulaması, bildiğiniz şifrenin yanında elinizdeki cihaza eriştiğinizi de gösterir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-6dcf51a59a10a9",
+    "category": "genel-kultur",
+    "text": "Bir telefon kamerasında optik yakınlaştırmayı dijital yakınlaştırmadan ayıran nedir?",
+    "options": [
+      "Fotoğrafı çektikten sonra kırpması",
+      "Pikselleri kesip yeniden ölçeklemesi",
+      "Görüntüyü mercek sistemiyle büyütmesi",
+      "Dosyayı daha büyük boyutta kaydetmesi"
+    ],
+    "correct": 2,
+    "explanation": "Optik yakınlaştırmada büyütme, görüntü sensöre ulaşmadan önce gerçekleşir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-83ed77afc216c7",
+    "category": "genel-kultur",
+    "text": "Bir videonun altında “CC” seçeneğini açınca genellikle ne görünür?",
+    "options": [
+      "Yönetmenin sesli yorumu",
+      "Alternatif kamera açıları",
+      "Sahnenin renk ayarları",
+      "Konuşma ve önemli sesleri aktaran altyazılar"
+    ],
+    "correct": 3,
+    "explanation": "Closed captions, konuşmaların yanında kapı sesi veya müzik gibi işitsel bilgileri de verebilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-a8990feeef6aa3",
+    "category": "genel-kultur",
+    "text": "Akıllı telefonla temassız ödeme yaparken telefonu terminale yaklaştırmayı sağlayan teknoloji hangisidir?",
+    "options": [
+      "GPS",
+      "HDMI",
+      "FM radyo",
+      "NFC"
+    ],
+    "correct": 3,
+    "explanation": "NFC, birbirine çok yakın cihazlar arasında veri aktarır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-d734a4aae942a0",
+    "category": "genel-kultur",
+    "text": "Bir karekodu düz barkoddan ayıran temel özellik hangisidir?",
+    "options": [
+      "Sadece lazerle okunabilmesi",
+      "Bilgiyi iki yönde kodlaması",
+      "Yalnızca rakam içerebilmesi",
+      "Her okumada desen değiştirmesi"
+    ],
+    "correct": 1,
+    "explanation": "QR kodun deseninde bilgi hem yatay hem de dikey yönde saklanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-806f6d6e50468c",
+    "category": "genel-kultur",
+    "text": "Bir internet sitesine “.org” uzantısı verilmesi tarihsel olarak hangi İngilizce sözcükle ilişkilidir?",
+    "options": [
+      "Original",
+      "Organization",
+      "Organizer",
+      "Organic"
+    ],
+    "correct": 1,
+    "explanation": ".org uzantısı adını kuruluş anlamındaki organization sözcüğünden alır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-866d3843376a6b",
+    "category": "genel-kultur",
+    "text": "1969'da Ay'a inen Apollo 11 ekibinden kim yörüngede kaldı?",
+    "options": [
+      "Neil Armstrong",
+      "Yuri Gagarin",
+      "Michael Collins",
+      "Buzz Aldrin"
+    ],
+    "correct": 2,
+    "explanation": "Armstrong ve Aldrin yüzeye inerken Collins komuta modülünde Ay çevresinde kaldı.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "genel-kultur-28640cf8e478c6",
+    "category": "genel-kultur",
+    "text": "Berlin Duvarı açıldığında hangi iki ülkenin birleşmesine giden yol hızlandı?",
+    "options": [
+      "Norveç ve İsveç",
+      "Avusturya ve Macaristan",
+      "Doğu Almanya ve Batı Almanya",
+      "Çekya ve Slovakya"
+    ],
+    "correct": 2,
+    "explanation": "1989'da geçişlerin açılmasını ertesi yıl Almanya'nın yeniden birleşmesi izledi.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-655f2b64bfd12f",
+    "category": "genel-kultur",
+    "text": "Titanic ilk seferinde Atlantik'i geçip hangi şehre ulaşmayı planlıyordu?",
+    "options": [
+      "New York",
+      "Miami",
+      "Montreal",
+      "Boston"
+    ],
+    "correct": 0,
+    "explanation": "Gemi Southampton'dan yola çıktı ve New York'a ulaşamadan battı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-66515a331bf623",
+    "category": "genel-kultur",
+    "text": "Rosetta Taşı'nda aynı metnin farklı yazılarla bulunması hangi yazının çözülmesine yardım etti?",
+    "options": [
+      "Çin yazısı",
+      "Viking runları",
+      "Maya yazısı",
+      "Mısır hiyeroglifleri"
+    ],
+    "correct": 3,
+    "explanation": "Metnin okunabilen Yunanca bölümü, Mısır yazılarıyla karşılaştırma olanağı verdi.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "genel-kultur-40316b27d634cd",
+    "category": "genel-kultur",
+    "text": "Antik Pompeii'yi kül altında bırakan yanardağ hangisiydi?",
+    "options": [
+      "Olimpos",
+      "Stromboli",
+      "Etna",
+      "Vezüv"
+    ],
+    "correct": 3,
+    "explanation": "Napoli yakınındaki Vezüv'ün patlaması Roma kentini kül ve volkanik malzemeyle örttü.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-ed68747e10420b",
+    "category": "genel-kultur",
+    "text": "İpek Yolu üzerindeki bir tüccar geceyi kervansarayda geçiriyorsa orada hangi hizmeti bulmayı beklerdi?",
+    "options": [
+      "Yeni sikkeler için para basımı",
+      "Resmî mektuplar için tercüme",
+      "Yolcular ve yük hayvanları için konaklama",
+      "Denizaşırı gemiler için onarım"
+    ],
+    "correct": 2,
+    "explanation": "Kervansaraylar uzun yolculuklarda tüccarlara ve hayvanlarına güvenli bir mola yeri sağlardı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-196870fec4c91a",
+    "category": "genel-kultur",
+    "text": "Olimpiyat Oyunları'na adını veren Olympia antik çağda neredeydi?",
+    "options": [
+      "Yunanistan",
+      "Mısır",
+      "İtalya",
+      "İran"
+    ],
+    "correct": 0,
+    "explanation": "Antik oyunlar, Mora Yarımadası'ndaki Olympia'da düzenlenirdi.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-151270fc3f6d22",
+    "category": "genel-kultur",
+    "text": "Floransa'da doğup Avrupa'ya yayılan, adının anlamı “yeniden doğuş” olan dönem hangisidir?",
+    "options": [
+      "Sanayi Devrimi",
+      "Rönesans",
+      "Reform",
+      "Aydınlanma"
+    ],
+    "correct": 1,
+    "explanation": "Rönesans'ta Antik Çağ'ın sanatına ve düşüncesine ilgi yeniden canlandı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-db248453b9c5c9",
+    "category": "genel-kultur",
+    "text": "Panama Kanalı'ndan geçen bir gemi hangi iki okyanus arasında kestirme yapar?",
+    "options": [
+      "Pasifik ve Arktik",
+      "Atlas ve Hint",
+      "Hint ve Pasifik",
+      "Atlas ve Pasifik"
+    ],
+    "correct": 3,
+    "explanation": "Kanal, Amerika kıtasının güney ucunu dolaşma ihtiyacını ortadan kaldırır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-4f214bfedb6c78",
+    "category": "genel-kultur",
+    "text": "Avustralya'daki Sidney Opera Binası'nın çatısı en çok hangi görüntüyle özdeşleşir?",
+    "options": [
+      "Soğan biçimli kubbeler",
+      "Üst üste dizilmiş piramitler",
+      "Birbirine geçen demir kemerler",
+      "Rüzgârla şişmiş yelkenler"
+    ],
+    "correct": 3,
+    "explanation": "Liman kıyısındaki beyaz çatı kabukları yelkenleri hatırlatır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-c7f2540157f114",
+    "category": "genel-kultur",
+    "text": "Hindistan'daki Tac Mahal ilk olarak hangi amaçla yaptırıldı?",
+    "options": [
+      "Yazlık saray",
+      "Anıt mezar",
+      "Taç giyme salonu",
+      "Gözlemevi"
+    ],
+    "correct": 1,
+    "explanation": "Şah Cihan, Tac Mahal'i eşi Mümtaz Mahal'in anısına yaptırdı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-e67c8eba00aa0b",
+    "category": "genel-kultur",
+    "text": "Antoni Gaudí'nin tasarladığı Sagrada Família'yı görmek için hangi şehre gidilir?",
+    "options": [
+      "Barselona",
+      "Madrid",
+      "Lizbon",
+      "Sevilla"
+    ],
+    "correct": 0,
+    "explanation": "Gaudí'nin kuleleriyle tanınan bazilikası Barselona'dadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-d29cc87cbcbbf6",
+    "category": "genel-kultur",
+    "text": "Yolculukta saat dilimlerini hızla geçtikten sonra yaşanan “jet lag” neyle ilgilidir?",
+    "options": [
+      "Biyolojik saatin yerel saatle uyuşmaması",
+      "Kabin basıncının kulakta değişmesi",
+      "Uzun süre aynı koltukta oturulması",
+      "Uçakta motor sesinin kesilmesi"
+    ],
+    "correct": 0,
+    "explanation": "Uyku ve uyanıklık döngüsü yeni gece-gündüz düzenine hemen uyum sağlayamayabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-dc542c7a9b1f92",
+    "category": "genel-kultur",
+    "text": "Kuzey ışıklarını görmek isteyen bir yolcu için bu yerlerden hangisi en elverişlidir?",
+    "options": [
+      "Orta Meksika",
+      "Kuzey Norveç",
+      "Batı Mısır",
+      "Güney İtalya"
+    ],
+    "correct": 1,
+    "explanation": "Kuzey ışıkları yüksek kuzey enlemlerinde daha sık gözlenir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-2974a6fa89eb8e",
+    "category": "genel-kultur",
+    "text": "Avrupa'da gece treninde “kuşetli” bir bilet alan yolcu ne bekler?",
+    "options": [
+      "Özel bir seyir terası",
+      "Otomobilini taşıyan bir vagon",
+      "Yatmaya uygun ranzalı bir bölüm",
+      "Yalnızca yemek servisi yapılan bir bölüm"
+    ],
+    "correct": 2,
+    "explanation": "Kuşetli kompartımanlarda yolcular için yatma yerleri bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-1d0f4c56ae9f24",
+    "category": "genel-kultur",
+    "text": "Venedik'te “vaporetto”ya binen bir yolcu neye binmiş olur?",
+    "options": [
+      "Şehir tramvayına",
+      "Gece trenine",
+      "Teleferiğe",
+      "Su otobüsüne"
+    ],
+    "correct": 3,
+    "explanation": "Vaporettolar Venedik'in toplu taşıma hatlarında çalışan teknelerdir.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "genel-kultur-99a694c2646988",
+    "category": "genel-kultur",
+    "text": "Hindistan'da insanların birbirlerine renkli tozlar attığı bahar bayramı hangisidir?",
+    "options": [
+      "Songkran",
+      "Vesak",
+      "Diwali",
+      "Holi"
+    ],
+    "correct": 3,
+    "explanation": "Holi kutlamaları renkli tozları ve baharın gelişiyle tanınır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-6e67c31e26f737",
+    "category": "genel-kultur",
+    "text": "Meksika'daki Ölüler Günü'nde fotoğraflar ve sevilen yiyeceklerle hazırlanan sunaklar kimin içindir?",
+    "options": [
+      "Kente gelen misafirlerin",
+      "Vefat eden yakınların",
+      "Yeni evlenen çiftlerin",
+      "O yıl doğan çocukların"
+    ],
+    "correct": 1,
+    "explanation": "Aileler bu sunakları kaybettikleri yakınlarını anmak için kurar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-4c39289fbf4daa",
+    "category": "genel-kultur",
+    "text": "Japonya'da “hanami” için parklarda toplanan insanlar geleneksel olarak neyi seyreder?",
+    "options": [
+      "Açan kiraz çiçeklerini",
+      "Yaz havai fişeklerini",
+      "Göç eden turnaları",
+      "İlk karın yağışını"
+    ],
+    "correct": 0,
+    "explanation": "Hanami, özellikle ilkbaharda sakura ağaçlarının çiçeklerini seyretme geleneğidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-021435b0b6fc28",
+    "category": "genel-kultur",
+    "text": "Rio Karnavalı'nın büyük geçit töreninde yarışan dans ve müzik toplulukları hangi adla tanınır?",
+    "options": [
+      "Samba okulları",
+      "Flamenko toplulukları",
+      "Salsa kulüpleri",
+      "Tango evleri"
+    ],
+    "correct": 0,
+    "explanation": "Samba okulları seçtikleri tema için kostüm, müzik ve geçit araçları hazırlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-9e1f6c476a8247",
+    "category": "genel-kultur",
+    "text": "Gölge oyunu Karagöz'de seyircinin gördüğü renkli figürler nasıl canlandırılır?",
+    "options": [
+      "Eldiven gibi ele geçirilir",
+      "Perdenin arkasında çubuklarla oynatılır",
+      "Sahnenin altında mıknatısla yürütülür",
+      "Sahne üstünden iplerle sarkıtılır"
+    ],
+    "correct": 1,
+    "explanation": "Arkadan verilen ışık, oynatılan tasvirlerin görüntüsünü perdeye düşürür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-127f87a0c30518",
+    "category": "genel-kultur",
+    "text": "Flamenko gösterilerindeki ritmik ayak vuruşları, gitar ve el çırpma hangi bölgenin kültürüyle özdeşleşir?",
+    "options": [
+      "Endülüs",
+      "Bavyera",
+      "Toskana",
+      "Normandiya"
+    ],
+    "correct": 0,
+    "explanation": "Flamenko, İspanya'nın güneyindeki Endülüs'le özdeşleşir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-6746d29e1f5fb3",
+    "category": "genel-kultur",
+    "text": "İskoçya ile özdeşleşen ekose desenli geleneksel giysinin adı nedir?",
+    "options": [
+      "Panço",
+      "Kilt",
+      "Sari",
+      "Kimono"
+    ],
+    "correct": 1,
+    "explanation": "Kilt genellikle tartan denen ekose kumaştan yapılan pileli bir giysidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-01341eb59afbae",
+    "category": "genel-kultur",
+    "text": "İmparator pengueninde yumurtayı Antarktika kışında ayaklarının üstünde sıcak tutan kimdir?",
+    "options": [
+      "Anne penguen",
+      "Bir önceki yılın yavrusu",
+      "Baba penguen",
+      "Sürüdeki en yaşlı dişi"
+    ],
+    "correct": 2,
+    "explanation": "Dişi beslenmek için denize döndüğünde baba yumurtayı ayaklarının üzerinde bir deri kıvrımının altında taşır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-86e4a9d985a3c3",
+    "category": "genel-kultur",
+    "text": "Bir yunusun balık değil memeli olduğunu doğada hangi gözlem en iyi gösterir?",
+    "options": [
+      "Sürüyle hareket etmesi",
+      "Su altında hızlanması",
+      "Yüzgeçleriyle yön değiştirmesi",
+      "Yavrusunu sütle beslemesi"
+    ],
+    "correct": 3,
+    "explanation": "Süt üretip yavruyu beslemek memelilerin ayırt edici özelliğidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-5eb7cad0430dac",
+    "category": "genel-kultur",
+    "text": "Mercan resiflerini oluşturan canlılar hangi gruptandır?",
+    "options": [
+      "Mantarlar",
+      "Bitkiler",
+      "Hayvanlar",
+      "Bakteriler"
+    ],
+    "correct": 2,
+    "explanation": "Resif yapan mercanlar, sert iskelet oluşturan küçük hayvan kolonileridir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-8ab087285aca76",
+    "category": "genel-kultur",
+    "text": "Somon balıklarının yaşam döngüsüyle özdeşleşen yolculuk hangisidir?",
+    "options": [
+      "Kışı geçirmek için okyanus tabanına gömülmek",
+      "Yumurtlamak için denizden karaya çıkmak",
+      "Yavruyken nehirden çöl göllerine geçmek",
+      "Üremek için denizden akarsulara dönmek"
+    ],
+    "correct": 3,
+    "explanation": "Göç eden somon türleri büyüdükten sonra yumurtlamak üzere tatlı sulara geri döner.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-f9df5fbf424f93",
+    "category": "genel-kultur",
+    "text": "Yarasalar karanlıkta engellerin yerini çoğunlukla nasıl belirler?",
+    "options": [
+      "Çıkardıkları sesin yankısını dinleyerek",
+      "Ay ışığının gölgesini izleyerek",
+      "Kanatlarındaki ışığı yansıtarak",
+      "Havadaki nemin tadını alarak"
+    ],
+    "correct": 0,
+    "explanation": "Yankıyla konum belirleyen yarasalar, sesin geri dönüşünden nesnenin yerini çıkarır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-f3c1e327cf6f51",
+    "category": "genel-kultur",
+    "text": "Bir ağaç gövdesinin kesitindeki büyüme halkaları en çok neyi kestirmek için kullanılır?",
+    "options": [
+      "Yaprakların rengini",
+      "Tohumların ağırlığını",
+      "Ağacın yaşını",
+      "Köklerin sayısını"
+    ],
+    "correct": 2,
+    "explanation": "Mevsimsel büyüme gösteren birçok ağaçta yılda bir halka oluşur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-29db843f3feb7b",
+    "category": "genel-kultur",
+    "text": "Göç eden kazların V biçiminde uçması arkadaki kuşlara nasıl yardım eder?",
+    "options": [
+      "Öndeki kanatların oluşturduğu yükselen havadan yararlanırlar",
+      "Yırtıcılara karşı seslerini tamamen gizlerler",
+      "Güneş'i sürekli karşılarında tutarlar",
+      "Daha sıcak hava katmanına otomatik çıkarlar"
+    ],
+    "correct": 0,
+    "explanation": "Uygun konumda uçan kuşlar diğerlerinin oluşturduğu hava akımından yararlanarak enerji tasarrufu yapar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-ef86abf6f0ca0e",
+    "category": "genel-kultur",
+    "text": "Kutup bölgelerinde yazın görülen “gece yarısı güneşi” neyi anlatır?",
+    "options": [
+      "Kutup ışıklarının gündüz başlamasını",
+      "Ay'ın Güneş kadar parlak görünmesini",
+      "Güneş'in bir gece içinde iki kez doğmasını",
+      "Güneş'in gece yarısında da ufkun üzerinde kalmasını"
+    ],
+    "correct": 3,
+    "explanation": "Dünya'nın eksen eğikliği nedeniyle yüksek enlemlerde yazın Güneş günlerce batmayabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-eee8956bdad95f",
+    "category": "genel-kultur",
+    "text": "Monopoly'de aynı renk grubundaki bütün arsaları toplamak oyuncuya hangi imkânı verir?",
+    "options": [
+      "Her turda iki kez zar atmak",
+      "Hapishaneden koşulsuz çıkmak",
+      "Diğer arsaları ücretsiz almak",
+      "Kurallara uygun şekilde ev inşa etmek"
+    ],
+    "correct": 3,
+    "explanation": "Standart oyunda ev yapmanın ön koşulu aynı renk grubunu tamamlamaktır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-70cdebaddb206f",
+    "category": "genel-kultur",
+    "text": "Tetris'te blokları dizen oyuncu hangi durumda bir sırayı temizler?",
+    "options": [
+      "En alta kare bir parça geldiğinde",
+      "Bir sütun tavana ulaştığında",
+      "Aynı renkli dört parça değdiğinde",
+      "Yatay sırada hiç boşluk kalmadığında"
+    ],
+    "correct": 3,
+    "explanation": "Klasik Tetris'te sıra temizlemek için renkler değil yatay hattın tamamlanması önemlidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-cd7f35a38c2683",
+    "category": "genel-kultur",
+    "text": "Bir sudoku bulmacasında rakamların tekrarlanmaması gereken üç alan hangileridir?",
+    "options": [
+      "Köşe, kenar ve orta çizgi",
+      "Sütun, köşegen ve merkez",
+      "Satır, sütun ve küçük kare",
+      "Satır, köşegen ve dış kenar"
+    ],
+    "correct": 2,
+    "explanation": "Klasik dokuz çarpı dokuz sudokuda her satır, sütun ve üçe üç kutu 1'den 9'a kadar rakamları içerir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-65c0fe1ba2313c",
+    "category": "genel-kultur",
+    "text": "Tabu oynarken kartın altındaki yasak kelimeler neyi sınırlar?",
+    "options": [
+      "Anlatıcının ipucu verirken kullanabileceği sözleri",
+      "Rakibin seçebileceği kartların rengini",
+      "Turun başında çekilecek kart sayısını",
+      "Takımın yapabileceği tahmin sayısını"
+    ],
+    "correct": 0,
+    "explanation": "Takım hedef kelimeyi bulmaya çalışırken anlatıcı yasaklı sözcükleri kullanamaz.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-21f80bbe9b34cc",
+    "category": "genel-kultur",
+    "text": "Satrançta bir oyuncu “rok” yaptığında hangi iki taş aynı hamlede hareket eder?",
+    "options": [
+      "Fil ve at",
+      "Kale ve piyon",
+      "Şah ve vezir",
+      "Şah ve kale"
+    ],
+    "correct": 3,
+    "explanation": "Rokta şah kaleye doğru iki kare ilerler ve kale şahın öbür yanına geçer.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-cbfbafd605eb68",
+    "category": "genel-kultur",
+    "text": "Çizgi roman dünyasında Gotham şehrinin koruyucusu olarak tanınan kahraman kimdir?",
+    "options": [
+      "Superman",
+      "Örümcek Adam",
+      "Demir Adam",
+      "Batman"
+    ],
+    "correct": 3,
+    "explanation": "Bruce Wayne, Batman kimliğiyle kurgusal Gotham şehrinde suçla mücadele eder.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-c233b74ebb39b8",
+    "category": "genel-kultur",
+    "text": "Bir markette farklı boydaki aynı ürünün hangisinin daha ekonomik olduğunu anlamak için hangi değere bakılır?",
+    "options": [
+      "Etiketteki indirim yüzdesine",
+      "Kilogram veya litre başına fiyata",
+      "Paketin toplam satış fiyatına",
+      "Paketteki porsiyon sayısına"
+    ],
+    "correct": 1,
+    "explanation": "Birim fiyat, farklı büyüklükteki paketleri aynı miktar üzerinden karşılaştırır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-ba181a5a07a0c9",
+    "category": "genel-kultur",
+    "text": "Bir tiyatro oyununda “suflör” sahne kenarından oyuncuya nasıl yardım eder?",
+    "options": [
+      "Unutulan repliği hatırlatır",
+      "Sahne ışıklarını değiştirir",
+      "Kostüm değişimini yönetir",
+      "Dekoru hareket ettirir"
+    ],
+    "correct": 0,
+    "explanation": "Suflör, metni takip ederek takılan oyuncuya sözünü hatırlatır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-f8016f5ba31c8b",
+    "category": "genel-kultur",
+    "text": "Bir orkestrada konser öncesi müzisyenlerin aynı referans notasını dinlemesinin amacı nedir?",
+    "options": [
+      "Solistin sesini yükseltmek",
+      "İlk eserin temposunu seçmek",
+      "Salonun yankısını azaltmak",
+      "Çalgıları birbirine göre akort etmek"
+    ],
+    "correct": 3,
+    "explanation": "Ortak referans, farklı çalgıların aynı notayı uyum içinde çalmasını sağlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "genel-kultur-239e970e67e498",
+    "category": "genel-kultur",
+    "text": "Bir haber fotoğrafının çok daha eski bir olaydan alınıp alınmadığını araştırırken hangi yöntem en doğrudan ipucunu verir?",
+    "options": [
+      "Dosyanın adını değiştirmek",
+      "Tersine görsel arama yapmak",
+      "Görüntüyü daha yüksek çözünürlükte açmak",
+      "Fotoğrafı siyah beyaza çevirmek"
+    ],
+    "correct": 1,
+    "explanation": "Tersine arama, görselin daha önce yayımlandığı sayfaları bulmaya yardımcı olur.",
+    "difficulty": "general"
   }
 ]
