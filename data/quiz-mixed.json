@@ -391,6 +391,20 @@
     "difficulty": "general"
   },
   {
+    "id": "cografya-6f27183aed5f9f",
+    "category": "cografya",
+    "text": "Sahra’nın güney kıyısında çöl ile daha yağışlı savanlar arasında uzanan geçiş kuşağı hangisidir?",
+    "options": [
+      "Sahel",
+      "Sibirya",
+      "Patagonya",
+      "Pampa"
+    ],
+    "correct": 0,
+    "explanation": "Sahel, Afrika’da Sahra’nın güneyi boyunca uzanan yarı kurak kuşaktır.",
+    "difficulty": "general"
+  },
+  {
     "id": "cografya-3fcdbe9cbd34da",
     "category": "cografya",
     "text": "Akdeniz ile Atlas Okyanusu'nu bağlayan boğaz hangisidir?",
@@ -542,20 +556,6 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Gayzer.",
-    "difficulty": "general"
-  },
-  {
-    "id": "cografya-39b545aec9d409",
-    "category": "cografya",
-    "text": "Dünyanın en derin gölü hangisidir?",
-    "options": [
-      "Superior Gölü",
-      "Baykal Gölü",
-      "Titicaca Gölü",
-      "Victoria Gölü"
-    ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Baykal Gölü.",
     "difficulty": "general"
   },
   {
