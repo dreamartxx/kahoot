@@ -753,6 +753,7 @@
     ],
     "correct": 0,
     "explanation": "Adana ilinin plaka kodu 01 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -767,6 +768,7 @@
     ],
     "correct": 0,
     "explanation": "Ankara ilinin plaka kodu 06 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -781,6 +783,7 @@
     ],
     "correct": 3,
     "explanation": "Antalya ilinin plaka kodu 07 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -795,6 +798,7 @@
     ],
     "correct": 2,
     "explanation": "Aydın ilinin plaka kodu 09 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -809,6 +813,7 @@
     ],
     "correct": 0,
     "explanation": "Balıkesir ilinin plaka kodu 10 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -823,6 +828,7 @@
     ],
     "correct": 3,
     "explanation": "Bursa ilinin plaka kodu 16 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -837,6 +843,7 @@
     ],
     "correct": 1,
     "explanation": "Diyarbakır ilinin plaka kodu 21 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -851,6 +858,7 @@
     ],
     "correct": 3,
     "explanation": "Gaziantep ilinin plaka kodu 27 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -865,6 +873,7 @@
     ],
     "correct": 0,
     "explanation": "Hatay ilinin plaka kodu 31 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -879,6 +888,7 @@
     ],
     "correct": 0,
     "explanation": "Mersin ilinin plaka kodu 33 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -893,6 +903,7 @@
     ],
     "correct": 1,
     "explanation": "İstanbul ilinin plaka kodu 34 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -907,6 +918,7 @@
     ],
     "correct": 0,
     "explanation": "İzmir ilinin plaka kodu 35 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -921,6 +933,7 @@
     ],
     "correct": 0,
     "explanation": "Kayseri ilinin plaka kodu 38 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -935,6 +948,7 @@
     ],
     "correct": 3,
     "explanation": "Kocaeli ilinin plaka kodu 41 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -949,6 +963,7 @@
     ],
     "correct": 1,
     "explanation": "Konya ilinin plaka kodu 42 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -963,6 +978,7 @@
     ],
     "correct": 2,
     "explanation": "Manisa ilinin plaka kodu 45 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -977,6 +993,7 @@
     ],
     "correct": 2,
     "explanation": "Kahramanmaraş ilinin plaka kodu 46 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -991,6 +1008,7 @@
     ],
     "correct": 1,
     "explanation": "Samsun ilinin plaka kodu 55 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -1005,6 +1023,7 @@
     ],
     "correct": 3,
     "explanation": "Tekirdağ ilinin plaka kodu 59 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -1019,6 +1038,7 @@
     ],
     "correct": 1,
     "explanation": "Şanlıurfa ilinin plaka kodu 63 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -1033,6 +1053,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Konya.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -1047,6 +1068,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Ağrı Dağı.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -1061,6 +1083,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Van Gölü.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -1075,6 +1098,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Kızılırmak.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -1089,6 +1113,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Denizli.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -1103,6 +1128,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Şanlıurfa.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1117,6 +1143,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Trabzon.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1131,6 +1158,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: İzmir.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1145,6 +1173,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Adıyaman.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1159,6 +1188,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Ankara.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1173,6 +1203,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: 29 Ekim 1923.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1187,6 +1218,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Mehmet Akif Ersoy.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1201,6 +1233,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Sinop.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -1215,6 +1248,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Edirne.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1229,6 +1263,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Konya.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1243,6 +1278,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: İstanbul Boğazı.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -1257,6 +1293,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Ağrı.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1271,6 +1308,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Çanakkale.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -1285,6 +1323,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: 23 Nisan 1920.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -8461,6 +8500,606 @@
     "explanation": "Düzce: 81."
   },
   {
+    "id": "turkiye-8d2c0f3be7924d",
+    "category": "turkiye",
+    "text": "Zırh kıymasıyla hazırlanan acılı kebabı ve şalgamıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Adıyaman",
+      "Antalya",
+      "Adana",
+      "Muş"
+    ],
+    "correct": 2,
+    "explanation": "Adana kebabı, Adana ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-c1c7058ccc23dc",
+    "category": "turkiye",
+    "text": "Kaymağı, sucuğu ve kaymaklı ekmek kadayıfıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Rize",
+      "Aydın",
+      "Artvin",
+      "Afyonkarahisar"
+    ],
+    "correct": 3,
+    "explanation": "Afyon kaymağı, Afyonkarahisar ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-7763439f515088",
+    "category": "turkiye",
+    "text": "Misket elması ve Yeşilırmak kıyısındaki yalıboyu evleriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Çanakkale",
+      "Kocaeli",
+      "Amasya",
+      "Kütahya"
+    ],
+    "correct": 2,
+    "explanation": "Misket elması, Amasya ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-9da8e980755f1b",
+    "category": "turkiye",
+    "text": "Tiftik keçisi ve Beypazarı kurusuyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Trabzon",
+      "İstanbul",
+      "Bursa",
+      "Ankara"
+    ],
+    "correct": 3,
+    "explanation": "Tiftik keçisi, Ankara ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-60291c9f745d4c",
+    "category": "turkiye",
+    "text": "Tahinli piyazı ve Kaleiçi semtiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Niğde",
+      "Antalya",
+      "Uşak",
+      "Karabük"
+    ],
+    "correct": 1,
+    "explanation": "Tahinli piyaz, Antalya ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-0b1996d60e19bf",
+    "category": "turkiye",
+    "text": "Sarılop inciri ve Kuşadası ilçesiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Edirne",
+      "Sakarya",
+      "Iğdır",
+      "Aydın"
+    ],
+    "correct": 3,
+    "explanation": "Aydın inciri, Aydın ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-2fae2b379cbb4d",
+    "category": "turkiye",
+    "text": "Peynirli höşmerimi ve Susurluk ayranıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Denizli",
+      "Afyonkarahisar",
+      "Balıkesir",
+      "Şırnak"
+    ],
+    "correct": 2,
+    "explanation": "Höşmerim, Balıkesir ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-7b6c09dee3f38a",
+    "category": "turkiye",
+    "text": "Mengen aşçılık geleneğiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Bolu",
+      "Bitlis",
+      "Mardin",
+      "Trabzon"
+    ],
+    "correct": 0,
+    "explanation": "Mengen aşçılık geleneği, Bolu ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-c5f13d1e66f290",
+    "category": "turkiye",
+    "text": "İskender kebabı ve kestane şekeriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Bartın",
+      "Bursa",
+      "Burdur",
+      "Çankırı"
+    ],
+    "correct": 1,
+    "explanation": "İskender kebap, Bursa ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-930d7dbd10d076",
+    "category": "turkiye",
+    "text": "Ezine peyniri ve Troya antik kentiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Denizli",
+      "Antalya",
+      "Gaziantep",
+      "Çanakkale"
+    ],
+    "correct": 3,
+    "explanation": "Ezine peyniri, Çanakkale ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-786d072408ceb5",
+    "category": "turkiye",
+    "text": "Leblebisi ve Hattuşa antik kentiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Nevşehir",
+      "Samsun",
+      "Çorum",
+      "Yalova"
+    ],
+    "correct": 2,
+    "explanation": "Çorum leblebisi, Çorum ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-d152b0a00ab177",
+    "category": "turkiye",
+    "text": "Uzun ötüşlü horozu ve Pamukkale travertenleriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Elazığ",
+      "Eskişehir",
+      "Denizli",
+      "Ankara"
+    ],
+    "correct": 2,
+    "explanation": "Denizli horozu, Denizli ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-ed11be80f3c8c4",
+    "category": "turkiye",
+    "text": "İri karpuzları ve Hevsel Bahçeleri'yle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Bayburt",
+      "Diyarbakır",
+      "Trabzon",
+      "Giresun"
+    ],
+    "correct": 1,
+    "explanation": "Diyarbakır karpuzu, Diyarbakır ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-67f75818f9a4c7",
+    "category": "turkiye",
+    "text": "Tava ciğeri ve Kırkpınar güreşleriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Balıkesir",
+      "Bursa",
+      "Nevşehir",
+      "Edirne"
+    ],
+    "correct": 3,
+    "explanation": "Tava ciğeri, Edirne ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-131fb739fe9f7b",
+    "category": "turkiye",
+    "text": "Tulum peyniri ve bakırcılık geleneğiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Muğla",
+      "Kırşehir",
+      "Erzincan",
+      "Tokat"
+    ],
+    "correct": 2,
+    "explanation": "Erzincan tulum peyniri, Erzincan ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-540829bac22d3a",
+    "category": "turkiye",
+    "text": "Oltu taşı ve cağ kebabıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Mardin",
+      "Hakkâri",
+      "Erzurum",
+      "Isparta"
+    ],
+    "correct": 2,
+    "explanation": "Oltu taşı, Erzurum ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-805d5cca55e9e1",
+    "category": "turkiye",
+    "text": "Lületaşı ve Odunpazarı evleriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Mardin",
+      "Kars",
+      "Eskişehir",
+      "Batman"
+    ],
+    "correct": 2,
+    "explanation": "Lületaşı, Eskişehir ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-09aec3127b7aff",
+    "category": "turkiye",
+    "text": "Antep fıstıklı baklavası ve beyranıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Afyonkarahisar",
+      "Yalova",
+      "Zonguldak",
+      "Gaziantep"
+    ],
+    "correct": 3,
+    "explanation": "Antep baklavası, Gaziantep ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-485068a732143f",
+    "category": "turkiye",
+    "text": "Tombul fındığı ve kıyısındaki ada turizmiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Balıkesir",
+      "Tunceli",
+      "Giresun",
+      "Trabzon"
+    ],
+    "correct": 2,
+    "explanation": "Giresun tombul fındığı, Giresun ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-1ea8c6fa2211b9",
+    "category": "turkiye",
+    "text": "Antakya künefesi ve sürk peyniriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Siirt",
+      "Tekirdağ",
+      "Hatay",
+      "Şanlıurfa"
+    ],
+    "correct": 2,
+    "explanation": "Antakya künefesi, Hatay ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-d6a89316a48265",
+    "category": "turkiye",
+    "text": "Gül yağı ve yağ gülü yetiştiriciliğiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Kırıkkale",
+      "Iğdır",
+      "Yalova",
+      "Isparta"
+    ],
+    "correct": 3,
+    "explanation": "Yağ gülü, Isparta ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-69c6b8d0ca4d4b",
+    "category": "turkiye",
+    "text": "Tantunisi ve cezeryesiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Samsun",
+      "Niğde",
+      "Giresun",
+      "Mersin"
+    ],
+    "correct": 3,
+    "explanation": "Tantuni, Mersin ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-24d71ff57031dc",
+    "category": "turkiye",
+    "text": "Boyozu ve kumrusuyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Tunceli",
+      "İzmir",
+      "Amasya",
+      "Giresun"
+    ],
+    "correct": 1,
+    "explanation": "Boyoz, İzmir ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-f5316887c12cdc",
+    "category": "turkiye",
+    "text": "Kaşar peyniri, kaz yemekleri ve Ani ören yeriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Giresun",
+      "Burdur",
+      "Antalya",
+      "Kars"
+    ],
+    "correct": 3,
+    "explanation": "Kars kaşarı, Kars ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-b87f65b72c03cd",
+    "category": "turkiye",
+    "text": "Taşköprü sarımsağı ve çekme helvasıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Malatya",
+      "Karaman",
+      "Erzincan",
+      "Kastamonu"
+    ],
+    "correct": 3,
+    "explanation": "Taşköprü sarımsağı, Kastamonu ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-b486e394fb10d4",
+    "category": "turkiye",
+    "text": "Küçük taneli mantısı ve pastırmasıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Uşak",
+      "Kayseri",
+      "Kahramanmaraş",
+      "Ankara"
+    ],
+    "correct": 1,
+    "explanation": "Kayseri mantısı, Kayseri ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-2fc9100d559e15",
+    "category": "turkiye",
+    "text": "İzmit pişmaniyesiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Isparta",
+      "Kocaeli",
+      "Sakarya",
+      "Bilecik"
+    ],
+    "correct": 1,
+    "explanation": "İzmit pişmaniyesi, Kocaeli ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-c7c4ece451d887",
+    "category": "turkiye",
+    "text": "Etliekmeği ve Mevlânâ Müzesi'yle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Sinop",
+      "Konya",
+      "Niğde",
+      "Bingöl"
+    ],
+    "correct": 1,
+    "explanation": "Etliekmek, Konya ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-af69cc5b30469c",
+    "category": "turkiye",
+    "text": "Geleneksel çinileri ve porselen üretimiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Rize",
+      "Çanakkale",
+      "Kütahya",
+      "Nevşehir"
+    ],
+    "correct": 2,
+    "explanation": "Çini sanatı, Kütahya ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-b5c97a2deaac15",
+    "category": "turkiye",
+    "text": "Kurutmalık kayısısı ve Arslantepe Höyüğü'yle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Niğde",
+      "Ankara",
+      "Erzurum",
+      "Malatya"
+    ],
+    "correct": 3,
+    "explanation": "Malatya kayısısı, Malatya ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-0d6a4a6b082b31",
+    "category": "turkiye",
+    "text": "Mesir macunu şenliğiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Denizli",
+      "Trabzon",
+      "Sakarya",
+      "Manisa"
+    ],
+    "correct": 3,
+    "explanation": "Mesir macunu, Manisa ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-ca64996479ce05",
+    "category": "turkiye",
+    "text": "Dövme dondurması ve tarhanasıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Giresun",
+      "Kahramanmaraş",
+      "Artvin",
+      "Elazığ"
+    ],
+    "correct": 1,
+    "explanation": "Maraş dondurması, Kahramanmaraş ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-bc3fe0bbebb7f1",
+    "category": "turkiye",
+    "text": "Midyat telkâri sanatı ve taş evleriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Tekirdağ",
+      "Mardin",
+      "Çorum",
+      "Yalova"
+    ],
+    "correct": 1,
+    "explanation": "Telkâri, Mardin ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-9dbf7cb1d19de1",
+    "category": "turkiye",
+    "text": "Avanos çömlekçiliği ve Göreme peribacalarıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Düzce",
+      "Kahramanmaraş",
+      "Niğde",
+      "Nevşehir"
+    ],
+    "correct": 3,
+    "explanation": "Avanos çömlekçiliği, Nevşehir ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-4115bd00d65aae",
+    "category": "turkiye",
+    "text": "Çayı ve Anzer balıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Nevşehir",
+      "Isparta",
+      "Uşak",
+      "Rize"
+    ],
+    "correct": 3,
+    "explanation": "Rize çayı, Rize ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-8b92bd97b439ac",
+    "category": "turkiye",
+    "text": "Kangal köpeği ve Divriği Ulu Camii'yle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Niğde",
+      "Çorum",
+      "Sivas",
+      "Karabük"
+    ],
+    "correct": 2,
+    "explanation": "Kangal köpeği, Sivas ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-ff0ea80ec19957",
+    "category": "turkiye",
+    "text": "Akçaabat köftesi ve Hamsiköy sütlacıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Şırnak",
+      "Kastamonu",
+      "Trabzon",
+      "Bingöl"
+    ],
+    "correct": 2,
+    "explanation": "Akçaabat köftesi, Trabzon ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-b6092edf618d94",
+    "category": "turkiye",
+    "text": "Sıra geceleri ve Balıklıgöl'üyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Ankara",
+      "Diyarbakır",
+      "Şanlıurfa",
+      "Burdur"
+    ],
+    "correct": 2,
+    "explanation": "Sıra gecesi geleneği, Şanlıurfa ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-e007f2e4b62693",
+    "category": "turkiye",
+    "text": "Otlu peyniri ve farklı renkli gözleri olabilen kedisiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Hatay",
+      "Çanakkale",
+      "Gaziantep",
+      "Van"
+    ],
+    "correct": 3,
+    "explanation": "Van otlu peyniri, Van ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-83d5448aeb9dbb",
+    "category": "turkiye",
+    "text": "Safranbolu evleri ve safranıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Karabük",
+      "Muş",
+      "Çorum",
+      "Erzurum"
+    ],
+    "correct": 0,
+    "explanation": "Safranbolu evleri, Karabük ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
     "id": "meshur-07aa571683ccc2",
     "category": "meshur",
     "text": "Zırh kıymasıyla hazırlanan acılı kebabı ve şalgamıyla tanınan ilimiz hangisidir?",
@@ -9606,6 +10245,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Samsun.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9620,6 +10260,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Türkiye Büyük Millet Meclisi.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9634,6 +10275,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Başkomutanlık Meydan Muharebesi.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9648,6 +10290,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: 1923.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9662,6 +10305,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Bandırma.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9676,6 +10320,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: 12 Mart 1921.",
+    "turkeyTopic": "tarih",
     "difficulty": "expert"
   },
   {
@@ -9690,6 +10335,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Osman Zeki Üngör.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9704,6 +10350,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: 13 Ekim 1923.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9718,6 +10365,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Selanik.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9732,6 +10380,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Nutuk.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9746,6 +10395,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Trakya.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9760,6 +10410,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Anadolu.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9774,6 +10425,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Marmara Denizi.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9788,6 +10440,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Çanakkale Boğazı.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9802,6 +10455,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Yunanistan ve Bulgaristan.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9816,6 +10470,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Gürcistan.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9830,6 +10485,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Bulgaristan.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9844,6 +10500,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: İran.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9858,6 +10515,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Irak.",
+    "turkeyTopic": "cografya",
     "difficulty": "expert"
   },
   {
@@ -9872,6 +10530,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Kapadokya.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -9886,6 +10545,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Çorum.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9900,6 +10560,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Hititler.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9914,6 +10575,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Manisa.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9928,6 +10590,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Van.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9942,6 +10605,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Gaziantep.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9956,6 +10620,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Zeugma.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9970,6 +10635,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: İstanbul.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -9984,6 +10650,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Rasattepe.",
+    "turkeyTopic": "tarih",
     "difficulty": "expert"
   },
   {
@@ -9998,6 +10665,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Antalya.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -10012,6 +10680,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Antalya.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10026,6 +10695,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Burdur.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10040,6 +10710,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Trabzon.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10054,6 +10725,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Bolu.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10068,6 +10740,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Ankara, Konya ve Aksaray.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10082,6 +10755,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: Kayseri.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10096,6 +10770,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Bursa.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10110,6 +10785,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Erzurum.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10124,6 +10800,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Balıkesir.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10138,6 +10815,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Muğla.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -10236,6 +10914,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Edirne.",
+    "turkeyTopic": "meshur",
     "difficulty": "general"
   },
   {
@@ -10250,6 +10929,7 @@
     ],
     "correct": 1,
     "explanation": "Doğru cevap: Kispet.",
+    "turkeyTopic": "meshur",
     "difficulty": "expert"
   },
   {
@@ -10278,6 +10958,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: 18 Mart 1915.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {

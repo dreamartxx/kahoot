@@ -94,6 +94,31 @@ function bank(): array {
     foreach($bank as &$q)$q['difficulty']=($q['difficulty']??null)==='general'?'general':'expert';unset($q);
     return $bank;
 }
+// The caller supplies the pool in recency order, with ties already shuffled.
+function turkeyQuizMix(array $pool,int $count): array {
+    $topics=['cografya','meshur','tarih'];
+    shuffle($topics); // Rotate the extra slot when the three shares differ.
+    $plates=max(1,intdiv($count,10));
+    $remaining=$count-$plates;
+    $slots=['plaka'=>$plates];
+    foreach($topics as $i=>$topic){
+        $slots[$topic]=intdiv($remaining,3)+($i<$remaining%3?1:0);
+    }
+    $deck=[];
+    $expertLimit=intdiv($count,10);
+    foreach(['expert','general'] as $level){
+        foreach($pool as $q){
+            $topic=$q['turkeyTopic']??'';
+            if(($slots[$topic]??0)<1 || $q['difficulty']!==$level)continue;
+            if($level==='expert' && count($deck)>=$expertLimit)break;
+            $deck[]=$q;
+            $slots[$topic]--;
+        }
+    }
+    if(count($deck)!==$count)throw new DomainException('Türkiye turunda tüm konuları tamamlayacak kadar soru bulunamadı.');
+    shuffle($deck);
+    return $deck;
+}
 function selectQuizQuestions(array $pool,array $history,bool $manual=false,int $count=10): array {
     if(!in_array($count,[10,15,20],true))throw new DomainException('Soru sayısı 10, 15 veya 20 olmalı.');
     $expertLimit=intdiv($count,10);$minimumGeneral=$count-$expertLimit;
@@ -107,6 +132,7 @@ function selectQuizQuestions(array $pool,array $history,bool $manual=false,int $
     if(count($general)<$minimumGeneral)throw new DomainException("Bu konuda yarışma için en az $minimumGeneral genel bilgi sorusu gerekli.");
     // Recency is balanced within each level, so unused expert questions never fill general slots.
     shuffle($pool);usort($pool,fn($a,$b)=>($history[$a['id']]??0)<=>($history[$b['id']]??0));
+    if(array_unique(array_column($pool,'category'))===['turkiye'])return turkeyQuizMix($pool,$count);
     $general=[];$expert=[];
     foreach($pool as $q){if(($q['difficulty']??'expert')==='general')$general[]=$q;else $expert[]=$q;}
     $expertCount=min($expertLimit,count($expert));

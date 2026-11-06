@@ -19,7 +19,14 @@ function beginTournamentQuestions(array &$s,float $time): void {
         $pool=$s['tournamentDecks'][$category];
         // Five-question rounds use general knowledge only; ten-question rounds
         // retain the existing maximum of one expert question.
-        if($count===5)$pool=array_slice(array_values(array_filter($pool,fn($q)=>$q['difficulty']==='general')),0,5);
+        if($count===5){
+            // Rooms created before topic tags existed can still finish their vote.
+            if($category==='turkiye' && count(array_column($pool,'turkeyTopic'))===count($pool)){
+                $pool=turkeyQuizMix($pool,5);
+            }else{
+                $pool=array_slice(array_values(array_filter($pool,fn($q)=>$q['difficulty']==='general')),0,5);
+            }
+        }
         array_push($s['questions'],...$pool);
     }
     unset($s['tournamentDecks']);
