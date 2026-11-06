@@ -803,7 +803,12 @@ for key, difficulty in [('generalQuestionIds', 'general'), ('detailQuestionIds',
 questions[:]=[q for q in questions if q['id'] in approved]
 assert {q['id'] for q in questions} == set(approved)
 assert set(edits) <= set(approved)
+turkey_topics={qid:topic for topic,ids in levels['turkeyTopics'].items() for qid in ids}
+assert len(turkey_topics)==sum(map(len,levels['turkeyTopics'].values()))
+assert all(approved[qid][0]=='turkiye' for qid in turkey_topics)
 for q in questions:
+    if q['id'] in turkey_topics:
+        q['turkeyTopic']=turkey_topics[q['id']]
     category, difficulty=approved[q['id']]
     assert category == q['category']
     if category != 'plakalar':

@@ -130,3 +130,26 @@ test("every shipped question has an explicit editorial decision for its category
     assert.deepEqual(expected.get(q.id), {category: q.category, difficulty: q.difficulty ?? "general"});
   }
 });
+
+test("automatic Türkiye rounds rotate all four themes with limited plates and expert questions", () => {
+  for (const count of [10, 15, 20]) {
+    const [first, second, short] = php(`
+      $pool=array_values(array_filter(json_decode(file_get_contents('data/questions.json'),true),fn($q)=>$q['category']==='turkiye'));
+      $first=selectQuizQuestions($pool,[],false,${count});
+      $used=array_fill_keys(array_column($first,'id'),1);
+      echo json_encode([$first,selectQuizQuestions($pool,$used,false,${count}),turkeyQuizMix($first,5)]);
+    `);
+    const firstIds = new Set(first.map(q => q.id));
+    assert(second.every(q => !firstIds.has(q.id)));
+    for (const deck of [first, second, short]) {
+      const size = deck === short ? 5 : count;
+      const totals = { plaka: 0, cografya: 0, meshur: 0, tarih: 0 };
+      for (const q of deck) totals[q.turkeyTopic]++;
+      assert.equal(new Set(deck.map(q => q.id)).size, size);
+      assert.equal(totals.plaka, Math.max(1, Math.floor(size / 10)));
+      const others = [totals.cografya, totals.meshur, totals.tarih];
+      assert(Math.min(...others) >= 1 && Math.max(...others) - Math.min(...others) <= 1);
+      assert.equal(deck.filter(q => q.difficulty === "expert").length, Math.floor(size / 10));
+    }
+  }
+});

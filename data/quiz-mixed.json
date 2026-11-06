@@ -193,6 +193,22 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Osman Zeki Üngör.",
+    "turkeyTopic": "tarih",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-69c6b8d0ca4d4b",
+    "category": "turkiye",
+    "text": "Tantunisi ve cezeryesiyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Samsun",
+      "Niğde",
+      "Giresun",
+      "Mersin"
+    ],
+    "correct": 3,
+    "explanation": "Tantuni, Mersin ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
     "difficulty": "general"
   },
   {
@@ -207,6 +223,37 @@
     ],
     "correct": 0,
     "explanation": "İzmir ilinin plaka kodu 35 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-09aec3127b7aff",
+    "category": "turkiye",
+    "text": "Antep fıstıklı baklavası ve beyranıyla tanınan şehrimiz hangisidir?",
+    "options": [
+      "Afyonkarahisar",
+      "Yalova",
+      "Zonguldak",
+      "Gaziantep"
+    ],
+    "correct": 3,
+    "explanation": "Antep baklavası, Gaziantep ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-b6092edf618d94",
+    "category": "turkiye",
+    "text": "Sıra geceleri ve Balıklıgöl'üyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Ankara",
+      "Diyarbakır",
+      "Şanlıurfa",
+      "Burdur"
+    ],
+    "correct": 2,
+    "explanation": "Sıra gecesi geleneği, Şanlıurfa ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
     "difficulty": "general"
   },
   {
@@ -221,6 +268,7 @@
     ],
     "correct": 2,
     "explanation": "Doğru cevap: Muğla.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
@@ -235,6 +283,7 @@
     ],
     "correct": 0,
     "explanation": "Doğru cevap: İstanbul.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -249,6 +298,7 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: 29 Ekim 1923.",
+    "turkeyTopic": "tarih",
     "difficulty": "general"
   },
   {
@@ -263,6 +313,7 @@
     ],
     "correct": 0,
     "explanation": "Mersin ilinin plaka kodu 33 olarak belirlenmiştir.",
+    "turkeyTopic": "plaka",
     "difficulty": "general"
   },
   {
@@ -277,90 +328,52 @@
     ],
     "correct": 3,
     "explanation": "Doğru cevap: Marmara Denizi.",
+    "turkeyTopic": "cografya",
     "difficulty": "general"
   },
   {
-    "id": "turkiye-e06019b9ac910e",
+    "id": "turkiye-ca64996479ce05",
     "category": "turkiye",
-    "text": "Urartuların başkenti Tuşpa hangi günümüz şehrindedir?",
+    "text": "Dövme dondurması ve tarhanasıyla tanınan şehrimiz hangisidir?",
     "options": [
-      "Van",
-      "Bitlis",
-      "Erzurum",
-      "Kars"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Van.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-8778a3ebdc1fca",
-    "category": "turkiye",
-    "text": "Aspendos Antik Tiyatrosu hangi ilimizdedir?",
-    "options": [
-      "Aydın",
-      "Antalya",
-      "Muğla",
-      "İzmir"
+      "Giresun",
+      "Kahramanmaraş",
+      "Artvin",
+      "Elazığ"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Antalya.",
+    "explanation": "Maraş dondurması, Kahramanmaraş ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
     "difficulty": "general"
   },
   {
-    "id": "turkiye-64e578f31d35f5",
+    "id": "turkiye-4115bd00d65aae",
     "category": "turkiye",
-    "text": "Zeugma Mozaik Müzesi hangi ilimizdedir?",
+    "text": "Çayı ve Anzer balıyla tanınan şehrimiz hangisidir?",
     "options": [
-      "Adana",
-      "Gaziantep",
+      "Nevşehir",
+      "Isparta",
+      "Uşak",
+      "Rize"
+    ],
+    "correct": 3,
+    "explanation": "Rize çayı, Rize ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
+    "difficulty": "general"
+  },
+  {
+    "id": "turkiye-1ea8c6fa2211b9",
+    "category": "turkiye",
+    "text": "Antakya künefesi ve sürk peyniriyle tanınan şehrimiz hangisidir?",
+    "options": [
+      "Siirt",
+      "Tekirdağ",
       "Hatay",
       "Şanlıurfa"
     ],
-    "correct": 1,
-    "explanation": "Doğru cevap: Gaziantep.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-54296bb04b009b",
-    "category": "turkiye",
-    "text": "Mevlânâ Müzesi hangi ilimizdedir?",
-    "options": [
-      "Konya",
-      "Sivas",
-      "Kayseri",
-      "Aksaray"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Konya.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-57479279f78636",
-    "category": "turkiye",
-    "text": "Erciyes Dağı hangi ilimizle özdeşleşmiştir?",
-    "options": [
-      "Kayseri",
-      "Konya",
-      "Nevşehir",
-      "Niğde"
-    ],
-    "correct": 0,
-    "explanation": "Doğru cevap: Kayseri.",
-    "difficulty": "general"
-  },
-  {
-    "id": "turkiye-a87cf8bf0ac826",
-    "category": "turkiye",
-    "text": "Hattuşa antik kentinin kalıntıları hangi ilimizdedir?",
-    "options": [
-      "Ankara",
-      "Amasya",
-      "Yozgat",
-      "Çorum"
-    ],
-    "correct": 3,
-    "explanation": "Doğru cevap: Çorum.",
+    "correct": 2,
+    "explanation": "Antakya künefesi, Hatay ilinin tanınmış değerlerindendir.",
+    "turkeyTopic": "meshur",
     "difficulty": "general"
   },
   {
