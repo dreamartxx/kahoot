@@ -4375,3 +4375,29 @@ test("solo estimates award closeness points, never automatic maximum points", as
   assert.equal((await call("room",{pin:room.pin},actor)).data.me,undefined,"Previous token no longer owns the seat");
   await call("close",{pin:room.pin},user);
 });
+
+test("a regular host authors a private quiz and a guest can score without seeing the answer key", async () => {
+  const host = await soloUser("personal-author");
+  const question = { text: "Hangi renk iki rengin karışımıdır?", options: ["Kırmızı", "Mor", "Sarı", "Mavi"], correct: 1 };
+  const payload = { mode: "quiz", category: "personal", title: "Renk gecesi", personalQuestions: [question] };
+  assert.equal((await call("create", payload)).status, 401);
+  for (const rows of [[], Array(21).fill(question), [question, question], [{ ...question, correct: null }], [{ ...question, options: ["A", "a", "B", "C"] }]]) {
+    assert.equal((await call("create", { ...payload, personalQuestions: rows }, host)).status, 400);
+  }
+  const { data: room, status } = await call("create", payload, host);
+  assert.equal(status, 200);
+  assert.equal(room.total, 1);
+  assert.equal((await call("categories")).data.personal, undefined);
+  assert.equal((await call("questions", {}, host)).status, 403);
+  const guest = await join(room.pin, "Deniz");
+  await join(room.pin, "Ekin");
+  await call("advance", { pin: room.pin, expectedPhase: "lobby", expectedIndex: -1 }, host);
+  const live = (await call("room", { pin: room.pin }, { token: guest.token })).data.question;
+  assert.equal(live.text, question.text);
+  assert.equal(live.correct, undefined);
+  const choice = live.options.indexOf("Mor");
+  assert.equal((await call("answer", { pin: room.pin, questionId: live.id, choice }, { token: guest.token })).status, 200);
+  const reveal = await call("advance", { pin: room.pin, expectedPhase: "question", expectedIndex: 0 }, host);
+  assert.equal(reveal.data.question.correct, choice);
+  assert.ok(reveal.data.players.find(p => p.name === "Deniz").score > 0);
+});

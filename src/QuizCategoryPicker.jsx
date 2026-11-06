@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   ArrowUpRight,
+  PencilLine,
   ChevronLeft,
   ChevronRight,
   Grid2X2,
@@ -76,7 +77,7 @@ export default function QuizCategoryPicker({ counts = {}, onChoose }) {
             <Sparkles size={15} /> MERAKIN NEREYE GÖTÜRSÜN?
           </span>
           <h1>Bir konu. Binbir heyecan.</h1>
-          <p>Sevdiğin alanı seç, yarışmanı birkaç adımda oluştur.</p>
+          <button type="button" className="personal-quiz-link" onClick={() => onChoose("personal")}><PencilLine size={16} /> Kendi yarışmanı oluştur</button>
         </div>
         <div className="gallery-total">
           <b>{categories.length}</b>

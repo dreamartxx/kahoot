@@ -1,6 +1,7 @@
 import React, { useRef, useState, useLayoutEffect } from "react";
 import {
   ArrowUpRight,
+  PencilLine,
   ChevronLeft,
   ChevronRight,
   ChevronDown,
@@ -82,6 +83,7 @@ export default function MobileQuizPicker({
         <h1>
           {collection === "topics" ? "Konunu seç." : "Oyuna farklı bir tat."}
         </h1>
+        {collection === "topics" && <button type="button" className="personal-quiz-link" onClick={() => onChoose("personal")}><PencilLine size={16} /> Kendi yarışmanı oluştur</button>}
       </header>
       {collection === "topics" && (
         <form

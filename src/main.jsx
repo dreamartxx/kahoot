@@ -107,6 +107,7 @@ import CompactRoomPanel from "./CompactRoomPanel";
 import MobileModuleLanding from "./MobileModuleLanding";
 import useCompactLayout from "./useCompactLayout";
 import ScreenPages from "./ScreenPages";
+import PersonalQuizEditor from "./PersonalQuizEditor";
 import MobileQuizPicker from "./MobileQuizPicker";
 import { setupNative, joinUrl, publicOrigin } from "./native";
 import "./android-design.css";
@@ -1299,6 +1300,13 @@ function Create({
         .catch((e) => notify(e.message));
     setSelected([]);
   }, [manual, cat, canManageLibrary]);
+  if (mode === "quiz" && cat === "personal") {
+    return (
+      <Modal title="Kendi yarışmanı oluştur" singleScreen onClose={onClose} className="personal-quiz-dialog">
+        <PersonalQuizEditor onDone={onDone} />
+      </Modal>
+    );
+  }
   return (
     <Modal
       title={modes[mode].name + " oluştur"}
@@ -1381,6 +1389,7 @@ function Create({
                   value={cat}
                   onChange={(e) => setCat(e.target.value)}
                 >
+                  <option value="personal">✎ Kendi sorularımı yaz</option>
                   {quizFormats.map((f) => (
                     <option value={f.id} key={f.id}>
                       {f.emoji} {f.name}

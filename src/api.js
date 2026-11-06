@@ -225,4 +225,5 @@ export const categories = [
   count: questionCounts[id],
 }));
 export const catById = (id) =>
-  categories.find((c) => c.id === id) || categories[0];
+  id === "personal" ? { id, name: "Kendi yarışmam", emoji: "✎" } :
+    categories.find((c) => c.id === id) || categories[0];
