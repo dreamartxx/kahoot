@@ -160,7 +160,7 @@ export async function api(action, data, token, { signal } = {}) {
   return json;
 }
 export const categories = [
-  ["cografya", "Coğrafya", "Dünyanın izini sür", "🌍", "#d9f3eb"],
+  ["cografya", "Dünya Coğrafyası", "Kıtalar, sular ve yeryüzü şekilleri", "🌍", "#d9f3eb"],
   ["dinozor", "Dinozorlar", "Zamanda geriye yolculuk", "🦕", "#eee3fc"],
   ["hayvanlar", "Hayvanlar", "Vahşi doğayı keşfet", "🦁", "#fff0d5"],
   ["turkiye", "Türkiye", "Her köşesi bir hikâye", "🎈", "#ffe2e8"],

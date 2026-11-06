@@ -1651,7 +1651,7 @@
   {
     "id": "cografya-24f165b0161dd9",
     "category": "cografya",
-    "text": "İzlanda'nın başkentini çevreleyen ada hangi okyanustadır?",
+    "text": "Reykjavík’in bulunduğu İzlanda adası hangi okyanusta yer alır?",
     "options": [
       "Hint Okyanusu",
       "Atlas Okyanusu",
@@ -1659,7 +1659,7 @@
       "Pasifik Okyanusu"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Atlas Okyanusu.",
+    "explanation": "İzlanda, Grönland ile Avrupa arasında, Kuzey Atlantik’te yer alır.",
     "difficulty": "general"
   },
   {
@@ -2043,7 +2043,7 @@
   {
     "id": "cografya-6502ab2d4514e8",
     "category": "cografya",
-    "text": "Depremlerin büyüklüğünü kaydeden cihaz hangisidir?",
+    "text": "Bir deprem sırasında yerin titreşimlerini kaydeden araç hangisidir?",
     "options": [
       "Higrometre",
       "Sismograf",
@@ -2051,7 +2051,7 @@
       "Barometre"
     ],
     "correct": 1,
-    "explanation": "Doğru cevap: Sismograf.",
+    "explanation": "Sismograf yer hareketini kaydeder. Depremin büyüklüğü bu kayıtlardan hesaplanır.",
     "difficulty": "general"
   },
   {
@@ -23458,5 +23458,537 @@
     "explanation": "Altın Koza, Adana'nın film festivalidir.",
     "topic": "oscar-ve-festivaller",
     "difficulty": "general"
+  },
+  {
+    "id": "cografya-927d2f69c8e75f",
+    "category": "cografya",
+    "text": "Paris’te Eyfel Kulesi’nin yanından geçen nehir hangisidir?",
+    "options": [
+      "Ren",
+      "Tuna",
+      "Rhône",
+      "Sen"
+    ],
+    "correct": 3,
+    "explanation": "Sen, Paris’in merkezinden geçer ve Manş Denizi’ne dökülür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-7f3016c53d5bf0",
+    "category": "cografya",
+    "text": "Alpler’den doğup Hollanda üzerinden Kuzey Denizi’ne ulaşan nehir hangisidir?",
+    "options": [
+      "Ren",
+      "Po",
+      "Elbe",
+      "Tuna"
+    ],
+    "correct": 0,
+    "explanation": "Ren, İsviçre Alpleri’nden Kuzey Denizi’ne doğru akar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-f67177e419774d",
+    "category": "cografya",
+    "text": "Mısır haritasında tarım alanlarının Nil boyunca dar bir şerit oluşturmasının temel nedeni nedir?",
+    "options": [
+      "Kıyıdan içeriye doğru yağışın artması",
+      "Dağların nehir boyunca uzanması",
+      "Suya erişimin nehir boyunca kolay olması",
+      "Gelgitlerin tarlaları her gün sulaması"
+    ],
+    "correct": 2,
+    "explanation": "Kurak Mısır’da Nil, vadideki tarlalara sulama suyu sağlar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-6536ca1cb2a81d",
+    "category": "cografya",
+    "text": "Vietnam’ın güneyinde pirinç tarlalarıyla kaplı geniş deltayı hangi nehir oluşturur?",
+    "options": [
+      "Mekong",
+      "İndus",
+      "Fırat",
+      "Sarı Irmak"
+    ],
+    "correct": 0,
+    "explanation": "Mekong, Vietnam’ın güneyinde kollara ayrılarak denize ulaşır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-d05635900bfa34",
+    "category": "cografya",
+    "text": "Aral Gölü’nün 20. yüzyılın ikinci yarısında hızla küçülmesinde hangi etken belirleyiciydi?",
+    "options": [
+      "Besleyici nehirlerin sulamaya yönlendirilmesi",
+      "Göl tabanının depremle yükselmesi",
+      "Gölün denize bir kanalla boşaltılması",
+      "Gölün doğal çıkışının genişlemesi"
+    ],
+    "correct": 0,
+    "explanation": "Amu Derya ve Sir Derya’dan tarım alanlarına su aktarılınca göle ulaşan su azaldı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-defc42d0f356ed",
+    "category": "cografya",
+    "text": "Botsvana’daki Okavango Deltası’nı Nil Deltası’ndan ayıran özellik nedir?",
+    "options": [
+      "İki kıtaya birden yayılması",
+      "Bir okyanus boğazını kapatması",
+      "Denize ulaşmadan iç kesimde yayılması",
+      "Bir buzulun altında bulunması"
+    ],
+    "correct": 2,
+    "explanation": "Okavango’nun suları Botsvana’nın iç kesimlerindeki sulak alanlara yayılır.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "cografya-541b198fea44a5",
+    "category": "cografya",
+    "text": "Kuzey Amerika’daki Büyük Göller’in suları hangi nehir üzerinden Atlas Okyanusu’na ulaşır?",
+    "options": [
+      "Missouri",
+      "Saint Lawrence",
+      "Colorado",
+      "Yukon"
+    ],
+    "correct": 1,
+    "explanation": "Saint Lawrence, Ontario Gölü’nden başlayıp kuzeydoğuya akar.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "cografya-40ae4453b18d19",
+    "category": "cografya",
+    "text": "Iguazú Şelaleleri’ni iki farklı kıyıdan görmek isteyen biri hangi iki ülkeye gider?",
+    "options": [
+      "Brezilya ve Uruguay",
+      "Şili ve Arjantin",
+      "Peru ve Bolivya",
+      "Arjantin ve Brezilya"
+    ],
+    "correct": 3,
+    "explanation": "Şelalelerin iki yakasında Arjantin ve Brezilya’nın millî parkları bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-1fe12d175b8364",
+    "category": "cografya",
+    "text": "İspanya’dan Fransa’ya geçerken iki ülke arasındaki doğal sınırın büyük bölümünü hangi dağlar oluşturur?",
+    "options": [
+      "Alpler",
+      "Pireneler",
+      "Apeninler",
+      "Karpatlar"
+    ],
+    "correct": 1,
+    "explanation": "Pireneler, İber Yarımadası’nın kuzeydoğusunda uzanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-66ba544ddd29e0",
+    "category": "cografya",
+    "text": "Fas’ta Marakeş’in güneyinde karla kaplı zirveler gören bir gezgin hangi sıradağlara bakar?",
+    "options": [
+      "Apenin Dağları",
+      "Zagros Dağları",
+      "Atlas Dağları",
+      "Toros Dağları"
+    ],
+    "correct": 2,
+    "explanation": "Marakeş’in güneyinde Yüksek Atlas yükselir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-222b62afbaa3e4",
+    "category": "cografya",
+    "text": "Brezilya’dan batıya doğru gidip And Dağları’nı aşan bir gezgin Güney Amerika’nın batı kıyısında hangi okyanusa ulaşır?",
+    "options": [
+      "Arktik Okyanusu",
+      "Atlas Okyanusu",
+      "Pasifik Okyanusu",
+      "Hint Okyanusu"
+    ],
+    "correct": 2,
+    "explanation": "Andlar, Güney Amerika’nın Pasifik kıyısına paralel uzanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-2baa7a317cc79c",
+    "category": "cografya",
+    "text": "Kuzey Amerika’nın batısında Kanada’dan ABD’ye uzanan büyük dağ sırası hangisidir?",
+    "options": [
+      "And Dağları",
+      "Appalaş Dağları",
+      "Ural Dağları",
+      "Kayalık Dağlar"
+    ],
+    "correct": 3,
+    "explanation": "Kayalık Dağlar, Kanada’nın batısından ABD’nin iç batısına kadar uzanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-32f8e9cc56ac32",
+    "category": "cografya",
+    "text": "İtalya’nın çizme biçimli yarımadası boyunca uzanan dağ sırası hangisidir?",
+    "options": [
+      "Karpatlar",
+      "Dinar Alpleri",
+      "Apeninler",
+      "Pireneler"
+    ],
+    "correct": 2,
+    "explanation": "Apeninler İtalya boyunca uzanırken Alpler ülkenin kuzey sınırında yer alır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-438b4db9345e2e",
+    "category": "cografya",
+    "text": "Büyük Kanyon’un tabanında akan ve kanyonun oyulmasında başlıca rolü olan nehir hangisidir?",
+    "options": [
+      "Ohio",
+      "Hudson",
+      "Mississippi",
+      "Colorado"
+    ],
+    "correct": 3,
+    "explanation": "Colorado Nehri, yükselen platodaki kaya katmanlarını zamanla aşındırdı.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-19cb151fcaf441",
+    "category": "cografya",
+    "text": "Hawaii Adaları’nın okyanus ortasında bir zincir oluşturmasını en iyi ne açıklar?",
+    "options": [
+      "Bir nehrin taşıdığı tortuların birikmesi",
+      "Bir levhanın volkanik sıcak nokta üzerinde ilerlemesi",
+      "İki kıtanın kıvrılarak yükselmesi",
+      "Kıyı kumullarının adalara dönüşmesi"
+    ],
+    "correct": 1,
+    "explanation": "Pasifik levhası ilerledikçe sıcak nokta üzerinde farklı zamanlarda volkanlar oluştu.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-7b70cf73c75abe",
+    "category": "cografya",
+    "text": "İzlanda’da Kuzey Amerika ve Avrasya levhalarının birbirinden uzaklaşması hangi deniz altı dağ sırasıyla bağlantılıdır?",
+    "options": [
+      "And Dağları",
+      "Atlas Okyanusu Ortası Sırtı",
+      "Alpler",
+      "Himalayalar"
+    ],
+    "correct": 1,
+    "explanation": "Okyanus ortasındaki sırt, İzlanda’da deniz seviyesinin üzerine çıkar.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "cografya-e7a548894dbcf1",
+    "category": "cografya",
+    "text": "İngiltere’den Fransa’ya Dover ile Calais arasında feribotla geçerken hangi denizi aşarsın?",
+    "options": [
+      "Norveç Denizi",
+      "Baltık Denizi",
+      "Manş Denizi",
+      "İrlanda Denizi"
+    ],
+    "correct": 2,
+    "explanation": "Dover Boğazı, Manş Denizi’nin en dar kesimidir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-5785c26d34d6cf",
+    "category": "cografya",
+    "text": "Doğu Afrika kıyısında Kenya’dan denize açılan bir gemi hangi okyanusa çıkar?",
+    "options": [
+      "Pasifik Okyanusu",
+      "Hint Okyanusu",
+      "Arktik Okyanusu",
+      "Atlas Okyanusu"
+    ],
+    "correct": 1,
+    "explanation": "Kenya’nın Mombasa limanı Hint Okyanusu kıyısındadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-819ceb9995b9e9",
+    "category": "cografya",
+    "text": "Sri Lanka, hangi ülkenin güneydoğu kıyısının hemen açığındadır?",
+    "options": [
+      "Tayland",
+      "Hindistan",
+      "Vietnam",
+      "Umman"
+    ],
+    "correct": 1,
+    "explanation": "Sri Lanka ile Hindistan arasında Palk Boğazı bulunur.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-28b1b66b5c3d34",
+    "category": "cografya",
+    "text": "Avustralya’nın güneydoğu kıyısının hemen açığında, Bass Boğazı’nın ötesinde hangi ada vardır?",
+    "options": [
+      "Sumatra",
+      "Borneo",
+      "Tasmanya",
+      "Yeni Gine"
+    ],
+    "correct": 2,
+    "explanation": "Bass Boğazı, Tasmanya’yı Avustralya ana karasından ayırır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-69ab3bab21cf28",
+    "category": "cografya",
+    "text": "Galápagos Adaları’nı ziyaret etmek için Güney Amerika’nın hangi ülkesine gidersin?",
+    "options": [
+      "Ekvador",
+      "Peru",
+      "Kolombiya",
+      "Şili"
+    ],
+    "correct": 0,
+    "explanation": "Takımadalar Ekvador’a bağlıdır ve ülkenin Pasifik kıyısının batısında yer alır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-23960983846e76",
+    "category": "cografya",
+    "text": "Hangi ada Endonezya, Malezya ve Brunei arasında paylaşılır?",
+    "options": [
+      "Borneo",
+      "Sulawesi",
+      "Cava",
+      "Sumatra"
+    ],
+    "correct": 0,
+    "explanation": "Brunei ve Malezya’nın iki eyaleti Borneo’nun kuzeyinde, Endonezya’ya ait kesim ise büyük ölçüde güneyindedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-c7c3a3298eaf86",
+    "category": "cografya",
+    "text": "Yunanistan’dan Girit’e giden bir feribot hangi büyük denizin sularında yol alır?",
+    "options": [
+      "Kızıldeniz",
+      "Karadeniz",
+      "Baltık Denizi",
+      "Akdeniz"
+    ],
+    "correct": 3,
+    "explanation": "Girit, Doğu Akdeniz’de, Yunanistan ana karasının güneyindedir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-c4cf168838f089",
+    "category": "cografya",
+    "text": "Maldivler’de bir lagünü halka gibi çevreleyen mercan resifine ne ad verilir?",
+    "options": [
+      "Delta",
+      "Atol",
+      "Kıstak",
+      "Fiyort"
+    ],
+    "correct": 1,
+    "explanation": "Atolde mercan resifi bir lagünü çevreler; resifin bazı kesimlerinde küçük adalar bulunabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-2324c059ac5c74",
+    "category": "cografya",
+    "text": "Sargasso Denizi’nin sınırlarını kıyılar yerine ne belirler?",
+    "options": [
+      "Volkanik ada yayları",
+      "Mercan resifleri",
+      "Okyanus akıntıları",
+      "Kıtaların kenarları"
+    ],
+    "correct": 2,
+    "explanation": "Kuzey Atlantik’teki akıntılar Sargasso Denizi’ni dört yandan çevreler.",
+    "difficulty": "expert"
+  },
+  {
+    "id": "cografya-7322512abf900d",
+    "category": "cografya",
+    "text": "Kuzey Atlantik’te Florida açıklarından kuzeye doğru sıcak su taşıyan akıntı hangisidir?",
+    "options": [
+      "Benguela Akıntısı",
+      "Gulf Stream",
+      "Humboldt Akıntısı",
+      "Labrador Akıntısı"
+    ],
+    "correct": 1,
+    "explanation": "Gulf Stream, Kuzey Amerika’nın doğu kıyısı boyunca sıcak su taşır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-88b0130d31a73a",
+    "category": "cografya",
+    "text": "Avustralya’nın güneyinde ocak ayında yaz yaşanırken Avrupa’da kış olmasının nedeni nedir?",
+    "options": [
+      "Ay’ın Dünya çevresindeki hareketi",
+      "Okyanusların tuzluluk farkı",
+      "Dünya’nın eksen eğikliği",
+      "Dünya’nın kendi çevresinde dönüş yönü"
+    ],
+    "correct": 2,
+    "explanation": "Eksen eğikliği nedeniyle iki yarımküre yılın farklı dönemlerinde daha doğrudan güneş ışığı alır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-1b738b96c80618",
+    "category": "cografya",
+    "text": "Kuzey Norveç’te yazın gece yarısı bile Güneş’i görebilmek için hangi çizginin kuzeyine gitmek gerekir?",
+    "options": [
+      "Kuzey Kutup Dairesi",
+      "Yengeç Dönencesi",
+      "Başlangıç meridyeni",
+      "Oğlak Dönencesi"
+    ],
+    "correct": 0,
+    "explanation": "Kutup dairesinin kuzeyinde yazın Güneş’in batmadığı günler yaşanır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-2e482d9644999b",
+    "category": "cografya",
+    "text": "Nemli deniz havası bir dağ sırasına çarptığında hangi yamaç genellikle daha fazla yağış alır?",
+    "options": [
+      "Rüzgârı karşılayan yamaç",
+      "Her zaman güneye bakan yamaç",
+      "Rüzgârın ardında kalan yamaç",
+      "Her zaman doğuya bakan yamaç"
+    ],
+    "correct": 0,
+    "explanation": "Yükselen hava soğuyunca taşıdığı su buharının bir bölümü yoğunlaşır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-6f27183aed5f9f",
+    "category": "cografya",
+    "text": "Sahra’nın güney kıyısında çöl ile daha yağışlı savanlar arasında uzanan geçiş kuşağı hangisidir?",
+    "options": [
+      "Sahel",
+      "Sibirya",
+      "Patagonya",
+      "Pampa"
+    ],
+    "correct": 0,
+    "explanation": "Sahel, Afrika’da Sahra’nın güneyi boyunca uzanan yarı kurak kuşaktır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-3bb5515a5159b1",
+    "category": "cografya",
+    "text": "Antarktika’nın iç kesimleri buzla kaplı olduğu hâlde neden çöl sayılır?",
+    "options": [
+      "Yazın deniz buzunun erimesi",
+      "Yıllık yağışın çok az olması",
+      "Kutup gecesinin uzun sürmesi",
+      "Toprağın sürekli donmuş olması"
+    ],
+    "correct": 1,
+    "explanation": "Çöl tanımında belirleyici olan sıcaklık değil, kuraklıktır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-5f9c4175c50fe1",
+    "category": "cografya",
+    "text": "Yüksek And Dağları’nda ekvatora yakın zirvelerde bile kalıcı kar bulunmasını en iyi ne açıklar?",
+    "options": [
+      "Ekvator çevresinde Güneş ışınlarının daha eğik gelmesi",
+      "Düşük enlemlerde kış gecelerinin daha uzun sürmesi",
+      "Yükseldikçe havanın genellikle soğuması",
+      "Yüksek basıncın her zirvede kar yağdırması"
+    ],
+    "correct": 2,
+    "explanation": "Aynı enlemde yüksek zirveler, çevredeki ovalardan çok daha soğuk olabilir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-9f1f4ea714b938",
+    "category": "cografya",
+    "text": "Haritada aynı ölçekte çizilmiş iki yamacın hangisinde yürüyüş daha diktir?",
+    "options": [
+      "Eş yükselti eğrileri birbirine yakın olanda",
+      "Eş yükselti eğrileri birbirinden uzak olanda",
+      "Zirvesi haritanın kuzeyinde kalanda",
+      "Vadisi doğudan batıya uzananda"
+    ],
+    "correct": 0,
+    "explanation": "Aynı yükseklik farkı daha kısa yatay mesafede aşılırsa eğim artar.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-f56a005974dd92",
+    "category": "cografya",
+    "text": "Bir dünya haritasında Afrika ile karşılaştırıldığında Grönland neden gerçekte olduğundan daha büyük görünebilir?",
+    "options": [
+      "Harita kuzey yerine güneye yöneltildiği için",
+      "Haritada siyasi sınırlar yerine kıyılar çizildiği için",
+      "Kullanılan harita izdüşümü alanları çarpıttığı için",
+      "İki bölge farklı saat dilimlerinde kaldığı için"
+    ],
+    "correct": 2,
+    "explanation": "Mercator gibi bazı izdüşümler kutuplara yakın bölgelerin alanını olduğundan büyük gösterir.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-9ac082b20b58b3",
+    "category": "cografya",
+    "text": "Ekvator yakınından kutuplara doğru gidildikçe paralel çemberlerinin uzunluğu nasıl değişir?",
+    "options": [
+      "Kısalır",
+      "Uzar",
+      "Değişmez",
+      "Önce kısalır, sonra uzar"
+    ],
+    "correct": 0,
+    "explanation": "En uzun paralel Ekvator’dur; paraleller kutuplara yaklaştıkça küçülür.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-c1c7d02bdaf96e",
+    "category": "cografya",
+    "text": "Hangi iki başkent Tuna boyunca tekneyle, nehir değiştirmeden birbirine bağlanır?",
+    "options": [
+      "Berlin ve Varşova",
+      "Paris ve Londra",
+      "Roma ve Madrid",
+      "Viyana ve Budapeşte"
+    ],
+    "correct": 3,
+    "explanation": "Tuna, Viyana’dan sonra Bratislava’dan ve daha sonra Budapeşte’den geçer.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-c739fbf2593eb0",
+    "category": "cografya",
+    "text": "Arjantin’in Atlantik kıyısındaki Buenos Aires, hangi komşu ülkenin başkenti Montevideo ile Río de la Plata’nın karşılıklı kıyılarındadır?",
+    "options": [
+      "Brezilya",
+      "Paraguay",
+      "Bolivya",
+      "Uruguay"
+    ],
+    "correct": 3,
+    "explanation": "Buenos Aires güneybatı kıyısında, Montevideo ise kuzey kıyısındadır.",
+    "difficulty": "general"
+  },
+  {
+    "id": "cografya-229e2439a41592",
+    "category": "cografya",
+    "text": "Kuzey Amerika’daki Beş Büyük Göl’den hangisinin tamamı ABD sınırları içindedir?",
+    "options": [
+      "Ontario Gölü",
+      "Erie Gölü",
+      "Huron Gölü",
+      "Michigan Gölü"
+    ],
+    "correct": 3,
+    "explanation": "Diğer dört Büyük Göl, Kanada ile ABD arasındaki sınır üzerinde yer alır.",
+    "difficulty": "expert"
   }
 ]

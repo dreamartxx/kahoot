@@ -545,5 +545,13 @@
       "Fransa",
       "Hollanda"
     ]
+  },
+  "cografya-24f165b0161dd9": {
+    "text": "Reykjavík’in bulunduğu İzlanda adası hangi okyanusta yer alır?",
+    "explanation": "İzlanda, Grönland ile Avrupa arasında, Kuzey Atlantik’te yer alır."
+  },
+  "cografya-6502ab2d4514e8": {
+    "text": "Bir deprem sırasında yerin titreşimlerini kaydeden araç hangisidir?",
+    "explanation": "Sismograf yer hareketini kaydeder. Depremin büyüklüğü bu kayıtlardan hesaplanır."
   }
 }
